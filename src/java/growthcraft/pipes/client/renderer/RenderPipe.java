@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015 IceDragon200
+ * Copyright (c) 2015, 2016 IceDragon200
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,7 +25,7 @@ package growthcraft.pipes.client.renderer;
 
 import org.lwjgl.opengl.GL11;
 
-import growthcraft.api.core.GrcColour;
+import growthcraft.api.core.util.GrcColorPreset;
 import growthcraft.pipes.client.resource.GrcPipesResources;
 import growthcraft.pipes.common.block.IPipeBlock;
 import growthcraft.pipes.util.PipeConsts;
@@ -64,11 +64,11 @@ public class RenderPipe implements ISimpleBlockRenderingHandler
 			final IPipeBlock pipeBlock = (IPipeBlock)block;
 			GL11.glPushMatrix();
 			{
-				final GrcColour colour = GrcColour.toColour(metadata);
+				final GrcColorPreset colour = GrcColorPreset.toColour(metadata);
 				final Tessellator tessellator = Tessellator.instance;
 				Minecraft.getMinecraft().renderEngine.bindTexture(GrcPipesResources.INSTANCE.texturePipeBase);
 				GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-				//if (colour != GrcColour.Transparent)
+				//if (colour != GrcColorPreset.Transparent)
 				//{
 				//	final int c = colour.blackVariant;
 				//	final float r = ((c >> 16) & 0xFF) / 255.0f;
@@ -78,7 +78,7 @@ public class RenderPipe implements ISimpleBlockRenderingHandler
 				//}
 				renderPipeModel(pipeBlock.getPipeType());
 				Minecraft.getMinecraft().renderEngine.bindTexture(GrcPipesResources.INSTANCE.texturePipeMask);
-				if (colour != GrcColour.Transparent)
+				if (colour != GrcColorPreset.Transparent)
 				{
 					final int c = colour.mediumVariant;
 					final float r = ((c >> 16) & 0xFF) / 255.0f;

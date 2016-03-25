@@ -23,7 +23,7 @@
  */
 package growthcraft.pipes.common.item;
 
-import growthcraft.api.core.GrcColour;
+import growthcraft.api.core.util.GrcColorPreset;
 import growthcraft.api.core.i18n.GrcI18n;
 
 import net.minecraft.block.Block;
@@ -43,6 +43,6 @@ public class ItemBlockPipeBase extends ItemBlock
 	{
 		return GrcI18n.translate("item.grcpipes.pipe_base.format.name",
 			super.getItemStackDisplayName(stack),
-			GrcColour.toColour(stack.getItemDamage()).toString());
+			GrcColorPreset.toColour(stack.getItemDamage()).toString());
 	}
 }

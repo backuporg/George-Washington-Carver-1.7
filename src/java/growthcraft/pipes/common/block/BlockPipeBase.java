@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015 IceDragon200
+ * Copyright (c) 2015, 2016 IceDragon200
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,16 +26,16 @@ package growthcraft.pipes.common.block;
 import java.util.List;
 import java.util.Random;
 
-import growthcraft.api.core.GrcColour;
-import growthcraft.cellar.common.block.ICellarFluidHandler;
-import growthcraft.core.common.block.IWrenchable;
+import growthcraft.api.core.util.GrcColorPreset;
+import growthcraft.core.common.block.GrcBlockBase;
 import growthcraft.core.common.block.IDroppableBlock;
-import growthcraft.core.GrowthCraftCore;
+import growthcraft.core.common.block.IWrenchable;
 import growthcraft.core.util.ItemUtils;
 import growthcraft.pipes.client.renderer.RenderPipe;
 import growthcraft.pipes.common.tileentity.TileEntityPipeBase;
-import growthcraft.pipes.util.PipeType;
+import growthcraft.pipes.GrowthCraftPipes;
 import growthcraft.pipes.util.PipeConsts;
+import growthcraft.pipes.util.PipeType;
 
 import buildcraft.api.blocks.IColorRemovable;
 
@@ -56,7 +56,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class BlockPipeBase extends Block implements IPipeBlock, ITileEntityProvider, ICellarFluidHandler, IDroppableBlock, IWrenchable, IColorRemovable
+public class BlockPipeBase extends GrcBlockBase implements IPipeBlock, ITileEntityProvider, IDroppableBlock, IWrenchable, IColorRemovable
 {
 	private PipeType pipeType;
 
@@ -66,13 +66,13 @@ public class BlockPipeBase extends Block implements IPipeBlock, ITileEntityProvi
 		setHardness(0.1F);
 		setStepSound(soundTypeGlass);
 		setBlockName("grc.pipeBase");
-		setCreativeTab(GrowthCraftCore.tab);
+		setCreativeTab(GrowthCraftPipes.creativeTab);
 		this.pipeType = type;
 	}
 
 	public void getSubBlocks(Item block, CreativeTabs tab, List list)
 	{
-		list.add(new ItemStack(block, 1, GrcColour.Transparent.ordinal()));
+		list.add(new ItemStack(block, 1, GrcColorPreset.Transparent.ordinal()));
 	}
 
 	/**
@@ -140,7 +140,7 @@ public class BlockPipeBase extends Block implements IPipeBlock, ITileEntityProvi
 		return true;
 	}
 
-	public boolean setBlockColour(World world, int x, int y, int z, ForgeDirection side, GrcColour colour)
+	public boolean setBlockColour(World world, int x, int y, int z, ForgeDirection side, GrcColorPreset colour)
 	{
 		final TileEntityPipeBase te = getTileEntity(world, x, y, z);
 
@@ -156,13 +156,13 @@ public class BlockPipeBase extends Block implements IPipeBlock, ITileEntityProvi
 	@Override
 	public boolean removeColorFromBlock(World world, int x, int y, int z, ForgeDirection side)
 	{
-		return setBlockColour(world, x, y, z, side, GrcColour.Transparent);
+		return setBlockColour(world, x, y, z, side, GrcColorPreset.Transparent);
 	}
 
 	@Override
 	public boolean recolourBlock(World world, int x, int y, int z, ForgeDirection side, int colour)
 	{
-		return setBlockColour(world, x, y, z, side, GrcColour.VALID_COLORS.get(colour));
+		return setBlockColour(world, x, y, z, side, GrcColorPreset.VALID_COLORS.get(colour));
 	}
 
 	public boolean wrenchBlock(World world, int x, int y, int z, EntityPlayer player, ItemStack wrench)
@@ -198,7 +198,7 @@ public class BlockPipeBase extends Block implements IPipeBlock, ITileEntityProvi
 		{
 			return te.getColour().ordinal();
 		}
-		return GrcColour.Transparent.ordinal();
+		return GrcColorPreset.Transparent.ordinal();
 	}
 
 	@Override
@@ -210,7 +210,7 @@ public class BlockPipeBase extends Block implements IPipeBlock, ITileEntityProvi
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack itemstack)
 	{
-		setBlockColour(world, x, y, z, ForgeDirection.UNKNOWN, GrcColour.toColour(itemstack.getItemDamage()));
+		setBlockColour(world, x, y, z, ForgeDirection.UNKNOWN, GrcColorPreset.toColour(itemstack.getItemDamage()));
 	}
 
 	@Override

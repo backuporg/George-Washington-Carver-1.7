@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015 IceDragon200
+ * Copyright (c) 2015, 2016 IceDragon200
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,12 +29,14 @@ import growthcraft.pipes.init.GrcPipesItems;
 import growthcraft.api.core.module.ModuleContainer;
 import growthcraft.api.core.log.ILogger;
 import growthcraft.api.core.log.GrcLogger;
+import growthcraft.pipes.creativetab.GrcPipesCreativeTabs;
 
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod;
+import net.minecraft.creativetab.CreativeTabs;
 
 /**
  * The pipe module attempts to add simple fluid pipes for use with the cellar
@@ -55,6 +57,7 @@ public class GrowthCraftPipes
 
 	@Mod.Instance(MOD_ID)
 	public static GrowthCraftPipes instance;
+	public static CreativeTabs creativeTab;
 	public static GrcPipesBlocks blocks = new GrcPipesBlocks();
 	public static GrcPipesItems items = new GrcPipesItems();
 
@@ -74,14 +77,12 @@ public class GrowthCraftPipes
 
 		modules.add(blocks);
 		modules.add(items);
-
 		if (config.enableWailaIntegration) modules.add(new growthcraft.pipes.integration.Waila());
 		if (config.enableThaumcraftIntegration) modules.add(new growthcraft.pipes.integration.ThaumcraftModule());
-
 		if (config.debugEnabled) modules.setLogger(logger);
-
 		modules.freeze();
 
+		creativeTab = new GrcPipesCreativeTabs("creative_tab_grcpipes");
 		modules.preInit();
 		modules.register();
 	}

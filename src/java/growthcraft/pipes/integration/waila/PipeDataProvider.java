@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015 IceDragon200
+ * Copyright (c) 2015, 2016 IceDragon200
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,7 +25,7 @@ package growthcraft.pipes.integration.waila;
 
 import java.util.List;
 
-import growthcraft.api.core.GrcColour;
+import growthcraft.api.core.util.GrcColorPreset;
 import growthcraft.pipes.common.tileentity.TileEntityPipeBase;
 
 import cpw.mods.fml.common.Optional;
@@ -64,7 +64,7 @@ public class PipeDataProvider implements IWailaDataProvider
 		if (accessor.getTileEntity() instanceof TileEntityPipeBase)
 		{
 			tooltip.add("PipeState : " + tag.getInteger("pipe_state"));
-			tooltip.add("Colour : " + GrcColour.toColour(tag.getInteger("colour")));
+			tooltip.add("Colour : " + GrcColorPreset.toColour(tag.getInteger("colour")));
 		}
 		return tooltip;
 	}

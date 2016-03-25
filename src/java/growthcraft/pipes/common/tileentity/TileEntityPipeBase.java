@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015 IceDragon200
+ * Copyright (c) 2015, 2016 IceDragon200
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,9 +25,9 @@ package growthcraft.pipes.common.tileentity;
 
 import java.io.IOException;
 
-import growthcraft.api.core.GrcColour;
+import growthcraft.api.core.util.GrcColorPreset;
 import growthcraft.core.common.tileentity.event.EventHandler;
-import growthcraft.core.common.tileentity.GrcBaseTile;
+import growthcraft.core.common.tileentity.GrcTileEntityBase;
 import growthcraft.pipes.common.block.IPipeBlock;
 import growthcraft.pipes.util.PipeFlag;
 import growthcraft.pipes.util.PipeType;
@@ -45,7 +45,7 @@ import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 
-public class TileEntityPipeBase extends GrcBaseTile implements IFluidHandler, IPipeTile, IColourableTile
+public class TileEntityPipeBase extends GrcTileEntityBase implements IFluidHandler, IPipeTile, IColourableTile
 {
 	public static enum UsageState
 	{
@@ -125,7 +125,7 @@ public class TileEntityPipeBase extends GrcBaseTile implements IFluidHandler, IP
 
 	public PipeSection[] pipeSections = new PipeSection[7];
 	public PipeBuffer[] pipeBuffers = new PipeBuffer[ForgeDirection.VALID_DIRECTIONS.length];
-	private GrcColour colour = GrcColour.Transparent;
+	private GrcColorPreset colour = GrcColorPreset.Transparent;
 	private PipeFluidTank fluidTank = new PipeFluidTank(FluidContainerRegistry.BUCKET_VOLUME / 4);
 	private int pipeRenderState = PipeFlag.PIPE_CORE;
 	private boolean dirty = true;
@@ -151,14 +151,14 @@ public class TileEntityPipeBase extends GrcBaseTile implements IFluidHandler, IP
 	}
 
 	@Override
-	public void setColour(GrcColour kolour)
+	public void setColour(GrcColorPreset kolour)
 	{
 		this.colour = kolour;
 		markAsDirty();
 	}
 
 	@Override
-	public GrcColour getColour()
+	public GrcColorPreset getColour()
 	{
 		return colour;
 	}
@@ -375,11 +375,13 @@ public class TileEntityPipeBase extends GrcBaseTile implements IFluidHandler, IP
 		}
 	}
 
+	@Override
 	public boolean canFill(ForgeDirection from, Fluid fluid)
 	{
 		return true;
 	}
 
+	@Override
 	public int fill(ForgeDirection from, FluidStack resource, boolean doFill)
 	{
 		final int amount = fluidTank.fill(resource, doFill);
@@ -393,11 +395,13 @@ public class TileEntityPipeBase extends GrcBaseTile implements IFluidHandler, IP
 		return amount;
 	}
 
+	@Override
 	public boolean canDrain(ForgeDirection from, Fluid fluid)
 	{
 		return true;
 	}
 
+	@Override
 	public FluidStack drain(ForgeDirection from, int maxDrain, boolean doDrain)
 	{
 		final FluidStack stack = fluidTank.drain(maxDrain, doDrain);
@@ -411,6 +415,7 @@ public class TileEntityPipeBase extends GrcBaseTile implements IFluidHandler, IP
 		return stack;
 	}
 
+	@Override
 	public FluidStack drain(ForgeDirection from, FluidStack resource, boolean doDrain)
 	{
 		if (resource == null || !resource.isFluidEqual(fluidTank.getFluid()))
@@ -442,7 +447,7 @@ public class TileEntityPipeBase extends GrcBaseTile implements IFluidHandler, IP
 	public void readFromNBT(NBTTagCompound tag)
 	{
 		super.readFromNBT(tag);
-		this.colour = GrcColour.toColour(tag.getInteger("colour"));
+		this.colour = GrcColorPreset.toColour(tag.getInteger("colour"));
 		this.pipeRenderState = tag.getInteger("pipe_render_state");
 		readTankNBT(tag);
 	}
@@ -466,7 +471,7 @@ public class TileEntityPipeBase extends GrcBaseTile implements IFluidHandler, IP
 	@EventHandler(type=EventHandler.EventType.NETWORK_READ)
 	public boolean readFromStream_PipeState(ByteBuf stream) throws IOException
 	{
-		colour = GrcColour.toColour(stream.readInt());
+		colour = GrcColorPreset.toColour(stream.readInt());
 		this.pipeRenderState = stream.readInt();
 		return true;
 	}

@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015, 2016 IceDragon200
+ * Copyright (c) 2016 IceDragon200
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,12 +21,26 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package growthcraft.pipes.common.tileentity;
+package growthcraft.pipes.creativetab;
 
-import growthcraft.api.core.util.GrcColorPreset;
+import growthcraft.pipes.GrowthCraftPipes;
 
-public interface IColourableTile
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.item.Item;
+import net.minecraft.creativetab.CreativeTabs;
+
+public class GrcPipesCreativeTabs extends CreativeTabs
 {
-	GrcColorPreset getColour();
-	void setColour(GrcColorPreset kolour);
+	public GrcPipesCreativeTabs(String name)
+	{
+		super(name);
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public Item getTabIconItem()
+	{
+		return GrowthCraftPipes.blocks.pipeBase.getItem();
+	}
 }

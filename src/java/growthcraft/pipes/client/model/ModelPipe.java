@@ -23,9 +23,8 @@
  */
 package growthcraft.pipes.client.model;
 
-import growthcraft.pipes.util.PipeFlag;
 import growthcraft.pipes.util.PipeConsts;
-import growthcraft.core.util.ModelCuboid;
+import growthcraft.pipes.util.PipeFlag;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;

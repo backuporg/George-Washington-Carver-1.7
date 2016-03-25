@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015 IceDragon200
+ * Copyright (c) 2015, 2016 IceDragon200
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,17 +23,27 @@
  */
 package growthcraft.pipes.integration;
 
-import growthcraft.pipes.GrowthCraftPipes;
+import growthcraft.api.core.item.ItemKey;
 import growthcraft.core.integration.ThaumcraftModuleBase;
+import growthcraft.pipes.GrowthCraftPipes;
 
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aspects.Aspect;
+
+import cpw.mods.fml.common.Optional;
 
 public class ThaumcraftModule extends ThaumcraftModuleBase
 {
 	public ThaumcraftModule()
 	{
 		super(GrowthCraftPipes.MOD_ID);
+	}
+
+	@Override
+	@Optional.Method(modid="Thaumcraft")
+	protected void integrate()
+	{
+		ThaumcraftApi.registerObjectTag(GrowthCraftPipes.blocks.pipeBase.asStack(1, ItemKey.WILDCARD_VALUE), new AspectList().add(Aspect.METAL, 8).add(Aspect.WATER, 2));
 	}
 }

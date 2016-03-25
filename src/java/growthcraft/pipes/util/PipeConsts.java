@@ -23,7 +23,7 @@
  */
 package growthcraft.pipes.util;
 
-import growthcraft.core.util.BoundUtils;
+import growthcraft.api.core.util.BoundUtils;
 
 import net.minecraft.util.MathHelper;
 import net.minecraftforge.common.util.ForgeDirection;
