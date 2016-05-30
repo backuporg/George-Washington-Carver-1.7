@@ -12,9 +12,7 @@ The original forum post can be found on the [Minecraft Forums mod page](http://w
 
 ## Wiki
 
-We are using the [Gamepedia FTB Wiki](http://ftb.gamepedia.com/GrowthCraft) for publishing how the plugins work and tutorials. 
-For technical details please read our [Github Wiki](https://github.com/GrowthcraftCE/Growthcraft-1.7/wiki).
-If you need to check the latest [User API](https://github.com/GrowthcraftCE/Growthcraft-1.7/wiki/User-API-(2.5.x))
+WIP
 
 ## Contributing 
 
