@@ -3,10 +3,11 @@
 ## The Awesome
 * Gwafu
 
+### OLD TEAM:
+
 ## Team Wiki
 * Alatyami
 * IceDragon
-* PitchBright
 * Sunconure11
 
 ## Team User Support
@@ -19,12 +20,10 @@
 * Gilberreke
 
 ## The Idea Guys
-* PitchBright
 * Sunconure11
 
 ## The Texture Artiste
 * HanatakeYurii
-* PitchBright
 * Sunconure11
 
 ## The Bug Finders
@@ -39,3 +38,5 @@
 * HanatakeYurii (French)
 * marcoasfonseca (Portuguese)
 * Mazdallier (French)
+
+### NEW TEAM
