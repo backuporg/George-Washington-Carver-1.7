@@ -18,7 +18,7 @@ If you need to check the latest [User API](https://github.com/GrowthcraftCE/Grow
 
 ## Contributing 
 
-For any contributions to this project, please refer to our [Contributing to Growthcraft](https://github.com/GrowthcraftCE/Growthcraft-1.7/wiki/Contributing-to-Growthcraft) wiki page and create a branch from our development branch. All pull requests need to be towards our development. Pull requests directly to the master branch will be closed without review.
+WIP
 
 ## License
 
