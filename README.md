@@ -7,8 +7,7 @@ CLASSIFIED
 [![Java Version](http://img.shields.io/java/7.png?color=green)](https://www.java.com/en/)
 [![Build Status](https://travis-ci.org/Um-Mitternacht/George-Washington-Carver-1.7.svg?branch=master)](https://travis-ci.org/TimelessModdingTeam/George-Washington-Carver-1.7) 
 
-This is a community fork of the original GrowthCraft developed by Gwafu. 
-The original forum post can be found on the [Minecraft Forums mod page](http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/1286298-growthcraft-jul-15-2014-proper-1-7-10-release). We have created a [forum post](http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/wip-mods/2505072-growthcraft-community-edition-proper-1-7-10) for [Growthcraft CE](http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/wip-mods/2505072-growthcraft-community-edition-proper-1-7-10) for general discussions, announcements and feedback. 
+New thread to be made eventually.
 
 ## Wiki
 
