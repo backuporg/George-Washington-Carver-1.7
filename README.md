@@ -1,4 +1,4 @@
-Growthcraft 
+CLASSIFIED 
 ===========
 
 [![Minecraft Version](http://img.shields.io/minecraft/1.7.10.png?color=green)](https://minecraft.net/)
