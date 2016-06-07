@@ -71,4 +71,7 @@ public class GrcBeesConfig extends ConfigBase
 
 	@ConfigOption(catergory="Integration", name="Enable Thaumcraft Integration", desc="Should we integrate with Thaumcraft (if available)?")
 	public boolean enableThaumcraftIntegration = true;
+	
+	@ConfigOption(catergory="Integration", name="Enable Fossils and Archaeology Integration", desc="Should we integrate with Fossils and Archaeology (if available)?")
+	public boolean enableF&AIntegration = true;
 }
