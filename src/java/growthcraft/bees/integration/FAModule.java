@@ -49,7 +49,7 @@ public class FAModule extends ModIntegrationBase
 	}
 
 	@Override
-	public void doRegister()
+	public doRegister()
 	{
 		GrowthCraftBees.beeBoxFossilsAndArchaeology.register("grc.beeBox.FossilsAndArchaeology", ItemBlockBeeBox.class);
 	}
