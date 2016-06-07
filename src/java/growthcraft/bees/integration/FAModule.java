@@ -35,7 +35,7 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 
 public class FAModule extends ModIntegrationBase
 {
-	public GrcBambooModule()
+	public FAModule()
 	{
 		super(GrowthCraftBees.MOD_ID, FAPlatform.MOD_ID);
 	}
