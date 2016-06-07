@@ -24,7 +24,7 @@
 package growthcraft.bees.integration;
 
 import growthcraft.bees.common.block.BlockBeeBox;
-import growthcraft.bees.common.block.BlockBeeBoxBiomesOPlenty;
+import growthcraft.bees.common.block.BlockBeeBoxFossilsAndArchaeology;
 import growthcraft.bees.common.item.ItemBlockBeeBox;
 import growthcraft.bees.GrowthCraftBees;
 import growthcraft.core.common.definition.BlockTypeDefinition;
@@ -45,13 +45,13 @@ public class FAModule extends ModIntegrationBase
 	@Override
 	public void doPreInit()
 	{
-		GrowthCraftBees.beeBoxFossilsAndArchaeology = new BlockTypeDefinition<BlockBeeBox>(new BlockBeeBoxFossilsAndArchaeology());
+		GrowthCraftBees.BeeBoxFossilsAndArchaeology = new BlockTypeDefinition<BlockBeeBox>(new BlockBeeBoxFossilsAndArchaeology());
 	}
 
 	@Override
 	public void doRegister()
 	{
-		GrowthCraftBees.beeBoxFossilsAndArchaeology.register("grc.BeeBox.FossilsAndArchaeology", ItemBlockBeeBox.class);
+		GrowthCraftBees.BeeBoxFossilsAndArchaeology.register("grc.BeeBox.FossilsAndArchaeology", ItemBlockBeeBox.class);
 	}
 
 	@Override
@@ -62,7 +62,7 @@ public class FAModule extends ModIntegrationBase
 			final ItemStack planks = type.asPlanksItemStack();
 			if (planks != null)
 			{
-				GameRegistry.addShapedRecipe(GrowthCraftBees.beeBoxFossilsAndArchaeology.asStack(1, type.meta), " A ", "A A", "AAA", 'A', planks);
+				GameRegistry.addShapedRecipe(GrowthCraftBees.BeeBoxFossilsAndArchaeology.asStack(1, type.meta), " A ", "A A", "AAA", 'A', planks);
 			}
 		}
 	}
