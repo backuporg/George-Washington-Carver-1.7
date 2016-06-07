@@ -7,7 +7,7 @@ CLASSIFIED
 [![Java Version](http://img.shields.io/java/7.png?color=green)](https://www.java.com/en/)
 [![Build Status](https://travis-ci.org/Um-Mitternacht/George-Washington-Carver-1.7.svg?branch=development)](https://travis-ci.org/Um-Mitternacht/George-Washington-Carver-1.7) 
 
-New thread to be made eventually.
+New thread to be made eventually. (check back in 5 millenia)
 
 ## Wiki
 
