@@ -28,8 +28,8 @@ import growthcraft.bees.common.block.BlockBeeBoxFA;
 import growthcraft.bees.common.item.ItemBlockBeeBox;
 import growthcraft.bees.GrowthCraftBees;
 import growthcraft.core.common.definition.BlockTypeDefinition;
-import growthcraft.core.integration.botania.FAPlatform;
-import growthcraft.core.integration.botania.EnumFAWoodType;
+import growthcraft.core.integration.FA.FAPlatform;
+import growthcraft.core.integration.FA.EnumFAWoodType;
 import growthcraft.core.integration.ModIntegrationBase;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -37,7 +37,7 @@ import net.minecraft.item.ItemStack;
 
 public class FAModule extends ModIntegrationBase
 {
-	public BotaniaModule()
+	public FAModule()
 	{
 		super(GrowthCraftBees.MOD_ID, FAPlatform.MOD_ID);
 	}
@@ -57,7 +57,7 @@ public class FAModule extends ModIntegrationBase
 	@Override
 	protected void doLateRegister()
 	{
-		for (EnumBotaniaWoodType type : EnumFAWoodType.VALUES)
+		for (EnumFAWoodType type : EnumFAWoodType.VALUES)
 		{
 			final ItemStack planks = type.asPlanksItemStack();
 			if (planks != null)
