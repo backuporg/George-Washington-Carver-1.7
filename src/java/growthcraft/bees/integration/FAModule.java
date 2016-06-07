@@ -24,13 +24,12 @@
 package growthcraft.bees.integration;
 
 import growthcraft.bees.common.block.BlockBeeBox;
-import growthcraft.bees.common.block.BlockBeeBoxFossilsAndArchaeology;
+import growthcraft.bees.common.block.BlockBeeBoxFA;
 import growthcraft.bees.common.item.ItemBlockBeeBox;
 import growthcraft.bees.GrowthCraftBees;
 import growthcraft.core.common.definition.BlockTypeDefinition;
-import growthcraft.core.integration.FA.FAPlatform;
-import growthcraft.core.integration.FA.EnumFAWoodType;
-import growthcraft.core.integration.FA;
+import growthcraft.core.integration.botania.FAPlatform;
+import growthcraft.core.integration.botania.EnumFAWoodType;
 import growthcraft.core.integration.ModIntegrationBase;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -38,7 +37,7 @@ import net.minecraft.item.ItemStack;
 
 public class FAModule extends ModIntegrationBase
 {
-	public FAModule()
+	public BotaniaModule()
 	{
 		super(GrowthCraftBees.MOD_ID, FAPlatform.MOD_ID);
 	}
@@ -46,24 +45,24 @@ public class FAModule extends ModIntegrationBase
 	@Override
 	public void doPreInit()
 	{
-		GrowthCraftBees.BeeBoxFossilsAndArchaeology = new BlockTypeDefinition<BlockBeeBox>(new BlockBeeBoxFossilsAndArchaeology());
+		GrowthCraftBees.BeeBoxFA = new BlockTypeDefinition<BlockBeeBox>(new BlockBeeBoxFossilsAndArchaeology());
 	}
 
 	@Override
 	public void doRegister()
 	{
-		GrowthCraftBees.BeeBoxFossilsAndArchaeology.register("grc.beeBox.FossilsAndArchaeology", ItemBlockBeeBox.class);
+		GrowthCraftBees.BeeBoxFA.register("grc.BeeBox.FossilsAndArchaeology", ItemBlockBeeBox.class);
 	}
 
 	@Override
 	protected void doLateRegister()
 	{
-		for (EnumFAWoodType type : EnumFAWoodType.VALUES)
+		for (EnumBotaniaWoodType type : EnumFAWoodType.VALUES)
 		{
 			final ItemStack planks = type.asPlanksItemStack();
 			if (planks != null)
 			{
-				GameRegistry.addShapedRecipe(GrowthCraftBees.BlockBeeBoxFossilsAndArchaeology.asStack(1, type.meta), " A ", "A A", "AAA", 'A', planks);
+				GameRegistry.addShapedRecipe(GrowthCraftBees.beeBoxBotania.asStack(1, type.meta), " A ", "A A", "AAA", 'A', planks);
 			}
 		}
 	}
