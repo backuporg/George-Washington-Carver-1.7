@@ -29,7 +29,6 @@ import growthcraft.bees.common.block.BlockBeeBox;
 import growthcraft.bees.common.block.BlockBeeBoxFossilsAndArchaeology;
 import growthcraft.bees.common.item.ItemBlockBeeBox;
 import growthcraft.core.integration.FA.FAPlatform;
-import growthcraft.core.integration.FA.EnumFAWoodType;
 import growthcraft.core.common.definition.BlockTypeDefinition;
 
 import cpw.mods.fml.common.registry.GameRegistry;
