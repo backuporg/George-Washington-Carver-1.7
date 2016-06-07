@@ -45,7 +45,7 @@ public class FAModule extends ModIntegrationBase
 	@Override
 	public void doPreInit()
 	{
-		GrowthCraftBees.BeeBoxFossilsAndArchaeology = new BlockTypeDefinition<BlockBeeBox>(new BlockBeeBoxFossilsAndArchaeology());
+		GrowthCraftBeesBeeBoxFossilsAndArchaeology = new BlockTypeDefinition<BlockBeeBox>(new BlockBeeBoxFossilsAndArchaeology());
 	}
 
 	@Override
