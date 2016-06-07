@@ -51,7 +51,7 @@ public class FAModule extends ModIntegrationBase
 	@Override
 	protected void doRegister()
 	{
-		GameRegistry.registerBlock(GrowthCraftBees.beeBoxFossilsAndArchaeology.getBlock(), ItemBlockBeeBox.class, "grc.BeeBox.Bamboo");
+		GameRegistry.registerBlock(GrowthCraftBees.beeBoxFossilsAndArchaeology.getBlock(), ItemBlockBeeBox.class, "grc.BeeBox.FossilsAndArchaeology");
 	}
 
 	@Override
