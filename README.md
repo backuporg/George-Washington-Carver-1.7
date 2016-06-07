@@ -19,4 +19,4 @@ WIP
 
 ## License
 
-Actual license will not be implemented for quite some time, but by proxy, it could count as being under the MIT License.
+Actual license will not be implemented for quite some time, but by proxy, it could count as being under the MIT License
