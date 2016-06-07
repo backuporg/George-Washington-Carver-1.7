@@ -110,18 +110,18 @@ tile.grc.BeeBox.Botania.shimmer_wood.desc=ZOMG Colors!
 
 ## Natura
 tile.grc.BeeBox.Natura.apple.name=Apple Bee Box
-tile.grc.BeeBox.Natura.blood.name=Blood Wood Bee Box
+tile.grc.BeeBox.Natura.blood.name=Bloodwood Bee Box
 tile.grc.BeeBox.Natura.bush.name=Hopseed Bee Box
-tile.grc.BeeBox.Natura.darkwood.name=Dark Wood Bee Box
+tile.grc.BeeBox.Natura.darkwood.name=Darkwood Bee Box
 tile.grc.BeeBox.Natura.eucalyptus.name=Eucalyptus Bee Box
-tile.grc.BeeBox.Natura.fusewood.name=Fuse Wood Bee Box
-tile.grc.BeeBox.Natura.ghost.name=Ghost Wood Bee Box
+tile.grc.BeeBox.Natura.fusewood.name=Fusewood Bee Box
+tile.grc.BeeBox.Natura.ghost.name=Ghostwood Bee Box
 tile.grc.BeeBox.Natura.maple.name=Maple Bee Box
-tile.grc.BeeBox.Natura.purpleheart.name=Purple Heart Bee Box
+tile.grc.BeeBox.Natura.purpleheart.name=Amaranth Bee Box
 tile.grc.BeeBox.Natura.redwood.name=Redwood Bee Box
 tile.grc.BeeBox.Natura.sakura.name=Sakura Bee Box
 tile.grc.BeeBox.Natura.silverbell.name=Silverbell Bee Box
-tile.grc.BeeBox.Natura.tiger.name=Tiger Bee Box
+tile.grc.BeeBox.Natura.tiger.name=Tigerwood Bee Box
 tile.grc.BeeBox.Natura.willow.name=Willow Bee Box
 
 # Other Blocks
