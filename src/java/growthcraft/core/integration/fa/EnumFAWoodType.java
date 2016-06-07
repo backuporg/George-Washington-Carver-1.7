@@ -31,7 +31,7 @@ import net.minecraft.item.ItemStack;
 
 public enum EnumFAWoodType
 {
-	PALAEROAPHE;
+	PALAEORAPHE;
 
 	public static final EnumFAWoodType[] VALUES = values();
 
