@@ -70,6 +70,7 @@ public class BlockBeeBoxFossilsAndArchaeology extends BlockBeeBox
 	public void registerBlockIcons(IIconRegister reg)
 	{
 		this.icons = new IIcon[4 * EnumFAWoodType.VALUES.length];
+		for (EnumFAWoodType type : EnumFAWoodType.VALUES)
 		{
 			registerBeeBoxIcons(reg, String.format("/FA/%s/", type.name), type.meta);
 		}
