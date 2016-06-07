@@ -51,7 +51,7 @@ public class FAModule extends ModIntegrationBase
 	@Override
 	public void doRegister()
 	{
-		GrowthCraftBees.beeBoxFossilsAndArchaeology.register("grc.BeeBox.FossilsAndArchaeology", ItemBlockBeeBox.class);
+		GrowthCraftBees.beeBoxFossilsAndArchaeology.register("grc.beeBox.FossilsAndArchaeology", ItemBlockBeeBox.class);
 	}
 
 	@Override
