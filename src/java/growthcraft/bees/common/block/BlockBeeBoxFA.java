@@ -37,7 +37,7 @@ import net.minecraft.util.IIcon;
 
 public class BlockBeeBoxFossilsAndArchaeology extends BlockBeeBox
 {
-	public BlockFossilsAndArchaeology()
+	public BlockBeeBoxFossilsAndArchaeology()
 	{
 		super();
 		setHardness(2f);

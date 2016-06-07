@@ -57,7 +57,7 @@ public class FAModule extends ModIntegrationBase
 	@Override
 	protected void doLateRegister()
 	{
-		for (EnumBopWoodType type : EnumFAWoodType.VALUES)
+		for (EnumFAWoodType type : EnumFAWoodType.VALUES)
 		{
 			final ItemStack planks = type.asPlanksItemStack();
 			if (planks != null)
