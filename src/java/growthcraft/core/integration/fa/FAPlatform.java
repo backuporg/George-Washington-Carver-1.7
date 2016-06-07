@@ -27,7 +27,7 @@ import cpw.mods.fml.common.Loader;
 
 public class FAPlatform
 {
-	public static final String MOD_ID = "Fossils_Archeology_Revival";
+	public static final String MOD_ID = "fossil";
 
 	private FAPlatform() {};
 
