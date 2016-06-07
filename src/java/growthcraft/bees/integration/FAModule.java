@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2016 IceDragon200
+ * Copyright (c) 2015 IceDragon200
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,47 +23,40 @@
  */
 package growthcraft.bees.integration;
 
+import growthcraft.bees.GrowthCraftBees;
+import growthcraft.core.integration.ModIntegrationBase;
 import growthcraft.bees.common.block.BlockBeeBox;
 import growthcraft.bees.common.block.BlockBeeBoxFossilsAndArchaeology;
 import growthcraft.bees.common.item.ItemBlockBeeBox;
-import growthcraft.bees.GrowthCraftBees;
 import growthcraft.core.common.definition.BlockTypeDefinition;
-import growthcraft.core.integration.FA.FAPlatform;
-import growthcraft.core.integration.FA.EnumFAWoodType;
-import growthcraft.core.integration.ModIntegrationBase;
 
 import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.ShapedOreRecipe;
 
 public class FAModule extends ModIntegrationBase
 {
-	public FAModule()
+	public GrcBambooModule()
 	{
 		super(GrowthCraftBees.MOD_ID, FAPlatform.MOD_ID);
 	}
 
 	@Override
-	public void doPreInit()
+	protected void doPreInit()
 	{
-		GrowthCraftBees.beeBoxFossilsAndArchaeology = new BlockTypeDefinition<BlockBeeBox>(new BlockBeeBoxFossilsAndArchaeology());
+		GrowthCraftBees.beeBoxFossilsAndArchaeology  = new BlockTypeDefinition<BlockBeeBox>(new BlockBeeBoxFossilsAndArchaeology());
+		GrowthCraftBees.beeBoxFossilsAndArchaeology.getBlock().setFlammability(20).setFireSpreadSpeed(5).setHarvestLevel("axe", 0);
 	}
 
 	@Override
-	public void doRegister()
+	protected void doRegister()
 	{
-		GrowthCraftBees.beeBoxFossilsAndArchaeology.register("grc.beeBox.FossilsAndArchaeology", ItemBlockBeeBox.class);
+		GameRegistry.registerBlock(GrowthCraftBees.beeBoxFossilsAndArchaeology.getBlock(), ItemBlockBeeBox.class, "grc.BeeBox.Bamboo");
 	}
 
 	@Override
 	protected void doLateRegister()
 	{
-		for (EnumFAWoodType type : EnumFAWoodType.VALUES)
-		{
-			final ItemStack planks = type.asPlanksItemStack();
-			if (planks != null)
-			{
-				GameRegistry.addShapedRecipe(GrowthCraftBees.beeBoxFossilsAndArchaeology.asStack(), " A ", "A A", "AAA", 'A', planks);
-			}
-		}
+		// Palaeoraphe
+		GameRegistry.addRecipe(new ShapedOreRecipe(GrowthCraftBees.beeBoxFossilsAndArchaeology.asStack(), " A ", "A A", "AAA", 'A', "aercaleWood"));
 	}
 }
