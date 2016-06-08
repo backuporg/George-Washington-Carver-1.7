@@ -2,6 +2,16 @@
 
 ## The Awesome
 * Gwafu
+ 
+### NEW TEAM:
+
+## Coders:
+
+## Artists:
+
+## Translators:
+
+## Managers:
 
 ### OLD TEAM:
 
@@ -39,4 +49,4 @@
 * marcoasfonseca (Portuguese)
 * Mazdallier (French)
 
-### NEW TEAM
+
