@@ -54,9 +54,4 @@ public enum EnumFAWoodType
 		}
 		return null;
 	}
-
-	public ItemStack asPlanksItemStack()
-	{
-		return asPlanksItemStack(1);
-	}
 }
