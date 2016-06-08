@@ -46,7 +46,7 @@ public enum EnumFAWoodType
 
 	public ItemStack asPlanksItemStack(int size)
 	{
-		final Block block = GameRegistry.findBlock(FAPlatform.MOD_ID, "BlockPalaePlanks");
+		final Block block = GameRegistry.findBlock("fossils", "BlockPalaePlanks");
 		if (block != null)
 		{
 			final ItemStack result = new ItemStack(block, size, meta);
