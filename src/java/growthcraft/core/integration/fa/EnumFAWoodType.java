@@ -1,3 +1,4 @@
+
 /*
  * The MIT License (MIT)
  *
@@ -44,14 +45,19 @@ public enum EnumFAWoodType
 		this.meta = ordinal();
 	}
 
-	public void addBlocks()
+	public ItemStack asPlanksItemStack(int size)
 	{
-		Block planks = getBlock("fossil:palaePlanks");
-		if (planks != null)
+		final Block block = GameRegistry.findBlock(FAPlatform.MOD_ID, "palaePlanks");
+		if (block != null)
 		{
 			final ItemStack result = new ItemStack(block, size, meta);
 			return result;
 		}
 		return null;
+	}
+
+	public ItemStack asPlanksItemStack()
+	{
+		return asPlanksItemStack(1);
 	}
 }
