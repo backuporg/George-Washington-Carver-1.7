@@ -114,6 +114,7 @@ public class GrcMilkFluids extends GrcModuleBase
 		}
 		BoozeRegistryHelper.initializeBooze(kumisFluids, kumisFluidBlocks, kumisFluidBuckets);
 		BoozeRegistryHelper.setBoozeFoodStats(kumisFluids, 1, -0.2f);
+		BoozeRegistryHelper.setBoozeFoodStats(kumisFluids[0], 1, 0.2f);
 		kumisFluids[5].setColor(GrowthCraftMilk.getConfig().poisonedKumisColor);
 		kumisFluidBlocks[5].getBlock().refreshColor();
 		for (BlockBoozeDefinition def : kumisFluidBlocks)
@@ -335,8 +336,7 @@ public class GrcMilkFluids extends GrcModuleBase
 		CoreRegistry.instance().fluidDictionary().addFluidTags(whey.getFluid(), MilkFluidTags.WHEY);
 
 		GrowthCraftCellar.boozeBuilderFactory.create(rennet.fluid.getFluid())
-			.brewsFrom(new FluidStack(FluidRegistry.WATER, 1000), GrowthCraftMilk.blocks.thistle.asStack(), TickUtils.minutes(1), null)
-			.brewsFrom(new FluidStack(FluidRegistry.WATER, 1000), GrowthCraftMilk.items.stomach.asStack(), TickUtils.minutes(1), null);
+			.brewsFrom(new FluidStack(FluidRegistry.WATER, 1000), new OreItemStacks("rennetSource"), TickUtils.minutes(1), null);
 
 		GrowthCraftCellar.boozeBuilderFactory.create(pasteurizedMilk.fluid.getFluid())
 			.brewsFrom(skimMilk.fluid.asFluidStack(250), new ItemStack(Items.sugar), TickUtils.minutes(1), new Residue(GrowthCraftMilk.items.starterCulture.asStack(1), 1.0f));

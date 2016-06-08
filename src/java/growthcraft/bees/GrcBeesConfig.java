@@ -42,7 +42,7 @@ public class GrcBeesConfig extends ConfigBase
 
 
 	@ConfigOption(catergory="Village", name="Apiarist ID")
-	public int villagerApiaristID = 14;
+	public int villagerApiaristID = 7766;
 
 	@ConfigOption(catergory="Village", name="Spawn Village Apiarist Structure", desc="Should the apiarist structure be generated in villages?")
 	public boolean generateApiaristStructure;
@@ -71,4 +71,7 @@ public class GrcBeesConfig extends ConfigBase
 
 	@ConfigOption(catergory="Integration", name="Enable Thaumcraft Integration", desc="Should we integrate with Thaumcraft (if available)?")
 	public boolean enableThaumcraftIntegration = true;
+	
+	@ConfigOption(catergory="Integration", name="Enable Fossils and Archaeology Integration", desc="Should we integrate with Fossils and Archaeology (if available)?")
+	public boolean enableFAIntegration = true;
 }

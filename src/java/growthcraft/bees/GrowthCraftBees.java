@@ -73,6 +73,7 @@ public class GrowthCraftBees
 	public static BlockTypeDefinition<BlockBeeBox> beeBoxBotania;
 	public static BlockTypeDefinition<BlockBeeBox> beeBoxNether;
 	public static BlockTypeDefinition<BlockBeeBox> beeBoxThaumcraft;
+	public static BlockTypeDefinition<BlockBeeBox> beeBoxFossilsAndArchaeology;
 	public static List<BlockTypeDefinition<BlockBeeBox>> beeBoxesForestry;
 	public static List<BlockTypeDefinition<BlockBeeBox>> beeBoxesForestryFireproof;
 	public static BlockDefinition beeHive;
@@ -132,6 +133,7 @@ public class GrowthCraftBees
 		if (config.enableBotaniaIntegration) modules.add(new growthcraft.bees.integration.BotaniaModule());
 		if (config.enableForestryIntegration) modules.add(new growthcraft.bees.integration.ForestryModule());
 		if (config.enableThaumcraftIntegration) modules.add(new growthcraft.bees.integration.ThaumcraftModule());
+		if (config.enableFAIntegration) modules.add(new growthcraft.bees.integration.FAModule());
 
 		if (config.debugEnabled)
 		{
@@ -204,10 +206,10 @@ public class GrowthCraftBees
 	private void postRegisterRecipes()
 	{
 		GameRegistry.addRecipe(new ShapedOreRecipe(beeBox.asStack(), " A ", "A A", "AAA", 'A', "plankWood"));
-	
+
 		GameRegistry.addRecipe(new ShapelessMultiRecipe(
-				items.honeyJar.asStack(), 
-				new TaggedFluidStacks(1000, BeesFluidTag.HONEY.getName()), 
+				items.honeyJar.asStack(),
+				new TaggedFluidStacks(1000, BeesFluidTag.HONEY.getName()),
 				Items.flower_pot));
 	}
 
@@ -220,6 +222,7 @@ public class GrowthCraftBees
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandlerBees());
 
 		final VillageHandlerBeesApiarist handler = new VillageHandlerBeesApiarist();
+		VillagerRegistry.instance().registerVillagerId(config.villagerApiaristID);
 		VillagerRegistry.instance().registerVillageCreationHandler(handler);
 		VillagerRegistry.instance().registerVillageTradeHandler(GrowthCraftCellar.getConfig().villagerBrewerID, new VillageHandlerBees());
 		VillagerRegistry.instance().registerVillageTradeHandler(config.villagerApiaristID, handler);
