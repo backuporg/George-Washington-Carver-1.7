@@ -12,6 +12,7 @@ tile.grc.BeeBox.Minecraft.darkoak.name=Dark Oak Bee Box
 
 ## Growthcraft|Nether Bee Boxes
 tile.grc.BeeBox.Nether.0.name=Malice Bee Box
+tile.grc.BeeBox.Nether.0.desc=This beebox seems to scream at you
 
 ## Growthcraft|Bamboo Bee Boxes
 tile.grc.BeeBox.Bamboo.0.name=Bamboo Bee Box
@@ -22,6 +23,7 @@ tile.grc.BeeBox.Thaumcraft.silverwood.name=Silverwood Bee Box
 
 ## F&A Bee Boxes
 tile.grc.beeBox.FossilsAndArchaeology.palaeoraphe.name=Palaeoraphe Bee Box
+tile.grc.beeBox.FossilsAndArchaeology.palaeoraphe.desc=Welcome to Miocene Park
 
 ## Forestry Bee Boxes - this is just insane...
 ### Regular
@@ -118,6 +120,7 @@ tile.grc.BeeBox.Natura.fusewood.name=Fusewood Bee Box
 tile.grc.BeeBox.Natura.ghost.name=Ghostwood Bee Box
 tile.grc.BeeBox.Natura.maple.name=Maple Bee Box
 tile.grc.BeeBox.Natura.purpleheart.name=Amaranth Bee Box
+tile.grc.BeeBox.Natura.purpleheart.desc=Caress the one, the never-fading
 tile.grc.BeeBox.Natura.redwood.name=Redwood Bee Box
 tile.grc.BeeBox.Natura.sakura.name=Sakura Bee Box
 tile.grc.BeeBox.Natura.silverbell.name=Silverbell Bee Box
