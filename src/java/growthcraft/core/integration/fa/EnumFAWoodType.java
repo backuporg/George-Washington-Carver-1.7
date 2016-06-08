@@ -46,8 +46,8 @@ public enum EnumFAWoodType
 
 	public ItemStack asPlanksItemStack(int size)
 	{
-		final Block planks = getblock("fossil:palaePlanks");
-		if (block != null)
+		final Block planks = getBlock("fossil:palaePlanks");
+		if (planks != null)
 		{
 			final ItemStack result = new ItemStack(block, size, meta);
 			return result;
