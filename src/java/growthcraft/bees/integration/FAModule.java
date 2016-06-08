@@ -58,6 +58,6 @@ public class FAModule extends ModIntegrationBase
 	protected void doLateRegister()
 	{
 		// Palaeoraphe
-		GameRegistry.addRecipe(new ShapedOreRecipe(GrowthCraftBees.beeBoxFossilsAndArchaeology.asStack(), " A ", "A A", "AAA", 'A', "aercaleWood"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(GrowthCraftBees.beeBoxFossilsAndArchaeology.asStack(), " A ", "A A", "AAA", 'A', "plankAercale"));
 	}
 }
