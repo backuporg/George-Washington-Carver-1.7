@@ -62,7 +62,7 @@ public class FAModule extends ModIntegrationBase
 			final ItemStack palaePlanks = type.asPlanksItemStack();
 			if (palaePlanks != null)
 			{
-				GameRegistry.addShapedRecipe(GrowthCraftBees.beeBoxFossilsAndArchaeology.asStack(), " A ", "A A", "AAA", 'A', "palaeoraphePlanks);
+				GameRegistry.addShapedRecipe(GrowthCraftBees.beeBoxFossilsAndArchaeology.asStack(), " A ", "A A", "AAA", 'A', "palaeoraphePlanks");
 			}
 		}
 	}
