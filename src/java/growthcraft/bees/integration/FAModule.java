@@ -59,8 +59,8 @@ public class FAModule extends ModIntegrationBase
 	{
 		for (EnumFAWoodType type : EnumFAWoodType.VALUES)
 		{
-			final ItemStack planks = type.asPlanksItemStack();
-			if (planks != null)
+			final ItemStack palaePlanks = type.asPlanksItemStack();
+			if (palaePlanks != null)
 			{
 				GameRegistry.addShapedRecipe(GrowthCraftBees.beeBoxFossilsAndArchaeology.asStack(), " A ", "A A", "AAA", 'A', "palaePlanks");
 			}
