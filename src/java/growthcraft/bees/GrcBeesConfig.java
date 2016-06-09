@@ -74,4 +74,7 @@ public class GrcBeesConfig extends ConfigBase
 	
 	@ConfigOption(catergory="Integration", name="Enable Fossils and Archaeology Integration", desc="Should we integrate with Fossils and Archaeology (if available)?")
 	public boolean enableFAIntegration = true;
+	
+	@ConfigOption(catergory="Integration", name="Enable Ars Magica 2 Integration", desc="Should we integrate with Ars Magica 2 (if available)?")
+	public boolean enableAM2Integration = true;
 }
