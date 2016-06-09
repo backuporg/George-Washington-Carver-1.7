@@ -47,9 +47,9 @@ public class BlockBeeBoxArsMagica2 extends BlockBeeBox
 	@Override
 	public String getMetaname(int meta)
 	{
-		if (meta >= 0 && meta < EnumFAWoodType.VALUES.length)
+		if (meta >= 0 && meta < EnumAM2WoodType.VALUES.length)
 		{
-			return EnumFAWoodType.VALUES[meta].name;
+			return EnumAM2WoodType.VALUES[meta].name;
 		}
 		return super.getMetaname(meta);
 	}
@@ -69,8 +69,8 @@ public class BlockBeeBoxArsMagica2 extends BlockBeeBox
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister reg)
 	{
-		this.icons = new IIcon[4 * EnumFAWoodType.VALUES.length];
-		for (EnumFAWoodType type : EnumFAWoodType.VALUES)
+		this.icons = new IIcon[4 * EnumAM2WoodType.VALUES.length];
+		for (EnumAM2WoodType type : EnumAM2WoodType.VALUES)
 		{
 			registerBeeBoxIcons(reg, String.format("/AM2/%s/", type.name), type.meta);
 		}
