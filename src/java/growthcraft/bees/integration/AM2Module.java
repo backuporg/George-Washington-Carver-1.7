@@ -45,7 +45,7 @@ public class AM2Module extends ModIntegrationBase
 	@Override
 	public void doPreInit()
 	{
-		GrowthCraftBees.beeBoxFossilsAndArchaeology = new BlockTypeDefinition<BlockBeeBox>(new BlockBeeBoxFossilsAndArchaeology());
+		GrowthCraftBees.beeBoxArsMagica2 = new BlockTypeDefinition<BlockBeeBox>(new BlockBeeBoxArsMagica2());
 	}
 
 	@Override
