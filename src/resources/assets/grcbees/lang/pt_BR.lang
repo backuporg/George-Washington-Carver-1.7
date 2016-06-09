@@ -12,6 +12,7 @@ tile.grc.BeeBox.Minecraft.darkoak.name=Apiário de Carvalho Escuro
 
 ## Growthcraft|Nether Bee Boxes
 tile.grc.BeeBox.Nether.0.name=Apiário de Malícia
+tile.grc.BeeBox.Nether.0.desc=This beebox seems to scream at you
 
 ## Growthcraft|Bamboo Bee Boxes
 tile.grc.BeeBox.Bamboo.0.name=Apiário de Bambu
