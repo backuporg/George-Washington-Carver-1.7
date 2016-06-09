@@ -12,6 +12,7 @@ tile.grc.BeeBox.Minecraft.darkoak.name=Пчелиный ящик из тёмно
 
 ## Growthcraft|Nether Bee Boxes
 tile.grc.BeeBox.Nether.0.name=Пчелиный ящик из дерева злобы
+tile.grc.BeeBox.Nether.0.desc=This beebox seems to scream at you
 
 ## Growthcraft|Bamboo Bee Boxes
 tile.grc.BeeBox.Bamboo.0.name=Пчелиный ящик из бамбука
