@@ -12,6 +12,7 @@ tile.grc.BeeBox.Minecraft.darkoak.name=Boîte d'abeille en chêne noir
 
 ## Growthcraft|Nether Bee Boxes
 tile.grc.BeeBox.Nether.0.name=Boîte d'abeille de malice
+tile.grc.BeeBox.Nether.0.desc=This beebox seems to scream at you
 
 ## Growthcraft|Bamboo Bee Boxes
 tile.grc.BeeBox.Bamboo.0.name=Boîte d'abeille en bambou
