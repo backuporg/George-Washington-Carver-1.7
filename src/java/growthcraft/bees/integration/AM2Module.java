@@ -24,7 +24,7 @@
 package growthcraft.bees.integration;
 
 import growthcraft.bees.common.block.BlockBeeBox;
-import growthcraft.bees.common.block.BlockBeeBoxFossilsAndArchaeology;
+import growthcraft.bees.common.block.BlockBeeBoxArsMagica2;
 import growthcraft.bees.common.item.ItemBlockBeeBox;
 import growthcraft.bees.GrowthCraftBees;
 import growthcraft.core.common.definition.BlockTypeDefinition;
