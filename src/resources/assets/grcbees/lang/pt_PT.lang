@@ -23,6 +23,10 @@ tile.grc.BeeBox.Thaumcraft.silverwood.name=Apiário de Silverwood
 ## F&A Bee Boxes
 tile.grc.beeBox.FossilsAndArchaeology.palaeoraphe.name=Apiário de Palaeoraphe
 
+## AM2 Bee Boxes
+tile.grc.beeBox.ArsMagica2.witchwood.name=Apiário de Witchwood
+tile.grc.beeBox.ArsMagica2.witchwood.desc=Magical to the core!
+
 ## Forestry Bee Boxes - this is just insane...
 ### Regular
 tile.grc.BeeBox.Forestry.0.Normal.larch.name=Larch Bee Box
