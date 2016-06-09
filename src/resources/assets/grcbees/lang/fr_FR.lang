@@ -22,6 +22,7 @@ tile.grc.BeeBox.Thaumcraft.silverwood.name=Boîte d'abeille en bois d'argent
 
 ## F&A Bee Boxes
 tile.grc.beeBox.FossilsAndArchaeology.palaeoraphe.name=Palaeoraphe Bee Box
+tile.grc.beeBox.FossilsAndArchaeology.palaeoraphe.desc=Welcome to Miocene Park
 
 ## AM2 Bee Boxes
 tile.grc.beeBox.ArsMagica2.witchwood.name=Witchwood Bee Box
