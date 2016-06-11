@@ -12,6 +12,7 @@ tile.grc.BeeBox.Minecraft.darkoak.name=Apiário de Carvalho Escuro
 
 ## Growthcraft|Nether Bee Boxes
 tile.grc.BeeBox.Nether.0.name=Apiário de Malícia
+tile.grc.BeeBox.Nether.0.desc=This beebox seems to scream at you
 
 ## Growthcraft|Bamboo Bee Boxes
 tile.grc.BeeBox.Bamboo.0.name=Apiário de Bambu
@@ -22,6 +23,11 @@ tile.grc.BeeBox.Thaumcraft.silverwood.name=Apiário de Silverwood
 
 ## F&A Bee Boxes
 tile.grc.beeBox.FossilsAndArchaeology.palaeoraphe.name=Apiário de Palaeoraphe
+tile.grc.beeBox.FossilsAndArchaeology.palaeoraphe.desc=Welcome to Miocene Park
+
+## AM2 Bee Boxes
+tile.grc.beeBox.ArsMagica2.witchwood.name=Apiário de Witchwood
+tile.grc.beeBox.ArsMagica2.witchwood.desc=Magical to the core!
 
 ## Forestry Bee Boxes - this is just insane...
 ### Regular
@@ -118,6 +124,7 @@ tile.grc.BeeBox.Natura.fusewood.name=Apiário de Fuse Wood*
 tile.grc.BeeBox.Natura.ghost.name=Apiário de Madeira Fantasma
 tile.grc.BeeBox.Natura.maple.name=Apiário de Bordo
 tile.grc.BeeBox.Natura.purpleheart.name=Apiário de Coração-Roxo
+tile.grc.BeeBox.Natura.purpleheart.desc=Caress the one, the never-fading
 tile.grc.BeeBox.Natura.redwood.name=Apiário de Pau-Brasil
 tile.grc.BeeBox.Natura.sakura.name=Apiário de Sakura
 tile.grc.BeeBox.Natura.silverbell.name= Apiário de Flor-de-Sino*

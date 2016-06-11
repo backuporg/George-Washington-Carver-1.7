@@ -12,6 +12,7 @@ tile.grc.BeeBox.Minecraft.darkoak.name=Boîte d'abeille en chêne noir
 
 ## Growthcraft|Nether Bee Boxes
 tile.grc.BeeBox.Nether.0.name=Boîte d'abeille de malice
+tile.grc.BeeBox.Nether.0.desc=This beebox seems to scream at you
 
 ## Growthcraft|Bamboo Bee Boxes
 tile.grc.BeeBox.Bamboo.0.name=Boîte d'abeille en bambou
@@ -22,6 +23,11 @@ tile.grc.BeeBox.Thaumcraft.silverwood.name=Boîte d'abeille en bois d'argent
 
 ## F&A Bee Boxes
 tile.grc.beeBox.FossilsAndArchaeology.palaeoraphe.name=Palaeoraphe Bee Box
+tile.grc.beeBox.FossilsAndArchaeology.palaeoraphe.desc=Welcome to Miocene Park
+
+## AM2 Bee Boxes
+tile.grc.beeBox.ArsMagica2.witchwood.name=Witchwood Bee Box
+tile.grc.beeBox.ArsMagica2.witchwood.desc=Magical to the core!
 
 ## Forestry Bee Boxes - this is just insane...
 ### Regular
@@ -118,6 +124,7 @@ tile.grc.BeeBox.Natura.fusewood.name=tile.grc.BeeBox.Natura.fusewood.name
 tile.grc.BeeBox.Natura.ghost.name=tile.grc.BeeBox.Natura.ghost.name
 tile.grc.BeeBox.Natura.maple.name=tile.grc.BeeBox.Natura.maple.name
 tile.grc.BeeBox.Natura.purpleheart.name=tile.grc.BeeBox.Natura.purpleheart.name
+tile.grc.BeeBox.Natura.purpleheart.desc=Caress the one, the never-fading
 tile.grc.BeeBox.Natura.redwood.name=tile.grc.BeeBox.Natura.redwood.name
 tile.grc.BeeBox.Natura.sakura.name=tile.grc.BeeBox.Natura.sakura.name
 tile.grc.BeeBox.Natura.silverbell.name=tile.grc.BeeBox.Natura.silverbell.name
