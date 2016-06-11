@@ -25,7 +25,7 @@ package growthcraft.bees.common.block;
 
 import java.util.List;
 
-import growthcraft.core.integration.Totemic.EnumTotemicWoodType;
+import growthcraft.core.integration.totemic.EnumTotemicWoodType;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
