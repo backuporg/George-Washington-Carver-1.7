@@ -28,8 +28,8 @@ import growthcraft.bees.common.block.BlockBeeBoxTotemic;
 import growthcraft.bees.common.item.ItemBlockBeeBox;
 import growthcraft.bees.GrowthCraftBees;
 import growthcraft.core.common.definition.BlockTypeDefinition;
-import growthcraft.core.integration.Totemic.TotemicPlatform;
-import growthcraft.core.integration.Totemic.EnumTotemicWoodType;
+import growthcraft.core.integration.totemic.TotemicPlatform;
+import growthcraft.core.integration.totemic.EnumTotemicWoodType;
 import growthcraft.core.integration.ModIntegrationBase;
 
 import cpw.mods.fml.common.registry.GameRegistry;

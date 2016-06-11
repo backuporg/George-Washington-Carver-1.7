@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package growthcraft.core.integration.Totemic;
+package growthcraft.core.integration.totemic;
 
 import cpw.mods.fml.common.Loader;
 
