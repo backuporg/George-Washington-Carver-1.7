@@ -75,6 +75,7 @@ public class GrowthCraftBees
 	public static BlockTypeDefinition<BlockBeeBox> beeBoxThaumcraft;
 	public static BlockTypeDefinition<BlockBeeBox> beeBoxFossilsAndArchaeology;
 	public static BlockTypeDefinition<BlockBeeBox> beeBoxArsMagica2;
+	public static BlockTypeDefinition<BlockBeeBox> beeBoxTotemic;
 	public static List<BlockTypeDefinition<BlockBeeBox>> beeBoxesForestry;
 	public static List<BlockTypeDefinition<BlockBeeBox>> beeBoxesForestryFireproof;
 	public static BlockDefinition beeHive;
