@@ -25,18 +25,19 @@ public class FAModule extends FAModuleBase
 	{
 		super(GrowthCraftGrapes.MOD_ID);
 	}
-	public void addPlant(Object ItemGrapes, int food){
+	
+	public void addPlant(Object ItemGrapes, int 19){
 		if(ItemGrapes instanceof Block){
-			this.addToBlockMappings((Block)ItemGrapes, 10, EnumDiet.HERBIVORE, true);
-			this.addToBlockMappings((Block)ItemGrapes, 10, EnumDiet.OMNIVORE, true);
+			this.addToBlockMappings((Block)object, food, EnumDiet.HERBIVORE, true);
+			this.addToBlockMappings((Block)object, food, EnumDiet.OMNIVORE, true);
 		}
 		else if(ItemGrapes instanceof Item){
-			this.addToItemMappings((Item)ItemGrapes, 10, EnumDiet.HERBIVORE);
-			this.addToItemMappings((Item)ItemGrapes, 10, EnumDiet.OMNIVORE);
+			this.addToItemMappings((Item)object, food, EnumDiet.HERBIVORE);
+			this.addToItemMappings((Item)object, food, EnumDiet.OMNIVORE);
 		}
 		else if(ItemGrapes instanceof Class){
-			this.addToEntityMappings((Class)ItemGrapes, 10, EnumDiet.HERBIVORE);
-			this.addToEntityMappings((Class)ItemGrapes, 10, EnumDiet.OMNIVORE);
+			this.addToEntityMappings((Class)object, food, EnumDiet.HERBIVORE);
+			this.addToEntityMappings((Class)object, food, EnumDiet.OMNIVORE);
 		}
 	}
 }
