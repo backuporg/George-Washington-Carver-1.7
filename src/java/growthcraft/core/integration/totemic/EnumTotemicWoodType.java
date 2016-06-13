@@ -47,7 +47,7 @@ public enum EnumTotemicWoodType
 
 	public ItemStack asPlanksItemStack(int size)
 	{
-		final Block block = GameRegistry.findBlock(TotemicPlatform.MOD_ID, "redCedarPlanks");
+		final Block block = GameRegistry.findBlock(TotemicPlatform.MOD_ID, "redCedarPlank");
 		if (block != null)
 		{
 			final ItemStack result = new ItemStack(block, size, meta);
