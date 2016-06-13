@@ -75,6 +75,7 @@ public class GrowthCraftBees
 	public static BlockTypeDefinition<BlockBeeBox> beeBoxThaumcraft;
 	public static BlockTypeDefinition<BlockBeeBox> beeBoxFossilsAndArchaeology;
 	public static BlockTypeDefinition<BlockBeeBox> beeBoxArsMagica2;
+	public static BlockTypeDefinition<BlockBeeBox> beeBoxTotemic;
 	public static List<BlockTypeDefinition<BlockBeeBox>> beeBoxesForestry;
 	public static List<BlockTypeDefinition<BlockBeeBox>> beeBoxesForestryFireproof;
 	public static BlockDefinition beeHive;
@@ -136,6 +137,7 @@ public class GrowthCraftBees
 		if (config.enableThaumcraftIntegration) modules.add(new growthcraft.bees.integration.ThaumcraftModule());
 		if (config.enableFAIntegration) modules.add(new growthcraft.bees.integration.FAModule());
 		if (config.enableAM2Integration) modules.add(new growthcraft.bees.integration.AM2Module());
+		if (config.enableTotemicIntegration) modules.add(new growthcraft.bees.integration.TotemicModule());
 
 		if (config.debugEnabled)
 		{
