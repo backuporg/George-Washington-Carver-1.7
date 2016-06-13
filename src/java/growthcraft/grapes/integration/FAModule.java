@@ -26,7 +26,7 @@ public class FAModule extends FAModuleBase
 		super(GrowthCraftGrapes.MOD_ID);
 	}
 	
-	public void addPlant(Object ItemGrapes, int, 10){
+	public void addPlant(Object ItemGrapes, food 10){
 		if(ItemGrapes instanceof Block){
 			this.addToBlockMappings((Block)object, food, EnumDiet.HERBIVORE, true);
 			this.addToBlockMappings((Block)object, food, EnumDiet.OMNIVORE, true);
