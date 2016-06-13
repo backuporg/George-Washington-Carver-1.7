@@ -1,13 +1,14 @@
 package growthcraft.grapes.integration;
 
 import growthcraft.grapes.GrowthCraftGrapes;
+import growthcraft.grapes.init.GrcGrapesItems;
 import growthcraft.api.core.item.ItemKey;
 
 import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.common.event.FMLInterModComms;
 
 import java.util.Map;
-import net.minecraft.client.Minecraft
+import net.minecraft.client.Minecraft;
 
 import com.google.common.collect.Maps;
 
