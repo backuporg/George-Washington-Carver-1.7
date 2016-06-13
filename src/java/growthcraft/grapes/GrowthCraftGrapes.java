@@ -79,6 +79,7 @@ public class GrowthCraftGrapes
 		if (config.enableForestryIntegration) modules.add(new growthcraft.grapes.integration.ForestryModule());
 		if (config.enableMFRIntegration) modules.add(new growthcraft.grapes.integration.MFRModule());
 		if (config.enableThaumcraftIntegration) modules.add(new growthcraft.grapes.integration.ThaumcraftModule());
+		if (config.enableFAIntegration) modules.add(new growthcraft.grapes.integration.FAModule());
 		if (config.debugEnabled) modules.setLogger(logger);
 		modules.freeze();
 		creativeTab = new CreativeTabsGrowthcraftGrapes("creative_tab_grcgrapes");
