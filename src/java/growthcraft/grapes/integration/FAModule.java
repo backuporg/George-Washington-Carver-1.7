@@ -14,6 +14,8 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 
+import fossilsarcheology.api.FoodMappings;
+
 public class FAModule extends FAModuleBase
 {
 	public FAModule()
