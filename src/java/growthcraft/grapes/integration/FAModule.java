@@ -14,7 +14,7 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 
-public class FA extends FAModuleBase
+public class FAModule extends FAModuleBase
 {
 	public FAModule()
 	{
@@ -23,6 +23,7 @@ public class FA extends FAModuleBase
 	
 	public void addToItemMappings(Item ItemGrapes, int food, EnumDiet diet) {
 		if (item != null) {
+			switch (diet) {
 			case HERBIVORE:
 				if (herbivoreItemDiet == null) {
 					herbivoreItemDiet = Maps.newHashMap();
