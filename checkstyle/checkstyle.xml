@@ -78,8 +78,9 @@
 		<module name="UnusedImports">
 			<property name="severity" value="error"/>
 		</module>
-		<module name="HiddenField">
-			<property name="severity" value="error"/>
+		<module name="HiddenField" >
+    			<property name="ignoreSetter" value="true" />
+    			<property name="ignoreConstructorParameter" value="true" />
 		</module>
 		<module name="InnerAssignment">
 			<property name="severity" value="error"/>
