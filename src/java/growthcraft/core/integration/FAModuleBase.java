@@ -21,18 +21,17 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package growthcraft.core.integration.FA;
 
-import cpw.mods.fml.common.Loader;
+ package growthcraft.core.integration;
 
-public class FAPlatform
+/**
+ * Helper class for integrating F&A with Growthcraft, simply extend
+ * class and implement the integrate method
+ */
+public abstract class FAModuleBase extends ModIntegrationBase
 {
-	public static final String MOD_ID = "fossil";
-
-	private FAPlatform() {};
-
-	public static boolean isLoaded()
+	public FAModuleBase(String modid)
 	{
-		return Loader.isModLoaded(MOD_ID);
+		super(modid, "fossil");
 	}
 }
