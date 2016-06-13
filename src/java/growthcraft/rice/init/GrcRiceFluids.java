@@ -70,6 +70,7 @@ public class GrcRiceFluids extends GrcModuleBase
 		}
 		BoozeRegistryHelper.initializeBooze(riceSakeBooze, riceSakeFluids, riceSakeBuckets);
 		BoozeRegistryHelper.setBoozeFoodStats(riceSakeBooze, 1, -0.6f);
+		BoozeRegistryHelper.setBoozeFoodStats(riceSakeBooze[0], 1, 0.2f);
 		riceSakeBooze[4].setColor(GrowthCraftRice.getConfig().riceSakeDivineColor);
 		riceSakeFluids[4].getBlock().refreshColor();
 		riceSake = new ItemDefinition(new ItemBoozeBottle(riceSakeBooze));
@@ -102,16 +103,16 @@ public class GrcRiceFluids extends GrcModuleBase
 
 		GrowthCraftCellar.boozeBuilderFactory.create(riceSakeBooze[2])
 			.tags(BoozeTag.FERMENTED, BoozeTag.POTENT)
-			.fermentsFrom(fs[1], new ItemStack(Items.glowstone_dust), fermentTime)
-			.fermentsFrom(fs[3], new ItemStack(Items.glowstone_dust), fermentTime)
+			.fermentsFrom(fs[1], new OreItemStacks("dustGlowstone"), fermentTime)
+			.fermentsFrom(fs[3], new OreItemStacks("dustGlowstone"), fermentTime)
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.17f), TickUtils.seconds(45))
 				.addPotionEntry(Potion.jump, TickUtils.minutes(3), 0);
 
 		GrowthCraftCellar.boozeBuilderFactory.create(riceSakeBooze[3])
 			.tags(BoozeTag.FERMENTED, BoozeTag.EXTENDED)
-			.fermentsFrom(fs[1], new ItemStack(Items.redstone), fermentTime)
-			.fermentsFrom(fs[2], new ItemStack(Items.redstone), fermentTime)
+			.fermentsFrom(fs[1], new OreItemStacks("dustRedstone"), fermentTime)
+			.fermentsFrom(fs[2], new OreItemStacks("dustRedstone"), fermentTime)
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.15f), TickUtils.seconds(45))
 				.addPotionEntry(Potion.jump, TickUtils.minutes(3), 0);
