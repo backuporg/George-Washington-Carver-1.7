@@ -7,6 +7,7 @@ import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.common.event.FMLInterModComms;
 
 import java.util.Map;
+import net.minecraft.client.Minecraft
 
 import com.google.common.collect.Maps;
 
@@ -23,34 +24,18 @@ public class FAModule extends FAModuleBase
 	{
 		super(GrowthCraftGrapes.MOD_ID);
 	}
-	
-	public void addToItemMappings(Item ItemGrapes, int food, EnumDiet diet) {
-		if (item != null) {
-			switch (diet) {
-			case HERBIVORE:
-				if (herbivoreItemDiet == null) {
-					herbivoreItemDiet = Maps.newHashMap();
-				}
-				if(!herbivoreItemDiet.containsKey(Item.getIdFromItem(ItemGrapes))){
-					herbivoreItemDiet.put(Item.getIdFromItem(ItemGrapes), food);
-				}
-				break;
-			default:
-				break;
-			}
+	public void addPlant(Object ItemGrapes, int food){
+		if(object instanceof Block){
+			this.addToBlockMappings((Block)object, 10, EnumDiet.HERBIVORE, true);
+			this.addToBlockMappings((Block)object, 10, EnumDiet.OMNIVORE, true);
 		}
-	}
-	
-	public int getItemFoodAmount(Item ItemGrapes, EnumDiet diet) {
-	switch (diet) {
-	case HERBIVORE:
-			if (herbivoreItemDiet != null && herbivoreItemDiet.containsKey(Item.getIdFromItem(ItemGrapes))) {
-				return herbivoreItemDiet.get(Item.getIdFromItem(ItemGrapes));
-			}
-			break;
-		default:
-			return 0;
+		else if(object instanceof Item){
+			this.addToItemMappings((Item)object, 10, EnumDiet.HERBIVORE);
+			this.addToItemMappings((Item)object, 10, EnumDiet.OMNIVORE);
 		}
-		return 0;
+		else if(object instanceof Class){
+			this.addToEntityMappings((Class)object, 10, EnumDiet.HERBIVORE);
+			this.addToEntityMappings((Class)object, 10, EnumDiet.OMNIVORE);
+		}
 	}
 }
