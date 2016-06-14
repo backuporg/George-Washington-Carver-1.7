@@ -3,15 +3,29 @@
 ## The Awesome
 * Gwafu
  
-### NEW TEAM:
+### NEW TEAM: (WIP)
 
 ## Coders:
+Sunconure11
+Rootfloatcream
+AndrewPlayz
+PcAwesomeness
 
 ## Artists:
+Rootfloatcream
+Andreas
+PcAwesomeness
+Sunconure11
+EnderBoy
 
 ## Translators:
+Jasonguppy
 
 ## Managers:
+Sunconure11
+
+## Researchers:
+The entire team, really.
 
 ### OLD TEAM:
 
