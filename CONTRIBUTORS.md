@@ -17,6 +17,7 @@
 * PcAwesomeness
 * Sunconure11
 * EnderBoy
+* Totemaster
 
 ## Translators:
 * Jasonguppy
