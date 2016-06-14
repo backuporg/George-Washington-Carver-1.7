@@ -6,26 +6,26 @@
 ### NEW TEAM: (WIP)
 
 ## Coders:
-Sunconure11
-Rootfloatcream
-AndrewPlayz
-PcAwesomeness
+* Sunconure11
+* Rootfloatcream
+* AndrewPlayz
+* PcAwesomeness
 
 ## Artists:
-Rootfloatcream
-Andreas
-PcAwesomeness
-Sunconure11
-EnderBoy
+* Rootfloatcream
+* Andreas
+* PcAwesomeness
+* Sunconure11
+* EnderBoy
 
 ## Translators:
-Jasonguppy
+* Jasonguppy
 
 ## Managers:
-Sunconure11
+* Sunconure11
 
 ## Researchers:
-The entire team, really.
+* The entire team, really.
 
 ### OLD TEAM:
 
