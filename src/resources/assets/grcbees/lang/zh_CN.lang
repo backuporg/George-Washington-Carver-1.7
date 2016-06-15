@@ -29,6 +29,9 @@ tile.grc.beeBox.FossilsAndArchaeology.palaeoraphe.desc=Welcome to Miocene Park
 tile.grc.beeBox.ArsMagica2.witchwood.name=Witchwood Bee Box
 tile.grc.beeBox.ArsMagica2.witchwood.desc=Magical to the core!
 
+## Totemic
+tile.grc.beeBox.totemic.redcedar.name=Red Cedar Bee Box
+
 ## Forestry Bee Boxes - this is just insane...
 ### Regular
 tile.grc.BeeBox.Forestry.0.Normal.larch.name=落叶树蜂箱
