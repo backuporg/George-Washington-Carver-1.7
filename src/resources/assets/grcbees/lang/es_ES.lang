@@ -10,20 +10,20 @@ tile.grc.BeeBox.Minecraft.jungle.name=Apiário de Madeira da Selva
 tile.grc.BeeBox.Minecraft.acacia.name=Apiário de Acácia
 tile.grc.BeeBox.Minecraft.darkoak.name=Apiário de Carvalho Escuro
 
-## Growthcraft|Nether Bee Boxes
-tile.grc.BeeBox.Nether.0.name=Apiário Malígno
-tile.grc.BeeBox.Nether.0.desc=This beebox seems to scream at you
-
-## Growthcraft|Bamboo Bee Boxes
-tile.grc.BeeBox.Bamboo.0.name=Apiário de Bambu
-
 ## Thaumcraft Bee Boxes
-tile.grc.BeeBox.Thaumcraft.greatwood.name=Apiário de Greatwood
-tile.grc.BeeBox.Thaumcraft.silverwood.name=Apiário de Silverwood
+tile.grc.BeeBox.Thaumcraft.greatwood.name=Greatwood Bee Box
+tile.grc.BeeBox.Thaumcraft.silverwood.name=Silverwood Bee Box
 
 ## F&A Bee Boxes
-tile.grc.beeBox.FossilsAndArchaeology.palaeoraphe.name=Apiário de Palaeoraphe
+tile.grc.beeBox.FossilsAndArchaeology.palaeoraphe.name=Palaeoraphe Bee Box
 tile.grc.beeBox.FossilsAndArchaeology.palaeoraphe.desc=Welcome to Miocene Park
+
+## AM2 Bee Boxes
+tile.grc.beeBox.ArsMagica2.witchwood.name=Witchwood Bee Box
+tile.grc.beeBox.ArsMagica2.witchwood.desc=Magical to the core!
+
+## Totemic
+tile.grc.beeBox.totemic.redcedar.name=Red Cedar Bee Box
 
 ## Forestry Bee Boxes - this is just insane...
 ### Regular

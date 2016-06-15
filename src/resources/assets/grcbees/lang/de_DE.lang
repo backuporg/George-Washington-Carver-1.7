@@ -18,8 +18,8 @@ tile.grc.BeeBox.Nether.0.desc=This beebox seems to scream at you
 tile.grc.BeeBox.Bamboo.0.name=tile.grc.BeeBox.Bamboo.0.name
 
 ## Thaumcraft Bee Boxes
-tile.grc.BeeBox.Thaumcraft.greatwood.name=tile.grc.BeeBox.Thaumcraft.greatwood.name
-tile.grc.BeeBox.Thaumcraft.silverwood.name=tile.grc.BeeBox.Thaumcraft.silverwood.name
+tile.grc.BeeBox.Thaumcraft.greatwood.name=Greatwood Bee Box
+tile.grc.BeeBox.Thaumcraft.silverwood.name=Silverwood Bee Box
 
 ## F&A Bee Boxes
 tile.grc.beeBox.FossilsAndArchaeology.palaeoraphe.name=Palaeoraphe Bee Box
@@ -28,6 +28,9 @@ tile.grc.beeBox.FossilsAndArchaeology.palaeoraphe.desc=Welcome to Miocene Park
 ## AM2 Bee Boxes
 tile.grc.beeBox.ArsMagica2.witchwood.name=Witchwood Bee Box
 tile.grc.beeBox.ArsMagica2.witchwood.desc=Magical to the core!
+
+## Totemic
+tile.grc.beeBox.totemic.redcedar.name=Red Cedar Bee Box
 
 ## Forestry Bee Boxes - this is just insane...
 ### Regular
