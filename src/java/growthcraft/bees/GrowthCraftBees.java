@@ -139,6 +139,7 @@ public class GrowthCraftBees
 		if (config.enableFAIntegration) modules.add(new growthcraft.bees.integration.FAModule());
 		if (config.enableAM2Integration) modules.add(new growthcraft.bees.integration.AM2Module());
 		if (config.enableTotemicIntegration) modules.add(new growthcraft.bees.integration.TotemicModule());
+		if (config.enableEBXLIntegration) modules.add(new growthcraft.bees.integration.ExtraBiomesXLModule());
 
 		if (config.debugEnabled)
 		{
