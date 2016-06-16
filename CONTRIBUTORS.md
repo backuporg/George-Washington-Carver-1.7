@@ -20,7 +20,7 @@
 * Totemaster
 
 ## Translators:
-* Jasonguppy
+* Jason
 
 ## Managers:
 * Sunconure11
