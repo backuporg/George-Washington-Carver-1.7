@@ -27,7 +27,7 @@ import cpw.mods.fml.common.Loader;
 
 public class EBXLPlatform
 {
-	public static final String MOD_ID = "ExtraBiomesXL";
+	public static final String MOD_ID = "ExtrabiomesXL";
 
 	private EBXLPlatform() {};
 
