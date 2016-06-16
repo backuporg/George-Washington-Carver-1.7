@@ -8,6 +8,7 @@
   <!-- Ignore 3rd party apis, its the wild west there -->
   <suppress files="[\\/]api[\\/]buildcraft" checks="."/>
   <suppress files="[\\/]api[\\/]fossilsarcheology" checks="."/>
+  <suppress files="[\\/]api[\\/]extrabiomes" checks="."/>
   <suppress files="[\\/]api[\\/]ForestryAPI" checks="."/>
   <suppress files="[\\/]api[\\/]invtweaks" checks="."/>
   <suppress files="[\\/]api[\\/]powercrystals[\\/]minefactoryreloaded" checks="."/>
