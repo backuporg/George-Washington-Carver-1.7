@@ -25,7 +25,7 @@ package growthcraft.core.integration.EBXL;
 
 import cpw.mods.fml.common.Loader;
 
-public class BopPlatform
+public class EBXLPlatform
 {
 	public static final String MOD_ID = "ExtraBiomesXL";
 
