@@ -42,11 +42,9 @@ tile.grc.BeeBox.ExtraBiomesXL.fir.name=Fir Bee Box
 tile.grc.BeeBox.ExtraBiomesXL.acacia.name=Acacia Bee Box
 tile.grc.BeeBox.ExtraBiomesXL.cypress.name=Cypress Bee Box
 tile.grc.BeeBox.ExtraBiomesXL.japanese_maple.name=Japanese Maple Bee Box
-tile.grc.beeBox.ExtraBiomesXL.japanese_maple.desc=Does not actually produce maple syrup
 tile.grc.BeeBox.ExtraBiomesXL.rainbow_eucalyptus.name=Rainbow Eucalyptus Bee Box
 tile.grc.BeeBox.ExtraBiomesXL.autumn_wood.name=Autumn Wood Bee Box
 tile.grc.BeeBox.ExtraBiomesXL.bald_cypress.name=Bald Cypress Bee Box
-tile.grc.beeBox.ExtraBiomesXL.bald_cypress.desc=Keep out of reach of griefers
 tile.grc.BeeBox.ExtraBiomesXL.sakura.name=Sakura Bee Box
 
 ## Forestry Bee Boxes - this is just insane...
@@ -127,7 +125,6 @@ tile.grc.BeeBox.BiomesOPlenty.pine.name=Apiário de Pinho
 tile.grc.BeeBox.BiomesOPlenty.hell_bark.name=Apiário de Casca do Inferno
 tile.grc.BeeBox.BiomesOPlenty.jacaranda.name=Apiário de Jacarandá
 tile.grc.BeeBox.BiomesOPlenty.mahogany.name=Apiário de Mogno
-tile.grc.BeeBox.BiomesOPlenty.mahogany.desc=A bee box for fat cats
 
 ## Botania Bee Boxes
 tile.grc.BeeBox.Botania.living_wood.name=Living Wood Bee Box
