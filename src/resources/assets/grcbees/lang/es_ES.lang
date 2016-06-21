@@ -37,7 +37,7 @@ tile.grc.beeBox.ArsMagica2.witchwood.desc=Magical to the core!
 tile.grc.beeBox.totemic.redcedar.name=Red Cedar Bee Box
 
 ## ExtraBiomesXL Bee Boxes
-tile.grc.BeeBox.ExtraBiomesXL.redwood.name=Redwood Bee Box
+tile.grc.BeeBox.ExtraBiomesXL.redwood.name=(ExtraBiomesXL) Redwood Bee Box
 tile.grc.BeeBox.ExtraBiomesXL.fir.name=Fir Bee Box
 tile.grc.BeeBox.ExtraBiomesXL.acacia.name=Acacia Bee Box
 tile.grc.BeeBox.ExtraBiomesXL.cypress.name=Cypress Bee Box
@@ -47,7 +47,7 @@ tile.grc.BeeBox.ExtraBiomesXL.rainbow_eucalyptus.name=Rainbow Eucalyptus Bee Box
 tile.grc.BeeBox.ExtraBiomesXL.autumn_wood.name=Autumn Wood Bee Box
 tile.grc.BeeBox.ExtraBiomesXL.bald_cypress.name=Bald Cypress Bee Box
 tile.grc.beeBox.ExtraBiomesXL.bald_cypress.desc=Keep out of reach of griefers
-tile.grc.BeeBox.ExtraBiomesXL.sakura.name=Sakura Bee Box
+tile.grc.BeeBox.ExtraBiomesXL.sakura.name=(ExtraBiomesXL) Sakura Bee Box
 
 ## Forestry Bee Boxes - this is just insane...
 ### Regular
