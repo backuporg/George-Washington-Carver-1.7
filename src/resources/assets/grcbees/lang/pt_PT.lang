@@ -10,27 +10,40 @@ tile.grc.BeeBox.Minecraft.jungle.name=Apiário de Madeira da Selva
 tile.grc.BeeBox.Minecraft.acacia.name=Apiário de Acácia
 tile.grc.BeeBox.Minecraft.darkoak.name=Apiário de Carvalho Escuro
 
-## Growthcraft|Nether Bee Boxes
+## Growthcraft|Nether Bee Box
 tile.grc.BeeBox.Nether.0.name=Apiário Malígno
 tile.grc.BeeBox.Nether.0.desc=This beebox seems to scream at you
 
-## Growthcraft|Bamboo Bee Boxes
+## Growthcraft|Bamboo Bee Box
 tile.grc.BeeBox.Bamboo.0.name=Apiário de Bambu
 
 ## Thaumcraft Bee Boxes
 tile.grc.BeeBox.Thaumcraft.greatwood.name=Apiário de Greatwood
 tile.grc.BeeBox.Thaumcraft.silverwood.name=Apiário de Silverwood
 
-## F&A Bee Boxes
+## F&A Bee Box
 tile.grc.beeBox.FossilsAndArchaeology.palaeoraphe.name=Apiário de Palaeoraphe
 tile.grc.beeBox.FossilsAndArchaeology.palaeoraphe.desc=Welcome to Miocene Park
 
-## AM2 Bee Boxes
+## AM2 Bee Box
 tile.grc.beeBox.ArsMagica2.witchwood.name=Apiário de Witchwood
 tile.grc.beeBox.ArsMagica2.witchwood.desc=Magical to the core!
 
-## Totemic
+## Totemic Bee Box
 tile.grc.beeBox.totemic.redcedar.name=Red Cedar Bee Box
+
+## ExtraBiomesXL Bee Boxes
+tile.grc.BeeBox.ExtraBiomesXL.redwood.name=Redwood Bee Box
+tile.grc.BeeBox.ExtraBiomesXL.fir.name=Fir Bee Box
+tile.grc.BeeBox.ExtraBiomesXL.acacia.name=Acacia Bee Box
+tile.grc.BeeBox.ExtraBiomesXL.cypress.name=Cypress Bee Box
+tile.grc.BeeBox.ExtraBiomesXL.japanese_maple.name=Japanese Maple Bee Box
+tile.grc.beeBox.ExtraBiomesXL.japanese_maple.desc=Does not actually produce maple syrup
+tile.grc.BeeBox.ExtraBiomesXL.rainbow_eucalyptus.name=Rainbow Eucalyptus Bee Box
+tile.grc.BeeBox.ExtraBiomesXL.autumn_wood.name=Autumn Wood Bee Box
+tile.grc.BeeBox.ExtraBiomesXL.bald_cypress.name=Bald Cypress Bee Box
+tile.grc.beeBox.ExtraBiomesXL.bald_cypress.desc=Keep out of reach of griefers
+tile.grc.BeeBox.ExtraBiomesXL.sakura.name=Sakura Bee Box
 
 ## Forestry Bee Boxes - this is just insane...
 ### Regular
@@ -94,7 +107,7 @@ tile.grc.BeeBox.Forestry.1.Fireproof.padauk.name=Padauk Bee Box (Fireproof)
 tile.grc.BeeBox.Forestry.1.Fireproof.cocobolo.name=Cocobolo Bee Box (Fireproof)
 tile.grc.BeeBox.Forestry.1.Fireproof.zebrawood.name=Zebrawood Bee Box (Fireproof)
 
-## BiomesOPlenty
+## BiomesOPlenty Bee Boxes
 tile.grc.BeeBox.BiomesOPlenty.sacred_oak.name=Apiário de Carvalho Sagrado
 tile.grc.BeeBox.BiomesOPlenty.cherry.name=Apiário de Cerejeira
 tile.grc.BeeBox.BiomesOPlenty.dark.name=Apiário de Madeira Sombria
@@ -110,14 +123,15 @@ tile.grc.BeeBox.BiomesOPlenty.pine.name=Apiário de Pinho
 tile.grc.BeeBox.BiomesOPlenty.hell_bark.name=Apiário de Casca do Inferno
 tile.grc.BeeBox.BiomesOPlenty.jacaranda.name=Apiário de Jacarandá
 tile.grc.BeeBox.BiomesOPlenty.mahogany.name=Apiário de Mogno
+tile.grc.BeeBox.BiomesOPlenty.mahogany.desc=A bee box for fat cats
 
-## Botania
+## Botania Bee Boxes
 tile.grc.BeeBox.Botania.living_wood.name=Living Wood Bee Box
 tile.grc.BeeBox.Botania.dream_wood.name=Dreamwood Bee Box
 tile.grc.BeeBox.Botania.shimmer_wood.name=Shimmer Wood Bee Box
 tile.grc.BeeBox.Botania.shimmer_wood.desc=tile.grc.BeeBox.Botania.shimmer_wood.desc
 
-## Natura
+## Natura Bee Boxes
 tile.grc.BeeBox.Natura.apple.name=tile.grc.BeeBox.Natura.apple.name
 tile.grc.BeeBox.Natura.blood.name=tile.grc.BeeBox.Natura.blood.name
 tile.grc.BeeBox.Natura.bush.name=tile.grc.BeeBox.Natura.bush.name
