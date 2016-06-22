@@ -2,7 +2,12 @@ Note: This is in no particular order, at all. This will also be updated at will.
 
 Stuff regarding mobs:
 
-As a rule of thumb, spawn rates should be easily configurable. Setting a mob to 0 turns it off, setting it to 1 turns it on, but makes them very rare (1%). 25 means they have a 25% chance of spawning. 75 means they have a 75% chance of spawning. 100 means they have a 100% chance of spawning. Such a system should also be able to take decimals with values into the hundredths (i.e 75.12).
+As a rule of thumb, spawn rates should be easily configurable.
+Setting a mob to 0 turns it off, setting it to 1 turns it on, but makes them very rare (1%). 
+25 means they have a 25% chance of spawning. 
+75 means they have a 75% chance of spawning. 
+100 means they have a 100% chance of spawning. 
+Such a system should also be able to take decimals with values into the hundredths (i.e 75.12).
 
 Stuff regarding tweaks to anything from vanilla:
 
@@ -10,5 +15,8 @@ Config options should be added to turn off various tweaks done to vanilla object
 
 Stuff regarding integration:
 
-Integration with other mods is a must have, as it will allow for more players to use it, and make it play better with other mods. In addition, it could unlock new features using other mods. Ways this can be achieved now is to use various oredictionaries on items and blocks; add various recipes calling for modded oredictionaries, and so on. In addition, new variants to the beebox can be done, but keep in mind they use up to 4 textures per variant.
+Integration with other mods is a must have, as it will allow for more players to use it, and make it play better with other mods.
+In addition, it could unlock new features using other mods.
+Ways this can be achieved now is to use various oredictionaries on items and blocks; add various recipes calling for modded oredictionaries, and so on.
+In addition, new variants to the beebox can be done, but keep in mind they use up to 4 textures per variant.
 
