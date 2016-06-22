@@ -18,6 +18,7 @@
 * Sunconure11
 * EnderBoy
 * Totemaster
+* Basilserpent
 
 ## Translators:
 * Jason
