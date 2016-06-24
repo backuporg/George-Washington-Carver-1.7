@@ -23,4 +23,5 @@ In addition, new variants to the beebox can be done, but keep in mind they use u
 Stuff regarding modules:
 
 So far, nothing here yet
+Our plans remain secret to outsiders.
 
