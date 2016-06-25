@@ -18,9 +18,10 @@
 * Sunconure11
 * EnderBoy
 * Totemaster
+* Basilserpent
 
 ## Translators:
-* Jasonguppy
+* Jason
 
 ## Managers:
 * Sunconure11

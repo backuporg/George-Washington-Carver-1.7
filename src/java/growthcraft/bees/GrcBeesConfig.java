@@ -80,4 +80,7 @@ public class GrcBeesConfig extends ConfigBase
 	
 	@ConfigOption(catergory="Integration", name="Enable Totemic Integration", desc="Should we integrate with Totemic (if available)?")
 	public boolean enableTotemicIntegration = true;
+	
+	@ConfigOption(catergory="Integration", name="Enable ExtraBiomesXL Integration", desc="Should we integrate with ExtraBiomesXL (if available)?")
+	public boolean enableEBXLIntegration = true;
 }

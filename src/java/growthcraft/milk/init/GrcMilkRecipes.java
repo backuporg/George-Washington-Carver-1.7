@@ -195,6 +195,12 @@ public class GrcMilkRecipes extends GrcModuleBase
 				.inputFluids(new TaggedFluidStacks(5000, "milk_curds"))
 				.inputItems(new OreItemStacks(saltOre, 1), new OreItemStacks("foodFruit", 1))
 				.register();
+				
+			CheeseVatRecipeBuilder.buildRecipe("GORGONZOLA ALTERNATIVE Recipe")
+				.outputFluids(EnumCheeseType.GORGONZOLA.asFluidStack(5000))
+				.inputFluids(new TaggedFluidStacks(5000, "milk_curds"))
+				.inputItems(new OreItemStacks(saltOre, 1), new OreItemStacks("listAllfruit", 1))
+				.register();
 
 			CheeseVatRecipeBuilder.buildRecipe("EMMENTALER Recipe")
 				.outputFluids(EnumCheeseType.EMMENTALER.asFluidStack(5000))

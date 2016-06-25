@@ -10,27 +10,38 @@ tile.grc.BeeBox.Minecraft.jungle.name=从林木蜂箱
 tile.grc.BeeBox.Minecraft.acacia.name=金合欢蜂箱
 tile.grc.BeeBox.Minecraft.darkoak.name=深色橡木蜂箱
 
-## Growthcraft|Nether Bee Boxes
+## Growthcraft|Nether Bee Box
 tile.grc.BeeBox.Nether.0.name=恶毒蜂箱
 tile.grc.BeeBox.Nether.0.desc=This beebox seems to scream at you
 
-## Growthcraft|Bamboo Bee Boxes
+## Growthcraft|Bamboo Bee Box
 tile.grc.BeeBox.Bamboo.0.name=竹蜂箱
 
 ## Thaumcraft Bee Boxes
 tile.grc.BeeBox.Thaumcraft.greatwood.name=宏伟之木蜂箱
 tile.grc.BeeBox.Thaumcraft.silverwood.name=银木蜂箱
 
-## F&A Bee Boxes
+## F&A Bee Box
 tile.grc.beeBox.FossilsAndArchaeology.palaeoraphe.name=Palaeoraphe Bee Box
 tile.grc.beeBox.FossilsAndArchaeology.palaeoraphe.desc=Welcome to Miocene Park
 
-## AM2 Bee Boxes
+## AM2 Bee Box
 tile.grc.beeBox.ArsMagica2.witchwood.name=Witchwood Bee Box
 tile.grc.beeBox.ArsMagica2.witchwood.desc=Magical to the core!
 
-## Totemic
+## Totemic Bee Box
 tile.grc.beeBox.totemic.redcedar.name=Red Cedar Bee Box
+
+## ExtraBiomesXL Bee Boxes
+tile.grc.BeeBox.ExtraBiomesXL.redwood.name=Redwood Bee Box
+tile.grc.BeeBox.ExtraBiomesXL.fir.name=Fir Bee Box
+tile.grc.BeeBox.ExtraBiomesXL.acacia.name=Acacia Bee Box
+tile.grc.BeeBox.ExtraBiomesXL.cypress.name=Cypress Bee Box
+tile.grc.BeeBox.ExtraBiomesXL.japanese_maple.name=Japanese Maple Bee Box
+tile.grc.BeeBox.ExtraBiomesXL.rainbow_eucalyptus.name=Rainbow Eucalyptus Bee Box
+tile.grc.BeeBox.ExtraBiomesXL.autumn_wood.name=Autumn Wood Bee Box
+tile.grc.BeeBox.ExtraBiomesXL.bald_cypress.name=Bald Cypress Bee Box
+tile.grc.BeeBox.ExtraBiomesXL.sakura.name=Sakura Bee Box
 
 ## Forestry Bee Boxes - this is just insane...
 ### Regular
@@ -94,7 +105,7 @@ tile.grc.BeeBox.Forestry.1.Fireproof.padauk.name=紫檀树蜂箱(防火)
 tile.grc.BeeBox.Forestry.1.Fireproof.cocobolo.name=黄檀树蜂箱(防火)
 tile.grc.BeeBox.Forestry.1.Fireproof.zebrawood.name=斑木树蜂箱(防火)
 
-## BiomesOPlenty
+## BiomesOPlenty Bee Boxes
 tile.grc.BeeBox.BiomesOPlenty.sacred_oak.name=神圣橡木蜂箱
 tile.grc.BeeBox.BiomesOPlenty.cherry.name=樱花树蜂箱
 tile.grc.BeeBox.BiomesOPlenty.dark.name=黑暗树蜂箱
@@ -111,13 +122,13 @@ tile.grc.BeeBox.BiomesOPlenty.hell_bark.name=地狱皮树蜂箱
 tile.grc.BeeBox.BiomesOPlenty.jacaranda.name=蓝花楹树蜂箱
 tile.grc.BeeBox.BiomesOPlenty.mahogany.name=桃花心木蜂箱
 
-## Botania
+## Botania Bee Boxes
 tile.grc.BeeBox.Botania.living_wood.name=活木蜂箱
 tile.grc.BeeBox.Botania.dream_wood.name=梦之木蜂箱
 tile.grc.BeeBox.Botania.shimmer_wood.name=微光木蜂箱
-tile.grc.BeeBox.Botania.shimmer_wood.desc=tile.grc.BeeBox.Botania.shimmer_wood.desc
+tile.grc.BeeBox.Botania.shimmer_wood.desc=ZOMG Colors!
 
-## Natura
+## Natura Bee Boxes
 tile.grc.BeeBox.Natura.apple.name=tile.grc.BeeBox.Natura.apple.name
 tile.grc.BeeBox.Natura.blood.name=tile.grc.BeeBox.Natura.blood.name
 tile.grc.BeeBox.Natura.bush.name=tile.grc.BeeBox.Natura.bush.name
