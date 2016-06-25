@@ -30,6 +30,7 @@ script:
 - ls -la build/libs
 - ls -la build/packages
 - bundle exec ./tools/checksum_builds.rb | tee ./checksums.txt
+- bundle exec ./tools/lang_check.rb
 
 # Deploy the artifacts back to GitHub
 deploy:
