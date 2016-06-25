@@ -19,8 +19,8 @@ before_install:
 # fetch 3rd party apis and such
 - git submodule update --init
 - chmod +x ./gradlew
-- chmod +x ./tools/lang_patch
-- chmod +x ./tools/lang_check
+- chmod +x ./tools/lang_patch.rb
+- chmod +x ./tools/lang_check.rb
 
 install: ./gradlew setupCIWorkspace -S
 
