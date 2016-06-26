@@ -287,6 +287,11 @@ public class GrowthCraftCellar
 		OreDictionary.registerOre("yeastBayanus", EnumYeast.BAYANUS.asStack());
 		OreDictionary.registerOre("yeastEthereal", EnumYeast.ETHEREAL.asStack());
 		OreDictionary.registerOre("yeastOrigin", EnumYeast.ORIGIN.asStack());
+		OreDictionary.registerOre("foodYeast", EnumYeast.BREWERS.asStack());
+		OreDictionary.registerOre("foodYeast", EnumYeast.LAGER.asStack());
+		OreDictionary.registerOre("foodYeast", EnumYeast.BAYANUS.asStack());
+		OreDictionary.registerOre("foodYeast", EnumYeast.ETHEREAL.asStack());
+		OreDictionary.registerOre("foodYeast", EnumYeast.ORIGIN.asStack());
 	}
 
 	private void registerYeast()
