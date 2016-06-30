@@ -90,19 +90,51 @@ public class GrcNetherFluids extends GrcModuleBase
 	}
 
 	@Override
+	public void preInit()
+	{
+		this.fireBrandyBooze = new Booze[4];
+		this.fireBrandyFluids = new BlockBoozeDefinition[fireBrandyBooze.length];
+		this.fireBrandyBuckets = new ItemBucketBoozeDefinition[fireBrandyBooze.length];
+		BoozeRegistryHelper.initializeBoozeFluids("firebrandy", fireBrandyBooze);
+		for (Booze booze : fireBrandyBooze)
+		{
+			booze.setColor(Netherloid.getConfig().fireBrandyColor);
+		}
+		BoozeRegistryHelper.initializeBooze(fireBrandyBooze, fireBrandyFluids, fireBrandyBuckets);
+
+		this.maliceCiderBooze = new Booze[8];
+		this.maliceCiderFluids = new BlockBoozeDefinition[maliceCiderBooze.length];
+		this.maliceCiderBuckets = new ItemBucketBoozeDefinition[maliceCiderBooze.length];
+		BoozeRegistryHelper.initializeBoozeFluids("malicecider", maliceCiderBooze);
+		for (Booze booze : maliceCiderBooze)
+		{
+			booze.setColor(Netherloid.getConfig().maliceCiderColor);
+		}
+		BoozeRegistryHelper.initializeBooze(maliceCiderBooze, maliceCiderFluids, maliceCiderBuckets);
+		maliceCiderBooze[4].setColor(Netherloid.getConfig().amritaColor);
+		maliceCiderFluids[4].getBlock().refreshColor();
+
+		maliceCiderBooze[6].setColor(Netherloid.getConfig().gelidBoozeColor);
+		maliceCiderFluids[6].getBlock().refreshColor();
+
+		maliceCiderBooze[7].setColor(Netherloid.getConfig().vileSlopColor);
+		maliceCiderFluids[7].getBlock().refreshColor();
+
+		this.fireBrandy = new ItemDefinition(new ItemBoozeBottle(5, -0.6F, fireBrandyBooze));
+		this.maliceCider = new ItemDefinition(new ItemBoozeBottle(5, -0.6F, maliceCiderBooze));
+	}
+
+	@Override
 	public void register()
 	{
 		final ItemStack yeastRash = nether.items.netherRashSpores.asStack();
 		final int fermentTime = GrowthCraftCellar.getConfig().fermentTime;
-		
+
 		GameRegistry.registerItem(fireBrandy.getItem(), "grc.fireBrandy");
 		GameRegistry.registerItem(maliceCider.getItem(), "grc.maliceCider");
-		
-		fireBrandy.register("grc.fireBrandy");
-		maliceCider.register("grc.maliceCider");
 
-		BoozeRegistryHelper.registerBooze(fireBrandyBooze, fireBrandyFluids, fireBrandyBuckets, fireBrandy, "grc.fireBrandy", null);
-		BoozeRegistryHelper.registerBooze(maliceCiderBooze, maliceCiderFluids, maliceCiderBuckets, maliceCider, "grc.maliceCider", null);
+		BoozeRegistryHelper.registerBooze(fireBrandyBooze, fireBrandyFluids, fireBrandyBuckets, fireBrandy, "grcnether.fireBrandy", null);
+		BoozeRegistryHelper.registerBooze(maliceCiderBooze, maliceCiderFluids, maliceCiderBuckets, maliceCider, "grcnether.maliceCider", null);
 
 		for (BoozeEffect effect : BoozeRegistryHelper.getBoozeEffects(fireBrandyBooze))
 		{
@@ -120,9 +152,9 @@ public class GrcNetherFluids extends GrcModuleBase
 			GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[0])
 				.tags(BoozeTag.CIDER, BoozeTag.YOUNG)
 				.pressesFrom(
-					nether.items.netherMaliceFruit.asStack(),
-					nether.getConfig().maliceCiderPressingTime,
-					nether.getConfig().maliceCiderYield,
+					Netherloid.items.netherMaliceFruit.asStack(),
+					Netherloid.getConfig().maliceCiderPressingTime,
+					Netherloid.getConfig().maliceCiderYield,
 					Residue.newDefault(0.3F));
 
 
@@ -211,9 +243,9 @@ public class GrcNetherFluids extends GrcModuleBase
 			GrowthCraftCellar.boozeBuilderFactory.create(fireBrandyBooze[0])
 				.tags(BoozeTag.YOUNG)
 				.brewsFrom(
-					new FluidStack(FluidRegistry.WATER, nether.getConfig().fireBrandyYield),
-					nether.blocks.netherCinderrot.asStack(),
-					nether.getConfig().fireBrandyBrewTime,
+					new FluidStack(FluidRegistry.WATER, Netherloid.getConfig().fireBrandyYield),
+					Netherloid.blocks.netherCinderrot.asStack(),
+					Netherloid.getConfig().fireBrandyBrewTime,
 					Residue.newDefault(0.5F));
 		}
 	}
