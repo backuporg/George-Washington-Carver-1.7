@@ -21,12 +21,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package id2h.netherloid.common.block;
+package growthcraft.nether.common.block;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-import id2h.netherloid.Netherloid;
+import growthcraft.nether.Netherloid;
 import growthcraft.core.common.block.Materials;
 
 import cpw.mods.fml.relauncher.Side;

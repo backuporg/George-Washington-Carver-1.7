@@ -21,13 +21,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package id2h.netherloid.common.block;
+package growthcraft.nether.common.block;
 
 import java.util.Random;
 
 import growthcraft.core.common.block.ICropDataProvider;
 import growthcraft.core.client.renderer.RenderBlockFruit;
-import id2h.netherloid.Netherloid;
+import growthcraft.nether.Netherloid;
 import growthcraft.api.core.util.BlockFlags;
 import growthcraft.core.integration.AppleCore;
 
