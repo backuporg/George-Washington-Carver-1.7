@@ -21,10 +21,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package id2h.netherloid.common.block;
+package growthcraft.nether.common.block;
 
-import id2h.netherloid.Netherloid;
-import id2h.netherloid.util.DamageSources;
+import growthcraft.nether.nether;
+import growthcraft.nether.util.DamageSources;
 
 import net.minecraft.block.BlockBush;
 import net.minecraft.entity.Entity;
@@ -37,7 +37,7 @@ public class BlockNetherKnifeBush extends BlockBush
 	{
 		super();
 		setBlockName("grcnether.netherKnifeBush");
-		setCreativeTab(Netherloid.tab);
+		setCreativeTab(nether.tab);
 		setBlockTextureName("grcnether:knife_bush");
 	}
 

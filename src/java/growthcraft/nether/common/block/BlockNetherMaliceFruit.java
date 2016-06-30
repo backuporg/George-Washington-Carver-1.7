@@ -27,7 +27,7 @@ import java.util.Random;
 
 import growthcraft.core.common.block.ICropDataProvider;
 import growthcraft.core.client.renderer.RenderBlockFruit;
-import growthcraft.nether.Netherloid;
+import growthcraft.nether.nether;
 import growthcraft.api.core.util.BlockFlags;
 import growthcraft.core.integration.AppleCore;
 
