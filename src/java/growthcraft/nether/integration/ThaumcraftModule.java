@@ -23,7 +23,7 @@
  */
 package growthcraft.nether.integration;
 
-import growthcraft.nether.Nether;
+import growthcraft.nether.nether;
 import growthcraft.core.integration.ThaumcraftModuleBase;
 import growthcraft.cellar.integration.ThaumcraftBoozeHelper;
 
@@ -35,65 +35,65 @@ public class ThaumcraftModule extends ThaumcraftModuleBase
 {
 	public ThaumcraftModule()
 	{
-		super(Nether.MOD_ID);
+		super(nether.MOD_ID);
 	}
 
 	@Override
 	protected void integrate()
 	{
-		ThaumcraftApi.registerObjectTag(Nether.items.ectoplasm.asStack(), new AspectList().add(Aspect.SOUL, 1));
-		ThaumcraftApi.registerObjectTag(Nether.items.netherMaliceFruit.asStack(), new AspectList().add(Aspect.SOUL, 1));
-		ThaumcraftApi.registerObjectTag(Nether.items.netherMuertecap.asStack(), new AspectList().add(Aspect.DEATH, 1));
-		ThaumcraftApi.registerObjectTag(Nether.items.netherPepper.asStack(), new AspectList().add(Aspect.FIRE, 1));
-		ThaumcraftApi.registerObjectTag(Nether.items.netherRashSpores.asStack(), new AspectList().add(Aspect.POISON, 1).add(Aspect.DEATH, 1));
-		ThaumcraftApi.registerObjectTag(Nether.items.netherSquashSeeds.asStack(), new AspectList().add(Aspect.SOUL, 1));
-		ThaumcraftApi.registerObjectTag(Nether.items.netherGhastPowder.asStack(), new AspectList().add(Aspect.FIRE, 1));
+		ThaumcraftApi.registerObjectTag(nether.items.ectoplasm.asStack(), new AspectList().add(Aspect.SOUL, 1));
+		ThaumcraftApi.registerObjectTag(nether.items.netherMaliceFruit.asStack(), new AspectList().add(Aspect.SOUL, 1));
+		ThaumcraftApi.registerObjectTag(nether.items.netherMuertecap.asStack(), new AspectList().add(Aspect.DEATH, 1));
+		ThaumcraftApi.registerObjectTag(nether.items.netherPepper.asStack(), new AspectList().add(Aspect.FIRE, 1));
+		ThaumcraftApi.registerObjectTag(nether.items.netherRashSpores.asStack(), new AspectList().add(Aspect.POISON, 1).add(Aspect.DEATH, 1));
+		ThaumcraftApi.registerObjectTag(nether.items.netherSquashSeeds.asStack(), new AspectList().add(Aspect.SOUL, 1));
+		ThaumcraftApi.registerObjectTag(nether.items.netherGhastPowder.asStack(), new AspectList().add(Aspect.FIRE, 1));
 
-		ThaumcraftApi.registerObjectTag(Nether.blocks.netherBaalsRot.asStack(), new AspectList().add(Aspect.POISON, 1));
-		ThaumcraftApi.registerObjectTag(Nether.blocks.netherCinderrot.asStack(), new AspectList().add(Aspect.FIRE, 1));
-		ThaumcraftApi.registerObjectTag(Nether.blocks.netherFireLily.asStack(), new AspectList().add(Aspect.FIRE, 1));
-		ThaumcraftApi.registerObjectTag(Nether.blocks.netherKnifeBush.asStack(), new AspectList().add(Aspect.PLANT, 1));
-		ThaumcraftApi.registerObjectTag(Nether.blocks.netherMaliceFruit.asStack(), new AspectList().add(Aspect.SOUL, 1));
-		ThaumcraftApi.registerObjectTag(Nether.blocks.netherMaliceLeaves.asStack(), new AspectList().add(Aspect.PLANT, 1));
-		ThaumcraftApi.registerObjectTag(Nether.blocks.netherMaliceLog.asStack(), new AspectList().add(Aspect.TREE, 1));
-		ThaumcraftApi.registerObjectTag(Nether.blocks.netherMalicePlanks.asStack(), new AspectList().add(Aspect.TREE, 1));
-		ThaumcraftApi.registerObjectTag(Nether.blocks.netherMaliceSapling.asStack(), new AspectList().add(Aspect.PLANT, 1));
-		ThaumcraftApi.registerObjectTag(Nether.blocks.netherMaraLotus.asStack(), new AspectList().add(Aspect.FIRE, 1));
-		ThaumcraftApi.registerObjectTag(Nether.blocks.netherMuertecap.asStack(), new AspectList().add(Aspect.DEATH, 1));
-		ThaumcraftApi.registerObjectTag(Nether.blocks.netherPaddyField.asStack(), new AspectList().add(Aspect.SOUL, 1));
-		ThaumcraftApi.registerObjectTag(Nether.blocks.netherPaddyFieldFilled.asStack(), new AspectList().add(Aspect.SOUL, 1).add(Aspect.FIRE, 1));
-		ThaumcraftApi.registerObjectTag(Nether.blocks.netherPepper.asStack(), new AspectList().add(Aspect.FIRE, 1));
-		ThaumcraftApi.registerObjectTag(Nether.blocks.netherSquash.asStack(), new AspectList().add(Aspect.SOUL, 1));
-		ThaumcraftApi.registerObjectTag(Nether.blocks.netherSquashStem.asStack(), new AspectList().add(Aspect.SOUL, 1));
+		ThaumcraftApi.registerObjectTag(nether.blocks.netherBaalsRot.asStack(), new AspectList().add(Aspect.POISON, 1));
+		ThaumcraftApi.registerObjectTag(nether.blocks.netherCinderrot.asStack(), new AspectList().add(Aspect.FIRE, 1));
+		ThaumcraftApi.registerObjectTag(nether.blocks.netherFireLily.asStack(), new AspectList().add(Aspect.FIRE, 1));
+		ThaumcraftApi.registerObjectTag(nether.blocks.netherKnifeBush.asStack(), new AspectList().add(Aspect.PLANT, 1));
+		ThaumcraftApi.registerObjectTag(nether.blocks.netherMaliceFruit.asStack(), new AspectList().add(Aspect.SOUL, 1));
+		ThaumcraftApi.registerObjectTag(nether.blocks.netherMaliceLeaves.asStack(), new AspectList().add(Aspect.PLANT, 1));
+		ThaumcraftApi.registerObjectTag(nether.blocks.netherMaliceLog.asStack(), new AspectList().add(Aspect.TREE, 1));
+		ThaumcraftApi.registerObjectTag(nether.blocks.netherMalicePlanks.asStack(), new AspectList().add(Aspect.TREE, 1));
+		ThaumcraftApi.registerObjectTag(nether.blocks.netherMaliceSapling.asStack(), new AspectList().add(Aspect.PLANT, 1));
+		ThaumcraftApi.registerObjectTag(nether.blocks.netherMaraLotus.asStack(), new AspectList().add(Aspect.FIRE, 1));
+		ThaumcraftApi.registerObjectTag(nether.blocks.netherMuertecap.asStack(), new AspectList().add(Aspect.DEATH, 1));
+		ThaumcraftApi.registerObjectTag(nether.blocks.netherPaddyField.asStack(), new AspectList().add(Aspect.SOUL, 1));
+		ThaumcraftApi.registerObjectTag(nether.blocks.netherPaddyFieldFilled.asStack(), new AspectList().add(Aspect.SOUL, 1).add(Aspect.FIRE, 1));
+		ThaumcraftApi.registerObjectTag(nether.blocks.netherPepper.asStack(), new AspectList().add(Aspect.FIRE, 1));
+		ThaumcraftApi.registerObjectTag(nether.blocks.netherSquash.asStack(), new AspectList().add(Aspect.SOUL, 1));
+		ThaumcraftApi.registerObjectTag(nether.blocks.netherSquashStem.asStack(), new AspectList().add(Aspect.SOUL, 1));
 
-		ThaumcraftBoozeHelper.instance().registerAspectsForBottleStack(Nether.fluids.fireBrandy.asStack(1, 0), new AspectList());
-		ThaumcraftBoozeHelper.instance().registerAspectsForBottleStack(Nether.fluids.fireBrandy.asStack(1, 1), new AspectList().add(Aspect.FIRE, 1));
-		ThaumcraftBoozeHelper.instance().registerAspectsForBottleStack(Nether.fluids.fireBrandy.asStack(1, 2), new AspectList().add(Aspect.FIRE, 2));
-		ThaumcraftBoozeHelper.instance().registerAspectsForBottleStack(Nether.fluids.fireBrandy.asStack(1, 3), new AspectList().add(Aspect.FIRE, 1));
+		ThaumcraftBoozeHelper.instance().registerAspectsForBottleStack(nether.fluids.fireBrandy.asStack(1, 0), new AspectList());
+		ThaumcraftBoozeHelper.instance().registerAspectsForBottleStack(nether.fluids.fireBrandy.asStack(1, 1), new AspectList().add(Aspect.FIRE, 1));
+		ThaumcraftBoozeHelper.instance().registerAspectsForBottleStack(nether.fluids.fireBrandy.asStack(1, 2), new AspectList().add(Aspect.FIRE, 2));
+		ThaumcraftBoozeHelper.instance().registerAspectsForBottleStack(nether.fluids.fireBrandy.asStack(1, 3), new AspectList().add(Aspect.FIRE, 1));
 
-		ThaumcraftBoozeHelper.instance().registerAspectsForBucket(Nether.fluids.fireBrandyBuckets[0], new AspectList());
-		ThaumcraftBoozeHelper.instance().registerAspectsForBucket(Nether.fluids.fireBrandyBuckets[1], new AspectList().add(Aspect.FIRE, 3));
-		ThaumcraftBoozeHelper.instance().registerAspectsForBucket(Nether.fluids.fireBrandyBuckets[2], new AspectList().add(Aspect.FIRE, 6));
-		ThaumcraftBoozeHelper.instance().registerAspectsForBucket(Nether.fluids.fireBrandyBuckets[3], new AspectList().add(Aspect.FIRE, 3));
+		ThaumcraftBoozeHelper.instance().registerAspectsForBucket(nether.fluids.fireBrandyBuckets[0], new AspectList());
+		ThaumcraftBoozeHelper.instance().registerAspectsForBucket(nether.fluids.fireBrandyBuckets[1], new AspectList().add(Aspect.FIRE, 3));
+		ThaumcraftBoozeHelper.instance().registerAspectsForBucket(nether.fluids.fireBrandyBuckets[2], new AspectList().add(Aspect.FIRE, 6));
+		ThaumcraftBoozeHelper.instance().registerAspectsForBucket(nether.fluids.fireBrandyBuckets[3], new AspectList().add(Aspect.FIRE, 3));
 
-		ThaumcraftBoozeHelper.instance().registerAspectsForFluidBlock(Nether.fluids.fireBrandyFluids[0], new AspectList());
-		ThaumcraftBoozeHelper.instance().registerAspectsForFluidBlock(Nether.fluids.fireBrandyFluids[1], new AspectList().add(Aspect.FIRE, 3));
-		ThaumcraftBoozeHelper.instance().registerAspectsForFluidBlock(Nether.fluids.fireBrandyFluids[2], new AspectList().add(Aspect.FIRE, 6));
-		ThaumcraftBoozeHelper.instance().registerAspectsForFluidBlock(Nether.fluids.fireBrandyFluids[3], new AspectList().add(Aspect.FIRE, 3));
+		ThaumcraftBoozeHelper.instance().registerAspectsForFluidBlock(nether.fluids.fireBrandyFluids[0], new AspectList());
+		ThaumcraftBoozeHelper.instance().registerAspectsForFluidBlock(nether.fluids.fireBrandyFluids[1], new AspectList().add(Aspect.FIRE, 3));
+		ThaumcraftBoozeHelper.instance().registerAspectsForFluidBlock(nether.fluids.fireBrandyFluids[2], new AspectList().add(Aspect.FIRE, 6));
+		ThaumcraftBoozeHelper.instance().registerAspectsForFluidBlock(nether.fluids.fireBrandyFluids[3], new AspectList().add(Aspect.FIRE, 3));
 
-		ThaumcraftBoozeHelper.instance().registerAspectsForBottleStack(Nether.fluids.maliceCider.asStack(1, 0), new AspectList());
-		ThaumcraftBoozeHelper.instance().registerAspectsForBottleStack(Nether.fluids.maliceCider.asStack(1, 1), new AspectList().add(Aspect.SOUL, 1));
-		ThaumcraftBoozeHelper.instance().registerAspectsForBottleStack(Nether.fluids.maliceCider.asStack(1, 2), new AspectList().add(Aspect.SOUL, 2));
-		ThaumcraftBoozeHelper.instance().registerAspectsForBottleStack(Nether.fluids.maliceCider.asStack(1, 3), new AspectList().add(Aspect.SOUL, 1));
+		ThaumcraftBoozeHelper.instance().registerAspectsForBottleStack(nether.fluids.maliceCider.asStack(1, 0), new AspectList());
+		ThaumcraftBoozeHelper.instance().registerAspectsForBottleStack(nether.fluids.maliceCider.asStack(1, 1), new AspectList().add(Aspect.SOUL, 1));
+		ThaumcraftBoozeHelper.instance().registerAspectsForBottleStack(nether.fluids.maliceCider.asStack(1, 2), new AspectList().add(Aspect.SOUL, 2));
+		ThaumcraftBoozeHelper.instance().registerAspectsForBottleStack(nether.fluids.maliceCider.asStack(1, 3), new AspectList().add(Aspect.SOUL, 1));
 
-		ThaumcraftBoozeHelper.instance().registerAspectsForBucket(Nether.fluids.maliceCiderBuckets[0], new AspectList());
-		ThaumcraftBoozeHelper.instance().registerAspectsForBucket(Nether.fluids.maliceCiderBuckets[1], new AspectList().add(Aspect.SOUL, 3));
-		ThaumcraftBoozeHelper.instance().registerAspectsForBucket(Nether.fluids.maliceCiderBuckets[2], new AspectList().add(Aspect.SOUL, 6));
-		ThaumcraftBoozeHelper.instance().registerAspectsForBucket(Nether.fluids.maliceCiderBuckets[3], new AspectList().add(Aspect.SOUL, 3));
+		ThaumcraftBoozeHelper.instance().registerAspectsForBucket(nether.fluids.maliceCiderBuckets[0], new AspectList());
+		ThaumcraftBoozeHelper.instance().registerAspectsForBucket(nether.fluids.maliceCiderBuckets[1], new AspectList().add(Aspect.SOUL, 3));
+		ThaumcraftBoozeHelper.instance().registerAspectsForBucket(nether.fluids.maliceCiderBuckets[2], new AspectList().add(Aspect.SOUL, 6));
+		ThaumcraftBoozeHelper.instance().registerAspectsForBucket(nether.fluids.maliceCiderBuckets[3], new AspectList().add(Aspect.SOUL, 3));
 
-		ThaumcraftBoozeHelper.instance().registerAspectsForFluidBlock(Nether.fluids.maliceCiderFluids[0], new AspectList());
-		ThaumcraftBoozeHelper.instance().registerAspectsForFluidBlock(Nether.fluids.maliceCiderFluids[1], new AspectList().add(Aspect.SOUL, 3));
-		ThaumcraftBoozeHelper.instance().registerAspectsForFluidBlock(Nether.fluids.maliceCiderFluids[2], new AspectList().add(Aspect.SOUL, 6));
-		ThaumcraftBoozeHelper.instance().registerAspectsForFluidBlock(Nether.fluids.maliceCiderFluids[3], new AspectList().add(Aspect.SOUL, 3));
+		ThaumcraftBoozeHelper.instance().registerAspectsForFluidBlock(nether.fluids.maliceCiderFluids[0], new AspectList());
+		ThaumcraftBoozeHelper.instance().registerAspectsForFluidBlock(nether.fluids.maliceCiderFluids[1], new AspectList().add(Aspect.SOUL, 3));
+		ThaumcraftBoozeHelper.instance().registerAspectsForFluidBlock(nether.fluids.maliceCiderFluids[2], new AspectList().add(Aspect.SOUL, 6));
+		ThaumcraftBoozeHelper.instance().registerAspectsForFluidBlock(nether.fluids.maliceCiderFluids[3], new AspectList().add(Aspect.SOUL, 3));
 	}
 }
