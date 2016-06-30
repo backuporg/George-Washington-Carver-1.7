@@ -76,6 +76,14 @@ public class BoozeTag
 	public static final FluidTag MEDICINAL = CoreRegistry.instance().fluidTags().createTag("medicinal");
 	//This beverage is made from malted grains
 	public static final FluidTag MALTED = CoreRegistry.instance().fluidTags().createTag("malted");
-	
+	//This beverage is made from fermented tea
+	public static final FluidTag KOMBUCHA = CoreRegistry.instance().fluidTags().createTag("kombucha");
+	//This beverage is made from distilling coconuts
+	public static final FluidTag ARRACK = CoreRegistry.instance().fluidTags().createTag("arrack");
+	//This beverage is made from molasses
+	public static final FluidTag RUM = CoreRegistry.instance().fluidTags().createTag("rum");
+	//This beverage is made from fermenting palm nectar
+	public static final FluidTag NECTAR = CoreRegistry.instance().fluidTags().createTag("nectar");
+
 	private BoozeTag() {}
 }
