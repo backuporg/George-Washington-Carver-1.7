@@ -34,7 +34,6 @@ import growthcraft.cellar.GrowthCraftCellar;
 import growthcraft.cellar.util.BoozeRegistryHelper;
 import growthcraft.cellar.common.item.EnumYeast;
 import growthcraft.core.common.definition.ItemDefinition;
-import growthcraft.cellar.util.BoozeRegistryHelper;
 import growthcraft.core.common.GrcModuleBase;
 import growthcraft.nether.nether;
 
@@ -94,6 +93,9 @@ public class GrcNetherFluids extends GrcModuleBase
 	{
 		final ItemStack yeastRash = nether.items.netherRashSpores.asStack();
 		final int fermentTime = GrowthCraftCellar.getConfig().fermentTime;
+		
+		fireBrandy.register("grcnether.fireBrandy");
+		maliceCider.register("grcnether.maliceCider");
 
 		BoozeRegistryHelper.registerBooze(fireBrandyBooze, fireBrandyFluids, fireBrandyBuckets, fireBrandy, "grcnether.fireBrandy", null);
 		BoozeRegistryHelper.registerBooze(maliceCiderBooze, maliceCiderFluids, maliceCiderBuckets, maliceCider, "grcnether.maliceCider", null);
