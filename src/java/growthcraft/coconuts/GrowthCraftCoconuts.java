@@ -16,4 +16,5 @@ public class GrowthCraftCoconuts
 	public static final String MOD_VERSION = "@VERSION@";
 
 	@Instance(MOD_ID)
+	public static GrowthCraftCoconuts instance;
 }
