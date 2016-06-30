@@ -21,11 +21,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package id2h.netherloid.common.world;
+package growthcraft.nether.common.world;
 
 import java.util.Random;
 
-import id2h.netherloid.Netherloid;
+import growthcraft.nether.Netherloid;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSapling;

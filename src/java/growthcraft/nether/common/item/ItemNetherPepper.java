@@ -21,12 +21,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package id2h.netherloid.common.item;
+package growthcraft.nether.common.item;
 
 import growthcraft.core.util.BlockCheck;
 import growthcraft.core.util.ItemUtils;
-import id2h.netherloid.Netherloid;
-import id2h.netherloid.common.block.BlockNetherPepper;
+import growthcraft.nether.Netherloid;
+import growthcraft.nether.common.block.BlockNetherPepper;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.block.Block;
