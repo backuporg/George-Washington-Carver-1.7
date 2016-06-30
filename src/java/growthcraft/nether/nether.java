@@ -48,7 +48,7 @@ import net.minecraftforge.common.MinecraftForge;
 	version = nether.MOD_VERSION,
 	dependencies = nether.MOD_DEPENDENCIES
 )
-public class nether
+public class GrowthCraftNether
 {
 	public static final String MOD_ID = "Growthcraft|Nether";
 	public static final String MOD_NAME = "Growthcraft Nether";
@@ -56,7 +56,7 @@ public class nether
 	public static final String MOD_DEPENDENCIES = "required-after:Growthcraft;required-after:Growthcraft|Cellar";
 
 	@Instance(MOD_ID)
-	public static nether instance;
+	public static GrowthCraftNether instance;
 
 	public static CreativeTabs tab;
 	public static GrcNetherBlocks blocks = new GrcNetherBlocks();
