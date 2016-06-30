@@ -133,8 +133,8 @@ public class GrcNetherFluids extends GrcModuleBase
 		GameRegistry.registerItem(fireBrandy.getItem(), "grc.fireBrandy");
 		GameRegistry.registerItem(maliceCider.getItem(), "grc.maliceCider");
 
-		BoozeRegistryHelper.registerBooze(fireBrandyBooze, fireBrandyFluids, fireBrandyBuckets, fireBrandy, "grcnether.fireBrandy", null);
-		BoozeRegistryHelper.registerBooze(maliceCiderBooze, maliceCiderFluids, maliceCiderBuckets, maliceCider, "grcnether.maliceCider", null);
+		BoozeRegistryHelper.registerBooze(fireBrandyBooze, fireBrandyFluids, fireBrandyBuckets, fireBrandy, "grc.fireBrandy", null);
+		BoozeRegistryHelper.registerBooze(maliceCiderBooze, maliceCiderFluids, maliceCiderBuckets, maliceCider, "grc.maliceCider", null);
 
 		for (BoozeEffect effect : BoozeRegistryHelper.getBoozeEffects(fireBrandyBooze))
 		{
