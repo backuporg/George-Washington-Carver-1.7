@@ -43,9 +43,9 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
 
 @Mod(
-	modid = Nether.MOD_ID,
-	name = Nether.MOD_NAME,
-	version = Nether.MOD_VERSION,
+	modid = nether.MOD_ID,
+	name = nether.MOD_NAME,
+	version = nether.MOD_VERSION,
 	dependencies = nether.MOD_DEPENDENCIES
 )
 public class nether
