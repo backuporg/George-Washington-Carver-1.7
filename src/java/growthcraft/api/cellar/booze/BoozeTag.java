@@ -68,6 +68,10 @@ public class BoozeTag
 	public static final FluidTag ANCIENT = CoreRegistry.instance().fluidTags().createTag("ancient");
 	//This beverage is a cocktail
 	public static final FluidTag COCKTAIL = CoreRegistry.instance().fluidTags().createTag("cocktail");
+	//This beverage is brewed from nether-based ingredients
+	public static final FluidTag INFERNAL = CoreRegistry.instance().fluidTags().createTag("infernal");
+	//This beverage is brewed from end-based ingredients
+	public static final FluidTag ELDRITCH = CoreRegistry.instance().fluidTags().createTag("eldritch");
 
 	private BoozeTag() {}
 }
