@@ -33,7 +33,7 @@ public class CreativeTabsGrowthcraftNether extends CreativeTabs
 {
 	public CreativeTabsGrowthcraftNether()
 	{
-		super("tabNetherloid");
+		super("tabnether");
 	}
 
 	@Override

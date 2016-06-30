@@ -23,7 +23,7 @@
  */
 package growthcraft.nether.common.item;
 
-import growthcraft.nether.Netherloid;
+import growthcraft.nether.nether;
 
 import net.minecraft.item.Item;
 
@@ -34,6 +34,6 @@ public class ItemNetherGhastPowder extends Item
 		super();
 		setUnlocalizedName("grcnether.netherGhastPowder");
 		setTextureName("grcnether:ghastpowder");
-		setCreativeTab(Netherloid.tab);
+		setCreativeTab(nether.tab);
 	}
 }

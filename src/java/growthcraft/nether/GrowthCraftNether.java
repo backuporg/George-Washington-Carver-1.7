@@ -46,7 +46,7 @@ import net.minecraftforge.common.MinecraftForge;
 	modid = Nether.MOD_ID,
 	name = Nether.MOD_NAME,
 	version = Nether.MOD_VERSION,
-	dependencies = Netherloid.MOD_DEPENDENCIES
+	dependencies = nether.MOD_DEPENDENCIES
 )
 public class nether
 {

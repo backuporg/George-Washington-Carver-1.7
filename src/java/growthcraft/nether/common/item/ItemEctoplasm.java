@@ -23,7 +23,7 @@
  */
 package growthcraft.nether.common.item;
 
-import growthcraft.nether.Netherloid;
+import growthcraft.nether.nether;
 
 import net.minecraft.item.Item;
 
@@ -34,6 +34,6 @@ public class ItemEctoplasm extends Item
 		super();
 		setUnlocalizedName("grcnether.ectoplasm");
 		setTextureName("grcnether:ectoplasm");
-		setCreativeTab(Netherloid.tab);
+		setCreativeTab(nether.tab);
 	}
 }

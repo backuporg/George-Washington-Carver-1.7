@@ -43,7 +43,7 @@ public class ItemNetherMuertecap extends ItemFood implements IPlantable
 		setAlwaysEdible();
 		setUnlocalizedName("grcnether.netherMuertecapFood");
 		setTextureName("grcnether:muertecap");
-		setCreativeTab(Netherloid.tab);
+		setCreativeTab(nether.tab);
 	}
 
 	protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player)
@@ -61,7 +61,7 @@ public class ItemNetherMuertecap extends ItemFood implements IPlantable
 
 	public Block getPlant(IBlockAccess world, int x, int y, int z)
 	{
-		return Netherloid.blocks.netherMuertecap.getBlock();
+		return nether.blocks.netherMuertecap.getBlock();
 	}
 
 	public int getPlantMetadata(IBlockAccess world, int x, int y, int z)
