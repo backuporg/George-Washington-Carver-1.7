@@ -21,17 +21,17 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package id2h.netherloid.init;
+package growthcraft.nether.init;
 
 import growthcraft.core.common.definition.ItemDefinition;
 import growthcraft.core.common.GrcModuleBase;
-import id2h.netherloid.common.item.ItemEctoplasm;
-import id2h.netherloid.common.item.ItemNetherGhastPowder;
-import id2h.netherloid.common.item.ItemNetherMaliceFruit;
-import id2h.netherloid.common.item.ItemNetherMuertecap;
-import id2h.netherloid.common.item.ItemNetherPepper;
-import id2h.netherloid.common.item.ItemNetherRashSpores;
-import id2h.netherloid.common.item.ItemNetherSquashSeeds;
+import growthcraft.nether.common.item.ItemEctoplasm;
+import growthcraft.nether.common.item.ItemNetherGhastPowder;
+import growthcraft.nether.common.item.ItemNetherMaliceFruit;
+import growthcraft.nether.common.item.ItemNetherMuertecap;
+import growthcraft.nether.common.item.ItemNetherPepper;
+import growthcraft.nether.common.item.ItemNetherRashSpores;
+import growthcraft.nether.common.item.ItemNetherSquashSeeds;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Items;

@@ -21,9 +21,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package id2h.netherloid.util;
+package growthcraft.nether.util;
 
-import id2h.netherloid.Netherloid;
+import growthcraft.nether.Netherloid;
 
 import net.minecraft.block.Block;
 
