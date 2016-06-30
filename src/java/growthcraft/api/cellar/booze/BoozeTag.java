@@ -72,6 +72,8 @@ public class BoozeTag
 	public static final FluidTag INFERNAL = CoreRegistry.instance().fluidTags().createTag("infernal");
 	//This beverage is brewed from end-based ingredients
 	public static final FluidTag ELDRITCH = CoreRegistry.instance().fluidTags().createTag("eldritch");
+	//This beverage is believed to have medicinal properties
+	public static final FluidTag MEDICINAL = CoreRegistry.instance().fluidTags().createTag("medicinal");
 
 	private BoozeTag() {}
 }
