@@ -85,6 +85,7 @@ public class GrcNetherFluids extends GrcModuleBase
 
 		maliceCiderBooze[7].setColor(nether.getConfig().vileSlopColor);
 		maliceCiderFluids[7].getBlock().refreshColor();
+		this.maliceCider = new ItemDefinition(new ItemBoozeBottle(maliceCiderBooze));
 	}
 
 	@Override
@@ -95,7 +96,6 @@ public class GrcNetherFluids extends GrcModuleBase
 
 		BoozeRegistryHelper.registerBooze(fireBrandyBooze, fireBrandyFluids, fireBrandyBuckets, fireBrandy, "grcnether.fireBrandy", null);
 		BoozeRegistryHelper.registerBooze(maliceCiderBooze, maliceCiderFluids, maliceCiderBuckets, maliceCider, "grcnether.maliceCider", null);
-		registerFermentations();
 
 		for (BoozeEffect effect : BoozeRegistryHelper.getBoozeEffects(fireBrandyBooze))
 		{
