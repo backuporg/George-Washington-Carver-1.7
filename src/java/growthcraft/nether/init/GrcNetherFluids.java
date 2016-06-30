@@ -94,11 +94,11 @@ public class GrcNetherFluids extends GrcModuleBase
 		final ItemStack yeastRash = nether.items.netherRashSpores.asStack();
 		final int fermentTime = GrowthCraftCellar.getConfig().fermentTime;
 		
-		fireBrandy.register("grcnether.fireBrandy");
-		maliceCider.register("grcnether.maliceCider");
+		fireBrandy.register("grc.fireBrandy");
+		maliceCider.register("grc.maliceCider");
 
-		BoozeRegistryHelper.registerBooze(fireBrandyBooze, fireBrandyFluids, fireBrandyBuckets, fireBrandy, "grcnether.fireBrandy", null);
-		BoozeRegistryHelper.registerBooze(maliceCiderBooze, maliceCiderFluids, maliceCiderBuckets, maliceCider, "grcnether.maliceCider", null);
+		BoozeRegistryHelper.registerBooze(fireBrandyBooze, fireBrandyFluids, fireBrandyBuckets, fireBrandy, "grc.fireBrandy", null);
+		BoozeRegistryHelper.registerBooze(maliceCiderBooze, maliceCiderFluids, maliceCiderBuckets, maliceCider, "grc.maliceCider", null);
 
 		for (BoozeEffect effect : BoozeRegistryHelper.getBoozeEffects(fireBrandyBooze))
 		{
