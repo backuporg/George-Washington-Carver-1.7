@@ -21,10 +21,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package id2h.netherloid.common.block;
+package growthcraft.nether.common.block;
 
 import growthcraft.api.core.util.BlockFlags;
-import id2h.netherloid.Netherloid;
+import growthcraft.nether.nether;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
