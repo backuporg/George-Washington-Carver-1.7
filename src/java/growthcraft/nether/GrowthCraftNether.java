@@ -48,10 +48,10 @@ import net.minecraftforge.common.MinecraftForge;
 	version = Netherloid.MOD_VERSION,
 	dependencies = Netherloid.MOD_DEPENDENCIES
 )
-public class Netherloid
+public class Nether
 {
-	public static final String MOD_ID = "Nether";
-	public static final String MOD_NAME = "Nether";
+	public static final String MOD_ID = "Growthcraft|Nether";
+	public static final String MOD_NAME = "Growthcraft Nether";
 	public static final String MOD_VERSION = "@VERSION@";
 	public static final String MOD_DEPENDENCIES = "required-after:Growthcraft;required-after:Growthcraft|Cellar";
 

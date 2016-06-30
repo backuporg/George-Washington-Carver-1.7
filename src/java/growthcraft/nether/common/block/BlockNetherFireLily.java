@@ -21,9 +21,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package id2h.netherloid.common.block;
+package growthcraft.nether.common.block;
 
-import id2h.netherloid.Netherloid;
+import growthcraft.nether.Netherloid;
 
 public class BlockNetherFireLily extends BlockLavaLilyPadBase
 {
