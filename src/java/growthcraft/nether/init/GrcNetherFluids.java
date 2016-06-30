@@ -93,9 +93,6 @@ public class GrcNetherFluids extends GrcModuleBase
 		final ItemStack yeastRash = nether.items.netherRashSpores.asStack();
 		final int fermentTime = GrowthCraftCellar.getConfig().fermentTime;
 
-		GameRegistry.registerItem(fireBrandy.getItem(), "grcnether.fireBrandy");
-		GameRegistry.registerItem(maliceCider.getItem(), "grcnether.maliceCider");
-
 		BoozeRegistryHelper.registerBooze(fireBrandyBooze, fireBrandyFluids, fireBrandyBuckets, fireBrandy, "grcnether.fireBrandy", null);
 		BoozeRegistryHelper.registerBooze(maliceCiderBooze, maliceCiderFluids, maliceCiderBuckets, maliceCider, "grcnether.maliceCider", null);
 
