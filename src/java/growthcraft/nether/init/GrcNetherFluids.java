@@ -88,6 +88,7 @@ public class GrcNetherFluids extends GrcModuleBase
 		maliceCiderFluids[7].getBlock().refreshColor();
 
 		this.fireBrandy = new ItemDefinition(new ItemBoozeBottle(5, -0.6F, fireBrandyBooze));
+
 		this.maliceCider = new ItemDefinition(new ItemBoozeBottle(5, -0.6F, maliceCiderBooze));
 	}
 
