@@ -21,17 +21,17 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package id2h.netherloid;
+package growthcraft.nether;
 
 import growthcraft.api.core.log.ILogger;
 import growthcraft.api.core.log.GrcLogger;
 import growthcraft.api.core.module.ModuleContainer;
-import id2h.netherloid.client.event.TextureStitchEventHandler;
-import id2h.netherloid.common.CommonProxy;
-import id2h.netherloid.creativetab.CreativeTabsGrowthcraftNether;
-import id2h.netherloid.init.GrcNetherBlocks;
-import id2h.netherloid.init.GrcNetherFluids;
-import id2h.netherloid.init.GrcNetherItems;
+import growthcraft.nether.client.event.TextureStitchEventHandler;
+import growthcraft.nether.common.CommonProxy;
+import growthcraft.nether.creativetab.CreativeTabsGrowthcraftNether;
+import growthcraft.nether.init.GrcNetherBlocks;
+import growthcraft.nether.init.GrcNetherFluids;
+import growthcraft.nether.init.GrcNetherItems;
 
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
@@ -43,20 +43,20 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
 
 @Mod(
-	modid = Netherloid.MOD_ID,
-	name = Netherloid.MOD_NAME,
+	modid = Nether.MOD_ID,
+	name = Nether.MOD_NAME,
 	version = Netherloid.MOD_VERSION,
 	dependencies = Netherloid.MOD_DEPENDENCIES
 )
 public class Netherloid
 {
-	public static final String MOD_ID = "Netherloid";
-	public static final String MOD_NAME = "Netherloid";
+	public static final String MOD_ID = "Nether";
+	public static final String MOD_NAME = "Nether";
 	public static final String MOD_VERSION = "@VERSION@";
 	public static final String MOD_DEPENDENCIES = "required-after:Growthcraft;required-after:Growthcraft|Cellar";
 
 	@Instance(MOD_ID)
-	public static Netherloid instance;
+	public static Nether instance;
 
 	public static CreativeTabs tab;
 	public static GrcNetherBlocks blocks = new GrcNetherBlocks();
@@ -83,7 +83,7 @@ public class Netherloid
 		modules.add(items);
 		modules.add(fluids);
 
-		if (config.enableThaumcraftIntegration) modules.add(new id2h.netherloid.integration.ThaumcraftModule());
+		if (config.enableThaumcraftIntegration) modules.add(new growthcraft.nether.integration.ThaumcraftModule());
 
 		if (config.debugEnabled) modules.setLogger(logger);
 
