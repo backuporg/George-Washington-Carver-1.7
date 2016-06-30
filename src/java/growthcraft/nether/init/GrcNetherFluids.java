@@ -125,7 +125,7 @@ public class GrcNetherFluids extends GrcModuleBase
 	}
 
 	@Override
-	public void register()
+	private void register()
 	{
 		final ItemStack yeastRash = nether.items.netherRashSpores.asStack();
 		final int fermentTime = GrowthCraftCellar.getConfig().fermentTime;
