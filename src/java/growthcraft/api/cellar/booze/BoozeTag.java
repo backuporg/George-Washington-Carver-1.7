@@ -74,6 +74,8 @@ public class BoozeTag
 	public static final FluidTag ELDRITCH = CoreRegistry.instance().fluidTags().createTag("eldritch");
 	//This beverage is believed to have medicinal properties
 	public static final FluidTag MEDICINAL = CoreRegistry.instance().fluidTags().createTag("medicinal");
-
+	//This beverage is made from malted grains
+	public static final FluidTag MALTED = CoreRegistry.instance().fluidTags().createTag("malted");
+	
 	private BoozeTag() {}
 }
