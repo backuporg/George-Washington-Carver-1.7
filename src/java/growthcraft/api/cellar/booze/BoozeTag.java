@@ -56,6 +56,18 @@ public class BoozeTag
 	public static final FluidTag WINE = CoreRegistry.instance().fluidTags().createTag("wine");
 	// the booze is some form of cider
 	public static final FluidTag CIDER = CoreRegistry.instance().fluidTags().createTag("cider");
+	//This beverage was distilled
+	public static final FluidTag DISTILLED = CoreRegistry.instance().fluidTags().createTag("distilled");
+	//This beverage has been filtered
+	public static final FluidTag FILTERED = CoreRegistry.instance().fluidTags().createTag("filtered");
+	//This beverage has been flavored with spices
+	public static final FluidTag SPICED = CoreRegistry.instance().fluidTags().createTag("spiced");
+	//This beverage has been flavored with fruit
+	public static final FluidTag FRUITY = CoreRegistry.instance().fluidTags().createTag("fruity");
+	//This beverage is ancient, and of questionable safety
+	public static final FluidTag ANCIENT = CoreRegistry.instance().fluidTags().createTag("ancient");
+	//This beverage is a cocktail
+	public static final FluidTag COCKTAIL = CoreRegistry.instance().fluidTags().createTag("cocktail");
 
 	private BoozeTag() {}
 }
