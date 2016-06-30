@@ -21,17 +21,17 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package id2h.netherloid;
+package growthcraft.netherloid;
 
 import growthcraft.api.core.log.ILogger;
 import growthcraft.api.core.log.GrcLogger;
 import growthcraft.api.core.module.ModuleContainer;
-import id2h.netherloid.client.event.TextureStitchEventHandler;
-import id2h.netherloid.common.CommonProxy;
-import id2h.netherloid.creativetab.CreativeTabsGrowthcraftNether;
-import id2h.netherloid.init.GrcNetherBlocks;
-import id2h.netherloid.init.GrcNetherFluids;
-import id2h.netherloid.init.GrcNetherItems;
+import growthcraft.netherloid.client.event.TextureStitchEventHandler;
+import growthcraft.netherloid.common.CommonProxy;
+import growthcraft.netherloid.creativetab.CreativeTabsGrowthcraftNether;
+import growthcraft.netherloid.init.GrcNetherBlocks;
+import growthcraft.netherloid.init.GrcNetherFluids;
+import growthcraft.netherloid.init.GrcNetherItems;
 
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
@@ -83,7 +83,7 @@ public class Netherloid
 		modules.add(items);
 		modules.add(fluids);
 
-		if (config.enableThaumcraftIntegration) modules.add(new id2h.netherloid.integration.ThaumcraftModule());
+		if (config.enableThaumcraftIntegration) modules.add(new growthcraft.netherloid.integration.ThaumcraftModule());
 
 		if (config.debugEnabled) modules.setLogger(logger);
 
