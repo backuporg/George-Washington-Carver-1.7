@@ -61,9 +61,9 @@ public class BlockNetherMaliceFruit extends Block implements IGrowable, ICropDat
 	@SideOnly(Side.CLIENT)
 	private IIcon[] icons;
 
-	private final int growth = Netherloid.getConfig().maliceFruitGrowthRate;
-	private final boolean dropRipeMaliceFruit = Netherloid.getConfig().dropRipeMaliceFruit;
-	private final int dropChance = Netherloid.getConfig().maliceFruitDropChance;
+	private final int growth = nether.getConfig().maliceFruitGrowthRate;
+	private final boolean dropRipeMaliceFruit = nether.getConfig().dropRipeMaliceFruit;
+	private final int dropChance = nether.getConfig().maliceFruitDropChance;
 
 	public BlockNetherMaliceFruit()
 	{
@@ -177,7 +177,7 @@ public class BlockNetherMaliceFruit extends Block implements IGrowable, ICropDat
 	@Override
 	public boolean canBlockStay(World world, int x, int y, int z)
 	{
-		return Netherloid.blocks.netherMaliceLeaves.getBlock() == world.getBlock(x, y + 1, z) &&
+		return nether.blocks.netherMaliceLeaves.getBlock() == world.getBlock(x, y + 1, z) &&
 			(world.getBlockMetadata(x, y + 1, z) & 3) == 0;
 	}
 
@@ -185,13 +185,13 @@ public class BlockNetherMaliceFruit extends Block implements IGrowable, ICropDat
 	@SideOnly(Side.CLIENT)
 	public Item getItem(World world, int x, int y, int z)
 	{
-		return Netherloid.items.netherMaliceFruit.getItem();
+		return nether.items.netherMaliceFruit.getItem();
 	}
 
 	@Override
 	public Item getItemDropped(int meta, Random random, int par3)
 	{
-		return meta >= MaliceFruitStage.MATURE ? Netherloid.items.netherMaliceFruit.getItem() : null;
+		return meta >= MaliceFruitStage.MATURE ? nether.items.netherMaliceFruit.getItem() : null;
 	}
 
 	@Override
