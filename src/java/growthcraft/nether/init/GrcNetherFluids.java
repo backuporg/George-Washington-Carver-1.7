@@ -125,7 +125,7 @@ public class GrcNetherFluids extends GrcModuleBase
 
 			// fermented
 			GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[1])
-				.tags(BoozeTag.CIDER, BoozeTag.FERMENTED)
+				.tags(BoozeTag.CIDER, BoozeTag.FERMENTED, BoozeTag.INFERNAL)
 				.fermentsFrom(fs[0], EnumYeast.BREWERS.asStack(), fermentTime)
 				.fermentsFrom(fs[0], new ItemStack(Items.nether_wart), (int)(fermentTime * 0.66))
 				.getEffect()
@@ -135,7 +135,7 @@ public class GrcNetherFluids extends GrcModuleBase
 
 			// potent
 			GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[2])
-				.tags(BoozeTag.CIDER, BoozeTag.FERMENTED, BoozeTag.POTENT)
+				.tags(BoozeTag.CIDER, BoozeTag.FERMENTED, BoozeTag.POTENT, BoozeTag.INFERNAL)
 				.fermentsFrom(fs[1], new ItemStack(Items.glowstone_dust), fermentTime)
 				.fermentsFrom(fs[3], new ItemStack(Items.glowstone_dust), fermentTime)
 				.getEffect()
@@ -145,7 +145,7 @@ public class GrcNetherFluids extends GrcModuleBase
 
 			// extended
 			GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[3])
-				.tags(BoozeTag.CIDER, BoozeTag.FERMENTED, BoozeTag.EXTENDED)
+				.tags(BoozeTag.CIDER, BoozeTag.FERMENTED, BoozeTag.EXTENDED, BoozeTag.INFERNAL)
 				.fermentsFrom(fs[1], new ItemStack(Items.redstone), fermentTime)
 				.fermentsFrom(fs[2], new ItemStack(Items.redstone), fermentTime)
 				.getEffect()
@@ -155,7 +155,7 @@ public class GrcNetherFluids extends GrcModuleBase
 
 			// Amrita - Ethereal Yeast
 			GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[4])
-				.tags(BoozeTag.CIDER, BoozeTag.FERMENTED, BoozeTag.HYPER_EXTENDED)
+				.tags(BoozeTag.CIDER, BoozeTag.FERMENTED, BoozeTag.HYPER_EXTENDED, BoozeTag.INFERNAL)
 				.fermentsFrom(fs[2], EnumYeast.ETHEREAL.asStack(), fermentTime)
 				.fermentsFrom(fs[3], EnumYeast.ETHEREAL.asStack(), fermentTime)
 				.getEffect()
@@ -165,7 +165,7 @@ public class GrcNetherFluids extends GrcModuleBase
 
 			// :Intoxicated - Origin Yeast
 			GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[5])
-				.tags(BoozeTag.CIDER, BoozeTag.FERMENTED, BoozeTag.INTOXICATED)
+				.tags(BoozeTag.CIDER, BoozeTag.FERMENTED, BoozeTag.INTOXICATED, BoozeTag.INFERNAL)
 				.fermentsFrom(fs[2], EnumYeast.ORIGIN.asStack(), fermentTime)
 				.fermentsFrom(fs[3], EnumYeast.ORIGIN.asStack(), fermentTime)
 				.getEffect()
@@ -175,7 +175,7 @@ public class GrcNetherFluids extends GrcModuleBase
 
 			// Gelid Booze - Lager Yeast
 			GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[6])
-				.tags(BoozeTag.CIDER, BoozeTag.FERMENTED, BoozeTag.CHILLED)
+				.tags(BoozeTag.CIDER, BoozeTag.FERMENTED, BoozeTag.CHILLED, BoozeTag.INFERNAL)
 				.fermentsFrom(fs[2], EnumYeast.LAGER.asStack(), fermentTime)
 				.fermentsFrom(fs[3], EnumYeast.LAGER.asStack(), fermentTime)
 				.getEffect()
@@ -185,7 +185,7 @@ public class GrcNetherFluids extends GrcModuleBase
 
 			// Vile Slop - Netherrash
 			GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[7])
-				.tags(BoozeTag.CIDER, BoozeTag.FERMENTED, BoozeTag.INTOXICATED, BoozeTag.DEADLY)
+				.tags(BoozeTag.CIDER, BoozeTag.FERMENTED, BoozeTag.INTOXICATED, BoozeTag.DEADLY, BoozeTag.INFERNAL)
 				.fermentsFrom(fs[1], yeastRash, fermentTime)
 				.fermentsFrom(fs[2], yeastRash, fermentTime)
 				.fermentsFrom(fs[3], yeastRash, fermentTime)
@@ -206,7 +206,7 @@ public class GrcNetherFluids extends GrcModuleBase
 			}
 
 			GrowthCraftCellar.boozeBuilderFactory.create(fireBrandyBooze[0])
-				.tags(BoozeTag.YOUNG)
+				.tags(BoozeTag.YOUNG, BoozeTag.INFERNAL)
 				.brewsFrom(
 					new FluidStack(FluidRegistry.WATER, nether.getConfig().fireBrandyYield),
 					nether.blocks.netherCinderrot.asStack(),
