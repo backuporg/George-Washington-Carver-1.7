@@ -45,10 +45,10 @@ import net.minecraftforge.common.MinecraftForge;
 @Mod(
 	modid = Nether.MOD_ID,
 	name = Nether.MOD_NAME,
-	version = Netherloid.MOD_VERSION,
+	version = Nether.MOD_VERSION,
 	dependencies = Netherloid.MOD_DEPENDENCIES
 )
-public class Nether
+public class nether
 {
 	public static final String MOD_ID = "Growthcraft|Nether";
 	public static final String MOD_NAME = "Growthcraft Nether";
@@ -56,7 +56,7 @@ public class Nether
 	public static final String MOD_DEPENDENCIES = "required-after:Growthcraft;required-after:Growthcraft|Cellar";
 
 	@Instance(MOD_ID)
-	public static Nether instance;
+	public static nether instance;
 
 	public static CreativeTabs tab;
 	public static GrcNetherBlocks blocks = new GrcNetherBlocks();

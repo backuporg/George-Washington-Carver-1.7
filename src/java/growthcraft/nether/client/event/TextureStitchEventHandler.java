@@ -21,10 +21,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package id2h.netherloid.client.event;
+package growthcraft.nether.client.event;
 
 import growthcraft.core.GrowthCraftCore;
-import id2h.netherloid.Netherloid;
+import growthcraft.nether.nether;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
@@ -39,7 +39,7 @@ public class TextureStitchEventHandler
 	{
 		if (event.map.getTextureType() == 0)
 		{
-			Netherloid.fluids.setBoozeIcons(GrowthCraftCore.liquidSmoothTexture);
+			nether.fluids.setBoozeIcons(GrowthCraftCore.liquidSmoothTexture);
 		}
 	}
 }
