@@ -86,8 +86,6 @@ public class GrcNetherFluids extends GrcModuleBase
 
 		maliceCiderBooze[7].setColor(Netherloid.getConfig().vileSlopColor);
 		maliceCiderFluids[7].getBlock().refreshColor();
-
-		this.maliceCider = new ItemDefinition(new ItemBoozeBottle(5, -0.6F, maliceCiderBooze));
 	}
 
 	@Override
