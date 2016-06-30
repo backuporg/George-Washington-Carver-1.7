@@ -45,7 +45,7 @@ public class BlockNetherMaliceLog extends Block
 		setBlockName("grcnether.netherMaliceLog");
 		setBlockTextureName("grcnether:log_malice");
 		setHarvestLevel("axe", 0);
-		setCreativeTab(Netherloid.tab);
+		setCreativeTab(nether.tab);
 	}
 
 	@Override

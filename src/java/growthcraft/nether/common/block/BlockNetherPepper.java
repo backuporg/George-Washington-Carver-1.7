@@ -62,8 +62,8 @@ public class BlockNetherPepper extends BlockBush implements ICropDataProvider, I
 	@SideOnly(Side.CLIENT)
 	protected IIcon[] icons;
 
-	private int minPepperPicked = Netherloid.getConfig().minPepperPicked;
-	private int maxPepperPicked = Netherloid.getConfig().maxPepperPicked;
+	private int minPepperPicked = nether.getConfig().minPepperPicked;
+	private int maxPepperPicked = nether.getConfig().maxPepperPicked;
 
 	public BlockNetherPepper()
 	{
@@ -153,7 +153,7 @@ public class BlockNetherPepper extends BlockBush implements ICropDataProvider, I
 	@SideOnly(Side.CLIENT)
 	public Item getItem(World world, int x, int y, int z)
 	{
-		return Netherloid.items.netherPepper.getItem();
+		return nether.items.netherPepper.getItem();
 	}
 
 	@Override
@@ -165,7 +165,7 @@ public class BlockNetherPepper extends BlockBush implements ICropDataProvider, I
 			{
 				world.setBlockMetadataWithNotify(x, y, z, PepperStages.FULL, BlockFlags.SYNC);
 				final int count = minPepperPicked + world.rand.nextInt(maxPepperPicked - minPepperPicked);
-				dropBlockAsItem(world, x, y, z, Netherloid.items.netherPepper.asStack(count));
+				dropBlockAsItem(world, x, y, z, nether.items.netherPepper.asStack(count));
 			}
 			return true;
 		}

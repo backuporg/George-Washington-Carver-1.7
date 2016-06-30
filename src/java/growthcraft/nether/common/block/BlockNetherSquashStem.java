@@ -163,7 +163,7 @@ public class BlockNetherSquashStem extends BlockBush implements ICropDataProvide
 		super.dropBlockAsItemWithChance(world, x, y, z, meta, f, weight);
 		if (!world.isRemote)
 		{
-			final ItemStack item = Netherloid.items.netherSquashSeeds.asStack();
+			final ItemStack item = nether.items.netherSquashSeeds.asStack();
 			for (int i = 0; i < 3; ++i)
 			{
 				if (world.rand.nextInt(15) <= meta)
@@ -189,7 +189,7 @@ public class BlockNetherSquashStem extends BlockBush implements ICropDataProvide
 	@Override
 	public Item getItem(World world, int x, int y, int z)
 	{
-		return Netherloid.items.netherSquashSeeds.getItem();
+		return nether.items.netherSquashSeeds.getItem();
 	}
 
 	@Override

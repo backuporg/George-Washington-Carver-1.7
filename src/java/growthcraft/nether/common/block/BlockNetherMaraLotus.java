@@ -31,7 +31,7 @@ public class BlockNetherMaraLotus extends BlockLavaLilyPadBase
 	{
 		super();
 		setBlockName("grcnether.netherMaraLotus");
-		setCreativeTab(Netherloid.tab);
+		setCreativeTab(nether.tab);
 		setBlockTextureName("grcnether:maralotus");
 	}
 }

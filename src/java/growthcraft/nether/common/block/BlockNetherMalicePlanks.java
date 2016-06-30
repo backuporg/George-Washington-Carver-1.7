@@ -37,6 +37,6 @@ public class BlockNetherMalicePlanks extends Block
 		setBlockName("grcnether.netherMalicePlanks");
 		setBlockTextureName("grcnether:planks_malice");
 		setHarvestLevel("axe", 0);
-		setCreativeTab(Netherloid.tab);
+		setCreativeTab(nether.tab);
 	}
 }

@@ -48,7 +48,7 @@ public class BlockNetherSquash extends BlockDirectional
 		setTickRandomly(true);
 		setBlockTextureName("grcnether:soulsquash");
 		setBlockName("grcnether.netherSquash");
-		setCreativeTab(Netherloid.tab);
+		setCreativeTab(nether.tab);
 	}
 
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack itemstack)

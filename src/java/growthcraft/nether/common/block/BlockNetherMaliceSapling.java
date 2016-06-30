@@ -55,7 +55,7 @@ public class BlockNetherMaliceSapling extends BlockBush implements IGrowable
 		setStepSound(soundTypeGrass);
 		setBlockName("grcnether.netherMaliceSapling");
 		setTickRandomly(true);
-		setCreativeTab(Netherloid.tab);
+		setCreativeTab(nether.tab);
 		final float f = 0.4F;
 		setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 2.0F, 0.5F + f);
 	}
