@@ -29,6 +29,7 @@ import growthcraft.api.cellar.booze.BoozeTag;
 import growthcraft.api.cellar.common.Residue;
 import growthcraft.cellar.common.definition.BlockBoozeDefinition;
 import growthcraft.cellar.common.item.ItemBoozeBottle;
+import growthcraft.api.core.module.ModuleContainer;
 import growthcraft.cellar.common.definition.ItemBucketBoozeDefinition;
 import growthcraft.cellar.GrowthCraftCellar;
 import growthcraft.cellar.util.BoozeRegistryHelper;
