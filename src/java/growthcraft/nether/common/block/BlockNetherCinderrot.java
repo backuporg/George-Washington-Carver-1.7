@@ -23,20 +23,20 @@
  */
 package growthcraft.nether.common.block;
 
-import growthcraft.nether.Netherloid;
+import growthcraft.nether.nether;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.world.World;
 
 public class BlockNetherCinderrot extends BlockNetherFungusBase
 {
-	private final float cinderrotSpreadRate = Netherloid.getConfig().cinderrotSpreadRate;
+	private final float cinderrotSpreadRate = nether.getConfig().cinderrotSpreadRate;
 
 	public BlockNetherCinderrot()
 	{
 		super();
 		setBlockName("grcnether.netherCinderrot");
-		setCreativeTab(Netherloid.tab);
+		setCreativeTab(nether.tab);
 		setBlockTextureName("grcnether:cinderrot");
 		setBlockBounds(0.375F, 0.0F, 0.375F, 0.625F, 0.375F, 0.625F);
 	}

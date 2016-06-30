@@ -23,7 +23,7 @@
  */
 package growthcraft.nether.common.block;
 
-import growthcraft.nether.Netherloid;
+import growthcraft.nether.nether;
 
 public class BlockNetherFireLily extends BlockLavaLilyPadBase
 {
@@ -31,7 +31,7 @@ public class BlockNetherFireLily extends BlockLavaLilyPadBase
 	{
 		super();
 		setBlockName("grcnether.netherFireLily");
-		setCreativeTab(Netherloid.tab);
+		setCreativeTab(nether.tab);
 		setBlockTextureName("grcnether:firelily");
 	}
 }
