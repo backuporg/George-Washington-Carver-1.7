@@ -178,5 +178,23 @@
     "dependencies": [ "Growthcraft", "Growthcraft|Cellar" ],
     "dependants": [],
     "useDependencyInformation": "true"
+},
+{
+    "modid": "Growthcraft|Coconuts",
+    "name": "Growthcraft Coconuts",
+    "description": "Growthcraft Coconuts is a mod which adds a new crop; coconuts. Alongside it also comes various new resources.",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authors": [ "Um-Mitternacht" ],
+    "credits": "",
+    "logoFile": "/grc_coconut_logo.png",
+    "screenshots": [],
+    "parent": "Growthcraft",
+    "requiredMods": [ "Forge", "Growthcraft", "Growthcraft|Cellar" ],
+    "dependencies": [ "Growthcraft", "Growthcraft|Cellar" ],
+    "dependants": [],
+    "useDependencyInformation": "true"
 }
 ]
