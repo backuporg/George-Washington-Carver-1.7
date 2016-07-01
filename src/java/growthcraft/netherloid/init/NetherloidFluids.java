@@ -43,7 +43,6 @@ import growthcraft.core.common.definition.ItemDefinition;
 import growthcraft.core.common.GrcModuleBase;
 import growthcraft.netherloid.Netherloid;
 import growthcraft.netherloid.init.*;
-import growthcraft.netherloid.init.NetherloidItems;
 import growthcraft.netherloid.common.item.*;
 import growthcraft.api.core.item.OreItemStacks;
 import growthcraft.netherloid.common.item.ItemNetherMaliceFruit;
