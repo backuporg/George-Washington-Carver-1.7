@@ -32,6 +32,7 @@ import growthcraft.netherloid.creativetab.CreativeTabsGrowthcraftNether;
 import growthcraft.netherloid.init.netherloidItems;
 import growthcraft.netherloid.init.netherloidFluids;
 import growthcraft.netherloid.init.netherloidBlocks;
+import net.minecraftforge.client.event.TextureStitchEvent;
 
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
@@ -102,6 +103,23 @@ public class netherloid
 		CommonProxy.instance.initRenders();
 
 		modules.init();
+	}
+	
+	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
+	public void onTextureStitchPost(TextureStitchEvent.Post event)
+	{
+		if (event.map.getTextureType() == 0)
+		{
+			for (Booze bz : fluids.fireBrandyBooze)
+			{
+				bz.setIcons(GrowthCraftCore.liquidSmoothTexture);
+			}
+			for (Booze bz : fluids.maliceCiderBooze)
+			{
+				bz.setIcons(GrowthCraftCore.liquidSmoothTexture);
+			}
+		}
 	}
 
 	@EventHandler
