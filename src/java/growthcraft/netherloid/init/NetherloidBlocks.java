@@ -48,7 +48,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraftforge.oredict.OreDictionary;
 
-public class NetherloidBlocks extends GrcModuleBase
+public class netherloidBlocks extends GrcModuleBase
 {
 	public BlockDefinition netherBaalsRot;
 	public BlockDefinition netherCinderrot;

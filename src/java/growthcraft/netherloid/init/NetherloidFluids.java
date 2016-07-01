@@ -56,7 +56,7 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
 
-public class NetherloidFluids extends GrcModuleBase
+public class netherloidFluids extends GrcModuleBase
 {
 	public Booze[] maliceCiderBooze;
 	public BlockBoozeDefinition[] maliceCiderFluids;

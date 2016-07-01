@@ -29,9 +29,9 @@ import growthcraft.api.core.module.ModuleContainer;
 import growthcraft.netherloid.client.event.TextureStitchEventHandler;
 import growthcraft.netherloid.common.CommonProxy;
 import growthcraft.netherloid.creativetab.CreativeTabsGrowthcraftNether;
-import growthcraft.netherloid.init.NetherloidItems;
-import growthcraft.netherloid.init.NetherloidFluids;
-import growthcraft.netherloid.init.NetherloidBlocks;
+import growthcraft.netherloid.init.netherloidItems;
+import growthcraft.netherloid.init.netherloidFluids;
+import growthcraft.netherloid.init.netherloidBlocks;
 
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
@@ -59,8 +59,8 @@ public class Netherloid
 	public static Netherloid instance;
 
 	public static CreativeTabs tab;
-	public static NetherloidBlocks blocks = new NetherloidBlocks();
-	public static NetherloidFluids fluids = new NetherloidFluids();
+	public static netherloidBlocks blocks = new netherloidBlocks();
+	public static netherloidFluids fluids = new netherloidFluids();
 	public static netherloidItems items = new netherloidItems();
 
 	private ILogger logger = new GrcLogger(MOD_ID);
