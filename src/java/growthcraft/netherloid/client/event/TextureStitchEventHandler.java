@@ -24,12 +24,15 @@
 package growthcraft.netherloid.client.event;
 
 import growthcraft.core.GrowthCraftCore;
+import growthcraft.core.client.util.InterpolatedIcon;
+import growthcraft.core.GrowthCraftCore;
 import growthcraft.netherloid.netherloid;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraftforge.client.event.TextureStitchEvent;
+import net.minecraft.util.IIcon;
 
 @SubscribeEvent
 @SideOnly(Side.CLIENT)
