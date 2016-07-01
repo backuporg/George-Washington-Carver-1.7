@@ -32,7 +32,7 @@ import growthcraft.netherloid.init.netherloidItems;
 import growthcraft.netherloid.init.netherloidFluids;
 import growthcraft.netherloid.init.netherloidBlocks;
 import net.minecraftforge.client.event.TextureStitchEvent;
-import growthcraft.netherloid.client.event.TextureStitchEventHandler
+import growthcraft.netherloid.client.event.TextureStitchEventHandler;
 
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
