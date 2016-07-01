@@ -44,6 +44,7 @@ import growthcraft.core.common.GrcModuleBase;
 import growthcraft.netherloid.Netherloid;
 import growthcraft.netherloid.init.*;
 import growthcraft.netherloid.init.GrcNetherItems;
+import growthcraft.netherloid.common.item.*;
 import growthcraft.api.core.item.OreItemStacks;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -55,7 +56,7 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
 
-public class GrcNetherFluids extends GrcModuleBase
+public class NetherloidFluids extends GrcModuleBase
 {
 	public Booze[] maliceCiderBooze;
 	public BlockBoozeDefinition[] maliceCiderFluids;
