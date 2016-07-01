@@ -25,7 +25,7 @@ package growthcraft.netherloid.common.world;
 
 import java.util.Random;
 
-import growthcraft.netherloid.Netherloid;
+import growthcraft.netherloid.netherloid;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSapling;
@@ -40,8 +40,8 @@ public class WorldGeneratorMaliceTree extends WorldGenerator
 	private final int minTreeHeight = 4;
 	private final int metaWood      = 0;
 	private final int metaLeaves    = 0;
-	private final Block log         = Netherloid.blocks.netherMaliceLog.getBlock();
-	private final Block leaves      = Netherloid.blocks.netherMaliceLeaves.getBlock();
+	private final Block log         = netherloid.blocks.netherMaliceLog.getBlock();
+	private final Block leaves      = netherloid.blocks.netherMaliceLeaves.getBlock();
 
 	public WorldGeneratorMaliceTree(boolean doblocknotify)
 	{

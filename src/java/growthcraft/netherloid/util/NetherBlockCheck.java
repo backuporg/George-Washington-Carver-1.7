@@ -23,7 +23,7 @@
  */
 package growthcraft.netherloid.util;
 
-import growthcraft.netherloid.Netherloid;
+import growthcraft.netherloid.netherloid;
 
 import net.minecraft.block.Block;
 
@@ -39,7 +39,7 @@ public class NetherBlockCheck
 	 */
 	public static boolean isPaddy(Block block)
 	{
-		return Netherloid.blocks.netherPaddyField.equals(block) ||
-			Netherloid.blocks.netherPaddyFieldFilled.equals(block);
+		return netherloid.blocks.netherPaddyField.equals(block) ||
+			netherloid.blocks.netherPaddyFieldFilled.equals(block);
 	}
 }

@@ -32,7 +32,7 @@ import growthcraft.netherloid.common.item.ItemNetherMuertecap;
 import growthcraft.netherloid.common.item.ItemNetherPepper;
 import growthcraft.netherloid.common.item.ItemNetherRashSpores;
 import growthcraft.netherloid.common.item.ItemNetherSquashSeeds;
-import growthcraft.netherloid.Netherloid;
+import growthcraft.netherloid.netherloid;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Items;

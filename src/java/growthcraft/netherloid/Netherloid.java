@@ -43,20 +43,20 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
 
 @Mod(
-	modid = Netherloid.MOD_ID,
-	name = Netherloid.MOD_NAME,
-	version = Netherloid.MOD_VERSION,
-	dependencies = Netherloid.MOD_DEPENDENCIES
+	modid = netherloid.MOD_ID,
+	name = netherloid.MOD_NAME,
+	version = netherloid.MOD_VERSION,
+	dependencies = netherloid.MOD_DEPENDENCIES
 )
-public class Netherloid
+public class netherloid
 {
-	public static final String MOD_ID = "Netherloid";
-	public static final String MOD_NAME = "Netherloid";
+	public static final String MOD_ID = "netherloid";
+	public static final String MOD_NAME = "netherloid";
 	public static final String MOD_VERSION = "@VERSION@";
 	public static final String MOD_DEPENDENCIES = "required-after:Growthcraft;required-after:Growthcraft|Cellar";
 
 	@Instance(MOD_ID)
-	public static Netherloid instance;
+	public static netherloid instance;
 
 	public static CreativeTabs tab;
 	public static netherloidBlocks blocks = new netherloidBlocks();
