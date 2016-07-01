@@ -61,7 +61,7 @@ public class netherloid
 	public static CreativeTabs tab;
 	public static netherloidBlocks blocks = new netherloidBlocks();
 	public static netherloidFluids fluids = new netherloidFluids();
-	public static netherloidItems items = new netherloidItems();
+	public static GrcNetherItems items = new GrcNetherItems();
 
 	private ILogger logger = new GrcLogger(MOD_ID);
 	private GrcNetherConfig config = new GrcNetherConfig();
