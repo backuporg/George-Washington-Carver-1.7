@@ -152,7 +152,7 @@ public class NetherloidFluids extends GrcModuleBase
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.15f), TickUtils.seconds(90))
 				.addEffect(new EffectWeightedRandomList()
 					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(Potion.regeneration.id, TickUtils.minutes(3), 0)))
-					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(Potion.damageboost.id, TickUtils.minutes(1), 1)))
+					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(Potion.damageBoost.id, TickUtils.minutes(1), 1)))
 					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(Potion.poison.id, TickUtils.minutes(3), 1))))
 					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(Potion.weakness.id, TickUtils.minutes(1), 1)));
 
