@@ -42,6 +42,7 @@ import growthcraft.cellar.common.item.EnumYeast;
 import growthcraft.core.common.definition.ItemDefinition;
 import growthcraft.core.common.GrcModuleBase;
 import growthcraft.netherloid.Netherloid;
+import growthcraft.netherloid.init.GrcNetherItems;
 import growthcraft.api.core.item.OreItemStacks;
 
 import cpw.mods.fml.common.registry.GameRegistry;
