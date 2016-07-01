@@ -30,6 +30,7 @@ import growthcraft.api.cellar.common.Residue;
 import growthcraft.cellar.common.definition.BlockBoozeDefinition;
 import growthcraft.cellar.common.definition.ItemBucketBoozeDefinition;
 import growthcraft.cellar.common.item.ItemBoozeBottle;
+import growthcraft.api.core.effect.EffectAddPotionEffect;
 import growthcraft.cellar.GrowthCraftCellar;
 import growthcraft.api.core.util.TickUtils;
 import growthcraft.cellar.util.BoozeRegistryHelper;
@@ -45,6 +46,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.util.IIcon;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class GrcNetherFluids extends GrcModuleBase
 {
