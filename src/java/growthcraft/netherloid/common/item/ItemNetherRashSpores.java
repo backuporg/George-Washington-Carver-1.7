@@ -23,7 +23,7 @@
  */
 package growthcraft.netherloid.common.item;
 
-import growthcraft.netherloid.Netherloid;
+import growthcraft.netherloid.netherloid;
 
 import net.minecraft.item.Item;
 
@@ -34,6 +34,6 @@ public class ItemNetherRashSpores extends Item
 		super();
 		setUnlocalizedName("grcnether.netherRashSpores");
 		setTextureName("grcnether:netherrash_spores");
-		setCreativeTab(Netherloid.tab);
+		setCreativeTab(netherloid.tab);
 	}
 }

@@ -25,7 +25,7 @@ package growthcraft.netherloid.common.item;
 
 import growthcraft.core.util.BlockCheck;
 import growthcraft.core.util.ItemUtils;
-import growthcraft.netherloid.Netherloid;
+import growthcraft.netherloid.netherloid;
 import growthcraft.netherloid.common.block.BlockNetherPepper;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -45,7 +45,7 @@ public class ItemNetherPepper extends Item implements IPlantable
 		super();
 		setUnlocalizedName("grcnether.netherPepper");
 		setTextureName("grcnether:pepper");
-		setCreativeTab(Netherloid.tab);
+		setCreativeTab(netherloid.tab);
 	}
 
 	@Override
@@ -57,7 +57,7 @@ public class ItemNetherPepper extends Item implements IPlantable
 	@Override
 	public Block getPlant(IBlockAccess world, int x, int y, int z)
 	{
-		return Netherloid.blocks.netherPepper.getBlock();
+		return netherloid.blocks.netherPepper.getBlock();
 	}
 
 	@Override

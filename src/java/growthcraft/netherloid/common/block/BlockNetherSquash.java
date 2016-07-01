@@ -24,7 +24,7 @@
 package growthcraft.netherloid.common.block;
 
 import growthcraft.api.core.util.BlockFlags;
-import growthcraft.netherloid.Netherloid;
+import growthcraft.netherloid.netherloid;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -48,7 +48,7 @@ public class BlockNetherSquash extends BlockDirectional
 		setTickRandomly(true);
 		setBlockTextureName("grcnether:soulsquash");
 		setBlockName("grcnether.netherSquash");
-		setCreativeTab(Netherloid.tab);
+		setCreativeTab(netherloid.tab);
 	}
 
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack itemstack)

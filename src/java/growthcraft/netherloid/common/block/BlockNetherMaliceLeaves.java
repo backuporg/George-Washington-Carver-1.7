@@ -26,7 +26,7 @@ package growthcraft.netherloid.common.block;
 import java.util.ArrayList;
 import java.util.Random;
 
-import growthcraft.netherloid.Netherloid;
+import growthcraft.netherloid.netherloid;
 import growthcraft.core.common.block.Materials;
 
 import cpw.mods.fml.relauncher.Side;
@@ -57,7 +57,7 @@ public class BlockNetherMaliceLeaves extends BlockLeavesBase implements IShearab
 	private IIcon[] icons;
 
 	private int[] adjacentTreeBlocks;
-	private final int growth = Netherloid.getConfig().maliceLeavesGrowthRate;
+	private final int growth = netherloid.getConfig().maliceLeavesGrowthRate;
 
 	public BlockNetherMaliceLeaves()
 	{
@@ -67,14 +67,14 @@ public class BlockNetherMaliceLeaves extends BlockLeavesBase implements IShearab
 		setLightOpacity(1);
 		setStepSound(soundTypeGrass);
 		setBlockName("grcnether.netherMaliceLeaves");
-		setCreativeTab(Netherloid.tab);
+		setCreativeTab(netherloid.tab);
 	}
 
 	public void growFruit(World world, Random random, int x, int y, int z)
 	{
 		if (world.isAirBlock(x, y - 1, z))
 		{
-			world.setBlock(x, y - 1, z, Netherloid.blocks.netherMaliceFruit.getBlock());
+			world.setBlock(x, y - 1, z, netherloid.blocks.netherMaliceFruit.getBlock());
 		}
 	}
 
@@ -306,7 +306,7 @@ public class BlockNetherMaliceLeaves extends BlockLeavesBase implements IShearab
 	@Override
 	public Item getItemDropped(int meta, Random random, int par3)
 	{
-		return Netherloid.blocks.netherMaliceSapling.getItem();
+		return netherloid.blocks.netherMaliceSapling.getItem();
 	}
 
 	@Override

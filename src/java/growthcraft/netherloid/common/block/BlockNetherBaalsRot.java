@@ -23,7 +23,7 @@
  */
 package growthcraft.netherloid.common.block;
 
-import growthcraft.netherloid.Netherloid;
+import growthcraft.netherloid.netherloid;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -33,7 +33,7 @@ import net.minecraft.potion.PotionEffect;
 
 public class BlockNetherBaalsRot extends BlockNetherFungusBase
 {
-	private final float baalsRotSpreadRate = Netherloid.getConfig().baalsRotSpreadRate;
+	private final float baalsRotSpreadRate = netherloid.getConfig().baalsRotSpreadRate;
 
 	public BlockNetherBaalsRot()
 	{
@@ -41,7 +41,7 @@ public class BlockNetherBaalsRot extends BlockNetherFungusBase
 		setBlockName("grcnether.netherBaalsRot");
 		setBlockTextureName("grcnether:baals_rot");
 		setBlockBounds(0.125F, 0.0F, 0.125F, 0.875F, 0.8125F, 0.875F);
-		setCreativeTab(Netherloid.tab);
+		setCreativeTab(netherloid.tab);
 	}
 
 	@Override

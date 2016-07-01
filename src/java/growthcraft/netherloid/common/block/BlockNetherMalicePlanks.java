@@ -23,7 +23,7 @@
  */
 package growthcraft.netherloid.common.block;
 
-import growthcraft.netherloid.Netherloid;
+import growthcraft.netherloid.netherloid;
 import growthcraft.core.common.block.Materials;
 
 import net.minecraft.block.Block;
@@ -37,6 +37,6 @@ public class BlockNetherMalicePlanks extends Block
 		setBlockName("grcnether.netherMalicePlanks");
 		setBlockTextureName("grcnether:planks_malice");
 		setHarvestLevel("axe", 0);
-		setCreativeTab(Netherloid.tab);
+		setCreativeTab(netherloid.tab);
 	}
 }

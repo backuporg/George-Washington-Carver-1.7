@@ -23,7 +23,7 @@
  */
 package growthcraft.netherloid.common.block;
 
-import growthcraft.netherloid.Netherloid;
+import growthcraft.netherloid.netherloid;
 import growthcraft.core.common.block.Materials;
 
 import cpw.mods.fml.relauncher.Side;
@@ -45,7 +45,7 @@ public class BlockNetherMaliceLog extends Block
 		setBlockName("grcnether.netherMaliceLog");
 		setBlockTextureName("grcnether:log_malice");
 		setHarvestLevel("axe", 0);
-		setCreativeTab(Netherloid.tab);
+		setCreativeTab(netherloid.tab);
 	}
 
 	@Override

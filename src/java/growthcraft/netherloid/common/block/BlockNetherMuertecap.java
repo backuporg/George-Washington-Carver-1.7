@@ -25,7 +25,7 @@ package growthcraft.netherloid.common.block;
 
 import java.util.Random;
 
-import growthcraft.netherloid.Netherloid;
+import growthcraft.netherloid.netherloid;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -34,7 +34,7 @@ import net.minecraft.world.World;
 
 public class BlockNetherMuertecap extends BlockNetherFungusBase
 {
-	private final float muertecapSpreadRate = Netherloid.getConfig().muertecapSpreadRate;
+	private final float muertecapSpreadRate = netherloid.getConfig().muertecapSpreadRate;
 
 	public BlockNetherMuertecap()
 	{
@@ -55,13 +55,13 @@ public class BlockNetherMuertecap extends BlockNetherFungusBase
 	@SideOnly(Side.CLIENT)
 	public Item getItem(World world, int x, int y, int z)
 	{
-		return Netherloid.items.netherMuertecap.getItem();
+		return netherloid.items.netherMuertecap.getItem();
 	}
 
 	@Override
 	public Item getItemDropped(int meta, Random random, int par3)
 	{
-		return Netherloid.items.netherMuertecap.getItem();
+		return netherloid.items.netherMuertecap.getItem();
 	}
 
 	@Override

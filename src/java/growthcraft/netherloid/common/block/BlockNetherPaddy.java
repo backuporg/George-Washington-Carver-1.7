@@ -29,7 +29,7 @@ import javax.annotation.Nonnull;
 
 import growthcraft.core.common.block.BlockPaddyBase;
 import growthcraft.api.core.util.BlockFlags;
-import growthcraft.netherloid.Netherloid;
+import growthcraft.netherloid.netherloid;
 import growthcraft.netherloid.util.NetherBlockCheck;
 
 import cpw.mods.fml.relauncher.Side;
@@ -51,7 +51,7 @@ public class BlockNetherPaddy extends BlockPaddyBase
 	@SideOnly(Side.CLIENT)
 	protected IIcon[] icons;
 
-	private final int paddyFieldMax = Netherloid.getConfig().paddyFieldMax;
+	private final int paddyFieldMax = netherloid.getConfig().paddyFieldMax;
 	private final boolean filledPaddy;
 
 	public BlockNetherPaddy(boolean filled)
@@ -147,7 +147,7 @@ public class BlockNetherPaddy extends BlockPaddyBase
 		}
 		else
 		{
-			final Block targetBlock = Netherloid.blocks.netherPaddyField.getBlock();
+			final Block targetBlock = netherloid.blocks.netherPaddyField.getBlock();
 			if (this != targetBlock)
 			{
 				world.setBlock(x, y, z, targetBlock, 0, BlockFlags.SYNC);
@@ -158,7 +158,7 @@ public class BlockNetherPaddy extends BlockPaddyBase
 	@Override
 	public void fillPaddy(World world, int x, int y, int z)
 	{
-		final Block targetBlock = Netherloid.blocks.netherPaddyFieldFilled.getBlock();
+		final Block targetBlock = netherloid.blocks.netherPaddyFieldFilled.getBlock();
 		if (this != targetBlock)
 		{
 			world.setBlock(x, y, z, targetBlock, getMaxPaddyMeta(world, x, y, z), BlockFlags.SYNC);

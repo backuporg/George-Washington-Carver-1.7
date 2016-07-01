@@ -27,7 +27,7 @@ import java.util.Random;
 
 import growthcraft.core.common.block.ICropDataProvider;
 import growthcraft.core.client.renderer.RenderBlockFruit;
-import growthcraft.netherloid.Netherloid;
+import growthcraft.netherloid.netherloid;
 import growthcraft.api.core.util.BlockFlags;
 import growthcraft.core.integration.AppleCore;
 
@@ -61,9 +61,9 @@ public class BlockNetherMaliceFruit extends Block implements IGrowable, ICropDat
 	@SideOnly(Side.CLIENT)
 	private IIcon[] icons;
 
-	private final int growth = Netherloid.getConfig().maliceFruitGrowthRate;
-	private final boolean dropRipeMaliceFruit = Netherloid.getConfig().dropRipeMaliceFruit;
-	private final int dropChance = Netherloid.getConfig().maliceFruitDropChance;
+	private final int growth = netherloid.getConfig().maliceFruitGrowthRate;
+	private final boolean dropRipeMaliceFruit = netherloid.getConfig().dropRipeMaliceFruit;
+	private final int dropChance = netherloid.getConfig().maliceFruitDropChance;
 
 	public BlockNetherMaliceFruit()
 	{
@@ -177,7 +177,7 @@ public class BlockNetherMaliceFruit extends Block implements IGrowable, ICropDat
 	@Override
 	public boolean canBlockStay(World world, int x, int y, int z)
 	{
-		return Netherloid.blocks.netherMaliceLeaves.getBlock() == world.getBlock(x, y + 1, z) &&
+		return netherloid.blocks.netherMaliceLeaves.getBlock() == world.getBlock(x, y + 1, z) &&
 			(world.getBlockMetadata(x, y + 1, z) & 3) == 0;
 	}
 
@@ -185,13 +185,13 @@ public class BlockNetherMaliceFruit extends Block implements IGrowable, ICropDat
 	@SideOnly(Side.CLIENT)
 	public Item getItem(World world, int x, int y, int z)
 	{
-		return Netherloid.items.netherMaliceFruit.getItem();
+		return netherloid.items.netherMaliceFruit.getItem();
 	}
 
 	@Override
 	public Item getItemDropped(int meta, Random random, int par3)
 	{
-		return meta >= MaliceFruitStage.MATURE ? Netherloid.items.netherMaliceFruit.getItem() : null;
+		return meta >= MaliceFruitStage.MATURE ? netherloid.items.netherMaliceFruit.getItem() : null;
 	}
 
 	@Override

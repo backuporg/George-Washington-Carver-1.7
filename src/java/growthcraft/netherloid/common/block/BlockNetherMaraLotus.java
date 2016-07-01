@@ -23,7 +23,7 @@
  */
 package growthcraft.netherloid.common.block;
 
-import growthcraft.netherloid.Netherloid;
+import growthcraft.netherloid.netherloid;
 
 public class BlockNetherMaraLotus extends BlockLavaLilyPadBase
 {
@@ -31,7 +31,7 @@ public class BlockNetherMaraLotus extends BlockLavaLilyPadBase
 	{
 		super();
 		setBlockName("grcnether.netherMaraLotus");
-		setCreativeTab(Netherloid.tab);
+		setCreativeTab(netherloid.tab);
 		setBlockTextureName("grcnether:maralotus");
 	}
 }

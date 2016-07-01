@@ -25,7 +25,7 @@ package growthcraft.netherloid.common.item;
 
 import growthcraft.core.util.BlockCheck;
 import growthcraft.core.util.ItemUtils;
-import growthcraft.netherloid.Netherloid;
+import growthcraft.netherloid.netherloid;
 import growthcraft.netherloid.common.block.BlockNetherSquashStem;
 
 import net.minecraft.block.Block;
@@ -44,7 +44,7 @@ public class ItemNetherSquashSeeds extends Item implements IPlantable
 	{
 		super();
 		setUnlocalizedName("grcnether.netherSquashSeeds");
-		setCreativeTab(Netherloid.tab);
+		setCreativeTab(netherloid.tab);
 		setTextureName("grcnether:seeds_soulsquash");
 	}
 
@@ -57,7 +57,7 @@ public class ItemNetherSquashSeeds extends Item implements IPlantable
 	@Override
 	public Block getPlant(IBlockAccess world, int x, int y, int z)
 	{
-		return Netherloid.blocks.netherSquashStem.getBlock();
+		return netherloid.blocks.netherSquashStem.getBlock();
 	}
 
 	@Override

@@ -27,7 +27,7 @@ import java.util.Random;
 
 import growthcraft.api.core.util.BlockFlags;
 import growthcraft.netherloid.common.world.WorldGeneratorMaliceTree;
-import growthcraft.netherloid.Netherloid;
+import growthcraft.netherloid.netherloid;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -55,7 +55,7 @@ public class BlockNetherMaliceSapling extends BlockBush implements IGrowable
 		setStepSound(soundTypeGrass);
 		setBlockName("grcnether.netherMaliceSapling");
 		setTickRandomly(true);
-		setCreativeTab(Netherloid.tab);
+		setCreativeTab(netherloid.tab);
 		final float f = 0.4F;
 		setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 2.0F, 0.5F + f);
 	}

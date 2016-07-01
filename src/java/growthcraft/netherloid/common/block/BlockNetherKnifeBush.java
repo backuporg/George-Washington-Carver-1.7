@@ -23,7 +23,7 @@
  */
 package growthcraft.netherloid.common.block;
 
-import growthcraft.netherloid.Netherloid;
+import growthcraft.netherloid.netherloid;
 import growthcraft.netherloid.util.DamageSources;
 
 import net.minecraft.block.BlockBush;
@@ -37,7 +37,7 @@ public class BlockNetherKnifeBush extends BlockBush
 	{
 		super();
 		setBlockName("grcnether.netherKnifeBush");
-		setCreativeTab(Netherloid.tab);
+		setCreativeTab(netherloid.tab);
 		setBlockTextureName("grcnether:knife_bush");
 	}
 

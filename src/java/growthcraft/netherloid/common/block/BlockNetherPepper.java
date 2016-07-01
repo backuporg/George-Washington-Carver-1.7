@@ -29,7 +29,7 @@ import growthcraft.api.core.util.BlockFlags;
 import growthcraft.api.core.util.RenderType;
 import growthcraft.core.common.block.ICropDataProvider;
 import growthcraft.core.integration.AppleCore;
-import growthcraft.netherloid.Netherloid;
+import growthcraft.netherloid.netherloid;
 
 import cpw.mods.fml.common.eventhandler.Event;
 import cpw.mods.fml.relauncher.Side;
@@ -62,8 +62,8 @@ public class BlockNetherPepper extends BlockBush implements ICropDataProvider, I
 	@SideOnly(Side.CLIENT)
 	protected IIcon[] icons;
 
-	private int minPepperPicked = Netherloid.getConfig().minPepperPicked;
-	private int maxPepperPicked = Netherloid.getConfig().maxPepperPicked;
+	private int minPepperPicked = netherloid.getConfig().minPepperPicked;
+	private int maxPepperPicked = netherloid.getConfig().maxPepperPicked;
 
 	public BlockNetherPepper()
 	{
@@ -153,7 +153,7 @@ public class BlockNetherPepper extends BlockBush implements ICropDataProvider, I
 	@SideOnly(Side.CLIENT)
 	public Item getItem(World world, int x, int y, int z)
 	{
-		return Netherloid.items.netherPepper.getItem();
+		return netherloid.items.netherPepper.getItem();
 	}
 
 	@Override
@@ -165,7 +165,7 @@ public class BlockNetherPepper extends BlockBush implements ICropDataProvider, I
 			{
 				world.setBlockMetadataWithNotify(x, y, z, PepperStages.FULL, BlockFlags.SYNC);
 				final int count = minPepperPicked + world.rand.nextInt(maxPepperPicked - minPepperPicked);
-				dropBlockAsItem(world, x, y, z, Netherloid.items.netherPepper.asStack(count));
+				dropBlockAsItem(world, x, y, z, netherloid.items.netherPepper.asStack(count));
 			}
 			return true;
 		}
