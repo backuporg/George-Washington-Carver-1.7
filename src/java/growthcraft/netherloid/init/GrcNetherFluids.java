@@ -47,7 +47,6 @@ import net.minecraftforge.fluids.FluidStack;
 
 public class GrcNetherFluids extends GrcModuleBase
 {
-{
 	public Booze[] maliceCiderBooze;
 	public BlockBoozeDefinition[] maliceCiderFluids;
 	public ItemDefinition maliceCider;
@@ -68,9 +67,9 @@ public class GrcNetherFluids extends GrcModuleBase
 		BoozeRegistryHelper.setBoozeFoodStats(maliceCiderBooze, 1, -0.3f);
 		BoozeRegistryHelper.setBoozeFoodStats(maliceCiderBooze[0], 1, 0.3f);
 
-		maliceCiderBooze[4].setColor(GrowthCraftGrapes.getConfig().ambrosiaColor);
+		maliceCiderBooze[4].setColor(GrowthCraftGrapes.getConfig().maliceCiderColor);
 		maliceCiderFluids[4].getBlock().refreshColor();
-		maliceCiderBooze[5].setColor(GrowthCraftGrapes.getConfig().portWineColor);
+		maliceCiderBooze[5].setColor(GrowthCraftGrapes.getConfig().maliceCiderColor);
 		maliceCiderFluids[5].getBlock().refreshColor();
 
 		this.maliceCider = new ItemDefinition(new ItemBoozeBottle(maliceCiderBooze));
