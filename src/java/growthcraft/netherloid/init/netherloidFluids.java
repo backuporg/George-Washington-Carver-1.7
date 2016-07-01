@@ -231,3 +231,5 @@ public class netherloidFluids extends GrcModuleBase
 		BoozeRegistryHelper.registerBooze(fireBrandyBooze, fireBrandyFluids, fireBrandyBuckets, fireBrandy, "grc.fireBrandy", null);
 		registerFermentations();
 	}
+	}
+}
