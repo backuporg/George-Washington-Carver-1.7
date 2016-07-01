@@ -32,6 +32,8 @@ import growthcraft.cellar.common.definition.ItemBucketBoozeDefinition;
 import growthcraft.cellar.common.item.ItemBoozeBottle;
 import growthcraft.api.core.effect.EffectAddPotionEffect;
 import growthcraft.cellar.GrowthCraftCellar;
+import growthcraft.api.core.effect.EffectWeightedRandomList;
+import growthcraft.api.core.effect.SimplePotionEffectFactory;
 import growthcraft.api.core.util.TickUtils;
 import growthcraft.cellar.util.BoozeUtils;
 import growthcraft.cellar.util.BoozeRegistryHelper;
