@@ -24,7 +24,7 @@
 package growthcraft.netherloid.client.event;
 
 import growthcraft.core.GrowthCraftCore;
-import growthcraft.netherloid.Netherloid;
+import growthcraft.netherloid.netherloid;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
@@ -39,7 +39,7 @@ public class TextureStitchEventHandler
 	{
 		if (event.map.getTextureType() == 0)
 		{
-			Netherloid.fluids.setBoozeIcons(GrowthCraftCore.liquidSmoothTexture);
+			netherloid.fluids.setBoozeIcons(GrowthCraftCore.liquidSmoothTexture);
 		}
 	}
 }
