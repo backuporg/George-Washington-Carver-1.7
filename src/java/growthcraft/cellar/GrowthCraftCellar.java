@@ -287,7 +287,6 @@ public class GrowthCraftCellar
 		OreDictionary.registerOre("yeastBayanus", EnumYeast.BAYANUS.asStack());
 		OreDictionary.registerOre("yeastEthereal", EnumYeast.ETHEREAL.asStack());
 		OreDictionary.registerOre("yeastOrigin", EnumYeast.ORIGIN.asStack());
-		OreDictionary.registerOre("yeastPoison", EnumYeast.POISON.asStack());
 		OreDictionary.registerOre("foodYeast", EnumYeast.BREWERS.asStack());
 		OreDictionary.registerOre("foodYeast", EnumYeast.LAGER.asStack());
 		OreDictionary.registerOre("foodYeast", EnumYeast.BAYANUS.asStack());
@@ -302,7 +301,6 @@ public class GrowthCraftCellar
 		CellarRegistry.instance().yeast().addYeast(EnumYeast.BAYANUS.asStack());
 		CellarRegistry.instance().yeast().addYeast(EnumYeast.ETHEREAL.asStack());
 		CellarRegistry.instance().yeast().addYeast(EnumYeast.ORIGIN.asStack());
-		CellarRegistry.instance().yeast().addYeast(EnumYeast.POISON.asStack());
 	}
 
 	@EventHandler
