@@ -62,6 +62,10 @@ public class netherloidFluids extends GrcModuleBase
 	public BlockBoozeDefinition[] maliceCiderFluids;
 	public ItemDefinition maliceCider;
 	public ItemBucketBoozeDefinition[] maliceCiderBuckets;
+	public ItemDefinition fireBrandy;
+	public ItemBucketBoozeDefinition[] maliceCiderBuckets;
+	public BlockBoozeDefinition[] maliceCiderFluids;
+	public Booze[] maliceCiderBooze;
 
 	@Override
 	public void preInit()
