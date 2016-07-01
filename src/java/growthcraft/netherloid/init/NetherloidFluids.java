@@ -46,6 +46,7 @@ import growthcraft.netherloid.init.*;
 import growthcraft.netherloid.init.GrcNetherItems;
 import growthcraft.netherloid.common.item.*;
 import growthcraft.api.core.item.OreItemStacks;
+import growthcraft.grapes.common.item.ItemNetherMaliceFruit;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Items;
