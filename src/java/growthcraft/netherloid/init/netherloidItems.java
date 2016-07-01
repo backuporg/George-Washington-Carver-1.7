@@ -21,22 +21,24 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package growthcraft.nether.init;
+package growthcraft.netherloid.init;
 
 import growthcraft.core.common.definition.ItemDefinition;
 import growthcraft.core.common.GrcModuleBase;
-import growthcraft.nether.common.item.ItemEctoplasm;
-import growthcraft.nether.common.item.ItemNetherGhastPowder;
-import growthcraft.nether.common.item.ItemNetherMaliceFruit;
-import growthcraft.nether.common.item.ItemNetherMuertecap;
-import growthcraft.nether.common.item.ItemNetherPepper;
-import growthcraft.nether.common.item.ItemNetherRashSpores;
-import growthcraft.nether.common.item.ItemNetherSquashSeeds;
+import growthcraft.netherloid.common.item.ItemEctoplasm;
+import growthcraft.netherloid.common.item.ItemNetherGhastPowder;
+import growthcraft.netherloid.common.item.ItemNetherMaliceFruit;
+import growthcraft.netherloid.common.item.ItemNetherMuertecap;
+import growthcraft.netherloid.common.item.ItemNetherPepper;
+import growthcraft.netherloid.common.item.ItemNetherRashSpores;
+import growthcraft.netherloid.common.item.ItemNetherSquashSeeds;
+import growthcraft.netherloid.netherloid;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Items;
+import net.minecraftforge.oredict.OreDictionary;
 
-public class GrcNetherItems extends GrcModuleBase
+public class netherloidItems extends GrcModuleBase
 {
 	public ItemDefinition ectoplasm;
 	public ItemDefinition netherMaliceFruit;
@@ -68,7 +70,11 @@ public class GrcNetherItems extends GrcModuleBase
 		GameRegistry.registerItem(netherSquashSeeds.getItem(), "grcnether.netherSquashSeeds");
 		GameRegistry.registerItem(netherMaliceFruit.getItem(), "grcnether.netherMaliceFruitItem");
 		GameRegistry.registerItem(netherGhastPowder.getItem(), "grcnether.netherGhastPowder");
+		
+		OreDictionary.registerOre("yeastPoison", netherRashSpores.getItem());
+		OreDictionary.registerOre("fruitMalum", netherMaliceFruit.getItem());
 
 		GameRegistry.addShapelessRecipe(netherGhastPowder.asStack(3), Items.ghast_tear, Items.blaze_powder);
 	}
 }
+
