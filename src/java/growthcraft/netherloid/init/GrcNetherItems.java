@@ -25,13 +25,13 @@ package growthcraft.nether.init;
 
 import growthcraft.core.common.definition.ItemDefinition;
 import growthcraft.core.common.GrcModuleBase;
-import growthcraft.nether.common.item.ItemEctoplasm;
-import growthcraft.nether.common.item.ItemNetherGhastPowder;
-import growthcraft.nether.common.item.ItemNetherMaliceFruit;
-import growthcraft.nether.common.item.ItemNetherMuertecap;
-import growthcraft.nether.common.item.ItemNetherPepper;
-import growthcraft.nether.common.item.ItemNetherRashSpores;
-import growthcraft.nether.common.item.ItemNetherSquashSeeds;
+import growthcraft.netherloid.common.item.ItemEctoplasm;
+import growthcraft.netherloid.common.item.ItemNetherGhastPowder;
+import growthcraft.netherloid.common.item.ItemNetherMaliceFruit;
+import growthcraft.netherloid.common.item.ItemNetherMuertecap;
+import growthcraft.netherloid.common.item.ItemNetherPepper;
+import growthcraft.netherloid.common.item.ItemNetherRashSpores;
+import growthcraft.netherloid.common.item.ItemNetherSquashSeeds;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Items;
