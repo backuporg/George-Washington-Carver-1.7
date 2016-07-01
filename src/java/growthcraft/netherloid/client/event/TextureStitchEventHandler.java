@@ -33,7 +33,7 @@ import net.minecraftforge.client.event.TextureStitchEvent;
 
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
-	public void onTextureStitchPost(TextureStitchEvent.Post event)
+	public void onTextureStitchPost(TextureStitchEvent.Pre event)
 	{
 		if (event.map.getTextureType() == 0)
 		{
