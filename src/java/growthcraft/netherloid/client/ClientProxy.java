@@ -21,9 +21,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package id2h.netherloid.client;
+package growthcraft.netherloid.client;
 
-import id2h.netherloid.common.CommonProxy;
+import growthcraft.netherloid.common.CommonProxy;
 
 public class ClientProxy extends CommonProxy
 {

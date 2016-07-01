@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package id2h.netherloid.common.block;
+package growthcraft.netherloid.common.block;
 
 import java.util.Random;
 
@@ -29,8 +29,8 @@ import javax.annotation.Nonnull;
 
 import growthcraft.core.common.block.BlockPaddyBase;
 import growthcraft.api.core.util.BlockFlags;
-import id2h.netherloid.Netherloid;
-import id2h.netherloid.util.NetherBlockCheck;
+import growthcraft.netherloid.Netherloid;
+import growthcraft.netherloid.util.NetherBlockCheck;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

@@ -21,10 +21,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package id2h.netherloid.client.event;
+package growthcraft.netherloid.client.event;
 
 import growthcraft.core.GrowthCraftCore;
-import id2h.netherloid.Netherloid;
+import growthcraft.netherloid.Netherloid;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
