@@ -73,6 +73,7 @@ public class netherloidItems extends GrcModuleBase
 		
 		OreDictionary.registerOre("yeastPoison", netherRashSpores.getItem());
 		OreDictionary.registerOre("fruitMalum", netherMaliceFruit.getItem());
+		OreDictionary.registerOre("ghostChili", netherPepper.getItem());
 
 		GameRegistry.addShapelessRecipe(netherGhastPowder.asStack(3), Items.ghast_tear, Items.blaze_powder);
 	}
