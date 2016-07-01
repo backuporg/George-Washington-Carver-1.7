@@ -222,7 +222,7 @@ public class netherloidFluids extends GrcModuleBase
 		registerFireBrandy();
 
 	@Override
-	public void register()
+	public void register();
 	{
 		maliceCider.register("grc.maliceCider");
 		fireBrandy.register("grc.fireBrandy");
