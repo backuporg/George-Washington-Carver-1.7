@@ -90,75 +90,70 @@ public class GrcNetherFluids extends GrcModuleBase
 		}
 
 		GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[0])
-			.tags(BoozeTag.YOUNG)
+			.tags(BoozeTag.YOUNG, BoozeTag.INFERNAL)
 			.pressesFrom(
-				EnumGrapes.PURPLE.asStack(),
+				ItemNetherMaliceFruit.asStack(),
 				TickUtils.seconds(2),
 				40,
 				Residue.newDefault(0.3F));
+				.addPotionEntry(Potion.confusion, TickUtils.minutes(3), 0)
+				.addPotionEntry(Potion.hunger, TickUtils.minutes(3), 0);
 
 		// Brewers Yeast, Nether Wart
 		GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[1])
-			.tags(BoozeTag.WINE, BoozeTag.FERMENTED)
+			.tags(BoozeTag.CIDER, BoozeTag.FERMENTED, BoozeTag.INFERNAL)
 			.fermentsFrom(fs[0], new OreItemStacks("yeastBrewers"), fermentTime)
 			.fermentsFrom(fs[0], new ItemStack(Items.nether_wart), (int)(fermentTime * 0.66))
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.05f), TickUtils.seconds(90))
-				.addPotionEntry(Potion.resistance, TickUtils.minutes(3), 0);
+				.addPotionEntry(Potion.regeneration, TickUtils.minutes(3), 0)
+				.addPotionEntry(Potion.damageBoost, TickUtils.minutes(1), 1);
 
 		// Glowstone Dust
 		GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[2])
-			.tags(BoozeTag.WINE, BoozeTag.FERMENTED, BoozeTag.POTENT)
+			.tags(BoozeTag.CIDER, BoozeTag.FERMENTED, BoozeTag.POTENT, BoozeTag.INFERNAL)
 			.fermentsFrom(fs[1], new OreItemStacks("dustGlowstone"), fermentTime)
 			.fermentsFrom(fs[3], new OreItemStacks("dustGlowstone"), fermentTime)
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.07f), TickUtils.seconds(90))
-				.addPotionEntry(Potion.resistance, TickUtils.minutes(3), 0);
+				.addPotionEntry(Potion.regeneration, TickUtils.minutes(1), 1)
+				.addPotionEntry(Potion.damageBoost, TickUtils.minutes(1), 2);
 
 		// Redstone Dust
 		GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[3])
-			.tags(BoozeTag.WINE, BoozeTag.FERMENTED, BoozeTag.EXTENDED)
+			.tags(BoozeTag.CIDER, BoozeTag.FERMENTED, BoozeTag.EXTENDED, BoozeTag.INFERNAL)
 			.fermentsFrom(fs[1], new OreItemStacks("dustRedstone"), fermentTime)
 			.fermentsFrom(fs[2], new OreItemStacks("dustRedstone"), fermentTime)
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.05f), TickUtils.seconds(90))
-				.addPotionEntry(Potion.resistance, TickUtils.minutes(3), 0);
+				.addPotionEntry(Potion.regeneration, TickUtils.minutes(6), 0)
+				.addPotionEntry(Potion.damageBoost, TickUtils.minutes(2), 1);
 
-		// Ambrosia - Ethereal Yeast
+		// Amrita - Ethereal Yeast
 		GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[4])
-			.tags(BoozeTag.WINE, BoozeTag.FERMENTED, BoozeTag.HYPER_EXTENDED)
+			.tags(BoozeTag.CIDER, BoozeTag.FERMENTED, BoozeTag.HYPER_EXTENDED, BoozeTag.INFERNAL)
 			.fermentsFrom(fs[2], new OreItemStacks("yeastEthereal"), fermentTime)
 			.fermentsFrom(fs[3], new OreItemStacks("yeastEthereal"), fermentTime)
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.053f), TickUtils.seconds(90))
-				.addPotionEntry(Potion.field_76434_w, TickUtils.minutes(3), 0)
-				.addPotionEntry(Potion.resistance, TickUtils.minutes(3), 0);
+				.addPotionEntry(Potion.regeneration, TickUtils.minutes(6), 1)
+				.addPotionEntry(Potion.damageBoost, TickUtils.minutes(2), 2);
 
-		// Port Wine - Bayanus Yeast
-		GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[5])
-			.tags(BoozeTag.WINE, BoozeTag.FERMENTED, BoozeTag.FORTIFIED)
-			.brewsFrom(
-				new FluidStack(maliceCiderBooze[1], GrowthCraftGrapes.getConfig().portWineBrewingYield),
-				new OreItemStacks("yeastBayanus"),
-				GrowthCraftGrapes.getConfig().portWineBrewingTime,
-				Residue.newDefault(0.3F))
-			.getEffect()
-				.setTipsy(BoozeUtils.alcoholToTipsy(0.20f), TickUtils.seconds(90))
-				.addPotionEntry(Potion.resistance, TickUtils.minutes(3), 2);
-
-		// Intoxicated Wine
+		// Intoxicated
 		GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[6])
-			.tags(BoozeTag.WINE, BoozeTag.FERMENTED, BoozeTag.INTOXICATED)
+			.tags(BoozeTag.WINE, BoozeTag.FERMENTED, BoozeTag.INTOXICATED, BoozeTag.INFERNAL)
 			.fermentsFrom(fs[2], new OreItemStacks("yeastOrigin"), fermentTime)
 			.fermentsFrom(fs[3], new OreItemStacks("yeastOrigin"), fermentTime)
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.15f), TickUtils.seconds(90))
 				.addEffect(new EffectWeightedRandomList()
-					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(Potion.resistance.id, TickUtils.minutes(3), 2)))
-					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(Potion.weakness.id, TickUtils.minutes(3), 2))));
+					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(Potion.regeneration.id, TickUtils.minutes(3), 0)))
+					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(Potion.damageboost.id, TickUtils.minutes(1), 1)))
+					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(Potion.poison.id, TickUtils.minutes(3), 1))))
+					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(Potion.weakness.id, TickUtils.minutes(1), 1))));
 
 		GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[7])
-			.tags(BoozeTag.WINE, BoozeTag.FERMENTED, BoozeTag.POISONED)
+			.tags(BoozeTag.CIDER, BoozeTag.FERMENTED, BoozeTag.POISONED, BoozeTag.INFERNAL)
 			.fermentsTo(fs[1], new OreItemStacks("yeastPoison"), fermentTime)
 			.fermentsTo(fs[2], new OreItemStacks("yeastPoison"), fermentTime)
 			.fermentsTo(fs[3], new OreItemStacks("yeastPoison"), fermentTime)
