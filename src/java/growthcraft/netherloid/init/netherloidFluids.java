@@ -84,9 +84,29 @@ public class netherloidFluids extends GrcModuleBase
 		maliceCiderFluids[5].getBlock().refreshColor();
 
 		this.maliceCider = new ItemDefinition(new ItemBoozeBottle(maliceCiderBooze));
+		
+		this.fireBrandyBooze = new Booze[8];
+		this.fireBrandyFluids = new BlockBoozeDefinition[fireBrandyBooze.length];
+		this.fireBrandyBuckets = new ItemBucketBoozeDefinition[fireBrandyBooze.length];
+		BoozeRegistryHelper.initializeBoozeFluids("grc.fireBrandy", fireBrandyBooze);
+		for (Booze booze : fireBrandyBooze)
+		{
+			booze.setColor(netherloid.getConfig().fireBrandyColor).setDensity(1120);
+		}
+		BoozeRegistryHelper.initializeBooze(fireBrandyBooze, fireBrandyFluids, fireBrandyBuckets);
+		BoozeRegistryHelper.setBoozeFoodStats(fireBrandyBooze, 1, -0.3f);
+		BoozeRegistryHelper.setBoozeFoodStats(fireBrandyBooze[0], 1, 0.3f);
+
+		fireBrandyBooze[4].setColor(netherloid.getConfig().fireBrandyColor);
+		fireBrandyFluids[4].getBlock().refreshColor();
+		fireBrandyBooze[5].setColor(netherloid.getConfig().fireBrandyColor);
+		fireBrandyFluids[5].getBlock().refreshColor();
+		
+		this.fireBrandy = new ItemDefinition(new ItemBoozeBottle(fireBrandyBooze));
+		
 	}
 
-	private void registerFermentations()
+	private void registerMaliceCider()
 	{
 		final int fermentTime = GrowthCraftCellar.getConfig().fermentTime;
 		final FluidStack[] fs = new FluidStack[maliceCiderBooze.length];
@@ -169,14 +189,46 @@ public class netherloidFluids extends GrcModuleBase
 				.createPotionEntry(Potion.poison, TickUtils.seconds(90), 0).toggleDescription(!GrowthCraftCore.getConfig().hidePoisonedBooze);
 	}
 
+	private void registerFireBrandy()
+	{
+		final int fermentTime = GrowthCraftCellar.getConfig().fermentTime;
+		final FluidStack[] fs = new FluidStack[fireBrandyBooze.length];
+		for (int i = 0; i < fs.length; ++i)
+		{
+			fs[i] = new FluidStack(fireBrandyBooze[i], 1);
+		}
+
+		GrowthCraftCellar.boozeBuilderFactory.create(fireBrandyBooze[0])
+			.tags(BoozeTag.YOUNG, BoozeTag.INFERNAL)
+			.pressesFrom(
+				new OreItemStacks("ghostChili"),
+				TickUtils.seconds(2),
+				40,
+				Residue.newDefault(0.3F));
+
+		GrowthCraftCellar.boozeBuilderFactory.create(fireBrandyBooze[1])
+			.tags(BoozeTag.FERMENTED, BoozeTag.INFERNAL)
+			.fermentsFrom(fs[0], new OreItemStacks("yeastBrewers"), fermentTime)
+			.fermentsFrom(fs[0], new ItemStack(Items.nether_wart), (int)(fermentTime * 0.66))
+			.getEffect()
+				.setTipsy(BoozeUtils.alcoholToTipsy(0.0419f), TickUtils.seconds(45))
+				.addPotionEntry(Potion.fireResistance, TickUtils.seconds(350), 0);
+	}
+
+	
+	private void registerFermentations()
+	{
+		registerMaliceCider();
+		registerFireBrandy();
+
 	@Override
 	public void register()
 	{
 		maliceCider.register("grc.maliceCider");
+		fireBrandy.register("grc.fireBrandy");
 
 		BoozeRegistryHelper.registerBooze(maliceCiderBooze, maliceCiderFluids, maliceCiderBuckets, maliceCider, "grc.maliceCider", null);
+		BoozeRegistryHelper.registerBooze(fireBrandyBooze, fireBrandyFluids, fireBrandyBuckets, fireBrandy, "grc.fireBrandy", null);
 		registerFermentations();
-
-		OreDictionary.registerOre("foodGrapejuice", maliceCider.asStack(1, 0));
 	}
 }
