@@ -59,6 +59,7 @@ public class netherloid
 	public static netherloid instance;
 
 	public static CreativeTabs tab;
+
 	public static netherloidBlocks blocks = new netherloidBlocks();
 	public static netherloidItems items = new netherloidItems();
 	public static netherloidFluids fluids = new netherloidFluids();
