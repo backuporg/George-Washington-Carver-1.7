@@ -33,6 +33,7 @@ import growthcraft.cellar.common.item.ItemBoozeBottle;
 import growthcraft.api.core.effect.EffectAddPotionEffect;
 import growthcraft.cellar.GrowthCraftCellar;
 import growthcraft.api.core.util.TickUtils;
+import growthcraft.cellar.util.BoozeUtils;
 import growthcraft.cellar.util.BoozeRegistryHelper;
 import growthcraft.cellar.common.item.EnumYeast;
 import growthcraft.core.common.definition.ItemDefinition;
@@ -65,15 +66,15 @@ public class GrcNetherFluids extends GrcModuleBase
 		BoozeRegistryHelper.initializeBoozeFluids("grc.maliceCider", maliceCiderBooze);
 		for (Booze booze : maliceCiderBooze)
 		{
-			booze.setColor(GrowthCraftGrapes.getConfig().maliceCiderColor).setDensity(1120);
+			booze.setColor(Netherloid.getConfig().maliceCiderColor).setDensity(1120);
 		}
 		BoozeRegistryHelper.initializeBooze(maliceCiderBooze, maliceCiderFluids, maliceCiderBuckets);
 		BoozeRegistryHelper.setBoozeFoodStats(maliceCiderBooze, 1, -0.3f);
 		BoozeRegistryHelper.setBoozeFoodStats(maliceCiderBooze[0], 1, 0.3f);
 
-		maliceCiderBooze[4].setColor(GrowthCraftGrapes.getConfig().maliceCiderColor);
+		maliceCiderBooze[4].setColor(Netherloid.getConfig().maliceCiderColor);
 		maliceCiderFluids[4].getBlock().refreshColor();
-		maliceCiderBooze[5].setColor(GrowthCraftGrapes.getConfig().maliceCiderColor);
+		maliceCiderBooze[5].setColor(Netherloid.getConfig().maliceCiderColor);
 		maliceCiderFluids[5].getBlock().refreshColor();
 
 		this.maliceCider = new ItemDefinition(new ItemBoozeBottle(maliceCiderBooze));
