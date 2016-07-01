@@ -67,7 +67,7 @@ public class NetherloidBlocks extends GrcModuleBase
 	public BlockDefinition netherSquash;
 	public BlockDefinition netherSquashStem;
 
-	public GrcNetherBlocks() {}
+	public NetherloidBlocks() {}
 
 	@Override
 	public void preInit()
