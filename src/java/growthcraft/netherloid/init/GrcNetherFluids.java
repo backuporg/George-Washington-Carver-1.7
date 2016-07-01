@@ -96,8 +96,6 @@ public class GrcNetherFluids extends GrcModuleBase
 				TickUtils.seconds(2),
 				40,
 				Residue.newDefault(0.3F));
-				.addPotionEntry(Potion.confusion, TickUtils.minutes(3), 0)
-				.addPotionEntry(Potion.hunger, TickUtils.minutes(3), 0);
 
 		// Brewers Yeast, Nether Wart
 		GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[1])
@@ -150,7 +148,7 @@ public class GrcNetherFluids extends GrcModuleBase
 					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(Potion.regeneration.id, TickUtils.minutes(3), 0)))
 					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(Potion.damageboost.id, TickUtils.minutes(1), 1)))
 					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(Potion.poison.id, TickUtils.minutes(3), 1))))
-					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(Potion.weakness.id, TickUtils.minutes(1), 1))));
+					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(Potion.weakness.id, TickUtils.minutes(1), 1)));
 
 		GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[7])
 			.tags(BoozeTag.CIDER, BoozeTag.FERMENTED, BoozeTag.POISONED, BoozeTag.INFERNAL)
