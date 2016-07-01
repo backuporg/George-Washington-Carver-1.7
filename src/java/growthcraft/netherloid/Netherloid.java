@@ -29,7 +29,9 @@ import growthcraft.api.core.module.ModuleContainer;
 import growthcraft.netherloid.client.event.TextureStitchEventHandler;
 import growthcraft.netherloid.common.CommonProxy;
 import growthcraft.netherloid.creativetab.CreativeTabsGrowthcraftNether;
-import growthcraft.netherloid.init.*;
+import growthcraft.netherloid.init.NetherloidItems;
+import growthcraft.netherloid.init.NetherloidFluids;
+import growthcraft.netherloid.init.NetherloidBlocks;
 
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
