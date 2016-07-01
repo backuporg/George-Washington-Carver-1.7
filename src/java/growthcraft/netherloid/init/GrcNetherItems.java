@@ -35,6 +35,7 @@ import growthcraft.netherloid.common.item.ItemNetherSquashSeeds;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Items;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class GrcNetherItems extends GrcModuleBase
 {
@@ -68,6 +69,8 @@ public class GrcNetherItems extends GrcModuleBase
 		GameRegistry.registerItem(netherSquashSeeds.getItem(), "grcnether.netherSquashSeeds");
 		GameRegistry.registerItem(netherMaliceFruit.getItem(), "grcnether.netherMaliceFruitItem");
 		GameRegistry.registerItem(netherGhastPowder.getItem(), "grcnether.netherGhastPowder");
+		
+		OreDictionary.registerOre("yeastPoison", netherRashSpores.getItem());
 
 		GameRegistry.addShapelessRecipe(netherGhastPowder.asStack(3), Items.ghast_tear, Items.blaze_powder);
 	}
