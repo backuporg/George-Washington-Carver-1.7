@@ -84,6 +84,12 @@ public class BoozeTag
 	public static final FluidTag RUM = CoreRegistry.instance().fluidTags().createTag("rum");
 	//This beverage is made from fermenting palm nectar
 	public static final FluidTag NECTAR = CoreRegistry.instance().fluidTags().createTag("nectar");
+	//This beverage is made from fermenting agave
+	public static final FluidTag PULQUE = CoreRegistry.instance().fluidTags().createTag("pulque");
+	//This beverage is whiskey
+	public static final FluidTag WHISKEY = CoreRegistry.instance().fluidTags().createTag("whiskey");
+	//This beverage is vodka
+	public static final FluidTag VODKA = CoreRegistry.instance().fluidTags().createTag("vodka");
 
 	private BoozeTag() {}
 }
