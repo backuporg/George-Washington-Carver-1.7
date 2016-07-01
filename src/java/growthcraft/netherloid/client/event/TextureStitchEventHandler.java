@@ -31,20 +31,18 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraftforge.client.event.TextureStitchEvent;
 
-	@SubscribeEvent
-	@SideOnly(Side.CLIENT)
-	public void onTextureStitchPost(TextureStitchEvent.Pre event)
+@SubscribeEvent
+@SideOnly(Side.CLIENT)
+public void onTextureStitchPost(TextureStitchEvent.Post event)
+{
+	if (event.map.getTextureType() == 0)
 	{
-		if (event.map.getTextureType() == 0)
-		{
-			for (Booze bz : fluids.fireBrandyBooze)
-			{
-				bz.setIcons(GrowthCraftCore.liquidSmoothTexture);
-			}
-			for (Booze bz : fluids.maliceCiderBooze)
-			{
-				bz.setIcons(GrowthCraftCore.liquidSmoothTexture);
-			}
-		}
+	for (Booze bz : fluids.fireBrandyBooze)
+	{
+		bz.setIcons(GrowthCraftCore.liquidSmoothTexture);
+	}
+	for (Booze bz : fluids.maliceCiderBooze)
+	{
+		bz.setIcons(GrowthCraftCore.liquidSmoothTexture);
 	}
 }
