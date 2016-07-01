@@ -23,7 +23,7 @@
  */
 package growthcraft.netherloid.common.block;
 
-import growthcraft.netherloid.Netherloid;
+import growthcraft.netherloid;
 import growthcraft.netherloid.util.DamageSources;
 
 import net.minecraft.block.BlockBush;
