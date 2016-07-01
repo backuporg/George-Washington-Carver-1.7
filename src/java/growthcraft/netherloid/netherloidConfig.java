@@ -25,7 +25,7 @@ package growthcraft.netherloid;
 
 import growthcraft.core.ConfigBase;
 
-public class GrcNetherConfig extends ConfigBase
+public class netherloidConfig extends ConfigBase
 {
 	@ConfigOption(catergory="Nether Pepper", name="Minimum Peppers Picked", desc="What is the minimum number of peppers picked?")
 	public int minPepperPicked = 1;

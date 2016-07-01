@@ -61,13 +61,13 @@ public class netherloid
 	public static CreativeTabs tab;
 	public static netherloidBlocks blocks = new netherloidBlocks();
 	public static netherloidFluids fluids = new netherloidFluids();
-	public static GrcNetherItems items = new GrcNetherItems();
+	public static netherloidItems items = new netherloidItems();
 
 	private ILogger logger = new GrcLogger(MOD_ID);
-	private GrcNetherConfig config = new GrcNetherConfig();
+	private netherloidConfig config = new netherloidConfig();
 	private ModuleContainer modules = new ModuleContainer();
 
-	public static GrcNetherConfig getConfig()
+	public static netherloidConfig getConfig()
 	{
 		return instance.config;
 	}
