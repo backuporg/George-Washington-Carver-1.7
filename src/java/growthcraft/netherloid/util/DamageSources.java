@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package id2h.netherloid.util;
+package growthcraft.netherloid.util;
 
 import net.minecraft.util.DamageSource;
 

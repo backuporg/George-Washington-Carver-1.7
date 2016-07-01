@@ -21,13 +21,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package id2h.netherloid.common;
+package growthcraft.netherloid.common;
 
 import cpw.mods.fml.common.SidedProxy;
 
 public class CommonProxy
 {
-	@SidedProxy(clientSide="id2h.netherloid.client.ClientProxy", serverSide="id2h.netherloid.common.CommonProxy")
+	@SidedProxy(clientSide="growthcraft.netherloid.client.ClientProxy", serverSide="growthcraft.netherloid.common.CommonProxy")
 	public static CommonProxy instance;
 
 	public void initRenders() {}

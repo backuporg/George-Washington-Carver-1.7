@@ -21,9 +21,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package id2h.netherloid.integration;
+package growthcraft.netherloid.integration;
 
-import id2h.netherloid.Netherloid;
+import growthcraft.netherloid.Netherloid;
 import growthcraft.core.integration.ThaumcraftModuleBase;
 import growthcraft.cellar.integration.ThaumcraftBoozeHelper;
 
