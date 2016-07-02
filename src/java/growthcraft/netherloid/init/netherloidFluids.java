@@ -213,22 +213,19 @@ public class netherloidFluids extends GrcModuleBase
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.0419f), TickUtils.seconds(45))
 				.addPotionEntry(Potion.fireResistance, TickUtils.seconds(350), 0);
 	}
-	
-	}
 
 	public void setBoozeIcons(IIcon icon)
 	{
-		for (Booze booze : fireBrandyBooze)
+		for (Booze bz : fluids.fireBrandyBooze)
 		{
 			booze.setIcons(icon);
 		}
 
-		for (Booze booze : maliceCiderBooze)
+		for (Booze bz : fluids.maliceCiderBooze)
 		{
 			booze.setIcons(icon);
 		}
 	}
-
 	
 	private void registerFermentations()
 	{
