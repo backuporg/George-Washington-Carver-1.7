@@ -26,6 +26,7 @@ package growthcraft.netherloid.client.event;
 import growthcraft.core.GrowthCraftCore;
 import growthcraft.netherloid.netherloid;
 import growthcraft.netherloid.init.netherloidFluids;
+import growthcraft.core.client.util.InterpolatedIcon;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
@@ -40,13 +41,13 @@ public class TextureStitchEventHandler
 	{
 		if (event.map.getTextureType() == 0)
 		{
-			for (int i = 0; i < fluids.fireBrandyBooze.length; ++i)
+			for (Booze booze : fluids.fireBrandyBooze)
 			{
-				fluids.fireBrandyBooze[i].setIcons(GrowthCraftCore.liquidSmoothTexture);
+				bz.setIcons(GrowthCraftCore.liquidSmoothTexture);
 			}
-			for (int i = 0; i < fluids.maliceCiderBooze.length; ++i)
+			for (Booze booze : fluids.maliceCiderBooze)
 			{
-				fluids.maliceCiderBooze[i].setIcons(GrowthCraftCore.liquidSmoothTexture);
+				bz.setIcons(GrowthCraftCore.liquidSmoothTexture);
 			}
 		}
 	}
