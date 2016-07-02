@@ -220,6 +220,23 @@ public class netherloidFluids extends GrcModuleBase
 		registerFireBrandy();
 		
 	}
+	
+	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
+	public void onTextureStitchPost(TextureStitchEvent.Post event)
+	{
+		if (event.map.getTextureType() == 0)
+		{
+			for (Booze booze : fluids.fireBrandyBooze)
+			{
+				booze.setIcons(GrowthCraftCore.liquidSmoothTexture);
+			}
+			for (Booze booze : fluids.maliceCiderBooze)
+			{
+				booze.setIcons(GrowthCraftCore.liquidSmoothTexture);
+			}
+		}
+	}
 
 	@Override
 	public void register()
