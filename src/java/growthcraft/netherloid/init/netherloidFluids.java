@@ -214,16 +214,20 @@ public class netherloidFluids extends GrcModuleBase
 				.addPotionEntry(Potion.fireResistance, TickUtils.seconds(350), 0);
 	}
 
-	public void setBoozeIcons(IIcon icon)
+	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
+	public void onTextureStitchPost(TextureStitchEvent.Post event)
 	{
-		for (Booze bz : fluids.fireBrandyBooze)
+		if (event.map.getTextureType() == 0)
 		{
-			booze.setIcons(icon);
-		}
-
-		for (Booze bz : fluids.maliceCiderBooze)
-		{
-			booze.setIcons(icon);
+			for (int i = 0; i < fluids.fireBrandyBooze.length; ++i)
+			{
+				fluids.fireBrandyBooze[i].setIcons(GrowthCraftCore.liquidSmoothTexture);
+			}
+			for (int i = 0; i < fluids.maliceCiderBooze.length; ++i)
+			{
+				fluids.maliceCiderBooze[i].setIcons(GrowthCraftCore.liquidSmoothTexture);
+			}
 		}
 	}
 	
