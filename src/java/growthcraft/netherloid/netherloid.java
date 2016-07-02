@@ -96,8 +96,6 @@ public class netherloid
 
 		modules.preInit();
 		modules.register();
-
-		MinecraftForge.EVENT_BUS.register(new TextureStitchEventHandler());
 	}
 
 	@EventHandler
