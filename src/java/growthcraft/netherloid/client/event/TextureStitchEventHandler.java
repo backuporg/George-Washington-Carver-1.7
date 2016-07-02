@@ -24,28 +24,22 @@
 package growthcraft.netherloid.client.event;
 
 import growthcraft.core.GrowthCraftCore;
-import growthcraft.core.client.util.InterpolatedIcon;
-import growthcraft.core.GrowthCraftCore;
-import growthcraft.netherloid.netherloid;
+import growthcraft.netherloid.Netherloid;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraftforge.client.event.TextureStitchEvent;
-import net.minecraft.util.IIcon;
 
-@SubscribeEvent
-@SideOnly(Side.CLIENT)
-public void onTextureStitchPost(TextureStitchEvent.Post event)
+public class TextureStitchEventHandler
 {
-	if (event.map.getTextureType() == 0)
+	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
+	public void onTextureStitchPost(TextureStitchEvent.Post event)
 	{
-	for (Booze bz : fluids.fireBrandyBooze)
-	{
-		bz.setIcons(GrowthCraftCore.liquidSmoothTexture);
-	}
-	for (Booze bz : fluids.maliceCiderBooze)
-	{
-		bz.setIcons(GrowthCraftCore.liquidSmoothTexture);
+		if (event.map.getTextureType() == 0)
+		{
+			Netherloid.fluids.setBoozeIcons(GrowthCraftCore.liquidSmoothTexture);
+		}
 	}
 }
