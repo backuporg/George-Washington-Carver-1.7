@@ -31,7 +31,6 @@ import growthcraft.netherloid.creativetab.CreativeTabsGrowthcraftNether;
 import growthcraft.netherloid.init.netherloidItems;
 import growthcraft.netherloid.init.netherloidFluids;
 import growthcraft.netherloid.init.netherloidBlocks;
-import net.minecraftforge.client.event.TextureStitchEvent;
 
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
@@ -40,11 +39,8 @@ import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraft.util.IIcon;
 
 @Mod(
 	modid = netherloid.MOD_ID,
