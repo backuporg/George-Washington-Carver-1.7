@@ -65,7 +65,7 @@ public class netherloidFluids extends GrcModuleBase
 	@Override
 	public void preInit()
 	{
-		this.maliceCiderBooze = new Booze[0];
+		this.maliceCiderBooze = new Booze[100];
 		this.maliceCiderFluids = new BlockBoozeDefinition[maliceCiderBooze.length];
 		this.maliceCiderBuckets = new ItemBucketBoozeDefinition[maliceCiderBooze.length];
 		BoozeRegistryHelper.initializeBoozeFluids("grc.maliceCider", maliceCiderBooze);
@@ -79,7 +79,7 @@ public class netherloidFluids extends GrcModuleBase
 
 		this.maliceCider = new ItemDefinition(new ItemBoozeBottle(maliceCiderBooze));
 		
-		this.fireBrandyBooze = new Booze[0];
+		this.fireBrandyBooze = new Booze[100];
 		this.fireBrandyFluids = new BlockBoozeDefinition[fireBrandyBooze.length];
 		this.fireBrandyBuckets = new ItemBucketBoozeDefinition[fireBrandyBooze.length];
 		BoozeRegistryHelper.initializeBoozeFluids("grc.fireBrandy", fireBrandyBooze);
