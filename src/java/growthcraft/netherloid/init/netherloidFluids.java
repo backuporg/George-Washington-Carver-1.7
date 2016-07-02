@@ -75,7 +75,7 @@ public class netherloidFluids extends GrcModuleBase
 		}
 		BoozeRegistryHelper.initializeBooze(maliceCiderBooze, maliceCiderFluids, maliceCiderBuckets);
 		BoozeRegistryHelper.setBoozeFoodStats(maliceCiderBooze, 1, -0.3f);
-		BoozeRegistryHelper.setBoozeFoodStats(maliceCiderBooze[0], 1, 0.3f);
+		BoozeRegistryHelper.setBoozeFoodStats(maliceCiderBooze[1], 1, 0.3f);
 
 		this.maliceCider = new ItemDefinition(new ItemBoozeBottle(maliceCiderBooze));
 		
@@ -89,7 +89,7 @@ public class netherloidFluids extends GrcModuleBase
 		}
 		BoozeRegistryHelper.initializeBooze(fireBrandyBooze, fireBrandyFluids, fireBrandyBuckets);
 		BoozeRegistryHelper.setBoozeFoodStats(fireBrandyBooze, 1, -0.3f);
-		BoozeRegistryHelper.setBoozeFoodStats(fireBrandyBooze[0], 1, 0.3f);
+		BoozeRegistryHelper.setBoozeFoodStats(fireBrandyBooze[1], 1, 0.3f);
 		
 		this.fireBrandy = new ItemDefinition(new ItemBoozeBottle(fireBrandyBooze));
 		
