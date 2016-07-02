@@ -25,6 +25,7 @@ package growthcraft.netherloid.client.event;
 
 import growthcraft.core.GrowthCraftCore;
 import growthcraft.netherloid.netherloid;
+import growthcraft.netherloid.init.netherloidFluids;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
