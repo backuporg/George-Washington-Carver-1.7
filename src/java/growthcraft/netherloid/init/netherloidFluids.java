@@ -228,11 +228,11 @@ public class netherloidFluids extends GrcModuleBase
 	{
 		if (event.map.getTextureType() == 0)
 		{
-			for (Booze booze : fluids.fireBrandyBooze)
+			for (Booze booze : fireBrandyBooze)
 			{
 				booze.setIcons(GrowthCraftCore.liquidSmoothTexture);
 			}
-			for (Booze booze : fluids.maliceCiderBooze)
+			for (Booze booze : maliceCiderBooze)
 			{
 				booze.setIcons(GrowthCraftCore.liquidSmoothTexture);
 			}
