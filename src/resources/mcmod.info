@@ -198,7 +198,7 @@
     "useDependencyInformation": "true"
 },
 {
-    "modid": "Netherloid",
+    "modid": "netherloid",
     "name": "Netherloid",
     "description": "Growthcraft Nether is a module that expands the nether greatly..",
     "version": "${version}",
