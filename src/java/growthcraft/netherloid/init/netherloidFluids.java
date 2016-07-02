@@ -213,23 +213,6 @@ public class netherloidFluids extends GrcModuleBase
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.0419f), TickUtils.seconds(45))
 				.addPotionEntry(Potion.fireResistance, TickUtils.seconds(350), 0);
 	}
-
-	@SubscribeEvent
-	@SideOnly(Side.CLIENT)
-	public void onTextureStitchPost(TextureStitchEvent.Post event)
-	{
-		if (event.map.getTextureType() == 0)
-		{
-			for (int i = 0; i < fluids.fireBrandyBooze.length; ++i)
-			{
-				fluids.fireBrandyBooze[i].setIcons(GrowthCraftCore.liquidSmoothTexture);
-			}
-			for (int i = 0; i < fluids.maliceCiderBooze.length; ++i)
-			{
-				fluids.maliceCiderBooze[i].setIcons(GrowthCraftCore.liquidSmoothTexture);
-			}
-		}
-	}
 	
 	private void registerFermentations()
 	{

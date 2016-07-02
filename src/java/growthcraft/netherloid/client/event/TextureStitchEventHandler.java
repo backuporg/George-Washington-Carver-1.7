@@ -40,7 +40,14 @@ public class TextureStitchEventHandler
 	{
 		if (event.map.getTextureType() == 0)
 		{
-			netherloid.fluids.setBoozeIcons(GrowthCraftCore.liquidSmoothTexture);
+			for (int i = 0; i < fluids.fireBrandyBooze.length; ++i)
+			{
+				fluids.fireBrandyBooze[i].setIcons(GrowthCraftCore.liquidSmoothTexture);
+			}
+			for (int i = 0; i < fluids.maliceCiderBooze.length; ++i)
+			{
+				fluids.maliceCiderBooze[i].setIcons(GrowthCraftCore.liquidSmoothTexture);
+			}
 		}
 	}
 }
