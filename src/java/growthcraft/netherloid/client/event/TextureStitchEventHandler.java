@@ -43,11 +43,11 @@ public class TextureStitchEventHandler
 		{
 			for (Booze booze : fluids.fireBrandyBooze)
 			{
-				bz.setIcons(GrowthCraftCore.liquidSmoothTexture);
+				booze.setIcons(GrowthCraftCore.liquidSmoothTexture);
 			}
 			for (Booze booze : fluids.maliceCiderBooze)
 			{
-				bz.setIcons(GrowthCraftCore.liquidSmoothTexture);
+				booze.setIcons(GrowthCraftCore.liquidSmoothTexture);
 			}
 		}
 	}
