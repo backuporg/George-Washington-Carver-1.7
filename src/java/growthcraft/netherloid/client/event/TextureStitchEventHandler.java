@@ -39,7 +39,7 @@ public class TextureStitchEventHandler
 	{
 		if (event.map.getTextureType() == 0)
 		{
-			Netherloid.fluids.setBoozeIcons(GrowthCraftCore.liquidSmoothTexture);
+			netherloid.fluids.setBoozeIcons(GrowthCraftCore.liquidSmoothTexture);
 		}
 	}
 }
