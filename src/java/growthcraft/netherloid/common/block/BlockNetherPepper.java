@@ -69,8 +69,8 @@ public class BlockNetherPepper extends BlockBush implements ICropDataProvider, I
 	{
 		super(Material.plants);
 		setTickRandomly(true);
-		setBlockTextureName("grcnether:pepper");
-		setBlockName("grcnether.netherPepper");
+		setBlockTextureName("grcnetherloid:pepper");
+		setBlockName("grcnetherloid.netherPepper");
 	}
 
 	private void incrementGrowth(World world, int x, int y, int z, int meta)

@@ -58,7 +58,7 @@ public class BlockNetherPaddy extends BlockPaddyBase
 	{
 		super(Material.sand);
 		setHardness(0.5F);
-		setBlockName("grcnether.netherPaddyField");
+		setBlockName("grcnetherloid.netherPaddyField");
 		setCreativeTab(null);
 		this.filledPaddy = filled;
 		if (filledPaddy)
@@ -204,8 +204,8 @@ public class BlockNetherPaddy extends BlockPaddyBase
 		icons = new IIcon[3];
 
 		icons[0] = reg.registerIcon("soul_sand");
-		icons[1] = reg.registerIcon("grcnether:soul_sand_paddy_dry");
-		icons[2] = reg.registerIcon("grcnether:soul_sand_paddy_wet");
+		icons[1] = reg.registerIcon("grcnetherloid:soul_sand_paddy_dry");
+		icons[2] = reg.registerIcon("grcnetherloid:soul_sand_paddy_wet");
 	}
 
 	@Override

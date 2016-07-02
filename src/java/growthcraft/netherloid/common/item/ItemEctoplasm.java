@@ -32,8 +32,8 @@ public class ItemEctoplasm extends Item
 	public ItemEctoplasm()
 	{
 		super();
-		setUnlocalizedName("grcnether.ectoplasm");
-		setTextureName("grcnether:ectoplasm");
+		setUnlocalizedName("grcnetherloid.ectoplasm");
+		setTextureName("grcnetherloid:ectoplasm");
 		setCreativeTab(netherloid.tab);
 	}
 }

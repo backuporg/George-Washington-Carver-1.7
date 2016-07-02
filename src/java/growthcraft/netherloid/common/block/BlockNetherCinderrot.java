@@ -35,9 +35,9 @@ public class BlockNetherCinderrot extends BlockNetherFungusBase
 	public BlockNetherCinderrot()
 	{
 		super();
-		setBlockName("grcnether.netherCinderrot");
+		setBlockName("grcnetherloid.netherCinderrot");
 		setCreativeTab(netherloid.tab);
-		setBlockTextureName("grcnether:cinderrot");
+		setBlockTextureName("grcnetherloid:cinderrot");
 		setBlockBounds(0.375F, 0.0F, 0.375F, 0.625F, 0.375F, 0.625F);
 	}
 

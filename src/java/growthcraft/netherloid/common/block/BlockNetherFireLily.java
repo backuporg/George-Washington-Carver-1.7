@@ -30,8 +30,8 @@ public class BlockNetherFireLily extends BlockLavaLilyPadBase
 	public BlockNetherFireLily()
 	{
 		super();
-		setBlockName("grcnether.netherFireLily");
+		setBlockName("grcnetherloid.netherFireLily");
 		setCreativeTab(netherloid.tab);
-		setBlockTextureName("grcnether:firelily");
+		setBlockTextureName("grcnetherloid:firelily");
 	}
 }

@@ -66,7 +66,7 @@ public class BlockNetherMaliceLeaves extends BlockLeavesBase implements IShearab
 		setHardness(0.2F);
 		setLightOpacity(1);
 		setStepSound(soundTypeGrass);
-		setBlockName("grcnether.netherMaliceLeaves");
+		setBlockName("grcnetherloid.netherMaliceLeaves");
 		setCreativeTab(netherloid.tab);
 	}
 
@@ -348,8 +348,8 @@ public class BlockNetherMaliceLeaves extends BlockLeavesBase implements IShearab
 	{
 		icons = new IIcon[2];
 
-		icons[0] = reg.registerIcon("grcnether:leaves_malice");
-		icons[1] = reg.registerIcon("grcnether:leaves_malice_opaque");
+		icons[0] = reg.registerIcon("grcnetherloid:leaves_malice");
+		icons[1] = reg.registerIcon("grcnetherloid:leaves_malice_opaque");
 	}
 
 	@Override

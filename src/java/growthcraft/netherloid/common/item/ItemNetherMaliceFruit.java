@@ -35,8 +35,8 @@ public class ItemNetherMaliceFruit extends ItemFood
 	public ItemNetherMaliceFruit()
 	{
 		super(0, false);
-		setUnlocalizedName("grcnether.netherMaliceFruit");
-		setTextureName("grcnether:malice_fruit");
+		setUnlocalizedName("grcnetherloid.netherMaliceFruit");
+		setTextureName("grcnetherloid:malice_fruit");
 		setAlwaysEdible();
 	}
 

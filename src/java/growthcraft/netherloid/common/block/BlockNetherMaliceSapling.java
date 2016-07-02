@@ -53,7 +53,7 @@ public class BlockNetherMaliceSapling extends BlockBush implements IGrowable
 		super(Material.plants);
 		setHardness(0.0F);
 		setStepSound(soundTypeGrass);
-		setBlockName("grcnether.netherMaliceSapling");
+		setBlockName("grcnetherloid.netherMaliceSapling");
 		setTickRandomly(true);
 		setCreativeTab(netherloid.tab);
 		final float f = 0.4F;
@@ -136,7 +136,7 @@ public class BlockNetherMaliceSapling extends BlockBush implements IGrowable
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister reg)
 	{
-		icon = reg.registerIcon("grcnether:malicesapling");
+		icon = reg.registerIcon("grcnetherloid:malicesapling");
 	}
 
 	@Override

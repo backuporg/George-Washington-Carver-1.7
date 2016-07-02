@@ -72,7 +72,7 @@ public class BlockNetherMaliceFruit extends Block implements IGrowable, ICropDat
 		setHardness(0.2F);
 		setResistance(5.0F);
 		setStepSound(soundTypeWood);
-		setBlockName("grcnether.netherMaliceFruit");
+		setBlockName("grcnetherloid.netherMaliceFruit");
 		setCreativeTab(null);
 	}
 
@@ -227,7 +227,7 @@ public class BlockNetherMaliceFruit extends Block implements IGrowable, ICropDat
 
 		for (int i = 0; i < icons.length; ++i )
 		{
-			icons[i] = reg.registerIcon("grcnether:malice_fruit_" + i);
+			icons[i] = reg.registerIcon("grcnetherloid:malice_fruit_" + i);
 		}
 	}
 

@@ -38,8 +38,8 @@ public class BlockNetherBaalsRot extends BlockNetherFungusBase
 	public BlockNetherBaalsRot()
 	{
 		super();
-		setBlockName("grcnetherloid.netherBaalsRot");
-		setBlockTextureName("grcnetherloid:baals_rot");
+		setBlockName("grcnetherloidloid.netherBaalsRot");
+		setBlockTextureName("grcnetherloidloid:baals_rot");
 		setBlockBounds(0.125F, 0.0F, 0.125F, 0.875F, 0.8125F, 0.875F);
 		setCreativeTab(netherloid.tab);
 	}

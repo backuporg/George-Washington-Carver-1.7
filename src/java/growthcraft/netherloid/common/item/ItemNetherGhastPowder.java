@@ -32,8 +32,8 @@ public class ItemNetherGhastPowder extends Item
 	public ItemNetherGhastPowder()
 	{
 		super();
-		setUnlocalizedName("grcnether.netherGhastPowder");
-		setTextureName("grcnether:ghastpowder");
+		setUnlocalizedName("grcnetherloid.netherGhastPowder");
+		setTextureName("grcnetherloid:ghastpowder");
 		setCreativeTab(netherloid.tab);
 	}
 }
