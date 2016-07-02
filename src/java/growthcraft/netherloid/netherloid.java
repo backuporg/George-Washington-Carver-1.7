@@ -38,9 +38,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraftforge.common.MinecraftForge;
 
 @Mod(
 	modid = netherloid.MOD_ID,

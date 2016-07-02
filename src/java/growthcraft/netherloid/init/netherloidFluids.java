@@ -49,7 +49,6 @@ import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
-import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 
 public class netherloidFluids extends GrcModuleBase
