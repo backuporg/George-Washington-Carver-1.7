@@ -125,7 +125,7 @@ public class GrowthCraftCellar
 
 		if (config.debugEnabled)
 		{
-			logger.info("Pre-Initializing %s", MOD_ID);
+			logger.debug("Pre-Initializing %s", MOD_ID);
 			CellarRegistry.instance().setLogger(logger);
 		}
 
@@ -264,7 +264,7 @@ public class GrowthCraftCellar
 					final Potion[] potionTypes = (Potion[])f.get(null);
 					if (potionTypes.length < newSize)
 					{
-						logger.info("Resizing PotionTypes array from %d to %d", potionTypes.length, newSize);
+						logger.warn("Resizing PotionTypes array from %d to %d", potionTypes.length, newSize);
 						final Potion[] newPotionTypes = new Potion[newSize];
 						System.arraycopy(potionTypes, 0, newPotionTypes, 0, potionTypes.length);
 						f.set(null, newPotionTypes);
@@ -287,6 +287,11 @@ public class GrowthCraftCellar
 		OreDictionary.registerOre("yeastBayanus", EnumYeast.BAYANUS.asStack());
 		OreDictionary.registerOre("yeastEthereal", EnumYeast.ETHEREAL.asStack());
 		OreDictionary.registerOre("yeastOrigin", EnumYeast.ORIGIN.asStack());
+		OreDictionary.registerOre("foodYeast", EnumYeast.BREWERS.asStack());
+		OreDictionary.registerOre("foodYeast", EnumYeast.LAGER.asStack());
+		OreDictionary.registerOre("foodYeast", EnumYeast.BAYANUS.asStack());
+		OreDictionary.registerOre("foodYeast", EnumYeast.ETHEREAL.asStack());
+		OreDictionary.registerOre("foodYeast", EnumYeast.ORIGIN.asStack());
 	}
 
 	private void registerYeast()

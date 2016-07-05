@@ -37,7 +37,7 @@ public class GrcNetherModule extends ModIntegrationBase
 {
 	public GrcNetherModule()
 	{
-		super(GrowthCraftBees.MOD_ID, "Growthcraft|Nether");
+		super(GrowthCraftBees.MOD_ID, "netherloid");
 	}
 
 	@Override

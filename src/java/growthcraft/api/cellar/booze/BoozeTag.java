@@ -56,6 +56,40 @@ public class BoozeTag
 	public static final FluidTag WINE = CoreRegistry.instance().fluidTags().createTag("wine");
 	// the booze is some form of cider
 	public static final FluidTag CIDER = CoreRegistry.instance().fluidTags().createTag("cider");
+	//This beverage was distilled
+	public static final FluidTag DISTILLED = CoreRegistry.instance().fluidTags().createTag("distilled");
+	//This beverage has been filtered
+	public static final FluidTag FILTERED = CoreRegistry.instance().fluidTags().createTag("filtered");
+	//This beverage has been flavored with spices
+	public static final FluidTag SPICED = CoreRegistry.instance().fluidTags().createTag("spiced");
+	//This beverage has been flavored with fruit
+	public static final FluidTag FRUITY = CoreRegistry.instance().fluidTags().createTag("fruity");
+	//This beverage is ancient, and of questionable safety
+	public static final FluidTag ANCIENT = CoreRegistry.instance().fluidTags().createTag("ancient");
+	//This beverage is a cocktail
+	public static final FluidTag COCKTAIL = CoreRegistry.instance().fluidTags().createTag("cocktail");
+	//This beverage is brewed from nether-based ingredients
+	public static final FluidTag INFERNAL = CoreRegistry.instance().fluidTags().createTag("infernal");
+	//This beverage is brewed from end-based ingredients
+	public static final FluidTag ELDRITCH = CoreRegistry.instance().fluidTags().createTag("eldritch");
+	//This beverage is believed to have medicinal properties
+	public static final FluidTag MEDICINAL = CoreRegistry.instance().fluidTags().createTag("medicinal");
+	//This beverage is made from malted grains
+	public static final FluidTag MALTED = CoreRegistry.instance().fluidTags().createTag("malted");
+	//This beverage is made from fermented tea
+	public static final FluidTag KOMBUCHA = CoreRegistry.instance().fluidTags().createTag("kombucha");
+	//This beverage is made from distilling coconuts
+	public static final FluidTag ARRACK = CoreRegistry.instance().fluidTags().createTag("arrack");
+	//This beverage is made from molasses
+	public static final FluidTag RUM = CoreRegistry.instance().fluidTags().createTag("rum");
+	//This beverage is made from fermenting palm nectar
+	public static final FluidTag NECTAR = CoreRegistry.instance().fluidTags().createTag("nectar");
+	//This beverage is made from fermenting agave
+	public static final FluidTag PULQUE = CoreRegistry.instance().fluidTags().createTag("pulque");
+	//This beverage is whiskey
+	public static final FluidTag WHISKEY = CoreRegistry.instance().fluidTags().createTag("whiskey");
+	//This beverage is vodka
+	public static final FluidTag VODKA = CoreRegistry.instance().fluidTags().createTag("vodka");
 
 	private BoozeTag() {}
 }
