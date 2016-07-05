@@ -63,6 +63,23 @@ grc.fluids.tag.poisoned=Poisoned
 grc.fluids.tag.potent=Potent
 grc.fluids.tag.wine=Wine
 grc.fluids.tag.young=Young
+grc.fluids.tag.infernal=Infernal
+grc.fluids.tag.vodka=Vodka
+grc.fluids.tag.eldritch=Eldritch
+grc.fluids.tag.whiskey=Whiskey
+grc.fluids.tag.pulque=Pulque
+grc.fluids.tag.rum=Rum
+grc.fluids.tag.kombucha=Kombucha
+grc.fluids.tag.arrack=Arrack
+grc.fluids.tag.malted=Malted
+grc.fluids.tag.medicinal=Medicinal
+grc.fluids.tag.cocktail=Cocktail
+grc.fluids.tag.distilled=Distilled
+grc.fluids.tag.spiced=Spiced
+grc.fluids.tag.filtered=Filtered
+grc.fluids.tag.nectar=Nectar
+grc.fluids.tag.ancient=Ancient
+grc.fluids.tag.fruity=Fruity
 
 # GUI
 gui.grc.empty=Empty
