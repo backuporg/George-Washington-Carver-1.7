@@ -2,16 +2,16 @@
 itemGroup.tabNetherloid=Growthcraft Nether
 
 // Items
-item.grcnetherloid.ectoplasm.desc=It's the spooky stuff
 item.grcnetherloid.ectoplasm.name=Ectoplasm
+item.grcnetherloid.ectoplasm.desc=It's the spooky stuff
 item.grcnetherloid.netherMaliceFruit.name=Malice Fruit
 item.grcnetherloid.netherMuertecapFood.name=Muertecap
-item.grcnetherloid.netherPepper.desc=Its like an inferno in your mouth, but hotter
 item.grcnetherloid.netherPepper.name=Ghost Pepper
-item.grcnetherloid.netherRashSpores.desc=It burns, it itches, it spreads and well you know the rest
+item.grcnetherloid.netherPepper.desc=Its like an inferno in your mouth, but hotter
 item.grcnetherloid.netherRashSpores.name=Nether Rash Spores
-item.grcnetherloid.netherSquashSeeds.desc=Spooky looking seeds
+item.grcnetherloid.netherRashSpores.desc=It burns, it itches, it spreads and well you know the rest
 item.grcnetherloid.netherSquashSeeds.name=Soul Squash Seeds
+item.grcnetherloid.netherSquashSeeds.desc=Spooky looking seeds
 item.grcnetherloid.netherGhastPowder.name=Ghast Powder
 
 // Tiles
