@@ -2,36 +2,36 @@
 itemGroup.tabNetherloid=Growthcraft Nether
 
 // Items
-item.grcnether.ectoplasm.desc=It's the spooky stuff
-item.grcnether.ectoplasm.name=Ectoplasm
-item.grcnether.netherMaliceFruit.name=Malice Fruit
-item.grcnether.netherMuertecapFood.name=Muertecap
-item.grcnether.netherPepper.desc=Its like an inferno in your mouth, but hotter
-item.grcnether.netherPepper.name=Ghost Pepper
-item.grcnether.netherRashSpores.desc=It burns, it itches, it spreads and well you know the rest
-item.grcnether.netherRashSpores.name=Nether Rash Spores
-item.grcnether.netherSquashSeeds.desc=Spooky looking seeds
-item.grcnether.netherSquashSeeds.name=Soul Squash Seeds
-item.grcnether.netherGhastPowder.name=Ghast Powder
+item.grcnetherloid.ectoplasm.desc=It's the spooky stuff
+item.grcnetherloid.ectoplasm.name=Ectoplasm
+item.grcnetherloid.netherMaliceFruit.name=Malice Fruit
+item.grcnetherloid.netherMuertecapFood.name=Muertecap
+item.grcnetherloid.netherPepper.desc=Its like an inferno in your mouth, but hotter
+item.grcnetherloid.netherPepper.name=Ghost Pepper
+item.grcnetherloid.netherRashSpores.desc=It burns, it itches, it spreads and well you know the rest
+item.grcnetherloid.netherRashSpores.name=Nether Rash Spores
+item.grcnetherloid.netherSquashSeeds.desc=Spooky looking seeds
+item.grcnetherloid.netherSquashSeeds.name=Soul Squash Seeds
+item.grcnetherloid.netherGhastPowder.name=Ghast Powder
 
 // Tiles
-tile.grcnether.netherBaalsRot.name=Baal's Rot
-tile.grcnether.netherCinderrot.name=Cinderrot
-tile.grcnether.netherFireLily.name=Fire Lily
-tile.grcnether.netherKnifeBush.name=Knife Bush
-tile.grcnether.netherMaliceFruit.name=Malice Fruit
-tile.grcnether.netherMaliceLeaves.name=Malice Leaves
-tile.grcnether.netherMaliceLog.name=Malice Log
-tile.grcnether.netherMalicePlanks.name=Malice Planks
-tile.grcnether.netherMaliceSapling.name=Malice Sapling
-tile.grcnether.netherMaraLotus.name=Maras Lotus
-tile.grcnether.netherMolochsCompass.name=Moloch's Compass
-tile.grcnether.netherMuertecap.name=Muertecap
-tile.grcnether.netherPaddyField.name=Lava Paddy
-tile.grcnether.netherPepper.name=Ghost Peppers
-tile.grcnether.netherSquash.name=Soul Squash
-tile.grcnether.netherSquashStem.name=Soul Squash Stem
-tile.grcnether.netherStrangleroot.name=Strangleroot
+tile.grcnetherloid.netherBaalsRot.name=Baal's Rot
+tile.grcnetherloid.netherCinderrot.name=Cinderrot
+tile.grcnetherloid.netherFireLily.name=Fire Lily
+tile.grcnetherloid.netherKnifeBush.name=Knife Bush
+tile.grcnetherloid.netherMaliceFruit.name=Malice Fruit
+tile.grcnetherloid.netherMaliceLeaves.name=Malice Leaves
+tile.grcnetherloid.netherMaliceLog.name=Malice Log
+tile.grcnetherloid.netherMalicePlanks.name=Malice Planks
+tile.grcnetherloid.netherMaliceSapling.name=Malice Sapling
+tile.grcnetherloid.netherMaraLotus.name=Maras Lotus
+tile.grcnetherloid.netherMolochsCompass.name=Moloch's Compass
+tile.grcnetherloid.netherMuertecap.name=Muertecap
+tile.grcnetherloid.netherPaddyField.name=Lava Paddy
+tile.grcnetherloid.netherPepper.name=Ghost Peppers
+tile.grcnetherloid.netherSquash.name=Soul Squash
+tile.grcnetherloid.netherSquashStem.name=Soul Squash Stem
+tile.grcnetherloid.netherStrangleroot.name=Strangleroot
 
 // Booze
 /// Fire Brandy
