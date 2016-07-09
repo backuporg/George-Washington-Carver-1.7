@@ -30,6 +30,8 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
+import growthcraft.netherloid.netherloid;
+
 public class ItemNetherMaliceFruit extends ItemFood
 {
 	public ItemNetherMaliceFruit()
