@@ -65,7 +65,7 @@ public class netherloidFluids extends GrcModuleBase
 	@Override
 	public void preInit()
 	{
-		this.maliceCiderBooze = new Booze[10];
+		this.maliceCiderBooze = new Booze[7];
 		this.maliceCiderFluids = new BlockBoozeDefinition[maliceCiderBooze.length];
 		this.maliceCiderBuckets = new ItemBucketBoozeDefinition[maliceCiderBooze.length];
 		BoozeRegistryHelper.initializeBoozeFluids("grc.maliceCider", maliceCiderBooze);
@@ -79,7 +79,7 @@ public class netherloidFluids extends GrcModuleBase
 
 		this.maliceCider = new ItemDefinition(new ItemBoozeBottle(maliceCiderBooze));
 		
-		this.fireBrandyBooze = new Booze[10];
+		this.fireBrandyBooze = new Booze[7];
 		this.fireBrandyFluids = new BlockBoozeDefinition[fireBrandyBooze.length];
 		this.fireBrandyBuckets = new ItemBucketBoozeDefinition[fireBrandyBooze.length];
 		BoozeRegistryHelper.initializeBoozeFluids("grc.fireBrandy", fireBrandyBooze);
@@ -154,7 +154,7 @@ public class netherloidFluids extends GrcModuleBase
 
 		// Intoxicated
 		GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[6])
-			.tags(BoozeTag.WINE, BoozeTag.FERMENTED, BoozeTag.INTOXICATED, BoozeTag.INFERNAL)
+			.tags(BoozeTag.CIDER, BoozeTag.FERMENTED, BoozeTag.INTOXICATED, BoozeTag.INFERNAL)
 			.fermentsFrom(fs[2], new OreItemStacks("yeastOrigin"), fermentTime)
 			.fermentsFrom(fs[3], new OreItemStacks("yeastOrigin"), fermentTime)
 			.getEffect()
