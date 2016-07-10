@@ -151,6 +151,16 @@ public class netherloidFluids extends GrcModuleBase
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.053f), TickUtils.seconds(90))
 				.addPotionEntry(Potion.regeneration, TickUtils.minutes(6), 1)
 				.addPotionEntry(Potion.damageBoost, TickUtils.minutes(2), 2);
+				
+		// Gelid Booze [WIP]
+		GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[5])
+			.tags(BoozeTag.CIDER, BoozeTag.FERMENTED, BoozeTag.INFERNAL, BoozeTag.CHILLED)
+			.fermentsFrom(fs[0], new OreItemStacks("yeastLager"), fermentTime)
+			.fermentsFrom(fs[0], new ItemStack(Items.nether_wart), (int)(fermentTime * 0.66))
+			.getEffect()
+				.setTipsy(BoozeUtils.alcoholToTipsy(0.05f), TickUtils.seconds(90))
+				.addPotionEntry(Potion.regeneration, TickUtils.minutes(3), 0)
+				.addPotionEntry(Potion.damageBoost, TickUtils.minutes(1), 1);
 
 		// Intoxicated
 		GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[6])
@@ -173,6 +183,7 @@ public class netherloidFluids extends GrcModuleBase
 			.fermentsTo(fs[4], new OreItemStacks("yeastPoison"), fermentTime)
 			.fermentsTo(fs[5], new OreItemStacks("yeastPoison"), fermentTime)
 			.fermentsTo(fs[6], new OreItemStacks("yeastPoison"), fermentTime)
+			.fermentsTo(fs[7], new OreItemStacks("yeastPoison"), fermentTime)
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.05f), TickUtils.seconds(90))
 				.createPotionEntry(Potion.poison, TickUtils.seconds(90), 0).toggleDescription(!GrowthCraftCore.getConfig().hidePoisonedBooze);
