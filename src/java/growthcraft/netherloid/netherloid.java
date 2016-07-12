@@ -39,6 +39,7 @@ import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.Mod;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraftforge.client.event.TextureStitchEvent;
 
 @Mod(
 	modid = netherloid.MOD_ID,
@@ -98,6 +99,32 @@ public class netherloid
 		CommonProxy.instance.initRenders();
 
 		modules.init();
+	}
+	
+	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
+	public void onTextureStitchPost(TextureStitchEvent.Post event)
+	{
+		if (event.map.getTextureType() == 0)
+		{
+			for (int i = 0; i < fluids.fireBrandyBooze.length; ++i)
+			{
+				fluids.fireBrandyBooze[i].setIcons(GrowthCraftCore.liquidSmoothTexture);
+			}
+		}
+	}
+	
+	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
+	public void onTextureStitchPost(TextureStitchEvent.Post event)
+	{
+		if (event.map.getTextureType() == 0)
+		{
+			for (int i = 0; i < fluids.maliceCiderBooze.length; ++i)
+			{
+				fluids.maliceCiderBooze[i].setIcons(GrowthCraftCore.liquidSmoothTexture);
+			}
+		}
 	}
 
 	@EventHandler
