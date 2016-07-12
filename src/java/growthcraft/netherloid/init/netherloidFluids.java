@@ -41,10 +41,6 @@ import growthcraft.core.common.definition.ItemDefinition;
 import growthcraft.core.common.GrcModuleBase;
 import growthcraft.netherloid.netherloid;
 import growthcraft.api.core.item.OreItemStacks;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.client.event.TextureStitchEvent;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
