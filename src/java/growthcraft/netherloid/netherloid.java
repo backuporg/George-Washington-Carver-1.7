@@ -26,6 +26,7 @@ package growthcraft.netherloid;
 import growthcraft.api.core.log.ILogger;
 import growthcraft.api.core.log.GrcLogger;
 import growthcraft.api.core.module.ModuleContainer;
+import growthcraft.core.GrowthCraftCore;
 import growthcraft.netherloid.common.CommonProxy;
 import growthcraft.netherloid.creativetab.CreativeTabsGrowthcraftNether;
 import growthcraft.netherloid.init.netherloidItems;
