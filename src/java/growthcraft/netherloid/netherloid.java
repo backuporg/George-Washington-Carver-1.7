@@ -40,6 +40,9 @@ import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.Mod;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.client.event.TextureStitchEvent;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 @Mod(
 	modid = netherloid.MOD_ID,
