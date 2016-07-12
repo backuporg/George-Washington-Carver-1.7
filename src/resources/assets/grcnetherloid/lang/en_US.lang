@@ -80,8 +80,8 @@ tile.fluid.grc.maliceCider1.name=Malice Cider
 tile.fluid.grc.maliceCider2.name=Malice Cider
 tile.fluid.grc.maliceCider3.name=Malice Cider
 tile.fluid.grc.maliceCider4.name=Amrita
-tile.fluid.grc.maliceCider5.name=Malice Cider
-tile.fluid.grc.maliceCider6.name=Gelid Booze
+tile.fluid.grc.maliceCider5.name=Gelid Booze
+tile.fluid.grc.maliceCider6.name=Malice Cider
 tile.fluid.grc.maliceCider7.name=Vile Slop
 
 fluid.grcnether.maliceCider7.modifier=Vile
