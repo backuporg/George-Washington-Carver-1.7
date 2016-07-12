@@ -24,6 +24,7 @@
 package growthcraft.netherloid;
 
 import growthcraft.api.core.log.ILogger;
+import growthcraft.api.cellar.booze.Booze;
 import growthcraft.api.core.log.GrcLogger;
 import growthcraft.api.core.module.ModuleContainer;
 import growthcraft.core.GrowthCraftCore;
@@ -111,16 +112,17 @@ public class netherloid
 	{
 		if (event.map.getTextureType() == 0)
 		{
-			for (int i = 0; i < fluids.fireBrandyBooze.length; ++i)
+			for (Booze bz : fluids.fireBrandyBooze)
 			{
-				fluids.fireBrandyBooze[i].setIcons(GrowthCraftCore.liquidSmoothTexture);
+				bz.setIcons(GrowthCraftCore.liquidSmoothTexture);
 			}
-			for (int i = 0; i < fluids.maliceCiderBooze.length; ++i)
+			for (Booze bz : fluids.maliceCiderBooze)
 			{
-				fluids.maliceCiderBooze[i].setIcons(GrowthCraftCore.liquidSmoothTexture);
+				bz.setIcons(GrowthCraftCore.liquidSmoothTexture);
 			}
 		}
 	}
+
 	@EventHandler
 	public void postinit(FMLPostInitializationEvent event)
 	{
