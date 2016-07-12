@@ -42,7 +42,7 @@ public class ItemNetherPepper extends Item implements IPlantable
 {
 	public ItemNetherPepper()
 	{
-		super(3, 0.2F, false);
+		super();
 		setUnlocalizedName("grcnetherloid.netherPepper");
 		setTextureName("grcnetherloid:pepper");
 		setCreativeTab(netherloid.tab);
