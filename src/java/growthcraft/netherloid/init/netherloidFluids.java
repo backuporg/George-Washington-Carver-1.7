@@ -107,7 +107,7 @@ public class netherloidFluids extends GrcModuleBase
 		GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[0])
 			.tags(BoozeTag.YOUNG, BoozeTag.INFERNAL)
 			.pressesFrom(
-				new OreItemStacks("fruitMalice"),
+				new OreItemStacks("fruitMalum"),
 				TickUtils.seconds(2),
 				40,
 				Residue.newDefault(0.3F));
