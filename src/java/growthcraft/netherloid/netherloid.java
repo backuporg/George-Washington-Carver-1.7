@@ -115,22 +115,12 @@ public class netherloid
 			{
 				fluids.fireBrandyBooze[i].setIcons(GrowthCraftCore.liquidSmoothTexture);
 			}
-		}
-	}
-	
-	@SubscribeEvent
-	@SideOnly(Side.CLIENT)
-	public void onTextureStitchPost(TextureStitchEvent.Post event)
-	{
-		if (event.map.getTextureType() == 0)
-		{
 			for (int i = 0; i < fluids.maliceCiderBooze.length; ++i)
 			{
 				fluids.maliceCiderBooze[i].setIcons(GrowthCraftCore.liquidSmoothTexture);
 			}
 		}
 	}
-
 	@EventHandler
 	public void postinit(FMLPostInitializationEvent event)
 	{
