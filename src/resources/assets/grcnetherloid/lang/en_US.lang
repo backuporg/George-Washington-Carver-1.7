@@ -68,10 +68,10 @@ item.bucket.fluid.grc.maliceCider.name=Malice Cider Bucket
 item.bucket.fluid.grc.maliceCider0.name=Malice Cider Bucket
 item.bucket.fluid.grc.maliceCider1.name=Malice Cider Bucket
 item.bucket.fluid.grc.maliceCider2.name=Malice Cider Bucket
-item.bucket.fluid.gr.maliceCider3.name=Malice Cider Bucket
+item.bucket.fluid.grc.maliceCider3.name=Malice Cider Bucket
 item.bucket.fluid.grc.maliceCider4.name=Amrita Bucket
-item.bucket.fluid.grc.maliceCider5.name=Malice Cider Bucket
-item.bucket.fluid.grc.maliceCider6.name=Gelid Booze Bucket
+item.bucket.fluid.grc.maliceCider5.name=Gelid Booze Bucket
+item.bucket.fluid.grc.maliceCider6.name=Malice Cider Bucket
 item.bucket.fluid.grc.maliceCider7.name=Vile Slop Bucket
 
 tile.fluid.grc.maliceCider.name=Malice Cider
