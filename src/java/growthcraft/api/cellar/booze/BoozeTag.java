@@ -90,6 +90,8 @@ public class BoozeTag
 	public static final FluidTag WHISKEY = CoreRegistry.instance().fluidTags().createTag("whiskey");
 	//This beverage is vodka
 	public static final FluidTag VODKA = CoreRegistry.instance().fluidTags().createTag("vodka");
+	//This beverage is disgusting
+	public static final FluidTag VILE = CoreRegistry.instance().fluidTags().createTag("vile");
 
 	private BoozeTag() {}
 }
