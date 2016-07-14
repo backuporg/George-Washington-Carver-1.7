@@ -94,6 +94,8 @@ public class BoozeTag
 	public static final FluidTag VILE = CoreRegistry.instance().fluidTags().createTag("vile");
 	//This beverage is gin
 	public static final FluidTag GIN = CoreRegistry.instance().fluidTags().createTag("gin");
+	//This beverage is beer
+	public static final FluidTag BEER = CoreRegistry.instance().fluidTags().createTag("beer");
 
 	private BoozeTag() {}
 }
