@@ -42,6 +42,6 @@ public class GrcCoreConfig extends ConfigBase
 	@ConfigOption(catergory="Integration", name="Enable Woodstuff Integration", desc="Should we integrate with Woodstuff (if available)?")
 	public boolean enableWoodstuffIntegration = true;
 	
-	@ConfigOption(catergory="Integration", name="Enable NEI Integration", desc="Should we integrate with NotEnoughItems (if available)?")
-	public boolean enableNEIIntegration = true;
+	//@ConfigOption(catergory="Integration", name="Enable NEI Integration", desc="Should we integrate with NotEnoughItems (if available)?")
+	//public boolean enableNEIIntegration = true;
 }
