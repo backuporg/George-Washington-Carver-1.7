@@ -135,7 +135,7 @@ public class GrcGrapesFluids extends GrcModuleBase
 
 		// Port Wine - Bayanus Yeast
 		GrowthCraftCellar.boozeBuilderFactory.create(grapeWineBooze[5])
-			.tags(BoozeTag.WINE, BoozeTag.FERMENTED, BoozeTag.FORTIFIED)
+			.tags(BoozeTag.WINE, BoozeTag.FERMENTED, BoozeTag.FORTIFIED, BoozeTag.PORT)
 			.brewsFrom(
 				new FluidStack(grapeWineBooze[1], GrowthCraftGrapes.getConfig().portWineBrewingYield),
 				new OreItemStacks("yeastBayanus"),

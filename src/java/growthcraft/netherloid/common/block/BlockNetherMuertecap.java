@@ -42,7 +42,7 @@ public class BlockNetherMuertecap extends BlockNetherFungusBase
 		setBlockName("grcnetherloid.netherMuertecap");
 		setBlockTextureName("grcnetherloid:muertecap");
 		setBlockBounds(0.375F, 0.0F, 0.375F, 0.625F, 0.375F, 0.625F);
-		setCreativeTab(null);
+		setCreativeTab(netherloid.tab);
 	}
 
 	@Override

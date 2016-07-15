@@ -59,7 +59,7 @@ public class BlockNetherPaddy extends BlockPaddyBase
 		super(Material.sand);
 		setHardness(0.5F);
 		setBlockName("grcnetherloid.netherPaddyField");
-		setCreativeTab(null);
+		setCreativeTab(netherloid.tab);
 		this.filledPaddy = filled;
 		if (filledPaddy)
 		{

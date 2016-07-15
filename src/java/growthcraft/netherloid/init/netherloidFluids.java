@@ -41,10 +41,6 @@ import growthcraft.core.common.definition.ItemDefinition;
 import growthcraft.core.common.GrcModuleBase;
 import growthcraft.netherloid.netherloid;
 import growthcraft.api.core.item.OreItemStacks;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.client.event.TextureStitchEvent;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -65,7 +61,7 @@ public class netherloidFluids extends GrcModuleBase
 	@Override
 	public void preInit()
 	{
-		this.maliceCiderBooze = new Booze[10];
+		this.maliceCiderBooze = new Booze[8];
 		this.maliceCiderFluids = new BlockBoozeDefinition[maliceCiderBooze.length];
 		this.maliceCiderBuckets = new ItemBucketBoozeDefinition[maliceCiderBooze.length];
 		BoozeRegistryHelper.initializeBoozeFluids("grc.maliceCider", maliceCiderBooze);
@@ -79,7 +75,7 @@ public class netherloidFluids extends GrcModuleBase
 
 		this.maliceCider = new ItemDefinition(new ItemBoozeBottle(maliceCiderBooze));
 		
-		this.fireBrandyBooze = new Booze[10];
+		this.fireBrandyBooze = new Booze[8];
 		this.fireBrandyFluids = new BlockBoozeDefinition[fireBrandyBooze.length];
 		this.fireBrandyBuckets = new ItemBucketBoozeDefinition[fireBrandyBooze.length];
 		BoozeRegistryHelper.initializeBoozeFluids("grc.fireBrandy", fireBrandyBooze);
@@ -90,6 +86,11 @@ public class netherloidFluids extends GrcModuleBase
 		BoozeRegistryHelper.initializeBooze(fireBrandyBooze, fireBrandyFluids, fireBrandyBuckets);
 		BoozeRegistryHelper.setBoozeFoodStats(fireBrandyBooze, 1, -0.3f);
 		BoozeRegistryHelper.setBoozeFoodStats(fireBrandyBooze[1], 1, 0.3f);
+		
+		maliceCiderBooze[4].setColor(netherloid.getConfig().amritaColor);
+		maliceCiderFluids[4].getBlock().refreshColor();
+		maliceCiderBooze[5].setColor(netherloid.getConfig().gelidBoozeColor);
+		maliceCiderFluids[5].getBlock().refreshColor();
 		
 		this.fireBrandy = new ItemDefinition(new ItemBoozeBottle(fireBrandyBooze));
 		
@@ -107,7 +108,7 @@ public class netherloidFluids extends GrcModuleBase
 		GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[0])
 			.tags(BoozeTag.YOUNG, BoozeTag.INFERNAL)
 			.pressesFrom(
-				new OreItemStacks("fruitMalice"),
+				new OreItemStacks("fruitMalum"),
 				TickUtils.seconds(2),
 				40,
 				Residue.newDefault(0.3F));
@@ -151,10 +152,20 @@ public class netherloidFluids extends GrcModuleBase
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.053f), TickUtils.seconds(90))
 				.addPotionEntry(Potion.regeneration, TickUtils.minutes(6), 1)
 				.addPotionEntry(Potion.damageBoost, TickUtils.minutes(2), 2);
+				
+		// Gelid Booze [WIP]
+		GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[5])
+			.tags(BoozeTag.CIDER, BoozeTag.FERMENTED, BoozeTag.INFERNAL, BoozeTag.CHILLED)
+			.fermentsFrom(fs[0], new OreItemStacks("yeastLager"), fermentTime)
+			.fermentsFrom(fs[0], new ItemStack(Items.nether_wart), (int)(fermentTime * 0.66))
+			.getEffect()
+				.setTipsy(BoozeUtils.alcoholToTipsy(0.05f), TickUtils.seconds(90))
+				.addPotionEntry(Potion.regeneration, TickUtils.minutes(3), 0)
+				.addPotionEntry(Potion.damageBoost, TickUtils.minutes(1), 1);
 
 		// Intoxicated
 		GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[6])
-			.tags(BoozeTag.WINE, BoozeTag.FERMENTED, BoozeTag.INTOXICATED, BoozeTag.INFERNAL)
+			.tags(BoozeTag.CIDER, BoozeTag.FERMENTED, BoozeTag.INTOXICATED, BoozeTag.INFERNAL)
 			.fermentsFrom(fs[2], new OreItemStacks("yeastOrigin"), fermentTime)
 			.fermentsFrom(fs[3], new OreItemStacks("yeastOrigin"), fermentTime)
 			.getEffect()
@@ -173,6 +184,7 @@ public class netherloidFluids extends GrcModuleBase
 			.fermentsTo(fs[4], new OreItemStacks("yeastPoison"), fermentTime)
 			.fermentsTo(fs[5], new OreItemStacks("yeastPoison"), fermentTime)
 			.fermentsTo(fs[6], new OreItemStacks("yeastPoison"), fermentTime)
+			.fermentsTo(fs[7], new OreItemStacks("yeastPoison"), fermentTime)
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.05f), TickUtils.seconds(90))
 				.createPotionEntry(Potion.poison, TickUtils.seconds(90), 0).toggleDescription(!GrowthCraftCore.getConfig().hidePoisonedBooze);
@@ -209,23 +221,6 @@ public class netherloidFluids extends GrcModuleBase
 		registerMaliceCider();
 		registerFireBrandy();
 		
-	}
-	
-	@SubscribeEvent
-	@SideOnly(Side.CLIENT)
-	public void onTextureStitchPost(TextureStitchEvent.Post event)
-	{
-		if (event.map.getTextureType() == 0)
-		{
-			for (Booze booze : fireBrandyBooze)
-			{
-				booze.setIcons(GrowthCraftCore.liquidSmoothTexture);
-			}
-			for (Booze booze : maliceCiderBooze)
-			{
-				booze.setIcons(GrowthCraftCore.liquidSmoothTexture);
-			}
-		}
 	}
 
 	@Override

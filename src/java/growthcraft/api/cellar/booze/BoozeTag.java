@@ -90,6 +90,20 @@ public class BoozeTag
 	public static final FluidTag WHISKEY = CoreRegistry.instance().fluidTags().createTag("whiskey");
 	//This beverage is vodka
 	public static final FluidTag VODKA = CoreRegistry.instance().fluidTags().createTag("vodka");
+	//This beverage is disgusting
+	public static final FluidTag VILE = CoreRegistry.instance().fluidTags().createTag("vile");
+	//This beverage is gin
+	public static final FluidTag GIN = CoreRegistry.instance().fluidTags().createTag("gin");
+	//This beverage is beer
+	public static final FluidTag BEER = CoreRegistry.instance().fluidTags().createTag("beer");
+	//This beverage is bourbon
+	public static final FluidTag BOURBON = CoreRegistry.instance().fluidTags().createTag("bourbon");
+	//This beverage is sherry
+	public static final FluidTag SHERRY = CoreRegistry.instance().fluidTags().createTag("sherry");
+	//This beverage is port
+	public static final FluidTag PORT = CoreRegistry.instance().fluidTags().createTag("port");
+	//This beverage is brandy
+	public static final FluidTag BRANDY = CoreRegistry.instance().fluidTags().createTag("brandy");
 
 	private BoozeTag() {}
 }

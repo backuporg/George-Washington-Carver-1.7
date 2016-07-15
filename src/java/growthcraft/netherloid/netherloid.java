@@ -24,8 +24,10 @@
 package growthcraft.netherloid;
 
 import growthcraft.api.core.log.ILogger;
+import growthcraft.api.cellar.booze.Booze;
 import growthcraft.api.core.log.GrcLogger;
 import growthcraft.api.core.module.ModuleContainer;
+import growthcraft.core.GrowthCraftCore;
 import growthcraft.netherloid.common.CommonProxy;
 import growthcraft.netherloid.creativetab.CreativeTabsGrowthcraftNether;
 import growthcraft.netherloid.init.netherloidItems;
@@ -39,6 +41,10 @@ import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.Mod;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraftforge.client.event.TextureStitchEvent;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 @Mod(
 	modid = netherloid.MOD_ID,
@@ -98,6 +104,23 @@ public class netherloid
 		CommonProxy.instance.initRenders();
 
 		modules.init();
+	}
+	
+	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
+	public void onTextureStitchPost(TextureStitchEvent.Post event)
+	{
+		if (event.map.getTextureType() == 0)
+		{
+			for (Booze bz : fluids.fireBrandyBooze)
+			{
+				bz.setIcons(GrowthCraftCore.liquidSmoothTexture);
+			}
+			for (Booze bz : fluids.maliceCiderBooze)
+			{
+				bz.setIcons(GrowthCraftCore.liquidSmoothTexture);
+			}
+		}
 	}
 
 	@EventHandler
