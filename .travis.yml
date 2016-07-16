@@ -13,22 +13,22 @@ cache:
 
 before_install:
 # ensure we have ruby
-- travis_wait 45 ruby --version
-- travis_wait 45 gem install bundler
-- travis_wait 45 bundle install
+- ruby --version
+- gem install bundler
+- bundle install
 # fetch 3rd party apis and such
-- travis_wait 45 git submodule update --init
-- travis_wait 45 chmod +x ./gradlew
+- git submodule update --init
+- chmod +x ./gradlew
 
-install: travis_wait 45 ./gradlew setupCIWorkspace -S
+install: ./gradlew setupCIWorkspace -S
 
 script:
-- travis_wait 45 ./gradlew build
-- travis_wait 45 bundle exec ./tools/split_jars.rb
-- travis_wait 45 ls -la build/libs
-- travis_wait 45 ls -la build/packages
-- travis_wait 45 bundle exec ./tools/checksum_builds.rb | tee ./checksums.txt
-- travis_wait 45 bundle exec ./tools/attribution_cross_check.rb
+- ./gradlew build
+- bundle exec ./tools/split_jars.rb
+- ls -la build/libs
+- ls -la build/packages
+- bundle exec ./tools/checksum_builds.rb | tee ./checksums.txt
+- bundle exec ./tools/attribution_cross_check.rb
 
 # Deploy the artifacts back to GitHub
 deploy:
