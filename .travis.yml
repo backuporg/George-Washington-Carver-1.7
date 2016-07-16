@@ -20,7 +20,7 @@ before_install:
 - travis_wait 45 git submodule update --init
 - travis_wait 45 chmod +x ./gradlew
 
-install: ./gradlew setupCIWorkspace -S
+install: travis_wait 45 ./gradlew setupCIWorkspace -S
 
 script:
 - travis_wait 45 ./gradlew build
