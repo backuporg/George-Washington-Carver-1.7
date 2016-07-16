@@ -22,15 +22,15 @@ before_install:
 - travis_retry git submodule update --init
 - travis_retry chmod +x ./gradlew
 
-install: ./gradlew setupCIWorkspace -S
+install: travis_retry ./gradlew setupCIWorkspace -S
 
 script:
-- ./gradlew build
-- bundle exec ./tools/split_jars.rb
-- ls -la build/libs
-- ls -la build/packages
-- bundle exec ./tools/checksum_builds.rb | tee ./checksums.txt
-- bundle exec ./tools/attribution_cross_check.rb
+- travis_wait ./gradlew build
+- travis_wait bundle exec ./tools/split_jars.rb
+- travis_wait ls -la build/libs
+- travis_wait ls -la build/packages
+- travis_wait bundle exec ./tools/checksum_builds.rb | tee ./checksums.txt
+- travis_wait bundle exec ./tools/attribution_cross_check.rb
 
 # Deploy the artifacts back to GitHub
 deploy:
