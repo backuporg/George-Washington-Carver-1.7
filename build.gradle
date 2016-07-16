@@ -51,7 +51,7 @@ StructExtApi[] apis = [
     new StructExtApi(name: "mfr", api: "api/powercrystals/minefactoryreloaded/api", exclusion: "**/powercrystals/minefactoryreloaded/api/**"),
     new StructExtApi(name: "thaumcraft", api: ext.thaumcraftApi, exclusion: "**/thaumcraft/api/**"),
     new StructExtApi(name: "waila", api: "api/mcp/mobius/waila/api", exclusion: "**/mcp/mobius/waila/api/**"),
-    new StructExtApi(name: "extrabiomes", api: "api/extrabiomes/api", exclusion: "**/extrabiomes/api/**"),
+    new StructExtApi(name: "extrabiomes", api: "api/extrabiomes/api", exclusion: "**/extrabiomes/api/**")
 ]
 
 minecraft {
