@@ -10,15 +10,17 @@ cache:
   directories:
   - $HOME/.gradle/caches/
   - $HOME/.gradle/wrapper/
+  
+bundler_args: --retry 3
 
 before_install:
 # ensure we have ruby
 - ruby --version
-- gem install bundler
-- bundle install
+- travis_retry gem install bundler
+- travis_retry bundle install
 # fetch 3rd party apis and such
-- git submodule update --init
-- chmod +x ./gradlew
+- travis_retry git submodule update --init
+- travis_retry chmod +x ./gradlew
 
 install: ./gradlew setupCIWorkspace -S
 
