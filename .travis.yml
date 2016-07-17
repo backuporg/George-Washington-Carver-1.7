@@ -18,12 +18,12 @@ before_install:
 - travis_retry bundle install
 # fetch 3rd party apis and such
 - git submodule update --init
-- travis_wait 150 chmod +x ./gradlew
+- travis_wait 450 chmod +x ./gradlew
 
-install: travis_wait 150 ./gradlew setupCIWorkspace -S
+install: travis_wait 450 ./gradlew setupCIWorkspace -S
 
 script:
-- travis_wait 150 ./gradlew build
+- travis_wait 450 ./gradlew build
 - bundle exec ./tools/split_jars.rb
 - ls -la build/libs
 - ls -la build/packages
