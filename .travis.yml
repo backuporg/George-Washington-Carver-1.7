@@ -20,10 +20,10 @@ before_install:
 - git submodule update --init
 - chmod +x ./gradlew
 
-install: travis_wait 30 ./gradlew setupCIWorkspace -S
+install: travis_wait 45 ./gradlew setupCIWorkspace -S
 
 script:
-- travis_wait 30 ./gradlew build
+- travis_wait 45 ./gradlew build
 - bundle exec ./tools/split_jars.rb
 - ls -la build/libs
 - ls -la build/packages
