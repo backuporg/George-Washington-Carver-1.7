@@ -13,17 +13,17 @@ cache:
 
 before_install:
 # ensure we have ruby
-- ruby --version
-- gem install bundler
-- bundle install
+- travis_retry ruby --version
+- travis_retry gem install bundler
+- travis_retry bundle install
 # fetch 3rd party apis and such
 - git submodule update --init
 - chmod +x ./gradlew
 
-install: ./gradlew setupCIWorkspace -S
+install: travis_wait 30 ./gradlew setupCIWorkspace -S
 
 script:
-- ./gradlew build
+- travis_wait 30 ./gradlew build
 - bundle exec ./tools/split_jars.rb
 - ls -la build/libs
 - ls -la build/packages
