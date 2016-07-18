@@ -33,6 +33,7 @@ script:
 # Deploy the artifacts back to GitHub
 deploy:
   provider: releases
+  api_key: $GITHUB_OAUTH
   file_glob: true
   file:
   - "checksums.txt"
