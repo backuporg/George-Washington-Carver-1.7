@@ -45,13 +45,13 @@ public class HighlandsModule extends ModIntegrationBase
 	@Override
 	public void doPreInit()
 	{
-		GrowthCraftBees.BeeBoxHighlands = new BlockTypeDefinition<BlockBeeBox>(new BlockBeeBoxHighlands());
+		GrowthCraftBees.beeBoxHighlands = new BlockTypeDefinition<BlockBeeBox>(new BlockBeeBoxHighlands());
 	}
 
 	@Override
 	public void doRegister()
 	{
-		GrowthCraftBees.BeeBoxHighlands.register("grc.BeeBox.Highlands", ItemBlockBeeBox.class);
+		GrowthCraftBees.beeBoxHighlands.register("grc.BeeBox.Highlands", ItemBlockBeeBox.class);
 	}
 
 	@Override
@@ -62,7 +62,7 @@ public class HighlandsModule extends ModIntegrationBase
 			final ItemStack planks = type.asPlanksItemStack();
 			if (planks != null)
 			{
-				GameRegistry.addShapedRecipe(GrowthCraftBees.BeeBoxHighlands.asStack(1, type.meta), " A ", "A A", "AAA", 'A', planks);
+				GameRegistry.addShapedRecipe(GrowthCraftBees.beeBoxHighlands.asStack(1, type.meta), " A ", "A A", "AAA", 'A', planks);
 			}
 		}
 	}
