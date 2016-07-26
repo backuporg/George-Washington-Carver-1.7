@@ -25,7 +25,7 @@ package growthcraft.bees.common.block;
 
 import java.util.List;
 
-import growthcraft.core.integration.highlands.EnumHIGHLANDSWoodType;
+import growthcraft.core.integration.HIGHLANDS.EnumHIGHLANDSWoodType;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
