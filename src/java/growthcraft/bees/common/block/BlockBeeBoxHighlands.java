@@ -41,7 +41,7 @@ public class BlockBeeBoxHighlands extends BlockBeeBox
 	{
 		super();
 		setHardness(2f);
-		setBlockName("grc.BeeBox.Highlands");
+		setBlockName("grc.beeBox.Highlands");
 	}
 
 	@Override
