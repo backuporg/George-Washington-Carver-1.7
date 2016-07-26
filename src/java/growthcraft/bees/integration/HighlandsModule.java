@@ -51,7 +51,7 @@ public class HighlandsModule extends ModIntegrationBase
 	@Override
 	public void doRegister()
 	{
-		GrowthCraftBees.beeBoxHighlands.register("grc.BeeBox.Highlands", ItemBlockBeeBox.class);
+		GrowthCraftBees.beeBoxHighlands.register("grc.beeBox.Highlands", ItemBlockBeeBox.class);
 	}
 
 	@Override
