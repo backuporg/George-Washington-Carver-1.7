@@ -140,6 +140,7 @@ public class GrowthCraftBees
 		if (config.enableAM2Integration) modules.add(new growthcraft.bees.integration.AM2Module());
 		if (config.enableTotemicIntegration) modules.add(new growthcraft.bees.integration.TotemicModule());
 		if (config.enableEBXLIntegration) modules.add(new growthcraft.bees.integration.EBXLModule());
+		if (config.enableHighlandsIntegration) modules.add(new growthcraft.bees.integration.HighlandsModule());
 
 		if (config.debugEnabled)
 		{
