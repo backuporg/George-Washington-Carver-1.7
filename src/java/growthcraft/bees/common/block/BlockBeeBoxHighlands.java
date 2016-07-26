@@ -25,6 +25,7 @@ package growthcraft.bees.common.block;
 
 import java.util.List;
 
+import growthcraft.core.integration.highlands.EnumHIGHLANDSWoodType;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -34,17 +35,21 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 
+public class BlockBeeBoxHighlands extends BlockBeeBox
 {
+	public BlockBeeBoxHighlands()
 	{
 		super();
 		setHardness(2f);
+		setBlockName("grc.BeeBox.Highlands");
 	}
 
 	@Override
 	public String getMetaname(int meta)
 	{
+		if (meta >= 0 && meta < EnumHIGHLANDSWoodType.VALUES.length)
 		{
-			return EnumBopWoodType.VALUES[meta].name;
+			return EnumHIGHLANDSWoodType.VALUES[meta].name;
 		}
 		return super.getMetaname(meta);
 	}
@@ -54,6 +59,7 @@ import net.minecraft.util.IIcon;
 	@SuppressWarnings({"rawtypes", "unchecked"})
 	public void getSubBlocks(Item block, CreativeTabs tab, List list)
 	{
+		for (int i = 0; i < EnumHIGHLANDSWoodType.VALUES.length; ++i)
 		{
 			list.add(new ItemStack(block, 1, i));
 		}
@@ -63,7 +69,10 @@ import net.minecraft.util.IIcon;
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister reg)
 	{
+		this.icons = new IIcon[4 * EnumHIGHLANDSWoodType.VALUES.length];
+		for (EnumHIGHLANDSWoodType type : EnumHIGHLANDSWoodType.VALUES)
 		{
+			registerBeeBoxIcons(reg, String.format("/highlands/%s/", type.name), type.meta);
 		}
 	}
 }
