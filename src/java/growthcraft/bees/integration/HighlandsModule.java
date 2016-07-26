@@ -24,7 +24,7 @@
 package growthcraft.bees.integration;
 
 import growthcraft.bees.common.block.BlockBeeBox;
-import growthcraft.bees.common.block.BlockBeeBoxBiomesOPlenty;
+import growthcraft.bees.common.block.BlockBeeBoxHighlands;
 import growthcraft.bees.common.item.ItemBlockBeeBox;
 import growthcraft.bees.GrowthCraftBees;
 import growthcraft.core.common.definition.BlockTypeDefinition;
@@ -51,7 +51,7 @@ public class HighlandsModule extends ModIntegrationBase
 	@Override
 	public void doRegister()
 	{
-		GrowthCraftBees.beeBoxBiomesOPlenty.register("grc.BeeBox.Highlands", ItemBlockBeeBox.class);
+		GrowthCraftBees.beeBoxHighlands.register("grc.BeeBox.Highlands", ItemBlockBeeBox.class);
 	}
 
 	@Override
