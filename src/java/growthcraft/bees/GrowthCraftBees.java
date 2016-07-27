@@ -77,6 +77,7 @@ public class GrowthCraftBees
 	public static BlockTypeDefinition<BlockBeeBox> beeBoxArsMagica2;
 	public static BlockTypeDefinition<BlockBeeBox> beeBoxTotemic;
 	public static BlockTypeDefinition<BlockBeeBox> beeBoxExtraBiomesXL;
+	public static BlockTypeDefinition<BlockBeeBox> beeBoxHighlands;
 	public static List<BlockTypeDefinition<BlockBeeBox>> beeBoxesForestry;
 	public static List<BlockTypeDefinition<BlockBeeBox>> beeBoxesForestryFireproof;
 	public static BlockDefinition beeHive;
@@ -140,6 +141,7 @@ public class GrowthCraftBees
 		if (config.enableAM2Integration) modules.add(new growthcraft.bees.integration.AM2Module());
 		if (config.enableTotemicIntegration) modules.add(new growthcraft.bees.integration.TotemicModule());
 		if (config.enableEBXLIntegration) modules.add(new growthcraft.bees.integration.EBXLModule());
+		if (config.enableHighlandsIntegration) modules.add(new growthcraft.bees.integration.HighlandsModule());
 
 		if (config.debugEnabled)
 		{
