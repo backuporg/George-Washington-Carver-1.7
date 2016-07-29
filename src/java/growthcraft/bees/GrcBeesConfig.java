@@ -83,4 +83,7 @@ public class GrcBeesConfig extends ConfigBase
 	
 	@ConfigOption(catergory="Integration", name="Enable ExtraBiomesXL Integration", desc="Should we integrate with ExtraBiomesXL (if available)?")
 	public boolean enableEBXLIntegration = true;
+	
+	@ConfigOption(catergory="Integration", name="Enable Highlands Integration", desc="Should we integrate with Highlands (if available)?")
+	public boolean enableHighlandsIntegration = true;
 }
