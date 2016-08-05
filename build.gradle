@@ -125,8 +125,6 @@ dependencies {
     //compile "mcp.mobius.waila:Waila:${waila_version}_${minecraft_version}:dev"
     compile "codechicken:CodeChickenLib:${minecraft_version}-${code_chicken_lib_version}:dev"
     compile "codechicken:CodeChickenCore:${minecraft_version}-${code_chicken_core_version}:dev"
-    //compile "codechicken:NotEnoughItems:${minecraft_version}-${nei_version}:dev"
-    //compile "com.mod-buildcraft:buildcraft:${bc_version}:dev"
     testCompile "junit:junit:4.11"
 }
 
