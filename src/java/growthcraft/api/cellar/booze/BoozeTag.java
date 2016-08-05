@@ -104,6 +104,8 @@ public class BoozeTag
 	public static final FluidTag PORT = CoreRegistry.instance().fluidTags().createTag("port");
 	//This beverage is brandy
 	public static final FluidTag BRANDY = CoreRegistry.instance().fluidTags().createTag("brandy");
+	//This beverage is made by fermenting blood... somehow
+	public static final FluidTag BLOODWINE = CoreRegistry.instance().fluidTags().createTag("bloodwine");
 
 	private BoozeTag() {}
 }
