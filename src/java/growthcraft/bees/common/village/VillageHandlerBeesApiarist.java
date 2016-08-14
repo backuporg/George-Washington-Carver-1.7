@@ -11,15 +11,11 @@ import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
-import net.minecraft.village.*;
 import net.minecraft.village.MerchantRecipe;
 import net.minecraft.village.MerchantRecipeList;
 import net.minecraft.world.gen.structure.StructureVillagePieces.PieceWeight;
 import net.minecraft.world.gen.structure.StructureVillagePieces.Start;
 import net.minecraft.item.Item;
-import net.minecraft.item.*;
-import growthcraft.bees.common.item.*;
-import growthcraft.bees.init.*;
 
 public class VillageHandlerBeesApiarist implements IVillageTradeHandler, IVillageCreationHandler
 {
@@ -31,10 +27,6 @@ public class VillageHandlerBeesApiarist implements IVillageTradeHandler, IVillag
 		recipeList.add(new MerchantRecipe(new ItemStack(Items.emerald, 1 + random.nextInt(2)), GrowthCraftBees.items.honeyCombFilled.asStack(1, 7)));
 		recipeList.add(new MerchantRecipe(new ItemStack(Items.emerald, 1 + random.nextInt(2)), GrowthCraftBees.items.bee.asStack(1, 7)));
 		recipeList.add(new MerchantRecipe(new ItemStack(Items.emerald, 1 + random.nextInt(2)), GrowthCraftBees.items.beesWax.asStack(1, 5)));
-		recipeList.add(new MerchantRecipe(new ItemStack(GrowthCraftBees.items.honeyJar, 4 + random.nextInt(2)), new ItemStack(Items.emerald, 2, 3)));
-		recipeList.add(new MerchantRecipe(new ItemStack(GrowthCraftBees.items.honeyCombFilled, 4 + random.nextInt(2)), new ItemStack(Items.emerald, 2, 3)));
-		recipeList.add(new MerchantRecipe(new ItemStack(GrowthCraftBees.items.bee, 4 + random.nextInt(2)), new ItemStack(Items.emerald, 1, 2)));
-		recipeList.add(new MerchantRecipe(new ItemStack(GrowthCraftBees.items.beesWax, 1 + random.nextInt(2)), new ItemStack(Items.emerald, 2, 4)));
 	}
 
 	@Override
