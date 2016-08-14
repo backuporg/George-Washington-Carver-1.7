@@ -15,7 +15,6 @@ import net.minecraft.village.MerchantRecipe;
 import net.minecraft.village.MerchantRecipeList;
 import net.minecraft.world.gen.structure.StructureVillagePieces.PieceWeight;
 import net.minecraft.world.gen.structure.StructureVillagePieces.Start;
-import net.minecraft.item.Item;
 
 public class VillageHandlerBeesApiarist implements IVillageTradeHandler, IVillageCreationHandler
 {
