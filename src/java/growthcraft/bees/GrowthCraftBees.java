@@ -13,7 +13,6 @@ import growthcraft.api.core.log.GrcLogger;
 import growthcraft.api.core.log.ILogger;
 import growthcraft.api.core.module.ModuleContainer;
 import growthcraft.bees.client.eventhandler.GrcBeesHandleTextureStitch;
-import growthcraft.bees.client.gui.GuiHandlerBees;
 import growthcraft.bees.common.block.BlockBeeBox;
 import growthcraft.bees.common.block.BlockBeeHive;
 import growthcraft.bees.common.CommonProxy;
@@ -30,8 +29,10 @@ import growthcraft.bees.init.GrcBeesRecipes;
 import growthcraft.cellar.GrowthCraftCellar;
 import growthcraft.core.common.definition.BlockDefinition;
 import growthcraft.core.common.definition.BlockTypeDefinition;
+import growthcraft.core.GrcGuiProvider;
 import growthcraft.core.integration.bop.BopPlatform;
 import growthcraft.core.util.MapGenHelper;
+
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -81,15 +82,16 @@ public class GrowthCraftBees
 	public static List<BlockTypeDefinition<BlockBeeBox>> beeBoxesForestry;
 	public static List<BlockTypeDefinition<BlockBeeBox>> beeBoxesForestryFireproof;
 	public static BlockDefinition beeHive;
-	public static GrcBeesItems items = new GrcBeesItems();
-	public static GrcBeesFluids fluids = new GrcBeesFluids();
+	public static final GrcBeesItems items = new GrcBeesItems();
+	public static final GrcBeesFluids fluids = new GrcBeesFluids();
+	public static final GrcGuiProvider guiProvider = new GrcGuiProvider(new GrcLogger(MOD_ID + ":GuiProvider"));
 
-	private ILogger logger = new GrcLogger(MOD_ID);
-	private GrcBeesConfig config = new GrcBeesConfig();
-	private ModuleContainer modules = new ModuleContainer();
-	private UserBeesConfig userBeesConfig = new UserBeesConfig();
-	private UserFlowersConfig userFlowersConfig = new UserFlowersConfig();
-	private GrcBeesRecipes recipes = new GrcBeesRecipes();
+	private final ILogger logger = new GrcLogger(MOD_ID);
+	private final GrcBeesConfig config = new GrcBeesConfig();
+	private final ModuleContainer modules = new ModuleContainer();
+	private final UserBeesConfig userBeesConfig = new UserBeesConfig();
+	private final UserFlowersConfig userFlowersConfig = new UserFlowersConfig();
+	private final GrcBeesRecipes recipes = new GrcBeesRecipes();
 	//private UserHoneyConfig userHoneyConfig = new UserHoneyConfig();
 
 	public static UserBeesConfig getUserBeesConfig()
@@ -111,7 +113,7 @@ public class GrowthCraftBees
 	}
 
 	@EventHandler
-	public void preload(FMLPreInitializationEvent event)
+	public void preInit(FMLPreInitializationEvent event)
 	{
 		config.setLogger(logger);
 		config.load(event.getModConfigurationDirectory(), "growthcraft/bees.conf");
@@ -197,9 +199,6 @@ public class GrowthCraftBees
 
 	private void registerRecipes()
 	{
-		//====================
-		// CRAFTING
-		//====================
 		final BlockDefinition planks = new BlockDefinition(Blocks.planks);
 		for (int i = 0; i < 6; ++i)
 		{
@@ -221,27 +220,35 @@ public class GrowthCraftBees
 				Items.flower_pot));
 	}
 
-	@EventHandler
-	public void load(FMLInitializationEvent event)
+	private void initVillageHandlers()
 	{
-		CommonProxy.instance.initRenders();
-		CommonProxy.instance.initSounds();
-
-		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandlerBees());
-
 		final VillageHandlerBeesApiarist handler = new VillageHandlerBeesApiarist();
-		VillagerRegistry.instance().registerVillagerId(config.villagerApiaristID);
+		final int brewerID = GrowthCraftCellar.getConfig().villagerBrewerID;
+		final int apiaristID = config.villagerApiaristID;
+		if (apiaristID > 0)
+		{
+			VillagerRegistry.instance().registerVillagerId(apiaristID);
+			VillagerRegistry.instance().registerVillageTradeHandler(apiaristID, handler);
+		}
 		VillagerRegistry.instance().registerVillageCreationHandler(handler);
-		VillagerRegistry.instance().registerVillageTradeHandler(GrowthCraftCellar.getConfig().villagerBrewerID, new VillageHandlerBees());
-		VillagerRegistry.instance().registerVillageTradeHandler(config.villagerApiaristID, handler);
-
+		if (brewerID > 0)
+		{
+			VillagerRegistry.instance().registerVillageTradeHandler(brewerID, new VillageHandlerBees());
+		}
 		CommonProxy.instance.registerVillagerSkin();
+	}
 
+	@EventHandler
+	public void init(FMLInitializationEvent event)
+	{
+		CommonProxy.instance.init();
+		NetworkRegistry.INSTANCE.registerGuiHandler(this, guiProvider);
+		if (config.enableVillageGen) initVillageHandlers();
 		modules.init();
 	}
 
 	@EventHandler
-	public void postload(FMLPostInitializationEvent event)
+	public void postInit(FMLPostInitializationEvent event)
 	{
 		userBeesConfig.loadUserConfig();
 		userFlowersConfig.loadUserConfig();
