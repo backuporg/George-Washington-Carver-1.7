@@ -5,7 +5,7 @@ import java.util.List;
 
 import growthcraft.bees.GrowthCraftBees;
 import growthcraft.bees.common.item.*;
-package growthcraft.bees.init.*;
+import growthcraft.bees.init.*;
 
 import cpw.mods.fml.common.registry.VillagerRegistry.IVillageCreationHandler;
 import cpw.mods.fml.common.registry.VillagerRegistry.IVillageTradeHandler;
