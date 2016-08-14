@@ -4,6 +4,8 @@ import java.util.Random;
 import java.util.List;
 
 import growthcraft.bees.GrowthCraftBees;
+import growthcraft.bees.common.item.*;
+import growthcraft.bees.init.*;
 
 import cpw.mods.fml.common.registry.VillagerRegistry.IVillageCreationHandler;
 import cpw.mods.fml.common.registry.VillagerRegistry.IVillageTradeHandler;
@@ -26,10 +28,10 @@ public class VillageHandlerBeesApiarist implements IVillageTradeHandler, IVillag
 		recipeList.add(new MerchantRecipe(new ItemStack(Items.emerald, 1 + random.nextInt(2)), GrowthCraftBees.items.honeyCombFilled.asStack(1, 7)));
 		recipeList.add(new MerchantRecipe(new ItemStack(Items.emerald, 1 + random.nextInt(2)), GrowthCraftBees.items.bee.asStack(1, 7)));
 		recipeList.add(new MerchantRecipe(new ItemStack(Items.emerald, 1 + random.nextInt(2)), GrowthCraftBees.items.beesWax.asStack(1, 5)));
-		recipeList.add(new MerchantRecipe(new ItemStack(GrowthCraftBees.items.honeyJar, 4), new ItemStack(Items.emerald, 2)));
-		recipeList.add(new MerchantRecipe(new ItemStack(GrowthCraftBees.items.honeyCombFilled, 4), new ItemStack(Items.emerald, 2)));
-		recipeList.add(new MerchantRecipe(new ItemStack(GrowthCraftBees.items.bee, 4), new ItemStack(Items.emerald, 1)));
-		recipeList.add(new MerchantRecipe(new ItemStack(GrowthCraftBees.items.beesWax, 1), new ItemStack(Items.emerald, 4)));
+		recipeList.add(new MerchantRecipe(new ItemStack(GrowthCraftBees.items.honeyJar, 4), new ItemStack(Items.emerald, 2, 3)));
+		recipeList.add(new MerchantRecipe(new ItemStack(GrowthCraftBees.items.honeyCombFilled, 4), new ItemStack(Items.emerald, 2, 3)));
+		recipeList.add(new MerchantRecipe(new ItemStack(GrowthCraftBees.items.bee, 4), new ItemStack(Items.emerald, 1, 2)));
+		recipeList.add(new MerchantRecipe(new ItemStack(GrowthCraftBees.items.beesWax, 1), new ItemStack(Items.emerald, 2, 4)));
 	}
 
 	@Override
