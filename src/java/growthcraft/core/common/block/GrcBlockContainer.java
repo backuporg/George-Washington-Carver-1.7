@@ -31,8 +31,8 @@ import javax.annotation.Nonnull;
 import growthcraft.api.core.nbt.INBTItemSerializable;
 import growthcraft.api.core.util.BlockFlags;
 import growthcraft.core.common.item.IItemTileBlock;
-import growthcraft.core.common.tileentity.ICustomDisplayName;
-import growthcraft.core.common.tileentity.IItemHandler;
+import growthcraft.core.common.tileentity.feature.ICustomDisplayName;
+import growthcraft.core.common.tileentity.feature.IItemHandler;
 import growthcraft.core.GrowthCraftCore;
 import growthcraft.core.util.ItemUtils;
 import growthcraft.core.Utils;
@@ -299,6 +299,7 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 				{
 					final ItemStack stack = inventory.getStackInSlot(index);
 					ItemUtils.spawnItemStack(world, x, y, z, stack, rand);
+					inventory.setInventorySlotContents(index, (ItemStack)null);
 				}
 				world.func_147453_f(x, y, z, block);
 			}

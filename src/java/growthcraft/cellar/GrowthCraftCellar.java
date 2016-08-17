@@ -16,6 +16,7 @@ import growthcraft.cellar.common.booze.ModifierFunctionExtended;
 import growthcraft.cellar.common.booze.ModifierFunctionHyperExtended;
 import growthcraft.cellar.common.booze.ModifierFunctionPotent;
 import growthcraft.cellar.common.CommonProxy;
+import growthcraft.cellar.common.item.EnumYeast;
 import growthcraft.cellar.common.item.ItemChievDummy;
 import growthcraft.cellar.common.item.ItemWaterBag;
 import growthcraft.cellar.common.item.ItemYeast;
@@ -31,15 +32,14 @@ import growthcraft.cellar.creativetab.CreativeTabsCellar;
 import growthcraft.cellar.eventhandler.EventHandlerCauldronUseItem;
 import growthcraft.cellar.eventhandler.EventHandlerItemCraftedEventCellar;
 import growthcraft.cellar.eventhandler.EventHandlerLivingUpdateEventCellar;
-import growthcraft.cellar.handler.GuiHandlerCellar;
 import growthcraft.cellar.init.GrcCellarBlocks;
 import growthcraft.cellar.network.PacketPipeline;
 import growthcraft.cellar.stats.CellarAchievement;
 import growthcraft.cellar.stats.GrcCellarAchievements;
 import growthcraft.cellar.util.CellarBoozeBuilderFactory;
 import growthcraft.cellar.util.GrcCellarUserApis;
-import growthcraft.cellar.common.item.EnumYeast;
 import growthcraft.core.common.definition.ItemDefinition;
+import growthcraft.core.GrcGuiProvider;
 import growthcraft.core.integration.NEI;
 import growthcraft.core.util.MapGenHelper;
 
@@ -77,30 +77,24 @@ public class GrowthCraftCellar
 
 	@Instance(MOD_ID)
 	public static GrowthCraftCellar instance;
-	public static GrcCellarBlocks blocks = new GrcCellarBlocks();
-
+	public static final GrcCellarBlocks blocks = new GrcCellarBlocks();
 	public static CreativeTabs tab;
-
 	public static ItemDefinition yeast;
 	public static ItemDefinition waterBag;
-
 	public static Potion potionTipsy;
-
 	// Achievments
 	public static ItemDefinition chievItemDummy;
 	public static GrcCellarAchievements achievements;
-
 	// Network
 	public static final PacketPipeline packetPipeline = new PacketPipeline();
 	public static CellarBoozeBuilderFactory boozeBuilderFactory;
-
 	// Events
 	public static final EventBus CELLAR_BUS = new EventBus();
-
-	private ILogger logger = new GrcLogger(MOD_ID);
-	private GrcCellarConfig config = new GrcCellarConfig();
-	private GrcCellarUserApis userApis = new GrcCellarUserApis();
-	private ModuleContainer modules = new ModuleContainer();
+	public static final GrcGuiProvider guiProvider = new GrcGuiProvider(new GrcLogger(MOD_ID + ":GuiProvider"));
+	private final ILogger logger = new GrcLogger(MOD_ID);
+	private final GrcCellarConfig config = new GrcCellarConfig();
+	private final GrcCellarUserApis userApis = new GrcCellarUserApis();
+	private final ModuleContainer modules = new ModuleContainer();
 
 	public static UserHeatSourcesConfig getUserHeatSources()
 	{
@@ -303,20 +297,24 @@ public class GrowthCraftCellar
 		CellarRegistry.instance().yeast().addYeast(EnumYeast.ORIGIN.asStack());
 	}
 
+	private void initVillageHandlers()
+	{
+		if (config.villagerBrewerID > 0)
+		{
+			VillagerRegistry.instance().registerVillagerId(config.villagerBrewerID);
+		}
+		VillagerRegistry.instance().registerVillageCreationHandler(new VillageHandlerCellar());
+	}
+
 	@EventHandler
 	public void load(FMLInitializationEvent event)
 	{
 		registerOres();
 		registerYeast();
-
 		packetPipeline.initialise();
-		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandlerCellar());
-
-		VillagerRegistry.instance().registerVillagerId(config.villagerBrewerID);
-		VillagerRegistry.instance().registerVillageCreationHandler(new VillageHandlerCellar());
-
+		NetworkRegistry.INSTANCE.registerGuiHandler(this, guiProvider);
+		if (config.enableVillageGen) initVillageHandlers();
 		CommonProxy.instance.init();
-
 		modules.init();
 	}
 

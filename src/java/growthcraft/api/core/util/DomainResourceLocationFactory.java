@@ -21,42 +21,48 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package growthcraft.core.common.definition;
+package growthcraft.api.core.util;
 
-import javax.annotation.Nonnull;
+import net.minecraft.util.ResourceLocation;
 
-import growthcraft.core.common.block.GrcBlockFluid;
-import growthcraft.core.common.item.ItemGrcBlockFluid;
-
-import net.minecraft.block.material.Material;
-import net.minecraftforge.fluids.Fluid;
-
-public class GrcBlockFluidDefinition extends BlockTypeDefinition<GrcBlockFluid>
+/**
+ * You will get frustrated having to import ResourceLocation and then remembering the domain you want the resource from.
+ * NO MORE I SAY, I WANT MORE MAGIC IN MY LIFE.
+ */
+public class DomainResourceLocationFactory
 {
-	public GrcBlockFluidDefinition(@Nonnull GrcBlockFluid fluid)
+	private final String domain;
+
+	/**
+	 * @param p_domain name of the domain that will be prefixed to the resource locations created by the factory
+	 */
+	public DomainResourceLocationFactory(String p_domain)
 	{
-		super(fluid);
+		this.domain = p_domain;
 	}
 
-	@Override
-	public void register(String name)
+	/**
+	 * @return domain the domain this factory serves up
+	 */
+	public String getDomainName()
 	{
-		super.register(name, ItemGrcBlockFluid.class);
+		return domain;
 	}
 
-	public static GrcBlockFluidDefinition create(Fluid fluid, Material mat)
+	/**
+	 * @param str str to append to the domain
+	 * @return domained string
+	 */
+	public String join(String str)
 	{
-		return new GrcBlockFluidDefinition(new GrcBlockFluid(fluid, mat));
+		return String.format("%s:%s", getDomainName(), str);
 	}
 
-	public static GrcBlockFluidDefinition create(Fluid fluid)
+	/**
+	 * @return resource location
+	 */
+	public ResourceLocation create(String name)
 	{
-		return create(fluid, Material.water);
-	}
-
-	@SuppressWarnings({"rawtypes"})
-	public static GrcBlockFluidDefinition create(FluidTypeDefinition def)
-	{
-		return create(def.getFluid());
+		return new ResourceLocation(getDomainName(), name);
 	}
 }
