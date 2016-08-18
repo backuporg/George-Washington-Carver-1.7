@@ -38,6 +38,7 @@ import growthcraft.milk.common.item.ItemBlockHangingCurds;
 import growthcraft.milk.GrowthCraftMilk;
 
 import net.minecraftforge.oredict.OreDictionary;
+import net.minecraft.init.Blocks;
 
 public class GrcMilkBlocks extends GrcModuleBlocks
 {
@@ -90,6 +91,7 @@ public class GrcMilkBlocks extends GrcModuleBlocks
 		if (thistle != null)
 		{
 			thistle.register("grcmilk.Thistle");
+			Blocks.fire.setFireInfo(thistle.getBlock(), 30, 60);
 		}
 		registerOres();
 	}
