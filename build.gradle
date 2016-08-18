@@ -112,19 +112,19 @@ repositories {
         name "mobius"
         url "http://mobiusstrip.eu/maven"
     }
-    maven {
-        name "JEI"
-        url "http://dvs1.progwml6.com/files/maven"
+    ivy {
+        name "buildcraft"
+        artifactPattern "http://www.mod-buildcraft.com/releases/BuildCraft/[revision]/[module]-[revision]-[classifier].[ext]"
     }
 }
 
 dependencies {
     compile "applecore:AppleCore:${minecraft_version}-${applecore_version}:api"
-    deobfCompile "mezz.jei:jei_${mcversion}:${jei_version}:api"
-    runtime "mezz.jei:jei_${mcversion}:${jei_version}"
     //compile "mcp.mobius.waila:Waila:${waila_version}_${minecraft_version}:dev"
     compile "codechicken:CodeChickenLib:${minecraft_version}-${code_chicken_lib_version}:dev"
     compile "codechicken:CodeChickenCore:${minecraft_version}-${code_chicken_core_version}:dev"
+    compile "codechicken:NotEnoughItems:${minecraft_version}-${nei_version}:dev"
+    compile "com.mod-buildcraft:buildcraft:${bc_version}:dev"
     testCompile "junit:junit:4.11"
 }
 
