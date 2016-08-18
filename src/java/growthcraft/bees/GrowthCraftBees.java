@@ -60,19 +60,6 @@ public class GrowthCraftBees
 	@Instance(MOD_ID)
 	public static GrowthCraftBees instance;
 	public static CreativeTabs tab;
-	
-	public static BlockTypeDefinition<BlockBeeBox> beeBox;
-	public static BlockTypeDefinition<BlockBeeBox> beeBoxBamboo;
-	public static BlockTypeDefinition<BlockBeeBox> beeBoxNatura;
-	public static BlockTypeDefinition<BlockBeeBox> beeBoxBiomesOPlenty;
-	public static BlockTypeDefinition<BlockBeeBox> beeBoxBotania;
-	public static BlockTypeDefinition<BlockBeeBox> beeBoxNether;
-	public static BlockTypeDefinition<BlockBeeBox> beeBoxThaumcraft;
-	public static List<BlockTypeDefinition<BlockBeeBox>> beeBoxesForestry;
-	public static List<BlockTypeDefinition<BlockBeeBox>> beeBoxesForestryFireproof;
-	public static BlockDefinition beeHive;
-
-	public static BlockDefinition beeHive;
 	public static final GrcBeesBlocks blocks = new GrcBeesBlocks();
 	public static final GrcBeesItems items = new GrcBeesItems();
 	public static final GrcBeesFluids fluids = new GrcBeesFluids();
