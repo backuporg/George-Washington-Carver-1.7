@@ -38,6 +38,7 @@ import growthcraft.milk.common.item.ItemBlockHangingCurds;
 import growthcraft.milk.GrowthCraftMilk;
 
 import net.minecraftforge.oredict.OreDictionary;
+import net.minecraft.init.Blocks;
 
 public class GrcMilkBlocks extends GrcModuleBase
 {
