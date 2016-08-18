@@ -189,4 +189,3 @@ public class ThaumcraftModule extends ThaumcraftModuleBase
 		}
 	}
 }
-
