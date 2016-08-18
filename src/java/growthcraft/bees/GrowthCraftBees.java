@@ -60,7 +60,6 @@ public class GrowthCraftBees
 	@Instance(MOD_ID)
 	public static GrowthCraftBees instance;
 	public static CreativeTabs tab;
-<<<<<<< HEAD
 	
 	public static BlockTypeDefinition<BlockBeeBox> beeBox;
 	public static BlockTypeDefinition<BlockBeeBox> beeBoxBamboo;
@@ -74,9 +73,7 @@ public class GrowthCraftBees
 	public static BlockDefinition beeHive;
 
 	public static BlockDefinition beeHive;
-=======
 	public static final GrcBeesBlocks blocks = new GrcBeesBlocks();
->>>>>>> refs/remotes/GrowthcraftCE/development
 	public static final GrcBeesItems items = new GrcBeesItems();
 	public static final GrcBeesFluids fluids = new GrcBeesFluids();
 	public static final GrcGuiProvider guiProvider = new GrcGuiProvider(new GrcLogger(MOD_ID + ":GuiProvider"));
