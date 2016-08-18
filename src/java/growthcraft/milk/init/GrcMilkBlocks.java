@@ -90,6 +90,7 @@ public class GrcMilkBlocks extends GrcModuleBase
 		if (thistle != null)
 		{
 			thistle.register("grcmilk.Thistle");
+			Blocks.fire.setFireInfo(thistle.getBlock(), 30, 60);
 		}
 		registerOres();
 	}
