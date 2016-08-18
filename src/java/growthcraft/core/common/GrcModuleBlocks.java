@@ -21,34 +21,44 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package growthcraft.rice.integration;
+package growthcraft.core.common;
 
-import growthcraft.core.integration.forestry.FarmableBasicGrowthCraft;
-import growthcraft.core.integration.forestry.ForestryFluids;
-import growthcraft.core.integration.ForestryModuleBase;
-import growthcraft.rice.GrowthCraftRice;
+import java.util.LinkedList;
+import java.util.List;
 
-import cpw.mods.fml.common.Optional;
+import growthcraft.core.common.definition.BlockDefinition;
+import growthcraft.core.common.definition.BlockTypeDefinition;
+
 import net.minecraft.block.Block;
-import net.minecraft.item.ItemStack;
 
-public class ForestryModule extends ForestryModuleBase
+public class GrcModuleBlocks extends GrcModuleBase
 {
-	public ForestryModule()
+	// All items that had defintions created via the interface
+	public final List<BlockTypeDefinition<? extends Block>> all = new LinkedList<BlockTypeDefinition<? extends Block>>();
+
+	/**
+	 * Creates a basic BlockDefintion from the given block
+	 *
+	 * @param block the block to wrap
+	 * @return definition
+	 */
+	public BlockDefinition newDefinition(Block block)
 	{
-		super(GrowthCraftRice.MOD_ID);
+		final BlockDefinition def = new BlockDefinition(block);
+		all.add(def);
+		return def;
 	}
 
-	@Override
-	@Optional.Method(modid="Forestry")
-	protected void integrate()
+	/**
+	 * Creates a BlockTypeDefintion from the given block
+	 *
+	 * @param block the block to wrap and type by
+	 * @return typed definition
+	 */
+	public <T extends Block> BlockTypeDefinition<T> newTypedDefinition(T block)
 	{
-		final int seedamount = getActiveMode().getIntegerSetting("squeezer.liquid.seed");
-
-		final ItemStack riceSeed = GrowthCraftRice.items.rice.asStack();
-		final Block riceBlock = GrowthCraftRice.blocks.riceBlock.getBlock();
-		if (ForestryFluids.SEEDOIL.exists()) recipes().squeezerManager.addRecipe(10, new ItemStack[]{riceSeed}, ForestryFluids.SEEDOIL.asFluidStack(seedamount));
-		Backpack.FORESTERS.add(riceSeed);
-		addFarmable("farmOrchard", new FarmableBasicGrowthCraft(riceBlock, GrowthCraftRice.getConfig().paddyFieldMax, true, false));
+		final BlockTypeDefinition<T> def = new BlockTypeDefinition<T>(block);
+		all.add(def);
+		return def;
 	}
 }

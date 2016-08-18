@@ -21,41 +21,44 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package growthcraft.bamboo.init;
+package growthcraft.core.common;
 
-import growthcraft.bamboo.common.item.ItemBamboo;
-import growthcraft.bamboo.common.item.ItemBambooCoal;
-import growthcraft.bamboo.common.item.ItemBambooDoor;
-import growthcraft.bamboo.common.item.ItemBambooRaft;
-import growthcraft.bamboo.common.item.ItemBambooShoot;
+import java.util.LinkedList;
+import java.util.List;
+
 import growthcraft.core.common.definition.ItemDefinition;
-import growthcraft.core.common.GrcModuleItems;
+import growthcraft.core.common.definition.ItemTypeDefinition;
 
-public class GrcBambooItems extends GrcModuleItems
+import net.minecraft.item.Item;
+
+public class GrcModuleItems extends GrcModuleBase
 {
-	public ItemDefinition bamboo;
-	public ItemDefinition bambooDoorItem;
-	public ItemDefinition bambooRaft;
-	public ItemDefinition bambooCoal;
-	public ItemDefinition bambooShootFood;
+	// All items that had defintions created via the interface
+	public final List<ItemTypeDefinition<? extends Item>> all = new LinkedList<ItemTypeDefinition<? extends Item>>();
 
-	@Override
-	public void preInit()
+	/**
+	 * Creates a basic ItemDefintion from the given item
+	 *
+	 * @param item the item to wrap
+	 * @return definition
+	 */
+	public ItemDefinition newDefinition(Item item)
 	{
-		this.bamboo = newDefinition(new ItemBamboo());
-		this.bambooDoorItem = newDefinition(new ItemBambooDoor());
-		this.bambooRaft = newDefinition(new ItemBambooRaft());
-		this.bambooCoal = newDefinition(new ItemBambooCoal());
-		this.bambooShootFood = newDefinition(new ItemBambooShoot());
+		final ItemDefinition def = new ItemDefinition(item);
+		all.add(def);
+		return def;
 	}
 
-	@Override
-	public void register()
+	/**
+	 * Creates a ItemTypeDefintion from the given item
+	 *
+	 * @param item the item to wrap and type by
+	 * @return typed definition
+	 */
+	public <T extends Item> ItemTypeDefinition<T> newTypedDefinition(T item)
 	{
-		bamboo.register("grc.bamboo");
-		bambooDoorItem.register("grc.bambooDoorItem");
-		bambooRaft.register("grc.bambooRaft");
-		bambooCoal.register("grc.bambooCoal");
-		bambooShootFood.register("grc.bambooShootFood");
+		final ItemTypeDefinition<T> def = new ItemTypeDefinition<T>(item);
+		all.add(def);
+		return def;
 	}
 }

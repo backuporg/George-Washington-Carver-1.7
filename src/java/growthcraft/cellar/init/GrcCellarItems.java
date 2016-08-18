@@ -21,41 +21,33 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package growthcraft.bamboo.init;
+package growthcraft.cellar.init;
 
-import growthcraft.bamboo.common.item.ItemBamboo;
-import growthcraft.bamboo.common.item.ItemBambooCoal;
-import growthcraft.bamboo.common.item.ItemBambooDoor;
-import growthcraft.bamboo.common.item.ItemBambooRaft;
-import growthcraft.bamboo.common.item.ItemBambooShoot;
+import growthcraft.cellar.common.item.ItemChievDummy;
+import growthcraft.cellar.common.item.ItemWaterBag;
+import growthcraft.cellar.common.item.ItemYeast;
 import growthcraft.core.common.definition.ItemDefinition;
 import growthcraft.core.common.GrcModuleItems;
 
-public class GrcBambooItems extends GrcModuleItems
+public class GrcCellarItems extends GrcModuleItems
 {
-	public ItemDefinition bamboo;
-	public ItemDefinition bambooDoorItem;
-	public ItemDefinition bambooRaft;
-	public ItemDefinition bambooCoal;
-	public ItemDefinition bambooShootFood;
+	public ItemDefinition yeast;
+	public ItemDefinition waterBag;
+	public ItemDefinition chievItemDummy;
 
 	@Override
 	public void preInit()
 	{
-		this.bamboo = newDefinition(new ItemBamboo());
-		this.bambooDoorItem = newDefinition(new ItemBambooDoor());
-		this.bambooRaft = newDefinition(new ItemBambooRaft());
-		this.bambooCoal = newDefinition(new ItemBambooCoal());
-		this.bambooShootFood = newDefinition(new ItemBambooShoot());
+		this.yeast = newDefinition(new ItemYeast());
+		this.waterBag = newDefinition(new ItemWaterBag());
+		this.chievItemDummy = newDefinition(new ItemChievDummy());
 	}
 
 	@Override
 	public void register()
 	{
-		bamboo.register("grc.bamboo");
-		bambooDoorItem.register("grc.bambooDoorItem");
-		bambooRaft.register("grc.bambooRaft");
-		bambooCoal.register("grc.bambooCoal");
-		bambooShootFood.register("grc.bambooShootFood");
+		yeast.register("grc.yeast");
+		waterBag.register("grc.waterBag");
+		chievItemDummy.register("grc.chievItemDummy");
 	}
 }
