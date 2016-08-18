@@ -45,13 +45,13 @@ public class TotemicModule extends ModIntegrationBase
 	@Override
 	public void doPreInit()
 	{
-		GrowthCraftBees.beeBoxTotemic = new BlockTypeDefinition<BlockBeeBox>(new BlockBeeBoxTotemic());
+		GrowthCraftBees.blocks.beeBoxTotemic = GrowthCraftBees.blocks.newTypedDefinition(new BlockBeeBoxTotemic());
 	}
 
 	@Override
 	public void doRegister()
 	{
-		GrowthCraftBees.beeBoxTotemic.register("grc.beeBox.Totemic", ItemBlockBeeBox.class);
+		GrowthCraftBees.blocks.beeBoxTotemic.register("grc.beeBox.Totemic", ItemBlockBeeBox.class);
 	}
 
 	@Override
@@ -62,7 +62,7 @@ public class TotemicModule extends ModIntegrationBase
 			final ItemStack planks = type.asPlanksItemStack();
 			if (planks != null)
 			{
-				GameRegistry.addShapedRecipe(GrowthCraftBees.beeBoxTotemic.asStack(), " A ", "A A", "AAA", 'A', planks);
+				GameRegistry.addShapedRecipe(GrowthCraftBees.blocks.beeBoxTotemic.asStack(), " A ", "A A", "AAA", 'A', planks);
 			}
 		}
 	}
