@@ -87,9 +87,6 @@ public class GrowthCraftRice
 		//====================
 		// ORE DICTIONARY
 		//====================
-		OreDictionary.registerOre("cropRice", rice.getItem());
-		OreDictionary.registerOre("listAllgrain", rice.getItem());
-		OreDictionary.registerOre("seedRice", rice.getItem());
 		OreDictionary.registerOre("cropRice", items.rice.getItem());
 		OreDictionary.registerOre("seedRice", items.rice.getItem());
 		// For Pam's HarvestCraft
