@@ -51,7 +51,7 @@ public class TotemicModule extends ModIntegrationBase
 	@Override
 	public void doRegister()
 	{
-		GrowthCraftBees.blocks.beeBoxTotemic.register("grc.beeBox.Totemic", ItemBlockBeeBox.class);
+		GrowthCraftBees.blocks.beeBoxTotemic.register("grc.BeeBox.Totemic", ItemBlockBeeBox.class);
 	}
 
 	@Override
