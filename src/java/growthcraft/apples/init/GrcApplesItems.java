@@ -21,41 +21,35 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package growthcraft.bamboo.init;
+package growthcraft.apples.init;
 
-import growthcraft.bamboo.common.item.ItemBamboo;
-import growthcraft.bamboo.common.item.ItemBambooCoal;
-import growthcraft.bamboo.common.item.ItemBambooDoor;
-import growthcraft.bamboo.common.item.ItemBambooRaft;
-import growthcraft.bamboo.common.item.ItemBambooShoot;
+import growthcraft.apples.common.item.ItemAppleSeeds;
 import growthcraft.core.common.definition.ItemDefinition;
 import growthcraft.core.common.GrcModuleItems;
+import net.minecraft.init.Items;
+import net.minecraftforge.oredict.OreDictionary;
 
-public class GrcBambooItems extends GrcModuleItems
+public class GrcApplesItems extends GrcModuleItems
 {
-	public ItemDefinition bamboo;
-	public ItemDefinition bambooDoorItem;
-	public ItemDefinition bambooRaft;
-	public ItemDefinition bambooCoal;
-	public ItemDefinition bambooShootFood;
+	public ItemDefinition appleSeeds;
 
 	@Override
 	public void preInit()
 	{
-		this.bamboo = newDefinition(new ItemBamboo());
-		this.bambooDoorItem = newDefinition(new ItemBambooDoor());
-		this.bambooRaft = newDefinition(new ItemBambooRaft());
-		this.bambooCoal = newDefinition(new ItemBambooCoal());
-		this.bambooShootFood = newDefinition(new ItemBambooShoot());
+		appleSeeds = newDefinition(new ItemAppleSeeds());
 	}
 
 	@Override
 	public void register()
 	{
-		bamboo.register("grc.bamboo");
-		bambooDoorItem.register("grc.bambooDoorItem");
-		bambooRaft.register("grc.bambooRaft");
-		bambooCoal.register("grc.bambooCoal");
-		bambooShootFood.register("grc.bambooShootFood");
+		appleSeeds.register("grc.appleSeeds");
+
+		OreDictionary.registerOre("seedApple", appleSeeds.getItem());
+		// For Pam's HarvestCraft
+		// Uses the same OreDict. names as HarvestCraft
+		OreDictionary.registerOre("listAllseed", appleSeeds.getItem());
+		// Common
+		OreDictionary.registerOre("foodApple", Items.apple);
+		OreDictionary.registerOre("foodFruit", Items.apple);
 	}
 }

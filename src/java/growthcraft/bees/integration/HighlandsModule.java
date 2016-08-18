@@ -23,11 +23,9 @@
  */
 package growthcraft.bees.integration;
 
-import growthcraft.bees.common.block.BlockBeeBox;
 import growthcraft.bees.common.block.BlockBeeBoxHighlands;
 import growthcraft.bees.common.item.ItemBlockBeeBox;
 import growthcraft.bees.GrowthCraftBees;
-import growthcraft.core.common.definition.BlockTypeDefinition;
 import growthcraft.core.integration.HIGHLANDS.HIGHLANDSPlatform;
 import growthcraft.core.integration.HIGHLANDS.EnumHIGHLANDSWoodType;
 import growthcraft.core.integration.ModIntegrationBase;
@@ -45,13 +43,13 @@ public class HighlandsModule extends ModIntegrationBase
 	@Override
 	public void doPreInit()
 	{
-		GrowthCraftBees.beeBoxHighlands = new BlockTypeDefinition<BlockBeeBox>(new BlockBeeBoxHighlands());
+		GrowthCraftBees.blocks.beeBoxHighlands = GrowthCraftBees.blocks.newTypedDefinition(new BlockBeeBoxHighlands());
 	}
 
 	@Override
 	public void doRegister()
 	{
-		GrowthCraftBees.beeBoxHighlands.register("grc.beeBox.Highlands", ItemBlockBeeBox.class);
+		GrowthCraftBees.blocks.beeBoxHighlands.register("grc.beeBox.Highlands", ItemBlockBeeBox.class);
 	}
 
 	@Override
@@ -62,7 +60,7 @@ public class HighlandsModule extends ModIntegrationBase
 			final ItemStack planks = type.asPlanksItemStack();
 			if (planks != null)
 			{
-				GameRegistry.addShapedRecipe(GrowthCraftBees.beeBoxHighlands.asStack(1, type.meta), " A ", "A A", "AAA", 'A', planks);
+				GameRegistry.addShapedRecipe(GrowthCraftBees.blocks.beeBoxHighlands.asStack(1, type.meta), " A ", "A A", "AAA", 'A', planks);
 			}
 		}
 	}
