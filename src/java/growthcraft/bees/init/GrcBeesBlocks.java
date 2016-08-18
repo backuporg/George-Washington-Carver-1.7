@@ -34,15 +34,20 @@ import growthcraft.core.common.GrcModuleBlocks;
 
 public class GrcBeesBlocks extends GrcModuleBlocks
 {
-	public BlockTypeDefinition<? extends BlockBeeBox> beeBox;
-	public BlockTypeDefinition<? extends BlockBeeBox> beeBoxBamboo;
-	public BlockTypeDefinition<? extends BlockBeeBox> beeBoxNatura;
-	public BlockTypeDefinition<? extends BlockBeeBox> beeBoxBiomesOPlenty;
-	public BlockTypeDefinition<? extends BlockBeeBox> beeBoxBotania;
-	public BlockTypeDefinition<? extends BlockBeeBox> beeBoxNether;
-	public BlockTypeDefinition<? extends BlockBeeBox> beeBoxThaumcraft;
-	public List<BlockTypeDefinition<? extends BlockBeeBox>> beeBoxesForestry;
-	public List<BlockTypeDefinition<? extends BlockBeeBox>> beeBoxesForestryFireproof;
+	public static BlockTypeDefinition<BlockBeeBox> beeBox;
+	public static BlockTypeDefinition<BlockBeeBox> beeBoxBamboo;
+	public static BlockTypeDefinition<BlockBeeBox> beeBoxNatura;
+	public static BlockTypeDefinition<BlockBeeBox> beeBoxBiomesOPlenty;
+	public static BlockTypeDefinition<BlockBeeBox> beeBoxBotania;
+	public static BlockTypeDefinition<BlockBeeBox> beeBoxNether;
+	public static BlockTypeDefinition<BlockBeeBox> beeBoxThaumcraft;
+	public static BlockTypeDefinition<BlockBeeBox> beeBoxFossilsAndArchaeology;
+	public static BlockTypeDefinition<BlockBeeBox> beeBoxArsMagica2;
+	public static BlockTypeDefinition<BlockBeeBox> beeBoxTotemic;
+	public static BlockTypeDefinition<BlockBeeBox> beeBoxExtraBiomesXL;
+	public static BlockTypeDefinition<BlockBeeBox> beeBoxHighlands;
+	public static List<BlockTypeDefinition<BlockBeeBox>> beeBoxesForestry;
+	public static List<BlockTypeDefinition<BlockBeeBox>> beeBoxesForestryFireproof;
 	public BlockDefinition beeHive;
 
 	@Override
