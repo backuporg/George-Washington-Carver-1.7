@@ -23,11 +23,9 @@
  */
 package growthcraft.bees.integration;
 
-import growthcraft.bees.common.block.BlockBeeBox;
 import growthcraft.bees.common.block.BlockBeeBoxTotemic;
 import growthcraft.bees.common.item.ItemBlockBeeBox;
 import growthcraft.bees.GrowthCraftBees;
-import growthcraft.core.common.definition.BlockTypeDefinition;
 import growthcraft.core.integration.totemic.TotemicPlatform;
 import growthcraft.core.integration.totemic.EnumTotemicWoodType;
 import growthcraft.core.integration.ModIntegrationBase;
@@ -45,13 +43,13 @@ public class TotemicModule extends ModIntegrationBase
 	@Override
 	public void doPreInit()
 	{
-		GrowthCraftBees.beeBoxTotemic = new BlockTypeDefinition<BlockBeeBox>(new BlockBeeBoxTotemic());
+		GrowthCraftBees.blocks.beeBoxTotemic = GrowthCraftBees.blocks.newTypedDefinition(new BlockBeeBoxTotemic());
 	}
 
 	@Override
 	public void doRegister()
 	{
-		GrowthCraftBees.beeBoxTotemic.register("grc.beeBox.Totemic", ItemBlockBeeBox.class);
+		GrowthCraftBees.blocks.beeBoxTotemic.register("grc.BeeBox.Totemic", ItemBlockBeeBox.class);
 	}
 
 	@Override
@@ -62,7 +60,7 @@ public class TotemicModule extends ModIntegrationBase
 			final ItemStack planks = type.asPlanksItemStack();
 			if (planks != null)
 			{
-				GameRegistry.addShapedRecipe(GrowthCraftBees.beeBoxTotemic.asStack(), " A ", "A A", "AAA", 'A', planks);
+				GameRegistry.addShapedRecipe(GrowthCraftBees.blocks.beeBoxTotemic.asStack(), " A ", "A A", "AAA", 'A', planks);
 			}
 		}
 	}

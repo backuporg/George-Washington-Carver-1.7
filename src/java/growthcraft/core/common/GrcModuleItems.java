@@ -1,5 +1,7 @@
 /*
- * Copyright (c) 2013 Andrew Crocker
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2016 IceDragon200
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -19,28 +21,44 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+package growthcraft.core.common;
 
-package invtweaks.api;
-
-import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 
-public interface IItemTreeCategory {
-    boolean contains(IItemTreeItem item);
+import growthcraft.core.common.definition.ItemDefinition;
+import growthcraft.core.common.definition.ItemTypeDefinition;
 
-    void addCategory(IItemTreeCategory category);
+import net.minecraft.item.Item;
 
-    void addItem(IItemTreeItem item);
+public class GrcModuleItems extends GrcModuleBase
+{
+	// All items that had defintions created via the interface
+	public final List<ItemTypeDefinition<? extends Item>> all = new LinkedList<ItemTypeDefinition<? extends Item>>();
 
-    Collection<IItemTreeCategory> getSubCategories();
+	/**
+	 * Creates a basic ItemDefintion from the given item
+	 *
+	 * @param item the item to wrap
+	 * @return definition
+	 */
+	public ItemDefinition newDefinition(Item item)
+	{
+		final ItemDefinition def = new ItemDefinition(item);
+		all.add(def);
+		return def;
+	}
 
-    Collection<List<IItemTreeItem>> getItems();
-
-    String getName();
-
-    int getCategoryOrder();
-
-    int findCategoryOrder(String keyword);
-
-    int findKeywordDepth(String keyword);
+	/**
+	 * Creates a ItemTypeDefintion from the given item
+	 *
+	 * @param item the item to wrap and type by
+	 * @return typed definition
+	 */
+	public <T extends Item> ItemTypeDefinition<T> newTypedDefinition(T item)
+	{
+		final ItemTypeDefinition<T> def = new ItemTypeDefinition<T>(item);
+		all.add(def);
+		return def;
+	}
 }

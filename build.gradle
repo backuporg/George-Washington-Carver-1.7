@@ -118,11 +118,16 @@ repositories {
         name "mobius"
         url "http://mobiusstrip.eu/maven"
     }
+    maven {
+        name = "ilexiconn"
+        url = "http://maven.ilexiconn.net"
+    }
 }
 
 dependencies {
     compile "applecore:AppleCore:${minecraft_version}-${applecore_version}:api"
     //compile "mcp.mobius.waila:Waila:${waila_version}_${minecraft_version}:dev"
+    compile "net.ilexiconn:llibrary:1.5.1-1.10.2:dev"
     runtime "mezz.jei:jei_1.10.2:3.9.0.244"
     testCompile "junit:junit:4.11"
 }

@@ -1,5 +1,7 @@
 /*
- * Copyright (c) 2013 Andrew Crocker
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2016 IceDragon200
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -19,11 +21,29 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+package growthcraft.rice.init;
 
-package invtweaks.api;
+import growthcraft.core.common.definition.ItemDefinition;
+import growthcraft.core.common.GrcModuleItems;
+import growthcraft.rice.common.item.ItemRice;
+import growthcraft.rice.common.item.ItemRiceBall;
 
-import java.util.EventListener;
+public class GrcRiceItems extends GrcModuleItems
+{
+	public ItemDefinition rice;
+	public ItemDefinition riceBall;
 
-public interface IItemTreeListener extends EventListener {
-    void onTreeLoaded(IItemTree tree);
+	@Override
+	public void preInit()
+	{
+		this.rice     = newDefinition(new ItemRice());
+		this.riceBall = newDefinition(new ItemRiceBall());
+	}
+
+	@Override
+	public void register()
+	{
+		rice.register("grc.rice");
+		riceBall.register("grc.riceBall");
+	}
 }

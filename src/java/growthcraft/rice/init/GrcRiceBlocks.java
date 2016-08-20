@@ -1,5 +1,7 @@
 /*
- * Copyright (c) 2013 Andrew Crocker
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2016 IceDragon200
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -19,15 +21,30 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+package growthcraft.rice.init;
 
-package invtweaks.api;
+import growthcraft.core.common.definition.BlockDefinition;
+import growthcraft.core.common.definition.BlockTypeDefinition;
+import growthcraft.core.common.GrcModuleBlocks;
+import growthcraft.rice.common.block.BlockPaddy;
+import growthcraft.rice.common.block.BlockRice;
 
-public interface IItemTreeItem extends Comparable<IItemTreeItem> {
-    String getName();
+public class GrcRiceBlocks extends GrcModuleBlocks
+{
+	public BlockTypeDefinition<BlockRice> riceBlock;
+	public BlockDefinition paddyField;
 
-    String getId();
+	@Override
+	public void preInit()
+	{
+		this.riceBlock = newTypedDefinition(new BlockRice());
+		this.paddyField = newDefinition(new BlockPaddy());
+	}
 
-    int getDamage();
-
-    int getOrder();
+	@Override
+	public void register()
+	{
+		riceBlock.register("grc.riceBlock");
+		paddyField.register("grc.paddyField");
+	}
 }

@@ -1,5 +1,7 @@
 /*
- * Copyright (c) 2013 Andrew Crocker
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2016 IceDragon200
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -19,27 +21,35 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+package growthcraft.apples.init;
 
-package invtweaks.api;
+import growthcraft.apples.common.item.ItemAppleSeeds;
+import growthcraft.core.common.definition.ItemDefinition;
+import growthcraft.core.common.GrcModuleItems;
+import net.minecraft.init.Items;
+import net.minecraftforge.oredict.OreDictionary;
 
-public enum SortingMethod {
-    /** Standard 'r' sorting for generic inventories */
-    DEFAULT,
-    /** Sort method creating vertical columns of items.
-     * Used for chests only, requires container to have a valid row size for correct results.
-     */
-    VERTICAL,
-    /** Sort method creating horizontal rows of items.
-     * Used for chests only, requires container to have a valid row size for correct results.
-     */
-    HORIZONTAL,
-    /** Sort method for player inventory.
-     * Applies to extra player-specified sorting rules for the main inventory.
-     * Will always operate on main inventory.
-     */
-    INVENTORY,
-    /** Attempts to even the number of items in each stack of the same type of item, without moving full stacks.
-     * Used in crafting grid sorting.
-     */
-    EVEN_STACKS,
+public class GrcApplesItems extends GrcModuleItems
+{
+	public ItemDefinition appleSeeds;
+
+	@Override
+	public void preInit()
+	{
+		appleSeeds = newDefinition(new ItemAppleSeeds());
+	}
+
+	@Override
+	public void register()
+	{
+		appleSeeds.register("grc.appleSeeds");
+
+		OreDictionary.registerOre("seedApple", appleSeeds.getItem());
+		// For Pam's HarvestCraft
+		// Uses the same OreDict. names as HarvestCraft
+		OreDictionary.registerOre("listAllseed", appleSeeds.getItem());
+		// Common
+		OreDictionary.registerOre("foodApple", Items.apple);
+		OreDictionary.registerOre("foodFruit", Items.apple);
+	}
 }
