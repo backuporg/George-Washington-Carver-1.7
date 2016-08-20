@@ -8,19 +8,20 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 public enum FoodMappings {
     INSTANCE;
 
-    private Map<Item, Integer> carnivoreItemDiet;
-    private Map<Item, Integer> herbivoreItemDiet;
-    private Map<Item, Integer> omnivoreItemDiet;
-    private Map<Item, Integer> piscivoreItemDiet;
-    private Map<Item, Integer> carnivoreEggItemDiet;
-    private Map<Item, Integer> insectivoreItemDiet;
-    private Map<Item, Integer> pisccarnivoreItemDiet;
+    private Map<ItemStack, Integer> carnivoreItemDiet;
+    private Map<ItemStack, Integer> herbivoreItemDiet;
+    private Map<ItemStack, Integer> omnivoreItemDiet;
+    private Map<ItemStack, Integer> piscivoreItemDiet;
+    private Map<ItemStack, Integer> carnivoreEggItemDiet;
+    private Map<ItemStack, Integer> insectivoreItemDiet;
+    private Map<ItemStack, Integer> pisccarnivoreItemDiet;
     private Map<Block, Integer> carnivoreBlockDiet;
     private Map<Block, Integer> herbivoreBlockDiet;
     private Map<Block, Integer> omnivoreBlockDiet;
@@ -43,7 +44,7 @@ public enum FoodMappings {
      * @param food The amount of food points for the item.
      * @param diet The specific diet to add the item to.
      */
-    public void addToItemMappings(Item item, int food, EnumDiet diet) {
+    public void addToItemMappings(ItemStack item, int food, EnumDiet diet) {
         if (item != null) {
             switch (diet) {
                 case CARNIVORE:
@@ -114,42 +115,91 @@ public enum FoodMappings {
      * @param item The item to find.
      * @param diet The specific diet to find the item from.
      */
-    public int getItemFoodAmount(Item item, EnumDiet diet) {
+    public int getItemFoodAmount(ItemStack item, EnumDiet diet) {
         switch (diet) {
             case CARNIVORE:
-                if (carnivoreItemDiet != null && carnivoreItemDiet.containsKey(item)) {
-                    return carnivoreItemDiet.get(item);
+                if (carnivoreItemDiet != null) {
+                    Iterator it = carnivoreItemDiet.entrySet().iterator();
+                    while (it.hasNext()) {
+                        Map.Entry pair = (Map.Entry)it.next();
+                        ItemStack compareStack = (ItemStack)pair.getKey();
+                        if(item.isItemEqual(compareStack)){
+                            return carnivoreItemDiet.get(compareStack);
+                        }
+                    }
                 }
                 break;
             case HERBIVORE:
-                if (herbivoreItemDiet != null && herbivoreItemDiet.containsKey(item)) {
-                    return herbivoreItemDiet.get(item);
+                if (herbivoreItemDiet != null) {
+                    Iterator it = herbivoreItemDiet.entrySet().iterator();
+                    while (it.hasNext()) {
+                        Map.Entry pair = (Map.Entry)it.next();
+                        ItemStack compareStack = (ItemStack)pair.getKey();
+                        if(item.isItemEqual(compareStack)){
+                            return herbivoreItemDiet.get(compareStack);
+                        }
+                    }
                 }
                 break;
             case OMNIVORE:
-                if (omnivoreItemDiet != null && omnivoreItemDiet.containsKey(item)) {
-                    return omnivoreItemDiet.get(item);
+                if (omnivoreItemDiet != null) {
+                    Iterator it = omnivoreItemDiet.entrySet().iterator();
+                    while (it.hasNext()) {
+                        Map.Entry pair = (Map.Entry)it.next();
+                        ItemStack compareStack = (ItemStack)pair.getKey();
+                        if(item.isItemEqual(compareStack)){
+                            return omnivoreItemDiet.get(compareStack);
+                        }
+                    }
                 }
                 break;
             case PISCIVORE:
-                if (piscivoreItemDiet != null && piscivoreItemDiet.containsKey(item)) {
-                    return piscivoreItemDiet.get(item);
+                if (piscivoreItemDiet != null) {
+                    Iterator it = piscivoreItemDiet.entrySet().iterator();
+                    while (it.hasNext()) {
+                        Map.Entry pair = (Map.Entry)it.next();
+                        ItemStack compareStack = (ItemStack)pair.getKey();
+                        if(item.isItemEqual(compareStack)){
+                            return piscivoreItemDiet.get(compareStack);
+                        }
+                    }
                 }
                 break;
             case CARNIVORE_EGG:
-                if (carnivoreEggItemDiet != null && carnivoreEggItemDiet.containsKey(item)) {
-                    return carnivoreEggItemDiet.get(item);
+                if (carnivoreEggItemDiet != null) {
+                    Iterator it = carnivoreEggItemDiet.entrySet().iterator();
+                    while (it.hasNext()) {
+                        Map.Entry pair = (Map.Entry)it.next();
+                        ItemStack compareStack = (ItemStack)pair.getKey();
+                        if(item.isItemEqual(compareStack)){
+                            return carnivoreEggItemDiet.get(compareStack);
+                        }
+                    }
                 }
                 break;
             case INSECTIVORE:
-                if (insectivoreItemDiet != null && insectivoreItemDiet.containsKey(item)) {
-                    return insectivoreItemDiet.get(item);
+                if (insectivoreItemDiet != null) {
+                    Iterator it = insectivoreItemDiet.entrySet().iterator();
+                    while (it.hasNext()) {
+                        Map.Entry pair = (Map.Entry)it.next();
+                        ItemStack compareStack = (ItemStack)pair.getKey();
+                        if(item.isItemEqual(compareStack)){
+                            return insectivoreItemDiet.get(compareStack);
+                        }
+                    }
                 }
                 break;
             case PISCCARNIVORE:
-                if (pisccarnivoreItemDiet != null && pisccarnivoreItemDiet.containsKey(item)) {
-                    return pisccarnivoreItemDiet.get(item);
+                if (piscivoreItemDiet != null) {
+                Iterator it = piscivoreItemDiet.entrySet().iterator();
+                while (it.hasNext()) {
+                    Map.Entry pair = (Map.Entry)it.next();
+                    ItemStack compareStack = (ItemStack)pair.getKey();
+                    if(item.isItemEqual(compareStack)){
+                        return piscivoreItemDiet.get(compareStack);
+                    }
                 }
+            }
                 break;
             default:
                 return 0;
@@ -227,7 +277,7 @@ public enum FoodMappings {
                 break;
         }
         if (registerItem) {
-            addToItemMappings(Item.getItemFromBlock(block), food, diet);
+            addToItemMappings(new ItemStack(Item.getItemFromBlock(block)), food, diet);
         }
     }
 
@@ -398,7 +448,7 @@ public enum FoodMappings {
      *
      * @param diet The specific diet to show.
      */
-    public Map<Item, Integer> getFoodRenderList(EnumDiet diet) {
+    public Map<ItemStack, Integer> getFoodRenderList(EnumDiet diet) {
         switch (diet) {
             case CARNIVORE:
                 if (carnivoreItemDiet == null) {
@@ -445,7 +495,7 @@ public enum FoodMappings {
      *
      * @param diet The specific diet to show.
      */
-    public void removeItemMapping(Item item, EnumDiet diet) {
+    public void removeItemMapping(ItemStack item, EnumDiet diet) {
         this.getFoodRenderList(diet).remove(item);
     }
 
@@ -482,7 +532,7 @@ public enum FoodMappings {
      * @param item The item being registered.
      * @param food The amount of food points for the object.
      */
-    public void addMeat(Item item, int food) {
+    public void addMeat(ItemStack item, int food) {
         this.addToItemMappings(item, food, EnumDiet.CARNIVORE);
         this.addToItemMappings(item, food, EnumDiet.CARNIVORE_EGG);
         this.addToItemMappings(item, food, EnumDiet.OMNIVORE);
@@ -529,7 +579,7 @@ public enum FoodMappings {
      * @param item The item being registered.
      * @param food The amount of food points for the object.
      */
-    public void addPlant(Item item, int food) {
+    public void addPlant(ItemStack item, int food) {
         this.addToItemMappings(item, food, EnumDiet.HERBIVORE);
         this.addToItemMappings(item, food, EnumDiet.OMNIVORE);
     }
@@ -572,7 +622,7 @@ public enum FoodMappings {
      * @param item The item being registered.
      * @param food The amount of food points for the object.
      */
-    public void addFish(Item item, int food) {
+    public void addFish(ItemStack item, int food) {
         this.addToItemMappings(item, food, EnumDiet.PISCCARNIVORE);
         this.addToItemMappings(item, food, EnumDiet.PISCIVORE);
     }
@@ -615,7 +665,7 @@ public enum FoodMappings {
      * @param item The item being registered.
      * @param food The amount of food points for the object.
      */
-    public void addEgg(Item item, int food) {
+    public void addEgg(ItemStack item, int food) {
         this.addToItemMappings(item, food, EnumDiet.CARNIVORE_EGG);
         this.addToItemMappings(item, food, EnumDiet.OMNIVORE);
     }
@@ -633,12 +683,14 @@ public enum FoodMappings {
 
     private void addOreDictionary(String dict_name, int food_value, EnumDiet diet){
         List<ItemStack> stacks = OreDictionary.getOres(dict_name);
-        for(ItemStack stack : stacks){
-            if(stack != null && stack.getItem() != null){
-                if(stack.getItem() instanceof ItemBlock){
-                    this.addToBlockMappings(((ItemBlock)stack.getItem()).field_150939_a, food_value, diet, true);
-                }else {
-                    this.addToItemMappings(stack.getItem(), food_value, diet);
+        if(!stacks.isEmpty()) {
+            for (ItemStack stack : stacks) {
+                if (stack != null && stack.getItem() != null) {
+                    if (stack.getItem() instanceof ItemBlock) {
+                        this.addToBlockMappings(((ItemBlock) stack.getItem()).field_150939_a, food_value, diet, true);
+                    } else {
+                        this.addToItemMappings(stack, food_value, diet);
+                    }
                 }
             }
         }
