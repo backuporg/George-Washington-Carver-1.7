@@ -15,22 +15,19 @@ import growthcraft.cellar.GrowthCraftCellar;
 import growthcraft.core.GrowthCraftCore;
 import growthcraft.core.integration.NEI;
 import growthcraft.core.util.MapGenHelper;
-
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.Mod.Instance;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.VillagerRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.VillagerRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod(
 	modid = GrowthCraftApples.MOD_ID,
@@ -44,7 +41,7 @@ public class GrowthCraftApples
 	public static final String MOD_NAME = "Growthcraft Apples";
 	public static final String MOD_VERSION = "@VERSION@";
 
-	@Instance(MOD_ID)
+	@Mod.Instance(MOD_ID)
 	public static GrowthCraftApples instance;
 	public static CreativeTabs creativeTab;
 	public static final GrcApplesBlocks blocks = new GrcApplesBlocks();
@@ -61,7 +58,7 @@ public class GrowthCraftApples
 		return instance.config;
 	}
 
-	@EventHandler
+	@Mod.EventHandler
 	public void preload(FMLPreInitializationEvent event)
 	{
 		creativeTab = GrowthCraftCore.creativeTab;
@@ -87,7 +84,7 @@ public class GrowthCraftApples
 		//====================
 		// CRAFTING
 		//====================
-		GameRegistry.addShapelessRecipe(items.appleSeeds.asStack(), Items.apple);
+		GameRegistry.addShapelessRecipe(items.appleSeeds.asStack(), Items.APPLE);
 
 		MinecraftForge.EVENT_BUS.register(this);
 
@@ -110,7 +107,7 @@ public class GrowthCraftApples
 		VillagerRegistry.instance().registerVillageCreationHandler(handler);
 	}
 
-	@EventHandler
+	@Mod.EventHandler
 	public void load(FMLInitializationEvent event)
 	{
 		CommonProxy.instance.init();
@@ -131,7 +128,7 @@ public class GrowthCraftApples
 		}
 	}
 
-	@EventHandler
+	@Mod.EventHandler
 	public void postload(FMLPostInitializationEvent event)
 	{
 		modules.postInit();

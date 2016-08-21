@@ -1,7 +1,6 @@
 package growthcraft.coconuts;
 
-import cpw.mods.fml.common.Mod.Instance;
-import cpw.mods.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod;
 
 @Mod(
 	modid = GrowthCraftCoconuts.MOD_ID,
@@ -15,6 +14,6 @@ public class GrowthCraftCoconuts
 	public static final String MOD_NAME = "Growthcraft Coconuts";
 	public static final String MOD_VERSION = "@VERSION@";
 
-	@Instance(MOD_ID)
+	@Mod.Instance(MOD_ID)
 	public static GrowthCraftCoconuts instance;
 }
