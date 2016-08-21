@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Random;
 
 import growthcraft.api.core.util.BlockFlags;
-import growthcraft.bees.client.renderer.RenderBeeHive;
 import growthcraft.bees.GrowthCraftBees;
+import growthcraft.bees.client.renderer.RenderBeeHive;
 import growthcraft.core.common.block.GrcBlockBase;
 
 import cpw.mods.fml.relauncher.Side;

@@ -3,9 +3,9 @@ package growthcraft.bees.common.block;
 import java.util.List;
 import java.util.Random;
 
+import growthcraft.bees.GrowthCraftBees;
 import growthcraft.bees.client.renderer.RenderBeeBox;
 import growthcraft.bees.common.tileentity.TileEntityBeeBox;
-import growthcraft.bees.GrowthCraftBees;
 import growthcraft.core.common.block.GrcBlockContainer;
 import growthcraft.core.integration.minecraft.EnumMinecraftWoodType;
 import growthcraft.core.util.ItemUtils;

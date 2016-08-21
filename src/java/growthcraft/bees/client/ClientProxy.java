@@ -1,10 +1,10 @@
 package growthcraft.bees.client;
 
+import growthcraft.bees.GrowthCraftBees;
 import growthcraft.bees.client.gui.GuiBeeBox;
 import growthcraft.bees.client.renderer.RenderBeeBox;
 import growthcraft.bees.client.renderer.RenderBeeHive;
 import growthcraft.bees.common.CommonProxy;
-import growthcraft.bees.GrowthCraftBees;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.VillagerRegistry;
