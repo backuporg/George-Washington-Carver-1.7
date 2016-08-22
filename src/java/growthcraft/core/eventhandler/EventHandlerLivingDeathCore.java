@@ -28,7 +28,7 @@ import java.util.Random;
 import growthcraft.core.common.item.ItemCrowbar;
 import growthcraft.core.stats.CoreAchievement;
 
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;

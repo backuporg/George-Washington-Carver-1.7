@@ -3,8 +3,6 @@ package growthcraft.core.util;
 import java.util.Random;
 import javax.annotation.Nonnull;
 
-import buildcraft.api.tools.IToolWrench;
-
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
