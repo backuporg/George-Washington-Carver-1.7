@@ -96,6 +96,11 @@ public class GrowthCraftBees
 	{
 		config.setLogger(logger);
 		config.load(event.getModConfigurationDirectory(), "growthcraft/bees.conf");
+		if (config.debugEnabled)
+		{
+			BeesRegistry.instance().setLogger(logger);
+			modules.setLogger(logger);
+		}
 		modules.add(blocks);
 		modules.add(items);
 		modules.add(fluids);
@@ -130,6 +135,7 @@ public class GrowthCraftBees
 			modules.setLogger(logger);
 		}
 
+		modules.add(CommonProxy.instance);
 		modules.freeze();
 		tab = new CreativeTabsGrowthcraftBees("creative_tab_grcbees");
 
@@ -202,13 +208,11 @@ public class GrowthCraftBees
 		{
 			VillagerRegistry.instance().registerVillageTradeHandler(brewerID, new VillageHandlerBees());
 		}
-		CommonProxy.instance.registerVillagerSkin();
 	}
 
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
-		CommonProxy.instance.init();
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, guiProvider);
 		if (config.enableVillageGen) initVillageHandlers();
 		modules.init();
