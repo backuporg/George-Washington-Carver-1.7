@@ -40,17 +40,17 @@ import growthcraft.core.GrcGuiProvider;
 import growthcraft.core.integration.NEI;
 import growthcraft.core.util.MapGenHelper;
 
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.eventhandler.EventBus;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.Mod.Instance;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.VillagerRegistry;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.eventhandler.EventBus;
+import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.Mod.Instance;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.VillagerRegistry;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -111,13 +111,12 @@ public class GrowthCraftCellar
 	{
 		config.setLogger(logger);
 		config.load(event.getModConfigurationDirectory(), "growthcraft/cellar.conf");
-
 		if (config.debugEnabled)
 		{
 			logger.debug("Pre-Initializing %s", MOD_ID);
 			CellarRegistry.instance().setLogger(logger);
+			modules.setLogger(logger);
 		}
-
 		modules.add(blocks);
 		modules.add(items);
 
@@ -126,8 +125,7 @@ public class GrowthCraftCellar
 		//if (config.enableNEIIntegration) modules.add(new growthcraft.cellar.integration.NEIModule());
 		// ALWAYS set the user modules as last, this ensures that other modules are given a chance to setup defaults and such.
 		modules.add(userApis);
-
-		if (config.debugEnabled) modules.setLogger(logger);
+		modules.add(CommonProxy.instance);
 		modules.freeze();
 
 		userApis.getUserBrewingRecipes()
@@ -299,7 +297,6 @@ public class GrowthCraftCellar
 		packetPipeline.initialise();
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, guiProvider);
 		if (config.enableVillageGen) initVillageHandlers();
-		CommonProxy.instance.init();
 		modules.init();
 	}
 

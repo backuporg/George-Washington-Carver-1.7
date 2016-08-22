@@ -27,13 +27,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import buildcraft.api.tools.IToolWrench;
-
 import growthcraft.api.core.item.EnumDye;
 import growthcraft.core.GrowthCraftCore;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockButton;
 import net.minecraft.block.BlockChest;

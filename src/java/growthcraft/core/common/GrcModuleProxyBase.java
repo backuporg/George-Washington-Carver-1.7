@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015, 2016 IceDragon200
+ * Copyright (c) 2016 IceDragon200
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,13 +21,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package growthcraft.hops.common;
+package growthcraft.core.common;
 
-import net.minecraftforge.fml.common.SidedProxy;
-import growthcraft.core.common.GrcModuleProxyBase;
-
-public class CommonProxy extends GrcModuleProxyBase
+public class GrcModuleProxyBase extends GrcModuleBase
 {
-	@SidedProxy(clientSide="growthcraft.hops.client.ClientProxy", serverSide="growthcraft.hops.common.CommonProxy")
-	public static CommonProxy instance;
 }

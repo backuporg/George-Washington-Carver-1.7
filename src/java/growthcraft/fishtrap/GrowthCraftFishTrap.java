@@ -11,14 +11,14 @@ import growthcraft.fishtrap.common.block.BlockFishTrap;
 import growthcraft.fishtrap.common.CommonProxy;
 import growthcraft.fishtrap.common.tileentity.TileEntityFishTrap;
 
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.Mod.Instance;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.Mod.Instance;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemFishFood;
@@ -57,19 +57,13 @@ public class GrowthCraftFishTrap
 	{
 		config.setLogger(logger);
 		config.load(event.getModConfigurationDirectory(), "growthcraft/fishtrap.conf");
-
+		if (config.debugEnabled) modules.setLogger(logger);
 		userFishTrapConfig.setConfigFile(event.getModConfigurationDirectory(), "growthcraft/fishtrap/entries.json");
 		modules.add(userFishTrapConfig);
-
 		if (config.enableThaumcraftIntegration) modules.add(new growthcraft.fishtrap.integration.ThaumcraftModule());
-
-		if (config.debugEnabled) modules.setLogger(logger);
-
-		//====================
-		// INIT
-		//====================
+		modules.add(CommonProxy.instance);
+		modules.freeze();
 		fishTrap = new BlockDefinition(new BlockFishTrap());
-
 		modules.preInit();
 		register();
 	}
@@ -120,7 +114,6 @@ public class GrowthCraftFishTrap
 	@EventHandler
 	public void load(FMLInitializationEvent event)
 	{
-		CommonProxy.instance.init();
 		userFishTrapConfig.loadUserConfig();
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, guiProvider);
 		modules.init();

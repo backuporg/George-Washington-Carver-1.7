@@ -16,17 +16,17 @@ import growthcraft.hops.init.GrcHopsBlocks;
 import growthcraft.hops.init.GrcHopsFluids;
 import growthcraft.hops.init.GrcHopsItems;
 
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.Mod.Instance;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.VillagerRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.Mod.Instance;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.VillagerRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.common.ChestGenHooks;
@@ -65,13 +65,14 @@ public class GrowthCraftHops
 	{
 		config.setLogger(logger);
 		config.load(event.getModConfigurationDirectory(), "growthcraft/hops.conf");
+		if (config.debugEnabled) modules.setLogger(logger);
 		modules.add(blocks);
 		modules.add(items);
 		modules.add(fluids);
 		if (config.enableForestryIntegration) modules.add(new growthcraft.hops.integration.ForestryModule());
 		if (config.enableMFRIntegration) modules.add(new growthcraft.hops.integration.MFRModule());
 		if (config.enableThaumcraftIntegration) modules.add(new growthcraft.hops.integration.ThaumcraftModule());
-		if (config.debugEnabled) modules.setLogger(logger);
+		modules.add(CommonProxy.instance);
 		modules.freeze();
 		modules.preInit();
 		register();
@@ -120,7 +121,6 @@ public class GrowthCraftHops
 	@EventHandler
 	public void load(FMLInitializationEvent event)
 	{
-		CommonProxy.instance.init();
 		if (config.enableVillageGen) initVillageHandlers();
 		modules.init();
 	}

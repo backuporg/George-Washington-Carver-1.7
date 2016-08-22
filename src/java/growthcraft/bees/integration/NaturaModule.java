@@ -23,9 +23,9 @@
  */
 package growthcraft.bees.integration;
 
+import growthcraft.bees.GrowthCraftBees;
 import growthcraft.bees.common.block.BlockBeeBoxNatura;
 import growthcraft.bees.common.item.ItemBlockBeeBox;
-import growthcraft.bees.GrowthCraftBees;
 import growthcraft.core.integration.natura.NaturaPlatform;
 import growthcraft.core.integration.natura.EnumNaturaWoodType;
 import growthcraft.core.integration.ModIntegrationBase;

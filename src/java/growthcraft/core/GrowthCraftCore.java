@@ -27,15 +27,15 @@ import growthcraft.core.init.GrcCoreItems;
 import growthcraft.core.init.GrcCoreRecipes;
 import growthcraft.core.integration.bop.BopPlatform;
 import growthcraft.core.stats.GrcCoreAchievements;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.Mod.Instance;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.Mod.Instance;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -101,29 +101,26 @@ public class GrowthCraftCore
 	{
 		config.setLogger(logger);
 		config.load(event.getModConfigurationDirectory(), "growthcraft/core.conf");
-		if (config.debugEnabled) logger.info("Pre-Initializing %s", MOD_ID);
-
+		if (config.debugEnabled)
+		{
+			logger.info("Pre-Initializing %s", MOD_ID);
+			CoreRegistry.instance().setLogger(logger);
+			modules.setLogger(logger);
+		}
 		modules.add(blocks);
 		modules.add(items);
 		modules.add(fluids);
 		modules.add(recipes);
-
 		userVinesConfig.setConfigFile(event.getModConfigurationDirectory(), "growthcraft/core/vines.json");
 		userFluidDictionary.setConfigFile(event.getModConfigurationDirectory(), "growthcraft/core/fluid_dictionary.json");
 		modules.add(userVinesConfig);
 		modules.add(userFluidDictionary);
-
 		if (config.enableThaumcraftIntegration) modules.add(new growthcraft.core.integration.ThaumcraftModule());
 		if (config.enableWailaIntegration) modules.add(new growthcraft.core.integration.Waila());
 		if (config.enableAppleCoreIntegration) modules.add(new growthcraft.core.integration.AppleCore());
 		//if (config.enableNEIIntegration) modules.add(new growthcraft.core.integration.nei.NEIModule());
-
-		if (config.debugEnabled)
-		{
-			CoreRegistry.instance().setLogger(logger);
-			modules.setLogger(logger);
-		}
-
+		modules.add(CommonProxy.instance);
+		modules.freeze();
 		creativeTab = new CreativeTabsGrowthcraft("creative_tab_grccore");
 
 		EMPTY_BOTTLE = new ItemStack(Items.glass_bottle);
@@ -157,9 +154,7 @@ public class GrowthCraftCore
 	public void init(FMLInitializationEvent event)
 	{
 		userFluidDictionary.loadUserConfig();
-		CommonProxy.instance.initRenders();
 		AchievementPageGrowthcraft.init();
-
 		userVinesConfig.addDefault(Blocks.vine);
 		if (BopPlatform.isLoaded())
 		{

@@ -31,7 +31,7 @@ import javax.annotation.Nonnull;
 import growthcraft.api.core.log.ILogger;
 import growthcraft.core.common.tileentity.feature.IInteractionObject;
 
-import cpw.mods.fml.common.network.IGuiHandler;
+import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.tileentity.TileEntity;
