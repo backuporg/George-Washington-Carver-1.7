@@ -64,6 +64,7 @@ public class GrowthCraftApples
 		creativeTab = GrowthCraftCore.creativeTab;
 		config.setLogger(logger);
 		config.load(event.getModConfigurationDirectory(), "growthcraft/apples.conf");
+		if (config.debugEnabled) modules.setLogger(logger);
 		modules.add(blocks);
 		modules.add(items);
 		modules.add(fluids);
@@ -71,7 +72,7 @@ public class GrowthCraftApples
 		if (config.enableForestryIntegration) modules.add(new growthcraft.apples.integration.ForestryModule());
 		if (config.enableMFRIntegration) modules.add(new growthcraft.apples.integration.MFRModule());
 		if (config.enableThaumcraftIntegration) modules.add(new growthcraft.apples.integration.ThaumcraftModule());
-		if (config.debugEnabled) modules.setLogger(logger);
+		modules.add(CommonProxy.instance);
 		modules.freeze();
 		modules.preInit();
 		register();
@@ -110,7 +111,6 @@ public class GrowthCraftApples
 	@Mod.EventHandler
 	public void load(FMLInitializationEvent event)
 	{
-		CommonProxy.instance.init();
 		if (config.enableVillageGen) initVillageHandlers();
 		modules.init();
 	}
