@@ -35,10 +35,10 @@ public class BlockSaltBlock extends GrcBlockBase
 {
 	public BlockSaltBlock()
 	{
-		super(Material.rock);
+		super(Material.sand);
 		setHardness(2.0F);
 		setResistance(10.0F);
-		setStepSound(soundTypePiston);
+		setStepSound(soundTypeSand);
 		setBlockName("grccore.salt_block");
 		setBlockTextureName("grccore:salt_block");
 		setCreativeTab(GrowthCraftCore.creativeTab);
