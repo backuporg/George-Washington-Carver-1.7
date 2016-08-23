@@ -29,8 +29,8 @@ import java.util.Random;
 import growthcraft.netherloid.netherloid;
 import growthcraft.core.common.block.Materials;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeavesBase;
 import net.minecraft.block.IGrowable;

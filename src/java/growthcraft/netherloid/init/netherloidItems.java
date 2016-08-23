@@ -33,7 +33,7 @@ import growthcraft.netherloid.common.item.ItemNetherPepper;
 import growthcraft.netherloid.common.item.ItemNetherRashSpores;
 import growthcraft.netherloid.common.item.ItemNetherSquashSeeds;
 
-import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.init.Items;
 import net.minecraftforge.oredict.OreDictionary;
 
