@@ -3,8 +3,8 @@ package growthcraft.bamboo.common.block;
 import growthcraft.bamboo.GrowthCraftBamboo;
 import growthcraft.core.common.block.GrcBlockBase;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 

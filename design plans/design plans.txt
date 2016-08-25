@@ -25,3 +25,4 @@ Stuff regarding modules:
 So far, nothing here yet
 Our plans remain secret to outsiders.
 
+Check GitHub issues for more info for now

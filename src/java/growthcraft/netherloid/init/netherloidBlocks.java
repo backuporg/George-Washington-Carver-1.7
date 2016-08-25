@@ -44,7 +44,7 @@ import growthcraft.netherloid.common.block.BlockNetherSquash;
 import growthcraft.netherloid.common.block.BlockNetherSquashStem;
 import growthcraft.netherloid.common.item.ItemNetherLilyPad;
 
-import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraftforge.oredict.OreDictionary;
 

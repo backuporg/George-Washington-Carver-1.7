@@ -23,7 +23,7 @@
  */
 package growthcraft.netherloid.common;
 
-import cpw.mods.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.SidedProxy;
 
 public class CommonProxy
 {
