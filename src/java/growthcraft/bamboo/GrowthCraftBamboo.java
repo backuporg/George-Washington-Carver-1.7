@@ -28,7 +28,7 @@ import net.minecraftforge.fml.common.registry.VillagerRegistry;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeManager;
@@ -55,7 +55,7 @@ public class GrowthCraftBamboo
 	public static final GrcBambooBlocks blocks = new GrcBambooBlocks();
 	public static final GrcBambooItems items = new GrcBambooItems();
 
-	public static BiomeGenBase bambooBiome;
+	public static Biome bambooBiome;
 
 	private final ILogger logger = new GrcLogger(MOD_ID);
 	private final GrcBambooConfig config = new GrcBambooConfig();
