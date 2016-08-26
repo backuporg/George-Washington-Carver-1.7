@@ -53,7 +53,7 @@ public class ItemBucketFluid extends GrcItemBucketBase implements IFluidItem
 	public ItemBucketFluid(Block block, Fluid flu, CreativeTabs creativeTab)
 	{
 		super(block);
-		setContainerItem(Items.bucket);
+		setContainerItem(Items.BUCKET);
 		setCreativeTab(creativeTab);
 		this.fluid = flu;
 	}

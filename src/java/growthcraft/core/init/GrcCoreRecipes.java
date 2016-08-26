@@ -39,16 +39,16 @@ public class GrcCoreRecipes extends GrcModuleBase
 	public void register()
 	{
 		final ItemStack saltStack = GrowthCraftCore.items.salt.asStack();
-		GameRegistry.addRecipe(GrowthCraftCore.items.rope.asStack(8), new Object[] {"A", 'A', Items.lead});
+		GameRegistry.addRecipe(GrowthCraftCore.items.rope.asStack(8), new Object[] {"A", 'A', Items.LEAD});
 		GameRegistry.addShapelessRecipe(GrowthCraftCore.items.salt.asStack(2), GrowthCraftCore.items.saltBottle.asStack());
 		GameRegistry.addShapelessRecipe(GrowthCraftCore.items.salt.asStack(6), GrowthCraftCore.items.saltBucket.asStack());
 		GameRegistry.addShapelessRecipe(GrowthCraftCore.items.salt.asStack(9), GrowthCraftCore.blocks.saltBlock.asStack());
 		GameRegistry.addShapelessRecipe(GrowthCraftCore.blocks.saltBlock.asStack(), saltStack, saltStack, saltStack, saltStack, saltStack, saltStack, saltStack, saltStack, saltStack);
 		GameRegistry.addShapelessRecipe(GrowthCraftCore.items.saltBottle.asStack(),
-			Items.glass_bottle,
+			Items.GLASS_BOTTLE,
 			saltStack, saltStack);
 		GameRegistry.addShapelessRecipe(GrowthCraftCore.items.saltBucket.asStack(),
-			Items.bucket,
+			Items.BUCKET,
 			saltStack, saltStack, saltStack, saltStack, saltStack, saltStack);
 
 		for (EnumDye dye : EnumDye.VALUES)

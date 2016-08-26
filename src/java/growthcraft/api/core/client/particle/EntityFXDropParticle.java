@@ -5,13 +5,13 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.particle.EntityFX;
+import net.minecraft.client.particle.Particle;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.IFluidBlock;
 
 @SideOnly(Side.CLIENT)
-public class EntityFXDropParticle extends EntityFX
+public class EntityFXDropParticle extends Particle
 {
 	/**
 	 * The height of the current bob
