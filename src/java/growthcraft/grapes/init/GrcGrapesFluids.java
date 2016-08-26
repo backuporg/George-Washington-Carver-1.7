@@ -40,7 +40,6 @@ import growthcraft.cellar.util.BoozeUtils;
 import growthcraft.core.common.definition.ItemDefinition;
 import growthcraft.core.common.GrcModuleBase;
 import growthcraft.core.GrowthCraftCore;
-import growthcraft.grapes.common.item.EnumGrapes;
 import growthcraft.grapes.GrowthCraftGrapes;
 
 import net.minecraft.init.Items;
@@ -91,7 +90,7 @@ public class GrcGrapesFluids extends GrcModuleBase
 		GrowthCraftCellar.boozeBuilderFactory.create(grapeWineBooze[0])
 			.tags(BoozeTag.YOUNG)
 			.pressesFrom(
-				EnumGrapes.PURPLE.asStack(),
+				new OreItemStacks("cropGrapes"),
 				TickUtils.seconds(2),
 				40,
 				Residue.newDefault(0.3F));
