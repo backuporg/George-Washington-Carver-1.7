@@ -7,7 +7,7 @@ import growthcraft.core.Utils;
 
 import cpw.mods.fml.common.IWorldGenerator;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
@@ -37,7 +37,7 @@ public class WorldGeneratorBees implements IWorldGenerator
 			boolean flag = true;
 			if (GrowthCraftBees.getConfig().useBiomeDict)
 			{
-				final BiomeGenBase biome = world.getBiomeGenForCoords(i, k);
+				final Biome biome = world.getBiomeGenForCoords(i, k);
 				flag = (BiomeDictionary.isBiomeOfType(biome, Type.FOREST) ||
 						BiomeDictionary.isBiomeOfType(biome, Type.PLAINS))
 						&& !BiomeDictionary.isBiomeOfType(biome, Type.SNOWY);
