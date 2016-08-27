@@ -36,7 +36,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -131,7 +131,7 @@ public class EffectTipsy extends AbstractEffect
 		{
 			n = "(" + Potion.getDurationString(nausea) + ")";
 		}
-		list.add(EnumChatFormatting.GRAY + p + EnumChatFormatting.GRAY + " " + n);
+		list.add(TextFormatting.GRAY + p + TextFormatting.GRAY + " " + n);
 	}
 
 	@Override
