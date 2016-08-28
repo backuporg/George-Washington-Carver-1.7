@@ -26,7 +26,10 @@ package growthcraft.api.bees;
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
-import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.world.IBlockAccess;
 
 public class ForcedFlowerBlockEntry extends AbstractFlowerBlockEntry
 {
@@ -35,18 +38,21 @@ public class ForcedFlowerBlockEntry extends AbstractFlowerBlockEntry
 		super(pBlock, pMeta);
 	}
 
-	public boolean canPlaceAt(World world, int x, int y, int z)
+	public boolean canPlaceAt(World world, BlockPos pos)
 	{
-		final Block existingBlock = world.getBlock(x, y, z);
+		final IBlockState blockState = world.getBlockState(pos);
+		final Block existingBlock = blockState.getBlock();
+
 		if (existingBlock != null)
 		{
 			if (!existingBlock.isReplaceable(world, x, y, z)) return false;
 		}
-		final Block soilBlock = world.getBlock(x, y - 1, z);
+		final IBlockState soilBlockState = world.getBlockState(pos.down());
+		final Block soilBlock = soilBlockState.getBlock();
 		if (soilBlock == null) return false;
 		if (getBlock() instanceof IPlantable)
 		{
-			return soilBlock.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, (IPlantable)getBlock());
+			return soilBlock.canSustainPlant(world, pos.down(), EnumFacing.UP, (IPlantable)getBlock());
 		}
 		return true;
 	}
