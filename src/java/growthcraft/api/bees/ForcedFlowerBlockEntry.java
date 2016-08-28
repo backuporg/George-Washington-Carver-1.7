@@ -26,7 +26,7 @@ package growthcraft.api.bees;
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
-import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraft.util.EnumFacing;
 
 public class ForcedFlowerBlockEntry extends AbstractFlowerBlockEntry
 {
@@ -46,7 +46,7 @@ public class ForcedFlowerBlockEntry extends AbstractFlowerBlockEntry
 		if (soilBlock == null) return false;
 		if (getBlock() instanceof IPlantable)
 		{
-			return soilBlock.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, (IPlantable)getBlock());
+			return soilBlock.canSustainPlant(world, x, y - 1, z, EnumFacing.UP, (IPlantable)getBlock());
 		}
 		return true;
 	}
