@@ -34,7 +34,7 @@ package growthcraft.api.core.util;
 import java.util.Arrays;
 import java.util.List;
 
-import net.minecraft.util.StatCollector;
+import net.minecraft.util.text.translation.I18n;
 
 /**
  * Pretty much stolen from Applied Energistics 2, thanks AlgorithmX2.
@@ -103,7 +103,7 @@ public enum GrcColorPreset
 	@Override
 	public String toString()
 	{
-		return StatCollector.translateToLocal(this.unlocalizedName);
+		return I18n.translateToLocal(this.unlocalizedName);
 	}
 
 	/**
