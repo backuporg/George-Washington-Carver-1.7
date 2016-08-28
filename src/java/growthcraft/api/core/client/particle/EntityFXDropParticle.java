@@ -9,6 +9,7 @@ import net.minecraft.client.particle.Particle;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.IFluidBlock;
+import net.minecraftforge.common.ForgeInternalHandler
 
 @SideOnly(Side.CLIENT)
 public class EntityFXDropParticle extends Particle

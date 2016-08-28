@@ -32,6 +32,7 @@ import growthcraft.api.core.user.AbstractUserJSONConfig;
 
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 
 /**
  * Provides users with the ability to set blocks as heat sources for Growthcraft
@@ -63,7 +64,7 @@ public class UserHeatSourcesConfig extends AbstractUserJSONConfig
 
 	private void addHeatSource(UserHeatSourceEntry entry)
 	{
-		final Block block = GameRegistry.Item.REGISTRY.getValue(entry.mod_id, entry.block_name);
+		final Block block = Item.REGISTRY.getValue(entry.mod_id, entry.block_name);
 		if (block != null)
 		{
 			if (entry.states == null || entry.states.size() == 0)
