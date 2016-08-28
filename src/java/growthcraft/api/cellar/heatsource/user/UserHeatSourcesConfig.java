@@ -64,7 +64,7 @@ public class UserHeatSourcesConfig extends AbstractUserJSONConfig
 
 	private void addHeatSource(UserHeatSourceEntry entry)
 	{
-		final Block block = Item.REGISTRY.getValue(ResourceLocation);
+		final Block block = GameRegistry.findBlock(entry.mod_id, entry.block_name);
 		if (block != null)
 		{
 			if (entry.states == null || entry.states.size() == 0)
