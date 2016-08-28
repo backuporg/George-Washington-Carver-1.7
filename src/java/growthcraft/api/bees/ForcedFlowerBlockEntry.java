@@ -46,7 +46,7 @@ public class ForcedFlowerBlockEntry extends AbstractFlowerBlockEntry
 		if (soilBlock == null) return false;
 		if (getBlock() instanceof IPlantable)
 		{
-			return soilBlock.canSustainPlant(world, x, y - 1, z, EnumFacing.UP, (IPlantable)getBlock());
+			return soilBlock.canSustainPlant(world, x, BlockPos.down(), z, EnumFacing.UP, (IPlantable)getBlock());
 		}
 		return true;
 	}
