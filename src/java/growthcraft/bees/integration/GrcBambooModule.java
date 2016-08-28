@@ -28,7 +28,7 @@ import growthcraft.core.integration.ModIntegrationBase;
 import growthcraft.bees.common.block.BlockBeeBoxBamboo;
 import growthcraft.bees.common.item.ItemBlockBeeBox;
 
-import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
 public class GrcBambooModule extends ModIntegrationBase

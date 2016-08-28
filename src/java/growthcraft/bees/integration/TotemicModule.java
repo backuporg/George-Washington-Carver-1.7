@@ -30,7 +30,7 @@ import growthcraft.core.integration.totemic.TotemicPlatform;
 import growthcraft.core.integration.totemic.EnumTotemicWoodType;
 import growthcraft.core.integration.ModIntegrationBase;
 
-import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.item.ItemStack;
 
 public class TotemicModule extends ModIntegrationBase

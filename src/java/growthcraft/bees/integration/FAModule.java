@@ -30,7 +30,7 @@ import growthcraft.core.integration.FA.FAPlatform;
 import growthcraft.core.integration.FA.EnumFAWoodType;
 import growthcraft.core.integration.ModIntegrationBase;
 
-import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.item.ItemStack;
 
 public class FAModule extends ModIntegrationBase
