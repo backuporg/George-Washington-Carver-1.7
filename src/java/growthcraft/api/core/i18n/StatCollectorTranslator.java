@@ -23,7 +23,7 @@
  */
 package growthcraft.api.core.i18n;
 
-import net.minecraft.util.test.translation.I18n;
+import net.minecraft.util.text.translation.I18n;
 
 public class StatCollectorTranslator implements ITranslator
 {
