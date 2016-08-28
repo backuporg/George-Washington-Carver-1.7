@@ -25,7 +25,6 @@ package growthcraft.api.core.schema;
 
 import growthcraft.api.core.util.BlockKey;
 
-import net.minecraftforge.fml.common.registry.GameRegistry.UniqueIdentifier;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 
