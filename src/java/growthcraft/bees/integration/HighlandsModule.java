@@ -30,7 +30,7 @@ import growthcraft.core.integration.HIGHLANDS.HIGHLANDSPlatform;
 import growthcraft.core.integration.HIGHLANDS.EnumHIGHLANDSWoodType;
 import growthcraft.core.integration.ModIntegrationBase;
 
-import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.item.ItemStack;
 
 public class HighlandsModule extends ModIntegrationBase

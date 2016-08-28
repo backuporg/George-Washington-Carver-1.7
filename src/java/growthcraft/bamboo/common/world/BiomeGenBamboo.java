@@ -2,10 +2,10 @@ package growthcraft.bamboo.common.world;
 
 import java.util.Random;
 
-import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 
-public class BiomeGenBamboo extends BiomeGenBase
+public class BiomeGenBamboo extends Biome
 {
 	private WorldGenBamboo worldGenBamboo;
 

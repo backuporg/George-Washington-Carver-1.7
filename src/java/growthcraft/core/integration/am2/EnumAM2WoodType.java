@@ -26,7 +26,7 @@ package growthcraft.core.integration.AM2;
 
 import java.util.Locale;
 
-import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 

@@ -28,7 +28,7 @@ import growthcraft.bees.common.block.BlockBeeBoxNether;
 import growthcraft.bees.common.item.ItemBlockBeeBox;
 import growthcraft.core.integration.ModIntegrationBase;
 
-import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
 public class GrcNetherModule extends ModIntegrationBase

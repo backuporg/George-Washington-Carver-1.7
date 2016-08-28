@@ -5,7 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 
-import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.biome.Biome;
 
 public class BiomeUtilsTest
 {
@@ -34,25 +34,25 @@ public class BiomeUtilsTest
 		// it should report true if the biome IS a mountain
 		{
 			final TagParser.Tag[] tags = TagParser.csv.parse("+MOUNTAIN");
-			assertTrue(BiomeUtils.testBiomeTypeTags(BiomeGenBase.extremeHills, tags));
-			assertFalse(BiomeUtils.testBiomeTypeTags(BiomeGenBase.hell, tags));
+			assertTrue(BiomeUtils.testBiomeTypeTags(Biome.extremeHills, tags));
+			assertFalse(BiomeUtils.testBiomeTypeTags(Biome.hell, tags));
 		}
 
 		// it should report true if the biome is some kind of hills or mountain
 		{
 			final TagParser.Tag[] tags = TagParser.csv.parse("MOUNTAIN,HILLS");
-			assertTrue(BiomeUtils.testBiomeTypeTags(BiomeGenBase.extremeHills, tags));
-			assertTrue(BiomeUtils.testBiomeTypeTags(BiomeGenBase.extremeHillsEdge, tags));
-			assertTrue(BiomeUtils.testBiomeTypeTags(BiomeGenBase.taigaHills, tags));
-			assertFalse(BiomeUtils.testBiomeTypeTags(BiomeGenBase.frozenOcean, tags));
+			assertTrue(BiomeUtils.testBiomeTypeTags(Biome.extremeHills, tags));
+			assertTrue(BiomeUtils.testBiomeTypeTags(Biome.extremeHillsEdge, tags));
+			assertTrue(BiomeUtils.testBiomeTypeTags(Biome.taigaHills, tags));
+			assertFalse(BiomeUtils.testBiomeTypeTags(Biome.frozenOcean, tags));
 		}
 
 		// it should report true if the biome IS a mountain, optionally a mountain hills
 		{
 			final TagParser.Tag[] tags = TagParser.csv.parse("+MOUNTAIN,HILLS");
-			assertTrue(BiomeUtils.testBiomeTypeTags(BiomeGenBase.extremeHills, tags));
-			assertTrue(BiomeUtils.testBiomeTypeTags(BiomeGenBase.extremeHillsEdge, tags));
-			assertFalse(BiomeUtils.testBiomeTypeTags(BiomeGenBase.taigaHills, tags));
+			assertTrue(BiomeUtils.testBiomeTypeTags(Biome.extremeHills, tags));
+			assertTrue(BiomeUtils.testBiomeTypeTags(Biome.extremeHillsEdge, tags));
+			assertFalse(BiomeUtils.testBiomeTypeTags(Biome.taigaHills, tags));
 		}
 	}
 }

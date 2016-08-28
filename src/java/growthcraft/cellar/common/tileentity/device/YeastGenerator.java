@@ -40,7 +40,7 @@ import growthcraft.core.util.ItemUtils;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.WeightedRandom;
-import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.BiomeDictionary;
 
@@ -82,7 +82,7 @@ public class YeastGenerator extends DeviceProgressive
 	 *
 	 * @return biome
 	 */
-	public BiomeGenBase getCurrentBiome()
+	public Biome getCurrentBiome()
 	{
 		return getWorld().getBiomeGenForCoords(parent.xCoord, parent.zCoord);
 	}
@@ -133,7 +133,7 @@ public class YeastGenerator extends DeviceProgressive
 	protected void initProduceYeast()
 	{
 		tempItemList.clear();
-		final BiomeGenBase biome = getCurrentBiome();
+		final Biome biome = getCurrentBiome();
 		if (biome != null)
 		{
 			final IYeastRegistry reg = CellarRegistry.instance().yeast();

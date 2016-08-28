@@ -23,7 +23,7 @@
  */
 package growthcraft.core.integration.AM2;
 
-import cpw.mods.fml.common.Loader;
+import net.minecraftforge.fml.common.Loader;
 
 public class AM2Platform
 {
