@@ -29,7 +29,7 @@ import growthcraft.api.core.i18n.GrcI18n;
 
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.TextFormatting;
+import net.minecraft.util.text.TextFormatting;
 
 /**
  * A nice way to add descriptions to a list if the Object is an IDescribable
