@@ -37,7 +37,7 @@ import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagIntArray;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraftforge.common.util.EnumFacing;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
@@ -128,7 +128,7 @@ public class NBTHelper
 	{
 		final NBTTagList tankTagList = new NBTTagList();
 		int tankId = 0;
-		for (FluidTankInfo tankInfo : fluidHandler.getTankInfo(ForgeDirection.UNKNOWN))
+		for (FluidTankInfo tankInfo : fluidHandler.getTankInfo(EnumFacing.UNKNOWN))
 		{
 			final NBTTagCompound tankTag = new NBTTagCompound();
 			tankTag.setInteger("tank_id", tankId);
