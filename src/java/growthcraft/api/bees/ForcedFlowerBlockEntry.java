@@ -47,7 +47,7 @@ public class ForcedFlowerBlockEntry extends AbstractFlowerBlockEntry
 		{
 			if (!existingBlock.isReplaceable(world, x, y, z)) return false;
 		}
-		final IBlockState soilBlockState = world.getBlock(pos.down());
+		final IBlockState soilBlockState = world.getBlockState(pos.down());
 		final Block soilBlock = soilBlockState.getBlock();
 		if (soilBlock == null) return false;
 		if (getBlock() instanceof IPlantable)
