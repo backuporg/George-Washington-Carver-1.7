@@ -5,20 +5,20 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.particle.EntityFX;
-import net.minecraft.util.MathHelper;
+import net.minecraft.client.particle.Particle;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.IFluidBlock;
 
 @SideOnly(Side.CLIENT)
-public class EntityFXDropParticle extends EntityFX
+public class ParticleDropParticle extends Particle
 {
 	/**
 	 * The height of the current bob
 	 */
 	private int bobTimer;
 
-	public EntityFXDropParticle(World world, double x, double y, double z, float particleRed, float particleGreen, float particleBlue)
+	public ParticleDropParticle(World world, double x, double y, double z, float particleRed, float particleGreen, float particleBlue)
 	{
 		super(world, x, y, z, 0.0D, 0.0D, 0.0D);
 
