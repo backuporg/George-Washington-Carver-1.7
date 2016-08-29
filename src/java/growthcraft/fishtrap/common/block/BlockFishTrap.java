@@ -9,6 +9,7 @@ import growthcraft.core.util.BlockCheck;
 import growthcraft.core.Utils;
 import growthcraft.fishtrap.common.tileentity.TileEntityFishTrap;
 import growthcraft.fishtrap.GrowthCraftFishTrap;
+import growthcraft.fishtrap.creativetab.CreativeTabsGrowthcraftFishtrap;
 
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -41,7 +42,7 @@ public class BlockFishTrap extends GrcBlockContainer
 		setStepSound(soundTypeWood);
 		setBlockName("grc.fishTrap");
 		setTileEntityType(TileEntityFishTrap.class);
-		setCreativeTab(GrowthCraftCore.creativeTab);
+		setCreativeTab(GrowthCraftFishtrap.creativeTab);
 	}
 
 	private float getCatchRate(World world, int x, int y, int z)

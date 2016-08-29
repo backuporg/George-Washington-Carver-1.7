@@ -1,7 +1,16 @@
 package growthcraft.coconuts;
 
+import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+import net.minecraft.creativetab.CreativeTabs;
+
+import growthcraft.coconuts.creativetab.CreativeTabsGrowthcraftCoconuts;
 
 @Mod(
 	modid = GrowthCraftCoconuts.MOD_ID,
@@ -17,4 +26,10 @@ public class GrowthCraftCoconuts
 
 	@Instance(MOD_ID)
 	public static GrowthCraftCoconuts instance;
+	
+	@EventHandler
+	public void preInit(FMLPreInitializationEvent event)
+	{
+	creativeTab = new CreativeTabsGrowthcraftCoconuts("creative_tab_grccoconuts");
+	}
 }

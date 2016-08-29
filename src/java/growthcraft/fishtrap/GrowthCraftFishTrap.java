@@ -10,6 +10,7 @@ import growthcraft.core.GrcGuiProvider;
 import growthcraft.fishtrap.common.block.BlockFishTrap;
 import growthcraft.fishtrap.common.CommonProxy;
 import growthcraft.fishtrap.common.tileentity.TileEntityFishTrap;
+import growthcraft.fishtrap.creativetab.CreativeTabsGrowthcraftFishtrap;
 
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -63,6 +64,7 @@ public class GrowthCraftFishTrap
 		//if (config.enableThaumcraftIntegration) modules.add(new growthcraft.fishtrap.integration.ThaumcraftModule());
 		modules.add(CommonProxy.instance);
 		modules.freeze();
+		creativeTab = new CreativeTabsGrowthcraftFishtrap("creative_tab_grcfishtrap");
 		fishTrap = new BlockDefinition(new BlockFishTrap());
 		modules.preInit();
 		register();

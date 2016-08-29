@@ -40,6 +40,6 @@ public class CreativeTabsGrowthcraftNether extends CreativeTabs
 	@SideOnly(Side.CLIENT)
 	public Item getTabIconItem()
 	{
-		return Item.getItemFromBlock(Blocks.soul_sand);
+		return Item.getItemFromBlock(Blocks.SOUL_SAND);
 	}
 }
