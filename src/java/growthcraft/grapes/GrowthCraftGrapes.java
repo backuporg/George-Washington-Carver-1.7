@@ -77,8 +77,8 @@ public class GrowthCraftGrapes
 		modules.add(items);
 		modules.add(fluids);
 		if (config.enableForestryIntegration) modules.add(new growthcraft.grapes.integration.ForestryModule());
-		if (config.enableMFRIntegration) modules.add(new growthcraft.grapes.integration.MFRModule());
-		if (config.enableThaumcraftIntegration) modules.add(new growthcraft.grapes.integration.ThaumcraftModule());
+		//if (config.enableMFRIntegration) modules.add(new growthcraft.grapes.integration.MFRModule());
+		//if (config.enableThaumcraftIntegration) modules.add(new growthcraft.grapes.integration.ThaumcraftModule());
 		modules.add(CommonProxy.instance);
 		modules.freeze();
 		creativeTab = new CreativeTabsGrowthcraftGrapes("creative_tab_grcgrapes");
@@ -98,7 +98,7 @@ public class GrowthCraftGrapes
 		//====================
 		// ADDITIONAL PROPS.
 		//====================
-		Blocks.fire.setFireInfo(blocks.grapeLeaves.getBlock(), 30, 60);
+		Blocks.FIRE.setFireInfo(blocks.grapeLeaves.getBlock(), 30, 60);
 
 		//====================
 		// ORE DICTIONARY
@@ -147,7 +147,7 @@ public class GrowthCraftGrapes
 	@SideOnly(Side.CLIENT)
 	public void onTextureStitchPost(TextureStitchEvent.Post event)
 	{
-		if (event.map.getTextureType() == 0)
+		if (event.getMap().getTextureType() == 0)
 		{
 			for (int i = 0; i < fluids.grapeWineBooze.length; ++i)
 			{

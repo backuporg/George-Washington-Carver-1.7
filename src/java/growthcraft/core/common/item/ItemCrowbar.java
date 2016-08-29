@@ -27,6 +27,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import buildcraft.api.tools.IToolWrench;
+
 import growthcraft.api.core.item.EnumDye;
 import growthcraft.core.GrowthCraftCore;
 

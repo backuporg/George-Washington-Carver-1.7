@@ -23,7 +23,7 @@
  */
 package growthcraft.api.core.util;
 
-import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.BiomeDictionary;
 
 public class BiomeUtils
@@ -63,7 +63,7 @@ public class BiomeUtils
 		throw new BiomeTypeNotFound("Biome type '" + name + "' not found.");
 	}
 
-	public static boolean testBiomeTypeTags(Biome biome, TagParser.Tag[] tags)
+	public static boolean testBiomeTypeTags(BiomeGenBase biome, TagParser.Tag[] tags)
 	{
 		if (tags.length == 0)
 		{
@@ -88,7 +88,7 @@ public class BiomeUtils
 		return hasMatching;
 	}
 
-	public static boolean testBiomeTypeTagsTable(Biome biome, TagParser.Tag[][] tagTable)
+	public static boolean testBiomeTypeTagsTable(BiomeGenBase biome, TagParser.Tag[][] tagTable)
 	{
 		for (TagParser.Tag[] row : tagTable)
 		{

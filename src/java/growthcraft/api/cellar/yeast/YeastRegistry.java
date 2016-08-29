@@ -36,7 +36,7 @@ import growthcraft.api.core.log.ILogger;
 import growthcraft.api.core.log.NullLogger;
 
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.BiomeDictionary;
 
 public class YeastRegistry implements IYeastRegistry
@@ -138,7 +138,7 @@ public class YeastRegistry implements IYeastRegistry
 	}
 
 	@Override
-	public boolean canYeastFormInBiome(@Nullable ItemStack yeast, @Nullable Biome biome)
+	public boolean canYeastFormInBiome(@Nullable ItemStack yeast, @Nullable BiomeGenBase biome)
 	{
 		if (yeast == null || biome == null) return false;
 

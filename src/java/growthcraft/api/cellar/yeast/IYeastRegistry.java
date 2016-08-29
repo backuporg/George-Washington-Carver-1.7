@@ -31,7 +31,7 @@ import growthcraft.api.core.item.WeightedItemStack;
 import growthcraft.api.core.log.ILoggable;
 
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.BiomeDictionary;
 
 public interface IYeastRegistry extends ILoggable
@@ -83,5 +83,5 @@ public interface IYeastRegistry extends ILoggable
 
 	Set<String> getBiomeNamesForYeast(@Nullable ItemStack yeast);
 	Set<BiomeDictionary.Type> getBiomeTypesForYeast(@Nullable ItemStack yeast);
-	boolean canYeastFormInBiome(@Nullable ItemStack yeast, @Nullable Biome biome);
+	boolean canYeastFormInBiome(@Nullable ItemStack yeast, @Nullable BiomeGenBase biome);
 }

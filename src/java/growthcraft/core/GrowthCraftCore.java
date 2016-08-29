@@ -40,7 +40,6 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IIcon;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.FluidContainerRegistry.FluidContainerData;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -60,15 +59,12 @@ public class GrowthCraftCore
 	public static final String MOD_NAME = "Growthcraft";
 	public static final String MOD_VERSION = "@VERSION@";
 	public static final String MOD_ACC_MINECRAFT = "[@GRC_MC_VERSION@]";
-	public static final String MOD_DEPENDENCIES = "required-after:Forge@[10.13.4.1566,);required-after:AppleCore@[1.3.0,);required-after:Forestry@[4.2.8,)";
+	public static final String MOD_DEPENDENCIES = "required-after:Forge@[12.18.1.2075,);required-after:AppleCore@[2.0.0,);required-after:Forestry@[5.2.9.241,)";
 
 	@Instance(MOD_ID)
 	public static GrowthCraftCore instance;
 
 	@SideOnly(Side.CLIENT)
-	public static IIcon liquidSmoothTexture;
-	@SideOnly(Side.CLIENT)
-	public static IIcon liquidBlobsTexture;
 	public static GrcCoreAchievements achievements;
 	public static CreativeTabs creativeTab;
 
@@ -123,18 +119,18 @@ public class GrowthCraftCore
 		modules.freeze();
 		creativeTab = new CreativeTabsGrowthcraft("creative_tab_grccore");
 
-		EMPTY_BOTTLE = new ItemStack(Items.glass_bottle);
+		EMPTY_BOTTLE = new ItemStack(Items.GLASS_BOTTLE);
 		if (config.changeWaterBottleCapacity)
 		{
 			final List<FluidContainerData> dataList = FluidUtils.getFluidData().get(FluidRegistry.WATER);
 			for (FluidContainerData data : dataList)
-				if (OreDictionary.itemMatches(data.filledContainer, new ItemStack(Items.potionitem, 1, 0), true))
+				if (OreDictionary.itemMatches(data.filledContainer, new ItemStack(Items.POTIONITEM, 1, 0), true))
 					data.fluid.amount = config.bottleCapacity;
 
 			// Reset the fluidData cache, as we are loading it super early here
 			FluidUtils.getFluidData().clear();
 		}
-		if (config.changeWaterBottleContainer) Items.potionitem.setContainerItem(Items.glass_bottle);
+		if (config.changeWaterBottleContainer) Items.POTIONITEM.setContainerItem(Items.GLASS_BOTTLE);
 
 		RecipeSorter.register("grcShaplessComparable", ShapelessItemComparableRecipe.class, RecipeSorter.Category.SHAPELESS, "");
 
@@ -155,7 +151,7 @@ public class GrowthCraftCore
 	{
 		userFluidDictionary.loadUserConfig();
 		AchievementPageGrowthcraft.init();
-		userVinesConfig.addDefault(Blocks.vine);
+		userVinesConfig.addDefault(Blocks.VINE);
 		if (BopPlatform.isLoaded())
 		{
 			userVinesConfig.addDefault(new BlockKeySchema(BopPlatform.MOD_ID, "willow", ItemKey.WILDCARD_VALUE));
@@ -175,6 +171,5 @@ public class GrowthCraftCore
 		FMLCommonHandler.instance().bus().register(new EventHandlerItemCraftedEventCore());
 
 		modules.postInit();
-		if (config.dumpGameRegistry) growthcraft.core.util.GameRegistryDumper.run();
 	}
 }

@@ -28,7 +28,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import growthcraft.bees.GrowthCraftBees;
 import io.netty.buffer.ByteBuf;
 
 import growthcraft.api.bees.BeesRegistry;
@@ -36,6 +35,7 @@ import growthcraft.api.bees.IFlowerBlockEntry;
 import growthcraft.api.core.util.RandomUtils;
 import growthcraft.api.core.util.BlockFlags;
 import growthcraft.bees.common.tileentity.TileEntityBeeBox;
+import growthcraft.bees.GrowthCraftBees;
 import growthcraft.core.common.tileentity.device.DeviceBase;
 
 import net.minecraft.block.Block;

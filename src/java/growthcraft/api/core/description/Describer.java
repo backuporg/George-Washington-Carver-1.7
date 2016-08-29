@@ -29,7 +29,7 @@ import growthcraft.api.core.i18n.GrcI18n;
 
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.EnumChatFormatting;
 
 /**
  * A nice way to add descriptions to a list if the Object is an IDescribable
@@ -55,7 +55,7 @@ public class Describer
 		if (potion != null)
 		{
 			if (potion.isBadEffect())
-				s = TextFormatting.RED + s;
+				s = EnumChatFormatting.RED + s;
 		}
 
 		if (pe.getAmplifier() > 0)
@@ -65,7 +65,7 @@ public class Describer
 
 		if (pe.getDuration() > 20)
 		{
-			s += "" + TextFormatting.GRAY + " (" + Potion.getDurationString(pe) + ")";
+			s += "" + EnumChatFormatting.GRAY + " (" + Potion.getDurationString(pe) + ")";
 		}
 		list.add(s);
 	}

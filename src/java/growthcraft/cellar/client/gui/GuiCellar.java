@@ -8,9 +8,9 @@ import growthcraft.cellar.common.tileentity.TileEntityCellarDevice;
 import growthcraft.cellar.common.inventory.CellarContainer;
 import growthcraft.core.client.gui.GrcGuiContainer;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.util.EnumChatFormatting;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraft.util.ResourceLocation;
 
@@ -31,7 +31,7 @@ public class GuiCellar<C extends CellarContainer, T extends TileEntityCellarDevi
 		if (!CellarRegistry.instance().fermenting().canFerment(fluid))
 		{
 			tooltip.add("");
-			tooltip.add(EnumChatFormatting.RED + GrcI18n.translate("gui.grc.cantferment"));
+			tooltip.add(TextFormatting.RED + GrcI18n.translate("gui.grc.cantferment"));
 		}
 	}
 }

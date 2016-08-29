@@ -54,7 +54,7 @@ public enum EnumSkull implements IItemStackFactory
 
 	public ItemStack asStack(int size)
 	{
-		return new ItemStack(Items.SKULL, size, meta);
+		return new ItemStack(Items.skull, size, meta);
 	}
 
 	public ItemStack asStack()

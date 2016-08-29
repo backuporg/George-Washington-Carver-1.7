@@ -17,6 +17,6 @@ public class CreativeTabsGrowthcraft extends CreativeTabs
 	@SideOnly(Side.CLIENT)
 	public Item getTabIconItem()
 	{
-		return Item.getItemFromBlock(Blocks.SAPLING);
+		return Item.getItemFromBlock(Blocks.sapling);
 	}
 }

@@ -4,13 +4,14 @@ import growthcraft.api.core.util.BlockFlags;
 import growthcraft.api.core.util.RenderType;
 import growthcraft.grapes.GrowthCraftGrapes;
 
+import net.minecraft.block.SoundType;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.Item;
-import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.IIcon;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -28,7 +29,7 @@ public class BlockGrapeVine0 extends BlockGrapeVineBase
 		setGrowthRateMultiplier(GrowthCraftGrapes.getConfig().grapeVineSeedlingGrowthRate);
 		setTickRandomly(true);
 		setHardness(0.0F);
-		setStepSound(soundTypeGrass);
+		setSoundType(SoundType.PLANT);
 		setBlockName("grc.grapeVine0");
 		setCreativeTab(null);
 	}

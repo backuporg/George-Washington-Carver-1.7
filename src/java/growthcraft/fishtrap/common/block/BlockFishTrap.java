@@ -19,7 +19,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.BiomeDictionary.Type;
@@ -85,7 +85,7 @@ public class BlockFishTrap extends GrcBlockContainer
 		boolean flag;
 		if (GrowthCraftFishTrap.getConfig().useBiomeDict)
 		{
-			final Biome biome = world.getBiomeGenForCoords(x, z);
+			final BiomeGenBase biome = world.getBiomeGenForCoords(x, z);
 			flag = BiomeDictionary.isBiomeOfType(biome, Type.WATER);
 		}
 		else

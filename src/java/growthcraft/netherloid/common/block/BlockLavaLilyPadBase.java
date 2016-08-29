@@ -29,11 +29,12 @@ import growthcraft.api.core.util.RenderType;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityBoat;
 import net.minecraft.init.Blocks;
-import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
 
 public class BlockLavaLilyPadBase extends BlockBush
@@ -42,7 +43,7 @@ public class BlockLavaLilyPadBase extends BlockBush
 	{
 		super();
 		setHardness(0.0F);
-		setStepSound(Block.soundTypeGrass);
+		setSoundType(SoundType.PLANT);
 		final float var1 = 0.5F;
 		final float var2 = 0.015625F;
 		setBlockBounds(0.5F - var1, 0.0F, 0.5F - var1, 0.5F + var1, var2, 0.5F + var1);

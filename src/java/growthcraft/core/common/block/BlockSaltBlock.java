@@ -35,7 +35,7 @@ public class BlockSaltBlock extends GrcBlockBase
 {
 	public BlockSaltBlock()
 	{
-		super(Material.SAND);
+		super(Material.sand);
 		setHardness(2.0F);
 		setResistance(10.0F);
 		setStepSound(soundTypeSand);

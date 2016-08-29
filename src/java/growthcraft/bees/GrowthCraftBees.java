@@ -27,18 +27,21 @@ import growthcraft.core.common.definition.BlockDefinition;
 import growthcraft.core.GrcGuiProvider;
 import growthcraft.core.integration.bop.BopPlatform;
 import growthcraft.core.util.MapGenHelper;
+
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.Mod.Instance;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.VillagerRegistry;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.common.registry.VillagerRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
@@ -47,16 +50,15 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 	name = GrowthCraftBees.MOD_NAME,
 	version = GrowthCraftBees.MOD_VERSION,
 	dependencies = "required-after:Growthcraft@@VERSION@;required-after:Growthcraft|Cellar@@VERSION@;after:Forestry"
-	)
-
+)
 public class GrowthCraftBees
 {
 	public static final String MOD_ID = "Growthcraft|Bees";
 	public static final String MOD_NAME = "Growthcraft Bees";
 	public static final String MOD_VERSION = "@VERSION@";
 
-	@Mod.INSTANCE(MOD_ID)
-	public static GrowthCraftBees INSTANCE;
+	@Instance(MOD_ID)
+	public static GrowthCraftBees instance;
 	public static CreativeTabs tab;
 	public static final GrcBeesBlocks blocks = new GrcBeesBlocks();
 	public static final GrcBeesItems items = new GrcBeesItems();
@@ -73,7 +75,7 @@ public class GrowthCraftBees
 
 	public static UserBeesConfig getUserBeesConfig()
 	{
-		return INSTANCE.userBeesConfig;
+		return instance.userBeesConfig;
 	}
 
 	/**
@@ -81,15 +83,15 @@ public class GrowthCraftBees
 	 */
 	public static ILogger getLogger()
 	{
-		return INSTANCE.logger;
+		return instance.logger;
 	}
 
 	public static GrcBeesConfig getConfig()
 	{
-		return INSTANCE.config;
+		return instance.config;
 	}
 
-	@Mod.EventHandler
+	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		config.setLogger(logger);
@@ -120,16 +122,16 @@ public class GrowthCraftBees
 		if (config.enableNaturaIntegration) modules.add(new growthcraft.bees.integration.NaturaModule());
 		if (config.enableBotaniaIntegration) modules.add(new growthcraft.bees.integration.BotaniaModule());
 		if (config.enableForestryIntegration) modules.add(new growthcraft.bees.integration.ForestryModule());
-		if (config.enableThaumcraftIntegration) modules.add(new growthcraft.bees.integration.ThaumcraftModule());
+		//if (config.enableThaumcraftIntegration) modules.add(new growthcraft.bees.integration.ThaumcraftModule());
 		if (config.enableFAIntegration) modules.add(new growthcraft.bees.integration.FAModule());
-		if (config.enableAM2Integration) modules.add(new growthcraft.bees.integration.AM2Module());
+		//if (config.enableAM2Integration) modules.add(new growthcraft.bees.integration.AM2Module());
 		if (config.enableTotemicIntegration) modules.add(new growthcraft.bees.integration.TotemicModule());
 		if (config.enableEBXLIntegration) modules.add(new growthcraft.bees.integration.EBXLModule());
 		if (config.enableHighlandsIntegration) modules.add(new growthcraft.bees.integration.HighlandsModule());
 
 		if (config.debugEnabled)
 		{
-			BeesRegistry.INSTANCE().setLogger(logger);
+			BeesRegistry.instance().setLogger(logger);
 			modules.setLogger(logger);
 		}
 
@@ -152,9 +154,9 @@ public class GrowthCraftBees
 		modules.register();
 		registerRecipes();
 		userBeesConfig.addDefault(items.bee.asStack()).setComment("Growthcraft's default bee");
-		BeesRegistry.INSTANCE().addHoneyComb(items.honeyCombEmpty.asStack(), items.honeyCombFilled.asStack());
-		userFlowersConfig.addDefault(Blocks.RED_FLOWER);
-		userFlowersConfig.addDefault(Blocks.YELLOW_FLOWER);
+		BeesRegistry.instance().addHoneyComb(items.honeyCombEmpty.asStack(), items.honeyCombFilled.asStack());
+		userFlowersConfig.addDefault(Blocks.red_flower);
+		userFlowersConfig.addDefault(Blocks.yellow_flower);
 		if (BopPlatform.isLoaded())
 		{
 			userFlowersConfig.addDefault(
@@ -170,7 +172,7 @@ public class GrowthCraftBees
 
 	private void registerRecipes()
 	{
-		final BlockDefinition planks = new BlockDefinition(Blocks.PLANKS);
+		final BlockDefinition planks = new BlockDefinition(Blocks.planks);
 		for (int i = 0; i < 6; ++i)
 		{
 			GameRegistry.addRecipe(blocks.beeBox.asStack(1, i), new Object[] { " A ", "A A", "AAA", 'A', planks.asStack(1, i) });
@@ -178,7 +180,7 @@ public class GrowthCraftBees
 
 		final ItemStack honeyStack = items.honeyCombFilled.asStack();
 		GameRegistry.addShapelessRecipe(items.honeyJar.asStack(),
-			honeyStack, honeyStack, honeyStack, honeyStack, honeyStack, honeyStack, Items.FLOWER_POT);
+			honeyStack, honeyStack, honeyStack, honeyStack, honeyStack, honeyStack, Items.flower_pot);
 	}
 
 	private void postRegisterRecipes()
@@ -188,7 +190,7 @@ public class GrowthCraftBees
 		GameRegistry.addRecipe(new ShapelessMultiRecipe(
 				items.honeyJar.asStack(),
 				new TaggedFluidStacks(1000, BeesFluidTag.HONEY.getName()),
-				Items.FLOWER_POT));
+				Items.flower_pot));
 	}
 
 	private void initVillageHandlers()
@@ -198,27 +200,25 @@ public class GrowthCraftBees
 		final int apiaristID = config.villagerApiaristID;
 		if (apiaristID > 0)
 		{
-			VillagerRegistry.INSTANCE().registerVillagerId(apiaristID);
-			VillagerRegistry.INSTANCE().registerVillageTradeHandler(apiaristID, handler);
+			VillagerRegistry.instance().registerVillagerId(apiaristID);
+			VillagerRegistry.instance().registerVillageTradeHandler(apiaristID, handler);
 		}
-		VillagerRegistry.INSTANCE().registerVillageCreationHandler(handler);
+		VillagerRegistry.instance().registerVillageCreationHandler(handler);
 		if (brewerID > 0)
 		{
-			VillagerRegistry.INSTANCE().registerVillageTradeHandler(brewerID, new VillageHandlerBees());
+			VillagerRegistry.instance().registerVillageTradeHandler(brewerID, new VillageHandlerBees());
 		}
-		CommonProxy.INSTANCE.registerVillagerSkin();
 	}
 
-	@Mod.EventHandler
+	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
-		CommonProxy.INSTANCE.init();
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, guiProvider);
 		if (config.enableVillageGen) initVillageHandlers();
 		modules.init();
 	}
 
-	@Mod.EventHandler
+	@EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
 		userBeesConfig.loadUserConfig();

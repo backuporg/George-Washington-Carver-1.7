@@ -3,6 +3,7 @@ package growthcraft.bamboo.common.block;
 import growthcraft.bamboo.GrowthCraftBamboo;
 import growthcraft.bamboo.client.renderer.RenderBambooFence;
 
+import net.minecraft.block.SoundType;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -13,7 +14,7 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraft.util.EnumFacing;
 
 public class BlockBambooFence extends BlockFence
 {
@@ -24,7 +25,7 @@ public class BlockBambooFence extends BlockFence
 	{
 		super(null, Material.wood);
 		this.useNeighborBrightness = true;
-		setStepSound(soundTypeWood);
+		setSoundType(SoundType.WOOD);
 		setResistance(5.0F);
 		setHardness(2.0F);
 		setCreativeTab(GrowthCraftBamboo.creativeTab);
@@ -47,9 +48,9 @@ public class BlockBambooFence extends BlockFence
 	}
 
 	@Override
-	public boolean isSideSolid(IBlockAccess world, int x, int y, int z, ForgeDirection side)
+	public boolean isSideSolid(IBlockAccess world, int x, int y, int z, EnumFacing side)
 	{
-		return side == ForgeDirection.UP;
+		return side == EnumFacing.UP;
 	}
 
 	@Override

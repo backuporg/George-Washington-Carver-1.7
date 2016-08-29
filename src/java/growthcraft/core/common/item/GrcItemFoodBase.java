@@ -37,13 +37,13 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.EnumAction;
-import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
 public class GrcItemFoodBase extends ItemFood
 {
 	private IEffect effect;
-	private EnumAction action = EnumAction.eat;
+	private EnumAction action = EnumAction.EAT;
 
 	public GrcItemFoodBase(int hunger, float saturation, boolean isWolfFav)
 	{
@@ -134,9 +134,9 @@ public class GrcItemFoodBase extends ItemFood
 				}
 				else
 				{
-					list.add(EnumChatFormatting.GRAY +
+					list.add(TextFormatting.GRAY +
 							GrcI18n.translate("grc.tooltip.detailed_information",
-								EnumChatFormatting.WHITE + GrcCoreState.detailedKey + EnumChatFormatting.GRAY));
+								TextFormatting.WHITE + GrcCoreState.detailedKey + TextFormatting.GRAY));
 				}
 			}
 		}

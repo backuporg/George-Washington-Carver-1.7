@@ -25,7 +25,7 @@ package growthcraft.bees.common;
 
 import growthcraft.core.common.GrcModuleProxyBase;
 
-import cpw.mods.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.SidedProxy;
 
 public class CommonProxy extends GrcModuleProxyBase
 {

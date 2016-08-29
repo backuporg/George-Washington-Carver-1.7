@@ -35,6 +35,6 @@ public class ItemBottleSalt extends GrcItemBase
 		setTextureName("grccore:bottle_salt");
 		setUnlocalizedName("grccore.bottleSalt");
 		setCreativeTab(GrowthCraftCore.creativeTab);
-		setContainerItem(Items.GLASS_BOTTLE);
+		setContainerItem(Items.glass_bottle);
 	}
 }

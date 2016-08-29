@@ -72,7 +72,7 @@ public enum EnumDye implements IItemStackFactory
 
 	public ItemStack asStack(int size)
 	{
-		return new ItemStack(Items.DYE, size, meta);
+		return new ItemStack(Items.dye, size, meta);
 	}
 
 	public ItemStack asStack()

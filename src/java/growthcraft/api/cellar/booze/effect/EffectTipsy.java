@@ -33,6 +33,7 @@ import growthcraft.api.core.stats.IAchievement;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.PotionTypes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
@@ -109,7 +110,7 @@ public class EffectTipsy extends AbstractEffect
 					break;
 			}
 
-			entitylb.addPotionEffect(new PotionEffect(potionTipsy.id, time, amplifier));
+			entitylb.addPotionEffect(new PotionEffect(potionTipsy, time, amplifier));
 
 			if (entitylb instanceof EntityPlayer)
 			{
@@ -122,13 +123,13 @@ public class EffectTipsy extends AbstractEffect
 	@Override
 	protected void getActualDescription(List<String> list)
 	{
-		final PotionEffect nausea = new PotionEffect(Potion.confusion.id, getTipsyTime(), 0);
+		final PotionEffect nausea = new PotionEffect(Potion.getPotionById(9), getTipsyTime(), 0);
 		final String p = GrcI18n.translate("grc.cellar.format.tipsy_chance", Math.round(getTipsyChance() * 100));
 
 		String n = "";
 		if (nausea.getDuration() > 20)
 		{
-			n = "(" + Potion.getDurationString(nausea) + ")";
+			n = "(" + Potion.getPotionDurationString(nausea, getTipsyTime()) + ")";
 		}
 		list.add(TextFormatting.GRAY + p + TextFormatting.GRAY + " " + n);
 	}

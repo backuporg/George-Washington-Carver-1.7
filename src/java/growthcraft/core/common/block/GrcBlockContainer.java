@@ -50,10 +50,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.stats.StatList;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraft.util.EnumFacing;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidHandler;
@@ -87,33 +87,33 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 
 	/* IRotatableBlock */
 	@Override
-	public boolean isRotatable(IBlockAccess world, int x, int y, int z, ForgeDirection side)
+	public boolean isRotatable(IBlockAccess world, int x, int y, int z, EnumFacing side)
 	{
 		return false;
 	}
 
-	public void doRotateBlock(World world, int x, int y, int z, ForgeDirection side)
+	public void doRotateBlock(World world, int x, int y, int z, EnumFacing side)
 	{
 		final int meta = world.getBlockMetadata(x, y, z);
-		final ForgeDirection current = ForgeDirection.getOrientation(meta);
-		ForgeDirection newDirection = current;
+		final EnumFacing current = EnumFacing.getFront(meta);
+		EnumFacing newDirection = current;
 		if (current == side)
 		{
 			switch (current)
 			{
 				case UP:
-					newDirection = ForgeDirection.NORTH;
+					newDirection = EnumFacing.NORTH;
 					break;
 				case DOWN:
-					newDirection = ForgeDirection.SOUTH;
+					newDirection = EnumFacing.SOUTH;
 					break;
 				case NORTH:
 				case EAST:
-					newDirection = ForgeDirection.UP;
+					newDirection = EnumFacing.UP;
 					break;
 				case SOUTH:
 				case WEST:
-					newDirection = ForgeDirection.DOWN;
+					newDirection = EnumFacing.DOWN;
 					break;
 				default:
 					// some invalid state
@@ -125,22 +125,22 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 			switch (current)
 			{
 				case UP:
-					newDirection = ForgeDirection.DOWN;
+					newDirection = EnumFacing.DOWN;
 					break;
 				case DOWN:
-					newDirection = ForgeDirection.UP;
+					newDirection = EnumFacing.UP;
 					break;
 				case WEST:
-					newDirection = ForgeDirection.SOUTH;
+					newDirection = EnumFacing.SOUTH;
 					break;
 				case EAST:
-					newDirection = ForgeDirection.NORTH;
+					newDirection = EnumFacing.NORTH;
 					break;
 				case NORTH:
-					newDirection = ForgeDirection.WEST;
+					newDirection = EnumFacing.WEST;
 					break;
 				case SOUTH:
-					newDirection = ForgeDirection.EAST;
+					newDirection = EnumFacing.EAST;
 					break;
 				default:
 					// yet another invalid state
@@ -154,7 +154,7 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 	}
 
 	@Override
-	public boolean rotateBlock(World world, int x, int y, int z, ForgeDirection side)
+	public boolean rotateBlock(World world, int x, int y, int z, EnumFacing side)
 	{
 		if (isRotatable(world, x, y, z, side))
 		{
@@ -215,7 +215,7 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 
 	protected void placeBlockByEntityDirection(World world, int x, int y, int z, EntityLivingBase entity, ItemStack stack)
 	{
-		if (isRotatable(world, x, y, z, ForgeDirection.UNKNOWN))
+		if (isRotatable(world, x, y, z, EnumFacing.UNKNOWN))
 		{
 			final int l = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
 
