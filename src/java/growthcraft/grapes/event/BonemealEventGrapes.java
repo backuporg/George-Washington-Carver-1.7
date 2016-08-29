@@ -9,7 +9,7 @@ import growthcraft.grapes.GrowthCraftGrapes;
 
 import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.event.entity.player.BonemealEvent;
 import net.minecraftforge.common.util.ForgeDirection;
 

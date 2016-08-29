@@ -37,7 +37,7 @@ import growthcraft.api.core.item.ItemTest;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
 
 /**
  * Utility class for handling some `painful` inventory operations
