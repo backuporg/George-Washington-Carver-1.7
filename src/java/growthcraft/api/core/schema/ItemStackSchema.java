@@ -35,7 +35,6 @@ import growthcraft.api.core.item.MultiItemStacks;
 import growthcraft.api.core.util.StringUtils;
 
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.common.registry.GameRegistry.UniqueIdentifier;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
