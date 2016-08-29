@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fluids.IFluidBlock;
 
 @SideOnly(Side.CLIENT)
-public class ParticleDropParticle extends Particle
+public class EntityFXDropParticle extends Particle
 {
 	/**
 	 * The height of the current bob
