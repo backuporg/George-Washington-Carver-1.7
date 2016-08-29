@@ -1,18 +1,14 @@
 # Creative Tabs
-itemGroup.creative_tab_grcbees=Growthcraft Abelhas
+itemGroup.creative_tab_grcbees=Growthcraft Bees
 
 # Blocks
 ## Vanilla Bee Boxes
-tile.grc.BeeBox.Minecraft.oak.name=Apiário de Carvalho
-tile.grc.BeeBox.Minecraft.spruce.name=Apiário de Abeto
-tile.grc.BeeBox.Minecraft.birch.name=Apiário de Bétula
-tile.grc.BeeBox.Minecraft.jungle.name=Apiário de Madeira da Selva
-tile.grc.BeeBox.Minecraft.acacia.name=Apiário de Acácia
-tile.grc.BeeBox.Minecraft.darkoak.name=Apiário de Carvalho Escuro
-
-## Thaumcraft Bee Boxes
-tile.grc.BeeBox.Thaumcraft.greatwood.name=Greatwood Bee Box
-tile.grc.BeeBox.Thaumcraft.silverwood.name=Silverwood Bee Box
+tile.grc.BeeBox.Minecraft.oak.name=Oak Bee Box
+tile.grc.BeeBox.Minecraft.spruce.name=Spruce Bee Box
+tile.grc.BeeBox.Minecraft.birch.name=Birch Bee Box
+tile.grc.BeeBox.Minecraft.jungle.name=Jungle Bee Box
+tile.grc.BeeBox.Minecraft.acacia.name=Acacia Bee Box
+tile.grc.BeeBox.Minecraft.darkoak.name=Dark Oak Bee Box
 
 ## Growthcraft|Nether Bee Box
 tile.grc.BeeBox.Nether.0.name=Malice Bee Box
@@ -110,101 +106,105 @@ tile.grc.BeeBox.Forestry.1.Fireproof.cocobolo.name=Cocobolo Bee Box (Fireproof)
 tile.grc.BeeBox.Forestry.1.Fireproof.zebrawood.name=Zebrawood Bee Box (Fireproof)
 
 ## BiomesOPlenty Bee Boxes
-tile.grc.BeeBox.BiomesOPlenty.sacred_oak.name=Apiário de Carvalho Sagrado
-tile.grc.BeeBox.BiomesOPlenty.cherry.name=Apiário de Cerejeira
-tile.grc.BeeBox.BiomesOPlenty.dark.name=Apiário de Madeira Sombria
-tile.grc.BeeBox.BiomesOPlenty.fir.name=Apiário de Pinheiro
-tile.grc.BeeBox.BiomesOPlenty.ethereal.name=Apiário de Madeira Etérea
-tile.grc.BeeBox.BiomesOPlenty.magic.name=Apiário de Madeira Mágica
-tile.grc.BeeBox.BiomesOPlenty.mangrove.name=Apiário de Mangue
-tile.grc.BeeBox.BiomesOPlenty.palm.name=Apiário de Palmeira
-tile.grc.BeeBox.BiomesOPlenty.redwood.name=Apiário de Sequoia
-tile.grc.BeeBox.BiomesOPlenty.willow.name=Apiário de Salgueiro
-tile.grc.BeeBox.BiomesOPlenty.bamboo_thatching.name=Apiário de Colmo de Bambu
-tile.grc.BeeBox.BiomesOPlenty.pine.name=Apiário de Pinho
-tile.grc.BeeBox.BiomesOPlenty.hell_bark.name=Apiário de Casca do Inferno
-tile.grc.BeeBox.BiomesOPlenty.jacaranda.name=Apiário de Jacarandá
-tile.grc.BeeBox.BiomesOPlenty.mahogany.name=Apiário de Mogno
+tile.grc.BeeBox.BiomesOPlenty.sacred_oak.name=Sacred Oak Bee Box
+tile.grc.BeeBox.BiomesOPlenty.cherry.name=Cherry Bee Box
+tile.grc.BeeBox.BiomesOPlenty.dark.name=Dark Bee Box
+tile.grc.BeeBox.BiomesOPlenty.fir.name=Fir Bee Box
+tile.grc.BeeBox.BiomesOPlenty.ethereal.name=Ethereal Bee Box
+tile.grc.BeeBox.BiomesOPlenty.magic.name=Magic Bee Box
+tile.grc.BeeBox.BiomesOPlenty.mangrove.name=Mangrove Bee Box
+tile.grc.BeeBox.BiomesOPlenty.palm.name=Palm Bee Box
+tile.grc.BeeBox.BiomesOPlenty.redwood.name=Redwood Bee Box
+tile.grc.BeeBox.BiomesOPlenty.willow.name=Willow Bee Box
+tile.grc.BeeBox.BiomesOPlenty.bamboo_thatching.name=Bamboo Thatch Bee Box
+tile.grc.BeeBox.BiomesOPlenty.pine.name=Pine Bee Box
+tile.grc.BeeBox.BiomesOPlenty.hell_bark.name=Hell Bark Bee Box
+tile.grc.BeeBox.BiomesOPlenty.jacaranda.name=Jacaranda Bee Box
+tile.grc.BeeBox.BiomesOPlenty.mahogany.name=Mahogany Bee Box
 
 ## Botania Bee Boxes
-tile.grc.BeeBox.Botania.living_wood.name=Living Wood Bee Box
+tile.grc.BeeBox.Botania.living_wood.name=Livingwood Bee Box
 tile.grc.BeeBox.Botania.dream_wood.name=Dreamwood Bee Box
-tile.grc.BeeBox.Botania.shimmer_wood.name=Shimmer Wood Bee Box
-tile.grc.BeeBox.Botania.shimmer_wood.desc=tile.grc.BeeBox.Botania.shimmer_wood.desc
+tile.grc.BeeBox.Botania.shimmer_wood.name=Shimmerwood Bee Box
+tile.grc.BeeBox.Botania.shimmer_wood.desc=ZOMG Colors!
 
 ## Natura Bee Boxes
-tile.grc.BeeBox.Natura.apple.name=tile.grc.BeeBox.Natura.apple.name
-tile.grc.BeeBox.Natura.blood.name=tile.grc.BeeBox.Natura.blood.name
-tile.grc.BeeBox.Natura.bush.name=tile.grc.BeeBox.Natura.bush.name
-tile.grc.BeeBox.Natura.darkwood.name=tile.grc.BeeBox.Natura.darkwood.name
-tile.grc.BeeBox.Natura.eucalyptus.name=tile.grc.BeeBox.Natura.eucalyptus.name
-tile.grc.BeeBox.Natura.fusewood.name=tile.grc.BeeBox.Natura.fusewood.name
-tile.grc.BeeBox.Natura.ghost.name=tile.grc.BeeBox.Natura.ghost.name
-tile.grc.BeeBox.Natura.maple.name=tile.grc.BeeBox.Natura.maple.name
-tile.grc.BeeBox.Natura.purpleheart.name=tile.grc.BeeBox.Natura.purpleheart.name
+tile.grc.BeeBox.Natura.apple.name=Apple Bee Box
+tile.grc.BeeBox.Natura.blood.name=Bloodwood Bee Box
+tile.grc.BeeBox.Natura.bush.name=Hopseed Bee Box
+tile.grc.BeeBox.Natura.darkwood.name=Darkwood Bee Box
+tile.grc.BeeBox.Natura.eucalyptus.name=Eucalyptus Bee Box
+tile.grc.BeeBox.Natura.fusewood.name=Fusewood Bee Box
+tile.grc.BeeBox.Natura.ghost.name=Ghostwood Bee Box
+tile.grc.BeeBox.Natura.maple.name=Maple Bee Box
+tile.grc.BeeBox.Natura.purpleheart.name=Amaranth Bee Box
 tile.grc.BeeBox.Natura.purpleheart.desc=Caress the one, the never-fading
-tile.grc.BeeBox.Natura.redwood.name=tile.grc.BeeBox.Natura.redwood.name
-tile.grc.BeeBox.Natura.sakura.name=tile.grc.BeeBox.Natura.sakura.name
-tile.grc.BeeBox.Natura.silverbell.name=tile.grc.BeeBox.Natura.silverbell.name
-tile.grc.BeeBox.Natura.tiger.name=tile.grc.BeeBox.Natura.tiger.name
-tile.grc.BeeBox.Natura.willow.name=tile.grc.BeeBox.Natura.willow.name
+tile.grc.BeeBox.Natura.redwood.name=Redwood Bee Box
+tile.grc.BeeBox.Natura.sakura.name=Sakura Bee Box
+tile.grc.BeeBox.Natura.silverbell.name=Silverbell Bee Box
+tile.grc.BeeBox.Natura.tiger.name=Tigerwood Bee Box
+tile.grc.BeeBox.Natura.willow.name=Willow Bee Box
 
 # Other Blocks
-tile.grc.beeHive.name=Colmeia
+tile.grc.beeHive.name=Bee Hive
 
 # Items
-item.grc.honeyComb.empty.name=Favo Vazio
-item.grc.honeyComb.full.name=Favo de Mel
-item.grc.honeyJar.name=Mel
-item.grc.bee.name=Abelha
-item.grc.FoodBottleFluidHoney.name=Frasco de Mel
-item.grc.BucketFluidHoney.name=Balde de Mel
-item.grcbees.BeesWax.normal.name=Cera de Abelhas
-item.grcbees.BeesWax.red.name=Cera Vermelha de Abelhas
-item.grcbees.BeesWax.black.name=Cera Preta de Abelhas
+item.grc.honeyComb.empty.name=Empty Honeycomb
+item.grc.honeyComb.full.name=Honeycomb
+item.grc.honeyJar.name=Honey
+item.grc.bee.name=Bee
+item.grc.FoodBottleFluidHoney.name=Honey Bottle
+item.grc.BucketFluidHoney.name=Honey Bucket
+item.grcbees.BeesWax.normal.name=Beeswax
+item.grcbees.BeesWax.red.name=Red Beeswax
+item.grcbees.BeesWax.black.name=Black Beeswax
 
 # Tooltips
-grc.bees.item.honeyComb.deprecated=Este item tornou-se obsoleto, fabrica-o para conseguires uma versão melhorada.
+grc.bees.item.honeyComb.deprecated=This item has been deprecated, craft to get the updated item.
 
 # Containers
-container.grc.beeBox=Apiário
+container.grc.beeBox=Bee Box
 
 # Fluids
-fluid.grc.honey=Mel
-fluid.grc.honeyMead0=Hidromel
-fluid.grc.honeyMead1=Hidromel
-fluid.grc.honeyMead2=Hidromel
-fluid.grc.honeyMead3=Hidromel
-fluid.grc.honeyMead4=Hidromel
-fluid.grc.honeyMead5=Hidromel
-fluid.grc.honeyMead6=Hidromel
+fluid.grc.honey=Honey
+fluid.grc.honeyMead0=Mead Must
+fluid.grc.honeyMead1=Mead
+fluid.grc.honeyMead2=Mead
+fluid.grc.honeyMead3=Mead
+fluid.grc.honeyMead4=Mead
+fluid.grc.honeyMead5=Mead
+fluid.grc.honeyMead6=Mead
 
 # Fluid Bottles
-item.grc.BottleFluidHoney.name=Mel
+item.grc.BottleFluidHoney.name=Honey
 
 # Fluid Buckets
-item.bucket.fluid.grc.honey.name=Balde de Mel
-item.bucket.fluid.grc.honeyMead0.name=Balde de Hidromel
-item.bucket.fluid.grc.honeyMead1.name=Balde de Hidromel
-item.bucket.fluid.grc.honeyMead2.name=Balde de Hidromel
-item.bucket.fluid.grc.honeyMead3.name=Balde de Hidromel
-item.bucket.fluid.grc.honeyMead4.name=Balde de Hidromel
-item.bucket.fluid.grc.honeyMead5.name=Balde de Hidromel
-item.bucket.fluid.grc.honeyMead6.name=Balde de Hidromel
+item.bucket.fluid.grc.honey.name=Honey Bucket
+item.bucket.fluid.grc.honeyMead0.name=Mead Must Bucket
+item.bucket.fluid.grc.honeyMead1.name=Mead Bucket
+item.bucket.fluid.grc.honeyMead2.name=Mead Bucket
+item.bucket.fluid.grc.honeyMead3.name=Mead Bucket
+item.bucket.fluid.grc.honeyMead4.name=Mead Bucket
+item.bucket.fluid.grc.honeyMead5.name=Mead Bucket
+item.bucket.fluid.grc.honeyMead6.name=Mead Bucket
 
 # Fluid Blocks
-tile.grc.BlockFluidHoney.name=Mel
-tile.fluid.grc.honeyMead0.name=Hidromel
-tile.fluid.grc.honeyMead1.name=Hidromel
-tile.fluid.grc.honeyMead2.name=Hidromel
-tile.fluid.grc.honeyMead3.name=Hidromel
-tile.fluid.grc.honeyMead4.name=Hidromel
-tile.fluid.grc.honeyMead5.name=Hidromel
-tile.fluid.grc.honeyMead6.name=Hidromel
+tile.grc.BlockFluidHoney.name=Honey
+tile.fluid.grc.honeyMead0.name=Mead Must
+tile.fluid.grc.honeyMead1.name=Mead
+tile.fluid.grc.honeyMead2.name=Mead
+tile.fluid.grc.honeyMead3.name=Mead
+tile.fluid.grc.honeyMead4.name=Mead
+tile.fluid.grc.honeyMead5.name=Mead
+tile.fluid.grc.honeyMead6.name=Mead
+
+# Fluid Tags
+grc.fluids.tag.mead=Mead
+grc.fluids.tag.honey=Honey
 
 # Other
-grc.bees.bonus_prefix=Bónus :
-grc.bees.bees_prefix=Abelhas :
-grc.bees.honey_prefix=Mel :
-grc.bees.growth_rate_prefix=Velocidade de Crescimento :
+grc.bees.bonus_prefix=Bonus :
+grc.bees.bees_prefix=Bees :
+grc.bees.honey_prefix=Honey :
+grc.bees.growth_rate_prefix=Growth Rate :
 grc.bees.growth_rate_value=%d%%
