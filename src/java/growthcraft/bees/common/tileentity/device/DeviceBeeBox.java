@@ -41,7 +41,7 @@ import growthcraft.core.common.tileentity.device.DeviceBase;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 public class DeviceBeeBox extends DeviceBase
