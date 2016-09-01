@@ -162,7 +162,7 @@ public class TileEntityCultureJar extends TileEntityCellarDevice implements ITil
 	{
 		// Ferment Jars need to update their rendering state when a fluid
 		// changes, most of the other cellar blocks are unaffected by this
-		markDirty();
+		markForUpdate();
 	}
 
 	@Override
@@ -227,7 +227,7 @@ public class TileEntityCultureJar extends TileEntityCellarDevice implements ITil
 			getActiveDevice().update();
 			if (jarDeviceState != lastState)
 			{
-				markDirty();
+				markDirtyAndUpdate();
 			}
 		}
 	}
@@ -273,7 +273,6 @@ public class TileEntityCultureJar extends TileEntityCellarDevice implements ITil
 	@EventHandler(type=EventHandler.EventType.NBT_READ)
 	public void readFromNBT_CultureJar(NBTTagCompound nbt)
 	{
-		super.readFromNBT(nbt);
 		yeastGen.readFromNBT(nbt, "yeastgen");
 		cultureGen.readFromNBT(nbt, "culture_gen");
 		heatComponent.readFromNBT(nbt, "heat_component");
