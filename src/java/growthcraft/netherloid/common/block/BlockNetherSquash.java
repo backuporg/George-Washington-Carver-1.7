@@ -44,7 +44,7 @@ public class BlockNetherSquash extends BlockDirectional
 
 	public BlockNetherSquash()
 	{
-		super(Blocks.pumpkin.getMaterial());
+		super(Blocks.PUMPKIN.getMaterial());
 		setTickRandomly(true);
 		setBlockTextureName("grcnetherloid:soulsquash");
 		setBlockName("grcnetherloid.netherSquash");

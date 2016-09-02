@@ -11,6 +11,9 @@ import growthcraft.fishtrap.common.block.BlockFishTrap;
 import growthcraft.fishtrap.common.CommonProxy;
 import growthcraft.fishtrap.common.tileentity.TileEntityFishTrap;
 import growthcraft.fishtrap.creativetab.CreativeTabsGrowthcraftFishtrap;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -41,6 +44,7 @@ public class GrowthCraftFishTrap
 	@Instance(MOD_ID)
 	public static GrowthCraftFishTrap instance;
 	public static BlockDefinition fishTrap;
+	public static CreativeTabs creativeTab;
 	public static final GrcGuiProvider guiProvider = new GrcGuiProvider(new GrcLogger(MOD_ID + ":GuiProvider"));
 
 	private final ILogger logger = new GrcLogger(MOD_ID);

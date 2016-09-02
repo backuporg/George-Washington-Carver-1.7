@@ -15,7 +15,7 @@ public class ItemHoneyJar extends GrcItemFoodBase
 		super(6, false);
 		this.setUnlocalizedName("grc.honeyJar");
 		this.setCreativeTab(GrowthCraftBees.tab);
-		this.setContainerItem(Items.flower_pot);
+		this.setContainerItem(Items.FLOWER_POT);
 		this.setMaxStackSize(1);
 	}
 

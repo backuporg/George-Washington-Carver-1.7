@@ -164,7 +164,7 @@ public class DeviceBeeBox extends DeviceBase
 						f1 = 1.08F;
 					}
 				}
-				else if (flower == Blocks.flower_pot && (world.getBlockMetadata(i + loopx, y, k + loopz) == 1 ||
+				else if (flower == Blocks.FLOWER_POT && (world.getBlockMetadata(i + loopx, y, k + loopz) == 1 ||
 					world.getBlockMetadata(i + loopx, y, k + loopz) == 2))
 				{
 					//f1 = 2.0F;

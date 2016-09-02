@@ -28,7 +28,7 @@ public class GrcCellarAchievements
 		achievements.put(CellarAchievement.FERMENT_BOOZE,
 			(new Achievement("grc.achievement.fermentBooze", "fermentBooze",
 				-2, -4,
-				Items.nether_wart,
+				Items.NETHER_WART,
 				achievements.get(CellarAchievement.CRAFT_BARREL))
 			).registerStat()
 		);

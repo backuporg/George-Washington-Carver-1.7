@@ -1,5 +1,7 @@
 package growthcraft.core.creativetab;
 
+import growthcraft.fishtrap.GrowthCraftFishTrap;
+
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;

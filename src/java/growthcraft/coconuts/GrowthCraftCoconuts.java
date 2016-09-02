@@ -26,6 +26,7 @@ public class GrowthCraftCoconuts
 
 	@Instance(MOD_ID)
 	public static GrowthCraftCoconuts instance;
+	public static CreativeTabs creativeTab;
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)

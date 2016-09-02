@@ -22,10 +22,10 @@ public class VillageHandlerGrapes implements IVillageTradeHandler, IVillageCreat
 	@SuppressWarnings({"rawtypes", "unchecked"})
 	public void manipulateTradesForVillager(EntityVillager villager, MerchantRecipeList recipeList, Random random)
 	{
-		//		recipeList.add(new MerchantRecipe(new ItemStack(GrowthCraftGrapes.grapes, 18 + random.nextInt(3)), new ItemStack(Item.emerald, 1)));
-		recipeList.add(new MerchantRecipe(new ItemStack(Items.emerald, 1 + random.nextInt(2)), GrowthCraftGrapes.fluids.grapeWine.asStack(1, 1)));
-		recipeList.add(new MerchantRecipe(new ItemStack(Items.emerald, 2 + random.nextInt(2)), GrowthCraftGrapes.fluids.grapeWine.asStack(1, 2)));
-		recipeList.add(new MerchantRecipe(new ItemStack(Items.emerald, 2 + random.nextInt(2)), GrowthCraftGrapes.fluids.grapeWine.asStack(1, 3)));
+		//		recipeList.add(new MerchantRecipe(new ItemStack(GrowthCraftGrapes.grapes, 18 + random.nextInt(3)), new ItemStack(Item.EMERALD, 1)));
+		recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, 1 + random.nextInt(2)), GrowthCraftGrapes.fluids.grapeWine.asStack(1, 1)));
+		recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, 2 + random.nextInt(2)), GrowthCraftGrapes.fluids.grapeWine.asStack(1, 2)));
+		recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, 2 + random.nextInt(2)), GrowthCraftGrapes.fluids.grapeWine.asStack(1, 3)));
 	}
 
 	@Override

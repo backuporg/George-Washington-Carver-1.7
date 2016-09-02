@@ -340,7 +340,7 @@ public class TileEntityBeeBox extends GrcTileInventoryBase implements IItemHandl
 		if (stack != null)
 		{
 			final Item item = stack.getItem();
-			if (item == Items.flower_pot)
+			if (item == Items.FLOWER_POT)
 			{
 				if (isHoneyEnough(6))
 				{
@@ -350,7 +350,7 @@ public class TileEntityBeeBox extends GrcTileInventoryBase implements IItemHandl
 					return true;
 				}
 			}
-			else if (item == Items.dye)
+			else if (item == Items.DYE)
 			{
 				int time = 0;
 				if (stack.getItemDamage() == EnumDye.PINK.meta)
@@ -370,7 +370,7 @@ public class TileEntityBeeBox extends GrcTileInventoryBase implements IItemHandl
 				}
 				return true;
 			}
-			else if (item == Items.glass_bottle)
+			else if (item == Items.GLASS_BOTTLE)
 			{
 				if (GrowthCraftBees.fluids.honey != null && isHoneyEnough(2))
 				{
@@ -384,7 +384,7 @@ public class TileEntityBeeBox extends GrcTileInventoryBase implements IItemHandl
 					}
 				}
 			}
-			else if (item == Items.bucket)
+			else if (item == Items.BUCKET)
 			{
 				if (GrowthCraftBees.fluids.honey != null && isHoneyEnough(6))
 				{

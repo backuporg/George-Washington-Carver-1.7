@@ -108,7 +108,7 @@ public class GuiFermentBarrel extends GuiCellar<ContainerFermentBarrel, TileEnti
 			{
 				if (tags.contains(BoozeTag.FERMENTED))
 				{
-					itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, new ItemStack(Items.nether_wart), x + 114, y + 16);
+					itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, new ItemStack(Items.NETHER_WART), x + 114, y + 16);
 				}
 				if (tags.contains(BoozeTag.EXTENDED))
 				{
@@ -116,7 +116,7 @@ public class GuiFermentBarrel extends GuiCellar<ContainerFermentBarrel, TileEnti
 				}
 				if (tags.contains(BoozeTag.POTENT))
 				{
-					itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, new ItemStack(Items.glowstone_dust), x + 130, y + 32);
+					itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, new ItemStack(Items.GLOWSTONE_DUST), x + 130, y + 32);
 				}
 			}
 			itemRender.zLevel = 0.0F;

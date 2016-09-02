@@ -109,7 +109,7 @@ public class BoozeRegistryHelper
 			FluidContainerRegistry.registerFluidContainer(fluidStack, bottle.asStack(1, i), GrowthCraftCore.EMPTY_BOTTLE);
 
 
-			GameRegistry.addShapelessRecipe(bottle.asStack(3, i), buckets[i].getItem(), Items.glass_bottle, Items.glass_bottle, Items.glass_bottle);
+			GameRegistry.addShapelessRecipe(bottle.asStack(3, i), buckets[i].getItem(), Items.GLASS_BOTTLE, Items.GLASS_BOTTLE, Items.GLASS_BOTTLE);
 			// forward compat recipe
 			if (oldBucket != null)
 			{

@@ -96,7 +96,7 @@ public class GrcRiceFluids extends GrcModuleBase
 		GrowthCraftCellar.boozeBuilderFactory.create(riceSakeBooze[1])
 			.tags(BoozeTag.FERMENTED)
 			.fermentsFrom(fs[0], EnumYeast.BREWERS.asStack(), fermentTime)
-			.fermentsFrom(fs[0], new ItemStack(Items.nether_wart), (int)(fermentTime * 0.66))
+			.fermentsFrom(fs[0], new ItemStack(Items.NETHER_WART), (int)(fermentTime * 0.66))
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.15f), TickUtils.seconds(45))
 				.addPotionEntry(Potion.jump, TickUtils.minutes(3), 0);

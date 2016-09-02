@@ -172,7 +172,7 @@ public class BlockApple extends GrcBlockBase implements IGrowable, ICropDataProv
 	@SideOnly(Side.CLIENT)
 	public Item getItem(World world, int x, int y, int z)
 	{
-		return Items.apple;
+		return Items.APPLE;
 	}
 
 	/************
@@ -181,7 +181,7 @@ public class BlockApple extends GrcBlockBase implements IGrowable, ICropDataProv
 	@Override
 	public Item getItemDropped(int meta, Random random, int par3)
 	{
-		return meta >= AppleStage.MATURE ? Items.apple : null;
+		return meta >= AppleStage.MATURE ? Items.APPLE : null;
 	}
 
 	@Override

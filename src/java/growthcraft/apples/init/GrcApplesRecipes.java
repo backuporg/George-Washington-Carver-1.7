@@ -65,7 +65,7 @@ public class GrcApplesRecipes extends GrcModuleBase
 		GrowthCraftCellar.boozeBuilderFactory.create(GrowthCraftApples.fluids.appleCiderBooze[1])
 			.tags(BoozeTag.CIDER, BoozeTag.FERMENTED)
 			.fermentsFrom(fs[0], new OreItemStacks("yeastBrewers"), fermentTime)
-			.fermentsFrom(fs[0], new ItemStack(Items.nether_wart), (int)(fermentTime * 0.66))
+			.fermentsFrom(fs[0], new ItemStack(Items.NETHER_WART), (int)(fermentTime * 0.66))
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.045f), TickUtils.seconds(45))
 				.addPotionEntry(Potion.field_76444_x, TickUtils.seconds(90), 0);

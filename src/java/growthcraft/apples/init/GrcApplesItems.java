@@ -49,7 +49,7 @@ public class GrcApplesItems extends GrcModuleItems
 		// Uses the same OreDict. names as HarvestCraft
 		OreDictionary.registerOre("listAllseed", appleSeeds.getItem());
 		// Common
-		OreDictionary.registerOre("foodApple", Items.apple);
-		OreDictionary.registerOre("foodFruit", Items.apple);
+		OreDictionary.registerOre("foodApple", Items.APPLE);
+		OreDictionary.registerOre("foodFruit", Items.APPLE);
 	}
 }

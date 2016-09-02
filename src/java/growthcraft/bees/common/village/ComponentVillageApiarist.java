@@ -332,7 +332,7 @@ public class ComponentVillageApiarist extends StructureVillagePieces.Village imp
 		this.placeDoorAtCurrentPosition(world, box, random, 3, 1, 6, this.getMetadataWithOffset(Blocks.wooden_door, 1));
 
 		// Slap that nicely placed flower pot on the counter
-		this.placeBlockAtCurrentPosition(world, Blocks.flower_pot, 3, 2, 2, 2, box);
+		this.placeBlockAtCurrentPosition(world, Blocks.FLOWER_POT, 3, 2, 2, 2, box);
 
 		// Shove a chest behind the counter, filled with goodies
 		this.generateStructureChestContents(world, box, random, 1, 2, 5, apiaristChestContents, 3 + random.nextInt(6));

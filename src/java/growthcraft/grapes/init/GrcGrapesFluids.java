@@ -99,7 +99,7 @@ public class GrcGrapesFluids extends GrcModuleBase
 		GrowthCraftCellar.boozeBuilderFactory.create(grapeWineBooze[1])
 			.tags(BoozeTag.WINE, BoozeTag.FERMENTED)
 			.fermentsFrom(fs[0], new OreItemStacks("yeastBrewers"), fermentTime)
-			.fermentsFrom(fs[0], new ItemStack(Items.nether_wart), (int)(fermentTime * 0.66))
+			.fermentsFrom(fs[0], new ItemStack(Items.NETHER_WART), (int)(fermentTime * 0.66))
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.05f), TickUtils.seconds(90))
 				.addPotionEntry(Potion.resistance, TickUtils.minutes(3), 0);

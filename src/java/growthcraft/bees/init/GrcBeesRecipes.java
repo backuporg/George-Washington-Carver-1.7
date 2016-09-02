@@ -65,7 +65,7 @@ public class GrcBeesRecipes extends GrcModuleBase
 		GrowthCraftCellar.boozeBuilderFactory.create(GrowthCraftBees.fluids.honeyMeadBooze[1])
 			.tags(BoozeTag.FERMENTED, BeesFluidTag.MEAD)
 			.fermentsFrom(youngMead, new OreItemStacks("yeastBrewers"), fermentTime)
-			.fermentsFrom(youngMead, new ItemStack(Items.nether_wart), (int)(fermentTime * 0.66))
+			.fermentsFrom(youngMead, new ItemStack(Items.NETHER_WART), (int)(fermentTime * 0.66))
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.15f), TickUtils.seconds(90))
 				.addPotionEntry(Potion.regeneration, TickUtils.seconds(90), 0);
@@ -143,7 +143,7 @@ public class GrcBeesRecipes extends GrcModuleBase
 
 		GameRegistry.addRecipe(new ShapelessMultiRecipe(
 				meadBucket,
-				Items.bucket,
+				Items.BUCKET,
 				new TaggedFluidStacks(1000, "honey"),
 				new FluidStack(FluidRegistry.WATER, 1000)));
 	}

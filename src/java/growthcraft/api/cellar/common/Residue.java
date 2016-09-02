@@ -43,6 +43,6 @@ public class Residue
 
 	public static Residue newDefault(float pomace)
 	{
-		return new Residue(new ItemStack(Items.dye, 1, 15), pomace);
+		return new Residue(new ItemStack(Items.DYE, 1, 15), pomace);
 	}
 }

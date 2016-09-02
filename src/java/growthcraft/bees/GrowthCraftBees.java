@@ -180,7 +180,7 @@ public class GrowthCraftBees
 
 		final ItemStack honeyStack = items.honeyCombFilled.asStack();
 		GameRegistry.addShapelessRecipe(items.honeyJar.asStack(),
-			honeyStack, honeyStack, honeyStack, honeyStack, honeyStack, honeyStack, Items.flower_pot);
+			honeyStack, honeyStack, honeyStack, honeyStack, honeyStack, honeyStack, Items.FLOWER_POT);
 	}
 
 	private void postRegisterRecipes()
@@ -190,7 +190,7 @@ public class GrowthCraftBees
 		GameRegistry.addRecipe(new ShapelessMultiRecipe(
 				items.honeyJar.asStack(),
 				new TaggedFluidStacks(1000, BeesFluidTag.HONEY.getName()),
-				Items.flower_pot));
+				Items.FLOWER_POT));
 	}
 
 	private void initVillageHandlers()

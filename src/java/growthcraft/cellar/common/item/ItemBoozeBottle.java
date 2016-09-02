@@ -65,7 +65,7 @@ public class ItemBoozeBottle extends GrcItemFoodBase implements IFluidItem
 		this.setMaxStackSize(4);
 		this.setHasSubtypes(true);
 		this.setMaxDamage(0);
-		this.setContainerItem(Items.glass_bottle);
+		this.setContainerItem(Items.GLASS_BOTTLE);
 		this.setCreativeTab(GrowthCraftCellar.tab);
 
 		this.boozes = boozeAry;
