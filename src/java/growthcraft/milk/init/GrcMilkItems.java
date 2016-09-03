@@ -200,7 +200,7 @@ public class GrcMilkItems extends GrcModuleItems
 			"sss",
 			"s s",
 			"sss",
-			's', Items.string
+			's', Items.STRING
 		));
 
 		if (seedThistle != null && GrowthCraftMilk.blocks.thistle != null)
@@ -235,7 +235,7 @@ public class GrcMilkItems extends GrcModuleItems
 			OreDictionary.registerOre("listAllseed", seedThistle.asStack());
 		}
 
-		OreDictionary.registerOre("foodMelon", Items.melon);
-		OreDictionary.registerOre("foodFruit", Items.melon);
+		OreDictionary.registerOre("foodMelon", Items.MELON);
+		OreDictionary.registerOre("foodFruit", Items.MELON);
 	}
 }
