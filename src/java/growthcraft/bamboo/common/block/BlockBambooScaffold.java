@@ -28,7 +28,7 @@ public class BlockBambooScaffold extends GrcBlockBase
 
 	public BlockBambooScaffold()
 	{
-		super(Material.wood);
+		super(Material.WOOD);
 		setStepSound(soundTypeWood);
 		setResistance(0.2F);
 		setHardness(0.5F);

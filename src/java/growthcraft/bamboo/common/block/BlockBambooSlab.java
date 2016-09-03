@@ -20,7 +20,7 @@ public class BlockBambooSlab extends BlockSlab
 {
 	public BlockBambooSlab(boolean par2)
 	{
-		super(par2, Material.wood);
+		super(par2, Material.WOOD);
 		this.useNeighborBrightness = true;
 		setStepSound(soundTypeWood);
 		setResistance(5.0F);

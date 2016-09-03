@@ -41,7 +41,7 @@ public class RenderGrapeLeaves implements ISimpleBlockRenderingHandler
 		if (modelId == id)
 		{
 			final BlockGrapeLeaves grapeLeaves = (BlockGrapeLeaves)block;
-			final boolean graphicFlag = !Blocks.leaves.isOpaqueCube();
+			final boolean graphicFlag = !Blocks.LEAVES.isOpaqueCube();
 			renderer.renderStandardBlock(block, x, y, z);
 			final double d = 0.0625D;
 

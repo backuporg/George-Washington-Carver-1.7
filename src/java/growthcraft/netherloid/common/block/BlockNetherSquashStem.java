@@ -78,7 +78,7 @@ public class BlockNetherSquashStem extends BlockBush implements ICropDataProvide
 
 	protected boolean func_149854_a(Block block)
 	{
-		return Blocks.soul_sand == block;
+		return Blocks.SOUL_SAND == block;
 	}
 
 	@Override

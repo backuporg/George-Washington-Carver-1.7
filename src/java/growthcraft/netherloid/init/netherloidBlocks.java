@@ -122,7 +122,7 @@ public class netherloidBlocks extends GrcModuleBase
 
 		OreDictionary.registerOre("plankMaliceWood", netherMalicePlanks.getBlock());
 
-		PlayerInteractEventPaddy.paddyBlocks.put(Blocks.soul_sand, netherPaddyField.getBlock());
+		PlayerInteractEventPaddy.paddyBlocks.put(Blocks.SOUL_SAND, netherPaddyField.getBlock());
 
 		hideItems();
 	}

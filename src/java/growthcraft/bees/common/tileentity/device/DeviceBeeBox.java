@@ -153,7 +153,7 @@ public class DeviceBeeBox extends DeviceBase
 				final Block soil = world.getBlock(i + loopx, y - 1, k + loopz);
 				float f1 = 0.0F;
 
-				if (soil == Blocks.grass)
+				if (soil == Blocks.GRASS)
 				{
 					//f1 = 1.0F;
 					f1 = 0.36F;

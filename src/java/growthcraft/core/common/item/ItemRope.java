@@ -32,7 +32,7 @@ public class ItemRope extends GrcItemBase
 		final Block block = world.getBlock(x, y, z);
 		final int blockMeta = world.getBlockMetadata(x, y, z);
 
-		if (Blocks.snow_layer == block && (blockMeta & 7) < 1)
+		if (Blocks.SNOW_LAYER == block && (blockMeta & 7) < 1)
 		{
 			dir = 1;
 		}
@@ -57,7 +57,7 @@ public class ItemRope extends GrcItemBase
 				--stack.stackSize;
 				return true;
 			}
-			else if (block != Blocks.vine && block != Blocks.tallgrass && block != Blocks.deadbush)
+			else if (block != Blocks.VINE && block != Blocks.TALLGRASS && block != Blocks.DEADBUSH)
 			{
 				if (dir == 0)
 				{

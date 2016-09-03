@@ -30,7 +30,7 @@ public class BlockFruitPresser extends BlockCellarContainer implements IWrenchab
 
 	public BlockFruitPresser()
 	{
-		super(Material.piston);
+		super(Material.PISTON);
 		this.isBlockContainer = true;
 		setTileEntityType(TileEntityFruitPresser.class);
 		setHardness(0.5F);

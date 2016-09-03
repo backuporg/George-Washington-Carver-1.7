@@ -56,7 +56,7 @@ public class BlockNetherPaddy extends BlockPaddyBase
 
 	public BlockNetherPaddy(boolean filled)
 	{
-		super(Material.sand);
+		super(Material.SAND);
 		setHardness(0.5F);
 		setBlockName("grcnetherloid.netherPaddyField");
 		setCreativeTab(netherloid.tab);
@@ -116,7 +116,7 @@ public class BlockNetherPaddy extends BlockPaddyBase
 	@Override
 	@Nonnull public Block getFluidBlock()
 	{
-		return Blocks.lava;
+		return Blocks.LAVA;
 	}
 
 	@Override
@@ -134,7 +134,7 @@ public class BlockNetherPaddy extends BlockPaddyBase
 	@Override
 	public boolean isBelowFillingFluid(IBlockAccess world, int x, int y, int z)
 	{
-		return world.getBlock(x, y + 1, z).getMaterial() == Material.lava;
+		return world.getBlock(x, y + 1, z).getMaterial() == Material.LAVA;
 	}
 
 	@Override
@@ -176,7 +176,7 @@ public class BlockNetherPaddy extends BlockPaddyBase
 	@SideOnly(Side.CLIENT)
 	public Item getItem(World world, int x, int y, int z)
 	{
-		return Item.getItemFromBlock(Blocks.soul_sand);
+		return Item.getItemFromBlock(Blocks.SOUL_SAND);
 	}
 
 	/************
@@ -185,7 +185,7 @@ public class BlockNetherPaddy extends BlockPaddyBase
 	@Override
 	public Item getItemDropped(int meta, Random random, int par3)
 	{
-		return Item.getItemFromBlock(Blocks.soul_sand);
+		return Item.getItemFromBlock(Blocks.SOUL_SAND);
 	}
 
 	@Override

@@ -50,7 +50,7 @@ public class BlockNetherMaliceSapling extends BlockBush implements IGrowable
 
 	public BlockNetherMaliceSapling()
 	{
-		super(Material.plants);
+		super(Material.PLANTS);
 		setHardness(0.0F);
 		setStepSound(soundTypeGrass);
 		setBlockName("grcnetherloid.netherMaliceSapling");
@@ -97,7 +97,7 @@ public class BlockNetherMaliceSapling extends BlockBush implements IGrowable
 		final int meta = world.getBlockMetadata(x, y, z) & 3;
 		final WorldGenerator generator = new WorldGeneratorMaliceTree(true);
 
-		world.setBlock(x, y, z, Blocks.air, 0, BlockFlags.ALL);
+		world.setBlock(x, y, z, Blocks.AIR, 0, BlockFlags.ALL);
 
 		if (!generator.generate(world, random, x, y, z))
 		{

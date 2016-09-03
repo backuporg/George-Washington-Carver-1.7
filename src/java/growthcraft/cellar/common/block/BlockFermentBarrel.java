@@ -30,7 +30,7 @@ public class BlockFermentBarrel extends BlockCellarContainer
 
 	public BlockFermentBarrel()
 	{
-		super(Material.wood);
+		super(Material.WOOD);
 		setTileEntityType(TileEntityFermentBarrel.class);
 		setHardness(2.5F);
 		setStepSound(soundTypeWood);

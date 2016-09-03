@@ -57,7 +57,7 @@ public class BlockHops extends GrcBlockBase implements IBlockRope, IPlantable, I
 
 	public BlockHops()
 	{
-		super(Material.plants);
+		super(Material.PLANTS);
 		this.setTickRandomly(true);
 		this.setHardness(0.0F);
 		this.setStepSound(soundTypeGrass);
@@ -391,7 +391,7 @@ public class BlockHops extends GrcBlockBase implements IBlockRope, IPlantable, I
 	{
 		if (meta != 0)
 		{
-			graphicFlag = !Blocks.leaves.isOpaqueCube();
+			graphicFlag = !Blocks.LEAVES.isOpaqueCube();
 			if (meta >= HopsStage.FRUIT)
 			{
 				return graphicFlag ? icons[5] : icons[6];

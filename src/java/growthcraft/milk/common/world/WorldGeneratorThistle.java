@@ -22,15 +22,15 @@ public class WorldGeneratorThistle implements IWorldGenerator
 
 	private boolean canPlaceOnBlock(World world, int x, int y, int z, Block block)
 	{
-		return Blocks.dirt.equals(block) ||
-			Blocks.grass.equals(block);
+		return Blocks.DIRT.equals(block) ||
+			Blocks.GRASS.equals(block);
 	}
 
 	private boolean canReplaceBlock(World world, int x, int y, int z, Block block)
 	{
 		return block.isAir(world, x, y, z) ||
 			block.isLeaves(world, x, y, z) ||
-			Blocks.vine == block;
+			Blocks.VINE == block;
 	}
 
 	private void genRandThistle(WorldGenerator generator, World world, Random rand, int chunk_x, int chunk_z, int maxToSpawn, int minHeight, int maxHeight)

@@ -155,8 +155,8 @@ public class GrowthCraftBees
 		registerRecipes();
 		userBeesConfig.addDefault(items.bee.asStack()).setComment("Growthcraft's default bee");
 		BeesRegistry.instance().addHoneyComb(items.honeyCombEmpty.asStack(), items.honeyCombFilled.asStack());
-		userFlowersConfig.addDefault(Blocks.red_flower);
-		userFlowersConfig.addDefault(Blocks.yellow_flower);
+		userFlowersConfig.addDefault(Blocks.RED_FLOWER);
+		userFlowersConfig.addDefault(Blocks.YELLOW_FLOWER);
 		if (BopPlatform.isLoaded())
 		{
 			userFlowersConfig.addDefault(
@@ -172,7 +172,7 @@ public class GrowthCraftBees
 
 	private void registerRecipes()
 	{
-		final BlockDefinition planks = new BlockDefinition(Blocks.planks);
+		final BlockDefinition planks = new BlockDefinition(Blocks.PLANKS);
 		for (int i = 0; i < 6; ++i)
 		{
 			GameRegistry.addRecipe(blocks.beeBox.asStack(1, i), new Object[] { " A ", "A A", "AAA", 'A', planks.asStack(1, i) });

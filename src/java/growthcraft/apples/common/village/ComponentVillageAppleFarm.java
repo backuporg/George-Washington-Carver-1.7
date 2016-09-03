@@ -119,19 +119,19 @@ public class ComponentVillageAppleFarm extends StructureVillagePieces.Village im
 		}
 
 		// clear entire bounding box
-		fillWithBlocks(world, box, 0, 0, 0, 11, 4, 11, Blocks.air, Blocks.air, false);
+		fillWithBlocks(world, box, 0, 0, 0, 11, 4, 11, Blocks.AIR, Blocks.AIR, false);
 		// Fill floor with grass blocks
-		fillWithBlocks(world, box, 0, 0, 0, 11, 0, 11, Blocks.grass, Blocks.grass, false);
+		fillWithBlocks(world, box, 0, 0, 0, 11, 0, 11, Blocks.GRASS, Blocks.GRASS, false);
 
 		final boolean vert = coordBaseMode == 0 || coordBaseMode == 2;
 		final HashMap<Character, IBlockEntries> map = new HashMap<Character, IBlockEntries>();
-		map.put('x', new BlockEntry(Blocks.log, 0));
-		map.put('-', new BlockEntry(Blocks.log, vert ? 4 : 8));
-		map.put('|', new BlockEntry(Blocks.log, vert ? 8 : 4));
+		map.put('x', new BlockEntry(Blocks.LOG, 0));
+		map.put('-', new BlockEntry(Blocks.LOG, vert ? 4 : 8));
+		map.put('|', new BlockEntry(Blocks.LOG, vert ? 8 : 4));
 
-		map.put('f', new BlockEntry(Blocks.fence, 0));
-		map.put('g', new BlockEntry(Blocks.fence_gate, this.getMetadataWithOffset(Blocks.fence_gate, 0)));
-		map.put('t', new BlockEntry(Blocks.torch, 0));
+		map.put('f', new BlockEntry(Blocks.OAK_FENCE, 0));
+		map.put('g', new BlockEntry(Blocks.OAK_FENCE_GATE, this.getMetadataWithOffset(Blocks.OAK_FENCE_GATE, 0)));
+		map.put('t', new BlockEntry(Blocks.TORCH, 0));
 
 		SchemaToVillage.drawSchema(this, world, random, box, appleFarmSchema, map, 0, 1, 0);
 
@@ -146,7 +146,7 @@ public class ComponentVillageAppleFarm extends StructureVillagePieces.Village im
 			for (int col = 0; col < 11; ++col)
 			{
 				clearCurrentPositionBlocksUpwards(world, col, 7, row, box);
-				func_151554_b(world, Blocks.dirt, 0, col, -1, row, box);
+				func_151554_b(world, Blocks.DIRT, 0, col, -1, row, box);
 			}
 		}
 		return true;

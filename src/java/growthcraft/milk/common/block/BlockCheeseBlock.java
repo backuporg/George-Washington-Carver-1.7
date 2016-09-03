@@ -59,7 +59,7 @@ public class BlockCheeseBlock extends GrcBlockContainer
 
 	public BlockCheeseBlock()
 	{
-		super(Material.cake);
+		super(Material.CAKE);
 		setHardness(0.5F);
 		setStepSound(soundTypeCloth);
 		setBlockName("grcmilk.CheeseBlock");

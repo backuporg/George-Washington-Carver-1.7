@@ -67,9 +67,9 @@ public class Materials
 		}
 	}
 
-	public static final Material fireproofWood = new Material(Material.wood.getMaterialMapColor());
-	public static final Material fireproofLeaves = new MaterialFireproofLeaves(Material.leaves.getMaterialMapColor());
-	public static final Material booze = new MaterialBooze(Material.water.getMaterialMapColor());
+	public static final Material fireproofWood = new Material(Material.WOOD.getMaterialMapColor());
+	public static final Material fireproofLeaves = new MaterialFireproofLeaves(Material.LEAVES.getMaterialMapColor());
+	public static final Material booze = new MaterialBooze(Material.WATER.getMaterialMapColor());
 
 	private Materials() {}
 }

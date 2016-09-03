@@ -141,8 +141,8 @@ public class ComponentVillageBambooYard extends StructureVillagePieces.Village i
 		}
 
 		// clear entire bounding box
-		this.fillWithBlocks(world, box, 0, 0, 0, 11, 4, 12, Blocks.air, Blocks.air, false);
-		this.fillWithBlocks(world, box, 0, 0, 0, 11, 0, 12, Blocks.grass, Blocks.grass, false);
+		this.fillWithBlocks(world, box, 0, 0, 0, 11, 4, 12, Blocks.AIR, Blocks.AIR, false);
+		this.fillWithBlocks(world, box, 0, 0, 0, 11, 0, 12, Blocks.GRASS, Blocks.GRASS, false);
 
 		final HashMap<Character, IBlockEntries> map = new HashMap<Character, IBlockEntries>();
 
@@ -152,8 +152,8 @@ public class ComponentVillageBambooYard extends StructureVillagePieces.Village i
 		map.put('d', new BlockEntry(GrowthCraftBamboo.blocks.bambooDoor.getBlock(), this.getMetadataWithOffset(GrowthCraftBamboo.blocks.bambooDoor.getBlock(), 8 | 1)));
 		map.put('p', new BlockEntry(GrowthCraftBamboo.blocks.bambooBlock.getBlock(), 0));
 		map.put('s', new BlockEntry(GrowthCraftBamboo.blocks.bambooSingleSlab.getBlock(), 0));
-		map.put('t', new BlockEntry(Blocks.torch, 0));
-		map.put('~', new BlockEntry(Blocks.water, 0));
+		map.put('t', new BlockEntry(Blocks.TORCH, 0));
+		map.put('~', new BlockEntry(Blocks.WATER, 0));
 		map.put('W', new BlockEntry(GrowthCraftBamboo.blocks.bambooWall.getBlock(), 0));
 
 		SchemaToVillage.drawSchema(this, world, random, box, bambooYardSchema, map);
@@ -174,7 +174,7 @@ public class ComponentVillageBambooYard extends StructureVillagePieces.Village i
 			for (int col = 0; col < 11; ++col)
 			{
 				this.clearCurrentPositionBlocksUpwards(world, col, 16, row, box);
-				this.func_151554_b(world, Blocks.dirt, 0, col, -1, row, box);
+				this.func_151554_b(world, Blocks.DIRT, 0, col, -1, row, box);
 			}
 		}
 

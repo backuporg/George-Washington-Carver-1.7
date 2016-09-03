@@ -236,52 +236,52 @@ public class ComponentVillageApiarist extends StructureVillagePieces.Village imp
 		}
 
 		// clear entire bounding box
-		this.fillWithBlocks(world, box, 0, 0, 0, 9, 8, 14, Blocks.air, Blocks.air, false);
+		this.fillWithBlocks(world, box, 0, 0, 0, 9, 8, 14, Blocks.AIR, Blocks.AIR, false);
 
 		final HashMap<Character, IBlockEntries> map = new HashMap<Character, IBlockEntries>();
 
 		// Plop down the tree first
-		map.put('x', new BlockEntry(Blocks.log, 2));
-		map.put('l', new BlockEntry(Blocks.leaves, 2));
+		map.put('x', new BlockEntry(Blocks.LOG, 2));
+		map.put('l', new BlockEntry(Blocks.LEAVES, 2));
 
 		SchemaToVillage.drawSchema(this, world, random, box, apiaristBackyardTreeSchema, map, 3, 1, 10);
 
 		map.clear();
 
-		map.put('c', new BlockEntry(Blocks.cobblestone));
-		map.put('d', new BlockEntry(Blocks.grass));
-		map.put('p', new BlockEntry(Blocks.planks));
-		map.put('x', new BlockEntry(Blocks.log));
-		map.put('l', new BlockEntry(Blocks.leaves));
-		map.put('g', new BlockEntry(Blocks.glass_pane));
+		map.put('c', new BlockEntry(Blocks.COBBLESTONE));
+		map.put('d', new BlockEntry(Blocks.GRASS));
+		map.put('p', new BlockEntry(Blocks.PLANKS));
+		map.put('x', new BlockEntry(Blocks.LOG));
+		map.put('l', new BlockEntry(Blocks.LEAVES));
+		map.put('g', new BlockEntry(Blocks.GLASS_PANE));
 
-		map.put('f', new BlockEntry(Blocks.fence));
+		map.put('f', new BlockEntry(Blocks.OAK_FENCE));
 		// high slab
-		map.put('-', new BlockEntry(Blocks.wooden_slab, 8));
+		map.put('-', new BlockEntry(Blocks.WOODEN_SLAB, 8));
 		// low slab
-		map.put('_', new BlockEntry(Blocks.wooden_slab, 0));
+		map.put('_', new BlockEntry(Blocks.WOODEN_SLAB, 0));
 		map.put(',', new MultiBlockEntries(new BlockEntry[]{
-			new BlockEntry(Blocks.red_flower, 4),
-			new BlockEntry(Blocks.red_flower, 5),
-			new BlockEntry(Blocks.red_flower, 6),
-			new BlockEntry(Blocks.red_flower, 7)
+			new BlockEntry(Blocks.RED_FLOWER, 4),
+			new BlockEntry(Blocks.RED_FLOWER, 5),
+			new BlockEntry(Blocks.RED_FLOWER, 6),
+			new BlockEntry(Blocks.RED_FLOWER, 7)
 		}));
 
-		map.put('1', new BlockEntry(Blocks.oak_stairs, this.getMetadataWithOffset(Blocks.oak_stairs, 2)));
-		map.put('2', new BlockEntry(Blocks.oak_stairs, this.getMetadataWithOffset(Blocks.oak_stairs, 2)));
-		map.put('3', new BlockEntry(Blocks.oak_stairs, this.getMetadataWithOffset(Blocks.oak_stairs, 2)));
+		map.put('1', new BlockEntry(Blocks.OAK_STAIRS, this.getMetadataWithOffset(Blocks.OAK_STAIRS, 2)));
+		map.put('2', new BlockEntry(Blocks.OAK_STAIRS, this.getMetadataWithOffset(Blocks.OAK_STAIRS, 2)));
+		map.put('3', new BlockEntry(Blocks.OAK_STAIRS, this.getMetadataWithOffset(Blocks.OAK_STAIRS, 2)));
 
-		map.put('4', new BlockEntry(Blocks.oak_stairs, this.getMetadataWithOffset(Blocks.oak_stairs, 0)));
-		map.put('6', new BlockEntry(Blocks.oak_stairs, this.getMetadataWithOffset(Blocks.oak_stairs, 1)));
+		map.put('4', new BlockEntry(Blocks.OAK_STAIRS, this.getMetadataWithOffset(Blocks.OAK_STAIRS, 0)));
+		map.put('6', new BlockEntry(Blocks.OAK_STAIRS, this.getMetadataWithOffset(Blocks.OAK_STAIRS, 1)));
 
-		map.put('7', new BlockEntry(Blocks.oak_stairs, this.getMetadataWithOffset(Blocks.oak_stairs, 3)));
-		map.put('8', new BlockEntry(Blocks.oak_stairs, this.getMetadataWithOffset(Blocks.oak_stairs, 3)));
-		map.put('9', new BlockEntry(Blocks.oak_stairs, this.getMetadataWithOffset(Blocks.oak_stairs, 3)));
+		map.put('7', new BlockEntry(Blocks.OAK_STAIRS, this.getMetadataWithOffset(Blocks.OAK_STAIRS, 3)));
+		map.put('8', new BlockEntry(Blocks.OAK_STAIRS, this.getMetadataWithOffset(Blocks.OAK_STAIRS, 3)));
+		map.put('9', new BlockEntry(Blocks.OAK_STAIRS, this.getMetadataWithOffset(Blocks.OAK_STAIRS, 3)));
 
-		map.put('t', new BlockEntry(Blocks.torch));
+		map.put('t', new BlockEntry(Blocks.TORCH));
 
-		map.put('Y', new BlockEntry(Blocks.planks, 2));
-		map.put('B', new BlockEntry(Blocks.planks, 1));
+		map.put('Y', new BlockEntry(Blocks.PLANKS, 2));
+		map.put('B', new BlockEntry(Blocks.PLANKS, 1));
 
 		map.put('H', new BlockEntry(GrowthCraftBees.blocks.beeHive.getBlock(), this.getMetadataWithOffset(GrowthCraftBees.blocks.beeHive.getBlock(), 3)));
 		map.put('+', new BlockEntry(GrowthCraftBees.blocks.beeBox.getBlock(), this.getMetadataWithOffset(GrowthCraftBees.blocks.beeBox.getBlock(), random.nextInt(6))));
@@ -291,45 +291,45 @@ public class ComponentVillageApiarist extends StructureVillagePieces.Village imp
 		// Get ready to recycle for interior design
 		map.clear();
 
-		map.put('p', new BlockEntry(Blocks.planks));
+		map.put('p', new BlockEntry(Blocks.PLANKS));
 
 		// inverted stairs for decorating interior
-		map.put('1', new BlockEntry(Blocks.oak_stairs, this.getMetadataWithOffset(Blocks.oak_stairs, 2) | 4));
-		map.put('2', new BlockEntry(Blocks.oak_stairs, this.getMetadataWithOffset(Blocks.oak_stairs, 2) | 4));
-		map.put('3', new BlockEntry(Blocks.oak_stairs, this.getMetadataWithOffset(Blocks.oak_stairs, 2) | 4));
+		map.put('1', new BlockEntry(Blocks.OAK_STAIRS, this.getMetadataWithOffset(Blocks.OAK_STAIRS, 2) | 4));
+		map.put('2', new BlockEntry(Blocks.OAK_STAIRS, this.getMetadataWithOffset(Blocks.OAK_STAIRS, 2) | 4));
+		map.put('3', new BlockEntry(Blocks.OAK_STAIRS, this.getMetadataWithOffset(Blocks.OAK_STAIRS, 2) | 4));
 
-		map.put('4', new BlockEntry(Blocks.oak_stairs, this.getMetadataWithOffset(Blocks.oak_stairs, 0) | 4));
-		map.put('6', new BlockEntry(Blocks.oak_stairs, this.getMetadataWithOffset(Blocks.oak_stairs, 1) | 4));
+		map.put('4', new BlockEntry(Blocks.OAK_STAIRS, this.getMetadataWithOffset(Blocks.OAK_STAIRS, 0) | 4));
+		map.put('6', new BlockEntry(Blocks.OAK_STAIRS, this.getMetadataWithOffset(Blocks.OAK_STAIRS, 1) | 4));
 
-		map.put('7', new BlockEntry(Blocks.oak_stairs, this.getMetadataWithOffset(Blocks.oak_stairs, 3) | 4));
-		map.put('8', new BlockEntry(Blocks.oak_stairs, this.getMetadataWithOffset(Blocks.oak_stairs, 3) | 4));
-		map.put('9', new BlockEntry(Blocks.oak_stairs, this.getMetadataWithOffset(Blocks.oak_stairs, 3) | 4));
+		map.put('7', new BlockEntry(Blocks.OAK_STAIRS, this.getMetadataWithOffset(Blocks.OAK_STAIRS, 3) | 4));
+		map.put('8', new BlockEntry(Blocks.OAK_STAIRS, this.getMetadataWithOffset(Blocks.OAK_STAIRS, 3) | 4));
+		map.put('9', new BlockEntry(Blocks.OAK_STAIRS, this.getMetadataWithOffset(Blocks.OAK_STAIRS, 3) | 4));
 
-		map.put('_', new BlockEntry(Blocks.wooden_slab, 0));
+		map.put('_', new BlockEntry(Blocks.WOODEN_SLAB, 0));
 
-		map.put('K', new BlockEntry(Blocks.bookshelf, 0));
+		map.put('K', new BlockEntry(Blocks.BOOKSHELF, 0));
 
 		// metadata here is (1(spruce leaves) | 4(no decay))
-		map.put('l', new BlockEntry(Blocks.leaves, 1 | 4));
+		map.put('l', new BlockEntry(Blocks.LEAVES, 1 | 4));
 
 		SchemaToVillage.drawSchema(this, world, random, box, apiaristInteriorSchema, map, 1, 1, 2);
 
 		// Place torches
-		this.placeBlockAtCurrentPosition(world, Blocks.torch, 0, 5, 3, 2, box);
-		this.placeBlockAtCurrentPosition(world, Blocks.torch, 0, 4, 3, 5, box);
+		this.placeBlockAtCurrentPosition(world, Blocks.TORCH, 0, 5, 3, 2, box);
+		this.placeBlockAtCurrentPosition(world, Blocks.TORCH, 0, 4, 3, 5, box);
 
 		/*
 			TODO:
 				place signs beside stairs to form a chair -
 				If you happen to be a sign rotation expert, PLEASE DO FIX THIS.
 		 */
-		//this.placeBlockAtCurrentPosition(world, Blocks.wall_sign, 2, 4, 1, 5, box);
-		//this.placeBlockAtCurrentPosition(world, Blocks.wall_sign, 2, 6, 1, 5, box);
+		//this.placeBlockAtCurrentPosition(world, Blocks.WALL_SIGN, 2, 4, 1, 5, box);
+		//this.placeBlockAtCurrentPosition(world, Blocks.WALL_SIGN, 2, 6, 1, 5, box);
 
 		// Drop in the front door
-		this.placeDoorAtCurrentPosition(world, box, random, 5, 1, 1, this.getMetadataWithOffset(Blocks.wooden_door, 1));
+		this.placeDoorAtCurrentPosition(world, box, random, 5, 1, 1, this.getMetadataWithOffset(Blocks.OAK_DOOR, 1));
 		// Drop in the back door
-		this.placeDoorAtCurrentPosition(world, box, random, 3, 1, 6, this.getMetadataWithOffset(Blocks.wooden_door, 1));
+		this.placeDoorAtCurrentPosition(world, box, random, 3, 1, 6, this.getMetadataWithOffset(Blocks.OAK_DOOR, 1));
 
 		// Slap that nicely placed flower pot on the counter
 		this.placeBlockAtCurrentPosition(world, Blocks.FLOWER_POT, 3, 2, 2, 2, box);
@@ -344,7 +344,7 @@ public class ComponentVillageApiarist extends StructureVillagePieces.Village imp
 			for (int col = 0; col < 9; ++col)
 			{
 				this.clearCurrentPositionBlocksUpwards(world, col, 8, row, box);
-				this.func_151554_b(world, Blocks.cobblestone, 0, col, -1, row, box);
+				this.func_151554_b(world, Blocks.COBBLESTONE, 0, col, -1, row, box);
 			}
 		}
 

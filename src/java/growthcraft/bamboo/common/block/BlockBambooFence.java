@@ -23,7 +23,7 @@ public class BlockBambooFence extends BlockFence
 
 	public BlockBambooFence()
 	{
-		super(null, Material.wood);
+		super(null, Material.WOOD);
 		this.useNeighborBrightness = true;
 		setSoundType(SoundType.WOOD);
 		setResistance(5.0F);

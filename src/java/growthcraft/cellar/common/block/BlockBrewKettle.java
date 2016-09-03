@@ -40,7 +40,7 @@ public class BlockBrewKettle extends BlockCellarContainer
 
 	public BlockBrewKettle()
 	{
-		super(Material.iron);
+		super(Material.IRON);
 		setStepSound(soundTypeMetal);
 		setTileEntityType(TileEntityBrewKettle.class);
 		setHardness(2.0F);

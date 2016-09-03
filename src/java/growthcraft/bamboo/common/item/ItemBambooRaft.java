@@ -93,7 +93,7 @@ public class ItemBambooRaft extends ItemBoat
 					int j = movingobjectposition.blockY;
 					final int k = movingobjectposition.blockZ;
 
-					if (world.getBlock(i, j, k) == Blocks.snow)
+					if (world.getBlock(i, j, k) == Blocks.SNOW)
 					{
 						--j;
 					}

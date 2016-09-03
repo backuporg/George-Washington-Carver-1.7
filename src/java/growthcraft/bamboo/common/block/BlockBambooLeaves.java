@@ -30,7 +30,7 @@ public class BlockBambooLeaves extends BlockLeavesBase implements IShearable
 
 	public BlockBambooLeaves()
 	{
-		super(Material.leaves, false);
+		super(Material.LEAVES, false);
 		setLightOpacity(1);
 		setStepSound(soundTypeGrass);
 		setHardness(0.2F);
@@ -266,7 +266,7 @@ public class BlockBambooLeaves extends BlockLeavesBase implements IShearable
 	@Override
 	public boolean isOpaqueCube()
 	{
-		return Blocks.leaves.isOpaqueCube();
+		return Blocks.LEAVES.isOpaqueCube();
 	}
 
 	@Override
@@ -328,7 +328,7 @@ public class BlockBambooLeaves extends BlockLeavesBase implements IShearable
 	public ArrayList<ItemStack> onSheared(ItemStack item, IBlockAccess world, int x, int y, int z, int fortune)
 	{
 		final ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
-		ret.add(new ItemStack(Blocks.leaves, 1, world.getBlockMetadata(x, y, z) & 3));
+		ret.add(new ItemStack(Blocks.LEAVES, 1, world.getBlockMetadata(x, y, z) & 3));
 		return ret;
 	}
 }

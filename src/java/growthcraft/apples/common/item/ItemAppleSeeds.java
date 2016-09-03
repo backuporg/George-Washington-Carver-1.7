@@ -36,11 +36,11 @@ public class ItemAppleSeeds extends GrcItemBase implements IPlantable
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int dir, float par8, float par9, float par10)
 	{
 		final Block block = world.getBlock(x, y, z);
-		if (block == Blocks.snow_layer && (world.getBlockMetadata(x, y, z) & 7) < 1)
+		if (block == Blocks.SNOW_LAYER && (world.getBlockMetadata(x, y, z) & 7) < 1)
 		{
 			dir = 1;
 		}
-		else if (block != Blocks.vine && block != Blocks.tallgrass && block != Blocks.deadbush)
+		else if (block != Blocks.VINE && block != Blocks.TALLGRASS && block != Blocks.DEADBUSH)
 		{
 			if (dir == 0)
 			{

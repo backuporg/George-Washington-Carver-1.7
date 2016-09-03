@@ -65,7 +65,7 @@ public class BlockThistle extends BlockBush implements ISpreadablePlant, IGrowab
 
 	public BlockThistle()
 	{
-		super(Material.plants);
+		super(Material.PLANTS);
 		setTickRandomly(true);
 		setBlockName("grcmilk.Thistle");
 		setStepSound(soundTypeGrass);

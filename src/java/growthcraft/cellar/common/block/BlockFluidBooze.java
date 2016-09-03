@@ -34,7 +34,7 @@ public class BlockFluidBooze extends GrcBlockFluid
 {
 	public BlockFluidBooze(Fluid fluid)
 	{
-		super(fluid, GrowthCraftCellar.getConfig().boozeIsWater ? Material.water : Materials.booze);
+		super(fluid, GrowthCraftCellar.getConfig().boozeIsWater ? Material.WATER : Materials.booze);
 		setBlockTextureName("grccellar:booze");
 		setCreativeTab(GrowthCraftCellar.tab);
 		refreshColor();

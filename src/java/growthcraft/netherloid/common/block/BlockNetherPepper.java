@@ -67,7 +67,7 @@ public class BlockNetherPepper extends BlockBush implements ICropDataProvider, I
 
 	public BlockNetherPepper()
 	{
-		super(Material.plants);
+		super(Material.PLANTS);
 		setTickRandomly(true);
 		setBlockTextureName("grcnetherloid:pepper");
 		setBlockName("grcnetherloid.netherPepper");
@@ -130,7 +130,7 @@ public class BlockNetherPepper extends BlockBush implements ICropDataProvider, I
 
 	protected boolean func_149854_a(Block block)
 	{
-		return Blocks.soul_sand == block;
+		return Blocks.SOUL_SAND == block;
 	}
 
 	@Override

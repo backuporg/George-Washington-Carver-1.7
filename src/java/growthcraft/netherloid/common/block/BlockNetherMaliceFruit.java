@@ -67,7 +67,7 @@ public class BlockNetherMaliceFruit extends Block implements IGrowable, ICropDat
 
 	public BlockNetherMaliceFruit()
 	{
-		super(Material.plants);
+		super(Material.PLANTS);
 		setTickRandomly(true);
 		setHardness(0.2F);
 		setResistance(5.0F);
@@ -127,7 +127,7 @@ public class BlockNetherMaliceFruit extends Block implements IGrowable, ICropDat
 		if (!this.canBlockStay(world, x, y, z))
 		{
 			this.dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
-			world.setBlock(x, y, z, Blocks.air, 0, BlockFlags.SYNC);
+			world.setBlock(x, y, z, Blocks.AIR, 0, BlockFlags.SYNC);
 		}
 		else
 		{

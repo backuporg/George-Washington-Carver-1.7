@@ -28,7 +28,7 @@ public class BlockFruitPress extends BlockCellarContainer
 
 	public BlockFruitPress()
 	{
-		super(Material.wood);
+		super(Material.WOOD);
 		setTileEntityType(TileEntityFruitPress.class);
 		setHardness(2.0F);
 		setStepSound(soundTypeWood);

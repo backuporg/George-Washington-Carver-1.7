@@ -45,7 +45,7 @@ public class BlockApple extends GrcBlockBase implements IGrowable, ICropDataProv
 
 	public BlockApple()
 	{
-		super(Material.plants);
+		super(Material.PLANTS);
 		this.setTickRandomly(true);
 		this.setHardness(0.2F);
 		this.setResistance(5.0F);

@@ -40,7 +40,7 @@ public class BlockAppleLeaves extends BlockLeavesBase implements IShearable, IGr
 
 	public BlockAppleLeaves()
 	{
-		super(Material.leaves, false);
+		super(Material.LEAVES, false);
 		this.setTickRandomly(true);
 		this.setHardness(0.2F);
 		this.setLightOpacity(1);
@@ -265,7 +265,7 @@ public class BlockAppleLeaves extends BlockLeavesBase implements IShearable, IGr
 	@SideOnly(Side.CLIENT)
 	public Item getItem(World world, int x, int y, int z)
 	{
-		return Item.getItemFromBlock(Blocks.leaves);
+		return Item.getItemFromBlock(Blocks.LEAVES);
 	}
 
 	@Override
@@ -351,7 +351,7 @@ public class BlockAppleLeaves extends BlockLeavesBase implements IShearable, IGr
 	@Override
 	public boolean isOpaqueCube()
 	{
-		return Blocks.leaves.isOpaqueCube();
+		return Blocks.LEAVES.isOpaqueCube();
 	}
 
 	@Override
@@ -417,7 +417,7 @@ public class BlockAppleLeaves extends BlockLeavesBase implements IShearable, IGr
 	public ArrayList<ItemStack> onSheared(ItemStack item, IBlockAccess world, int x, int y, int z, int fortune)
 	{
 		final ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
-		ret.add(new ItemStack(Blocks.leaves, 1, world.getBlockMetadata(x, y, z) & 3));
+		ret.add(new ItemStack(Blocks.LEAVES, 1, world.getBlockMetadata(x, y, z) & 3));
 		return ret;
 	}
 }

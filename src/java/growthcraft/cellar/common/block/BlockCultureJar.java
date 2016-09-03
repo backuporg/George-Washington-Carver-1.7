@@ -14,7 +14,7 @@ public class BlockCultureJar extends BlockCellarContainer
 {
 	public BlockCultureJar()
 	{
-		super(Material.glass);
+		super(Material.GLASS);
 		setHardness(0.3F);
 		setStepSound(soundTypeGlass);
 		setBlockName("grc.fermentJar");

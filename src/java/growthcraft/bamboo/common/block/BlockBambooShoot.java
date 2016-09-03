@@ -32,7 +32,7 @@ public class BlockBambooShoot extends BlockBush implements ICropDataProvider, IG
 
 	public BlockBambooShoot()
 	{
-		super(Material.plants);
+		super(Material.PLANTS);
 		setSoundType(SoundType.PLANT);
 		setHardness(0.0F);
 		setTickRandomly(true);

@@ -36,7 +36,7 @@ public class BlockFishTrap extends GrcBlockContainer
 
 	public BlockFishTrap()
 	{
-		super(Material.wood);
+		super(Material.WOOD);
 		setTickRandomly(true);
 		setHardness(0.4F);
 		setStepSound(soundTypeWood);
