@@ -3,6 +3,7 @@ Note: This is in no particular order, at all. This will also be updated at will.
 Stuff regarding items and blocks:
 
 While item IDs no longer exist, lets try and take advantage of things such as metadata and equivalent where possible.
+If an item or block has many variants, allow players to hide them from JEI.
 
 Stuff regarding mobs:
 
