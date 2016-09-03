@@ -1,5 +1,9 @@
 Note: This is in no particular order, at all. This will also be updated at will.
 
+Stuff regarding items and blocks:
+
+While item IDs no longer exist, lets try and take advantage of things such as metadata and equivalent where possible.
+
 Stuff regarding mobs:
 
 As a rule of thumb, spawn rates should be easily configurable.
@@ -19,6 +23,7 @@ Integration with other mods is a must have, as it will allow for more players to
 In addition, it could unlock new features using other mods.
 Ways this can be achieved now is to use various oredictionaries on items and blocks; add various recipes calling for modded oredictionaries, and so on.
 In addition, new variants to the beebox can be done, but keep in mind they use up to 4 textures per variant.
+While oredictionaries are a requirement, for when we have a bunch of variants of one item (say PB&j sandwiches) we should give them a definition that unifies them all.
 
 Stuff regarding modules:
 
