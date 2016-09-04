@@ -122,6 +122,10 @@ repositories {
         name = "ilexiconn"
         url = "http://maven.ilexiconn.net"
     }
+	{
+    flatDir {
+       dirs 'libs'
+    }
 }
 
 dependencies {
