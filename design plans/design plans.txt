@@ -30,6 +30,6 @@ Stuff regarding modules:
 
 So far, nothing here yet
 Our plans remain secret to outsiders.
-If the modular model must be ditched, we must hit 16 modules, not including the core and api. This is a path similar to what early harvestcraft took. When this happens, heavy configurability must be implemented, even moreso then what is currently planned. Don't want bamboo at all? You can disable it and all of its products.
+If the modular model must be ditched, we must hit 16 modules, not including the core and api. This is a path similar to what early harvestcraft took. When this happens, heavy configurability must be implemented, even moreso then what is currently planned. Don't want bamboo at all? You can disable it and all of its products. However, we should keep stuff such as subpackages, and stuff. So the files still remain tidy, even after merging into one mod.
 
 Check GitHub issues for more info for now
