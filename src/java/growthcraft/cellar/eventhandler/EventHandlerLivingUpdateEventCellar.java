@@ -20,7 +20,7 @@ public class EventHandlerLivingUpdateEventCellar
 		{
 			if (ent.getActivePotionEffect(GrowthCraftCellar.potionTipsy).getDuration() == 0)
 			{
-				ent.removePotionEffect(GrowthCraftCellar.potionTipsy.id);
+				ent.removePotionEffect(GrowthCraftCellar.potionTipsy);
 				return;
 			}
 
@@ -28,11 +28,11 @@ public class EventHandlerLivingUpdateEventCellar
 
 			if (lvl >= 3)
 			{
-				ent.addPotionEffect(new PotionEffect(MobEffects.NAUSEA.id, 200, 0));
+				ent.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 200, 0));
 
 				if (lvl >= 4)
 				{
-					ent.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS.id, 100, 0));
+					ent.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 100, 0));
 				}
 			}
 		}

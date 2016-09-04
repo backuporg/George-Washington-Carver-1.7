@@ -136,8 +136,8 @@ public class GrcRiceFluids extends GrcModuleBase
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.20f), TickUtils.seconds(45))
 				.addEffect(new EffectWeightedRandomList()
-					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.JUMP_BOOST.id, TickUtils.minutes(3), 2)))
-					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.NAUSEA.id, TickUtils.minutes(3), 2))));
+					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.JUMP_BOOST, TickUtils.minutes(3), 2)))
+					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.NAUSEA, TickUtils.minutes(3), 2))));
 
 		// Poisoned Sake - created from netherrash,
 		// the booze looses all its benefits and effectively becomes poisoned

@@ -172,10 +172,10 @@ public class netherloidFluids extends GrcModuleBase
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.15f), TickUtils.seconds(90))
 				.addEffect(new EffectWeightedRandomList()
-					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.REGENERATION.id, TickUtils.minutes(3), 0)))
-					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.STRENGTH.id, TickUtils.minutes(1), 1)))
-					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.POISON.id, TickUtils.minutes(3), 1)))
-					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.WEAKNESS.id, TickUtils.minutes(1), 1))));
+					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.REGENERATION, TickUtils.minutes(3), 0)))
+					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.STRENGTH, TickUtils.minutes(1), 1)))
+					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.POISON, TickUtils.minutes(3), 1)))
+					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.WEAKNESS, TickUtils.minutes(1), 1))));
 
 		GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[7])
 			.tags(BoozeTag.CIDER, BoozeTag.FERMENTED, BoozeTag.POISONED, BoozeTag.INFERNAL)

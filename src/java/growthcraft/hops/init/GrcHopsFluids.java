@@ -154,11 +154,11 @@ public class GrcHopsFluids extends GrcModuleBase
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.091f), TickUtils.seconds(45))
 				.addEffect(new EffectWeightedRandomList()
-					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.HASTE.id, TickUtils.minutes(3), 2)))
-					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.MINING_FATIGUE.id, TickUtils.minutes(3), 2))))
+					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.HASTE, TickUtils.minutes(3), 2)))
+					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.MINING_FATIGUE, TickUtils.minutes(3), 2))))
 				.addEffect(new EffectWeightedRandomList()
-					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.SPEED.id, TickUtils.minutes(3), 2)))
-					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.SLOWNESS.id, TickUtils.minutes(3), 2))));
+					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.SPEED, TickUtils.minutes(3), 2)))
+					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.SLOWNESS, TickUtils.minutes(3), 2))));
 
 		GrowthCraftCellar.boozeBuilderFactory.create(lagerBooze[6])
 			.tags(BoozeTag.FERMENTED, BoozeTag.CHILLED, BoozeTag.POISONED)
@@ -250,8 +250,8 @@ public class GrcHopsFluids extends GrcModuleBase
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.20f), TickUtils.seconds(45))
 				.addEffect(new EffectWeightedRandomList()
-					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.HASTE.id, TickUtils.minutes(3), 2)))
-					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.MINING_FATIGUE.id, TickUtils.minutes(3), 2))));
+					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.HASTE, TickUtils.minutes(3), 2)))
+					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.MINING_FATIGUE, TickUtils.minutes(3), 2))));
 
 		// Poisoned - Netherrash
 		// Regardless of what you brewed it with, it will kill the hops in the

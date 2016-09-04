@@ -153,8 +153,8 @@ public class GrcGrapesFluids extends GrcModuleBase
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.15f), TickUtils.seconds(90))
 				.addEffect(new EffectWeightedRandomList()
-					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.RESISTANCE.id, TickUtils.minutes(3), 2)))
-					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.WEAKNESS.id, TickUtils.minutes(3), 2))));
+					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.RESISTANCE, TickUtils.minutes(3), 2)))
+					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.WEAKNESS, TickUtils.minutes(3), 2))));
 
 		GrowthCraftCellar.boozeBuilderFactory.create(grapeWineBooze[7])
 			.tags(BoozeTag.WINE, BoozeTag.FERMENTED, BoozeTag.POISONED)

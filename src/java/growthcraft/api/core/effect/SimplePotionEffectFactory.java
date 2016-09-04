@@ -31,6 +31,7 @@ import growthcraft.api.core.description.Describer;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
@@ -40,7 +41,7 @@ public class SimplePotionEffectFactory implements IPotionEffectFactory
 	private int time;
 	private int level;
 
-	public SimplePotionEffectFactory(int i, int tm, int lvl)
+	public SimplePotionEffectFactory(Potion i, int tm, int lvl)
 	{
 		this.id = i;
 		this.time = tm;

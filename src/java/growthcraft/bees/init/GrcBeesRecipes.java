@@ -102,8 +102,8 @@ public class GrcBeesRecipes extends GrcModuleBase
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.15f * 1.5f), TickUtils.seconds(90))
 				.addEffect(new EffectWeightedRandomList()
-					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.REGENERATION.id, TickUtils.seconds(90), 2)))
-					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.POISON.id, TickUtils.seconds(90), 2)))
+					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.REGENERATION, TickUtils.seconds(90), 2)))
+					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.POISON, TickUtils.seconds(90), 2)))
 				);
 
 		GrowthCraftCellar.boozeBuilderFactory.create(GrowthCraftBees.fluids.honeyMeadBooze[6])

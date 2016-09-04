@@ -48,8 +48,8 @@ public class ItemNetherMaliceFruit extends ItemFood
 	{
 		if (!world.isRemote)
 		{
-			player.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS.id, 20 * 20, 3));
-			player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA.id, 40 * 20, 0));
+			player.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 20 * 20, 3));
+			player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 40 * 20, 0));
 		}
 	}
 }

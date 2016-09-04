@@ -50,18 +50,18 @@ public class EffectEvilBoozeMilk implements IEffect
 	{
 		this.effects = new EffectList();
 
-		addEvilEffect(0.1f, MobEffects.BLINDNESS.id, 900, 0);
-		addEvilEffect(0.1f, MobEffects.WITHER.id, 900, 0);
-		addEvilEffect(0.2f, MobEffects.NAUSEA.id, 900, 0);
-		addEvilEffect(0.2f, MobEffects.MINING_FATIGUE.id, 900, 0);
-		addEvilEffect(0.2f, MobEffects.POISON.id, 900, 0);
-		addEvilEffect(0.3f, MobEffects.HUNGER.id, 900, 0);
-		addEvilEffect(0.5f, MobEffects.SLOWNESS.id, 900, 0);
-		addEvilEffect(0.6f, MobEffects.INSTANT_DAMAGE.id, 20, 0);
-		addEvilEffect(1.0f, MobEffects.WEAKNESS.id, 900, 0);
+		addEvilEffect(0.1f, MobEffects.BLINDNESS, 900, 0);
+		addEvilEffect(0.1f, MobEffects.WITHER, 900, 0);
+		addEvilEffect(0.2f, MobEffects.NAUSEA, 900, 0);
+		addEvilEffect(0.2f, MobEffects.MINING_FATIGUE, 900, 0);
+		addEvilEffect(0.2f, MobEffects.POISON, 900, 0);
+		addEvilEffect(0.3f, MobEffects.HUNGER, 900, 0);
+		addEvilEffect(0.5f, MobEffects.SLOWNESS, 900, 0);
+		addEvilEffect(0.6f, MobEffects.INSTANT_DAMAGE, 20, 0);
+		addEvilEffect(1.0f, MobEffects.WEAKNESS, 900, 0);
 	}
 
-	private void addEvilEffect(float chance, int id, int time, int lv)
+	private void addEvilEffect(float chance, Potion id, int time, int lv)
 	{
 		effects.add(
 			new EffectChance()
