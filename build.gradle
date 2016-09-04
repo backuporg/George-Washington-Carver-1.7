@@ -97,6 +97,9 @@ processResources {
 }
 
 repositories {
+    flatDir {
+       dirs 'libs'
+    }
     mavenLocal()
     mavenCentral()
     maven {
@@ -121,11 +124,6 @@ repositories {
     maven {
         name = "ilexiconn"
         url = "http://maven.ilexiconn.net"
-	}
-	{
-    flatDir {
-       dirs 'libs'
-    }
   }
 }
 
