@@ -130,6 +130,10 @@ dependencies {
     compile "net.ilexiconn:llibrary:1.5.1-1.10.2:dev"
     runtime "mezz.jei:jei_1.10.2:3.9.0.244"
     testCompile "junit:junit:4.11"
+    compile name: 'mp3plugin'
+    compile name: 'mp3spi1.9.5'
+    compile name: 'tritonus-share-0.3.7-2'
+    compile name: 'vorbisspi-1.0.3-1'
 }
 
 runClient {
