@@ -71,6 +71,7 @@ import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
+import net.minecraft.init.MobEffects;
 
 public class GrcMilkFluids extends GrcModuleBase
 {
@@ -147,7 +148,7 @@ public class GrcMilkFluids extends GrcModuleBase
 			{
 				// Idea from here: http://www.altmedicine101.com/buttermilk
 				list.add(new EffectExtinguish());
-				list.add(EffectUtils.createAddPotionEffect(Potion.fireResistance, TickUtils.seconds(15), 0));
+				list.add(EffectUtils.createAddPotionEffect(MobEffects.FIRE_RESISTANCE, TickUtils.seconds(15), 0));
 			}
 			butterMilk.foodBottle.getItem().setEffect(list).setAlwaysEdible();
 		}
@@ -173,7 +174,7 @@ public class GrcMilkFluids extends GrcModuleBase
 			list.add(milkEffect);
 			if (GrowthCraftMilk.getConfig().fantasyMilkEffects)
 			{
-				list.add(EffectUtils.createAddPotionEffect(Potion.moveSpeed, TickUtils.seconds(15), 0));
+				list.add(EffectUtils.createAddPotionEffect(MobEffects.SPEED, TickUtils.seconds(15), 0));
 			}
 			skimMilk.foodBottle.getItem().setEffect(list).setAlwaysEdible();
 		}
@@ -186,8 +187,8 @@ public class GrcMilkFluids extends GrcModuleBase
 			final EffectList list = new EffectList();
 			if (GrowthCraftMilk.getConfig().fantasyMilkEffects)
 			{
-				list.add(EffectUtils.createAddPotionEffect(Potion.damageBoost, TickUtils.seconds(10), 0));
-				list.add(EffectUtils.createAddPotionEffect(Potion.resistance, TickUtils.seconds(10), 0));
+				list.add(EffectUtils.createAddPotionEffect(MobEffects.STRENGTH, TickUtils.seconds(10), 0));
+				list.add(EffectUtils.createAddPotionEffect(MobEffects.RESISTANCE, TickUtils.seconds(10), 0));
 			}
 			whey.foodBottle.getItem().setEffect(list).setAlwaysEdible();
 		}

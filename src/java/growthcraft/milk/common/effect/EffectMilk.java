@@ -55,7 +55,7 @@ public class EffectMilk implements IEffect
 		return this;
 	}
 
-	public EffectMilk blacklistPotions(Potion... potions)
+	public EffectMilk blacklistPotions(MobEffects... potions)
 	{
 		for (Potion potion : potions)
 		{
@@ -104,7 +104,7 @@ public class EffectMilk implements IEffect
 	 * @param potions - list of potions to add to the blacklist
 	 * @return effect
 	 */
-	public static EffectMilk create(Potion... potions)
+	public static EffectMilk create(MobEffects... potions)
 	{
 		final EffectMilk eff = new EffectMilk();
 		return eff.blacklistPotions(potions);

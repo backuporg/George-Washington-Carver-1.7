@@ -46,6 +46,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraft.init.MobEffects;
 
 public class netherloidFluids extends GrcModuleBase
 {
@@ -120,8 +121,8 @@ public class netherloidFluids extends GrcModuleBase
 			.fermentsFrom(fs[0], new ItemStack(Items.NETHER_WART), (int)(fermentTime * 0.66))
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.05f), TickUtils.seconds(90))
-				.addPotionEntry(Potion.regeneration, TickUtils.minutes(3), 0)
-				.addPotionEntry(Potion.damageBoost, TickUtils.minutes(1), 1);
+				.addPotionEntry(MobEffects.REGENERATION, TickUtils.minutes(3), 0)
+				.addPotionEntry(MobEffects.STRENGTH, TickUtils.minutes(1), 1);
 
 		// Glowstone Dust
 		GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[2])
@@ -130,8 +131,8 @@ public class netherloidFluids extends GrcModuleBase
 			.fermentsFrom(fs[3], new OreItemStacks("dustGlowstone"), fermentTime)
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.07f), TickUtils.seconds(90))
-				.addPotionEntry(Potion.regeneration, TickUtils.minutes(1), 1)
-				.addPotionEntry(Potion.damageBoost, TickUtils.minutes(1), 2);
+				.addPotionEntry(MobEffects.REGENERATION, TickUtils.minutes(1), 1)
+				.addPotionEntry(MobEffects.STRENGTH, TickUtils.minutes(1), 2);
 
 		// Redstone Dust
 		GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[3])
@@ -140,8 +141,8 @@ public class netherloidFluids extends GrcModuleBase
 			.fermentsFrom(fs[2], new OreItemStacks("dustRedstone"), fermentTime)
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.05f), TickUtils.seconds(90))
-				.addPotionEntry(Potion.regeneration, TickUtils.minutes(6), 0)
-				.addPotionEntry(Potion.damageBoost, TickUtils.minutes(2), 1);
+				.addPotionEntry(MobEffects.REGENERATION, TickUtils.minutes(6), 0)
+				.addPotionEntry(MobEffects.STRENGTH, TickUtils.minutes(2), 1);
 
 		// Amrita - Ethereal Yeast
 		GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[4])
@@ -150,8 +151,8 @@ public class netherloidFluids extends GrcModuleBase
 			.fermentsFrom(fs[3], new OreItemStacks("yeastEthereal"), fermentTime)
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.053f), TickUtils.seconds(90))
-				.addPotionEntry(Potion.regeneration, TickUtils.minutes(6), 1)
-				.addPotionEntry(Potion.damageBoost, TickUtils.minutes(2), 2);
+				.addPotionEntry(MobEffects.REGENERATION, TickUtils.minutes(6), 1)
+				.addPotionEntry(MobEffects.STRENGTH, TickUtils.minutes(2), 2);
 				
 		// Gelid Booze [WIP]
 		GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[5])
@@ -160,8 +161,8 @@ public class netherloidFluids extends GrcModuleBase
 			.fermentsFrom(fs[0], new ItemStack(Items.NETHER_WART), (int)(fermentTime * 0.66))
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.05f), TickUtils.seconds(90))
-				.addPotionEntry(Potion.regeneration, TickUtils.minutes(3), 0)
-				.addPotionEntry(Potion.damageBoost, TickUtils.minutes(1), 1);
+				.addPotionEntry(MobEffects.REGENERATION, TickUtils.minutes(3), 0)
+				.addPotionEntry(MobEffects.STRENGTH, TickUtils.minutes(1), 1);
 
 		// Intoxicated
 		GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[6])
@@ -171,10 +172,10 @@ public class netherloidFluids extends GrcModuleBase
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.15f), TickUtils.seconds(90))
 				.addEffect(new EffectWeightedRandomList()
-					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(Potion.regeneration.id, TickUtils.minutes(3), 0)))
-					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(Potion.damageBoost.id, TickUtils.minutes(1), 1)))
-					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(Potion.poison.id, TickUtils.minutes(3), 1)))
-					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(Potion.weakness.id, TickUtils.minutes(1), 1))));
+					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.REGENERATION.id, TickUtils.minutes(3), 0)))
+					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.STRENGTH.id, TickUtils.minutes(1), 1)))
+					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.POISON.id, TickUtils.minutes(3), 1)))
+					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.WEAKNESS.id, TickUtils.minutes(1), 1))));
 
 		GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[7])
 			.tags(BoozeTag.CIDER, BoozeTag.FERMENTED, BoozeTag.POISONED, BoozeTag.INFERNAL)
@@ -187,7 +188,7 @@ public class netherloidFluids extends GrcModuleBase
 			.fermentsTo(fs[7], new OreItemStacks("yeastPoison"), fermentTime)
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.05f), TickUtils.seconds(90))
-				.createPotionEntry(Potion.poison, TickUtils.seconds(90), 0).toggleDescription(!GrowthCraftCore.getConfig().hidePoisonedBooze);
+				.createPotionEntry(MobEffects.POISON, TickUtils.seconds(90), 0).toggleDescription(!GrowthCraftCore.getConfig().hidePoisonedBooze);
 	}
 
 	private void registerFireBrandy()
@@ -213,7 +214,7 @@ public class netherloidFluids extends GrcModuleBase
 			.fermentsFrom(fs[0], new ItemStack(Items.NETHER_WART), (int)(fermentTime * 0.66))
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.0419f), TickUtils.seconds(45))
-				.addPotionEntry(Potion.fireResistance, TickUtils.seconds(350), 0);
+				.addPotionEntry(MobEffects.FIRE_RESISTANCE, TickUtils.seconds(350), 0);
 	}
 	
 	private void registerFermentations()

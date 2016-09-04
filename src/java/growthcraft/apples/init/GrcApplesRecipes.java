@@ -41,6 +41,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraft.init.MobEffects;
 
 public class GrcApplesRecipes extends GrcModuleBase
 {
@@ -68,7 +69,7 @@ public class GrcApplesRecipes extends GrcModuleBase
 			.fermentsFrom(fs[0], new ItemStack(Items.NETHER_WART), (int)(fermentTime * 0.66))
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.045f), TickUtils.seconds(45))
-				.addPotionEntry(Potion.field_76444_x, TickUtils.seconds(90), 0);
+				.addPotionEntry(MobEffects.ABSORPTION, TickUtils.seconds(90), 0);
 
 		GrowthCraftCellar.boozeBuilderFactory.create(GrowthCraftApples.fluids.appleCiderBooze[2])
 			.tags(BoozeTag.CIDER, BoozeTag.FERMENTED, BoozeTag.POTENT)
@@ -76,7 +77,7 @@ public class GrcApplesRecipes extends GrcModuleBase
 			.fermentsFrom(fs[3], new OreItemStacks("dustGlowstone"), fermentTime)
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.080f), TickUtils.seconds(45))
-				.addPotionEntry(Potion.field_76444_x, TickUtils.seconds(90), 0);
+				.addPotionEntry(MobEffects.ABSORPTION, TickUtils.seconds(90), 0);
 
 		GrowthCraftCellar.boozeBuilderFactory.create(GrowthCraftApples.fluids.appleCiderBooze[3])
 			.tags(BoozeTag.CIDER, BoozeTag.FERMENTED, BoozeTag.EXTENDED)
@@ -84,7 +85,7 @@ public class GrcApplesRecipes extends GrcModuleBase
 			.fermentsFrom(fs[2], new OreItemStacks("dustRedstone"), fermentTime)
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.045f), TickUtils.seconds(45))
-				.addPotionEntry(Potion.field_76444_x, TickUtils.seconds(90), 0);
+				.addPotionEntry(MobEffects.ABSORPTION, TickUtils.seconds(90), 0);
 
 		// Silken Nectar - ETHEREAL
 		GrowthCraftCellar.boozeBuilderFactory.create(GrowthCraftApples.fluids.appleCiderBooze[4])
@@ -94,20 +95,20 @@ public class GrcApplesRecipes extends GrcModuleBase
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.045f), TickUtils.seconds(45))
 				.addEffect(new EffectRandomList()
 					// This is terrifying, thank heavens for a decent text editor...
-					.add(new EffectAddPotionEffect(new SimplePotionEffectFactory(Potion.moveSpeed.id, TickUtils.minutes(10), 0)))
-					.add(new EffectAddPotionEffect(new SimplePotionEffectFactory(Potion.digSpeed.id, TickUtils.minutes(10), 0)))
-					.add(new EffectAddPotionEffect(new SimplePotionEffectFactory(Potion.damageBoost.id, TickUtils.minutes(10), 0)))
-					.add(new EffectAddPotionEffect(new SimplePotionEffectFactory(Potion.heal.id, TickUtils.minutes(10), 0)))
-					.add(new EffectAddPotionEffect(new SimplePotionEffectFactory(Potion.jump.id, TickUtils.minutes(10), 0)))
-					.add(new EffectAddPotionEffect(new SimplePotionEffectFactory(Potion.regeneration.id, TickUtils.minutes(10), 0)))
-					.add(new EffectAddPotionEffect(new SimplePotionEffectFactory(Potion.resistance.id, TickUtils.minutes(10), 0)))
-					.add(new EffectAddPotionEffect(new SimplePotionEffectFactory(Potion.fireResistance.id, TickUtils.minutes(10), 0)))
-					.add(new EffectAddPotionEffect(new SimplePotionEffectFactory(Potion.waterBreathing.id, TickUtils.minutes(10), 0)))
-					.add(new EffectAddPotionEffect(new SimplePotionEffectFactory(Potion.invisibility.id, TickUtils.minutes(10), 0)))
-					.add(new EffectAddPotionEffect(new SimplePotionEffectFactory(Potion.nightVision.id, TickUtils.minutes(10), 0)))
-					.add(new EffectAddPotionEffect(new SimplePotionEffectFactory(Potion.field_76434_w.id, TickUtils.minutes(10), 0)))
-					.add(new EffectAddPotionEffect(new SimplePotionEffectFactory(Potion.field_76444_x.id, TickUtils.minutes(10), 0)))
-					.add(new EffectAddPotionEffect(new SimplePotionEffectFactory(Potion.field_76443_y.id, TickUtils.minutes(10), 0)))
+					.add(new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.SPEED.id, TickUtils.minutes(10), 0)))
+					.add(new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.HASTE.id, TickUtils.minutes(10), 0)))
+					.add(new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.STRENGTH.id, TickUtils.minutes(10), 0)))
+					.add(new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.INSTANT_HEALTH.id, TickUtils.minutes(10), 0)))
+					.add(new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.JUMP_BOOST.id, TickUtils.minutes(10), 0)))
+					.add(new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.REGENERATION.id, TickUtils.minutes(10), 0)))
+					.add(new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.RESISTANCE.id, TickUtils.minutes(10), 0)))
+					.add(new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.FIRE_RESISTANCE.id, TickUtils.minutes(10), 0)))
+					.add(new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.WATER_BREATHING.id, TickUtils.minutes(10), 0)))
+					.add(new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.INVISIBILITY.id, TickUtils.minutes(10), 0)))
+					.add(new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.NIGHT_VISION.id, TickUtils.minutes(10), 0)))
+					.add(new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.HEALTH_BOOST.id, TickUtils.minutes(10), 0)))
+					.add(new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.ABSORPTION.id, TickUtils.minutes(10), 0)))
+					.add(new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.SATURATION.id, TickUtils.minutes(10), 0)))
 				);
 
 		// Intoxicated - Origin Yeast
@@ -118,8 +119,8 @@ public class GrcApplesRecipes extends GrcModuleBase
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.045f * 2.5f), TickUtils.seconds(45))
 				.addEffect(new EffectWeightedRandomList()
-					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(Potion.field_76444_x.id, TickUtils.seconds(90), 2)))
-					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(Potion.wither.id, TickUtils.seconds(90), 2)))
+					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.ABSORPTION.id, TickUtils.seconds(90), 2)))
+					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.WITHER.id, TickUtils.seconds(90), 2)))
 				);
 
 		// Poisoned - created from netherrash,
@@ -134,7 +135,7 @@ public class GrcApplesRecipes extends GrcModuleBase
 			.fermentsFrom(fs[5], new OreItemStacks("yeastPoison"), fermentTime)
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.045f), TickUtils.seconds(45))
-				.createPotionEntry(Potion.poison, TickUtils.seconds(90), 0).toggleDescription(!GrowthCraftCore.getConfig().hidePoisonedBooze);
+				.createPotionEntry(MobEffects.POISON, TickUtils.seconds(90), 0).toggleDescription(!GrowthCraftCore.getConfig().hidePoisonedBooze);
 	}
 
 	@Override

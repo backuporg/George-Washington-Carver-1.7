@@ -47,6 +47,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
+import net.minecraft.init.MobEffects;
 
 public class GrcGrapesFluids extends GrcModuleBase
 {
@@ -102,7 +103,7 @@ public class GrcGrapesFluids extends GrcModuleBase
 			.fermentsFrom(fs[0], new ItemStack(Items.NETHER_WART), (int)(fermentTime * 0.66))
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.05f), TickUtils.seconds(90))
-				.addPotionEntry(Potion.resistance, TickUtils.minutes(3), 0);
+				.addPotionEntry(MobEffects.RESISTANCE, TickUtils.minutes(3), 0);
 
 		// Glowstone Dust
 		GrowthCraftCellar.boozeBuilderFactory.create(grapeWineBooze[2])
@@ -111,7 +112,7 @@ public class GrcGrapesFluids extends GrcModuleBase
 			.fermentsFrom(fs[3], new OreItemStacks("dustGlowstone"), fermentTime)
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.07f), TickUtils.seconds(90))
-				.addPotionEntry(Potion.resistance, TickUtils.minutes(3), 0);
+				.addPotionEntry(MobEffects.RESISTANCE, TickUtils.minutes(3), 0);
 
 		// Redstone Dust
 		GrowthCraftCellar.boozeBuilderFactory.create(grapeWineBooze[3])
@@ -120,7 +121,7 @@ public class GrcGrapesFluids extends GrcModuleBase
 			.fermentsFrom(fs[2], new OreItemStacks("dustRedstone"), fermentTime)
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.05f), TickUtils.seconds(90))
-				.addPotionEntry(Potion.resistance, TickUtils.minutes(3), 0);
+				.addPotionEntry(MobEffects.RESISTANCE, TickUtils.minutes(3), 0);
 
 		// Ambrosia - Ethereal Yeast
 		GrowthCraftCellar.boozeBuilderFactory.create(grapeWineBooze[4])
@@ -129,8 +130,8 @@ public class GrcGrapesFluids extends GrcModuleBase
 			.fermentsFrom(fs[3], new OreItemStacks("yeastEthereal"), fermentTime)
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.053f), TickUtils.seconds(90))
-				.addPotionEntry(Potion.field_76434_w, TickUtils.minutes(3), 0)
-				.addPotionEntry(Potion.resistance, TickUtils.minutes(3), 0);
+				.addPotionEntry(MobEffects.HEALTH_BOOST, TickUtils.minutes(3), 0)
+				.addPotionEntry(MobEffects.RESISTANCE, TickUtils.minutes(3), 0);
 
 		// Port Wine - Bayanus Yeast
 		GrowthCraftCellar.boozeBuilderFactory.create(grapeWineBooze[5])
@@ -142,7 +143,7 @@ public class GrcGrapesFluids extends GrcModuleBase
 				Residue.newDefault(0.3F))
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.20f), TickUtils.seconds(90))
-				.addPotionEntry(Potion.resistance, TickUtils.minutes(3), 2);
+				.addPotionEntry(MobEffects.RESISTANCE, TickUtils.minutes(3), 2);
 
 		// Intoxicated Wine
 		GrowthCraftCellar.boozeBuilderFactory.create(grapeWineBooze[6])
@@ -152,8 +153,8 @@ public class GrcGrapesFluids extends GrcModuleBase
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.15f), TickUtils.seconds(90))
 				.addEffect(new EffectWeightedRandomList()
-					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(Potion.resistance.id, TickUtils.minutes(3), 2)))
-					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(Potion.weakness.id, TickUtils.minutes(3), 2))));
+					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.RESISTANCE.id, TickUtils.minutes(3), 2)))
+					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.WEAKNESS.id, TickUtils.minutes(3), 2))));
 
 		GrowthCraftCellar.boozeBuilderFactory.create(grapeWineBooze[7])
 			.tags(BoozeTag.WINE, BoozeTag.FERMENTED, BoozeTag.POISONED)
@@ -165,7 +166,7 @@ public class GrcGrapesFluids extends GrcModuleBase
 			.fermentsTo(fs[6], new OreItemStacks("yeastPoison"), fermentTime)
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.05f), TickUtils.seconds(90))
-				.createPotionEntry(Potion.poison, TickUtils.seconds(90), 0).toggleDescription(!GrowthCraftCore.getConfig().hidePoisonedBooze);
+				.createPotionEntry(MobEffects.POISON, TickUtils.seconds(90), 0).toggleDescription(!GrowthCraftCore.getConfig().hidePoisonedBooze);
 	}
 
 	@Override

@@ -51,7 +51,7 @@ public class Describer
 		if (pe == null) return;
 
 		String s = GrcI18n.translate(pe.getEffectName()).trim();
-		final Potion potion = Potion.potionTypes[pe.getPotionID()];
+		final Potion potion = MobEffects.potionTypes[pe.getPotionID()];
 		if (potion != null)
 		{
 			if (potion.isBadEffect())
@@ -65,7 +65,7 @@ public class Describer
 
 		if (pe.getDuration() > 20)
 		{
-			s += "" + TextFormatting.GRAY + " (" + Potion.getDurationString(pe) + ")";
+			s += "" + TextFormatting.GRAY + " (" + MobEffects.getDurationString(pe) + ")";
 		}
 		list.add(s);
 	}
