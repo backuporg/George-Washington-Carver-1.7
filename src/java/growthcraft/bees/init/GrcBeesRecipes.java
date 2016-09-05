@@ -40,7 +40,6 @@ import growthcraft.core.GrowthCraftCore;
 import growthcraft.core.common.GrcModuleBase;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.ShapelessOreRecipe;

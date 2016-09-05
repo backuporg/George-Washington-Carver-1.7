@@ -6,8 +6,8 @@ import java.util.List;
 import growthcraft.bees.GrowthCraftBees;
 
 import net.minecraftforge.fml.common.registry.VillagerRegistry.IVillageCreationHandler;
-import net.minecraftforge.fml.common.registry.VillagerRegistry.IVillageTradeHandler;
 import net.minecraft.entity.passive.EntityVillager;
+import net.minecraft.entity.passive.EntityVillager.ITradeList;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.MathHelper;
@@ -16,7 +16,7 @@ import net.minecraft.village.MerchantRecipeList;
 import net.minecraft.world.gen.structure.StructureVillagePieces.PieceWeight;
 import net.minecraft.world.gen.structure.StructureVillagePieces.Start;
 
-public class VillageHandlerBeesApiarist implements IVillageTradeHandler, IVillageCreationHandler
+public abstract class VillageHandlerBeesApiarist implements ITradeList, IVillageCreationHandler
 {
 	@Override
 	@SuppressWarnings({"rawtypes", "unchecked"})
