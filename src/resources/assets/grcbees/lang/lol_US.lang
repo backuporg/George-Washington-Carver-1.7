@@ -6,9 +6,9 @@ itemGroup.creative_tab_grcbees=Growthcraft NOPES
 tile.grc.BeeBox.Minecraft.oak.name=Oak Ouchy Box
 tile.grc.BeeBox.Minecraft.spruce.name=Spruce Ouchy Box
 tile.grc.BeeBox.Minecraft.birch.name=Birch Ouchy Box
-tile.grc.BeeBox.Minecraft.jungle.name=Jungle Bee Box
-tile.grc.BeeBox.Minecraft.acacia.name=Acacia Bee Box
-tile.grc.BeeBox.Minecraft.darkoak.name=Dark Oak Bee Box
+tile.grc.BeeBox.Minecraft.jungle.name=Jungle Ouchy Box
+tile.grc.BeeBox.Minecraft.acacia.name=Acacia Ouchy Box
+tile.grc.BeeBox.Minecraft.darkoak.name=Dark Oak Ouchy Box
 
 ## Growthcraft|Nether Bee Box
 tile.grc.BeeBox.Nether.0.name=NOPEWOOD Ouchy Box
