@@ -39,9 +39,9 @@ item.grc.waterBag15.name=Water Bag (Black)
 item.grc.waterBag16.name=Water Bag
 
 # Containers
-container.grc.fruitPress=Mechanical Press
-container.grc.brewKettle=Brew Kettle
-container.grc.fermentBarrel=Fermentation Barrel
+container.grc.fruitPress=Smashin Machien
+container.grc.brewKettle=Hot Pot
+container.grc.fermentBarrel=Mai Hoem
 container.grc.CultureJar=Culture Jar
 
 # Other
@@ -88,6 +88,8 @@ grc.fluids.tag.sherry=Sherry
 grc.fluids.tag.brandy=Brandy
 grc.fluids.tag.bourbon=Bourbon
 grc.fluids.tag.bloodwine=Bloodwine
+grc.fluids.tag.vinegar=Vinegar
+
 
 # GUI
 gui.grc.empty=Empty
