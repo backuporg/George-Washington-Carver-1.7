@@ -41,10 +41,10 @@ fluid.tile.water=Water
 fluid.tile.lava=Lava
 
 ## Salt Water
-fluid.grccore.SaltWater=Salt Water
-tile.grccore.BlockFluidSaltWater.name=Salt Water
-item.grccore.BottleFluidSaltWater.name=Salt Water Bottle
-item.bucket.fluid.grccore.SaltWater.name=Salt Water Bucket
+fluid.grccore.SaltWater=Yucky WatR
+tile.grccore.BlockFluidSaltWater.name=Yucky WatR
+item.grccore.BottleFluidSaltWater.name=Yucky WatR Buttl
+item.bucket.fluid.grccore.SaltWater.name=Yucky WatR Buckt
 
 # Other
 achievementPage.pageGrowthCraft=Growthcraft
