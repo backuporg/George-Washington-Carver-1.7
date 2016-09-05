@@ -23,7 +23,7 @@
  */
 package growthcraft.api.core.util;
 
-import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraft.util.EnumFacing;
 
 /**
  * To mimic Forestry's internal Vect class

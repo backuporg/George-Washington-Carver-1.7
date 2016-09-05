@@ -26,7 +26,7 @@ package growthcraft.api.bees;
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
-import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraft.util.EnumFacing;
 
 public class ForcedFlowerBlockEntry extends AbstractFlowerBlockEntry
 {

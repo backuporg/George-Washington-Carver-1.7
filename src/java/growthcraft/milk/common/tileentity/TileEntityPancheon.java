@@ -28,7 +28,7 @@ import growthcraft.core.common.tileentity.feature.ITileProgressiveDevice;
 import growthcraft.core.common.tileentity.GrcTileDeviceBase;
 import growthcraft.milk.common.tileentity.device.Pancheon;
 
-import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraft.util.EnumFacing;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 

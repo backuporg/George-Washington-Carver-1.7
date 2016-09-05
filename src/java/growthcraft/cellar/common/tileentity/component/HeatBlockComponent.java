@@ -30,7 +30,7 @@ import growthcraft.core.util.BlockCheck;
 import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraft.util.EnumFacing;
 
 /**
  * Component for handling heat source blocks for a tile entity
