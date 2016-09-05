@@ -11,7 +11,7 @@ tile.grc.BeeBox.Minecraft.acacia.name=Acacia Bee Box
 tile.grc.BeeBox.Minecraft.darkoak.name=Dark Oak Bee Box
 
 ## Growthcraft|Nether Bee Box
-tile.grc.BeeBox.Nether.0.name=Malice Bee Box
+tile.grc.BeeBox.Nether.0.name=NOPEWOOD Ouchy Box
 tile.grc.BeeBox.Nether.0.desc=This beebox seems to scream at you
 
 ## Growthcraft|Bamboo Bee Box
@@ -146,13 +146,13 @@ tile.grc.BeeBox.Natura.tiger.name=Tigerwood Bee Box
 tile.grc.BeeBox.Natura.willow.name=Willow Bee Box
 
 # Other Blocks
-tile.grc.beeHive.name=Bee Hive
+tile.grc.beeHive.name=Nest of Nopes
 
 # Items
 item.grc.honeyComb.empty.name=Empty Honeycomb
 item.grc.honeyComb.full.name=Honeycomb
 item.grc.honeyJar.name=Honey
-item.grc.bee.name=Bee
+item.grc.bee.name=A Nope
 item.grc.FoodBottleFluidHoney.name=Honey Bottle
 item.grc.BucketFluidHoney.name=Honey Bucket
 item.grcbees.BeesWax.normal.name=Beeswax
@@ -163,7 +163,7 @@ item.grcbees.BeesWax.black.name=Black Beeswax
 grc.bees.item.honeyComb.deprecated=This item has been deprecated, craft to get the updated item.
 
 # Containers
-container.grc.beeBox=Bee Box
+container.grc.beeBox=Ouchy Box
 
 # Fluids
 fluid.grc.honey=Honey
