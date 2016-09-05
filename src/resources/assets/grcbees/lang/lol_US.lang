@@ -204,7 +204,7 @@ grc.fluids.tag.honey=Hunni
 
 # Other
 grc.bees.bonus_prefix=Bonus :
-grc.bees.bees_prefix=Bees :
-grc.bees.honey_prefix=Honey :
-grc.bees.growth_rate_prefix=Growth Rate :
+grc.bees.bees_prefix=Nopes :
+grc.bees.honey_prefix=Hunni :
+grc.bees.growth_rate_prefix=Growf Raet :
 grc.bees.growth_rate_value=%d%%
