@@ -1,11 +1,11 @@
 # Creative Tabs
-itemGroup.creative_tab_grcbees=Growthcraft Bees
+itemGroup.creative_tab_grcbees=Growthcraft NOPES
 
 # Blocks
 ## Vanilla Bee Boxes
-tile.grc.BeeBox.Minecraft.oak.name=Oak Bee Box
-tile.grc.BeeBox.Minecraft.spruce.name=Spruce Bee Box
-tile.grc.BeeBox.Minecraft.birch.name=Birch Bee Box
+tile.grc.BeeBox.Minecraft.oak.name=Oak Ouchy Box
+tile.grc.BeeBox.Minecraft.spruce.name=Spruce Ouchy Box
+tile.grc.BeeBox.Minecraft.birch.name=Birch Ouchy Box
 tile.grc.BeeBox.Minecraft.jungle.name=Jungle Bee Box
 tile.grc.BeeBox.Minecraft.acacia.name=Acacia Bee Box
 tile.grc.BeeBox.Minecraft.darkoak.name=Dark Oak Bee Box
@@ -151,9 +151,9 @@ tile.grc.beeHive.name=Nest of Nopes
 # Items
 item.grc.honeyComb.empty.name=Empty Honeycomb
 item.grc.honeyComb.full.name=Honeycomb
-item.grc.honeyJar.name=Honey
+item.grc.honeyJar.name=Hunni
 item.grc.bee.name=A Nope
-item.grc.FoodBottleFluidHoney.name=Honey Bottle
+item.grc.FoodBottleFluidHoney.name=Hunni Bottle
 item.grc.BucketFluidHoney.name=Honey Bucket
 item.grcbees.BeesWax.normal.name=Beeswax
 item.grcbees.BeesWax.red.name=Red Beeswax
