@@ -2,16 +2,16 @@
 itemGroup.creative_tab_grccellar=Growthcraft Cellar
 
 # Blocks
-tile.grc.fruitPress.name=Mechanical Press
-tile.grc.fruitPresser.name=Mechanical Press
-tile.grc.brewKettle.name=Brew Kettle
-tile.grc.fermentBarrel.name=Fermentation Barrel
-tile.grc.fermentJar.name=Culture Jar
+tile.grc.fruitPress.name=Smashin Machien
+tile.grc.fruitPresser.name=Smashin Machien
+tile.grc.brewKettle.name=Hot Pot
+tile.grc.fermentBarrel.name=Mai Hoem
+tile.grc.fermentJar.name=Small Buttl
 
 # Items
 # Please remove this field once all other module translations have been updated,
 # this is no longer used
-item.grc.boozeBucket.name=Bucket
+item.grc.boozeBucket.name=Bukkit
 
 item.grc.yeast0.name=Brewers Yeast
 item.grc.yeast1.name=Lager Yeast
@@ -134,7 +134,7 @@ grccellar.waila.option.BrewKettleExtras=Brew Kettle Extras
 grccellar.waila.option.FermentBarrelExtras=Fermentation Barrel Extras
 
 # NEI
-grc.recipe_handler.brew_kettle=Brew Kettle
-grc.recipe_handler.culture_jar=Culture Jar
-grc.recipe_handler.ferment_barrel=Ferment Barrel
-grc.recipe_handler.fruit_press=Fruit Press
+grc.recipe_handler.brew_kettle=Hot Pot
+grc.recipe_handler.culture_jar=Small Buttl
+grc.recipe_handler.ferment_barrel=Mai Hoem
+grc.recipe_handler.fruit_press=Smashin Machien
