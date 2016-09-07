@@ -31,5 +31,5 @@ public interface IFlowerBlockEntry
 {
 	Block getBlockState();
 	int getMetadata();
-	boolean canPlaceAt(World world, Blockpos pos);
+	boolean canPlaceAt(World world, BlockPos pos);
 }
