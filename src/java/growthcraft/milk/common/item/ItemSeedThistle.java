@@ -64,11 +64,11 @@ public class ItemSeedThistle extends GrcItemBase implements IPlantable
 	}
 
 	@Override
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int dir, float tx, float ty, float tz)
+	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int EnumFacing, float tx, float ty, float tz)
 	{
-		if (dir == 1)
+		if (EnumFacing == 1)
 		{
-			if (player.canPlayerEdit(x, y, z, dir, stack) && player.canPlayerEdit(x, y + 1, z, dir, stack))
+			if (player.canPlayerEdit(x, y, z, EnumFacing, stack) && player.canPlayerEdit(x, y + 1, z, EnumFacing, stack))
 			{
 				final Block soil = world.getBlock(x, y, z);
 				final Block plant = getPlant(world, x, y + 1, z);

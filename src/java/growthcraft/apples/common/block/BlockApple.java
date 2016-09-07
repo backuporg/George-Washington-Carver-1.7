@@ -133,7 +133,7 @@ public class BlockApple extends GrcBlockBase implements IGrowable, ICropDataProv
 	 * TRIGGERS
 	 ************/
 	@Override
-	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int dir, float par7, float par8, float par9)
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int EnumFacing, float par7, float par8, float par9)
 	{
 		if (world.getBlockMetadata(x, y, z) >= AppleStage.MATURE)
 		{

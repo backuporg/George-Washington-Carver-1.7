@@ -41,9 +41,9 @@ public class GrcMilkUserApis extends ModuleContainer
 		add(churnRecipes);
 	}
 
-	public void setConfigDirectory(File dir)
+	public void setConfigDirectory(File EnumFacing)
 	{
-		churnRecipes.setConfigFile(dir, "growthcraft/milk/churn_recipes.json");
+		churnRecipes.setConfigFile(EnumFacing, "growthcraft/milk/churn_recipes.json");
 	}
 
 	public void loadConfigs()

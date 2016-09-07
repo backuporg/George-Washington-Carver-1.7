@@ -107,9 +107,9 @@ public class BonemealEventGrapes
 			{
 				if (allowedGrowthCount <= 0) break;
 
-				final EnumFacing dir = BlockCheck.DIR4[(start + i) % BlockCheck.DIR4.length];
-				final int x = event.x + dir.offsetX;
-				final int z = event.z + dir.offsetZ;
+				final EnumFacing EnumFacing = BlockCheck.DIR4[(start + i) % BlockCheck.DIR4.length];
+				final int x = event.x + EnumFacing.offsetX;
+				final int z = event.z + EnumFacing.offsetZ;
 
 				if (leaves.canGrowHere(event.world, x, event.y, z))
 				{

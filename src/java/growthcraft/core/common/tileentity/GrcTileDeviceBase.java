@@ -74,42 +74,42 @@ public abstract class GrcTileDeviceBase extends GrcTileInventoryBase implements 
 		return true;
 	}
 
-	protected FluidStack doDrain(EnumFacing dir, int amount, boolean shouldDrain)
+	protected FluidStack doDrain(EnumFacing EnumFacing, int amount, boolean shouldDrain)
 	{
 		return null;
 	}
 
-	protected FluidStack doDrain(EnumFacing dir, FluidStack stack, boolean shouldDrain)
+	protected FluidStack doDrain(EnumFacing EnumFacing, FluidStack stack, boolean shouldDrain)
 	{
 		return null;
 	}
 
 	@Override
-	public FluidStack drain(EnumFacing dir, int amount, boolean shouldDrain)
+	public FluidStack drain(EnumFacing EnumFacing, int amount, boolean shouldDrain)
 	{
-		final FluidStack result = doDrain(dir, amount, shouldDrain);
+		final FluidStack result = doDrain(EnumFacing, amount, shouldDrain);
 		if (shouldDrain && FluidTest.isValid(result)) markFluidDirty();
 		return result;
 	}
 
 	@Override
-	public FluidStack drain(EnumFacing dir, FluidStack stack, boolean shouldDrain)
+	public FluidStack drain(EnumFacing EnumFacing, FluidStack stack, boolean shouldDrain)
 	{
 		if (!FluidTest.isValid(stack)) return null;
-		final FluidStack result = doDrain(dir, stack, shouldDrain);
+		final FluidStack result = doDrain(EnumFacing, stack, shouldDrain);
 		if (shouldDrain && FluidTest.isValid(result)) markFluidDirty();
 		return result;
 	}
 
-	protected int doFill(EnumFacing dir, FluidStack stack, boolean shouldFill)
+	protected int doFill(EnumFacing EnumFacing, FluidStack stack, boolean shouldFill)
 	{
 		return 0;
 	}
 
 	@Override
-	public int fill(EnumFacing dir, FluidStack stack, boolean shouldFill)
+	public int fill(EnumFacing EnumFacing, FluidStack stack, boolean shouldFill)
 	{
-		final int result = doFill(dir, stack, shouldFill);
+		final int result = doFill(EnumFacing, stack, shouldFill);
 		if (shouldFill && result != 0) markFluidDirty();
 		return result;
 	}

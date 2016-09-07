@@ -106,10 +106,10 @@ public abstract class AbstractUserJSONConfig implements ILoggable, IModule
 	 */
 	protected abstract void loadFromBuffer(BufferedReader buff) throws IllegalStateException;
 
-	public AbstractUserJSONConfig setConfigFile(File dir, String filename)
+	public AbstractUserJSONConfig setConfigFile(File EnumFacing, String filename)
 	{
-		this.targetConfigFile = new File(dir, filename);
-		this.targetDefaultConfigFile = new File(dir, filename + ".default");
+		this.targetConfigFile = new File(EnumFacing, filename);
+		this.targetDefaultConfigFile = new File(EnumFacing, filename + ".default");
 		logger.debug("Config file `%s` was set for `%s`", targetConfigFile, this);
 		logger.debug("DEFAULT Config file `%s` was set for `%s`", targetDefaultConfigFile, this);
 		return this;

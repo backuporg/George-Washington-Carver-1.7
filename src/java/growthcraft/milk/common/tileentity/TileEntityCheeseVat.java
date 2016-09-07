@@ -481,21 +481,21 @@ public class TileEntityCheeseVat extends GrcTileDeviceBase implements IItemHandl
 	}
 
 	@Override
-	protected FluidStack doDrain(EnumFacing dir, int amount, boolean doDrain)
+	protected FluidStack doDrain(EnumFacing EnumFacing, int amount, boolean doDrain)
 	{
 		if (!isIdle()) return null;
 		return wasteFluidSlot.consume(amount, doDrain);
 	}
 
 	@Override
-	protected FluidStack doDrain(EnumFacing dir, FluidStack stack, boolean doDrain)
+	protected FluidStack doDrain(EnumFacing EnumFacing, FluidStack stack, boolean doDrain)
 	{
 		if (!FluidTest.areStacksEqual(wasteFluidSlot.get(), stack)) return null;
-		return doDrain(dir, stack.amount, doDrain);
+		return doDrain(EnumFacing, stack.amount, doDrain);
 	}
 
 	@Override
-	protected int doFill(EnumFacing dir, FluidStack stack, boolean doFill)
+	protected int doFill(EnumFacing EnumFacing, FluidStack stack, boolean doFill)
 	{
 		if (!isIdle()) return 0;
 		int result = 0;

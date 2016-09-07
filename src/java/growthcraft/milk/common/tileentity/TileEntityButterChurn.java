@@ -206,28 +206,28 @@ public class TileEntityButterChurn extends GrcTileDeviceBase implements IItemHan
 	}
 
 	/**
-	 * @param dir - direction to drain from
+	 * @param EnumFacing - direction to drain from
 	 * @param amount - amount of fluid to drain
 	 * @param doDrain - should any draining actually take place?
 	 * @return fluid drained
 	 */
 	@Override
-	protected FluidStack doDrain(EnumFacing dir, int amount, boolean doDrain)
+	protected FluidStack doDrain(EnumFacing EnumFacing, int amount, boolean doDrain)
 	{
-		if (dir == EnumFacing.UP) return null;
+		if (EnumFacing == EnumFacing.UP) return null;
 		return getActiveFluidSlot().consume(amount, doDrain);
 	}
 
 	/**
-	 * @param dir - direction to drain from
+	 * @param EnumFacing - direction to drain from
 	 * @param stack - fluid stack (as filter) to drain
 	 * @param doDrain - should any draining actually take place?
 	 * @return fluid drained
 	 */
 	@Override
-	protected FluidStack doDrain(EnumFacing dir, FluidStack stack, boolean doDrain)
+	protected FluidStack doDrain(EnumFacing EnumFacing, FluidStack stack, boolean doDrain)
 	{
-		if (dir == EnumFacing.UP) return null;
+		if (EnumFacing == EnumFacing.UP) return null;
 		final DeviceFluidSlot fluidSlot = getActiveFluidSlot();
 		if (FluidTest.areStacksEqual(fluidSlot.get(), stack))
 		{
@@ -239,15 +239,15 @@ public class TileEntityButterChurn extends GrcTileDeviceBase implements IItemHan
 	/**
 	 * When filling the Churn, only CREAM fluids are accepted
 	 *
-	 * @param dir - direction being filled from
+	 * @param EnumFacing - direction being filled from
 	 * @param stack - fluid to fill with
 	 * @param doFill - should we actually fill this?
 	 * @return how much fluid was actually used
 	 */
 	@Override
-	protected int doFill(EnumFacing dir, FluidStack stack, boolean doFill)
+	protected int doFill(EnumFacing EnumFacing, FluidStack stack, boolean doFill)
 	{
-		if (dir == EnumFacing.UP) return 0;
+		if (EnumFacing == EnumFacing.UP) return 0;
 		int result = 0;
 
 		if (MilkRegistry.instance().churn().isFluidIngredient(stack))

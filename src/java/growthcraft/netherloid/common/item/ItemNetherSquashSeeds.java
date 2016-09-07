@@ -67,11 +67,11 @@ public class ItemNetherSquashSeeds extends Item implements IPlantable
 	}
 
 	@Override
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int dir, float par8, float par9, float par10)
+	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int EnumFacing, float par8, float par9, float par10)
 	{
-		if (dir != 0) return false;
+		if (EnumFacing != 0) return false;
 
-		if (player.canPlayerEdit(x, y, z, dir, stack) && player.canPlayerEdit(x, y - 1, z, dir, stack))
+		if (player.canPlayerEdit(x, y, z, EnumFacing, stack) && player.canPlayerEdit(x, y - 1, z, EnumFacing, stack))
 		{
 			final BlockNetherSquashStem plant = (BlockNetherSquashStem)getPlant(world, x, y, z);
 			if (BlockCheck.canSustainPlant(world, x, y, z, EnumFacing.DOWN, plant))

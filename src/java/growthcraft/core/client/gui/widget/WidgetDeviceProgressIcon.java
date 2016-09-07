@@ -45,9 +45,9 @@ public class WidgetDeviceProgressIcon extends WidgetIconBase
 		super(man, x, y, w, h);
 	}
 
-	public WidgetDeviceProgressIcon setProgressDirection(ProgressDirection dir)
+	public WidgetDeviceProgressIcon setProgressDirection(ProgressDirection EnumFacing)
 	{
-		this.progressDirection = dir;
+		this.progressDirection = EnumFacing;
 		return this;
 	}
 

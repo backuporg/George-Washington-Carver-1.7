@@ -254,7 +254,7 @@ public class BlockHops extends GrcBlockBase implements IBlockRope, IPlantable, I
 	 * TRIGGERS
 	 ************/
 	@Override
-	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int dir, float par7, float par8, float par9)
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int EnumFacing, float par7, float par8, float par9)
 	{
 		if (world.getBlockMetadata(x, y, z) >= HopsStage.FRUIT)
 		{

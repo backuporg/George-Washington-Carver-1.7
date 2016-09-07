@@ -139,11 +139,11 @@ public class BlockGrapeLeaves extends BlockLeavesBase implements IBlockRope
 		{
 			if (canGrowOutwards(world, x, y, z))
 			{
-				final EnumFacing dir = BlockCheck.DIR4[random.nextInt(4)];
+				final EnumFacing EnumFacing = BlockCheck.DIR4[random.nextInt(4)];
 
-				if (canGrowHere(world, x + dir.offsetX, y, z + dir.offsetZ))
+				if (canGrowHere(world, x + EnumFacing.offsetX, y, z + EnumFacing.offsetZ))
 				{
-					world.setBlock(x + dir.offsetX, y, z + dir.offsetZ, this, 0, BlockFlags.UPDATE_AND_SYNC);
+					world.setBlock(x + EnumFacing.offsetX, y, z + EnumFacing.offsetZ, this, 0, BlockFlags.UPDATE_AND_SYNC);
 				}
 			}
 		}
@@ -190,12 +190,12 @@ public class BlockGrapeLeaves extends BlockLeavesBase implements IBlockRope
 		}
 		else
 		{
-			for (EnumFacing dir : BlockCheck.DIR4)
+			for (EnumFacing EnumFacing : BlockCheck.DIR4)
 			{
 				for (int i = 1; i <= grapeVineSupportedLength; ++i)
 				{
-					final int bx = x + dir.offsetX * i;
-					final int bz = z + dir.offsetZ * i;
+					final int bx = x + EnumFacing.offsetX * i;
+					final int bz = z + EnumFacing.offsetZ * i;
 					if (world.getBlock(bx, y, bz) != this)
 					{
 						break;
