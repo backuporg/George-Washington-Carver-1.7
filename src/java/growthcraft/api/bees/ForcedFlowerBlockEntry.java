@@ -41,6 +41,7 @@ public class ForcedFlowerBlockEntry extends AbstractFlowerBlockEntry
 	{
 		final IBlockState blockState = world.getBlockState(pos);
 		final Block existingBlock = blockState.getBlock();
+		
 		if (existingBlock != null)
 		{
 			if (!existingBlock.isReplaceable(world, pos)) return false;

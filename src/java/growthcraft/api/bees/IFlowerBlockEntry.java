@@ -25,10 +25,11 @@ package growthcraft.api.bees;
 
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
+import net.minecraft.util.math.BlockPos;
 
 public interface IFlowerBlockEntry
 {
 	Block getBlockState();
 	int getMetadata();
-	boolean canPlaceAt(World world, int x, int y, int z);
+	boolean canPlaceAt(World world, Blockpos pos);
 }
