@@ -155,9 +155,9 @@ item.grc.honeyJar.name=Hunni
 item.grc.bee.name=A Nope
 item.grc.FoodBottleFluidHoney.name=Hunni Buttl
 item.grc.BukkitFluidHoney.name=Hunni Bukkit
-item.grcbees.BeesWax.normal.name=Beeswax
-item.grcbees.BeesWax.red.name=Red Beeswax
-item.grcbees.BeesWax.black.name=Black Beeswax
+item.grcbees.BeesWax.normal.name=Chewy Stuff
+item.grcbees.BeesWax.red.name=Red Chewy Stuff
+item.grcbees.BeesWax.black.name=Black Chewy Stuff
 
 # Tooltips
 grc.bees.item.honeyComb.deprecated=This itum haf been deprecuted, pls craft agen.
