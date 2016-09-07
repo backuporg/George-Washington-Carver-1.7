@@ -56,4 +56,8 @@ public class ForcedFlowerBlockEntry extends AbstractFlowerBlockEntry
 		}
 		return true;
 	}
+
+	public Block getBlock() {
+		return block;
+	}
 }
