@@ -179,14 +179,14 @@ fluid.grc.honeyMead6=Mead
 item.grc.BottleFluidHoney.name=Hunni
 
 # Fluid Bukkits
-item.Bucket.fluid.grc.honey.name=Hunni Bukkit
-item.Bucket.fluid.grc.honeyMead0.name=Wet Hunni Bukkit
-item.Bucket.fluid.grc.honeyMead1.name=Funny Wet Hunni Bukkit
-item.Bucket.fluid.grc.honeyMead2.name=Funny Wet Hunni Bukkit
-item.Bucket.fluid.grc.honeyMead3.name=Funny Wet Hunni Bukkit
-item.Bucket.fluid.grc.honeyMead4.name=Funny Wet Hunni Bukkit
-item.Bucket.fluid.grc.honeyMead5.name=Funny Wet Hunni Bukkit
-item.Bucket.fluid.grc.honeyMead6.name=Funny Wet Hunni Bukkit
+item.bucket.fluid.grc.honey.name=Hunni Bukkit
+item.bucket.fluid.grc.honeyMead0.name=Wet Hunni Bukkit
+item.bucket.fluid.grc.honeyMead1.name=Funny Wet Hunni Bukkit
+item.bucket.fluid.grc.honeyMead2.name=Funny Wet Hunni Bukkit
+item.bucket.fluid.grc.honeyMead3.name=Funny Wet Hunni Bukkit
+item.bucket.fluid.grc.honeyMead4.name=Funny Wet Hunni Bukkit
+item.bucket.fluid.grc.honeyMead5.name=Funny Wet Hunni Bukkit
+item.bucket.fluid.grc.honeyMead6.name=Funny Wet Hunni Bukkit
 
 # Fluid Blocks
 tile.grc.BlockFluidHoney.name=Hunni
