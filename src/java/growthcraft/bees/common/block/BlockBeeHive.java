@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Random;
 
 import growthcraft.api.core.util.BlockFlags;
-import growthcraft.bees.GrowthCraftBees;
 import growthcraft.bees.client.renderer.RenderBeeHive;
+import growthcraft.bees.GrowthCraftBees;
 import growthcraft.core.common.block.GrcBlockBase;
 
 import net.minecraftforge.fml.relauncher.Side;
@@ -20,7 +20,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -31,7 +31,7 @@ public class BlockBeeHive extends GrcBlockBase
 
 	public BlockBeeHive()
 	{
-		super(Material.plants);
+		super(Material.PLANTS);
 		this.setHardness(0.6F);
 		this.setStepSound(soundTypeGrass);
 		this.setBlockName("grc.beeHive");

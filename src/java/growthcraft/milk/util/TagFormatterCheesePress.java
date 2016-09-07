@@ -30,7 +30,7 @@ import growthcraft.api.core.util.ITagFormatter;
 import growthcraft.core.util.TagFormatterItem;
 
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.text.TextFormatting;
 
 public class TagFormatterCheesePress implements ITagFormatter
 {
@@ -38,9 +38,9 @@ public class TagFormatterCheesePress implements ITagFormatter
 
 	public List<String> format(List<String> list, NBTTagCompound nbt)
 	{
-		list.add(EnumChatFormatting.GRAY + GrcI18n.translate("grcmilk.cheese_press.pressing.state.prefix") + " " +
-				EnumChatFormatting.WHITE + GrcI18n.translate("grcmilk.cheese_press.pressing.state." + nbt.getBoolean("pressed")));
-		list.add(EnumChatFormatting.GRAY +
+		list.add(TextFormatting.GRAY + GrcI18n.translate("grcmilk.cheese_press.pressing.state.prefix") + " " +
+				TextFormatting.WHITE + GrcI18n.translate("grcmilk.cheese_press.pressing.state." + nbt.getBoolean("pressed")));
+		list.add(TextFormatting.GRAY +
 			GrcI18n.translate(
 				"grcmilk.cheese_press.itemslot.item",
 				TagFormatterItem.INSTANCE.formatItem(nbt.getCompoundTag("item"))

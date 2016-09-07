@@ -88,7 +88,7 @@ public class netherloid
 		modules.add(items);
 		modules.add(fluids);
 
-		if (config.enableThaumcraftIntegration) modules.add(new growthcraft.netherloid.integration.ThaumcraftModule());
+		//if (config.enableThaumcraftIntegration) modules.add(new growthcraft.netherloid.integration.ThaumcraftModule());
 
 		if (config.debugEnabled) modules.setLogger(logger);
 

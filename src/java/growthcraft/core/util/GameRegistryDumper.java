@@ -37,7 +37,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fluids.FluidRegistry;
 
@@ -197,11 +197,11 @@ public class GameRegistryDumper
 
 	public static void dumpBiomes()
 	{
-		final BiomeGenBase[] biomes = BiomeGenBase.getBiomeGenArray();
+		final Biome[] biomes = Biome.getBiomeGenArray();
 		try (FileWriter writer = new FileWriter("dumps/Biomes_dump.txt"))
 		{
 			writer.write("Biome ID, Name, [TYPES...]\n");
-			for (BiomeGenBase biome : biomes)
+			for (Biome biome : biomes)
 			{
 				if (biome == null) continue;
 				writer.write(String.format("%d,%s,%s\n",

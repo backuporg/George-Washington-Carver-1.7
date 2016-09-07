@@ -71,6 +71,7 @@ import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
+import net.minecraft.init.MobEffects;
 
 public class GrcMilkFluids extends GrcModuleBase
 {
@@ -147,7 +148,7 @@ public class GrcMilkFluids extends GrcModuleBase
 			{
 				// Idea from here: http://www.altmedicine101.com/buttermilk
 				list.add(new EffectExtinguish());
-				list.add(EffectUtils.createAddPotionEffect(Potion.fireResistance, TickUtils.seconds(15), 0));
+				list.add(EffectUtils.createAddPotionEffect(MobEffects.FIRE_RESISTANCE, TickUtils.seconds(15), 0));
 			}
 			butterMilk.foodBottle.getItem().setEffect(list).setAlwaysEdible();
 		}
@@ -173,7 +174,7 @@ public class GrcMilkFluids extends GrcModuleBase
 			list.add(milkEffect);
 			if (GrowthCraftMilk.getConfig().fantasyMilkEffects)
 			{
-				list.add(EffectUtils.createAddPotionEffect(Potion.moveSpeed, TickUtils.seconds(15), 0));
+				list.add(EffectUtils.createAddPotionEffect(MobEffects.SPEED, TickUtils.seconds(15), 0));
 			}
 			skimMilk.foodBottle.getItem().setEffect(list).setAlwaysEdible();
 		}
@@ -186,8 +187,8 @@ public class GrcMilkFluids extends GrcModuleBase
 			final EffectList list = new EffectList();
 			if (GrowthCraftMilk.getConfig().fantasyMilkEffects)
 			{
-				list.add(EffectUtils.createAddPotionEffect(Potion.damageBoost, TickUtils.seconds(10), 0));
-				list.add(EffectUtils.createAddPotionEffect(Potion.resistance, TickUtils.seconds(10), 0));
+				list.add(EffectUtils.createAddPotionEffect(MobEffects.STRENGTH, TickUtils.seconds(10), 0));
+				list.add(EffectUtils.createAddPotionEffect(MobEffects.RESISTANCE, TickUtils.seconds(10), 0));
 			}
 			whey.foodBottle.getItem().setEffect(list).setAlwaysEdible();
 		}
@@ -224,7 +225,7 @@ public class GrcMilkFluids extends GrcModuleBase
 		if (milk != null)
 		{
 			OreDictionary.registerOre("bottleMilk", milk.foodBottle.asStack());
-			OreDictionary.registerOre("bucketMilk", Items.milk_bucket);
+			OreDictionary.registerOre("bucketMilk", Items.MILK_BUCKET);
 			// Milk bucket is the vanilla milk bucket, derp
 			OreDictionary.registerOre("bottleSkimmilk", skimMilk.foodBottle.asStack());
 			OreDictionary.registerOre("bucketSkimmilk", skimMilk.bucket.asStack());
@@ -258,7 +259,7 @@ public class GrcMilkFluids extends GrcModuleBase
 
 		final TaggedFluidStacks milkStacks = new TaggedFluidStacks(1, "milk");
 		builder.fermentsFrom(milkStacks, EnumYeast.BREWERS.asStack(), fermentTime);
-		builder.fermentsFrom(milkStacks, new ItemStack(Items.nether_wart), (int)(fermentTime * 0.66));
+		builder.fermentsFrom(milkStacks, new ItemStack(Items.NETHER_WART), (int)(fermentTime * 0.66));
 
 		GrowthCraftCellar.boozeBuilderFactory.create(kumisFluids[1])
 			.tags(BoozeTag.FERMENTED, BoozeTag.POTENT)
@@ -310,8 +311,8 @@ public class GrcMilkFluids extends GrcModuleBase
 			// ensure that we don't already have some variation of milk present
 			if (FluidRegistry.getFluid("milk") == null)
 			{
-				FluidContainerRegistry.registerFluidContainer(milk.getFluid(), new ItemStack(Items.milk_bucket, 1), new ItemStack(Items.bucket, 1));
-				EventHandlerBucketFill.instance().register(milk.getFluidBlock(), new ItemStack(Items.milk_bucket, 1));
+				FluidContainerRegistry.registerFluidContainer(milk.getFluid(), new ItemStack(Items.MILK_BUCKET, 1), new ItemStack(Items.BUCKET, 1));
+				EventHandlerBucketFill.instance().register(milk.getFluidBlock(), new ItemStack(Items.MILK_BUCKET, 1));
 			}
 		}
 		butterMilk.registerObjects("grcmilk", "ButterMilk");
@@ -338,7 +339,7 @@ public class GrcMilkFluids extends GrcModuleBase
 			.brewsFrom(new FluidStack(FluidRegistry.WATER, 1000), new OreItemStacks("rennetSource"), TickUtils.minutes(1), null);
 
 		GrowthCraftCellar.boozeBuilderFactory.create(pasteurizedMilk.fluid.getFluid())
-			.brewsFrom(skimMilk.fluid.asFluidStack(250), new ItemStack(Items.sugar), TickUtils.minutes(1), new Residue(GrowthCraftMilk.items.starterCulture.asStack(1), 1.0f));
+			.brewsFrom(skimMilk.fluid.asFluidStack(250), new ItemStack(Items.SUGAR), TickUtils.minutes(1), new Residue(GrowthCraftMilk.items.starterCulture.asStack(1), 1.0f));
 
 		GrowthCraftCellar.boozeBuilderFactory.create(skimMilk.getFluid())
 			.culturesTo(250, GrowthCraftMilk.items.starterCulture.asStack(), 0.7f, TickUtils.seconds(10));

@@ -6,26 +6,26 @@ import java.util.List;
 import growthcraft.bees.GrowthCraftBees;
 
 import net.minecraftforge.fml.common.registry.VillagerRegistry.IVillageCreationHandler;
-import net.minecraftforge.fml.common.registry.VillagerRegistry.IVillageTradeHandler;
 import net.minecraft.entity.passive.EntityVillager;
+import net.minecraft.entity.passive.EntityVillager.ITradeList;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.village.MerchantRecipe;
 import net.minecraft.village.MerchantRecipeList;
 import net.minecraft.world.gen.structure.StructureVillagePieces.PieceWeight;
 import net.minecraft.world.gen.structure.StructureVillagePieces.Start;
 
-public class VillageHandlerBeesApiarist implements IVillageTradeHandler, IVillageCreationHandler
+public abstract class VillageHandlerBeesApiarist implements ITradeList, IVillageCreationHandler
 {
 	@Override
 	@SuppressWarnings({"rawtypes", "unchecked"})
 	public void manipulateTradesForVillager(EntityVillager villager, MerchantRecipeList recipeList, Random random)
 	{
-		recipeList.add(new MerchantRecipe(new ItemStack(Items.emerald, 1 + random.nextInt(2)), GrowthCraftBees.items.honeyJar.asStack(1, 2)));
-		recipeList.add(new MerchantRecipe(new ItemStack(Items.emerald, 1 + random.nextInt(2)), GrowthCraftBees.items.honeyCombFilled.asStack(7)));
-		recipeList.add(new MerchantRecipe(new ItemStack(Items.emerald, 1 + random.nextInt(2)), GrowthCraftBees.items.bee.asStack(3, 5)));
-		recipeList.add(new MerchantRecipe(new ItemStack(Items.emerald, 1 + random.nextInt(2)), GrowthCraftBees.items.beesWax.asStack(1)));
+		recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, 1 + random.nextInt(2)), GrowthCraftBees.items.honeyJar.asStack(1, 2)));
+		recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, 1 + random.nextInt(2)), GrowthCraftBees.items.honeyCombFilled.asStack(7)));
+		recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, 1 + random.nextInt(2)), GrowthCraftBees.items.bee.asStack(3, 5)));
+		recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, 1 + random.nextInt(2)), GrowthCraftBees.items.beesWax.asStack(1)));
 	}
 
 	@Override

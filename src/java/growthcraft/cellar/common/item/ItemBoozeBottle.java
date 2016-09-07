@@ -34,8 +34,8 @@ import growthcraft.core.common.item.GrcItemFoodBase;
 import growthcraft.core.common.item.IFluidItem;
 import growthcraft.core.lib.GrcCoreState;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -65,7 +65,7 @@ public class ItemBoozeBottle extends GrcItemFoodBase implements IFluidItem
 		this.setMaxStackSize(4);
 		this.setHasSubtypes(true);
 		this.setMaxDamage(0);
-		this.setContainerItem(Items.glass_bottle);
+		this.setContainerItem(Items.GLASS_BOTTLE);
 		this.setCreativeTab(GrowthCraftCellar.tab);
 
 		this.boozes = boozeAry;

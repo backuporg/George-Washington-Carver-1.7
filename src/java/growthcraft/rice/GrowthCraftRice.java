@@ -70,8 +70,8 @@ public class GrowthCraftRice
 		modules.add(items);
 		modules.add(fluids);
 		if (config.enableForestryIntegration) modules.add(new growthcraft.rice.integration.ForestryModule());
-		if (config.enableMFRIntegration) modules.add(new growthcraft.rice.integration.MFRModule());
-		if (config.enableThaumcraftIntegration) modules.add(new growthcraft.rice.integration.ThaumcraftModule());
+		//if (config.enableMFRIntegration) modules.add(new growthcraft.rice.integration.MFRModule());
+		//if (config.enableThaumcraftIntegration) modules.add(new growthcraft.rice.integration.ThaumcraftModule());
 		modules.add(CommonProxy.instance);
 		modules.freeze();
 		modules.preInit();
@@ -116,7 +116,7 @@ public class GrowthCraftRice
 	@EventHandler
 	public void load(FMLInitializationEvent event)
 	{
-		PlayerInteractEventPaddy.paddyBlocks.put(Blocks.farmland, blocks.paddyField.getBlock());
+		PlayerInteractEventPaddy.paddyBlocks.put(Blocks.FARMLAND, blocks.paddyField.getBlock());
 		if (config.enableVillageGen) initVillageHandlers();
 		modules.init();
 	}
@@ -125,7 +125,7 @@ public class GrowthCraftRice
 	@SideOnly(Side.CLIENT)
 	public void onTextureStitchPost(TextureStitchEvent.Post event)
 	{
-		if (event.map.getTextureType() == 0)
+		if (event.getMap().getTextureType() == 0)
 		{
 			for (int i = 0; i < fluids.riceSakeBooze.length; ++i)
 			{

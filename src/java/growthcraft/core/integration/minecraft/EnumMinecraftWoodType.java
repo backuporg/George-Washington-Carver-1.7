@@ -50,7 +50,7 @@ public enum EnumMinecraftWoodType
 
 	public ItemStack asPlanksItemStack(int size)
 	{
-		return new ItemStack(Blocks.planks, size, meta);
+		return new ItemStack(Blocks.PLANKS, size, meta);
 	}
 
 	public ItemStack asPlanksItemStack()

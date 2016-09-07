@@ -70,8 +70,8 @@ public class GrowthCraftHops
 		modules.add(items);
 		modules.add(fluids);
 		if (config.enableForestryIntegration) modules.add(new growthcraft.hops.integration.ForestryModule());
-		if (config.enableMFRIntegration) modules.add(new growthcraft.hops.integration.MFRModule());
-		if (config.enableThaumcraftIntegration) modules.add(new growthcraft.hops.integration.ThaumcraftModule());
+		//if (config.enableMFRIntegration) modules.add(new growthcraft.hops.integration.MFRModule());
+		//if (config.enableThaumcraftIntegration) modules.add(new growthcraft.hops.integration.ThaumcraftModule());
 		modules.add(CommonProxy.instance);
 		modules.freeze();
 		modules.preInit();
@@ -129,7 +129,7 @@ public class GrowthCraftHops
 	@SideOnly(Side.CLIENT)
 	public void onTextureStitchPost(TextureStitchEvent.Post event)
 	{
-		if (event.map.getTextureType() == 0)
+		if (event.getMap().getTextureType() == 0)
 		{
 			for (Booze bz : fluids.hopAleBooze)
 			{

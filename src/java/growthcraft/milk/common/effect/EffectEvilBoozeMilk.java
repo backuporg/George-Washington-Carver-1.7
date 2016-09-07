@@ -37,6 +37,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.world.World;
+import net.minecraft.init.MobEffects;
 
 /**
  * If milk removes effects, then evil booze milk will add them.
@@ -49,18 +50,18 @@ public class EffectEvilBoozeMilk implements IEffect
 	{
 		this.effects = new EffectList();
 
-		addEvilEffect(0.1f, Potion.blindness.id, 900, 0);
-		addEvilEffect(0.1f, Potion.wither.id, 900, 0);
-		addEvilEffect(0.2f, Potion.confusion.id, 900, 0);
-		addEvilEffect(0.2f, Potion.digSlowdown.id, 900, 0);
-		addEvilEffect(0.2f, Potion.poison.id, 900, 0);
-		addEvilEffect(0.3f, Potion.hunger.id, 900, 0);
-		addEvilEffect(0.5f, Potion.moveSlowdown.id, 900, 0);
-		addEvilEffect(0.6f, Potion.harm.id, 20, 0);
-		addEvilEffect(1.0f, Potion.weakness.id, 900, 0);
+		addEvilEffect(0.1f, MobEffects.BLINDNESS, 900, 0);
+		addEvilEffect(0.1f, MobEffects.WITHER, 900, 0);
+		addEvilEffect(0.2f, MobEffects.NAUSEA, 900, 0);
+		addEvilEffect(0.2f, MobEffects.MINING_FATIGUE, 900, 0);
+		addEvilEffect(0.2f, MobEffects.POISON, 900, 0);
+		addEvilEffect(0.3f, MobEffects.HUNGER, 900, 0);
+		addEvilEffect(0.5f, MobEffects.SLOWNESS, 900, 0);
+		addEvilEffect(0.6f, MobEffects.INSTANT_DAMAGE, 20, 0);
+		addEvilEffect(1.0f, MobEffects.WEAKNESS, 900, 0);
 	}
 
-	private void addEvilEffect(float chance, int id, int time, int lv)
+	private void addEvilEffect(float chance, Potion id, int time, int lv)
 	{
 		effects.add(
 			new EffectChance()

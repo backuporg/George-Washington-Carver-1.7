@@ -18,7 +18,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraft.util.EnumFacing;
 
 public class BlockGrapeVine1 extends BlockGrapeVineBase
 {
@@ -73,7 +73,7 @@ public class BlockGrapeVine1 extends BlockGrapeVineBase
 	protected float getGrowthRate(World world, int x, int y, int z)
 	{
 		int j = y;
-		if (world.getBlock(x, j - 1, z) == this && world.getBlock(x, j - 2, z) == Blocks.farmland)
+		if (world.getBlock(x, j - 1, z) == this && world.getBlock(x, j - 2, z) == Blocks.FARMLAND)
 		{
 			j = y - 1;
 		}
@@ -124,7 +124,7 @@ public class BlockGrapeVine1 extends BlockGrapeVineBase
 	@SideOnly(Side.CLIENT)
 	public IIcon getLeafTexture()
 	{
-		graphicFlag = Blocks.leaves.isOpaqueCube();
+		graphicFlag = Blocks.LEAVES.isOpaqueCube();
 		return !this.graphicFlag ? icons[1] : icons[2];
 	}
 

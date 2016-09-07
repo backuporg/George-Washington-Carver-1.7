@@ -27,6 +27,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import buildcraft.api.tools.IToolWrench;
+
 import growthcraft.api.core.item.EnumDye;
 import growthcraft.core.GrowthCraftCore;
 
@@ -42,9 +44,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraft.util.EnumFacing;
 
 public class ItemCrowbar extends GrcItemBase implements IToolWrench
 {

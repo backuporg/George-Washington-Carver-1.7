@@ -3,13 +3,14 @@ package growthcraft.bees.common.block;
 import java.util.List;
 import java.util.Random;
 
-import growthcraft.bees.GrowthCraftBees;
 import growthcraft.bees.client.renderer.RenderBeeBox;
 import growthcraft.bees.common.tileentity.TileEntityBeeBox;
+import growthcraft.bees.GrowthCraftBees;
 import growthcraft.core.common.block.GrcBlockContainer;
 import growthcraft.core.integration.minecraft.EnumMinecraftWoodType;
 import growthcraft.core.util.ItemUtils;
 
+import net.minecraft.block.SoundType;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -21,12 +22,12 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.IIcon;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraft.util.EnumFacing;
 
 public class BlockBeeBox extends GrcBlockContainer
 {
@@ -43,7 +44,7 @@ public class BlockBeeBox extends GrcBlockContainer
 		setBlockTextureName("grcbees:beebox");
 		setTickRandomly(true);
 		setHardness(2.5F);
-		setStepSound(soundTypeWood);
+		setSoundType(SoundType.WOOD);
 		setBlockName("grc.BeeBox.Minecraft");
 		setCreativeTab(GrowthCraftBees.tab);
 		setTileEntityType(TileEntityBeeBox.class);
@@ -51,7 +52,7 @@ public class BlockBeeBox extends GrcBlockContainer
 
 	public BlockBeeBox()
 	{
-		this(Material.wood);
+		this(Material.WOOD);
 	}
 
 	public String getMetaname(int meta)
@@ -76,13 +77,13 @@ public class BlockBeeBox extends GrcBlockContainer
 	}
 
 	@Override
-	public int getFlammability(IBlockAccess world, int x, int y, int z, ForgeDirection face)
+	public int getFlammability(IBlockAccess world, int x, int y, int z, EnumFacing face)
 	{
 		return flammability;
 	}
 
 	@Override
-	public int getFireSpreadSpeed(IBlockAccess world, int x, int y, int z, ForgeDirection face)
+	public int getFireSpreadSpeed(IBlockAccess world, int x, int y, int z, EnumFacing face)
 	{
 		return fireSpreadSpeed;
 	}
@@ -171,9 +172,9 @@ public class BlockBeeBox extends GrcBlockContainer
 	 * CONDITIONS
 	 ************/
 	@Override
-	public boolean isSideSolid(IBlockAccess world, int x, int y, int z, ForgeDirection side)
+	public boolean isSideSolid(IBlockAccess world, int x, int y, int z, EnumFacing side)
 	{
-		return ForgeDirection.UP == side;
+		return EnumFacing.UP == side;
 	}
 
 	@Override

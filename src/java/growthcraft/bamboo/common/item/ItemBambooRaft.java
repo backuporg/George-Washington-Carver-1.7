@@ -14,7 +14,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemBoat;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
@@ -93,7 +93,7 @@ public class ItemBambooRaft extends ItemBoat
 					int j = movingobjectposition.blockY;
 					final int k = movingobjectposition.blockZ;
 
-					if (world.getBlock(i, j, k) == Blocks.snow)
+					if (world.getBlock(i, j, k) == Blocks.SNOW)
 					{
 						--j;
 					}

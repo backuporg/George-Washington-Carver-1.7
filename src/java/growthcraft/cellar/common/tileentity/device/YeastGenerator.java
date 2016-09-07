@@ -122,7 +122,7 @@ public class YeastGenerator extends DeviceProgressive
 	public void consumeFluid()
 	{
 		fluidSlot.consume(consumption, true);
-		markForBlockUpdate();
+		markDirty();
 	}
 
 	/**
@@ -139,7 +139,7 @@ public class YeastGenerator extends DeviceProgressive
 			final IYeastRegistry reg = CellarRegistry.instance().yeast();
 
 			{
-				final Collection<WeightedItemStack> yl = reg.getYeastListForBiomeName(biome.biomeName);
+				final Collection<WeightedItemStack> yl = reg.getYeastListForBiomeName(biome.getBiomeName());
 				if (yl != null)
 				{
 					tempItemList.addAll(yl);
@@ -200,12 +200,12 @@ public class YeastGenerator extends DeviceProgressive
 			{
 				resetTime();
 				produceYeast();
-				markForInventoryUpdate();
+				markDirty();
 			}
 		}
 		else
 		{
-			if (resetTime()) markForInventoryUpdate();
+			if (resetTime()) markDirty();
 		}
 	}
 }

@@ -48,13 +48,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraft.util.EnumFacing;
 
 public class BlockHangingCurds extends GrcBlockContainer
 {
 	public BlockHangingCurds()
 	{
-		super(Material.cake);
+		super(Material.CAKE);
 		// make it god awful difficult to break by hand.
 		setHardness(6.0F);
 		setTickRandomly(true);

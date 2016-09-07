@@ -10,7 +10,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
-import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraft.util.EnumFacing;
 
 public class WorldGenBamboo extends WorldGenAbstractTree
 {
@@ -90,7 +90,7 @@ public class WorldGenBamboo extends WorldGenAbstractTree
 			{
 				final Block soil = world.getBlock(i, j - 1, k);
 				final boolean isSoil = soil != null &&
-					soil.canSustainPlant(world, i, j - 1, k, ForgeDirection.UP, (BlockSapling)Blocks.sapling);
+					soil.canSustainPlant(world, i, j - 1, k, ForgeDirection.UP, (BlockSapling)Blocks.SAPLING);
 
 				int it;
 				Block block;
@@ -192,13 +192,13 @@ public class WorldGenBamboo extends WorldGenAbstractTree
 	protected boolean func_150523_a(Block block)
 	{
 		return block.getMaterial() == Material.air ||
-			block.getMaterial() == Material.leaves ||
-			block == Blocks.grass ||
-			block == Blocks.dirt ||
-			block == Blocks.log ||
-			block == Blocks.log2 ||
-			block == Blocks.sapling ||
-			block == Blocks.vine;
+			block.getMaterial() == Material.LEAVES ||
+			block == Blocks.GRASS ||
+			block == Blocks.DIRT ||
+			block == Blocks.LOG ||
+			block == Blocks.LOG2 ||
+			block == Blocks.SAPLING ||
+			block == Blocks.VINE;
 	}
 
 	@Override

@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.registry.VillagerRegistry.IVillageTradeHand
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.village.MerchantRecipe;
 import net.minecraft.village.MerchantRecipeList;
 import net.minecraft.world.gen.structure.StructureVillagePieces.PieceWeight;
@@ -22,10 +22,10 @@ public class VillageHandlerRice implements IVillageTradeHandler, IVillageCreatio
 	@SuppressWarnings({"rawtypes", "unchecked"})
 	public void manipulateTradesForVillager(EntityVillager villager, MerchantRecipeList recipeList, Random random)
 	{
-		//		recipeList.add(new MerchantRecipe(new ItemStack(GrowthCraftRice.rice, 18 + random.nextInt(3)), new ItemStack(Item.emerald, 1)));
-		recipeList.add(new MerchantRecipe(new ItemStack(Items.emerald, 1 + random.nextInt(2)), GrowthCraftRice.fluids.riceSake.asStack(1, 1)));
-		recipeList.add(new MerchantRecipe(new ItemStack(Items.emerald, 2 + random.nextInt(2)), GrowthCraftRice.fluids.riceSake.asStack(1, 2)));
-		recipeList.add(new MerchantRecipe(new ItemStack(Items.emerald, 2 + random.nextInt(2)), GrowthCraftRice.fluids.riceSake.asStack(1, 3)));
+		//		recipeList.add(new MerchantRecipe(new ItemStack(GrowthCraftRice.rice, 18 + random.nextInt(3)), new ItemStack(Item.EMERALD, 1)));
+		recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, 1 + random.nextInt(2)), GrowthCraftRice.fluids.riceSake.asStack(1, 1)));
+		recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, 2 + random.nextInt(2)), GrowthCraftRice.fluids.riceSake.asStack(1, 2)));
+		recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, 2 + random.nextInt(2)), GrowthCraftRice.fluids.riceSake.asStack(1, 3)));
 	}
 
 	@Override

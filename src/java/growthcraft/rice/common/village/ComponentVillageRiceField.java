@@ -123,22 +123,22 @@ public class ComponentVillageRiceField extends StructureVillagePieces.Village im
 		}
 
 		// clear entire bounding box
-		fillWithBlocks(world, box, 0, 0, 0, 11, 5, 12, Blocks.air, Blocks.air, false);
-		fillWithBlocks(world, box, 0, 0, 0, 11, 0, 12, Blocks.grass, Blocks.grass, false);
+		fillWithBlocks(world, box, 0, 0, 0, 11, 5, 12, Blocks.AIR, Blocks.AIR, false);
+		fillWithBlocks(world, box, 0, 0, 0, 11, 0, 12, Blocks.GRASS, Blocks.GRASS, false);
 
 		final boolean vert = coordBaseMode == 0 || coordBaseMode == 2;
 		final HashMap<Character, IBlockEntries> map = new HashMap<Character, IBlockEntries>();
 
-		map.put('-', new BlockEntry(Blocks.log, vert ? 4 : 8));
-		map.put('f', new BlockEntry(Blocks.fence));
-		map.put('g', new BlockEntry(Blocks.fence_gate, this.getMetadataWithOffset(Blocks.fence_gate, 0)));
+		map.put('-', new BlockEntry(Blocks.LOG, vert ? 4 : 8));
+		map.put('f', new BlockEntry(Blocks.OAK_FENCE));
+		map.put('g', new BlockEntry(Blocks.OAK_FENCE_GATE, this.getMetadataWithOffset(Blocks.OAK_FENCE_GATE, 0)));
 		map.put('p', new BlockEntry(GrowthCraftRice.blocks.paddyField.getBlock(), GrowthCraftRice.getConfig().paddyFieldMax));
 		map.put('r', new BlockEntry(GrowthCraftRice.blocks.riceBlock.getBlock(), 6));
-		map.put('s', new BlockEntry(Blocks.oak_stairs, this.getMetadataWithOffset(Blocks.oak_stairs, 3)));
-		map.put('t', new BlockEntry(Blocks.torch));
-		map.put('x', new BlockEntry(Blocks.log));
-		map.put('|', new BlockEntry(Blocks.log, vert ? 8 : 4));
-		map.put('~', new BlockEntry(Blocks.water));
+		map.put('s', new BlockEntry(Blocks.OAK_STAIRS, this.getMetadataWithOffset(Blocks.OAK_STAIRS, 3)));
+		map.put('t', new BlockEntry(Blocks.TORCH));
+		map.put('x', new BlockEntry(Blocks.LOG));
+		map.put('|', new BlockEntry(Blocks.LOG, vert ? 8 : 4));
+		map.put('~', new BlockEntry(Blocks.WATER));
 
 		SchemaToVillage.drawSchema(this, world, random, box, riceFieldSchema, map, 0, 1, 0);
 
@@ -147,7 +147,7 @@ public class ComponentVillageRiceField extends StructureVillagePieces.Village im
 			for (int col = 0; col < 11; ++col)
 			{
 				this.clearCurrentPositionBlocksUpwards(world, col, 4, row, box);
-				this.func_151554_b(world, Blocks.dirt, 0, col, -1, row, box);
+				this.func_151554_b(world, Blocks.DIRT, 0, col, -1, row, box);
 			}
 		}
 

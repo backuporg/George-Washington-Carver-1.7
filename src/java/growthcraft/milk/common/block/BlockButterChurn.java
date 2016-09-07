@@ -40,7 +40,7 @@ public class BlockButterChurn extends GrcBlockContainer
 {
 	public BlockButterChurn()
 	{
-		super(Material.wood);
+		super(Material.WOOD);
 		setResistance(5.0F);
 		setHardness(2.0F);
 		setBlockName("grcmilk.ButterChurn");

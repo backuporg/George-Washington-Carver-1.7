@@ -42,7 +42,7 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 
 	public BlockRice()
 	{
-		super(Material.plants);
+		super(Material.PLANTS);
 		this.setHardness(0.0F);
 		this.setTickRandomly(true);
 		this.setCreativeTab(null);

@@ -3,8 +3,8 @@ package growthcraft.cellar.common.village;
 import java.util.List;
 import java.util.Random;
 
-import cpw.mods.fml.common.registry.VillagerRegistry.IVillageCreationHandler;
-import net.minecraft.util.MathHelper;
+import net.minecraftforge.fml.common.registry.VillagerRegistry.IVillageCreationHandler;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.gen.structure.StructureVillagePieces.PieceWeight;
 import net.minecraft.world.gen.structure.StructureVillagePieces.Start;
 

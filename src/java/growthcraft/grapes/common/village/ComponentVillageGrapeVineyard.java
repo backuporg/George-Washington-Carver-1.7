@@ -7,7 +7,7 @@ import growthcraft.core.GrowthCraftCore;
 import growthcraft.grapes.GrowthCraftGrapes;
 
 import net.minecraft.init.Blocks;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
@@ -50,23 +50,23 @@ public class ComponentVillageGrapeVineyard extends StructureVillagePieces.Villag
 			this.boundingBox.offset(0, this.field_143015_k - this.boundingBox.maxY + 6 - 1, 0);
 		}
 
-		this.fillWithBlocks(world, box, 0, 1, 0, 12, 6, 8, Blocks.air, Blocks.air, false);
-		this.fillWithBlocks(world, box, 0, 0, 0, 0, 0, 8, Blocks.log, Blocks.log, false);
-		this.fillWithBlocks(world, box, 12, 0, 0, 12, 0, 8, Blocks.log, Blocks.log, false);
-		this.fillWithBlocks(world, box, 1, 0, 0, 11, 0, 0, Blocks.log, Blocks.log, false);
-		this.fillWithBlocks(world, box, 1, 0, 8, 11, 0, 8, Blocks.log, Blocks.log, false);
-		this.fillWithBlocks(world, box, 1, 0, 1, 11, 0, 7, Blocks.grass, Blocks.grass, false);
+		this.fillWithBlocks(world, box, 0, 1, 0, 12, 6, 8, Blocks.AIR, Blocks.AIR, false);
+		this.fillWithBlocks(world, box, 0, 0, 0, 0, 0, 8, Blocks.LOG, Blocks.LOG, false);
+		this.fillWithBlocks(world, box, 12, 0, 0, 12, 0, 8, Blocks.LOG, Blocks.LOG, false);
+		this.fillWithBlocks(world, box, 1, 0, 0, 11, 0, 0, Blocks.LOG, Blocks.LOG, false);
+		this.fillWithBlocks(world, box, 1, 0, 8, 11, 0, 8, Blocks.LOG, Blocks.LOG, false);
+		this.fillWithBlocks(world, box, 1, 0, 1, 11, 0, 7, Blocks.GRASS, Blocks.GRASS, false);
 		int loop;
 		int loop2;
 
 		for (loop = 1; loop < 12; loop = loop + 2)
 		{
-			this.fillWithBlocks(world, box, loop, 0, 2, loop, 0, 6, Blocks.water, Blocks.water, false);
-			this.fillWithBlocks(world, box, loop, 0, 4, loop, 0, 4, Blocks.farmland, Blocks.farmland, false);
-			this.placeBlockAtCurrentPosition(world, Blocks.fence, 0, loop, 1, 1, box);
-			this.placeBlockAtCurrentPosition(world, Blocks.fence, 0, loop, 1, 7, box);
-			this.placeBlockAtCurrentPosition(world, Blocks.fence, 0, loop, 2, 1, box);
-			this.placeBlockAtCurrentPosition(world, Blocks.fence, 0, loop, 2, 7, box);
+			this.fillWithBlocks(world, box, loop, 0, 2, loop, 0, 6, Blocks.WATER, Blocks.WATER, false);
+			this.fillWithBlocks(world, box, loop, 0, 4, loop, 0, 4, Blocks.FARMLAND, Blocks.FARMLAND, false);
+			this.placeBlockAtCurrentPosition(world, Blocks.OAK_FENCE, 0, loop, 1, 1, box);
+			this.placeBlockAtCurrentPosition(world, Blocks.OAK_FENCE, 0, loop, 1, 7, box);
+			this.placeBlockAtCurrentPosition(world, Blocks.OAK_FENCE, 0, loop, 2, 1, box);
+			this.placeBlockAtCurrentPosition(world, Blocks.OAK_FENCE, 0, loop, 2, 7, box);
 			this.placeBlockAtCurrentPosition(world, GrowthCraftCore.blocks.fenceRope.getBlock(), 0, loop, 3, 1, box);
 			this.placeBlockAtCurrentPosition(world, GrowthCraftCore.blocks.fenceRope.getBlock(), 0, loop, 3, 7, box);
 			this.placeBlockAtCurrentPosition(world, GrowthCraftGrapes.blocks.grapeVine1.getBlock(), 1, loop, 1, 4, box);
@@ -86,7 +86,7 @@ public class ComponentVillageGrapeVineyard extends StructureVillagePieces.Villag
 			for (loop2 = 0; loop2 < 13; ++loop2)
 			{
 				this.clearCurrentPositionBlocksUpwards(world, loop2, 6, loop, box);
-				this.func_151554_b(world, Blocks.dirt, 0, loop2, -1, loop, box);
+				this.func_151554_b(world, Blocks.DIRT, 0, loop2, -1, loop, box);
 			}
 		}
 

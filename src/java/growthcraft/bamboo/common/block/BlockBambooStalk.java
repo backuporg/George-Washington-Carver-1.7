@@ -25,7 +25,7 @@ import net.minecraft.world.ColorizerFoliage;
 import net.minecraft.world.ColorizerGrass;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraft.util.EnumFacing;
 
 public class BlockBambooStalk extends GrcBlockBase
 {
@@ -37,7 +37,7 @@ public class BlockBambooStalk extends GrcBlockBase
 
 	public BlockBambooStalk()
 	{
-		super(Material.wood);
+		super(Material.WOOD);
 		setStepSound(soundTypeWood);
 		setHardness(2.0F);
 		setTickRandomly(true);
@@ -218,7 +218,7 @@ public class BlockBambooStalk extends GrcBlockBase
 	private boolean canFence(IBlockAccess world, int x, int y, int z)
 	{
 		return world.getBlock(x, y, z) == GrowthCraftBamboo.blocks.bambooFence.getBlock() ||
-			world.getBlock(x, y, z) == Blocks.fence_gate ||
+			world.getBlock(x, y, z) == Blocks.OAK_FENCE_GATE ||
 			world.getBlock(x, y, z) == GrowthCraftBamboo.blocks.bambooFenceGate.getBlock();
 	}
 

@@ -15,19 +15,22 @@ import growthcraft.cellar.GrowthCraftCellar;
 import growthcraft.core.GrowthCraftCore;
 import growthcraft.core.integration.NEI;
 import growthcraft.core.util.MapGenHelper;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Items;
-import net.minecraftforge.client.event.TextureStitchEvent;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.Mod;
+
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.Mod.Instance;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Items;
+import net.minecraftforge.client.event.TextureStitchEvent;
+import net.minecraftforge.common.MinecraftForge;
 
 @Mod(
 	modid = GrowthCraftApples.MOD_ID,
@@ -41,7 +44,7 @@ public class GrowthCraftApples
 	public static final String MOD_NAME = "Growthcraft Apples";
 	public static final String MOD_VERSION = "@VERSION@";
 
-	@Mod.Instance(MOD_ID)
+	@Instance(MOD_ID)
 	public static GrowthCraftApples instance;
 	public static CreativeTabs creativeTab;
 	public static final GrcApplesBlocks blocks = new GrcApplesBlocks();
@@ -58,7 +61,7 @@ public class GrowthCraftApples
 		return instance.config;
 	}
 
-	@Mod.EventHandler
+	@EventHandler
 	public void preload(FMLPreInitializationEvent event)
 	{
 		creativeTab = GrowthCraftCore.creativeTab;
@@ -70,8 +73,8 @@ public class GrowthCraftApples
 		modules.add(fluids);
 		modules.add(recipes);
 		if (config.enableForestryIntegration) modules.add(new growthcraft.apples.integration.ForestryModule());
-		if (config.enableMFRIntegration) modules.add(new growthcraft.apples.integration.MFRModule());
-		if (config.enableThaumcraftIntegration) modules.add(new growthcraft.apples.integration.ThaumcraftModule());
+		//if (config.enableMFRIntegration) modules.add(new growthcraft.apples.integration.MFRModule());
+		//if (config.enableThaumcraftIntegration) modules.add(new growthcraft.apples.integration.ThaumcraftModule());
 		modules.add(CommonProxy.instance);
 		modules.freeze();
 		modules.preInit();
@@ -108,7 +111,7 @@ public class GrowthCraftApples
 		VillagerRegistry.instance().registerVillageCreationHandler(handler);
 	}
 
-	@Mod.EventHandler
+	@EventHandler
 	public void load(FMLInitializationEvent event)
 	{
 		if (config.enableVillageGen) initVillageHandlers();
@@ -128,7 +131,7 @@ public class GrowthCraftApples
 		}
 	}
 
-	@Mod.EventHandler
+	@EventHandler
 	public void postload(FMLPostInitializationEvent event)
 	{
 		modules.postInit();

@@ -10,7 +10,7 @@ import growthcraft.rice.util.RiceBlockCheck;
 import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.init.Blocks;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.BonemealEvent;
 
@@ -46,8 +46,8 @@ public class BonemealEventRice
 					world.setBlockMetadataWithNotify(i, y, k, mplus, BlockFlags.SYNC);
 					world.setBlockMetadataWithNotify(i, y - 1, k, mminus, BlockFlags.SYNC);
 					world.playAuxSFX(AuxFX.BONEMEAL, i, y, k, 0);
-					world.notifyBlockChange(i, y, k, Blocks.air);
-					world.notifyBlockChange(i, y - 1, k, Blocks.air);
+					world.notifyBlockChange(i, y, k, Blocks.AIR);
+					world.notifyBlockChange(i, y - 1, k, Blocks.AIR);
 				}
 			}
 		}

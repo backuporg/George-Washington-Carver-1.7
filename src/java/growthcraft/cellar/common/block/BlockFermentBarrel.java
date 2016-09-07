@@ -7,8 +7,8 @@ import growthcraft.cellar.GrowthCraftCellar;
 import growthcraft.api.core.util.BlockFlags;
 import growthcraft.core.Utils;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockPistonBase;
 import net.minecraft.block.material.Material;
@@ -19,7 +19,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraft.util.EnumFacing;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidHandler;
 
@@ -30,7 +30,7 @@ public class BlockFermentBarrel extends BlockCellarContainer
 
 	public BlockFermentBarrel()
 	{
-		super(Material.wood);
+		super(Material.WOOD);
 		setTileEntityType(TileEntityFermentBarrel.class);
 		setHardness(2.5F);
 		setStepSound(soundTypeWood);

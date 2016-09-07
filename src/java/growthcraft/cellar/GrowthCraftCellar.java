@@ -121,7 +121,7 @@ public class GrowthCraftCellar
 		modules.add(items);
 
 		if (config.enableWailaIntegration) modules.add(new growthcraft.cellar.integration.Waila());
-		if (config.enableThaumcraftIntegration) modules.add(new growthcraft.cellar.integration.ThaumcraftModule());
+		//if (config.enableThaumcraftIntegration) modules.add(new growthcraft.cellar.integration.ThaumcraftModule());
 		//if (config.enableNEIIntegration) modules.add(new growthcraft.cellar.integration.NEIModule());
 		// ALWAYS set the user modules as last, this ensures that other modules are given a chance to setup defaults and such.
 		modules.add(userApis);
@@ -186,12 +186,12 @@ public class GrowthCraftCellar
 		//====================
 		// CRAFTING
 		//====================
-		GameRegistry.addRecipe(new ShapedOreRecipe(blocks.fruitPress.asStack(), "ABA", "CCC", "AAA", 'A', "plankWood", 'B', Blocks.piston,'C', "ingotIron"));
-		GameRegistry.addRecipe(new ShapedOreRecipe(blocks.brewKettle.asStack(), "A", 'A', Items.cauldron));
+		GameRegistry.addRecipe(new ShapedOreRecipe(blocks.fruitPress.asStack(), "ABA", "CCC", "AAA", 'A', "plankWood", 'B', Blocks.PISTON,'C', "ingotIron"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(blocks.brewKettle.asStack(), "A", 'A', Items.CAULDRON));
 		GameRegistry.addRecipe(new ShapedOreRecipe(blocks.fermentBarrel.asStack(), "AAA", "BBB", "AAA", 'B', "plankWood", 'A', "ingotIron"));
 		GameRegistry.addRecipe(new ShapedOreRecipe(blocks.cultureJar.asStack(), "GAG", "G G", "GGG", 'A', "plankWood", 'G', "paneGlass"));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(items.waterBag.asStack(1, 16), "AAA", "ABA", "AAA", 'A', Items.leather, 'B', "materialRope"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(items.waterBag.asStack(1, 16), "AAA", "ABA", "AAA", 'A', Items.LEATHER, 'B', "materialRope"));
 		GameRegistry.addRecipe(new ShapelessOreRecipe(items.waterBag.asStack(1, 0), "dyeWhite", items.waterBag.asStack(1, OreDictionary.WILDCARD_VALUE)));
 		GameRegistry.addRecipe(new ShapelessOreRecipe(items.waterBag.asStack(1, 1), "dyeOrange", items.waterBag.asStack(1, OreDictionary.WILDCARD_VALUE)));
 		GameRegistry.addRecipe(new ShapelessOreRecipe(items.waterBag.asStack(1, 2), "dyeMagenta", items.waterBag.asStack(1, OreDictionary.WILDCARD_VALUE)));

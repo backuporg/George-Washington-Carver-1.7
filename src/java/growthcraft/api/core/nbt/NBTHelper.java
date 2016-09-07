@@ -128,7 +128,7 @@ public class NBTHelper
 	{
 		final NBTTagList tankTagList = new NBTTagList();
 		int tankId = 0;
-		for (FluidTankInfo tankInfo : fluidHandler.getTankInfo(EnumFacing.UNKNOWN))
+		for (FluidTankInfo tankInfo : fluidHandler.getTankInfo(ForgeDirection.UNKNOWN))
 		{
 			final NBTTagCompound tankTag = new NBTTagCompound();
 			tankTag.setInteger("tank_id", tankId);

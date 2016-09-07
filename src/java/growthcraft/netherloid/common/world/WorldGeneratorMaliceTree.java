@@ -33,7 +33,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
-import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraft.util.EnumFacing;
 
 public class WorldGeneratorMaliceTree extends WorldGenerator
 {
@@ -101,7 +101,7 @@ public class WorldGeneratorMaliceTree extends WorldGenerator
 			else
 			{
 				final Block block2 = world.getBlock(x, y - 1, z);
-				final boolean isSoil = block2.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, (BlockSapling)Blocks.sapling);
+				final boolean isSoil = block2.canSustainPlant(world, x, y - 1, z, EnumFacing.UP, (BlockSapling)Blocks.SAPLING);
 
 				if (isSoil && y < 256 - l - 1)
 				{
@@ -165,14 +165,14 @@ public class WorldGeneratorMaliceTree extends WorldGenerator
 
 	protected boolean func_150523_a(Block block)
 	{
-		return block.getMaterial() == Material.air ||
-			block.getMaterial() == Material.leaves ||
-			block == Blocks.grass ||
-			block == Blocks.dirt ||
-			block == Blocks.log ||
-			block == Blocks.log2 ||
-			block == Blocks.sapling ||
-			block == Blocks.vine;
+		return block.getMaterial() == Material.AIR ||
+			block.getMaterial() == Material.LEAVES ||
+			block == Blocks.GRASS ||
+			block == Blocks.DIRT ||
+			block == Blocks.LOG ||
+			block == Blocks.LOG2 ||
+			block == Blocks.SAPLING ||
+			block == Blocks.VINE;
 	}
 
 	protected boolean isReplaceable(World world, int x, int y, int z)

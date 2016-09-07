@@ -30,11 +30,11 @@ public class ItemBamboo extends GrcItemBase
 	{
 		final Block block1 = world.getBlock(x, y, z);
 
-		if (block1 == Blocks.snow && (world.getBlockMetadata(x, y, z) & 7) < 1)
+		if (block1 == Blocks.SNOW && (world.getBlockMetadata(x, y, z) & 7) < 1)
 		{
 			dir = 1;
 		}
-		else if (block1 != Blocks.vine && block1 != Blocks.tallgrass && block1 != Blocks.deadbush)
+		else if (block1 != Blocks.VINE && block1 != Blocks.TALLGRASS && block1 != Blocks.DEADBUSH)
 		{
 			if (dir == 0)
 			{

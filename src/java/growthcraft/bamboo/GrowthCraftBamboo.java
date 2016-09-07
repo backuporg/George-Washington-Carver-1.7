@@ -75,8 +75,8 @@ public class GrowthCraftBamboo
 		modules.add(blocks);
 		modules.add(items);
 		if (config.enableForestryIntegration) modules.add(new growthcraft.bamboo.integration.ForestryModule());
-		if (config.enableMFRIntegration) modules.add(new growthcraft.bamboo.integration.MFRModule());
-		if (config.enableThaumcraftIntegration) modules.add(new growthcraft.bamboo.integration.ThaumcraftModule());
+		//if (config.enableMFRIntegration) modules.add(new growthcraft.bamboo.integration.MFRModule());
+		//if (config.enableThaumcraftIntegration) modules.add(new growthcraft.bamboo.integration.ThaumcraftModule());
 		modules.add(CommonProxy.instance);
 		modules.freeze();
 		creativeTab = new CreativeTabsGrowthcraftBamboo("creative_tab_grcbamboo");
@@ -85,7 +85,7 @@ public class GrowthCraftBamboo
 		if (config.generateBambooBiome)
 		{
 			bambooBiome = (new BiomeGenBamboo(config.bambooBiomeID))
-				.setColor(353825)
+				.setColor((353825))
 				.setBiomeName("BambooForest")
 				.func_76733_a(5159473)
 				.setTemperatureRainfall(0.7F, 0.8F);
@@ -122,7 +122,7 @@ public class GrowthCraftBamboo
 		GameRegistry.addShapedRecipe(blocks.bambooFence.asStack(3), "AAA", "AAA", 'A', items.bamboo.getItem());
 		GameRegistry.addShapedRecipe(blocks.bambooFenceGate.asStack(), "ABA", "ABA", 'A', items.bamboo.getItem(), 'B', blocks.bambooBlock.getBlock());
 		GameRegistry.addShapedRecipe(blocks.bambooScaffold.asStack(16), "BBB", " A ", "A A", 'A', items.bamboo.getItem(), 'B', blocks.bambooBlock.getBlock());
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.torch, 2), new Object[] {"A", "B", 'A', items.bambooCoal.getItem(), 'B', "stickWood"}));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.TORCH, 2), new Object[] {"A", "B", 'A', items.bambooCoal.getItem(), 'B', "stickWood"}));
 
 		MapGenHelper.registerVillageStructure(ComponentVillageBambooYard.class, "grc.bambooyard");
 

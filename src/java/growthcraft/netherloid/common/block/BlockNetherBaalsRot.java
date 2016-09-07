@@ -30,6 +30,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.world.World;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.init.MobEffects;
 
 public class BlockNetherBaalsRot extends BlockNetherFungusBase
 {
@@ -52,7 +53,7 @@ public class BlockNetherBaalsRot extends BlockNetherFungusBase
 		{
 			if (world.rand.nextFloat() < 0.3F)
 			{
-				((EntityLivingBase)entity).addPotionEffect(new PotionEffect(Potion.wither.id, 20 * 20));
+				((EntityLivingBase)entity).addPotionEffect(new PotionEffect(MobEffects.WITHER.id, 20 * 20));
 			}
 		}
 	}

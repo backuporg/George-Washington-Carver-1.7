@@ -10,6 +10,10 @@ import growthcraft.core.GrcGuiProvider;
 import growthcraft.fishtrap.common.block.BlockFishTrap;
 import growthcraft.fishtrap.common.CommonProxy;
 import growthcraft.fishtrap.common.tileentity.TileEntityFishTrap;
+import growthcraft.fishtrap.creativetab.CreativeTabsGrowthcraftFishtrap;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -40,6 +44,7 @@ public class GrowthCraftFishTrap
 	@Instance(MOD_ID)
 	public static GrowthCraftFishTrap instance;
 	public static BlockDefinition fishTrap;
+	public static CreativeTabs creativeTab;
 	public static final GrcGuiProvider guiProvider = new GrcGuiProvider(new GrcLogger(MOD_ID + ":GuiProvider"));
 
 	private final ILogger logger = new GrcLogger(MOD_ID);
@@ -60,9 +65,10 @@ public class GrowthCraftFishTrap
 		if (config.debugEnabled) modules.setLogger(logger);
 		userFishTrapConfig.setConfigFile(event.getModConfigurationDirectory(), "growthcraft/fishtrap/entries.json");
 		modules.add(userFishTrapConfig);
-		if (config.enableThaumcraftIntegration) modules.add(new growthcraft.fishtrap.integration.ThaumcraftModule());
+		//if (config.enableThaumcraftIntegration) modules.add(new growthcraft.fishtrap.integration.ThaumcraftModule());
 		modules.add(CommonProxy.instance);
 		modules.freeze();
+		creativeTab = new CreativeTabsGrowthcraftFishtrap("creative_tab_grcfishtrap");
 		fishTrap = new BlockDefinition(new BlockFishTrap());
 		modules.preInit();
 		register();
@@ -79,34 +85,34 @@ public class GrowthCraftFishTrap
 
 		// Will use same chances as Fishing Rods
 		//JUNK
-		userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Items.leather_boots), 10).setDamage(0.9F));
-		userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Items.leather), 10));
-		userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Items.bone), 10));
-		userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Items.potionitem), 10));
-		userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Items.string), 5));
-		userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Items.fishing_rod), 2).setDamage(0.9F));
-		userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Items.bowl), 10));
-		userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Items.stick), 5));
-		userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Items.dye, 10), 1));
-		userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Blocks.tripwire_hook), 10));
-		userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Items.rotten_flesh), 10));
+		userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Items.LEATHER_BOOTS), 10).setDamage(0.9F));
+		userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Items.LEATHER), 10));
+		userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Items.BONE), 10));
+		userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Items.POTIONITEM), 10));
+		userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Items.STRING), 5));
+		userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Items.FISHING_ROD), 2).setDamage(0.9F));
+		userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Items.BOWL), 10));
+		userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Items.STICK), 5));
+		userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Items.DYE, 10), 1));
+		userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Blocks.TRIPWIRE_HOOK), 10));
+		userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Items.ROTTEN_FLESH), 10));
 		//TREASURE
-		userFishTrapConfig.addDefault("treasure", new FishTrapEntry(new ItemStack(Blocks.waterlily), 1));
-		userFishTrapConfig.addDefault("treasure", new FishTrapEntry(new ItemStack(Items.name_tag), 1));
-		userFishTrapConfig.addDefault("treasure", new FishTrapEntry(new ItemStack(Items.saddle), 1));
-		userFishTrapConfig.addDefault("treasure", new FishTrapEntry(new ItemStack(Items.bow), 1).setDamage(0.25F).setEnchantable());
-		userFishTrapConfig.addDefault("treasure", new FishTrapEntry(new ItemStack(Items.fishing_rod), 1).setDamage(0.25F).setEnchantable());
-		userFishTrapConfig.addDefault("treasure", new FishTrapEntry(new ItemStack(Items.book), 1).setEnchantable());
+		userFishTrapConfig.addDefault("treasure", new FishTrapEntry(new ItemStack(Blocks.WATERLILY), 1));
+		userFishTrapConfig.addDefault("treasure", new FishTrapEntry(new ItemStack(Items.NAME_TAG), 1));
+		userFishTrapConfig.addDefault("treasure", new FishTrapEntry(new ItemStack(Items.SADDLE), 1));
+		userFishTrapConfig.addDefault("treasure", new FishTrapEntry(new ItemStack(Items.BOW), 1).setDamage(0.25F).setEnchantable());
+		userFishTrapConfig.addDefault("treasure", new FishTrapEntry(new ItemStack(Items.FISHING_ROD), 1).setDamage(0.25F).setEnchantable());
+		userFishTrapConfig.addDefault("treasure", new FishTrapEntry(new ItemStack(Items.BOOK), 1).setEnchantable());
 		//FISH
-		userFishTrapConfig.addDefault("fish", new FishTrapEntry(new ItemStack(Items.fish, 1, ItemFishFood.FishType.COD.func_150976_a()), 60));
-		userFishTrapConfig.addDefault("fish", new FishTrapEntry(new ItemStack(Items.fish, 1, ItemFishFood.FishType.SALMON.func_150976_a()), 25));
-		userFishTrapConfig.addDefault("fish", new FishTrapEntry(new ItemStack(Items.fish, 1, ItemFishFood.FishType.CLOWNFISH.func_150976_a()), 2));
-		userFishTrapConfig.addDefault("fish", new FishTrapEntry(new ItemStack(Items.fish, 1, ItemFishFood.FishType.PUFFERFISH.func_150976_a()), 13));
+		userFishTrapConfig.addDefault("fish", new FishTrapEntry(new ItemStack(Items.FISH, 1, ItemFishFood.FishType.COD.func_150976_a()), 60));
+		userFishTrapConfig.addDefault("fish", new FishTrapEntry(new ItemStack(Items.FISH, 1, ItemFishFood.FishType.SALMON.func_150976_a()), 25));
+		userFishTrapConfig.addDefault("fish", new FishTrapEntry(new ItemStack(Items.FISH, 1, ItemFishFood.FishType.CLOWNFISH.func_150976_a()), 2));
+		userFishTrapConfig.addDefault("fish", new FishTrapEntry(new ItemStack(Items.FISH, 1, ItemFishFood.FishType.PUFFERFISH.func_150976_a()), 13));
 
 		//====================
 		// CRAFTING
 		//====================
-		GameRegistry.addRecipe(new ShapedOreRecipe(fishTrap.asStack(1), "ACA", "CBC", "ACA", 'A', "plankWood", 'B', Items.lead, 'C', Items.string));
+		GameRegistry.addRecipe(new ShapedOreRecipe(fishTrap.asStack(1), "ACA", "CBC", "ACA", 'A', "plankWood", 'B', Items.LEAD, 'C', Items.STRING));
 
 		modules.register();
 	}

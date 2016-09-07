@@ -138,7 +138,7 @@ public class GrcMilkRecipes extends GrcModuleBase
 		ricottaBowlRecipe.add(EnumCheeseType.RICOTTA.asCurdItemStack());
 		for (int i = 0; i < ricottaBowlCount; ++i)
 		{
-			ricottaBowlRecipe.add(new ItemStack(Items.bowl, 1));
+			ricottaBowlRecipe.add(new ItemStack(Items.BOWL, 1));
 		}
 		GameRegistry.addRecipe(new ShapelessItemComparableRecipe(new DriedCurdComparator(),
 			EnumCheeseType.RICOTTA.asStack(ricottaBowlCount), ricottaBowlRecipe
@@ -161,14 +161,14 @@ public class GrcMilkRecipes extends GrcModuleBase
 			"iCi",
 			"ppp",
 			'i', "ingotIron",
-			'C', Blocks.chest,
+			'C', Blocks.CHEST,
 			'p', "slabWood"
 		));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(GrowthCraftMilk.blocks.pancheon.asStack(),
 			"c c",
 			"ccc",
-			'c', Items.clay_ball
+			'c', Items.CLAY_BALL
 		));
 	}
 
@@ -187,7 +187,7 @@ public class GrcMilkRecipes extends GrcModuleBase
 			CheeseVatRecipeBuilder.buildRecipe("CHEDDAR Pumpkin Recipe")
 				.outputFluids(EnumCheeseType.CHEDDAR.asFluidStack(5000))
 				.inputFluids(new TaggedFluidStacks(5000, "milk_curds"))
-				.inputItems(new OreItemStacks(saltOre, 1), new ItemStack(Blocks.pumpkin))
+				.inputItems(new OreItemStacks(saltOre, 1), new ItemStack(Blocks.PUMPKIN))
 				.register();
 
 			CheeseVatRecipeBuilder.buildRecipe("GORGONZOLA Recipe")

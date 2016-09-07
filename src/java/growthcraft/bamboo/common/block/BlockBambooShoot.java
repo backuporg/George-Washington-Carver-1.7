@@ -9,6 +9,7 @@ import growthcraft.core.util.BlockCheck;
 import growthcraft.api.core.util.BlockFlags;
 import growthcraft.api.core.util.RenderType;
 
+import net.minecraft.block.SoundType;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -17,12 +18,12 @@ import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.event.terraingen.TerrainGen;
-import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraft.util.EnumFacing;
 
 public class BlockBambooShoot extends BlockBush implements ICropDataProvider, IGrowable
 {
@@ -31,8 +32,8 @@ public class BlockBambooShoot extends BlockBush implements ICropDataProvider, IG
 
 	public BlockBambooShoot()
 	{
-		super(Material.plants);
-		setStepSound(soundTypeGrass);
+		super(Material.PLANTS);
+		setSoundType(SoundType.PLANT);
 		setHardness(0.0F);
 		setTickRandomly(true);
 		setBlockTextureName("grcbamboo:shoot");
@@ -97,7 +98,7 @@ public class BlockBambooShoot extends BlockBush implements ICropDataProvider, IG
 	public boolean canBlockStay(World world, int x, int y, int z)
 	{
 		return (world.getFullBlockLightValue(x, y, z) >= 8 || world.canBlockSeeTheSky(x, y, z)) &&
-			BlockCheck.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, this);
+			BlockCheck.canSustainPlant(world, x, y - 1, z, EnumFacing.UP, this);
 	}
 
 	/************

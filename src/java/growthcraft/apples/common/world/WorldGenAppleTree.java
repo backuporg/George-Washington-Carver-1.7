@@ -10,14 +10,14 @@ import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
-import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraft.util.EnumFacing;
 
 public class WorldGenAppleTree extends WorldGenerator
 {
 	private final int minTreeHeight = 4;
 	private final int metaWood      = 0;
 	private final int metaLeaves    = 0;
-	private final Block log         = Blocks.log;
+	private final Block log         = Blocks.LOG;
 	private final Block leaves      = GrowthCraftApples.blocks.appleLeaves.getBlock();
 
 	public WorldGenAppleTree(boolean doblocknotify)
@@ -78,7 +78,7 @@ public class WorldGenAppleTree extends WorldGenerator
 			else
 			{
 				final Block block2 = world.getBlock(x, y - 1, z);
-				final boolean isSoil = block2.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, (BlockSapling)Blocks.sapling);
+				final boolean isSoil = block2.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, (BlockSapling)Blocks.SAPLING);
 
 				if (isSoil && y < 256 - l - 1)
 				{
@@ -143,13 +143,13 @@ public class WorldGenAppleTree extends WorldGenerator
 	protected boolean func_150523_a(Block block)
 	{
 		return block.getMaterial() == Material.air ||
-			block.getMaterial() == Material.leaves ||
-			block == Blocks.grass ||
-			block == Blocks.dirt ||
-			block == Blocks.log ||
-			block == Blocks.log2 ||
-			block == Blocks.sapling ||
-			block == Blocks.vine;
+			block.getMaterial() == Material.LEAVES ||
+			block == Blocks.GRASS ||
+			block == Blocks.DIRT ||
+			block == Blocks.LOG ||
+			block == Blocks.LOG2 ||
+			block == Blocks.SAPLING ||
+			block == Blocks.VINE;
 	}
 
 	protected boolean isReplaceable(World world, int x, int y, int z)

@@ -49,21 +49,21 @@ public class ComponentVillageHopVineyard extends StructureVillagePieces.Village
 			this.boundingBox.offset(0, this.field_143015_k - this.boundingBox.maxY + 9 - 1, 0);
 		}
 
-		this.fillWithBlocks(world, box, 0, 1, 0, 12, 5, 8, Blocks.air, Blocks.air, false);
-		this.fillWithBlocks(world, box, 0, 0, 0, 0, 0, 8, Blocks.log, Blocks.log, false);
-		this.fillWithBlocks(world, box, 12, 0, 0, 12, 0, 8, Blocks.log, Blocks.log, false);
-		this.fillWithBlocks(world, box, 1, 0, 0, 11, 0, 0, Blocks.log, Blocks.log, false);
-		this.fillWithBlocks(world, box, 1, 0, 8, 11, 0, 8, Blocks.log, Blocks.log, false);
-		this.fillWithBlocks(world, box, 1, 0, 1, 11, 0, 7, Blocks.grass, Blocks.grass, false);
+		this.fillWithBlocks(world, box, 0, 1, 0, 12, 5, 8, Blocks.AIR, Blocks.AIR, false);
+		this.fillWithBlocks(world, box, 0, 0, 0, 0, 0, 8, Blocks.LOG, Blocks.LOG, false);
+		this.fillWithBlocks(world, box, 12, 0, 0, 12, 0, 8, Blocks.LOG, Blocks.LOG, false);
+		this.fillWithBlocks(world, box, 1, 0, 0, 11, 0, 0, Blocks.LOG, Blocks.LOG, false);
+		this.fillWithBlocks(world, box, 1, 0, 8, 11, 0, 8, Blocks.LOG, Blocks.LOG, false);
+		this.fillWithBlocks(world, box, 1, 0, 1, 11, 0, 7, Blocks.GRASS, Blocks.GRASS, false);
 		int loop;
 		int loop2;
 
 		for (loop = 1; loop < 12; loop = loop + 2)
 		{
-			this.fillWithBlocks(world, box, loop, 0, 2, loop, 0, 6, Blocks.water, Blocks.water, false);
-			this.fillWithBlocks(world, box, loop, 0, 2, loop, 0, 2, Blocks.farmland, Blocks.farmland, false);
-			this.fillWithBlocks(world, box, loop, 0, 4, loop, 0, 4, Blocks.farmland, Blocks.farmland, false);
-			this.fillWithBlocks(world, box, loop, 0, 6, loop, 0, 6, Blocks.farmland, Blocks.farmland, false);
+			this.fillWithBlocks(world, box, loop, 0, 2, loop, 0, 6, Blocks.WATER, Blocks.WATER, false);
+			this.fillWithBlocks(world, box, loop, 0, 2, loop, 0, 2, Blocks.FARMLAND, Blocks.FARMLAND, false);
+			this.fillWithBlocks(world, box, loop, 0, 4, loop, 0, 4, Blocks.FARMLAND, Blocks.FARMLAND, false);
+			this.fillWithBlocks(world, box, loop, 0, 6, loop, 0, 6, Blocks.FARMLAND, Blocks.FARMLAND, false);
 			this.placeBlockAtCurrentPosition(world, GrowthCraftCore.blocks.fenceRope.getBlock(), 0, loop, 6, 1, box);
 			this.placeBlockAtCurrentPosition(world, GrowthCraftCore.blocks.fenceRope.getBlock(), 0, loop, 6, 7, box);
 			for (loop2 = 2; loop2 <= 6; ++loop2)
@@ -72,8 +72,8 @@ public class ComponentVillageHopVineyard extends StructureVillagePieces.Village
 			}
 			for (loop2 = 1; loop2 <= 5; ++loop2)
 			{
-				this.placeBlockAtCurrentPosition(world, Blocks.fence, 0, loop, loop2, 1, box);
-				this.placeBlockAtCurrentPosition(world, Blocks.fence, 0, loop, loop2, 7, box);
+				this.placeBlockAtCurrentPosition(world, Blocks.OAK_FENCE, 0, loop, loop2, 1, box);
+				this.placeBlockAtCurrentPosition(world, Blocks.OAK_FENCE, 0, loop, loop2, 7, box);
 				this.placeBlockAtCurrentPosition(world, GrowthCraftHops.blocks.hopVine.getBlock(), 3, loop, loop2, 2, box);
 				this.placeBlockAtCurrentPosition(world, GrowthCraftHops.blocks.hopVine.getBlock(), 3, loop, loop2, 4, box);
 				this.placeBlockAtCurrentPosition(world, GrowthCraftHops.blocks.hopVine.getBlock(), 3, loop, loop2, 6, box);
@@ -85,7 +85,7 @@ public class ComponentVillageHopVineyard extends StructureVillagePieces.Village
 			for (loop2 = 0; loop2 < 13; ++loop2)
 			{
 				this.clearCurrentPositionBlocksUpwards(world, loop2, 9, loop, box);
-				this.func_151554_b(world, Blocks.dirt, 0, loop2, -1, loop, box);
+				this.func_151554_b(world, Blocks.DIRT, 0, loop2, -1, loop, box);
 			}
 		}
 

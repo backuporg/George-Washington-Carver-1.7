@@ -24,7 +24,7 @@ public class BlockBambooDoor extends BlockDoor
 
 	public BlockBambooDoor()
 	{
-		super(Material.wood);
+		super(Material.WOOD);
 		setStepSound(soundTypeWood);
 		setHardness(3.0F);
 		disableStats();

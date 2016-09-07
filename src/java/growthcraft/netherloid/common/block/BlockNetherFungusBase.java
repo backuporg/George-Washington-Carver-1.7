@@ -36,7 +36,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
-import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraft.util.EnumFacing;
 
 public abstract class BlockNetherFungusBase extends BlockBush implements IPlantable, IGrowable
 {
@@ -48,7 +48,7 @@ public abstract class BlockNetherFungusBase extends BlockBush implements IPlanta
 
 	protected boolean func_149854_a(Block block)
 	{
-		return Blocks.netherrack == block || Blocks.soul_sand == block;
+		return Blocks.NETHERRACK == block || Blocks.SOUL_SAND == block;
 	}
 
 	@Override
@@ -107,7 +107,7 @@ public abstract class BlockNetherFungusBase extends BlockBush implements IPlanta
 		if (!this.canBlockStay(world, x, y, z))
 		{
 			this.dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
-			world.setBlock(x, y, z, Blocks.air, 0, BlockFlags.SYNC);
+			world.setBlock(x, y, z, Blocks.AIR, 0, BlockFlags.SYNC);
 		}
 		else if (random.nextFloat() <= getSpreadRate(world, x, y, z))
 		{

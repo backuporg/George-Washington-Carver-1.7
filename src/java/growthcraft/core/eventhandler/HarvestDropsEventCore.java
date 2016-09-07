@@ -22,7 +22,7 @@ public class HarvestDropsEventCore
 			{
 				doDrops(event);
 			}
-			else if (event.harvester.getHeldItem().getItem() != Items.shears)
+			else if (event.harvester.getHeldItem().getItem() != Items.SHEARS)
 			{
 				doDrops(event);
 			}

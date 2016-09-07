@@ -43,7 +43,7 @@ public class BlockCheeseVat extends GrcBlockContainer
 {
 	public BlockCheeseVat()
 	{
-		super(Material.iron);
+		super(Material.IRON);
 		setResistance(10.0F);
 		setHardness(5.0F);
 		setStepSound(soundTypeMetal);

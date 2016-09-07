@@ -37,7 +37,7 @@ import growthcraft.cellar.util.TagFormatterCultureJar;
 import growthcraft.cellar.util.TagFormatterFruitPress;
 import growthcraft.api.core.nbt.NBTHelper;
 
-import cpw.mods.fml.common.Optional;
+import net.minecraftforge.fml.common.Optional;
 
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
@@ -48,7 +48,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
 public class CellarDataProvider implements IWailaDataProvider
@@ -75,8 +75,8 @@ public class CellarDataProvider implements IWailaDataProvider
 		final TileEntity te = accessor.getTileEntity();
 		if (block instanceof BlockFruitPresser)
 		{
-			tooltip.add(EnumChatFormatting.GRAY + GrcI18n.translate("grc.cellar.fruit_presser.state_prefix") + " " +
-				EnumChatFormatting.WHITE + GrcI18n.translate("grc.cellar.fruit_presser.state." +
+			tooltip.add(TextFormatting.GRAY + GrcI18n.translate("grc.cellar.fruit_presser.state_prefix") + " " +
+				TextFormatting.WHITE + GrcI18n.translate("grc.cellar.fruit_presser.state." +
 					((BlockFruitPresser)block).getPressStateName(accessor.getMetadata())));
 		}
 		final NBTTagCompound tag = accessor.getNBTData();

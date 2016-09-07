@@ -40,11 +40,11 @@ import growthcraft.core.GrowthCraftCore;
 import growthcraft.core.common.GrcModuleBase;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraft.init.MobEffects;
 
 public class GrcBeesRecipes extends GrcModuleBase
 {
@@ -65,10 +65,10 @@ public class GrcBeesRecipes extends GrcModuleBase
 		GrowthCraftCellar.boozeBuilderFactory.create(GrowthCraftBees.fluids.honeyMeadBooze[1])
 			.tags(BoozeTag.FERMENTED, BeesFluidTag.MEAD)
 			.fermentsFrom(youngMead, new OreItemStacks("yeastBrewers"), fermentTime)
-			.fermentsFrom(youngMead, new ItemStack(Items.nether_wart), (int)(fermentTime * 0.66))
+			.fermentsFrom(youngMead, new ItemStack(Items.NETHER_WART), (int)(fermentTime * 0.66))
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.15f), TickUtils.seconds(90))
-				.addPotionEntry(Potion.regeneration, TickUtils.seconds(90), 0);
+				.addPotionEntry(MobEffects.REGENERATION, TickUtils.seconds(90), 0);
 
 		GrowthCraftCellar.boozeBuilderFactory.create(GrowthCraftBees.fluids.honeyMeadBooze[2])
 			.tags(BoozeTag.FERMENTED, BoozeTag.POTENT, BeesFluidTag.MEAD)
@@ -76,7 +76,7 @@ public class GrcBeesRecipes extends GrcModuleBase
 			.fermentsFrom(fs[3], new OreItemStacks("dustGlowstone"), fermentTime)
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.17f), TickUtils.seconds(90))
-				.addPotionEntry(Potion.regeneration, TickUtils.seconds(90), 0);
+				.addPotionEntry(MobEffects.REGENERATION, TickUtils.seconds(90), 0);
 
 		GrowthCraftCellar.boozeBuilderFactory.create(GrowthCraftBees.fluids.honeyMeadBooze[3])
 			.tags(BoozeTag.FERMENTED, BoozeTag.EXTENDED, BeesFluidTag.MEAD)
@@ -84,7 +84,7 @@ public class GrcBeesRecipes extends GrcModuleBase
 			.fermentsFrom(fs[2], new OreItemStacks("dustRedstone"), fermentTime)
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.15f), TickUtils.seconds(90))
-				.addPotionEntry(Potion.regeneration, TickUtils.seconds(90), 0);
+				.addPotionEntry(MobEffects.REGENERATION, TickUtils.seconds(90), 0);
 
 		GrowthCraftCellar.boozeBuilderFactory.create(GrowthCraftBees.fluids.honeyMeadBooze[4])
 			.tags(BoozeTag.FERMENTED, BoozeTag.HYPER_EXTENDED, BeesFluidTag.MEAD)
@@ -92,7 +92,7 @@ public class GrcBeesRecipes extends GrcModuleBase
 			.fermentsFrom(fs[3], new OreItemStacks("yeastEthereal"), fermentTime)
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.15f), TickUtils.seconds(90))
-				.addPotionEntry(Potion.regeneration, TickUtils.seconds(90), 0);
+				.addPotionEntry(MobEffects.REGENERATION, TickUtils.seconds(90), 0);
 
 		GrowthCraftCellar.boozeBuilderFactory.create(GrowthCraftBees.fluids.honeyMeadBooze[5])
 			.tags(BoozeTag.FERMENTED, BoozeTag.INTOXICATED, BeesFluidTag.MEAD)
@@ -101,8 +101,8 @@ public class GrcBeesRecipes extends GrcModuleBase
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.15f * 1.5f), TickUtils.seconds(90))
 				.addEffect(new EffectWeightedRandomList()
-					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(Potion.regeneration.id, TickUtils.seconds(90), 2)))
-					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(Potion.poison.id, TickUtils.seconds(90), 2)))
+					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.REGENERATION, TickUtils.seconds(90), 2)))
+					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.POISON, TickUtils.seconds(90), 2)))
 				);
 
 		GrowthCraftCellar.boozeBuilderFactory.create(GrowthCraftBees.fluids.honeyMeadBooze[6])
@@ -115,7 +115,7 @@ public class GrcBeesRecipes extends GrcModuleBase
 			.fermentsFrom(fs[5], new OreItemStacks("yeastPoison", 1), fermentTime)
 			.getEffect()
 				.setTipsy(BoozeUtils.alcoholToTipsy(0.15f), TickUtils.seconds(90))
-				.createPotionEntry(Potion.poison, TickUtils.seconds(90), 0).toggleDescription(!GrowthCraftCore.getConfig().hidePoisonedBooze);
+				.createPotionEntry(MobEffects.POISON, TickUtils.seconds(90), 0).toggleDescription(!GrowthCraftCore.getConfig().hidePoisonedBooze);
 	}
 
 	@Override
@@ -143,7 +143,7 @@ public class GrcBeesRecipes extends GrcModuleBase
 
 		GameRegistry.addRecipe(new ShapelessMultiRecipe(
 				meadBucket,
-				Items.bucket,
+				Items.BUCKET,
 				new TaggedFluidStacks(1000, "honey"),
 				new FluidStack(FluidRegistry.WATER, 1000)));
 	}

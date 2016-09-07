@@ -7,7 +7,7 @@ import growthcraft.bamboo.GrowthCraftBamboo;
 
 import net.minecraftforge.fml.common.IWorldGenerator;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.IChunkProvider;
 
 public class WorldGeneratorBamboo implements IWorldGenerator
@@ -31,7 +31,7 @@ public class WorldGeneratorBamboo implements IWorldGenerator
 			final int j = random.nextInt(128);
 			final int k = chunkZ * 16 + random.nextInt(16) + 8;
 
-			final BiomeGenBase biome = world.getBiomeGenForCoords(i, k);
+			final Biome biome = world.getBiomeGenForCoords(i, k);
 			if (GrowthCraftBamboo.getConfig().useBiomeDict)
 			{
 				if (!BiomeUtils.testBiomeTypeTagsTable(biome, GrowthCraftBamboo.getConfig().bambooBiomesTypeList)) return;

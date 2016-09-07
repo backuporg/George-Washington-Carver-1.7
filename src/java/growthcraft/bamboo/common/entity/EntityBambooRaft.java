@@ -16,7 +16,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 public class EntityBambooRaft extends Entity
@@ -248,7 +248,7 @@ public class EntityBambooRaft extends Entity
 			final double d3 = this.boundingBox.minY + (this.boundingBox.maxY - this.boundingBox.minY) * (double)(i + 1) / (double)b0 - 0.125D;
 			final AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox(this.boundingBox.minX, d1, this.boundingBox.minZ, this.boundingBox.maxX, d3, this.boundingBox.maxZ);
 
-			if (this.worldObj.isAABBInMaterial(axisalignedbb, Material.water))
+			if (this.worldObj.isAABBInMaterial(axisalignedbb, Material.WATER))
 			{
 				d0 += 1.0D / (double)b0;
 			}
@@ -388,12 +388,12 @@ public class EntityBambooRaft extends Entity
 					final int k = MathHelper.floor_double(this.posY) + j1;
 					final Block block = this.worldObj.getBlock(i1, k, j);
 
-					if (block == Blocks.snow_layer)
+					if (block == Blocks.SNOW_LAYER)
 					{
 						this.worldObj.setBlockToAir(i1, k, j);
 						this.isCollidedHorizontally = false;
 					}
-					else if (block == Blocks.waterlily)
+					else if (block == Blocks.WATERLILY)
 					{
 						this.worldObj.func_147480_a(i1, k, j, true);
 						this.isCollidedHorizontally = false;
@@ -565,7 +565,7 @@ public class EntityBambooRaft extends Entity
 				this.fallDistance = 0.0F;
 			}
 		}
-		else if (this.worldObj.getBlock(i, j - 1, k).getMaterial() != Material.water && par1 < 0.0D)
+		else if (this.worldObj.getBlock(i, j - 1, k).getMaterial() != Material.WATER && par1 < 0.0D)
 		{
 			this.fallDistance = (float)((double)this.fallDistance - par1);
 		}

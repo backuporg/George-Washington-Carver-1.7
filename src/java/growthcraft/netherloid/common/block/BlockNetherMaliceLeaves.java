@@ -365,7 +365,7 @@ public class BlockNetherMaliceLeaves extends BlockLeavesBase implements IShearab
 	@Override
 	public boolean isOpaqueCube()
 	{
-		return Blocks.leaves.isOpaqueCube();
+		return Blocks.LEAVES.isOpaqueCube();
 	}
 
 	@Override
@@ -412,7 +412,7 @@ public class BlockNetherMaliceLeaves extends BlockLeavesBase implements IShearab
 	public ArrayList<ItemStack> onSheared(ItemStack item, IBlockAccess world, int x, int y, int z, int fortune)
 	{
 		final ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
-		ret.add(new ItemStack(Blocks.leaves, 1, world.getBlockMetadata(x, y, z) & 3));
+		ret.add(new ItemStack(Blocks.LEAVES, 1, world.getBlockMetadata(x, y, z) & 3));
 		return ret;
 	}
 }

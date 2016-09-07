@@ -51,7 +51,7 @@ public class GrcBlockFluidDefinition extends BlockTypeDefinition<GrcBlockFluid>
 
 	public static GrcBlockFluidDefinition create(Fluid fluid)
 	{
-		return create(fluid, Material.water);
+		return create(fluid, Material.WATER);
 	}
 
 	@SuppressWarnings({"rawtypes"})

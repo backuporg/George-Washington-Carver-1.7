@@ -29,7 +29,7 @@ public class BlockBambooWall extends GrcBlockBase
 
 	public BlockBambooWall()
 	{
-		super(Material.wood);
+		super(Material.WOOD);
 		this.useNeighborBrightness = true;
 		setStepSound(soundTypeWood);
 		setResistance(5.0F / 3.0F);
@@ -55,7 +55,7 @@ public class BlockBambooWall extends GrcBlockBase
 
 		if (this == block ||
 			GrowthCraftBamboo.blocks.bambooStalk.getBlock() == block ||
-			Blocks.glass_pane == block ||
+			Blocks.GLASS_PANE == block ||
 			block instanceof BlockFenceGate ||
 			block instanceof BlockFence ||
 			block.renderAsNormalBlock()) return true;

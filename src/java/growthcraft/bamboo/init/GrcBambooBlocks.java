@@ -100,16 +100,16 @@ public class GrcBambooBlocks extends GrcModuleBlocks
 		//====================
 		// ADDITIONAL PROPS.
 		//====================
-		Blocks.fire.setFireInfo(bambooBlock.getBlock(), 5, 20);
-		Blocks.fire.setFireInfo(bambooStalk.getBlock(), 5, 4);
-		Blocks.fire.setFireInfo(bambooLeaves.getBlock(), 30, 60);
-		Blocks.fire.setFireInfo(bambooFence.getBlock(), 5, 20);
-		Blocks.fire.setFireInfo(bambooFenceRope.getBlock(), 5, 20);
-		Blocks.fire.setFireInfo(bambooWall.getBlock(), 5, 20);
-		Blocks.fire.setFireInfo(bambooStairs.getBlock(), 5, 20);
-		Blocks.fire.setFireInfo(bambooSingleSlab.getBlock(), 5, 20);
-		Blocks.fire.setFireInfo(bambooDoubleSlab.getBlock(), 5, 20);
-		Blocks.fire.setFireInfo(bambooScaffold.getBlock(), 5, 20);
+		Blocks.FIRE.setFireInfo(bambooBlock.getBlock(), 5, 20);
+		Blocks.FIRE.setFireInfo(bambooStalk.getBlock(), 5, 4);
+		Blocks.FIRE.setFireInfo(bambooLeaves.getBlock(), 30, 60);
+		Blocks.FIRE.setFireInfo(bambooFence.getBlock(), 5, 20);
+		Blocks.FIRE.setFireInfo(bambooFenceRope.getBlock(), 5, 20);
+		Blocks.FIRE.setFireInfo(bambooWall.getBlock(), 5, 20);
+		Blocks.FIRE.setFireInfo(bambooStairs.getBlock(), 5, 20);
+		Blocks.FIRE.setFireInfo(bambooSingleSlab.getBlock(), 5, 20);
+		Blocks.FIRE.setFireInfo(bambooDoubleSlab.getBlock(), 5, 20);
+		Blocks.FIRE.setFireInfo(bambooScaffold.getBlock(), 5, 20);
 
 		NEI.hideItem(bambooDoor.asStack());
 		NEI.hideItem(bambooFenceRope.asStack());

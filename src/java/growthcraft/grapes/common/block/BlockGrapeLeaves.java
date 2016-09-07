@@ -22,7 +22,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.ColorizerFoliage;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraft.util.EnumFacing;
 
 public class BlockGrapeLeaves extends BlockLeavesBase implements IBlockRope
 {
@@ -36,7 +36,7 @@ public class BlockGrapeLeaves extends BlockLeavesBase implements IBlockRope
 
 	public BlockGrapeLeaves()
 	{
-		super(Material.leaves, false);
+		super(Material.LEAVES, false);
 		setTickRandomly(true);
 		setHardness(0.2F);
 		setLightOpacity(1);
@@ -297,7 +297,7 @@ public class BlockGrapeLeaves extends BlockLeavesBase implements IBlockRope
 	@Override
 	public boolean isOpaqueCube()
 	{
-		return Blocks.leaves.isOpaqueCube();
+		return Blocks.LEAVES.isOpaqueCube();
 	}
 
 	@Override

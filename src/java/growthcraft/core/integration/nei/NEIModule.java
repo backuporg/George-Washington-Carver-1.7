@@ -3,9 +3,9 @@ package growthcraft.core.integration.nei;
 import growthcraft.core.GrowthCraftCore;
 import growthcraft.core.integration.NEIModuleBase;
 import codechicken.nei.api.API;
-import cpw.mods.fml.common.Optional;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.common.Optional;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class NEIModule extends NEIModuleBase
 {

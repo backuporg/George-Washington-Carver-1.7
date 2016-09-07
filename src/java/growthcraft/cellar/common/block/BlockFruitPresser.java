@@ -9,8 +9,8 @@ import growthcraft.cellar.GrowthCraftCellar;
 import growthcraft.core.common.block.IRotatableBlock;
 import growthcraft.core.common.block.IWrenchable;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -21,7 +21,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraft.util.EnumFacing;
 
 public class BlockFruitPresser extends BlockCellarContainer implements IWrenchable, IRotatableBlock
 {
@@ -30,7 +30,7 @@ public class BlockFruitPresser extends BlockCellarContainer implements IWrenchab
 
 	public BlockFruitPresser()
 	{
-		super(Material.piston);
+		super(Material.PISTON);
 		this.isBlockContainer = true;
 		setTileEntityType(TileEntityFruitPresser.class);
 		setHardness(0.5F);

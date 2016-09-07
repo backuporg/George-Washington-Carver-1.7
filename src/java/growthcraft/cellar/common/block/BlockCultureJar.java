@@ -5,8 +5,8 @@ import growthcraft.cellar.common.tileentity.TileEntityCultureJar;
 import growthcraft.cellar.GrowthCraftCellar;
 import growthcraft.api.core.util.BBox;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.material.Material;
 import net.minecraft.world.IBlockAccess;
 
@@ -14,7 +14,7 @@ public class BlockCultureJar extends BlockCellarContainer
 {
 	public BlockCultureJar()
 	{
-		super(Material.glass);
+		super(Material.GLASS);
 		setHardness(0.3F);
 		setStepSound(soundTypeGlass);
 		setBlockName("grc.fermentJar");

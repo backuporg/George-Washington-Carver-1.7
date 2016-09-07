@@ -30,7 +30,7 @@ public class BlockPaddy extends BlockPaddyBase
 
 	public BlockPaddy()
 	{
-		super(Material.ground);
+		super(Material.GROUND);
 		this.setHardness(0.5F);
 		this.setStepSound(soundTypeGravel);
 		this.setBlockName("grc.paddyField");
@@ -58,7 +58,7 @@ public class BlockPaddy extends BlockPaddyBase
 	@Override
 	@Nonnull public Block getFluidBlock()
 	{
-		return Blocks.water;
+		return Blocks.WATER;
 	}
 
 	@Override
@@ -76,7 +76,7 @@ public class BlockPaddy extends BlockPaddyBase
 	@Override
 	public boolean isBelowFillingFluid(IBlockAccess world, int x, int y, int z)
 	{
-		return world.getBlock(x, y + 1, z).getMaterial() == Material.water;
+		return world.getBlock(x, y + 1, z).getMaterial() == Material.WATER;
 	}
 
 	/************
@@ -86,7 +86,7 @@ public class BlockPaddy extends BlockPaddyBase
 	@SideOnly(Side.CLIENT)
 	public Item getItem(World world, int x, int y, int z)
 	{
-		return Item.getItemFromBlock(Blocks.dirt);
+		return Item.getItemFromBlock(Blocks.DIRT);
 	}
 
 	/************
@@ -95,7 +95,7 @@ public class BlockPaddy extends BlockPaddyBase
 	@Override
 	public Item getItemDropped(int meta, Random random, int par3)
 	{
-		return Item.getItemFromBlock(Blocks.dirt);
+		return Item.getItemFromBlock(Blocks.DIRT);
 	}
 
 	@Override

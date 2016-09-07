@@ -21,7 +21,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
-import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraft.util.EnumFacing;
 
 public abstract class BlockGrapeVineBase extends GrcBlockBase implements IPlantable, ICropDataProvider, IGrowable
 {
@@ -30,7 +30,7 @@ public abstract class BlockGrapeVineBase extends GrcBlockBase implements IPlanta
 
 	public BlockGrapeVineBase()
 	{
-		super(Material.plants);
+		super(Material.PLANTS);
 		this.itemDrop = new ItemStack((Item)null, 0);
 		this.growthRateMultiplier = 1.0f;
 	}
@@ -110,7 +110,7 @@ public abstract class BlockGrapeVineBase extends GrcBlockBase implements IPlanta
 				final Block block = world.getBlock(l2, y - 1, i3);
 				float f1 = 0.0F;
 
-				if (block != null && block == Blocks.farmland)
+				if (block != null && block == Blocks.FARMLAND)
 				{
 					f1 = 1.0F;
 
