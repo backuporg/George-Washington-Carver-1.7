@@ -37,7 +37,7 @@ public class ForcedFlowerBlockEntry extends AbstractFlowerBlockEntry
 		super(pBlock, pMeta);
 	}
 
-	public boolean canPlaceAt(World world, int x, int y, int z)
+	public boolean canPlaceAt(World world, BlockPos pos)
 	{
 		final Block existingBlock = world.getBlockState(x, y, z);
 		if (existingBlock != null)
