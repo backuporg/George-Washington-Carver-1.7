@@ -28,6 +28,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.block.state.IBlockState;
 
 public class ForcedFlowerBlockEntry extends AbstractFlowerBlockEntry
 {
@@ -41,13 +42,15 @@ public class ForcedFlowerBlockEntry extends AbstractFlowerBlockEntry
 		final Block existingBlock = world.getBlockState(x, y, z);
 		if (existingBlock != null)
 		{
-			if (!existingBlock.isReplaceable(world, x, y, z)) return false;
+			if (!existingBlock.isReplaceable(world, pos)) return false;
 		}
-		final Block soilBlock = world.getBlockState(x, y - 1, z);
+		
+		final IBlockState soilBlockState = world.getBlockState(pos.down();
+		final Block soilBlock = soilBlockState.getBlock();
 		if (soilBlock == null) return false;
 		if (getBlockState() instanceof IPlantable)
 		{
-			return soilBlock.canSustainPlant(world, x, y - 1, z, EnumFacing.UP, (IPlantable)getBlockState());
+			return soilBlock.canSustainPlant(world, pos.down(), EnumFacing.UP, (IPlantable)getBlock());
 		}
 		return true;
 	}
