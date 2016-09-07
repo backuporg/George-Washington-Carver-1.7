@@ -27,6 +27,7 @@ import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.BlockPos;
 
 public class ForcedFlowerBlockEntry extends AbstractFlowerBlockEntry
 {
