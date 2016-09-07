@@ -192,14 +192,14 @@ item.Bukkit.fluid.grc.honeyMead6.name=Funny Wet Hunni Bukkit
 tile.grc.BlockFluidHoney.name=Hunni
 tile.fluid.grc.honeyMead0.name=Wet Hunni
 tile.fluid.grc.honeyMead1.name=Funny Wet Hunni
-tile.fluid.grc.honeyMead2.name=Mead
-tile.fluid.grc.honeyMead3.name=Mead
-tile.fluid.grc.honeyMead4.name=Mead
-tile.fluid.grc.honeyMead5.name=Mead
-tile.fluid.grc.honeyMead6.name=Mead
+tile.fluid.grc.honeyMead2.name=Funny Wet Hunni
+tile.fluid.grc.honeyMead3.name=Funny Wet Hunni
+tile.fluid.grc.honeyMead4.name=Funny Wet Hunni
+tile.fluid.grc.honeyMead5.name=Funny Wet Hunni
+tile.fluid.grc.honeyMead6.name=Funny Wet Hunni
 
 # Fluid Tags
-grc.fluids.tag.mead=Mead
+grc.fluids.tag.mead=Funny Wet Hunni
 grc.fluids.tag.honey=Hunni
 
 # Other
