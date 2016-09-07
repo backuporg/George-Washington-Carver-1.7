@@ -64,7 +64,7 @@ tile.grcmilk.CheeseBlock.ricotta.aged.name=Ricotta Cheese (Aged)
 ## Other
 tile.grcmilk.ButterChurn.name=Butter Churn
 tile.grcmilk.CheeseBlock.name=Cheese Block
-tile.grcmilk.CheesePress.name=Cheese Press
+tile.grcmilk.CheesePress.name=Squishin Machien
 tile.grcmilk.CheeseVat.name=Cheese Vat
 tile.grcmilk.HangingCurds.name=Hanging Curds
 tile.grcmilk.HangingCurds.cheddar.name=Cheddar Curds
@@ -128,13 +128,13 @@ tile.grcmilk.BlockFluidRennet.name=Rennet
 tile.grcmilk.BlockFluidSkimMilk.name=Skim Milk
 tile.grcmilk.BlockFluidWhey.name=Whey
 ### Bottles
-item.grcmilk.FoodBottleFluidButterMilk.name=Butter Milk Bottle
-item.grcmilk.BottleFluidCream.name=Cream Bottle
-item.grcmilk.BottleFluidCurds.name=Milk Curds Bottle
-item.grcmilk.FoodBottleFluidMilk.name=Milk Bottle
-item.grcmilk.BottleFluidPasteurizedMilk.name=Pasteurized Milk Bottle
-item.grcmilk.BottleFluidRennet.name=Rennet Bottle
-item.grcmilk.FoodBottleFluidSkimMilk.name=Skim Milk Bottle
+item.grcmilk.FoodBottleFluidButterMilk.name=Butter Milk Buttl
+item.grcmilk.BottleFluidCream.name=Cream Buttl
+item.grcmilk.BottleFluidCurds.name=Milk Curds Buttl
+item.grcmilk.FoodBottleFluidMilk.name=Milk Buttl
+item.grcmilk.BottleFluidPasteurizedMilk.name=Pasteurized Milk Buttl
+item.grcmilk.BottleFluidRennet.name=Rennet Buttl
+item.grcmilk.FoodBottleFluidSkimMilk.name=Skim Milk Buttl
 item.grcmilk.FoodBottleFluidWhey.name=Whey Buttl
 ### Buckets
 item.bucket.fluid.grcmilk.ButterMilk.name=Butter Milk Bukkit
