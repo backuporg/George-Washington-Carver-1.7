@@ -29,6 +29,8 @@ import net.minecraftforge.common.IPlantable;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.block.state.IBlockState;
+import net.minecraftforge.common.EnumPlantType;
+import net.minecraftforge.common.IPlantable;
 
 public class ForcedFlowerBlockEntry extends AbstractFlowerBlockEntry
 {
