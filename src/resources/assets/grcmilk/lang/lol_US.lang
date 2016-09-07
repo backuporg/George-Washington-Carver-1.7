@@ -135,15 +135,15 @@ item.grcmilk.FoodBottleFluidMilk.name=Milk Bottle
 item.grcmilk.BottleFluidPasteurizedMilk.name=Pasteurized Milk Bottle
 item.grcmilk.BottleFluidRennet.name=Rennet Bottle
 item.grcmilk.FoodBottleFluidSkimMilk.name=Skim Milk Bottle
-item.grcmilk.FoodBottleFluidWhey.name=Whey Bottle
+item.grcmilk.FoodBottleFluidWhey.name=Whey Buttl
 ### Buckets
-item.bucket.fluid.grcmilk.ButterMilk.name=Butter Milk Bucket
-item.bucket.fluid.grcmilk.Cream.name=Cream Bucket
-item.bucket.fluid.grcmilk.Curds.name=Milk Curds Bucket
-item.bucket.fluid.grcmilk.Milk.name=Milk Bucket
-item.bucket.fluid.grcmilk.PasteurizedMilk.name=Pasteurized Milk Bucket
-item.bucket.fluid.grcmilk.Rennet.name=Rennet Bucket
-item.bucket.fluid.grcmilk.SkimMilk.name=Skim Milk Bucket
+item.bucket.fluid.grcmilk.ButterMilk.name=Butter Milk Bukkit
+item.bucket.fluid.grcmilk.Cream.name=Cream Bukkit
+item.bucket.fluid.grcmilk.Curds.name=Milk Curds Bukkit
+item.bucket.fluid.grcmilk.Milk.name=Milk Bukkit
+item.bucket.fluid.grcmilk.PasteurizedMilk.name=Pasteurized Milk Bukkit
+item.bucket.fluid.grcmilk.Rennet.name=Rennet Bukkit
+item.bucket.fluid.grcmilk.SkimMilk.name=Skim Milk Bukkit
 item.bucket.fluid.grcmilk.Whey.name=Whey Bukkit
 
 ## Booze
