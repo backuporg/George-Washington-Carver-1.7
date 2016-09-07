@@ -42,13 +42,13 @@ public class BlockFruitPress extends BlockCellarContainer
 	}
 
 	@Override
-	public boolean isRotatable(IBlockAccess world, int x, int y, int z, ForgeDirection side)
+	public boolean isRotatable(IBlockAccess world, int x, int y, int z, EnumFacing side)
 	{
 		return true;
 	}
 
 	@Override
-	public void doRotateBlock(World world, int x, int y, int z, ForgeDirection side)
+	public void doRotateBlock(World world, int x, int y, int z, EnumFacing side)
 	{
 		world.setBlockMetadataWithNotify(x, y, z, world.getBlockMetadata(x, y, z) ^ 1, BlockFlags.SYNC);
 		world.setBlockMetadataWithNotify(x, y + 1, z, world.getBlockMetadata(x, y + 1, z) ^ 1, BlockFlags.SYNC);
@@ -137,17 +137,17 @@ public class BlockFruitPress extends BlockCellarContainer
 	 * CONDITIONS
 	 ************/
 	@Override
-	public boolean isSideSolid(IBlockAccess world, int x, int y, int z, ForgeDirection side)
+	public boolean isSideSolid(IBlockAccess world, int x, int y, int z, EnumFacing side)
 	{
 		final int meta = world.getBlockMetadata(x, y, z);
 
 		if (meta == 0)
 		{
-			return side == ForgeDirection.EAST || side == ForgeDirection.WEST;
+			return side == EnumFacing.EAST || side == EnumFacing.WEST;
 		}
 		else if (meta == 1)
 		{
-			return side == ForgeDirection.NORTH || side == ForgeDirection.SOUTH;
+			return side == EnumFacing.NORTH || side == EnumFacing.SOUTH;
 		}
 
 		return isNormalCube(world, x, y, z);

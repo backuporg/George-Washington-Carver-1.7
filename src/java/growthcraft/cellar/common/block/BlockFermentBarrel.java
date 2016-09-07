@@ -52,7 +52,7 @@ public class BlockFermentBarrel extends BlockCellarContainer
 	}
 
 	@Override
-	public boolean isRotatable(IBlockAccess world, int x, int y, int z, ForgeDirection side)
+	public boolean isRotatable(IBlockAccess world, int x, int y, int z, EnumFacing side)
 	{
 		return true;
 	}

@@ -90,7 +90,7 @@ public class WorldGenBamboo extends WorldGenAbstractTree
 			{
 				final Block soil = world.getBlock(i, j - 1, k);
 				final boolean isSoil = soil != null &&
-					soil.canSustainPlant(world, i, j - 1, k, ForgeDirection.UP, (BlockSapling)Blocks.SAPLING);
+					soil.canSustainPlant(world, i, j - 1, k, EnumFacing.UP, (BlockSapling)Blocks.SAPLING);
 
 				int it;
 				Block block;

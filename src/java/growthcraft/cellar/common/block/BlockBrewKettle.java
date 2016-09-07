@@ -56,7 +56,7 @@ public class BlockBrewKettle extends BlockCellarContainer
 			final TileEntityBrewKettle te = getTileEntity(world, x, y, z);
 			if (te != null)
 			{
-				te.fill(ForgeDirection.UP, new FluidStack(FluidRegistry.WATER, rainFillPerUnit), true);
+				te.fill(EnumFacing.UP, new FluidStack(FluidRegistry.WATER, rainFillPerUnit), true);
 			}
 		}
 		super.fillWithRain(world, x, y, z);

@@ -78,7 +78,7 @@ public class WorldGenAppleTree extends WorldGenerator
 			else
 			{
 				final Block block2 = world.getBlock(x, y - 1, z);
-				final boolean isSoil = block2.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, (BlockSapling)Blocks.SAPLING);
+				final boolean isSoil = block2.canSustainPlant(world, x, y - 1, z, EnumFacing.UP, (BlockSapling)Blocks.SAPLING);
 
 				if (isSoil && y < 256 - l - 1)
 				{

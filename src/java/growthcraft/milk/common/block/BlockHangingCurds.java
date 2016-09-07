@@ -164,7 +164,7 @@ public class BlockHangingCurds extends GrcBlockContainer
 	public boolean canBlockStay(World world, int x, int y, int z)
 	{
 		return !world.isAirBlock(x, y + 1, z) &&
-			BlockCheck.isBlockPlacableOnSide(world, x, y + 1, z, ForgeDirection.DOWN);
+			BlockCheck.isBlockPlacableOnSide(world, x, y + 1, z, EnumFacing.DOWN);
 	}
 
 	@Override

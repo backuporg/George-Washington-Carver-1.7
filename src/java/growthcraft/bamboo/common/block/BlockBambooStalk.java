@@ -205,7 +205,7 @@ public class BlockBambooStalk extends GrcBlockBase
 
 	public boolean isBambooOnGround(World world, int x, int y, int z)
 	{
-		if (!BlockCheck.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, GrowthCraftBamboo.blocks.bambooShoot.getBlock())) return false;
+		if (!BlockCheck.canSustainPlant(world, x, y - 1, z, EnumFacing.UP, GrowthCraftBamboo.blocks.bambooShoot.getBlock())) return false;
 		return this == world.getBlock(x, y, z);
 	}
 

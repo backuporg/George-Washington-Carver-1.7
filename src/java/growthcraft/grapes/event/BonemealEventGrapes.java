@@ -107,7 +107,7 @@ public class BonemealEventGrapes
 			{
 				if (allowedGrowthCount <= 0) break;
 
-				final ForgeDirection dir = BlockCheck.DIR4[(start + i) % BlockCheck.DIR4.length];
+				final EnumFacing dir = BlockCheck.DIR4[(start + i) % BlockCheck.DIR4.length];
 				final int x = event.x + dir.offsetX;
 				final int z = event.z + dir.offsetZ;
 

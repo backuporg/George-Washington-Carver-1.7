@@ -74,7 +74,7 @@ public class ItemNetherPepper extends Item implements IPlantable
 		if (player.canPlayerEdit(x, y, z, dir, stack) && player.canPlayerEdit(x, y + 1, z, dir, stack))
 		{
 			final BlockNetherPepper plant = (BlockNetherPepper)getPlant(world, x, y, z);
-			if (BlockCheck.canSustainPlant(world, x, y, z, ForgeDirection.UP, plant))
+			if (BlockCheck.canSustainPlant(world, x, y, z, EnumFacing.UP, plant))
 			{
 				world.setBlock(x, y + 1, z, plant);
 				ItemUtils.consumeStack(stack);

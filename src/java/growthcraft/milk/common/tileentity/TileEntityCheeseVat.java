@@ -472,7 +472,7 @@ public class TileEntityCheeseVat extends GrcTileDeviceBase implements IItemHandl
 	}
 
 	@Override
-	public boolean canFill(ForgeDirection from, Fluid fluid)
+	public boolean canFill(EnumFacing from, Fluid fluid)
 	{
 		return FluidTest.hasTags(fluid, MilkFluidTags.MILK) ||
 			FluidTest.hasTags(fluid, MilkFluidTags.WHEY) ||
@@ -481,21 +481,21 @@ public class TileEntityCheeseVat extends GrcTileDeviceBase implements IItemHandl
 	}
 
 	@Override
-	protected FluidStack doDrain(ForgeDirection dir, int amount, boolean doDrain)
+	protected FluidStack doDrain(EnumFacing dir, int amount, boolean doDrain)
 	{
 		if (!isIdle()) return null;
 		return wasteFluidSlot.consume(amount, doDrain);
 	}
 
 	@Override
-	protected FluidStack doDrain(ForgeDirection dir, FluidStack stack, boolean doDrain)
+	protected FluidStack doDrain(EnumFacing dir, FluidStack stack, boolean doDrain)
 	{
 		if (!FluidTest.areStacksEqual(wasteFluidSlot.get(), stack)) return null;
 		return doDrain(dir, stack.amount, doDrain);
 	}
 
 	@Override
-	protected int doFill(ForgeDirection dir, FluidStack stack, boolean doFill)
+	protected int doFill(EnumFacing dir, FluidStack stack, boolean doFill)
 	{
 		if (!isIdle()) return 0;
 		int result = 0;

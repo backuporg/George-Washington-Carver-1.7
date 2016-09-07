@@ -147,9 +147,9 @@ public abstract class BlockPaddyBase extends GrcBlockBase implements IPaddy
 	}
 
 	@Override
-	public boolean isSideSolid(IBlockAccess world, int i, int j, int k, ForgeDirection side)
+	public boolean isSideSolid(IBlockAccess world, int i, int j, int k, EnumFacing side)
 	{
-		return ForgeDirection.UP != side;
+		return EnumFacing.UP != side;
 	}
 
 	@Override

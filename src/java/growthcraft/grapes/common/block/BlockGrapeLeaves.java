@@ -139,7 +139,7 @@ public class BlockGrapeLeaves extends BlockLeavesBase implements IBlockRope
 		{
 			if (canGrowOutwards(world, x, y, z))
 			{
-				final ForgeDirection dir = BlockCheck.DIR4[random.nextInt(4)];
+				final EnumFacing dir = BlockCheck.DIR4[random.nextInt(4)];
 
 				if (canGrowHere(world, x + dir.offsetX, y, z + dir.offsetZ))
 				{
@@ -190,7 +190,7 @@ public class BlockGrapeLeaves extends BlockLeavesBase implements IBlockRope
 		}
 		else
 		{
-			for (ForgeDirection dir : BlockCheck.DIR4)
+			for (EnumFacing dir : BlockCheck.DIR4)
 			{
 				for (int i = 1; i <= grapeVineSupportedLength; ++i)
 				{

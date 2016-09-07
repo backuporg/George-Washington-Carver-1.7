@@ -123,7 +123,7 @@ public class BlockBambooScaffold extends GrcBlockBase
 	@Override
 	public boolean canBlockStay(World world, int x, int y, int z)
 	{
-		if (world.getBlock(x, y -1 , z).isSideSolid(world, x, y - 1, z, ForgeDirection.UP)) return true;
+		if (world.getBlock(x, y -1 , z).isSideSolid(world, x, y - 1, z, EnumFacing.UP)) return true;
 		if (checkSides(world, x, y, z)) return true;
 
 		return false;
@@ -138,15 +138,15 @@ public class BlockBambooScaffold extends GrcBlockBase
 
 		if (!flag && !flag1 && !flag2 && !flag3) return false;
 
-		if (flag && world.getBlock(x + 1, y - 1, z).isSideSolid(world, x + 1, y - 1, z, ForgeDirection.UP)) return true;
-		if (flag1 && world.getBlock(x - 1, y - 1, z).isSideSolid(world, x - 1, y - 1, z, ForgeDirection.UP)) return true;
-		if (flag2 && world.getBlock(x, y - 1, z + 1).isSideSolid(world, x, y - 1, z + 1, ForgeDirection.UP)) return true;
-		if (flag3 && world.getBlock(x, y - 1, z - 1).isSideSolid(world, x, y - 1, z - 1, ForgeDirection.UP)) return true;
+		if (flag && world.getBlock(x + 1, y - 1, z).isSideSolid(world, x + 1, y - 1, z, EnumFacing.UP)) return true;
+		if (flag1 && world.getBlock(x - 1, y - 1, z).isSideSolid(world, x - 1, y - 1, z, EnumFacing.UP)) return true;
+		if (flag2 && world.getBlock(x, y - 1, z + 1).isSideSolid(world, x, y - 1, z + 1, EnumFacing.UP)) return true;
+		if (flag3 && world.getBlock(x, y - 1, z - 1).isSideSolid(world, x, y - 1, z - 1, EnumFacing.UP)) return true;
 
-		if (flag && world.getBlock(x + 2, y - 1, z).isSideSolid(world, x + 2, y - 1, z, ForgeDirection.UP)) return true;
-		if (flag1 && world.getBlock(x - 2, y - 1, z).isSideSolid(world, x - 2, y - 1, z, ForgeDirection.UP)) return true;
-		if (flag2 && world.getBlock(x, y - 1, z + 2).isSideSolid(world, x, y - 1, z + 2, ForgeDirection.UP)) return true;
-		if (flag3 && world.getBlock(x, y - 1, z - 2).isSideSolid(world, x, y - 1, z - 2, ForgeDirection.UP)) return true;
+		if (flag && world.getBlock(x + 2, y - 1, z).isSideSolid(world, x + 2, y - 1, z, EnumFacing.UP)) return true;
+		if (flag1 && world.getBlock(x - 2, y - 1, z).isSideSolid(world, x - 2, y - 1, z, EnumFacing.UP)) return true;
+		if (flag2 && world.getBlock(x, y - 1, z + 2).isSideSolid(world, x, y - 1, z + 2, EnumFacing.UP)) return true;
+		if (flag3 && world.getBlock(x, y - 1, z - 2).isSideSolid(world, x, y - 1, z - 2, EnumFacing.UP)) return true;
 
 		return false;
 	}
@@ -156,9 +156,9 @@ public class BlockBambooScaffold extends GrcBlockBase
 	 ************/
 
 	@Override
-	public boolean isSideSolid(IBlockAccess world, int x, int y, int z, ForgeDirection side)
+	public boolean isSideSolid(IBlockAccess world, int x, int y, int z, EnumFacing side)
 	{
-		return ForgeDirection.UP == side;
+		return EnumFacing.UP == side;
 	}
 
 	/************

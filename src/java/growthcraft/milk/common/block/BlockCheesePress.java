@@ -57,12 +57,12 @@ public class BlockCheesePress extends GrcBlockContainer
 	}
 
 	@Override
-	public boolean isRotatable(IBlockAccess world, int x, int y, int z, ForgeDirection side)
+	public boolean isRotatable(IBlockAccess world, int x, int y, int z, EnumFacing side)
 	{
 		return true;
 	}
 
-	public void doRotateBlock(World world, int x, int y, int z, ForgeDirection side)
+	public void doRotateBlock(World world, int x, int y, int z, EnumFacing side)
 	{
 		world.setBlockMetadataWithNotify(x, y, z, world.getBlockMetadata(x, y, z) ^ 1, BlockFlags.SYNC);
 	}

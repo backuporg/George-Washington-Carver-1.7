@@ -200,7 +200,7 @@ public class TileEntityButterChurn extends GrcTileDeviceBase implements IItemHan
 	}
 
 	@Override
-	public boolean canFill(ForgeDirection from, Fluid fluid)
+	public boolean canFill(EnumFacing from, Fluid fluid)
 	{
 		return MilkRegistry.instance().churn().isFluidIngredient(fluid);
 	}
@@ -212,9 +212,9 @@ public class TileEntityButterChurn extends GrcTileDeviceBase implements IItemHan
 	 * @return fluid drained
 	 */
 	@Override
-	protected FluidStack doDrain(ForgeDirection dir, int amount, boolean doDrain)
+	protected FluidStack doDrain(EnumFacing dir, int amount, boolean doDrain)
 	{
-		if (dir == ForgeDirection.UP) return null;
+		if (dir == EnumFacing.UP) return null;
 		return getActiveFluidSlot().consume(amount, doDrain);
 	}
 
@@ -225,9 +225,9 @@ public class TileEntityButterChurn extends GrcTileDeviceBase implements IItemHan
 	 * @return fluid drained
 	 */
 	@Override
-	protected FluidStack doDrain(ForgeDirection dir, FluidStack stack, boolean doDrain)
+	protected FluidStack doDrain(EnumFacing dir, FluidStack stack, boolean doDrain)
 	{
-		if (dir == ForgeDirection.UP) return null;
+		if (dir == EnumFacing.UP) return null;
 		final DeviceFluidSlot fluidSlot = getActiveFluidSlot();
 		if (FluidTest.areStacksEqual(fluidSlot.get(), stack))
 		{
@@ -245,9 +245,9 @@ public class TileEntityButterChurn extends GrcTileDeviceBase implements IItemHan
 	 * @return how much fluid was actually used
 	 */
 	@Override
-	protected int doFill(ForgeDirection dir, FluidStack stack, boolean doFill)
+	protected int doFill(EnumFacing dir, FluidStack stack, boolean doFill)
 	{
-		if (dir == ForgeDirection.UP) return 0;
+		if (dir == EnumFacing.UP) return 0;
 		int result = 0;
 
 		if (MilkRegistry.instance().churn().isFluidIngredient(stack))

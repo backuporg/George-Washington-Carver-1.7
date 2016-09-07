@@ -74,7 +74,7 @@ public class ItemNetherSquashSeeds extends Item implements IPlantable
 		if (player.canPlayerEdit(x, y, z, dir, stack) && player.canPlayerEdit(x, y - 1, z, dir, stack))
 		{
 			final BlockNetherSquashStem plant = (BlockNetherSquashStem)getPlant(world, x, y, z);
-			if (BlockCheck.canSustainPlant(world, x, y, z, ForgeDirection.DOWN, plant))
+			if (BlockCheck.canSustainPlant(world, x, y, z, EnumFacing.DOWN, plant))
 			{
 				world.setBlock(x, y - 1, z, plant);
 				ItemUtils.consumeStack(stack);

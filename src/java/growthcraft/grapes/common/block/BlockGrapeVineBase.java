@@ -140,7 +140,7 @@ public abstract class BlockGrapeVineBase extends GrcBlockBase implements IPlanta
 	@Override
 	public boolean canBlockStay(World world, int x, int y, int z)
 	{
-		return BlockCheck.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, this);
+		return BlockCheck.canSustainPlant(world, x, y - 1, z, EnumFacing.UP, this);
 	}
 
 	@Override

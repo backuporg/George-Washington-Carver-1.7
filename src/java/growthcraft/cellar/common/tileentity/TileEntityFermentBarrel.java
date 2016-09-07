@@ -376,7 +376,7 @@ public class TileEntityFermentBarrel extends TileEntityCellarDevice implements I
 	}
 
 	@Override
-	public boolean canFill(ForgeDirection from, Fluid fluid)
+	public boolean canFill(EnumFacing from, Fluid fluid)
 	{
 		final FluidStack fluidStack = getFluidStack(0);
 		if (fluidStack == null || fluidStack.getFluid() == null) return true;
@@ -384,25 +384,25 @@ public class TileEntityFermentBarrel extends TileEntityCellarDevice implements I
 	}
 
 	@Override
-	protected int doFill(ForgeDirection from, FluidStack resource, boolean shouldFill)
+	protected int doFill(EnumFacing from, FluidStack resource, boolean shouldFill)
 	{
 		return fillFluidTank(0, resource, shouldFill);
 	}
 
 	@Override
-	public boolean canDrain(ForgeDirection from, Fluid fluid)
+	public boolean canDrain(EnumFacing from, Fluid fluid)
 	{
 		return FluidTest.fluidMatches(getFluidStack(0), fluid);
 	}
 
 	@Override
-	protected FluidStack doDrain(ForgeDirection from, int maxDrain, boolean shouldDrain)
+	protected FluidStack doDrain(EnumFacing from, int maxDrain, boolean shouldDrain)
 	{
 		return drainFluidTank(0, maxDrain, shouldDrain);
 	}
 
 	@Override
-	protected FluidStack doDrain(ForgeDirection from, FluidStack resource, boolean shouldDrain)
+	protected FluidStack doDrain(EnumFacing from, FluidStack resource, boolean shouldDrain)
 	{
 		if (resource == null || !resource.isFluidEqual(getFluidStack(0)))
 		{
