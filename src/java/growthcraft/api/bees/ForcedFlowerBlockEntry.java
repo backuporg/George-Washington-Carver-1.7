@@ -25,11 +25,9 @@ package growthcraft.api.bees;
 
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
-import net.minecraftforge.common.IPlantable;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.block.state.IBlockState;
-import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 
 public class ForcedFlowerBlockEntry extends AbstractFlowerBlockEntry
@@ -43,7 +41,7 @@ public class ForcedFlowerBlockEntry extends AbstractFlowerBlockEntry
 	{
 		final IBlockState blockState = world.getBlockState(pos);
 		final Block existingBlock = blockState.getBlock();
-		
+
 		if (existingBlock != null)
 		{
 			if (!existingBlock.isReplaceable(world, pos)) return false;
