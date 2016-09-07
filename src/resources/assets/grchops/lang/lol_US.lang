@@ -1,9 +1,9 @@
 # Blocks
-tile.grc.hopVine.name=Hops
+tile.grc.hopVine.name=Hawpz
 
 # Items
-item.grc.hops.name=Hops
-item.grc.hopSeeds.name=Hop Seeds
+item.grc.hops.name=Hawpz
+item.grc.hopSeeds.name=Hawpz Seedz
 
 # Fluids
 fluid.grc.hopAle0=Ale Wort
