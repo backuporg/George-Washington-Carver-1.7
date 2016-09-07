@@ -230,7 +230,6 @@ public class NBTHelper
 		if (base instanceof NBTTagIntArray)
 		{
 			final NBTTagIntArray ary = (NBTTagIntArray)base;
-			for (int i : ary.func_150302_c())
 			{
 				coll.add(i);
 			}
