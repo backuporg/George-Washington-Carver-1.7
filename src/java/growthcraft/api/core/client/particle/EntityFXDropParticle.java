@@ -81,7 +81,7 @@ public class EntityFXDropParticle extends Particle
 		final int x = MathHelper.floor_double(this.posX);
 		final int y = MathHelper.floor_double(this.posY);
 		final int z = MathHelper.floor_double(this.posZ);
-		final Block block = worldObj.getBlock(x, y, z);
+		final Block block = worldObj.getBlockState(x, y, z);
 
 		final Material material = block.getMaterial();
 

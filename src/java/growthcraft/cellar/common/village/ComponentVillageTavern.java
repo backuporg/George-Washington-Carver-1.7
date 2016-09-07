@@ -128,7 +128,7 @@ public class ComponentVillageTavern extends StructureVillagePieces.Village
 			{
 				this.placeBlockAtCurrentPosition(world, Blocks.OAK_FENCE, 0, 9, 1, z, box);
 				this.placeBlockAtCurrentPosition(world, Blocks.WOODEN_PRESSURE_PLATE, 0, 9, 2, z, box);
-				this.placeBlockAtCurrentPosition(world, GrowthCraftCellar.blocks.fermentBarrel.getBlock(), this.getMetadataWithOffset(Blocks.LADDER, 4), 11, 2, z, box);
+				this.placeBlockAtCurrentPosition(world, GrowthCraftCellar.blocks.fermentBarrel.getBlockState(), this.getMetadataWithOffset(Blocks.LADDER, 4), 11, 2, z, box);
 			}
 
 			this.placeBlockAtCurrentPosition(world, Blocks.PLANKS, 0, 11, 1, z, box);

@@ -40,7 +40,7 @@ public class PaddyDataProvider implements IWailaDataProvider
 	@Optional.Method(modid="Waila")
 	public List<String> getWailaBody(ItemStack itemStack, List<String> tooltip, IWailaDataAccessor accessor, IWailaConfigHandler config)
 	{
-		final Block block = accessor.getBlock();
+		final Block block = accessor.getBlockState();
 		if (block instanceof IPaddy)
 		{
 			final IPaddy prov = (IPaddy)block;

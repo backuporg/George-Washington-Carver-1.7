@@ -42,7 +42,7 @@ public class GrcBambooModule extends ModIntegrationBase
 	protected void doPreInit()
 	{
 		GrowthCraftBees.blocks.beeBoxBamboo = GrowthCraftBees.blocks.newTypedDefinition(new BlockBeeBoxBamboo());
-		GrowthCraftBees.blocks.beeBoxBamboo.getBlock().setFlammability(20).setFireSpreadSpeed(5).setHarvestLevel("axe", 0);
+		GrowthCraftBees.blocks.beeBoxBamboo.getBlockState().setFlammability(20).setFireSpreadSpeed(5).setHarvestLevel("axe", 0);
 	}
 
 	@Override
@@ -50,7 +50,7 @@ public class GrcBambooModule extends ModIntegrationBase
 	{
 		if (GrowthCraftBees.blocks.beeBoxBamboo != null)
 		{
-			GameRegistry.registerBlock(GrowthCraftBees.blocks.beeBoxBamboo.getBlock(), ItemBlockBeeBox.class, "grc.BeeBox.Bamboo");
+			GameRegistry.registerBlock(GrowthCraftBees.blocks.beeBoxBamboo.getBlockState(), ItemBlockBeeBox.class, "grc.BeeBox.Bamboo");
 		}
 	}
 

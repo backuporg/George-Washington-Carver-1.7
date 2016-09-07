@@ -90,14 +90,14 @@ public abstract class BlockGrapeVineBase extends GrcBlockBase implements IPlanta
 
 	protected float getGrowthRate(World world, int x, int y, int z)
 	{
-		final Block l = world.getBlock(x, y, z - 1);
-		final Block i1 = world.getBlock(x, y, z + 1);
-		final Block j1 = world.getBlock(x - 1, y, z);
-		final Block k1 = world.getBlock(x + 1, y, z);
-		final Block l1 = world.getBlock(x - 1, y, z - 1);
-		final Block i2 = world.getBlock(x + 1, y, z - 1);
-		final Block j2 = world.getBlock(x + 1, y, z + 1);
-		final Block k2 = world.getBlock(x - 1, y, z + 1);
+		final Block l = world.getBlockState(x, y, z - 1);
+		final Block i1 = world.getBlockState(x, y, z + 1);
+		final Block j1 = world.getBlockState(x - 1, y, z);
+		final Block k1 = world.getBlockState(x + 1, y, z);
+		final Block l1 = world.getBlockState(x - 1, y, z - 1);
+		final Block i2 = world.getBlockState(x + 1, y, z - 1);
+		final Block j2 = world.getBlockState(x + 1, y, z + 1);
+		final Block k2 = world.getBlockState(x - 1, y, z + 1);
 		final boolean flag = this.isGrapeVine(j1) || this.isGrapeVine(k1);
 		final boolean flag1 = this.isGrapeVine(l) || this.isGrapeVine(i1);
 		final boolean flag2 = this.isGrapeVine(l1) || this.isGrapeVine(i2) || this.isGrapeVine(j2) || this.isGrapeVine(k2);
@@ -107,7 +107,7 @@ public abstract class BlockGrapeVineBase extends GrcBlockBase implements IPlanta
 		{
 			for (int i3 = z - 1; i3 <= z + 1; ++i3)
 			{
-				final Block block = world.getBlock(l2, y - 1, i3);
+				final Block block = world.getBlockState(l2, y - 1, i3);
 				float f1 = 0.0F;
 
 				if (block != null && block == Blocks.FARMLAND)

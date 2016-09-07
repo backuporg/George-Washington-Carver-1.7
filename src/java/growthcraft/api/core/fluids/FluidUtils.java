@@ -76,7 +76,7 @@ public class FluidUtils
 
 	public static FluidStack drainFluidBlock(World world, int x, int y, int z, boolean doDrain)
 	{
-		final Block block = world.getBlock(x, y, z);
+		final Block block = world.getBlockState(x, y, z);
 		if (block instanceof BlockFluidBase)
 		{
 			final BlockFluidBase bfb = (BlockFluidBase)block;

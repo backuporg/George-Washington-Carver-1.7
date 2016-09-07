@@ -175,7 +175,7 @@ public class BlockCheck
 	 */
 	public static boolean isRope(IBlockAccess world, int x, int y, int z)
 	{
-		final Block block = world.getBlock(x, y, z);
+		final Block block = world.getBlockState(x, y, z);
 		// TODO: IBlockRope is used for any block which can grow on Ropes,
 		// as well as Ropes themselves, we need someway to seperate them,
 		// either, IBlockRope.isRope(world, x, y, z) OR an additional interface
@@ -215,7 +215,7 @@ public class BlockCheck
 	 */
 	public static boolean canSustainPlant(IBlockAccess world, int x, int y, int z, EnumFacing EnumFacing, IPlantable plant)
 	{
-		final Block soil = world.getBlock(x, y, z);
+		final Block soil = world.getBlockState(x, y, z);
 		return canSustainPlantOn(world, x, y, z, EnumFacing, plant, soil);
 	}
 
@@ -232,7 +232,7 @@ public class BlockCheck
 	 */
 	public static Block getFarmableBlock(IBlockAccess world, int x, int y, int z, EnumFacing EnumFacing, IPlantable plant)
 	{
-		final Block soil = world.getBlock(x, y, z);
+		final Block soil = world.getBlockState(x, y, z);
 		if (canSustainPlantOn(world, x, y, z, EnumFacing, plant, soil))
 			return soil;
 		return null;
@@ -250,7 +250,7 @@ public class BlockCheck
 	public static boolean isBlockPlacableOnSide(World world, int x, int y, int z, EnumFacing EnumFacing)
 	{
 		if (world.isAirBlock(x, y, z)) return false;
-		final Block b = world.getBlock(x, y, z);
+		final Block b = world.getBlockState(x, y, z);
 		if (b != null)
 		{
 			return b.isBlockSolid(world, x, y, z, EnumFacing.ordinal());

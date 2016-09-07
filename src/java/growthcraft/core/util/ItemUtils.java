@@ -241,7 +241,7 @@ public class ItemUtils
 	 * @param stack - item stack to retrieve block from
 	 * @return block
 	 */
-	public static Block getBlock(ItemStack stack)
+	public static Block getBlockState(ItemStack stack)
 	{
 		if (stack == null) return null;
 		final Item item = stack.getItem();
@@ -259,7 +259,7 @@ public class ItemUtils
 	public static boolean equals(Block block, ItemStack stack)
 	{
 		if (stack == null) return false;
-		return block == getBlock(stack);
+		return block == getBlockState(stack);
 	}
 
 	/**
@@ -273,7 +273,7 @@ public class ItemUtils
 	public static boolean equals(Block block, int meta, ItemStack stack)
 	{
 		if (stack == null) return false;
-		return block == getBlock(stack) && meta == stack.getItemDamage();
+		return block == getBlockState(stack) && meta == stack.getItemDamage();
 	}
 
 	/**

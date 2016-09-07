@@ -36,7 +36,7 @@ public abstract class AbstractFlowerBlockEntry implements IFlowerBlockEntry
 		this.meta = pmeta;
 	}
 
-	public Block getBlock()
+	public Block getBlockState()
 	{
 		return block;
 	}

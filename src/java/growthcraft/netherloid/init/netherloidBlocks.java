@@ -87,7 +87,7 @@ public class netherloidBlocks extends GrcModuleBase
 		this.netherPaddyFieldFilled = new BlockDefinition(new BlockNetherPaddy(true));
 		this.netherPepper = new BlockDefinition(new BlockNetherPepper());
 		this.netherSquash = new BlockDefinition(new BlockNetherSquash());
-		this.netherSquashStem = new BlockDefinition(new BlockNetherSquashStem(netherSquash.getBlock()));
+		this.netherSquashStem = new BlockDefinition(new BlockNetherSquashStem(netherSquash.getBlockState()));
 	}
 
 	private void hideItems()
@@ -103,26 +103,26 @@ public class netherloidBlocks extends GrcModuleBase
 	@Override
 	public void register()
 	{
-		GameRegistry.registerBlock(netherBaalsRot.getBlock(), "grcnether.netherBaalsRot");
-		GameRegistry.registerBlock(netherCinderrot.getBlock(), "grcnether.netherCinderrot");
-		GameRegistry.registerBlock(netherFireLily.getBlock(), ItemNetherLilyPad.class, "grcnether.netherFireLily");
-		GameRegistry.registerBlock(netherKnifeBush.getBlock(), "grcnether.netherKnifeBush");
-		GameRegistry.registerBlock(netherMaliceFruit.getBlock(), "grcnether.netherMaliceFruit");
-		GameRegistry.registerBlock(netherMaliceLeaves.getBlock(), "grcnether.netherMaliceLeaves");
-		GameRegistry.registerBlock(netherMaliceLog.getBlock(), "grcnether.netherMaliceLog");
-		GameRegistry.registerBlock(netherMalicePlanks.getBlock(), "grcnether.netherMalicePlanks");
-		GameRegistry.registerBlock(netherMaliceSapling.getBlock(), "grcnether.netherMaliceSapling");
-		GameRegistry.registerBlock(netherMaraLotus.getBlock(), ItemNetherLilyPad.class, "grcnether.netherMaraLotus");
-		GameRegistry.registerBlock(netherMuertecap.getBlock(), "grcnether.netherMuertecap");
-		GameRegistry.registerBlock(netherPaddyField.getBlock(), "grcnether.netherPaddyField");
-		GameRegistry.registerBlock(netherPaddyFieldFilled.getBlock(), "grcnether.netherPaddyFieldFilled");
-		GameRegistry.registerBlock(netherPepper.getBlock(), "grcnether.netherPepperBlock");
-		GameRegistry.registerBlock(netherSquash.getBlock(), "grcnether.netherSquash");
-		GameRegistry.registerBlock(netherSquashStem.getBlock(), "grcnether.netherSquashStem");
+		GameRegistry.registerBlock(netherBaalsRot.getBlockState(), "grcnether.netherBaalsRot");
+		GameRegistry.registerBlock(netherCinderrot.getBlockState(), "grcnether.netherCinderrot");
+		GameRegistry.registerBlock(netherFireLily.getBlockState(), ItemNetherLilyPad.class, "grcnether.netherFireLily");
+		GameRegistry.registerBlock(netherKnifeBush.getBlockState(), "grcnether.netherKnifeBush");
+		GameRegistry.registerBlock(netherMaliceFruit.getBlockState(), "grcnether.netherMaliceFruit");
+		GameRegistry.registerBlock(netherMaliceLeaves.getBlockState(), "grcnether.netherMaliceLeaves");
+		GameRegistry.registerBlock(netherMaliceLog.getBlockState(), "grcnether.netherMaliceLog");
+		GameRegistry.registerBlock(netherMalicePlanks.getBlockState(), "grcnether.netherMalicePlanks");
+		GameRegistry.registerBlock(netherMaliceSapling.getBlockState(), "grcnether.netherMaliceSapling");
+		GameRegistry.registerBlock(netherMaraLotus.getBlockState(), ItemNetherLilyPad.class, "grcnether.netherMaraLotus");
+		GameRegistry.registerBlock(netherMuertecap.getBlockState(), "grcnether.netherMuertecap");
+		GameRegistry.registerBlock(netherPaddyField.getBlockState(), "grcnether.netherPaddyField");
+		GameRegistry.registerBlock(netherPaddyFieldFilled.getBlockState(), "grcnether.netherPaddyFieldFilled");
+		GameRegistry.registerBlock(netherPepper.getBlockState(), "grcnether.netherPepperBlock");
+		GameRegistry.registerBlock(netherSquash.getBlockState(), "grcnether.netherSquash");
+		GameRegistry.registerBlock(netherSquashStem.getBlockState(), "grcnether.netherSquashStem");
 
-		OreDictionary.registerOre("plankMaliceWood", netherMalicePlanks.getBlock());
+		OreDictionary.registerOre("plankMaliceWood", netherMalicePlanks.getBlockState());
 
-		PlayerInteractEventPaddy.paddyBlocks.put(Blocks.SOUL_SAND, netherPaddyField.getBlock());
+		PlayerInteractEventPaddy.paddyBlocks.put(Blocks.SOUL_SAND, netherPaddyField.getBlockState());
 
 		hideItems();
 	}

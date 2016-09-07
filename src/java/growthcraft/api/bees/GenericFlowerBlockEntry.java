@@ -35,6 +35,6 @@ public class GenericFlowerBlockEntry extends AbstractFlowerBlockEntry
 
 	public boolean canPlaceAt(World world, int x, int y, int z)
 	{
-		return getBlock().canPlaceBlockAt(world, x, y, z);
+		return getBlockState().canPlaceBlockAt(world, x, y, z);
 	}
 }

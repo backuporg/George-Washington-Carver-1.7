@@ -48,7 +48,7 @@ public class SaltBucketEntry implements IBucketEntry
 	@Override
 	public boolean matches(@Nonnull World world, @Nonnull MovingObjectPosition pos)
 	{
-		if (Blocks.WATER.equals(world.getBlock(pos.blockX, pos.blockY, pos.blockZ)))
+		if (Blocks.WATER.equals(world.getBlockState(pos.blockX, pos.blockY, pos.blockZ)))
 		{
 			if (world.getBlockMetadata(pos.blockX, pos.blockY, pos.blockZ) == 0)
 			{

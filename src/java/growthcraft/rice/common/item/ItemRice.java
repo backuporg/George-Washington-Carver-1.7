@@ -34,11 +34,11 @@ public class ItemRice extends GrcItemBase
 		}
 		else if (player.canPlayerEdit(x, y, z, EnumFacing, stack) && player.canPlayerEdit(x, y + 1, z, EnumFacing, stack))
 		{
-			final Block soil = world.getBlock(x, y, z);
+			final Block soil = world.getBlockState(x, y, z);
 
 			if (soil != null && RiceBlockCheck.isPaddy(soil) && world.isAirBlock(x, y + 1, z) && world.getBlockMetadata(x, y, z) > 0)
 			{
-				world.setBlock(x, y + 1, z, GrowthCraftRice.blocks.riceBlock.getBlock());
+				world.setBlock(x, y + 1, z, GrowthCraftRice.blocks.riceBlock.getBlockState());
 				--stack.stackSize;
 				return true;
 			}

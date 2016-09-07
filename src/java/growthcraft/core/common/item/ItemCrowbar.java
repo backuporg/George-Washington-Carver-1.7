@@ -82,7 +82,7 @@ public class ItemCrowbar extends GrcItemBase implements IToolWrench
 	@Override
 	public boolean onItemUseFirst(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ)
 	{
-		final Block block = world.getBlock(x, y, z);
+		final Block block = world.getBlockState(x, y, z);
 		if (block == null) return false;
 		if (player.isSneaking() != isShiftRotation(block.getClass())) return false;
 		if (block.rotateBlock(world, x, y, z, EnumFacing.getOrientation(side)))

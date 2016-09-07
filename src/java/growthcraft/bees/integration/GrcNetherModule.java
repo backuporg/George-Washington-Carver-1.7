@@ -42,7 +42,7 @@ public class GrcNetherModule extends ModIntegrationBase
 	protected void doPreInit()
 	{
 		GrowthCraftBees.blocks.beeBoxNether = GrowthCraftBees.blocks.newTypedDefinition(new BlockBeeBoxNether());
-		GrowthCraftBees.blocks.beeBoxNether.getBlock().setHarvestLevel("axe", 0);
+		GrowthCraftBees.blocks.beeBoxNether.getBlockState().setHarvestLevel("axe", 0);
 	}
 
 	@Override
@@ -50,7 +50,7 @@ public class GrcNetherModule extends ModIntegrationBase
 	{
 		if (GrowthCraftBees.blocks.beeBoxNether != null)
 		{
-			GameRegistry.registerBlock(GrowthCraftBees.blocks.beeBoxNether.getBlock(), ItemBlockBeeBox.class, "grc.BeeBox.Nether");
+			GameRegistry.registerBlock(GrowthCraftBees.blocks.beeBoxNether.getBlockState(), ItemBlockBeeBox.class, "grc.BeeBox.Nether");
 		}
 	}
 

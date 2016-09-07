@@ -84,7 +84,7 @@ public class GrowthCraftGrapes
 		creativeTab = new CreativeTabsGrowthcraftGrapes("creative_tab_grcgrapes");
 		modules.preInit();
 		register();
-		blocks.grapeVine1.getBlock().setItemDrop(items.grapeSeeds.asStack(1));
+		blocks.grapeVine1.getBlockState().setItemDrop(items.grapeSeeds.asStack(1));
 	}
 
 	private void register()
@@ -98,7 +98,7 @@ public class GrowthCraftGrapes
 		//====================
 		// ADDITIONAL PROPS.
 		//====================
-		Blocks.FIRE.setFireInfo(blocks.grapeLeaves.getBlock(), 30, 60);
+		Blocks.FIRE.setFireInfo(blocks.grapeLeaves.getBlockState(), 30, 60);
 
 		//====================
 		// ORE DICTIONARY

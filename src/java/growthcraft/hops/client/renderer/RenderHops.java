@@ -45,7 +45,7 @@ public class RenderHops implements ISimpleBlockRenderingHandler
 
 			if (meta == 0 || meta == 1)
 			{
-				final Block blockBelow = world.getBlock(x, y - 1, z);
+				final Block blockBelow = world.getBlockState(x, y - 1, z);
 				if (meta == 0 || hopsBlock != blockBelow)
 				{
 					renderer.setOverrideBlockTexture(hopsBlock.getIconByIndex(2));

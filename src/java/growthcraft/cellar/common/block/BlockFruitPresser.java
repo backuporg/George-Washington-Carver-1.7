@@ -63,7 +63,7 @@ public class BlockFruitPresser extends BlockCellarContainer implements IWrenchab
 	@Override
 	public boolean isRotatable(IBlockAccess world, int x, int y, int z, EnumFacing side)
 	{
-		final Block below = world.getBlock(x, y - 1, z);
+		final Block below = world.getBlockState(x, y - 1, z);
 		if (below instanceof IRotatableBlock)
 		{
 			return ((IRotatableBlock)below).isRotatable(world, x, y - 1, z, side);
@@ -76,7 +76,7 @@ public class BlockFruitPresser extends BlockCellarContainer implements IWrenchab
 	{
 		if (isRotatable(world, x, y, z, side))
 		{
-			final Block below = world.getBlock(x, y - 1, z);
+			final Block below = world.getBlockState(x, y - 1, z);
 			return below.rotateBlock(world, x, y - 1, z, side);
 		}
 		return false;
@@ -86,7 +86,7 @@ public class BlockFruitPresser extends BlockCellarContainer implements IWrenchab
 	@Override
 	public boolean wrenchBlock(World world, int x, int y, int z, EntityPlayer player, ItemStack wrench)
 	{
-		final Block below = world.getBlock(x, y - 1, z);
+		final Block below = world.getBlockState(x, y - 1, z);
 		if (below instanceof BlockFruitPress)
 		{
 			return ((BlockFruitPress)below).wrenchBlock(world, x, y - 1, z, player, wrench);
@@ -98,7 +98,7 @@ public class BlockFruitPresser extends BlockCellarContainer implements IWrenchab
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int meta, float par7, float par8, float par9)
 	{
 		if (world.isRemote) return true;
-		final Block below = world.getBlock(x, y - 1, z);
+		final Block below = world.getBlockState(x, y - 1, z);
 		if (below instanceof BlockFruitPress)
 		{
 			return ((BlockFruitPress)below).tryWrenchItem(player, world, x, y - 1, z);
@@ -170,7 +170,7 @@ public class BlockFruitPresser extends BlockCellarContainer implements IWrenchab
 	@Override
 	public boolean canBlockStay(World world, int x, int y, int z)
 	{
-		return GrowthCraftCellar.blocks.fruitPress.getBlock() == world.getBlock(x, y - 1, z);
+		return GrowthCraftCellar.blocks.fruitPress.getBlockState() == world.getBlockState(x, y - 1, z);
 	}
 
 	@Override

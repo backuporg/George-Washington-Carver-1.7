@@ -24,7 +24,7 @@ public class TileEntityFruitPresser extends GrcTileBase
 	{
 		super.updateEntity();
 
-		if (GrowthCraftCellar.blocks.fruitPresser.getBlock() != getBlockType())
+		if (GrowthCraftCellar.blocks.fruitPresser.getBlockState() != getBlockType())
 		{
 			invalidate();
 		}

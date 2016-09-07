@@ -38,7 +38,7 @@ public class BlockFruitPress extends BlockCellarContainer
 
 	private Block getPresserBlock()
 	{
-		return GrowthCraftCellar.blocks.fruitPresser.getBlock();
+		return GrowthCraftCellar.blocks.fruitPresser.getBlockState();
 	}
 
 	@Override
@@ -66,10 +66,10 @@ public class BlockFruitPress extends BlockCellarContainer
 	{
 		if (!world.isRemote)
 		{
-			final Block block = world.getBlock(x, y, z - 1);
-			final Block block1 = world.getBlock(x, y, z + 1);
-			final Block block2 = world.getBlock(x - 1, y, z);
-			final Block block3 = world.getBlock(x + 1, y, z);
+			final Block block = world.getBlockState(x, y, z - 1);
+			final Block block1 = world.getBlockState(x, y, z + 1);
+			final Block block2 = world.getBlockState(x - 1, y, z);
+			final Block block3 = world.getBlockState(x + 1, y, z);
 			byte meta = 3;
 
 			if (block.func_149730_j() && !block1.func_149730_j())
@@ -166,7 +166,7 @@ public class BlockFruitPress extends BlockCellarContainer
 	 */
 	public boolean presserIsAbove(World world, int x, int y, int z)
 	{
-		return getPresserBlock() == world.getBlock(x, y + 1, z);
+		return getPresserBlock() == world.getBlockState(x, y + 1, z);
 	}
 
 	@Override

@@ -37,16 +37,16 @@ public class ForcedFlowerBlockEntry extends AbstractFlowerBlockEntry
 
 	public boolean canPlaceAt(World world, int x, int y, int z)
 	{
-		final Block existingBlock = world.getBlock(x, y, z);
+		final Block existingBlock = world.getBlockState(x, y, z);
 		if (existingBlock != null)
 		{
 			if (!existingBlock.isReplaceable(world, x, y, z)) return false;
 		}
-		final Block soilBlock = world.getBlock(x, y - 1, z);
+		final Block soilBlock = world.getBlockState(x, y - 1, z);
 		if (soilBlock == null) return false;
-		if (getBlock() instanceof IPlantable)
+		if (getBlockState() instanceof IPlantable)
 		{
-			return soilBlock.canSustainPlant(world, x, y - 1, z, EnumFacing.UP, (IPlantable)getBlock());
+			return soilBlock.canSustainPlant(world, x, y - 1, z, EnumFacing.UP, (IPlantable)getBlockState());
 		}
 		return true;
 	}

@@ -57,7 +57,7 @@ public class ItemNetherSquashSeeds extends Item implements IPlantable
 	@Override
 	public Block getPlant(IBlockAccess world, int x, int y, int z)
 	{
-		return netherloid.blocks.netherSquashStem.getBlock();
+		return netherloid.blocks.netherSquashStem.getBlockState();
 	}
 
 	@Override

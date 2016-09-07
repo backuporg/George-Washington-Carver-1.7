@@ -62,7 +62,7 @@ public class BlockKeySchema implements ICommentable, IValidatable
 		this.comment = "";
 	}
 
-	public Block getBlock()
+	public Block getBlockState()
 	{
 		if (mod_id != null && name != null)
 		{
@@ -73,7 +73,7 @@ public class BlockKeySchema implements ICommentable, IValidatable
 
 	public BlockKey toBlockKey()
 	{
-		final Block block = getBlock();
+		final Block block = getBlockState();
 		if (block != null)
 		{
 			return new BlockKey(block, meta);
@@ -96,7 +96,7 @@ public class BlockKeySchema implements ICommentable, IValidatable
 	@Override
 	public boolean isValid()
 	{
-		return getBlock() != null;
+		return getBlockState() != null;
 	}
 
 	@Override

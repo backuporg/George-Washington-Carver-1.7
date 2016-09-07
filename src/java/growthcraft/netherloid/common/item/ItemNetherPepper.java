@@ -57,7 +57,7 @@ public class ItemNetherPepper extends Item implements IPlantable
 	@Override
 	public Block getPlant(IBlockAccess world, int x, int y, int z)
 	{
-		return netherloid.blocks.netherPepper.getBlock();
+		return netherloid.blocks.netherPepper.getBlockState();
 	}
 
 	@Override

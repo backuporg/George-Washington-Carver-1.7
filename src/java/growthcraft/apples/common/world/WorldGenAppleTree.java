@@ -18,7 +18,7 @@ public class WorldGenAppleTree extends WorldGenerator
 	private final int metaWood      = 0;
 	private final int metaLeaves    = 0;
 	private final Block log         = Blocks.LOG;
-	private final Block leaves      = GrowthCraftApples.blocks.appleLeaves.getBlock();
+	private final Block leaves      = GrowthCraftApples.blocks.appleLeaves.getBlockState();
 
 	public WorldGenAppleTree(boolean doblocknotify)
 	{
@@ -56,7 +56,7 @@ public class WorldGenAppleTree extends WorldGenerator
 					{
 						if (i1 >= 0 && i1 < 256)
 						{
-							block = world.getBlock(j1, i1, k1);
+							block = world.getBlockState(j1, i1, k1);
 
 							if (!this.isReplaceable(world, j1, i1, k1))
 							{
@@ -77,7 +77,7 @@ public class WorldGenAppleTree extends WorldGenerator
 			}
 			else
 			{
-				final Block block2 = world.getBlock(x, y - 1, z);
+				final Block block2 = world.getBlockState(x, y - 1, z);
 				final boolean isSoil = block2.canSustainPlant(world, x, y - 1, z, EnumFacing.UP, (BlockSapling)Blocks.SAPLING);
 
 				if (isSoil && y < 256 - l - 1)
@@ -105,7 +105,7 @@ public class WorldGenAppleTree extends WorldGenerator
 
 								if (Math.abs(j2) != l1 || Math.abs(l2) != l1 || random.nextInt(2) != 0 && i3 != 0)
 								{
-									final Block block1 = world.getBlock(i2, k1, k2);
+									final Block block1 = world.getBlockState(i2, k1, k2);
 
 									if (block1.isAir(world, i2, k1, k2) || block1.isLeaves(world, i2, k1, k2))
 									{
@@ -118,7 +118,7 @@ public class WorldGenAppleTree extends WorldGenerator
 
 					for (k1 = 0; k1 < l; ++k1)
 					{
-						block = world.getBlock(x, y + k1, z);
+						block = world.getBlockState(x, y + k1, z);
 
 						if (block.isAir(world, x, y + k1, z) || block.isLeaves(world, x, y + k1, z))
 						{
@@ -154,7 +154,7 @@ public class WorldGenAppleTree extends WorldGenerator
 
 	protected boolean isReplaceable(World world, int x, int y, int z)
 	{
-		final Block block = world.getBlock(x, y, z);
+		final Block block = world.getBlockState(x, y, z);
 		return block.isAir(world, x, y, z) ||
 			block.isLeaves(world, x, y, z) ||
 			block.isWood(world, x, y, z) ||

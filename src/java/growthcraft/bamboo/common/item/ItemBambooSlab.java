@@ -10,9 +10,9 @@ public class ItemBambooSlab extends ItemSlab
 	public ItemBambooSlab(Block block)
 	{
 		super(block,
-			GrowthCraftBamboo.blocks.bambooSingleSlab.getBlock(),
-			GrowthCraftBamboo.blocks.bambooDoubleSlab.getBlock(),
-			GrowthCraftBamboo.blocks.bambooDoubleSlab.getBlock() == block
+			GrowthCraftBamboo.blocks.bambooSingleSlab.getBlockState(),
+			GrowthCraftBamboo.blocks.bambooDoubleSlab.getBlockState(),
+			GrowthCraftBamboo.blocks.bambooDoubleSlab.getBlockState() == block
 		);
 		setUnlocalizedName("grc.bambooSlab");
 	}

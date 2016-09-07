@@ -134,10 +134,10 @@ public class RenderBambooFence implements ISimpleBlockRenderingHandler
 			boolean flag1 = false;
 			boolean flag2 = false;
 
-			final Block idXneg = world.getBlock(x - 1, y, z);
-			final Block idXpos = world.getBlock(x + 1, y, z);
-			final Block idZneg = world.getBlock(x, y, z - 1);
-			final Block idZpos = world.getBlock(x, y, z + 1);
+			final Block idXneg = world.getBlockState(x - 1, y, z);
+			final Block idXpos = world.getBlockState(x + 1, y, z);
+			final Block idZneg = world.getBlockState(x, y, z - 1);
+			final Block idZpos = world.getBlockState(x, y, z + 1);
 
 			final int metaXneg = world.getBlockMetadata(x - 1, y, z);
 			final int metaXpos = world.getBlockMetadata(x + 1, y, z);

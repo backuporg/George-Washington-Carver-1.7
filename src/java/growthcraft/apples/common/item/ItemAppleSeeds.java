@@ -24,7 +24,7 @@ public class ItemAppleSeeds extends GrcItemBase implements IPlantable
 	public ItemAppleSeeds()
 	{
 		super();
-		this.cropBlock = GrowthCraftApples.blocks.appleSapling.getBlock();
+		this.cropBlock = GrowthCraftApples.blocks.appleSapling.getBlockState();
 		this.setUnlocalizedName("grc.appleSeeds");
 		this.setCreativeTab(GrowthCraftCore.creativeTab);
 	}
@@ -35,7 +35,7 @@ public class ItemAppleSeeds extends GrcItemBase implements IPlantable
 	@Override
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int EnumFacing, float par8, float par9, float par10)
 	{
-		final Block block = world.getBlock(x, y, z);
+		final Block block = world.getBlockState(x, y, z);
 		if (block == Blocks.SNOW_LAYER && (world.getBlockMetadata(x, y, z) & 7) < 1)
 		{
 			EnumFacing = 1;
@@ -90,7 +90,7 @@ public class ItemAppleSeeds extends GrcItemBase implements IPlantable
 
 				if (world.setBlock(x, y, z, cropBlock, meta, 3))
 				{
-					if (world.getBlock(x, y, z) == cropBlock)
+					if (world.getBlockState(x, y, z) == cropBlock)
 					{
 						cropBlock.onBlockPlacedBy(world, x, y, z, player, stack);
 						cropBlock.onPostBlockPlaced(world, x, y, z, meta);

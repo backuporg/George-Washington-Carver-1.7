@@ -54,7 +54,7 @@ public class GrcBeesBlocks extends GrcModuleBlocks
 	public void preInit()
 	{
 		this.beeBox  = newTypedDefinition(new BlockBeeBox());
-		beeBox.getBlock().setFlammability(20).setFireSpreadSpeed(5).setHarvestLevel("axe", 0);
+		beeBox.getBlockState().setFlammability(20).setFireSpreadSpeed(5).setHarvestLevel("axe", 0);
 		this.beeHive = newDefinition(new BlockBeeHive());
 	}
 

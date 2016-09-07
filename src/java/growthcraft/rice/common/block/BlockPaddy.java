@@ -76,7 +76,7 @@ public class BlockPaddy extends BlockPaddyBase
 	@Override
 	public boolean isBelowFillingFluid(IBlockAccess world, int x, int y, int z)
 	{
-		return world.getBlock(x, y + 1, z).getMaterial() == Material.WATER;
+		return world.getBlockState(x, y + 1, z).getMaterial() == Material.WATER;
 	}
 
 	/************

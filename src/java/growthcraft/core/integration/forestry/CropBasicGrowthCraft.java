@@ -44,7 +44,7 @@ public class CropBasicGrowthCraft extends AbstractForestryCrop
 	@Override
 	protected boolean isCrop(Point3 pos)
 	{
-		return getBlock(pos) == block && getBlockMeta(pos) == meta;
+		return getBlockState(pos) == block && getBlockMeta(pos) == meta;
 	}
 
 	@Override

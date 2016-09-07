@@ -205,7 +205,7 @@ public class GrcMilkItems extends GrcModuleItems
 
 		if (seedThistle != null && GrowthCraftMilk.blocks.thistle != null)
 		{
-			GameRegistry.addShapelessRecipe(seedThistle.asStack(2), GrowthCraftMilk.blocks.thistle.getBlock());
+			GameRegistry.addShapelessRecipe(seedThistle.asStack(2), GrowthCraftMilk.blocks.thistle.getBlockState());
 		}
 
 		for (EnumIceCream e : EnumIceCream.VALUES)

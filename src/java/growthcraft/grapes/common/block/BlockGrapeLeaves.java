@@ -47,7 +47,7 @@ public class BlockGrapeLeaves extends BlockLeavesBase implements IBlockRope
 
 	private boolean isTrunk(World world, int x, int y, int z)
 	{
-		return GrapeBlockCheck.isGrapeVineTrunk(world.getBlock(x, y, z));
+		return GrapeBlockCheck.isGrapeVineTrunk(world.getBlockState(x, y, z));
 	}
 
 	public boolean isSupportedByTrunk(World world, int x, int y, int z)
@@ -66,19 +66,19 @@ public class BlockGrapeLeaves extends BlockLeavesBase implements IBlockRope
 	 */
 	public boolean canGrowOutwardsOnRope(World world, int x, int y, int z)
 	{
-		if (BlockCheck.isRope(world.getBlock(x + 1, y, z))) return true;
-		if (BlockCheck.isRope(world.getBlock(x - 1, y, z))) return true;
-		if (BlockCheck.isRope(world.getBlock(x, y, z + 1))) return true;
-		if (BlockCheck.isRope(world.getBlock(x, y, z - 1))) return true;
+		if (BlockCheck.isRope(world.getBlockState(x + 1, y, z))) return true;
+		if (BlockCheck.isRope(world.getBlockState(x - 1, y, z))) return true;
+		if (BlockCheck.isRope(world.getBlockState(x, y, z + 1))) return true;
+		if (BlockCheck.isRope(world.getBlockState(x, y, z - 1))) return true;
 		return false;
 	}
 
 	public boolean canGrowOutwards(World world, int x, int y, int z)
 	{
-		final boolean leavesTotheSouth = world.getBlock(x, y, z + 1) == this;
-		final boolean leavesToTheNorth = world.getBlock(x, y, z - 1) == this;
-		final boolean leavesToTheEast = world.getBlock(x + 1, y, z) == this;
-		final boolean leavesToTheWest = world.getBlock(x - 1, y, z) == this;
+		final boolean leavesTotheSouth = world.getBlockState(x, y, z + 1) == this;
+		final boolean leavesToTheNorth = world.getBlockState(x, y, z - 1) == this;
+		final boolean leavesToTheEast = world.getBlockState(x + 1, y, z) == this;
+		final boolean leavesToTheWest = world.getBlockState(x - 1, y, z) == this;
 
 		if (!leavesTotheSouth && !leavesToTheNorth && !leavesToTheEast && !leavesToTheWest) return false;
 
@@ -103,7 +103,7 @@ public class BlockGrapeLeaves extends BlockLeavesBase implements IBlockRope
 	 */
 	public boolean canGrowHere(World world, int x, int y, int z)
 	{
-		if (BlockCheck.isRope(world.getBlock(x, y, z)))
+		if (BlockCheck.isRope(world.getBlockState(x, y, z)))
 		{
 			return canGrowOutwards(world, x, y, z);
 		}
@@ -112,7 +112,7 @@ public class BlockGrapeLeaves extends BlockLeavesBase implements IBlockRope
 
 	private void setGrapeBlock(World world, int x, int y, int z)
 	{
-		world.setBlock(x, y, z, GrowthCraftGrapes.blocks.grapeBlock.getBlock(), 0, BlockFlags.UPDATE_AND_SYNC);
+		world.setBlock(x, y, z, GrowthCraftGrapes.blocks.grapeBlock.getBlockState(), 0, BlockFlags.UPDATE_AND_SYNC);
 	}
 
 	public boolean growGrapeBlock(World world, int x, int y, int z)
@@ -157,7 +157,7 @@ public class BlockGrapeLeaves extends BlockLeavesBase implements IBlockRope
 	{
 		if (!this.canBlockStay(world, x, y, z))
 		{
-			world.setBlock(x, y, z, GrowthCraftCore.blocks.ropeBlock.getBlock());
+			world.setBlock(x, y, z, GrowthCraftCore.blocks.ropeBlock.getBlockState());
 		}
 		else
 		{
@@ -196,7 +196,7 @@ public class BlockGrapeLeaves extends BlockLeavesBase implements IBlockRope
 				{
 					final int bx = x + EnumFacing.offsetX * i;
 					final int bz = z + EnumFacing.offsetZ * i;
-					if (world.getBlock(bx, y, bz) != this)
+					if (world.getBlockState(bx, y, bz) != this)
 					{
 						break;
 					}
@@ -235,7 +235,7 @@ public class BlockGrapeLeaves extends BlockLeavesBase implements IBlockRope
 	@Override
 	public boolean canConnectRopeTo(IBlockAccess world, int x, int y, int z)
 	{
-		if (world.getBlock(x, y, z) instanceof IBlockRope)
+		if (world.getBlockState(x, y, z) instanceof IBlockRope)
 		{
 			return true;
 		}

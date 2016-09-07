@@ -135,7 +135,7 @@ public class BeesRegistry implements IBeesRegistry
 
 	public void addFlower(@Nonnull IFlowerBlockEntry entry)
 	{
-		addFlower(new BlockKey(entry.getBlock(), entry.getMetadata()), entry);
+		addFlower(new BlockKey(entry.getBlockState(), entry.getMetadata()), entry);
 	}
 
 	/**

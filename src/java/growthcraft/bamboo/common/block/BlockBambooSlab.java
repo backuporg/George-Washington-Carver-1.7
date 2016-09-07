@@ -52,7 +52,7 @@ public class BlockBambooSlab extends BlockSlab
 	@SideOnly(Side.CLIENT)
 	private static boolean isBlockSingleSlab(Block block)
 	{
-		return block == GrowthCraftBamboo.blocks.bambooSingleSlab.getBlock();
+		return block == GrowthCraftBamboo.blocks.bambooSingleSlab.getBlockState();
 	}
 
 	@Override
@@ -83,6 +83,6 @@ public class BlockBambooSlab extends BlockSlab
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int meta)
 	{
-		return GrowthCraftBamboo.blocks.bambooBlock.getBlock().getIcon(side, meta);
+		return GrowthCraftBamboo.blocks.bambooBlock.getBlockState().getIcon(side, meta);
 	}
 }

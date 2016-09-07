@@ -51,7 +51,7 @@ public class BlockKey extends HashKey
 		this(pBlock, 0);
 	}
 
-	public Block getBlock()
+	public Block getBlockState()
 	{
 		return block;
 	}
@@ -69,7 +69,7 @@ public class BlockKey extends HashKey
 
 	public boolean matches(@Nonnull BlockKey key)
 	{
-		return matches(key.getBlock(), key.getMetadata());
+		return matches(key.getBlockState(), key.getMetadata());
 	}
 
 	private void generateHashCode()

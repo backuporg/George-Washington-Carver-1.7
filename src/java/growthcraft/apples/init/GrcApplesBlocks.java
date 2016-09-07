@@ -58,6 +58,6 @@ public class GrcApplesBlocks extends GrcModuleBlocks
 		OreDictionary.registerOre("treeSapling", appleSapling.getItem());
 		OreDictionary.registerOre("treeLeaves", appleLeaves.asStack(1, OreDictionary.WILDCARD_VALUE));
 
-		Blocks.FIRE.setFireInfo(appleLeaves.getBlock(), 30, 60);
+		Blocks.FIRE.setFireInfo(appleLeaves.getBlockState(), 30, 60);
 	}
 }

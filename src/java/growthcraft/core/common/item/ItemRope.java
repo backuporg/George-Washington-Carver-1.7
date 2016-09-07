@@ -29,7 +29,7 @@ public class ItemRope extends GrcItemBase
 	@Override
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int EnumFacing, float par8, float par9, float par10)
 	{
-		final Block block = world.getBlock(x, y, z);
+		final Block block = world.getBlockState(x, y, z);
 		final int blockMeta = world.getBlockMetadata(x, y, z);
 
 		if (Blocks.SNOW_LAYER == block && (blockMeta & 7) < 1)
@@ -101,14 +101,14 @@ public class ItemRope extends GrcItemBase
 		}
 		else
 		{
-			final Block block2 = GrowthCraftCore.blocks.ropeBlock.getBlock();
+			final Block block2 = GrowthCraftCore.blocks.ropeBlock.getBlockState();
 			if (world.canPlaceEntityOnSide(block2, x, y, z, false, EnumFacing, (Entity)null, stack))
 			{
 				final int meta = block2.onBlockPlaced(world, x, y, z, EnumFacing, par8, par9, par10, 0);
 
 				if (world.setBlock(x, y, z, block2, meta, 3))
 				{
-					if (world.getBlock(x, y, z) == block2)
+					if (world.getBlockState(x, y, z) == block2)
 					{
 						block2.onBlockPlacedBy(world, x, y, z, player, stack);
 						block2.onPostBlockPlaced(world, x, y, z, meta);

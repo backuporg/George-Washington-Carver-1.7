@@ -95,7 +95,7 @@ public abstract class BlockPaddyBase extends GrcBlockBase implements IPaddy
 							{
 								for (int lz = z - radius; lz <= z + radius; ++lz)
 								{
-									if (world.getBlock(lx, y, lz) == this)
+									if (world.getBlockState(lx, y, lz) == this)
 									{
 										fillPaddy(world, lx, y, lz);
 									}
@@ -127,7 +127,7 @@ public abstract class BlockPaddyBase extends GrcBlockBase implements IPaddy
 				return;
 			}
 
-			final Block plant = world.getBlock(x, y + 1, z);
+			final Block plant = world.getBlockState(x, y + 1, z);
 			if (plant instanceof IPaddyCrop)
 			{
 				plant.dropBlockAsItem(world, x, y + 1, z, world.getBlockMetadata(x, y + 1, z), 0);
@@ -311,6 +311,6 @@ public abstract class BlockPaddyBase extends GrcBlockBase implements IPaddy
 			meta = 1;
 		}
 
-		return this == world.getBlock(i, j, k) && meta == m;
+		return this == world.getBlockState(i, j, k) && meta == m;
 	}
 }

@@ -84,18 +84,18 @@ public class BlockNetherSquashStem extends BlockBush implements ICropDataProvide
 	@Override
 	public boolean canPlaceBlockAt(World world, int x, int y, int z)
 	{
-		return super.canPlaceBlockAt(world, x, y, z) && func_149854_a(world.getBlock(x, y + 1, z));
+		return super.canPlaceBlockAt(world, x, y, z) && func_149854_a(world.getBlockState(x, y + 1, z));
 	}
 
 	@Override
 	public boolean canBlockStay(World world, int x, int y, int z)
 	{
-		return func_149854_a(world.getBlock(x, y + 1, z));
+		return func_149854_a(world.getBlockState(x, y + 1, z));
 	}
 
 	public boolean hasGrownFruit(World world, int x, int y, int z)
 	{
-		return fruitBlock == world.getBlock(x, y - 1, z);
+		return fruitBlock == world.getBlockState(x, y - 1, z);
 	}
 
 	public boolean canGrowFruit(World world, int x, int y, int z)

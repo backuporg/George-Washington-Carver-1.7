@@ -58,7 +58,7 @@ public class BlockBambooScaffold extends GrcBlockBase
 				final int loop = world.getActualHeight();
 				for (int j = y + 1; j < loop; j++)
 				{
-					final Block block = world.getBlock(x, j, z);
+					final Block block = world.getBlockState(x, j, z);
 					if ((block == null) || (world.isAirBlock(x, j, z)) || (block.isReplaceable(world, x, j, z)))
 					{
 						if (!world.isRemote)
@@ -123,7 +123,7 @@ public class BlockBambooScaffold extends GrcBlockBase
 	@Override
 	public boolean canBlockStay(World world, int x, int y, int z)
 	{
-		if (world.getBlock(x, y -1 , z).isSideSolid(world, x, y - 1, z, EnumFacing.UP)) return true;
+		if (world.getBlockState(x, y -1 , z).isSideSolid(world, x, y - 1, z, EnumFacing.UP)) return true;
 		if (checkSides(world, x, y, z)) return true;
 
 		return false;
@@ -131,22 +131,22 @@ public class BlockBambooScaffold extends GrcBlockBase
 
 	private boolean checkSides(World world, int x, int y, int z)
 	{
-		final boolean flag = world.getBlock(x + 1, y, z) == this;
-		final boolean flag1 = world.getBlock(x - 1, y, z) == this;
-		final boolean flag2 = world.getBlock(x, y, z + 1) == this;
-		final boolean flag3 = world.getBlock(x, y, z - 1) == this;
+		final boolean flag = world.getBlockState(x + 1, y, z) == this;
+		final boolean flag1 = world.getBlockState(x - 1, y, z) == this;
+		final boolean flag2 = world.getBlockState(x, y, z + 1) == this;
+		final boolean flag3 = world.getBlockState(x, y, z - 1) == this;
 
 		if (!flag && !flag1 && !flag2 && !flag3) return false;
 
-		if (flag && world.getBlock(x + 1, y - 1, z).isSideSolid(world, x + 1, y - 1, z, EnumFacing.UP)) return true;
-		if (flag1 && world.getBlock(x - 1, y - 1, z).isSideSolid(world, x - 1, y - 1, z, EnumFacing.UP)) return true;
-		if (flag2 && world.getBlock(x, y - 1, z + 1).isSideSolid(world, x, y - 1, z + 1, EnumFacing.UP)) return true;
-		if (flag3 && world.getBlock(x, y - 1, z - 1).isSideSolid(world, x, y - 1, z - 1, EnumFacing.UP)) return true;
+		if (flag && world.getBlockState(x + 1, y - 1, z).isSideSolid(world, x + 1, y - 1, z, EnumFacing.UP)) return true;
+		if (flag1 && world.getBlockState(x - 1, y - 1, z).isSideSolid(world, x - 1, y - 1, z, EnumFacing.UP)) return true;
+		if (flag2 && world.getBlockState(x, y - 1, z + 1).isSideSolid(world, x, y - 1, z + 1, EnumFacing.UP)) return true;
+		if (flag3 && world.getBlockState(x, y - 1, z - 1).isSideSolid(world, x, y - 1, z - 1, EnumFacing.UP)) return true;
 
-		if (flag && world.getBlock(x + 2, y - 1, z).isSideSolid(world, x + 2, y - 1, z, EnumFacing.UP)) return true;
-		if (flag1 && world.getBlock(x - 2, y - 1, z).isSideSolid(world, x - 2, y - 1, z, EnumFacing.UP)) return true;
-		if (flag2 && world.getBlock(x, y - 1, z + 2).isSideSolid(world, x, y - 1, z + 2, EnumFacing.UP)) return true;
-		if (flag3 && world.getBlock(x, y - 1, z - 2).isSideSolid(world, x, y - 1, z - 2, EnumFacing.UP)) return true;
+		if (flag && world.getBlockState(x + 2, y - 1, z).isSideSolid(world, x + 2, y - 1, z, EnumFacing.UP)) return true;
+		if (flag1 && world.getBlockState(x - 2, y - 1, z).isSideSolid(world, x - 2, y - 1, z, EnumFacing.UP)) return true;
+		if (flag2 && world.getBlockState(x, y - 1, z + 2).isSideSolid(world, x, y - 1, z + 2, EnumFacing.UP)) return true;
+		if (flag3 && world.getBlockState(x, y - 1, z - 2).isSideSolid(world, x, y - 1, z - 2, EnumFacing.UP)) return true;
 
 		return false;
 	}

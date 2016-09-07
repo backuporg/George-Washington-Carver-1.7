@@ -54,7 +54,7 @@ public class ItemSeedThistle extends GrcItemBase implements IPlantable
 	@Override
 	public Block getPlant(IBlockAccess world, int x, int y, int z)
 	{
-		return GrowthCraftMilk.blocks.thistle.getBlock();
+		return GrowthCraftMilk.blocks.thistle.getBlockState();
 	}
 
 	@Override
@@ -70,7 +70,7 @@ public class ItemSeedThistle extends GrcItemBase implements IPlantable
 		{
 			if (player.canPlayerEdit(x, y, z, EnumFacing, stack) && player.canPlayerEdit(x, y + 1, z, EnumFacing, stack))
 			{
-				final Block soil = world.getBlock(x, y, z);
+				final Block soil = world.getBlockState(x, y, z);
 				final Block plant = getPlant(world, x, y + 1, z);
 
 				if (plant instanceof IPlantable)

@@ -23,7 +23,7 @@ public class ItemBambooShoot extends GrcItemFoodBase implements IPlantable
 	public ItemBambooShoot()
 	{
 		super(4, 0.6F, false);
-		this.cropBlock = GrowthCraftBamboo.blocks.bambooShoot.getBlock();
+		this.cropBlock = GrowthCraftBamboo.blocks.bambooShoot.getBlockState();
 		setUnlocalizedName("grc.bambooShootFood");
 		setCreativeTab(GrowthCraftBamboo.creativeTab);
 	}
@@ -31,7 +31,7 @@ public class ItemBambooShoot extends GrcItemFoodBase implements IPlantable
 	@Override
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int EnumFacing, float par8, float par9, float par10)
 	{
-		final Block block1 = world.getBlock(x, y, z);
+		final Block block1 = world.getBlockState(x, y, z);
 
 		if (block1 == Blocks.SNOW && (world.getBlockMetadata(x, y, z) & 7) < 1)
 		{
@@ -86,7 +86,7 @@ public class ItemBambooShoot extends GrcItemFoodBase implements IPlantable
 
 				if (world.setBlock(x, y, z, cropBlock, meta, 3))
 				{
-					if (world.getBlock(x, y, z) == cropBlock)
+					if (world.getBlockState(x, y, z) == cropBlock)
 					{
 						cropBlock.onBlockPlacedBy(world, x, y, z, player, stack);
 						cropBlock.onPostBlockPlaced(world, x, y, z, meta);

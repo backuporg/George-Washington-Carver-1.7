@@ -66,7 +66,7 @@ public class EventHandlerBucketFill
 
 		public boolean matches(@Nonnull World world, @Nonnull MovingObjectPosition pos)
 		{
-			final Block srcBlock = world.getBlock(pos.blockX, pos.blockY, pos.blockZ);
+			final Block srcBlock = world.getBlockState(pos.blockX, pos.blockY, pos.blockZ);
 
 			if (block.equals(srcBlock))
 			{

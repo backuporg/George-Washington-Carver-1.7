@@ -31,7 +31,7 @@ public class BlockFenceRope extends GrcBlockBase implements IBlockRope
 
 	public BlockFenceRope(BlockKey srcKey, String name)
 	{
-		super(srcKey.getBlock().getMaterial());
+		super(srcKey.getBlockState().getMaterial());
 		this.fenceBlockKey = srcKey;
 		setStepSound(soundTypeWood);
 		setBlockName(name);
@@ -45,7 +45,7 @@ public class BlockFenceRope extends GrcBlockBase implements IBlockRope
 
 	public Block getFenceBlock()
 	{
-		return fenceBlockKey.getBlock();
+		return fenceBlockKey.getBlockState();
 	}
 
 	public int getFenceBlockMetadata()
@@ -93,7 +93,7 @@ public class BlockFenceRope extends GrcBlockBase implements IBlockRope
 	@Override
 	public boolean canConnectRopeTo(IBlockAccess world, int x, int y, int z)
 	{
-		return world.getBlock(x, y, z) instanceof IBlockRope;
+		return world.getBlockState(x, y, z) instanceof IBlockRope;
 	}
 
 	@Override

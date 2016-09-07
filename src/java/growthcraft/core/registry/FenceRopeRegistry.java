@@ -59,7 +59,7 @@ public class FenceRopeRegistry
 
 		public Block getFenceBlock()
 		{
-			return fenceBlock.getBlock();
+			return fenceBlock.getBlockState();
 		}
 
 		public int getFenceBlockMetadata()
@@ -69,7 +69,7 @@ public class FenceRopeRegistry
 
 		public Block getFenceRopeBlock()
 		{
-			return fenceRopeBlock.getBlock();
+			return fenceRopeBlock.getBlockState();
 		}
 
 		public int getFenceRopeBlockMetadata()

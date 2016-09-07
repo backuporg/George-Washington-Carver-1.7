@@ -28,7 +28,7 @@ public class ItemBamboo extends GrcItemBase
 	@Override
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int EnumFacing, float par8, float par9, float par10)
 	{
-		final Block block1 = world.getBlock(x, y, z);
+		final Block block1 = world.getBlockState(x, y, z);
 
 		if (block1 == Blocks.SNOW && (world.getBlockMetadata(x, y, z) & 7) < 1)
 		{
@@ -77,12 +77,12 @@ public class ItemBamboo extends GrcItemBase
 		}
 		else
 		{
-			final Block block = GrowthCraftBamboo.blocks.bambooStalk.getBlock();
+			final Block block = GrowthCraftBamboo.blocks.bambooStalk.getBlockState();
 			if (world.canPlaceEntityOnSide(block, x, y, z, false, EnumFacing, (Entity)null, stack))
 			{
 				if (world.setBlock(x, y, z, block, 1, 3))
 				{
-					if (world.getBlock(x, y, z) == block)
+					if (world.getBlockState(x, y, z) == block)
 					{
 						block.onBlockPlacedBy(world, x, y, z, player, stack);
 						block.onPostBlockPlaced(world, x, y, z, 1);

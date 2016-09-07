@@ -70,7 +70,7 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 	private void growRice(World world, int x, int y, int z, int meta)
 	{
 		incrementGrowth(world, x, y, z, meta);
-		final Block paddyBlock = world.getBlock(x, y - 1, z);
+		final Block paddyBlock = world.getBlockState(x, y - 1, z);
 		if (RiceBlockCheck.isPaddy(paddyBlock))
 		{
 			((BlockPaddy)paddyBlock).drainPaddy(world, x, y - 1, z);
@@ -133,14 +133,14 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 	private float getGrowthRate(World world, int x, int y, int z)
 	{
 		float f = 1.0F;
-		final Block l = world.getBlock(x, y, z - 1);
-		final Block i1 = world.getBlock(x, y, z + 1);
-		final Block j1 = world.getBlock(x - 1, y, z);
-		final Block k1 = world.getBlock(x + 1, y, z);
-		final Block l1 = world.getBlock(x - 1, y, z - 1);
-		final Block i2 = world.getBlock(x + 1, y, z - 1);
-		final Block j2 = world.getBlock(x + 1, y, z + 1);
-		final Block k2 = world.getBlock(x - 1, y, z + 1);
+		final Block l = world.getBlockState(x, y, z - 1);
+		final Block i1 = world.getBlockState(x, y, z + 1);
+		final Block j1 = world.getBlockState(x - 1, y, z);
+		final Block k1 = world.getBlockState(x + 1, y, z);
+		final Block l1 = world.getBlockState(x - 1, y, z - 1);
+		final Block i2 = world.getBlockState(x + 1, y, z - 1);
+		final Block j2 = world.getBlockState(x + 1, y, z + 1);
+		final Block k2 = world.getBlockState(x - 1, y, z + 1);
 		final boolean flag = j1 == this || k1 == this;
 		final boolean flag1 = l == this || i1 == this;
 		final boolean flag2 = l1 == this || i2 == this || j2 == this || k2 == this;
@@ -149,7 +149,7 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 		{
 			for (int loop_k = z - 1; loop_k <= z + 1; ++loop_k)
 			{
-				final Block soil = world.getBlock(loop_i, y - 1, loop_k);
+				final Block soil = world.getBlockState(loop_i, y - 1, loop_k);
 				float f1 = 0.0F;
 
 				if (soil != null && RiceBlockCheck.isPaddy(soil))
@@ -215,7 +215,7 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 	{
 		return (world.getFullBlockLightValue(x, y, z) >= 8 ||
 			world.canBlockSeeTheSky(x, y, z)) &&
-			this.canThisPlantGrowOnThisBlockID(world.getBlock(x, y - 1, z));
+			this.canThisPlantGrowOnThisBlockID(world.getBlockState(x, y - 1, z));
 	}
 
 	/************

@@ -64,19 +64,19 @@ public class ComponentVillageHopVineyard extends StructureVillagePieces.Village
 			this.fillWithBlocks(world, box, loop, 0, 2, loop, 0, 2, Blocks.FARMLAND, Blocks.FARMLAND, false);
 			this.fillWithBlocks(world, box, loop, 0, 4, loop, 0, 4, Blocks.FARMLAND, Blocks.FARMLAND, false);
 			this.fillWithBlocks(world, box, loop, 0, 6, loop, 0, 6, Blocks.FARMLAND, Blocks.FARMLAND, false);
-			this.placeBlockAtCurrentPosition(world, GrowthCraftCore.blocks.fenceRope.getBlock(), 0, loop, 6, 1, box);
-			this.placeBlockAtCurrentPosition(world, GrowthCraftCore.blocks.fenceRope.getBlock(), 0, loop, 6, 7, box);
+			this.placeBlockAtCurrentPosition(world, GrowthCraftCore.blocks.fenceRope.getBlockState(), 0, loop, 6, 1, box);
+			this.placeBlockAtCurrentPosition(world, GrowthCraftCore.blocks.fenceRope.getBlockState(), 0, loop, 6, 7, box);
 			for (loop2 = 2; loop2 <= 6; ++loop2)
 			{
-				this.placeBlockAtCurrentPosition(world, GrowthCraftCore.blocks.ropeBlock.getBlock(), 0, loop, 6, loop2, box);
+				this.placeBlockAtCurrentPosition(world, GrowthCraftCore.blocks.ropeBlock.getBlockState(), 0, loop, 6, loop2, box);
 			}
 			for (loop2 = 1; loop2 <= 5; ++loop2)
 			{
 				this.placeBlockAtCurrentPosition(world, Blocks.OAK_FENCE, 0, loop, loop2, 1, box);
 				this.placeBlockAtCurrentPosition(world, Blocks.OAK_FENCE, 0, loop, loop2, 7, box);
-				this.placeBlockAtCurrentPosition(world, GrowthCraftHops.blocks.hopVine.getBlock(), 3, loop, loop2, 2, box);
-				this.placeBlockAtCurrentPosition(world, GrowthCraftHops.blocks.hopVine.getBlock(), 3, loop, loop2, 4, box);
-				this.placeBlockAtCurrentPosition(world, GrowthCraftHops.blocks.hopVine.getBlock(), 3, loop, loop2, 6, box);
+				this.placeBlockAtCurrentPosition(world, GrowthCraftHops.blocks.hopVine.getBlockState(), 3, loop, loop2, 2, box);
+				this.placeBlockAtCurrentPosition(world, GrowthCraftHops.blocks.hopVine.getBlockState(), 3, loop, loop2, 4, box);
+				this.placeBlockAtCurrentPosition(world, GrowthCraftHops.blocks.hopVine.getBlockState(), 3, loop, loop2, 6, box);
 			}
 		}
 
