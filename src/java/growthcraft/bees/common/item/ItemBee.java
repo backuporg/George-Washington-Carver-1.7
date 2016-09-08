@@ -12,4 +12,8 @@ public class ItemBee extends GrcItemBase
 		setCreativeTab(GrowthCraftBees.tab);
 		setTextureName("grcbees:bee");
 	}
+
+	public ItemBee(String bee) {
+		super();
+	}
 }

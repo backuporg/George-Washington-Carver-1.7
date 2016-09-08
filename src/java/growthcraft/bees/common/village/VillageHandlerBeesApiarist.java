@@ -8,6 +8,9 @@ import com.google.common.collect.Maps;
 
 import growthcraft.bees.GrowthCraftBees;
 import growthcraft.bees.*;
+import growthcraft.*;
+import growthcraft.bees.init.GrcBeesItems;
+import growthcraft.bees.util.BeesItemList;
 
 import net.minecraftforge.fml.common.registry.VillagerRegistry.IVillageCreationHandler;
 import net.minecraft.entity.passive.EntityVillager;
@@ -37,28 +40,24 @@ import java.util.Map;
 
 public class VillageHandlerBeesApiarist {
 
-	public static final VillageHandlerBeesApiarist instance = new VillageHandlerBeesApiarist();
+	private static VillagerRegistry REGISTRY = VillagerRegistry.instance();
+	public static VillagerProfession apiarist;
 
-	public static final ResourceLocation PROFESSIONS = new ResourceLocation {"grcbees:apiarist"}
-	public VillagerRegistry.VillagerProfession apiarist;
-
-	public Map<Integer, VillagerRegistry.VillagerProfession> professions = Maps.newHashMap();
-
-	//Secretly borrowed information from Alexthe666's Ice and Fire mod to set up professions properly
+	//Secretly borrowed information from Alexthe666's Ice and Fire mod to set up professions properly, as well as Back To Life
 
 	{
 	public static ();
 		apiarist = new VillagerRegistry.VillagerProfession("grcbees:apiarist", "grcbees:textures/entity/apiarist.png", "minecraft:textures/entity/zombie_villager/zombie_farmer.png");
 		{
 			VillagerRegistry.VillagerCareer career = new VillagerRegistry.VillagerCareer(apiarist, "apiarist");
-			career.addTrade(1, new ListItemForEmeralds(new ItemStack(GrowthCraftBees.items.honeyJar.asStack(), new PriceInfo(1, 2))));
-			career.addTrade(1, new ListItemForEmeralds(new ItemStack(GrowthCraftBees.items.honeyCombFilled.asStack(), new PriceInfo(7))));
-			career.addTrade(2, new ListItemForEmeralds(new ItemStack(GrowthCraftBees.items.bee.asStack(), new PriceInfo(3, 5))));
-			career.addTrade(2, new ListItemForEmeralds(new ItemStack(GrowthCraftBees.items.beesWax.asStack(), new PriceInfo(1))));
-			career.addTrade(1, new EmeraldForItems(new ItemStack(GrowthCraftBees.items.honeyJar.asStack(), new PriceInfo(1, 2))));
-			career.addTrade(1, new EmeraldForItems(new ItemStack(GrowthCraftBees.items.honeyCombFilled.asStack(), new PriceInfo(7))));
-			career.addTrade(2, new EmeraldForItems(new ItemStack(GrowthCraftBees.items.bee.asStack(), new PriceInfo(3, 5))));
-			career.addTrade(2, new EmeraldForItems(new ItemStack(GrowthCraftBees.items.beesWax.asStack(), new PriceInfo(1))));
+			career.addTrade(1, new EntityVillager.ListItemForEmeralds(BeesItemList.ItemHoneyJar, new EntityVillager.PriceInfo(1, 2)));
+			career.addTrade(1, new EntityVillager.ListItemForEmeralds(BeesItemList.ItemHoneyCombFilled, new EntityVillager.PriceInfo(7)));
+			career.addTrade(2, new EntityVillager.ListItemForEmeralds(BeesItemList.ItemBee, new EntityVillager.PriceInfo(3, 5)));
+			career.addTrade(2, new EntityVillager.ListItemForEmeralds(BeesItemList.ItemBeesWax, new EntityVillager.PriceInfo(1)));
+			career.addTrade(1, new EntityVillager.EmeraldForItems(BeesItemList.ItemHoneyJar, new EntityVillager.PriceInfo(1, 2)));
+			career.addTrade(1, new EntityVillager.EmeraldForItems(BeesItemList.ItemHoneyCombFilled, new PriceInfo(7)));
+			career.addTrade(2, new EntityVillager.EmeraldForItems(BeesItemList.ItemBee, new PriceInfo(3, 5)));
+			career.addTrade(2, new EntityVillager.EmeraldForItems(BeesItemList.ItemBeesWax, new EntityVillager.PriceInfo(1)));
 		}
 	}
 	public static void addVillagers ()

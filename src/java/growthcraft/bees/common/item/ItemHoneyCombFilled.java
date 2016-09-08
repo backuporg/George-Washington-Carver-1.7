@@ -13,4 +13,8 @@ public class ItemHoneyCombFilled extends GrcItemBase
 		setCreativeTab(GrowthCraftBees.tab);
 		setContainerItem(GrowthCraftBees.items.honeyCombEmpty.getItem());
 	}
+
+	public ItemHoneyCombFilled(String full_honeycomb) {
+		super();
+	}
 }
