@@ -45,7 +45,8 @@ public class VillageHandlerBeesApiarist {
 	//Secretly borrowed information from Alexthe666's Ice and Fire mod to set up professions properly, as well as Back To Life
 
 	{
-		public static () {
+		VillagerProfession apiarist;
+
 		apiarist = new VillagerRegistry.VillagerProfession("grcbees:apiarist", "grcbees:textures/entity/apiarist.png", "minecraft:textures/entity/zombie_villager/zombie_farmer.png");
 		{
 			VillagerRegistry.VillagerCareer career = new VillagerRegistry.VillagerCareer(apiarist, "apiarist");

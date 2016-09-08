@@ -1,6 +1,12 @@
 package growthcraft.bees.util;
 
-import growthcraft.bees.common.item.*;
+import growthcraft.bees.common.item.ItemBee;
+import growthcraft.bees.common.item.ItemBeesWax;
+import growthcraft.bees.common.item.ItemBlockBeeBox;
+import growthcraft.bees.common.item.ItemHoneyCombEmpty;
+import growthcraft.bees.common.item.ItemHoneyCombFilled;
+import growthcraft.bees.common.item.ItemHoneyJar;
+import growthcraft.bees.common.item.EnumBeesWax;
 import growthcraft.bees.init.GrcBeesItems;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.GameRegistry;
