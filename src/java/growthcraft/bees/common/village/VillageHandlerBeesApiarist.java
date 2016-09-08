@@ -40,13 +40,12 @@ import java.util.Map;
 
 public class VillageHandlerBeesApiarist {
 
-	private static VillagerRegistry REGISTRY = VillagerRegistry.instance();
 	public static VillagerProfession apiarist;
 
 	//Secretly borrowed information from Alexthe666's Ice and Fire mod to set up professions properly, as well as Back To Life
 
 	{
-	public static ();
+		public static () {
 		apiarist = new VillagerRegistry.VillagerProfession("grcbees:apiarist", "grcbees:textures/entity/apiarist.png", "minecraft:textures/entity/zombie_villager/zombie_farmer.png");
 		{
 			VillagerRegistry.VillagerCareer career = new VillagerRegistry.VillagerCareer(apiarist, "apiarist");
@@ -55,10 +54,11 @@ public class VillageHandlerBeesApiarist {
 			career.addTrade(2, new EntityVillager.ListItemForEmeralds(BeesItemList.ItemBee, new EntityVillager.PriceInfo(3, 5)));
 			career.addTrade(2, new EntityVillager.ListItemForEmeralds(BeesItemList.ItemBeesWax, new EntityVillager.PriceInfo(1)));
 			career.addTrade(1, new EntityVillager.EmeraldForItems(BeesItemList.ItemHoneyJar, new EntityVillager.PriceInfo(1, 2)));
-			career.addTrade(1, new EntityVillager.EmeraldForItems(BeesItemList.ItemHoneyCombFilled, new PriceInfo(7)));
-			career.addTrade(2, new EntityVillager.EmeraldForItems(BeesItemList.ItemBee, new PriceInfo(3, 5)));
+			career.addTrade(1, new EntityVillager.EmeraldForItems(BeesItemList.ItemHoneyCombFilled, new EntityVillager.PriceInfo(7)));
+			career.addTrade(2, new EntityVillager.EmeraldForItems(BeesItemList.ItemBee, new EntityVillager.PriceInfo(3, 5)));
 			career.addTrade(2, new EntityVillager.EmeraldForItems(BeesItemList.ItemBeesWax, new EntityVillager.PriceInfo(1)));
 		}
+	}
 	}
 	public static void addVillagers ()
 		{
