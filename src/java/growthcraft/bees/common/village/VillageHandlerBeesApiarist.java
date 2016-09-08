@@ -50,13 +50,13 @@ public class VillageHandlerBeesApiarist {
 		{
 			VillagerRegistry.VillagerCareer career = new VillagerRegistry.VillagerCareer(apiarist, "apiarist");
 			career.addTrade(1, new EntityVillager.ListItemForEmeralds(BeesItemList.ItemHoneyJar, new EntityVillager.PriceInfo(1, 2)));
-			career.addTrade(1, new EntityVillager.ListItemForEmeralds(BeesItemList.ItemHoneyCombFilled, new EntityVillager.PriceInfo(7)));
+			career.addTrade(1, new EntityVillager.ListItemForEmeralds(BeesItemList.ItemHoneyCombFilled, new EntityVillager.PriceInfo(3, 7)));
 			career.addTrade(2, new EntityVillager.ListItemForEmeralds(BeesItemList.ItemBee, new EntityVillager.PriceInfo(3, 5)));
-			career.addTrade(2, new EntityVillager.ListItemForEmeralds(BeesItemList.ItemBeesWax, new EntityVillager.PriceInfo(1)));
+			career.addTrade(2, new EntityVillager.ListItemForEmeralds(BeesItemList.ItemBeesWax, new EntityVillager.PriceInfo(1, 3)));
 			career.addTrade(1, new EntityVillager.EmeraldForItems(BeesItemList.ItemHoneyJar, new EntityVillager.PriceInfo(1, 2)));
-			career.addTrade(1, new EntityVillager.EmeraldForItems(BeesItemList.ItemHoneyCombFilled, new EntityVillager.PriceInfo(7)));
+			career.addTrade(1, new EntityVillager.EmeraldForItems(BeesItemList.ItemHoneyCombFilled, new EntityVillager.PriceInfo(3, 7)));
 			career.addTrade(2, new EntityVillager.EmeraldForItems(BeesItemList.ItemBee, new EntityVillager.PriceInfo(3, 5)));
-			career.addTrade(2, new EntityVillager.EmeraldForItems(BeesItemList.ItemBeesWax, new EntityVillager.PriceInfo(1)));
+			career.addTrade(2, new EntityVillager.EmeraldForItems(BeesItemList.ItemBeesWax, new EntityVillager.PriceInfo(1, 3)));
 		}
 	}
 	}
