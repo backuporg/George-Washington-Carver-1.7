@@ -78,10 +78,10 @@ grc.fluids.tag.distilled=Distilled
 grc.fluids.tag.spiced=Spiced
 grc.fluids.tag.filtered=Filtered
 grc.fluids.tag.nectar=Nectar
-grc.fluids.tag.ancient=Ancient
+grc.fluids.tag.ancient=Old
 grc.fluids.tag.fruity=Fruity
 grc.fluids.tag.port=Port
-grc.fluids.tag.vile=Vile
+grc.fluids.tag.vile=Yucky
 grc.fluids.tag.gin=Gin
 grc.fluids.tag.beer=Beer
 grc.fluids.tag.sherry=Sherry
@@ -99,7 +99,7 @@ gui.grc.cantferment=Cannot Ferment.
 gui.grccellar.ferment_barrel.progress_name=Fermenting
 
 # Achievements
-achievement.craftBarrel=Cooper Extraction
+achievement.craftBarrel=Cooper Extracshun
 achievement.craftBarrel.desc=Craft a fermentation barrel with three wooden planks and six iron ingots.
 achievement.fermentBooze=It's The Yeast I Could Do...
 achievement.fermentBooze.desc=Ferment an alcoholic beverage.
@@ -111,7 +111,7 @@ achievement.onTheGo.desc=Craft a Leather WatR Thing
 # Tooltips (Number is a percentage)
 # number is a percentage
 grc.cellar.format.waterBag.name=%s (%s)
-grc.cellar.format.fluid_container.contents=Contains: %2$dmB/%3$dmB of %1$s
+grc.cellar.format.fluid_container.contents=Contains: %2$dmB/%3$dmB ov %1$s
 grc.cellar.format.tipsy_chance=%d%% Chance of Tipsy
 grc.cellar.item.booze_bucket.deprecated=DEPRECATED, pls craft again to get teh updated bukkit
 grc.cellar.item.booze_bucket.deprecated_suffix= (DEPRECATED)
