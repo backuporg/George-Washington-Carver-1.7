@@ -2,23 +2,23 @@
 itemGroup.creative_tab_grccore=Growthcraft
 
 # Blocks
-tile.grc.etfuturum_fence_rope_acacia.name=Fence with Rope (Acacia)
-tile.grc.etfuturum_fence_rope_birch.name=Fence with Rope (Birch)
-tile.grc.etfuturum_fence_rope_dark_oak.name=Fence with Rope (Dark Oak)
-tile.grc.etfuturum_fence_rope_jungle.name=Fence with Rope (Jungle)
-tile.grc.etfuturum_fence_rope_oak.name=Fence with Rope (Oak)
-tile.grc.etfuturum_fence_rope_spruce.name=Fence with Rope (Spruce)
-tile.grc.fenceRope.name=Fence with Rope
-tile.grc.netherBrickFenceRope.name=Fence with Rope (Nether Brick)
-tile.grc.naturaFenceRope.name=Fence with Rope (%s)
-tile.grc.ropeBlock.name=Rope
-tile.grccore.salt_block.name=Salt Block
+tile.grc.etfuturum_fence_rope_acacia.name=Fence with Yarn (Acacia)
+tile.grc.etfuturum_fence_rope_birch.name=Fence with Yarn (Birch)
+tile.grc.etfuturum_fence_rope_dark_oak.name=Fence with Yarn (Dark Oak)
+tile.grc.etfuturum_fence_rope_jungle.name=Fence with Yarn (Jungle)
+tile.grc.etfuturum_fence_rope_oak.name=Fence with Yarn (Oak)
+tile.grc.etfuturum_fence_rope_spruce.name=Fence with Yarn (Spruce)
+tile.grc.fenceYarn.name=Fence with Yarn
+tile.grc.netherBrickFenceYarn.name=Fence with Yarn (Nether Brick)
+tile.grc.naturaFenceYarn.name=Fence with Yarn (%s)
+tile.grc.ropeBlock.name=Yarn
+tile.grccore.salt_block.name=Smushed Yucky Powder
 
 # Items
-item.grc.rope.name=Rope
-item.grccore.salt.name=Salt
-item.grccore.bucketSalt.name=Salt Bucket
-item.grccore.bottleSalt.name=Salt Bottle
+item.grc.rope.name=Yarn
+item.grccore.salt.name=Yucky Powder
+item.grccore.bucketSalt.name=Yucky Powder in Bukkit
+item.grccore.bottleSalt.name=Yucky Powder in Buttl
 item.grccore.crowbar.black.name=Iron Lifty Thing (Black)
 item.grccore.crowbar.red.name=Iron Lifty Thing (Red)
 item.grccore.crowbar.green.name=Iron Lifty Thing (Green)
