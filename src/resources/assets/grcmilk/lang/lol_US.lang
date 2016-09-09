@@ -2,16 +2,16 @@
 itemGroup.creative_tab_grcmilk=Growthcraft Dairy
 
 # Items
-## Cheese
-item.grcmilk.Cheese.cheddar.name=Cheddar Cheese
-item.grcmilk.Cheese.gorgonzola.name=Gorgonzola Cheese
-item.grcmilk.Cheese.emmentaler.name=Swiss Cheese
-item.grcmilk.Cheese.appenzeller.name=Appenzeller Cheese
-item.grcmilk.Cheese.asiago.name=Asiago Cheese
-item.grcmilk.Cheese.parmesan.name=Parmesan Cheese
-item.grcmilk.Cheese.monterey.name=Monterey Cheese
-item.grcmilk.Cheese.ricotta.name=Ricotta Cheese
-item.grcmilk.CheeseCloth.name=Cheese Cloth
+## Cheez
+item.grcmilk.Cheez.cheddar.name=Cheddar Cheez
+item.grcmilk.Cheez.gorgonzola.name=Gorgonzola Cheez
+item.grcmilk.Cheez.emmentaler.name=Swiss Cheez
+item.grcmilk.Cheez.appenzeller.name=Appenzeller Cheez
+item.grcmilk.Cheez.asiago.name=Asiago Cheez
+item.grcmilk.Cheez.parmesan.name=Parmesan Cheez
+item.grcmilk.Cheez.monterey.name=Monterey Cheez
+item.grcmilk.Cheez.ricotta.name=Ricotta Cheez
+item.grcmilk.CheeseCloth.name=Cheez Cloth
 ## Butter
 item.grcmilk.Butter.salted.name=Butter (Salted)
 item.grcmilk.Butter.unsalted.name=Butter (Unsalted)
@@ -35,35 +35,35 @@ item.grcmilk.Stomach.name=Stomuch
 item.grcmilk.seed_thistle.name=Ouchy Flowr Sedz
 
 # Blocks
-## Cheese
-tile.grcmilk.CheeseBlock.cheddar.unwaxed.name=Cheddar Cheese (Unwaxed)
-tile.grcmilk.CheeseBlock.cheddar.unaged.name=Cheddar Cheese (Unaged)
-tile.grcmilk.CheeseBlock.cheddar.aged.name=Cheddar Cheese (Aged)
-tile.grcmilk.CheeseBlock.cheddar.cut.name=Cheddar Cheese
-tile.grcmilk.CheeseBlock.gorgonzola.unaged.name=Gorgonzola Cheese (Unaged)
-tile.grcmilk.CheeseBlock.gorgonzola.aged.name=Gorgonzola Cheese (Aged)
-tile.grcmilk.CheeseBlock.gorgonzola.cut.name=Gorgonzola Cheese
-tile.grcmilk.CheeseBlock.emmentaler.unaged.name=Swiss Cheese (Unaged)
-tile.grcmilk.CheeseBlock.emmentaler.aged.name=Swiss Cheese (Aged)
-tile.grcmilk.CheeseBlock.emmentaler.cut.name=Swiss Cheese
-tile.grcmilk.CheeseBlock.appenzeller.unaged.name=Appenzeller Cheese (Unaged)
-tile.grcmilk.CheeseBlock.appenzeller.aged.name=Appenzeller Cheese (Aged)
-tile.grcmilk.CheeseBlock.appenzeller.cut.name=Appenzeller Cheese
-tile.grcmilk.CheeseBlock.asiago.unaged.name=Asiago Cheese (Unaged)
-tile.grcmilk.CheeseBlock.asiago.aged.name=Asiago Cheese (Aged)
-tile.grcmilk.CheeseBlock.asiago.cut.name=Asiago Cheese
-tile.grcmilk.CheeseBlock.parmesan.unaged.name=Parmesan Cheese (Unaged)
-tile.grcmilk.CheeseBlock.parmesan.aged.name=Parmesan Cheese (Aged)
-tile.grcmilk.CheeseBlock.parmesan.cut.name=Parmesan Cheese
-tile.grcmilk.CheeseBlock.monterey.unwaxed.name=Monterey Cheese (Unwaxed)
-tile.grcmilk.CheeseBlock.monterey.unaged.name=Monterey Cheese (Unaged)
-tile.grcmilk.CheeseBlock.monterey.aged.name=Monterey Cheese (Aged)
-tile.grcmilk.CheeseBlock.monterey.cut.name=Monterey Cheese
-tile.grcmilk.CheeseBlock.ricotta.unaged.name=Ricotta Cheese (Unaged)
-tile.grcmilk.CheeseBlock.ricotta.aged.name=Ricotta Cheese (Aged)
+## Cheez
+tile.grcmilk.CheeseBlock.cheddar.unwaxed.name=Cheddar Cheez (Unwaxed)
+tile.grcmilk.CheeseBlock.cheddar.unaged.name=Cheddar Cheez (Unaged)
+tile.grcmilk.CheeseBlock.cheddar.aged.name=Cheddar Cheez (Aged)
+tile.grcmilk.CheeseBlock.cheddar.cut.name=Cheddar Cheez
+tile.grcmilk.CheeseBlock.gorgonzola.unaged.name=Gorgonzola Cheez (Unaged)
+tile.grcmilk.CheeseBlock.gorgonzola.aged.name=Gorgonzola Cheez (Aged)
+tile.grcmilk.CheeseBlock.gorgonzola.cut.name=Gorgonzola Cheez
+tile.grcmilk.CheeseBlock.emmentaler.unaged.name=Swiss Cheez (Unaged)
+tile.grcmilk.CheeseBlock.emmentaler.aged.name=Swiss Cheez (Aged)
+tile.grcmilk.CheeseBlock.emmentaler.cut.name=Swiss Cheez
+tile.grcmilk.CheeseBlock.appenzeller.unaged.name=Appenzeller Cheez (Unaged)
+tile.grcmilk.CheeseBlock.appenzeller.aged.name=Appenzeller Cheez (Aged)
+tile.grcmilk.CheeseBlock.appenzeller.cut.name=Appenzeller Cheez
+tile.grcmilk.CheeseBlock.asiago.unaged.name=Asiago Cheez (Unaged)
+tile.grcmilk.CheeseBlock.asiago.aged.name=Asiago Cheez (Aged)
+tile.grcmilk.CheeseBlock.asiago.cut.name=Asiago Cheez
+tile.grcmilk.CheeseBlock.parmesan.unaged.name=Parmesan Cheez (Unaged)
+tile.grcmilk.CheeseBlock.parmesan.aged.name=Parmesan Cheez (Aged)
+tile.grcmilk.CheeseBlock.parmesan.cut.name=Parmesan Cheez
+tile.grcmilk.CheeseBlock.monterey.unwaxed.name=Monterey Cheez (Unwaxed)
+tile.grcmilk.CheeseBlock.monterey.unaged.name=Monterey Cheez (Unaged)
+tile.grcmilk.CheeseBlock.monterey.aged.name=Monterey Cheez (Aged)
+tile.grcmilk.CheeseBlock.monterey.cut.name=Monterey Cheez
+tile.grcmilk.CheeseBlock.ricotta.unaged.name=Ricotta Cheez (Unaged)
+tile.grcmilk.CheeseBlock.ricotta.aged.name=Ricotta Cheez (Aged)
 ## Other
 tile.grcmilk.ButterChurn.name=Fanceh Turnin Machien
-tile.grcmilk.CheeseBlock.name=Cheese Block
+tile.grcmilk.CheeseBlock.name=Cheez Block
 tile.grcmilk.CheesePress.name=Squishin Machien
 tile.grcmilk.CheeseVat.name=Warm Box
 tile.grcmilk.HangingCurds.name=Hanging Curds
@@ -86,7 +86,7 @@ tile.grcmilk.HangingCurds.ricotta.dried.name=Drained Ricotta Curds
 tile.grcmilk.Pancheon.name=Long flowr pot
 tile.grcmilk.Thistle.name=Ouchy Flowr
 
-### Cheese Vat Fluid Tanks
+### Cheez Vat Fluid Tanks
 grcmilk.cheese_vat.fluid_tank.primary=Primary
 grcmilk.cheese_vat.fluid_tank.rennet=Rennet
 grcmilk.cheese_vat.fluid_tank.waste=Waste
@@ -94,25 +94,25 @@ grcmilk.cheese_vat.fluid_tank.recipe=Secondary
 
 # Fluids
 ## Tags
-grc.fluids.tag.cheese=Cheese
+grc.fluids.tag.cheese=Cheez
 grc.fluids.tag.cream=Cream
-grc.fluids.tag.milk=Milk
-grc.fluids.tag.milk_curds=Milk Curds
+grc.fluids.tag.milk=Mlk
+grc.fluids.tag.milk_curds=Mlk Curds
 grc.fluids.tag.rennet=Rennet
 grc.fluids.tag.whey=Whey
 ## Standard
 ### Fluids
 fluid.grcmilk.ButterMilk=Butter Mlk
-fluid.grcmilk.CheeseAppenzeller=Appenzeller Cheese
-fluid.grcmilk.CheeseAsiago=Asiago Cheese
-fluid.grcmilk.CheeseCheddar=Cheddar Cheese
-fluid.grcmilk.CheeseEmmentaler=Swiss Cheese
-fluid.grcmilk.CheeseGorgonzola=Gorgonzola Cheese
-fluid.grcmilk.CheeseMonterey=Monterey Cheese
-fluid.grcmilk.CheeseParmesan=Parmesan Cheese
-fluid.grcmilk.CheeseRicotta=Ricotta Cheese
+fluid.grcmilk.CheeseAppenzeller=Appenzeller Cheez
+fluid.grcmilk.CheeseAsiago=Asiago Cheez
+fluid.grcmilk.CheeseCheddar=Cheddar Cheez
+fluid.grcmilk.CheeseEmmentaler=Swiss Cheez
+fluid.grcmilk.CheeseGorgonzola=Gorgonzola Cheez
+fluid.grcmilk.CheeseMonterey=Monterey Cheez
+fluid.grcmilk.CheeseParmesan=Parmesan Cheez
+fluid.grcmilk.CheeseRicotta=Ricotta Cheez
 fluid.grcmilk.Cream=Cream
-fluid.grcmilk.Curds=Milk Curds
+fluid.grcmilk.Curds=Mlk Curds
 fluid.grcmilk.Milk=Mlk
 fluid.grcmilk.PasteurizedMilk=Pasteurized Mlk
 fluid.grcmilk.Rennet=Rennet
@@ -153,7 +153,7 @@ fluid.grcmilk.Kumis2=Rottn Mlk
 fluid.grcmilk.Kumis3=Rottn Mlk
 fluid.grcmilk.Kumis4=Rottn Mlk
 fluid.grcmilk.Kumis5=Gross Mlk
-fluid.grcmilk.Kumis5.desc=Even the sweetest of things can become corrupt.
+fluid.grcmilk.Kumis5.desc=Even teh sweetest of things can becom sour
 
 ## Booze Blocks
 tile.fluid.grcmilk.Kumis0.name=Rottn Mlk
@@ -181,9 +181,9 @@ grcmilk.cheese.aging.progress.format= %d%%
 grcmilk.cheese.slices.prefix=Slices :
 grcmilk.cheese.slices.value.format= %d / %d
 grcmilk.cheese_press.itemslot.item=%s
-grcmilk.cheese_press.pressing.state.false=Unpressed
+grcmilk.cheese_press.pressing.state.false=Unsmushed
 grcmilk.cheese_press.pressing.state.prefix=State :
-grcmilk.cheese_press.pressing.state.true=Pressed
+grcmilk.cheese_press.pressing.state.true=Smushed
 grcmilk.hanging_curds.dried=Drained
 grcmilk.hanging_curds.drying.prefix=Draining :
 grcmilk.hanging_curds.drying.progress.format= %d%%
