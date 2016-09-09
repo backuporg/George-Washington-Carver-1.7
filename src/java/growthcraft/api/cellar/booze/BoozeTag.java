@@ -118,6 +118,8 @@ public class BoozeTag
 	public static final FluidTag MANTRIC = CoreRegistry.instance().fluidTags().createTag("mantric");
 	//This beverage is a potent chorus fruit beverage
 	public static final FluidTag HYMNODY = CoreRegistry.instance().fluidTags().createTag("hymnody");
+	//This beverage is a hyper-extended chorus fruit beverage
+	public static final FluidTag OPERATIC = CoreRegistry.instance().fluidTags().createTag("operatic");
 	
 	private BoozeTag() {}
 }
