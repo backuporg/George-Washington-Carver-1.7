@@ -91,7 +91,7 @@ public class BlockHops extends GrcBlockBase implements IBlockRope, IPlantable, I
 
 	public boolean canSpreadLeaves(World world, int x, int y, int z)
 	{
-		return BlockCheck.isRope(world.getBlock(x, y + 1, z)) && this.canBlockStay(world, x, y + 1, z);
+		return BlockCheck.isRope(world.getBlockState(x, y + 1, z)) && this.canBlockStay(world, x, y + 1, z);
 	}
 
 	/************
@@ -102,7 +102,7 @@ public class BlockHops extends GrcBlockBase implements IBlockRope, IPlantable, I
 	{
 		if (!this.canBlockStay(world, x, y, z))
 		{
-			world.setBlock(x, y, z, GrowthCraftCore.blocks.ropeBlock.getBlock());
+			world.setBlock(x, y, z, GrowthCraftCore.blocks.ropeBlock.getBlockState());
 		}
 		else
 		{
@@ -173,7 +173,7 @@ public class BlockHops extends GrcBlockBase implements IBlockRope, IPlantable, I
 
 	private float getGrowthRateLoop(World world, int x, int y, int z)
 	{
-		if (BlockCheck.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, this))
+		if (BlockCheck.canSustainPlant(world, x, y - 1, z, EnumFacing.UP, this))
 		{
 			return getGrowthRate(world, x, y, z);
 		}
@@ -181,7 +181,7 @@ public class BlockHops extends GrcBlockBase implements IBlockRope, IPlantable, I
 		{
 			for (int loop = 1; loop < 5; ++loop)
 			{
-				if (world.getBlock(x, y - loop, z) != this)
+				if (world.getBlockState(x, y - loop, z) != this)
 				{
 					return getGrowthRate(world, x, y, z);
 				}
@@ -198,14 +198,14 @@ public class BlockHops extends GrcBlockBase implements IBlockRope, IPlantable, I
 
 	private float getGrowthRate(World world, int x, int y, int z)
 	{
-		final Block l = world.getBlock(x, y, z - 1);
-		final Block i1 = world.getBlock(x, y, z + 1);
-		final Block j1 = world.getBlock(x - 1, y, z);
-		final Block k1 = world.getBlock(x + 1, y, z);
-		final Block l1 = world.getBlock(x - 1, y, z - 1);
-		final Block i2 = world.getBlock(x + 1, y, z - 1);
-		final Block j2 = world.getBlock(x + 1, y, z + 1);
-		final Block k2 = world.getBlock(x - 1, y, z + 1);
+		final Block l = world.getBlockState(x, y, z - 1);
+		final Block i1 = world.getBlockState(x, y, z + 1);
+		final Block j1 = world.getBlockState(x - 1, y, z);
+		final Block k1 = world.getBlockState(x + 1, y, z);
+		final Block l1 = world.getBlockState(x - 1, y, z - 1);
+		final Block i2 = world.getBlockState(x + 1, y, z - 1);
+		final Block j2 = world.getBlockState(x + 1, y, z + 1);
+		final Block k2 = world.getBlockState(x - 1, y, z + 1);
 		final boolean flag = j1 == this || k1 == this;
 		final boolean flag1 = l == this || i1 == this;
 		final boolean flag2 = l1 == this || i2 == this || j2 == this || k2 == this;
@@ -215,7 +215,7 @@ public class BlockHops extends GrcBlockBase implements IBlockRope, IPlantable, I
 		{
 			for (int i3 = z - 1; i3 <= z + 1; ++i3)
 			{
-				final Block block = BlockCheck.getFarmableBlock(world, l2, y - 1, i3, ForgeDirection.UP, this);
+				final Block block = BlockCheck.getFarmableBlock(world, l2, y - 1, i3, EnumFacing.UP, this);
 				float f1 = 0.0F;
 
 				if (block != null)
@@ -254,7 +254,7 @@ public class BlockHops extends GrcBlockBase implements IBlockRope, IPlantable, I
 	 * TRIGGERS
 	 ************/
 	@Override
-	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int dir, float par7, float par8, float par9)
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int EnumFacing, float par7, float par8, float par9)
 	{
 		if (world.getBlockMetadata(x, y, z) >= HopsStage.FRUIT)
 		{
@@ -274,7 +274,7 @@ public class BlockHops extends GrcBlockBase implements IBlockRope, IPlantable, I
 	@Override
 	public boolean canBlockStay(World world, int x, int y, int z)
 	{
-		if (BlockCheck.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, this))
+		if (BlockCheck.canSustainPlant(world, x, y - 1, z, EnumFacing.UP, this))
 		{
 			return true;
 		}
@@ -284,7 +284,7 @@ public class BlockHops extends GrcBlockBase implements IBlockRope, IPlantable, I
 
 			while (loop < 5)
 			{
-				if (world.getBlock(x, y - loop, z) != this)
+				if (world.getBlockState(x, y - loop, z) != this)
 				{
 					return false;
 				}
@@ -302,8 +302,8 @@ public class BlockHops extends GrcBlockBase implements IBlockRope, IPlantable, I
 
 	private boolean isVineRoot(World world, int x, int y, int z)
 	{
-		return world.getBlock(x, y, z) == this &&
-			BlockCheck.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, this) &&
+		return world.getBlockState(x, y, z) == this &&
+			BlockCheck.canSustainPlant(world, x, y - 1, z, EnumFacing.UP, this) &&
 			world.getBlockMetadata(x, y, z) >= HopsStage.BIG;
 	}
 
@@ -327,7 +327,7 @@ public class BlockHops extends GrcBlockBase implements IBlockRope, IPlantable, I
 	@Override
 	public boolean canConnectRopeTo(IBlockAccess world, int x, int y, int z)
 	{
-		if (world.getBlock(x, y, z) instanceof IBlockRope)
+		if (world.getBlockState(x, y, z) instanceof IBlockRope)
 		{
 			return true;
 		}

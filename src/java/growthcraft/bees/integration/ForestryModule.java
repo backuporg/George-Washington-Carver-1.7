@@ -73,8 +73,8 @@ public class ForestryModule extends ForestryModuleBase
 		{
 			final BlockTypeDefinition<? extends BlockBeeBox> beeBox = GrowthCraftBees.blocks.newTypedDefinition(new BlockBeeBoxForestry(row, offset, i, false));
 			final BlockTypeDefinition<? extends BlockBeeBox> beeBoxFP = GrowthCraftBees.blocks.newTypedDefinition(new BlockBeeBoxForestry(row, offset, i, true));
-			beeBox.getBlock().setFlammability(20).setFireSpreadSpeed(5).setHarvestLevel("axe", 0);
-			beeBoxFP.getBlock().setHarvestLevel("axe", 0);
+			beeBox.getBlockState().setFlammability(20).setFireSpreadSpeed(5).setHarvestLevel("axe", 0);
+			beeBoxFP.getBlockState().setHarvestLevel("axe", 0);
 			GrowthCraftBees.blocks.beeBoxesForestry.add(beeBox);
 			GrowthCraftBees.blocks.beeBoxesForestryFireproof.add(beeBoxFP);
 			beeBox.register(String.format("grc.BeeBox.Forestry.%d.%s", i, "Normal"), ItemBlockBeeBox.class);

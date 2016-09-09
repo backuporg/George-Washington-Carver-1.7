@@ -38,17 +38,17 @@ public class BlockFruitPress extends BlockCellarContainer
 
 	private Block getPresserBlock()
 	{
-		return GrowthCraftCellar.blocks.fruitPresser.getBlock();
+		return GrowthCraftCellar.blocks.fruitPresser.getBlockState();
 	}
 
 	@Override
-	public boolean isRotatable(IBlockAccess world, int x, int y, int z, ForgeDirection side)
+	public boolean isRotatable(IBlockAccess world, int x, int y, int z, EnumFacing side)
 	{
 		return true;
 	}
 
 	@Override
-	public void doRotateBlock(World world, int x, int y, int z, ForgeDirection side)
+	public void doRotateBlock(World world, int x, int y, int z, EnumFacing side)
 	{
 		world.setBlockMetadataWithNotify(x, y, z, world.getBlockMetadata(x, y, z) ^ 1, BlockFlags.SYNC);
 		world.setBlockMetadataWithNotify(x, y + 1, z, world.getBlockMetadata(x, y + 1, z) ^ 1, BlockFlags.SYNC);
@@ -66,10 +66,10 @@ public class BlockFruitPress extends BlockCellarContainer
 	{
 		if (!world.isRemote)
 		{
-			final Block block = world.getBlock(x, y, z - 1);
-			final Block block1 = world.getBlock(x, y, z + 1);
-			final Block block2 = world.getBlock(x - 1, y, z);
-			final Block block3 = world.getBlock(x + 1, y, z);
+			final Block block = world.getBlockState(x, y, z - 1);
+			final Block block1 = world.getBlockState(x, y, z + 1);
+			final Block block2 = world.getBlockState(x - 1, y, z);
+			final Block block3 = world.getBlockState(x + 1, y, z);
 			byte meta = 3;
 
 			if (block.func_149730_j() && !block1.func_149730_j())
@@ -137,17 +137,17 @@ public class BlockFruitPress extends BlockCellarContainer
 	 * CONDITIONS
 	 ************/
 	@Override
-	public boolean isSideSolid(IBlockAccess world, int x, int y, int z, ForgeDirection side)
+	public boolean isSideSolid(IBlockAccess world, int x, int y, int z, EnumFacing side)
 	{
 		final int meta = world.getBlockMetadata(x, y, z);
 
 		if (meta == 0)
 		{
-			return side == ForgeDirection.EAST || side == ForgeDirection.WEST;
+			return side == EnumFacing.EAST || side == EnumFacing.WEST;
 		}
 		else if (meta == 1)
 		{
-			return side == ForgeDirection.NORTH || side == ForgeDirection.SOUTH;
+			return side == EnumFacing.NORTH || side == EnumFacing.SOUTH;
 		}
 
 		return isNormalCube(world, x, y, z);
@@ -166,7 +166,7 @@ public class BlockFruitPress extends BlockCellarContainer
 	 */
 	public boolean presserIsAbove(World world, int x, int y, int z)
 	{
-		return getPresserBlock() == world.getBlock(x, y + 1, z);
+		return getPresserBlock() == world.getBlockState(x, y + 1, z);
 	}
 
 	@Override

@@ -50,7 +50,7 @@ public class WorldGeneratorThistle implements IWorldGenerator
 			{
 				// If you can't replace the block now, it means you probably
 				// hit the floor
-				if (!canReplaceBlock(world, x, y, z, world.getBlock(x, y, z)))
+				if (!canReplaceBlock(world, x, y, z, world.getBlockState(x, y, z)))
 				{
 					// move back up and break loop
 					y += 1;
@@ -63,10 +63,10 @@ public class WorldGeneratorThistle implements IWorldGenerator
 				continue;
 			}
 
-			final Block block = world.getBlock(x, y - 1, z);
+			final Block block = world.getBlockState(x, y - 1, z);
 			if (canPlaceOnBlock(world, x, y - 1, z, block))
 			{
-				world.setBlock(x, y, z, GrowthCraftMilk.blocks.thistle.getBlock());
+				world.setBlock(x, y, z, GrowthCraftMilk.blocks.thistle.getBlockState());
 			}
 		}
 	}

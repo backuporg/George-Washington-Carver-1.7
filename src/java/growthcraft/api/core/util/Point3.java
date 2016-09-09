@@ -46,9 +46,9 @@ public class Point3
 		this(point.x, point.y, point.z);
 	}
 
-	public Point3(ForgeDirection dir)
+	public Point3(EnumFacing EnumFacing)
 	{
-		this(dir.offsetX, dir.offsetY, dir.offsetZ);
+		this(EnumFacing.offsetX, EnumFacing.offsetY, EnumFacing.offsetZ);
 	}
 
 	public Point3()
@@ -81,9 +81,9 @@ public class Point3
 		return add(point.x, point.y, point.z);
 	}
 
-	public Point3 add(ForgeDirection dir)
+	public Point3 add(EnumFacing EnumFacing)
 	{
-		return add(dir.offsetX, dir.offsetY, dir.offsetZ);
+		return add(EnumFacing.offsetX, EnumFacing.offsetY, EnumFacing.offsetZ);
 	}
 
 	public Point3 sub(int px, int py, int pz)
@@ -96,9 +96,9 @@ public class Point3
 		return sub(point.x, point.y, point.z);
 	}
 
-	public Point3 sub(ForgeDirection dir)
+	public Point3 sub(EnumFacing EnumFacing)
 	{
-		return sub(dir.offsetX, dir.offsetY, dir.offsetZ);
+		return sub(EnumFacing.offsetX, EnumFacing.offsetY, EnumFacing.offsetZ);
 	}
 
 	public Point3 mul(int px, int py, int pz)
@@ -116,9 +116,9 @@ public class Point3
 		return mul(point.x, point.y, point.z);
 	}
 
-	public Point3 mul(ForgeDirection dir)
+	public Point3 mul(EnumFacing EnumFacing)
 	{
-		return mul(dir.offsetX, dir.offsetY, dir.offsetZ);
+		return mul(EnumFacing.offsetX, EnumFacing.offsetY, EnumFacing.offsetZ);
 	}
 
 	@Override

@@ -17,8 +17,8 @@ public class WorldGenBamboo extends WorldGenAbstractTree
 	private final int density = GrowthCraftBamboo.getConfig().bambooWorldGenDensity;
 	private final int minTreeHeight = GrowthCraftBamboo.getConfig().bambooTreeMinHeight;
 	private final int maxTreeHeight = GrowthCraftBamboo.getConfig().bambooTreeMaxHeight;
-	private final Block leaves = GrowthCraftBamboo.blocks.bambooLeaves.getBlock();
-	private final Block log = GrowthCraftBamboo.blocks.bambooStalk.getBlock();
+	private final Block leaves = GrowthCraftBamboo.blocks.bambooLeaves.getBlockState();
+	private final Block log = GrowthCraftBamboo.blocks.bambooStalk.getBlockState();
 
 	public WorldGenBamboo(boolean doblocknotify)
 	{
@@ -67,7 +67,7 @@ public class WorldGenBamboo extends WorldGenAbstractTree
 					{
 						if (y >= 0 && y < maxTreeHeight)
 						{
-							checkBlock = world.getBlock(x, y, z);
+							checkBlock = world.getBlockState(x, y, z);
 
 							if (!this.isReplaceable(world, x, y, z))
 							{
@@ -88,9 +88,9 @@ public class WorldGenBamboo extends WorldGenAbstractTree
 			}
 			else
 			{
-				final Block soil = world.getBlock(i, j - 1, k);
+				final Block soil = world.getBlockState(i, j - 1, k);
 				final boolean isSoil = soil != null &&
-					soil.canSustainPlant(world, i, j - 1, k, ForgeDirection.UP, (BlockSapling)Blocks.SAPLING);
+					soil.canSustainPlant(world, i, j - 1, k, EnumFacing.UP, (BlockSapling)Blocks.SAPLING);
 
 				int it;
 				Block block;
@@ -111,7 +111,7 @@ public class WorldGenBamboo extends WorldGenAbstractTree
 							{
 								final int z2 = z - k;
 
-								block = world.getBlock(x, y, z);
+								block = world.getBlockState(x, y, z);
 
 								if ((Math.abs(x2) != 1 || Math.abs(z2) != 1 || 1 <= 0) && (block == null || block.canBeReplacedByLeaves(world, x, y, z)))
 								{
@@ -126,7 +126,7 @@ public class WorldGenBamboo extends WorldGenAbstractTree
 					{
 						for (z = k - 1; z <= k + 1; ++z)
 						{
-							block = world.getBlock(x, y, z);
+							block = world.getBlockState(x, y, z);
 
 							if (block == null || block.canBeReplacedByLeaves(world, x, y, z))
 							{
@@ -148,7 +148,7 @@ public class WorldGenBamboo extends WorldGenAbstractTree
 							default: break;
 						}
 
-						block = world.getBlock(x, y, z);
+						block = world.getBlockState(x, y, z);
 
 						if (block == null || block.canBeReplacedByLeaves(world, x, y, z))
 						{
@@ -157,7 +157,7 @@ public class WorldGenBamboo extends WorldGenAbstractTree
 					}
 
 					y = j + height;
-					block = world.getBlock(i, y, k);
+					block = world.getBlockState(i, y, k);
 
 					if (block == null || block.canBeReplacedByLeaves(world, i, y, k))
 					{
@@ -166,7 +166,7 @@ public class WorldGenBamboo extends WorldGenAbstractTree
 
 					for (y = 0; y < height - 1; ++y)
 					{
-						block = world.getBlock(i, j + y, k);
+						block = world.getBlockState(i, j + y, k);
 
 						if (block.isAir(world, it, j + y, k) || block.isLeaves(world, i, j + y, k))
 						{
@@ -204,7 +204,7 @@ public class WorldGenBamboo extends WorldGenAbstractTree
 	@Override
 	protected boolean isReplaceable(World world, int x, int y, int z)
 	{
-		final Block block = world.getBlock(x, y, z);
+		final Block block = world.getBlockState(x, y, z);
 		return block.isAir(world, x, y, z) ||
 			block.isLeaves(world, x, y, z) ||
 			block.isWood(world, x, y, z) ||

@@ -27,7 +27,7 @@ public class BlockBambooFenceGate extends BlockFenceGate
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int _meta)
 	{
-		return GrowthCraftBamboo.blocks.bambooBlock.getBlock().getBlockTextureFromSide(side);
+		return GrowthCraftBamboo.blocks.bambooBlock.getBlockState().getBlockTextureFromSide(side);
 	}
 
 	@Override

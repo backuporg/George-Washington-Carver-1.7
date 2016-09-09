@@ -152,7 +152,7 @@ public class BlockNetherMaliceFruit extends Block implements IGrowable, ICropDat
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int dir, float par7, float par8, float par9)
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int EnumFacing, float par7, float par8, float par9)
 	{
 		if (world.getBlockMetadata(x, y, z) >= MaliceFruitStage.MATURE)
 		{
@@ -177,7 +177,7 @@ public class BlockNetherMaliceFruit extends Block implements IGrowable, ICropDat
 	@Override
 	public boolean canBlockStay(World world, int x, int y, int z)
 	{
-		return netherloid.blocks.netherMaliceLeaves.getBlock() == world.getBlock(x, y + 1, z) &&
+		return netherloid.blocks.netherMaliceLeaves.getBlockState() == world.getBlockState(x, y + 1, z) &&
 			(world.getBlockMetadata(x, y + 1, z) & 3) == 0;
 	}
 

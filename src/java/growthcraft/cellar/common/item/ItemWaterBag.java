@@ -413,7 +413,7 @@ public class ItemWaterBag extends GrcItemBase implements IFluidContainerItem, IE
 				{
 					if (player.canPlayerEdit(i, j, k, pos.sideHit, stack))
 					{
-						final Block block = world.getBlock(i, j, k);
+						final Block block = world.getBlockState(i, j, k);
 						if (block != null)
 						{
 							final FluidStack fs = FluidUtils.drainFluidBlock(world, i, j, k, false);

@@ -119,9 +119,9 @@ public class TileEntityHangingCurds extends GrcTileBase implements INBTItemSeria
 				if (pancheonTile != null)
 				{
 					final FluidStack stack = GrowthCraftMilk.fluids.whey.fluid.asFluidStack(100);
-					if (pancheonTile.canFill(ForgeDirection.UP, stack.getFluid()))
+					if (pancheonTile.canFill(EnumFacing.UP, stack.getFluid()))
 					{
-						pancheonTile.fill(ForgeDirection.UP, stack, true);
+						pancheonTile.fill(EnumFacing.UP, stack, true);
 					}
 				}
 				// regardless of a pancheon being present, the curd SHOULD drip

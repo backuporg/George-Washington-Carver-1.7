@@ -151,19 +151,19 @@ public class RenderBamboo implements ISimpleBlockRenderingHandler
 
 	private boolean canFence(IBlockAccess world, int x, int y, int z)
 	{
-		return world.getBlock(x, y, z) == GrowthCraftBamboo.blocks.bambooFence.getBlock() ||
-			world.getBlock(x, y, z) == Blocks.OAK_FENCE_GATE ||
-			world.getBlock(x, y, z) == GrowthCraftBamboo.blocks.bambooFenceGate.getBlock();
+		return world.getBlockState(x, y, z) == GrowthCraftBamboo.blocks.bambooFence.getBlockState() ||
+			world.getBlockState(x, y, z) == Blocks.OAK_FENCE_GATE ||
+			world.getBlockState(x, y, z) == GrowthCraftBamboo.blocks.bambooFenceGate.getBlockState();
 	}
 
 	private boolean canWall(IBlockAccess world, int x, int y, int z)
 	{
-		return world.getBlock(x, y, z) == GrowthCraftBamboo.blocks.bambooWall.getBlock();
+		return world.getBlockState(x, y, z) == GrowthCraftBamboo.blocks.bambooWall.getBlockState();
 	}
 
 	private boolean canDoor(IBlockAccess world, int x, int y, int z)
 	{
-		return world.getBlock(x, y, z) instanceof BlockDoor;
+		return world.getBlockState(x, y, z) instanceof BlockDoor;
 	}
 
 	private void renderFence(RenderBlocks renderer, IBlockAccess world, Block block, int x, int y, int z, RenderUtils.Face m)

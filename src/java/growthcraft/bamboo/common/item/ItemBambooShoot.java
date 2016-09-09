@@ -23,54 +23,54 @@ public class ItemBambooShoot extends GrcItemFoodBase implements IPlantable
 	public ItemBambooShoot()
 	{
 		super(4, 0.6F, false);
-		this.cropBlock = GrowthCraftBamboo.blocks.bambooShoot.getBlock();
+		this.cropBlock = GrowthCraftBamboo.blocks.bambooShoot.getBlockState();
 		setUnlocalizedName("grc.bambooShootFood");
 		setCreativeTab(GrowthCraftBamboo.creativeTab);
 	}
 
 	@Override
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int dir, float par8, float par9, float par10)
+	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int EnumFacing, float par8, float par9, float par10)
 	{
-		final Block block1 = world.getBlock(x, y, z);
+		final Block block1 = world.getBlockState(x, y, z);
 
 		if (block1 == Blocks.SNOW && (world.getBlockMetadata(x, y, z) & 7) < 1)
 		{
-			dir = 1;
+			EnumFacing = 1;
 		}
 		else if (block1 != Blocks.VINE && block1 != Blocks.TALLGRASS && block1 != Blocks.DEADBUSH)
 		{
-			if (dir == 0)
+			if (EnumFacing == 0)
 			{
 				--y;
 			}
 
-			if (dir == 1)
+			if (EnumFacing == 1)
 			{
 				++y;
 			}
 
-			if (dir == 2)
+			if (EnumFacing == 2)
 			{
 				--z;
 			}
 
-			if (dir == 3)
+			if (EnumFacing == 3)
 			{
 				++z;
 			}
 
-			if (dir == 4)
+			if (EnumFacing == 4)
 			{
 				--x;
 			}
 
-			if (dir == 5)
+			if (EnumFacing == 5)
 			{
 				++x;
 			}
 		}
 
-		if (!player.canPlayerEdit(x, y, z, dir, stack))
+		if (!player.canPlayerEdit(x, y, z, EnumFacing, stack))
 		{
 			return false;
 		}
@@ -80,13 +80,13 @@ public class ItemBambooShoot extends GrcItemFoodBase implements IPlantable
 		}
 		else
 		{
-			if (world.canPlaceEntityOnSide(cropBlock, x, y, z, false, dir, (Entity)null, stack))
+			if (world.canPlaceEntityOnSide(cropBlock, x, y, z, false, EnumFacing, (Entity)null, stack))
 			{
-				final int meta = cropBlock.onBlockPlaced(world, x, y, z, dir, par8, par9, par10, 0);
+				final int meta = cropBlock.onBlockPlaced(world, x, y, z, EnumFacing, par8, par9, par10, 0);
 
 				if (world.setBlock(x, y, z, cropBlock, meta, 3))
 				{
-					if (world.getBlock(x, y, z) == cropBlock)
+					if (world.getBlockState(x, y, z) == cropBlock)
 					{
 						cropBlock.onBlockPlacedBy(world, x, y, z, player, stack);
 						cropBlock.onPostBlockPlaced(world, x, y, z, meta);

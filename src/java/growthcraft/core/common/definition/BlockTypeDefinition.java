@@ -41,21 +41,21 @@ public class BlockTypeDefinition<T extends Block> extends ObjectDefinition<T> im
 	}
 
 	@Nonnull
-	public T getBlock()
+	public T getBlockState()
 	{
 		return getObject();
 	}
 
 	public Item getItem()
 	{
-		return Item.getItemFromBlock(getBlock());
+		return Item.getItemFromBlock(getBlockState());
 	}
 
 	@Nonnull
 	@Override
 	public ItemStack asStack(int size, int damage)
 	{
-		return new ItemStack(getBlock(), size, damage);
+		return new ItemStack(getBlockState(), size, damage);
 	}
 
 	@Nonnull
@@ -73,7 +73,7 @@ public class BlockTypeDefinition<T extends Block> extends ObjectDefinition<T> im
 	 */
 	public boolean equals(Block other)
 	{
-		return Block.isEqualTo(getBlock(), other);
+		return Block.isEqualTo(getBlockState(), other);
 	}
 
 	/**
@@ -97,7 +97,7 @@ public class BlockTypeDefinition<T extends Block> extends ObjectDefinition<T> im
 	 */
 	public boolean isSameAs(Block other)
 	{
-		return getBlock() == other;
+		return getBlockState() == other;
 	}
 
 	/**
@@ -106,7 +106,7 @@ public class BlockTypeDefinition<T extends Block> extends ObjectDefinition<T> im
 	 */
 	public void register(String name, Class<? extends ItemBlock> itemClass)
 	{
-		GameRegistry.registerBlock(getBlock(), itemClass, name);
+		GameRegistry.registerBlock(getBlockState(), itemClass, name);
 	}
 
 	/**
@@ -114,6 +114,6 @@ public class BlockTypeDefinition<T extends Block> extends ObjectDefinition<T> im
 	 */
 	public void register(String name)
 	{
-		GameRegistry.registerBlock(getBlock(), name);
+		GameRegistry.registerBlock(getBlockState(), name);
 	}
 }

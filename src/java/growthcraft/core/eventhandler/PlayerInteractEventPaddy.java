@@ -29,7 +29,7 @@ public class PlayerInteractEventPaddy
 			if (itemstack != null && itemstack.getItem() instanceof ItemSpade)
 			{
 				final World world = player.worldObj;
-				final Block targetBlock = world.getBlock(event.x, event.y, event.z);
+				final Block targetBlock = world.getBlockState(event.x, event.y, event.z);
 				final Block paddyBlock = paddyBlocks.get(targetBlock);
 				if (paddyBlock != null)
 				{

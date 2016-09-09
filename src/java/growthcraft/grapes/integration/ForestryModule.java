@@ -48,7 +48,7 @@ public class ForestryModule extends ForestryModuleBase
 
 		final ItemStack grapeSeed = GrowthCraftGrapes.items.grapeSeeds.asStack();
 		final ItemStack grapes = GrowthCraftGrapes.items.grapes.asStack();
-		final Block grapeBlock = GrowthCraftGrapes.blocks.grapeBlock.getBlock();
+		final Block grapeBlock = GrowthCraftGrapes.blocks.grapeBlock.getBlockState();
 
 		Backpack.FORESTERS.add(grapeSeed);
 		Backpack.FORESTERS.add(grapes);

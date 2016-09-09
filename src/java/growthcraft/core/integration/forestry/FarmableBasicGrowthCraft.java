@@ -51,14 +51,14 @@ public class FarmableBasicGrowthCraft implements IFarmable
 	@Optional.Method(modid="ForestryAPI|farming")
 	public boolean isSaplingAt(World world, int x, int y, int z)
 	{
-		return world.getBlock(x, y, z) == block;
+		return world.getBlockState(x, y, z) == block;
 	}
 
 	@Override
 	@Optional.Method(modid="ForestryAPI|farming")
 	public ICrop getCropAt(World world, int x, int y, int z)
 	{
-		if (world.getBlock(x, y, z) != block) return null;
+		if (world.getBlockState(x, y, z) != block) return null;
 		if (world.getBlockMetadata(x, y, z) != matureMeta) return null;
 		return new CropBasicGrowthCraft(world, block, matureMeta, new Point3(x, y, z), isRice, isGrape);
 	}

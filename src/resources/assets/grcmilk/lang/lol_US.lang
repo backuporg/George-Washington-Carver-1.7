@@ -31,8 +31,8 @@ item.grcmilk.Yogurt.plain.name=Yogurt (Plain)
 item.grcmilk.Yogurt.watermelon.name=Yogurt (Watermelon)
 ## Other
 item.grcmilk.StarterCulture.name=Starter Culture
-item.grcmilk.Stomach.name=Stomach
-item.grcmilk.seed_thistle.name=Bull Thistle Seeds
+item.grcmilk.Stomach.name=Stomuch
+item.grcmilk.seed_thistle.name=Ouchy Flowr Sedz
 
 # Blocks
 ## Cheese
@@ -62,10 +62,10 @@ tile.grcmilk.CheeseBlock.monterey.cut.name=Monterey Cheese
 tile.grcmilk.CheeseBlock.ricotta.unaged.name=Ricotta Cheese (Unaged)
 tile.grcmilk.CheeseBlock.ricotta.aged.name=Ricotta Cheese (Aged)
 ## Other
-tile.grcmilk.ButterChurn.name=Butter Churn
+tile.grcmilk.ButterChurn.name=Fanceh Turnin Machien
 tile.grcmilk.CheeseBlock.name=Cheese Block
-tile.grcmilk.CheesePress.name=Cheese Press
-tile.grcmilk.CheeseVat.name=Cheese Vat
+tile.grcmilk.CheesePress.name=Squishin Machien
+tile.grcmilk.CheeseVat.name=Warm Box
 tile.grcmilk.HangingCurds.name=Hanging Curds
 tile.grcmilk.HangingCurds.cheddar.name=Cheddar Curds
 tile.grcmilk.HangingCurds.gorgonzola.name=Gorgonzola Curds
@@ -83,7 +83,7 @@ tile.grcmilk.HangingCurds.asiago.dried.name=Drained Asiago Curds
 tile.grcmilk.HangingCurds.parmesan.dried.name=Drained Parmesan Curds
 tile.grcmilk.HangingCurds.monterey.dried.name=Drained Monterey Curds
 tile.grcmilk.HangingCurds.ricotta.dried.name=Drained Ricotta Curds
-tile.grcmilk.Pancheon.name=Pancheon
+tile.grcmilk.Pancheon.name=Long flowr pot
 tile.grcmilk.Thistle.name=Ouchy Flowr
 
 ### Cheese Vat Fluid Tanks
@@ -128,23 +128,23 @@ tile.grcmilk.BlockFluidRennet.name=Rennet
 tile.grcmilk.BlockFluidSkimMilk.name=Skim Milk
 tile.grcmilk.BlockFluidWhey.name=Whey
 ### Bottles
-item.grcmilk.FoodBottleFluidButterMilk.name=Butter Milk Bottle
-item.grcmilk.BottleFluidCream.name=Cream Bottle
-item.grcmilk.BottleFluidCurds.name=Milk Curds Bottle
-item.grcmilk.FoodBottleFluidMilk.name=Milk Bottle
-item.grcmilk.BottleFluidPasteurizedMilk.name=Pasteurized Milk Bottle
-item.grcmilk.BottleFluidRennet.name=Rennet Bottle
-item.grcmilk.FoodBottleFluidSkimMilk.name=Skim Milk Bottle
-item.grcmilk.FoodBottleFluidWhey.name=Whey Bottle
+item.grcmilk.FoodBottleFluidButterMilk.name=Butter Milk Buttl
+item.grcmilk.BottleFluidCream.name=Cream Buttl
+item.grcmilk.BottleFluidCurds.name=Milk Curds Buttl
+item.grcmilk.FoodBottleFluidMilk.name=Milk Buttl
+item.grcmilk.BottleFluidPasteurizedMilk.name=Pasteurized Milk Buttl
+item.grcmilk.BottleFluidRennet.name=Rennet Buttl
+item.grcmilk.FoodBottleFluidSkimMilk.name=Skim Milk Buttl
+item.grcmilk.FoodBottleFluidWhey.name=Whey Buttl
 ### Buckets
-item.bucket.fluid.grcmilk.ButterMilk.name=Butter Milk Bucket
-item.bucket.fluid.grcmilk.Cream.name=Cream Bucket
-item.bucket.fluid.grcmilk.Curds.name=Milk Curds Bucket
-item.bucket.fluid.grcmilk.Milk.name=Milk Bucket
-item.bucket.fluid.grcmilk.PasteurizedMilk.name=Pasteurized Milk Bucket
-item.bucket.fluid.grcmilk.Rennet.name=Rennet Bucket
-item.bucket.fluid.grcmilk.SkimMilk.name=Skim Milk Bucket
-item.bucket.fluid.grcmilk.Whey.name=Whey Bucket
+item.bucket.fluid.grcmilk.ButterMilk.name=Butter Milk Bukkit
+item.bucket.fluid.grcmilk.Cream.name=Cream Bukkit
+item.bucket.fluid.grcmilk.Curds.name=Milk Curds Bukkit
+item.bucket.fluid.grcmilk.Milk.name=Milk Bukkit
+item.bucket.fluid.grcmilk.PasteurizedMilk.name=Pasteurized Milk Bukkit
+item.bucket.fluid.grcmilk.Rennet.name=Rennet Bukkit
+item.bucket.fluid.grcmilk.SkimMilk.name=Skim Milk Bukkit
+item.bucket.fluid.grcmilk.Whey.name=Whey Bukkit
 
 ## Booze
 fluid.grcmilk.Kumis0=Kumis
@@ -164,12 +164,12 @@ tile.fluid.grcmilk.Kumis4.name=Kumis
 tile.fluid.grcmilk.Kumis5.name=Vile Milk
 
 ## Booze Bucket
-item.bucket.fluid.grcmilk.Kumis0.name=Kumis Bucket
-item.bucket.fluid.grcmilk.Kumis1.name=Kumis Bucket
-item.bucket.fluid.grcmilk.Kumis2.name=Kumis Bucket
-item.bucket.fluid.grcmilk.Kumis3.name=Kumis Bucket
-item.bucket.fluid.grcmilk.Kumis4.name=Kumis Bucket
-item.bucket.fluid.grcmilk.Kumis5.name=Vile Milk Bucket
+item.bucket.fluid.grcmilk.Kumis0.name=Kumis Bukkit
+item.bucket.fluid.grcmilk.Kumis1.name=Kumis Bukkit
+item.bucket.fluid.grcmilk.Kumis2.name=Kumis Bukkit
+item.bucket.fluid.grcmilk.Kumis3.name=Kumis Bukkit
+item.bucket.fluid.grcmilk.Kumis4.name=Kumis Bukkit
+item.bucket.fluid.grcmilk.Kumis5.name=Vile Milk Bukkit
 
 # Effects
 grc.effect.milk=Removes all effects (Except Tipsy)

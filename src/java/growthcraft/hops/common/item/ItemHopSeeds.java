@@ -30,17 +30,17 @@ public class ItemHopSeeds extends GrcItemBase implements IPlantable
 	 * MAIN
 	 ************/
 	@Override
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int dir, float par8, float par9, float par10)
+	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int EnumFacing, float par8, float par9, float par10)
 	{
-		if (dir != 1)
+		if (EnumFacing != 1)
 		{
 			return false;
 		}
-		else if (player.canPlayerEdit(x, y, z, dir, stack) && player.canPlayerEdit(x, y + 1, z, dir, stack))
+		else if (player.canPlayerEdit(x, y, z, EnumFacing, stack) && player.canPlayerEdit(x, y + 1, z, EnumFacing, stack))
 		{
-			if (BlockCheck.canSustainPlant(world, x, y, z, ForgeDirection.UP, GrowthCraftHops.blocks.hopVine.getBlock()) && BlockCheck.isRope(world, x, y + 1, z))
+			if (BlockCheck.canSustainPlant(world, x, y, z, EnumFacing.UP, GrowthCraftHops.blocks.hopVine.getBlockState()) && BlockCheck.isRope(world, x, y + 1, z))
 			{
-				world.setBlock(x, y + 1, z, GrowthCraftHops.blocks.hopVine.getBlock());
+				world.setBlock(x, y + 1, z, GrowthCraftHops.blocks.hopVine.getBlockState());
 				--stack.stackSize;
 				return true;
 			}
@@ -74,7 +74,7 @@ public class ItemHopSeeds extends GrcItemBase implements IPlantable
 	@Override
 	public Block getPlant(IBlockAccess world, int x, int y, int z)
 	{
-		return GrowthCraftHops.blocks.hopVine.getBlock();
+		return GrowthCraftHops.blocks.hopVine.getBlockState();
 	}
 
 	@Override

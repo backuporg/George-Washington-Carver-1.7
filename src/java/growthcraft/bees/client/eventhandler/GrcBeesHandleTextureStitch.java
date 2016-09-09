@@ -50,7 +50,7 @@ public class GrcBeesHandleTextureStitch
 		{
 			final int offset = EnumBotaniaWoodType.SHIMMER_WOOD.meta;
 			final String[] sides = { "bottom", "top", "side", "side_honey" };
-			final IIcon[] icons = GrowthCraftBees.blocks.beeBoxBotania.getBlock().getIcons();
+			final IIcon[] icons = GrowthCraftBees.blocks.beeBoxBotania.getBlockState().getIcons();
 			int i = 0;
 			for (String side : sides)
 			{

@@ -17,6 +17,10 @@ public class ItemBlockBeeBox extends GrcItemBlockBase
 		setHasSubtypes(true);
 	}
 
+	public ItemBlockBeeBox(String beebox) {
+		super();
+	}
+
 	@Override
 	public String getUnlocalizedName(ItemStack stack)
 	{

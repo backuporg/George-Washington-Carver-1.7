@@ -206,7 +206,7 @@ public class GrowthCraftBees
 		VillagerRegistry.instance().registerVillageCreationHandler(handler);
 		if (brewerID > 0)
 		{
-			VillagerRegistry.instance().registerVillageTradeHandler(brewerID, new VillageHandlerBees());
+			VillagerRegistry.instance().registerVillageCreationHandler(brewerID, new VillageHandlerBees());
 		}
 	}
 

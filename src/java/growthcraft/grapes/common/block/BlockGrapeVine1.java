@@ -51,19 +51,19 @@ public class BlockGrapeVine1 extends BlockGrapeVineBase
 	@Override
 	protected void doGrowth(World world, int x, int y, int z, int meta)
 	{
-		final Block above = world.getBlock(x, y + 1, z);
+		final Block above = world.getBlockState(x, y + 1, z);
 		/* Is there a rope block above this? */
 		if (BlockCheck.isRope(above))
 		{
 			incrementGrowth(world, x, y, z, meta);
-			world.setBlock(x, y + 1, z, GrowthCraftGrapes.blocks.grapeLeaves.getBlock(), 0, BlockFlags.UPDATE_AND_SYNC);
+			world.setBlock(x, y + 1, z, GrowthCraftGrapes.blocks.grapeLeaves.getBlockState(), 0, BlockFlags.UPDATE_AND_SYNC);
 		}
 		else if (world.isAirBlock(x, y + 1, z))
 		{
 			incrementGrowth(world, x, y, z, meta);
 			world.setBlock(x, y + 1, z, this, 0, BlockFlags.UPDATE_AND_SYNC);
 		}
-		else if (GrowthCraftGrapes.blocks.grapeLeaves.getBlock() == above)
+		else if (GrowthCraftGrapes.blocks.grapeLeaves.getBlockState() == above)
 		{
 			incrementGrowth(world, x, y, z, meta);
 		}
@@ -73,7 +73,7 @@ public class BlockGrapeVine1 extends BlockGrapeVineBase
 	protected float getGrowthRate(World world, int x, int y, int z)
 	{
 		int j = y;
-		if (world.getBlock(x, j - 1, z) == this && world.getBlock(x, j - 2, z) == Blocks.FARMLAND)
+		if (world.getBlockState(x, j - 1, z) == this && world.getBlockState(x, j - 2, z) == Blocks.FARMLAND)
 		{
 			j = y - 1;
 		}
@@ -86,8 +86,8 @@ public class BlockGrapeVine1 extends BlockGrapeVineBase
 	@Override
 	public boolean canBlockStay(World world, int x, int y, int z)
 	{
-		return BlockCheck.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, this) ||
-			this == world.getBlock(x, y - 1, z);
+		return BlockCheck.canSustainPlant(world, x, y - 1, z, EnumFacing.UP, this) ||
+			this == world.getBlockState(x, y - 1, z);
 	}
 
 	/************

@@ -3,30 +3,68 @@ package growthcraft.bees.common.village;
 import java.util.Random;
 import java.util.List;
 
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+
 import growthcraft.bees.GrowthCraftBees;
+import growthcraft.bees.*;
+import growthcraft.*;
+import growthcraft.bees.init.GrcBeesItems;
+import growthcraft.bees.util.BeesItemList;
 
 import net.minecraftforge.fml.common.registry.VillagerRegistry.IVillageCreationHandler;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.passive.EntityVillager.ITradeList;
+import net.minecraft.entity.passive.EntityVillager.PriceInfo;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.village.MerchantRecipe;
 import net.minecraft.village.MerchantRecipeList;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.registry.RegistryBuilder;
 import net.minecraft.world.gen.structure.StructureVillagePieces.PieceWeight;
 import net.minecraft.world.gen.structure.StructureVillagePieces.Start;
+import net.minecraftforge.fml.common.registry.VillagerRegistry;
+import net.minecraftforge.fml.common.registry.FMLControlledNamespacedRegistry;
+import net.minecraftforge.fml.common.registry.PersistentRegistryManager;
+import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerCareer;
+import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerProfession;
+import net.minecraft.entity.passive.EntityVillager.EmeraldForItems;
+import net.minecraft.entity.passive.EntityVillager.ListItemForEmeralds;
+import net.minecraft.entity.passive.EntityVillager.PriceInfo;
+import net.minecraft.entity.passive.EntityVillager.*;
 
-public abstract class VillageHandlerBeesApiarist implements ITradeList, IVillageCreationHandler
-{
-	@Override
-	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void manipulateTradesForVillager(EntityVillager villager, MerchantRecipeList recipeList, Random random)
+import java.util.Map;
+
+public class VillageHandlerBeesApiarist {
+
+	public static VillagerProfession apiarist;
+
+	//Secretly borrowed information from Alexthe666's Ice and Fire mod to set up professions properly, as well as Back To Life
+
 	{
-		recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, 1 + random.nextInt(2)), GrowthCraftBees.items.honeyJar.asStack(1, 2)));
-		recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, 1 + random.nextInt(2)), GrowthCraftBees.items.honeyCombFilled.asStack(7)));
-		recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, 1 + random.nextInt(2)), GrowthCraftBees.items.bee.asStack(3, 5)));
-		recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, 1 + random.nextInt(2)), GrowthCraftBees.items.beesWax.asStack(1)));
+		VillagerProfession apiarist;
+
+		apiarist = new VillagerRegistry.VillagerProfession("grcbees:apiarist", "grcbees:textures/entity/apiarist.png", "minecraft:textures/entity/zombie_villager/zombie_farmer.png");
+		{
+			VillagerRegistry.VillagerCareer career = new VillagerRegistry.VillagerCareer(apiarist, "apiarist");
+			career.addTrade(1, new EntityVillager.ListItemForEmeralds(BeesItemList.ItemHoneyJar, new EntityVillager.PriceInfo(1, 2)));
+			career.addTrade(1, new EntityVillager.ListItemForEmeralds(BeesItemList.ItemHoneyCombFilled, new EntityVillager.PriceInfo(3, 7)));
+			career.addTrade(2, new EntityVillager.ListItemForEmeralds(BeesItemList.ItemBee, new EntityVillager.PriceInfo(3, 5)));
+			career.addTrade(2, new EntityVillager.ListItemForEmeralds(BeesItemList.ItemBeesWax, new EntityVillager.PriceInfo(1, 3)));
+			career.addTrade(1, new EntityVillager.EmeraldForItems(BeesItemList.ItemHoneyJar, new EntityVillager.PriceInfo(1, 2)));
+			career.addTrade(1, new EntityVillager.EmeraldForItems(BeesItemList.ItemHoneyCombFilled, new EntityVillager.PriceInfo(3, 7)));
+			career.addTrade(2, new EntityVillager.EmeraldForItems(BeesItemList.ItemBee, new EntityVillager.PriceInfo(3, 5)));
+			career.addTrade(2, new EntityVillager.EmeraldForItems(BeesItemList.ItemBeesWax, new EntityVillager.PriceInfo(1, 3)));
+		}
 	}
+	}
+	public static void addVillagers ()
+		{
+			VillagerRegistry.instance().register(apiarist);
+		}
 
 	@Override
 	public PieceWeight getVillagePieceWeight(Random random, int i)

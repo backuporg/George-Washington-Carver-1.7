@@ -75,7 +75,7 @@ public class BlockBambooStalk extends GrcBlockBase
 				{
 					final byte b = 9;
 					int amount = 10;
-					final BlockBambooShoot bambooShoot = GrowthCraftBamboo.blocks.bambooShoot.getBlock();
+					final BlockBambooShoot bambooShoot = GrowthCraftBamboo.blocks.bambooShoot.getBlockState();
 
 					for (x1 = x - b; x1 <= x + b; ++x1)
 					{
@@ -83,8 +83,8 @@ public class BlockBambooStalk extends GrcBlockBase
 						{
 							for (y1 = y - 1; y1 <= y + 1; ++y1)
 							{
-								final boolean flag1 = world.getBlock(x1, y1, z1) == this && isBambooOnGround(world, x1, y1, z1);
-								final boolean flag2 = world.getBlock(x1, y1, z1) == bambooShoot;
+								final boolean flag1 = world.getBlockState(x1, y1, z1) == this && isBambooOnGround(world, x1, y1, z1);
+								final boolean flag2 = world.getBlockState(x1, y1, z1) == bambooShoot;
 								if (flag1 || flag2)
 								{
 									--amount;
@@ -133,7 +133,7 @@ public class BlockBambooStalk extends GrcBlockBase
 	{
 		boolean flag = false;
 
-		if (world.getBlock(x, y - 1, z) != this)
+		if (world.getBlockState(x, y - 1, z) != this)
 		{
 			if (!isBambooOnGround(world, x, y, z))
 			{
@@ -166,7 +166,7 @@ public class BlockBambooStalk extends GrcBlockBase
 					{
 						for (int z1 = -b0; z1 <= b0; ++z1)
 						{
-							final Block block = world.getBlock(x + x1, y + y1, z + z1);
+							final Block block = world.getBlockState(x + x1, y + y1, z + z1);
 							if (block != null)
 							{
 								block.beginLeavesDecay(world, x + x1, y + y1, z + z1);
@@ -205,8 +205,8 @@ public class BlockBambooStalk extends GrcBlockBase
 
 	public boolean isBambooOnGround(World world, int x, int y, int z)
 	{
-		if (!BlockCheck.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, GrowthCraftBamboo.blocks.bambooShoot.getBlock())) return false;
-		return this == world.getBlock(x, y, z);
+		if (!BlockCheck.canSustainPlant(world, x, y - 1, z, EnumFacing.UP, GrowthCraftBamboo.blocks.bambooShoot.getBlockState())) return false;
+		return this == world.getBlockState(x, y, z);
 	}
 
 	@Override
@@ -217,19 +217,19 @@ public class BlockBambooStalk extends GrcBlockBase
 
 	private boolean canFence(IBlockAccess world, int x, int y, int z)
 	{
-		return world.getBlock(x, y, z) == GrowthCraftBamboo.blocks.bambooFence.getBlock() ||
-			world.getBlock(x, y, z) == Blocks.OAK_FENCE_GATE ||
-			world.getBlock(x, y, z) == GrowthCraftBamboo.blocks.bambooFenceGate.getBlock();
+		return world.getBlockState(x, y, z) == GrowthCraftBamboo.blocks.bambooFence.getBlockState() ||
+			world.getBlockState(x, y, z) == Blocks.OAK_FENCE_GATE ||
+			world.getBlockState(x, y, z) == GrowthCraftBamboo.blocks.bambooFenceGate.getBlockState();
 	}
 
 	private boolean canWall(IBlockAccess world, int x, int y, int z)
 	{
-		return world.getBlock(x, y, z) == GrowthCraftBamboo.blocks.bambooWall.getBlock();
+		return world.getBlockState(x, y, z) == GrowthCraftBamboo.blocks.bambooWall.getBlockState();
 	}
 
 	private boolean canDoor(IBlockAccess world, int x, int y, int z)
 	{
-		return world.getBlock(x, y, z) instanceof BlockDoor;
+		return world.getBlockState(x, y, z) instanceof BlockDoor;
 	}
 
 	@Override

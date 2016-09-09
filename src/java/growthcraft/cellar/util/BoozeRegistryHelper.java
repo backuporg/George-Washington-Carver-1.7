@@ -100,7 +100,7 @@ public class BoozeRegistryHelper
 			buckets[i].register(basename + "Bucket." + i);
 			fluidBlocks[i].register(basename + "Fluid." + i, ItemBlockFluidBooze.class);
 
-			EventHandlerBucketFill.instance().register(fluidBlocks[i].getBlock(), buckets[i].getItem());
+			EventHandlerBucketFill.instance().register(fluidBlocks[i].getBlockState(), buckets[i].getItem());
 
 			final FluidStack boozeStack = new FluidStack(boozes[i], FluidContainerRegistry.BUCKET_VOLUME);
 			FluidContainerRegistry.registerFluidContainer(boozeStack, buckets[i].asStack(), FluidContainerRegistry.EMPTY_BUCKET);

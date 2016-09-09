@@ -51,10 +51,10 @@ public class BlockBambooWall extends GrcBlockBase
 	{
 		if (world.isAirBlock(x, y, z)) return false;
 
-		final Block block = world.getBlock(x, y, z);
+		final Block block = world.getBlockState(x, y, z);
 
 		if (this == block ||
-			GrowthCraftBamboo.blocks.bambooStalk.getBlock() == block ||
+			GrowthCraftBamboo.blocks.bambooStalk.getBlockState() == block ||
 			Blocks.GLASS_PANE == block ||
 			block instanceof BlockFenceGate ||
 			block instanceof BlockFence ||
@@ -119,10 +119,10 @@ public class BlockBambooWall extends GrcBlockBase
 	{
 		int tm;
 
-		final Block idXneg = world.getBlock(x - 1, y, z);
-		final Block idXpos = world.getBlock(x + 1, y, z);
-		final Block idZneg = world.getBlock(x, y, z - 1);
-		final Block idZpos = world.getBlock(x, y, z + 1);
+		final Block idXneg = world.getBlockState(x - 1, y, z);
+		final Block idXpos = world.getBlockState(x + 1, y, z);
+		final Block idZneg = world.getBlockState(x, y, z - 1);
+		final Block idZpos = world.getBlockState(x, y, z + 1);
 
 		int metaXneg = world.getBlockMetadata(x - 1, y, z);
 		int metaXpos = world.getBlockMetadata(x + 1, y, z);
@@ -268,10 +268,10 @@ public class BlockBambooWall extends GrcBlockBase
 	{
 		int tm;
 
-		final Block idXneg = world.getBlock(x - 1, y, z);
-		final Block idXpos = world.getBlock(x + 1, y, z);
-		final Block idZneg = world.getBlock(x, y, z - 1);
-		final Block idZpos = world.getBlock(x, y, z + 1);
+		final Block idXneg = world.getBlockState(x - 1, y, z);
+		final Block idXpos = world.getBlockState(x + 1, y, z);
+		final Block idZneg = world.getBlockState(x, y, z - 1);
+		final Block idZpos = world.getBlockState(x, y, z + 1);
 
 		int metaXneg = world.getBlockMetadata(x - 1, y, z);
 		int metaXpos = world.getBlockMetadata(x + 1, y, z);

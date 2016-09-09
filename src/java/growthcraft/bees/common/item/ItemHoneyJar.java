@@ -19,6 +19,10 @@ public class ItemHoneyJar extends GrcItemFoodBase
 		this.setMaxStackSize(1);
 	}
 
+	public ItemHoneyJar(String honey_jar) {
+		super();
+	}
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister reg)

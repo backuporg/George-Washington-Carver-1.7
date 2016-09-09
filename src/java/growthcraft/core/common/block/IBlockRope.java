@@ -15,7 +15,7 @@ public interface IBlockRope
 	 * {@code
 	 *	 public boolean canConnectRopeTo(IBlockAccess world, int x, int y, int z)
 	 *	 {
-	 *	 	 return world.getBlock(x, y, z) instanceof IBlockRope;
+	 *	 	 return world.getBlockState(x, y, z) instanceof IBlockRope;
 	 *	 }
 	 * }
 	 * </pre>

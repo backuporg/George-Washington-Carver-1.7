@@ -26,19 +26,19 @@ public class ItemRice extends GrcItemBase
 	 * MAIN
 	 ************/
 	@Override
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int dir, float par8, float par9, float par10)
+	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int EnumFacing, float par8, float par9, float par10)
 	{
-		if (dir != 1)
+		if (EnumFacing != 1)
 		{
 			return false;
 		}
-		else if (player.canPlayerEdit(x, y, z, dir, stack) && player.canPlayerEdit(x, y + 1, z, dir, stack))
+		else if (player.canPlayerEdit(x, y, z, EnumFacing, stack) && player.canPlayerEdit(x, y + 1, z, EnumFacing, stack))
 		{
-			final Block soil = world.getBlock(x, y, z);
+			final Block soil = world.getBlockState(x, y, z);
 
 			if (soil != null && RiceBlockCheck.isPaddy(soil) && world.isAirBlock(x, y + 1, z) && world.getBlockMetadata(x, y, z) > 0)
 			{
-				world.setBlock(x, y + 1, z, GrowthCraftRice.blocks.riceBlock.getBlock());
+				world.setBlock(x, y + 1, z, GrowthCraftRice.blocks.riceBlock.getBlockState());
 				--stack.stackSize;
 				return true;
 			}

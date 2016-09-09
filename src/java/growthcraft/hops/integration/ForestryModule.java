@@ -49,7 +49,7 @@ public class ForestryModule extends ForestryModuleBase
 
 		final ItemStack hopSeed = GrowthCraftHops.items.hopSeeds.asStack();
 		final ItemStack hops = GrowthCraftHops.items.hops.asStack();
-		final Block hopVine = GrowthCraftHops.blocks.hopVine.getBlock();
+		final Block hopVine = GrowthCraftHops.blocks.hopVine.getBlockState();
 
 		Backpack.FORESTERS.add(hopSeed);
 		Backpack.FORESTERS.add(hops);

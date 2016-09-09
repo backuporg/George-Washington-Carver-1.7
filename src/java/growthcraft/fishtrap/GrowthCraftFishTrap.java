@@ -79,7 +79,7 @@ public class GrowthCraftFishTrap
 		//====================
 		// REGISTRIES
 		//====================
-		GameRegistry.registerBlock(fishTrap.getBlock(), "grc.fishTrap");
+		GameRegistry.registerBlock(fishTrap.getBlockState(), "grc.fishTrap");
 
 		GameRegistry.registerTileEntity(TileEntityFishTrap.class, "grc.tileentity.fishTrap");
 

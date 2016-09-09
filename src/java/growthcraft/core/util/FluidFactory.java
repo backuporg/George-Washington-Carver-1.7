@@ -62,7 +62,7 @@ public class FluidFactory
 
 		public Block getFluidBlock()
 		{
-			return block != null ? block.getBlock() : null;
+			return block != null ? block.getBlockState() : null;
 		}
 
 		public ItemStack asFluidBlockItemStack(int size)
@@ -119,7 +119,7 @@ public class FluidFactory
 		{
 			if (block != null)
 			{
-				block.getBlock().setBlockName(prefix + ".BlockFluid" + basename);
+				block.getBlockState().setBlockName(prefix + ".BlockFluid" + basename);
 				block.register(prefix + ".BlockFluid" + basename);
 			}
 			if (bottle != null)
@@ -145,14 +145,14 @@ public class FluidFactory
 			}
 			if (block != null && bucket != null)
 			{
-				EventHandlerBucketFill.instance().register(block.getBlock(), bucket.getItem());
+				EventHandlerBucketFill.instance().register(block.getBlockState(), bucket.getItem());
 			}
 			return this;
 		}
 
 		public FluidDetails setCreativeTab(CreativeTabs tab)
 		{
-			if (block != null) block.getBlock().setCreativeTab(tab);
+			if (block != null) block.getBlockState().setCreativeTab(tab);
 			if (bottle != null) bottle.getItem().setCreativeTab(tab);
 			if (foodBottle != null) foodBottle.getItem().setCreativeTab(tab);
 			if (bucket != null) bucket.getItem().setCreativeTab(tab);
@@ -170,7 +170,7 @@ public class FluidFactory
 
 		public FluidDetails setBlockColor(int color)
 		{
-			if (block != null) block.getBlock().setColor(color);
+			if (block != null) block.getBlockState().setColor(color);
 			return this;
 		}
 
@@ -213,7 +213,7 @@ public class FluidFactory
 			details.bottle = new ItemTypeDefinition<ItemBottleFluid>(new ItemBottleFluid(fluid));
 
 		if (NumUtils.isFlagged(features, FEATURE_BUCKET))
-			details.bucket = new ItemTypeDefinition<ItemBucketFluid>(new ItemBucketFluid(details.block != null ? details.block.getBlock() : null, fluid, null));
+			details.bucket = new ItemTypeDefinition<ItemBucketFluid>(new ItemBucketFluid(details.block != null ? details.block.getBlockState() : null, fluid, null));
 
 		details.refreshItemColor();
 		details.refreshBlockColor();

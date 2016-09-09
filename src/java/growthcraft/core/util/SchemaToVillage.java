@@ -68,7 +68,7 @@ public class SchemaToVillage
 			return this;
 		}
 
-		public Block getBlock()
+		public Block getBlockState()
 		{
 			return this.block;
 		}
@@ -122,7 +122,7 @@ public class SchemaToVillage
 						// a null entry is possible, for "Ignore the this block"
 						if (entry != null)
 						{
-							block = entry.getBlock();
+							block = entry.getBlockState();
 							meta = entry.getMetadata();
 						}
 					}

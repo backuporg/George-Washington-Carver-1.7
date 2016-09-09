@@ -54,7 +54,7 @@ public abstract class BlockNetherFungusBase extends BlockBush implements IPlanta
 	@Override
 	public boolean canBlockStay(World world, int x, int y, int z)
 	{
-		return BlockCheck.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, this);
+		return BlockCheck.canSustainPlant(world, x, y - 1, z, EnumFacing.UP, this);
 	}
 
 	protected void growFungus(World world, int x, int y, int z)
@@ -67,9 +67,9 @@ public abstract class BlockNetherFungusBase extends BlockBush implements IPlanta
 
 	public boolean canFungusSpread(World world, int x, int y, int z)
 	{
-		for (BlockCheck.BlockDirection dir : BlockCheck.DIR8)
+		for (BlockCheck.BlockDirection EnumFacing : BlockCheck.DIR8)
 		{
-			if (world.isAirBlock(x + dir.offsetX, y, z + dir.offsetZ) && canBlockStay(world, x + dir.offsetX, y, z + dir.offsetZ))
+			if (world.isAirBlock(x + EnumFacing.offsetX, y, z + EnumFacing.offsetZ) && canBlockStay(world, x + EnumFacing.offsetX, y, z + EnumFacing.offsetZ))
 			{
 				return true;
 			}
@@ -95,8 +95,8 @@ public abstract class BlockNetherFungusBase extends BlockBush implements IPlanta
 	@Override
 	public void func_149853_b(World world, Random random, int x, int y, int z)
 	{
-		final BlockCheck.BlockDirection dir = BlockCheck.randomDirection8(random);
-		growFungus(world, x + dir.offsetX, y, z + dir.offsetZ);
+		final BlockCheck.BlockDirection EnumFacing = BlockCheck.randomDirection8(random);
+		growFungus(world, x + EnumFacing.offsetX, y, z + EnumFacing.offsetZ);
 	}
 
 	protected abstract float getSpreadRate(World world, int x, int y, int z);
@@ -111,8 +111,8 @@ public abstract class BlockNetherFungusBase extends BlockBush implements IPlanta
 		}
 		else if (random.nextFloat() <= getSpreadRate(world, x, y, z))
 		{
-			final BlockCheck.BlockDirection dir = BlockCheck.randomDirection8(random);
-			growFungus(world, x + dir.offsetX, y, z + dir.offsetZ);
+			final BlockCheck.BlockDirection EnumFacing = BlockCheck.randomDirection8(random);
+			growFungus(world, x + EnumFacing.offsetX, y, z + EnumFacing.offsetZ);
 		}
 	}
 

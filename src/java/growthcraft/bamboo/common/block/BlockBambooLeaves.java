@@ -82,7 +82,7 @@ public class BlockBambooLeaves extends BlockLeavesBase implements IShearable
 						{
 							for (j2 = -b0; j2 <= b0; ++j2)
 							{
-								final Block block = world.getBlock(x + l1, y + i2, z + j2);
+								final Block block = world.getBlockState(x + l1, y + i2, z + j2);
 
 								if (block != null && block.canSustainLeaves(world, x + l1, y + i2, z + j2))
 								{
@@ -191,7 +191,7 @@ public class BlockBambooLeaves extends BlockLeavesBase implements IShearable
 				{
 					for (int i2 = -b0; i2 <= b0; ++i2)
 					{
-						final Block j2 = world.getBlock(x + k1, y + l1, z + i2);
+						final Block j2 = world.getBlockState(x + k1, y + l1, z + i2);
 
 						if (j2 != null)
 						{

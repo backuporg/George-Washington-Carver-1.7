@@ -62,8 +62,8 @@ public class GrcCoreBlocks extends GrcModuleBlocks
 		this.fenceRope = newDefinition(new BlockFenceRope(Blocks.OAK_FENCE, "grc.fenceRope"));
 		this.netherBrickFenceRope = newDefinition(new BlockFenceRope(Blocks.NETHER_BRICK_fence, "grc.netherBrickFenceRope"));
 
-		FenceRopeRegistry.instance().addEntry(Blocks.OAK_FENCE, fenceRope.getBlock());
-		FenceRopeRegistry.instance().addEntry(Blocks.NETHER_BRICK_fence, netherBrickFenceRope.getBlock());
+		FenceRopeRegistry.instance().addEntry(Blocks.OAK_FENCE, fenceRope.getBlockState());
+		FenceRopeRegistry.instance().addEntry(Blocks.NETHER_BRICK_fence, netherBrickFenceRope.getBlockState());
 	}
 
 	@Override
@@ -74,7 +74,7 @@ public class GrcCoreBlocks extends GrcModuleBlocks
 		saltBlock.register("grccore.salt_block");
 		netherBrickFenceRope.register("grc.netherBrickFenceRope", ItemBlockFenceRope.class);
 
-		Blocks.FIRE.setFireInfo(fenceRope.getBlock(), 5, 20);
+		Blocks.FIRE.setFireInfo(fenceRope.getBlockState(), 5, 20);
 	}
 
 	private void initEtfuturum()
@@ -91,8 +91,8 @@ public class GrcCoreBlocks extends GrcModuleBlocks
 					final String basename = "grc.etfuturum_fence_rope_" + woodTypeName;
 					final BlockDefinition fp = newDefinition(new BlockFenceRope(block, basename));
 					fp.register(basename, ItemBlockFenceRope.class);
-					Blocks.FIRE.setFireInfo(fp.getBlock(), 5, 20);
-					FenceRopeRegistry.instance().addEntry(block, fp.getBlock());
+					Blocks.FIRE.setFireInfo(fp.getBlockState(), 5, 20);
+					FenceRopeRegistry.instance().addEntry(block, fp.getBlockState());
 					NEI.hideItem(fp.asStack());
 				}
 			}
@@ -159,8 +159,8 @@ public class GrcCoreBlocks extends GrcModuleBlocks
 			{
 				this.naturaFenceRope = newDefinition(new BlockFenceRope(block, "grc.naturaFenceRope"));
 				naturaFenceRope.register("grc.naturaFenceRope", ItemBlockNaturaFenceRope.class);
-				Blocks.FIRE.setFireInfo(naturaFenceRope.getBlock(), 5, 20);
-				FenceRopeRegistry.instance().addEntry(block, naturaFenceRope.getBlock());
+				Blocks.FIRE.setFireInfo(naturaFenceRope.getBlockState(), 5, 20);
+				FenceRopeRegistry.instance().addEntry(block, naturaFenceRope.getBlockState());
 				NEI.hideItem(naturaFenceRope.asStack());
 			}
 		}

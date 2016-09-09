@@ -89,9 +89,9 @@ public class netherloidFluids extends GrcModuleBase
 		BoozeRegistryHelper.setBoozeFoodStats(fireBrandyBooze[1], 1, 0.3f);
 		
 		maliceCiderBooze[4].setColor(netherloid.getConfig().amritaColor);
-		maliceCiderFluids[4].getBlock().refreshColor();
+		maliceCiderFluids[4].getBlockState().refreshColor();
 		maliceCiderBooze[5].setColor(netherloid.getConfig().gelidBoozeColor);
-		maliceCiderFluids[5].getBlock().refreshColor();
+		maliceCiderFluids[5].getBlockState().refreshColor();
 		
 		this.fireBrandy = new ItemDefinition(new ItemBoozeBottle(fireBrandyBooze));
 		

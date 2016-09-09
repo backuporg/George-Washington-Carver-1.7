@@ -61,7 +61,7 @@ public class ItemNetherMuertecap extends ItemFood implements IPlantable
 
 	public Block getPlant(IBlockAccess world, int x, int y, int z)
 	{
-		return netherloid.blocks.netherMuertecap.getBlock();
+		return netherloid.blocks.netherMuertecap.getBlockState();
 	}
 
 	public int getPlantMetadata(IBlockAccess world, int x, int y, int z)

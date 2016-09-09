@@ -44,7 +44,7 @@ public class EventHandlerCauldronUseItem
 
 		// if you need more items, be sure to change this event to pick items
 		// from a HashMap, however for now, I'll just hard code the WaterBag
-		final Block target = event.world.getBlock(event.x, event.y, event.z);
+		final Block target = event.world.getBlockState(event.x, event.y, event.z);
 
 		if (target instanceof BlockCauldron)
 		{

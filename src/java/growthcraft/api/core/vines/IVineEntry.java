@@ -29,7 +29,7 @@ import net.minecraft.block.Block;
 
 public interface IVineEntry
 {
-	Block getBlock();
+	Block getBlockState();
 	int getMetadata();
 	boolean matches(@Nullable Block block, int meta);
 }

@@ -283,8 +283,8 @@ public class ComponentVillageApiarist extends StructureVillagePieces.Village imp
 		map.put('Y', new BlockEntry(Blocks.PLANKS, 2));
 		map.put('B', new BlockEntry(Blocks.PLANKS, 1));
 
-		map.put('H', new BlockEntry(GrowthCraftBees.blocks.beeHive.getBlock(), this.getMetadataWithOffset(GrowthCraftBees.blocks.beeHive.getBlock(), 3)));
-		map.put('+', new BlockEntry(GrowthCraftBees.blocks.beeBox.getBlock(), this.getMetadataWithOffset(GrowthCraftBees.blocks.beeBox.getBlock(), random.nextInt(6))));
+		map.put('H', new BlockEntry(GrowthCraftBees.blocks.beeHive.getBlockState(), this.getMetadataWithOffset(GrowthCraftBees.blocks.beeHive.getBlockState(), 3)));
+		map.put('+', new BlockEntry(GrowthCraftBees.blocks.beeBox.getBlockState(), this.getMetadataWithOffset(GrowthCraftBees.blocks.beeBox.getBlockState(), random.nextInt(6))));
 
 		SchemaToVillage.drawSchema(this, world, random, box, apiaristExteriorSchema, map, 0, 0, 0);
 

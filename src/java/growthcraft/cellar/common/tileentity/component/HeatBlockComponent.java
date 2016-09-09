@@ -38,7 +38,7 @@ import net.minecraft.util.EnumFacing;
 public class HeatBlockComponent
 {
 	private TileEntity tileEntity;
-	private ForgeDirection sourceDir = ForgeDirection.DOWN;
+	private EnumFacing sourceDir = EnumFacing.DOWN;
 	// Adjacent heating allows the block to accept heat from blocks on the same y axis and directly
 	// adjacent to it
 	private float adjacentHeating;
@@ -58,13 +58,13 @@ public class HeatBlockComponent
 		return tileEntity.getWorldObj();
 	}
 
-	public float getHeatMultiplierFromDir(ForgeDirection dir)
+	public float getHeatMultiplierFromDir(EnumFacing EnumFacing)
 	{
-		final int x = tileEntity.xCoord + dir.offsetX;
-		final int y = tileEntity.yCoord + dir.offsetY;
-		final int z = tileEntity.zCoord + dir.offsetZ;
+		final int x = tileEntity.xCoord + EnumFacing.offsetX;
+		final int y = tileEntity.yCoord + EnumFacing.offsetY;
+		final int z = tileEntity.zCoord + EnumFacing.offsetZ;
 
-		final Block block = getWorld().getBlock(x, y, z);
+		final Block block = getWorld().getBlockState(x, y, z);
 		final int meta = getWorld().getBlockMetadata(x, y, z);
 
 		final IHeatSourceBlock heatSource = CellarRegistry.instance().heatSource().getHeatSource(block, meta);
@@ -78,9 +78,9 @@ public class HeatBlockComponent
 		if (adjacentHeating > 0)
 		{
 			float heat = 0.0f;
-			for (ForgeDirection dir : BlockCheck.DIR4)
+			for (EnumFacing EnumFacing : BlockCheck.DIR4)
 			{
-				heat += getHeatMultiplierFromDir(dir);
+				heat += getHeatMultiplierFromDir(EnumFacing);
 			}
 			return heat * adjacentHeating;
 		}

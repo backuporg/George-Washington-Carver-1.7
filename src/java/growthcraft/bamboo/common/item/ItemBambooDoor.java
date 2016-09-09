@@ -34,7 +34,7 @@ public class ItemBambooDoor extends GrcItemBase
 		else
 		{
 			++y;
-			final Block block = GrowthCraftBamboo.blocks.bambooDoor.getBlock();
+			final Block block = GrowthCraftBamboo.blocks.bambooDoor.getBlockState();
 
 			if (player.canPlayerEdit(x, y, z, side, stack) && player.canPlayerEdit(x, y + 1, z, side, stack))
 			{
@@ -82,10 +82,10 @@ public class ItemBambooDoor extends GrcItemBase
 			b0 = 1;
 		}
 
-		final int i1 = (world.getBlock(i - b0, j, k - b1).isNormalCube(world, i - b0, j, k - b1) ? 1 : 0) + (world.getBlock(i - b0, j + 1, k - b1).isNormalCube(world, i - b0, j + 1, k - b1) ? 1 : 0);
-		final int j1 = (world.getBlock(i + b0, j, k + b1).isNormalCube(world, i + b0, j, k + b1) ? 1 : 0) + (world.getBlock(i + b0, j + 1, k + b1).isNormalCube(world, i + b0, j + 1, k + b1) ? 1 : 0);
-		final boolean flag = world.getBlock(i - b0, j, k - b1) == block || world.getBlock(i - b0, j + 1, k - b1) == block;
-		final boolean flag1 = world.getBlock(i + b0, j, k + b1) == block || world.getBlock(i + b0, j + 1, k + b1) == block;
+		final int i1 = (world.getBlockState(i - b0, j, k - b1).isNormalCube(world, i - b0, j, k - b1) ? 1 : 0) + (world.getBlockState(i - b0, j + 1, k - b1).isNormalCube(world, i - b0, j + 1, k - b1) ? 1 : 0);
+		final int j1 = (world.getBlockState(i + b0, j, k + b1).isNormalCube(world, i + b0, j, k + b1) ? 1 : 0) + (world.getBlockState(i + b0, j + 1, k + b1).isNormalCube(world, i + b0, j + 1, k + b1) ? 1 : 0);
+		final boolean flag = world.getBlockState(i - b0, j, k - b1) == block || world.getBlockState(i - b0, j + 1, k - b1) == block;
+		final boolean flag1 = world.getBlockState(i + b0, j, k + b1) == block || world.getBlockState(i + b0, j + 1, k + b1) == block;
 		boolean flag2 = false;
 
 		if (flag && !flag1)

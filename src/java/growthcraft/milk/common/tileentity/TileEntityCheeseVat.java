@@ -472,7 +472,7 @@ public class TileEntityCheeseVat extends GrcTileDeviceBase implements IItemHandl
 	}
 
 	@Override
-	public boolean canFill(ForgeDirection from, Fluid fluid)
+	public boolean canFill(EnumFacing from, Fluid fluid)
 	{
 		return FluidTest.hasTags(fluid, MilkFluidTags.MILK) ||
 			FluidTest.hasTags(fluid, MilkFluidTags.WHEY) ||
@@ -481,21 +481,21 @@ public class TileEntityCheeseVat extends GrcTileDeviceBase implements IItemHandl
 	}
 
 	@Override
-	protected FluidStack doDrain(ForgeDirection dir, int amount, boolean doDrain)
+	protected FluidStack doDrain(EnumFacing EnumFacing, int amount, boolean doDrain)
 	{
 		if (!isIdle()) return null;
 		return wasteFluidSlot.consume(amount, doDrain);
 	}
 
 	@Override
-	protected FluidStack doDrain(ForgeDirection dir, FluidStack stack, boolean doDrain)
+	protected FluidStack doDrain(EnumFacing EnumFacing, FluidStack stack, boolean doDrain)
 	{
 		if (!FluidTest.areStacksEqual(wasteFluidSlot.get(), stack)) return null;
-		return doDrain(dir, stack.amount, doDrain);
+		return doDrain(EnumFacing, stack.amount, doDrain);
 	}
 
 	@Override
-	protected int doFill(ForgeDirection dir, FluidStack stack, boolean doFill)
+	protected int doFill(EnumFacing EnumFacing, FluidStack stack, boolean doFill)
 	{
 		if (!isIdle()) return 0;
 		int result = 0;
@@ -590,8 +590,9 @@ public class TileEntityCheeseVat extends GrcTileDeviceBase implements IItemHandl
 	}
 
 	@Override
-	public boolean tryPlaceItem(EntityPlayer player, ItemStack stack)
+	public boolean tryPlaceItem(IItemHandler.Action action, EntityPlayer player, ItemStack stack)
 	{
+		if (IItemHandler.Action.RIGHT != action) return false;
 		if (!isIdle()) return false;
 		if (!ItemTest.isValid(stack)) return false;
 		final Item item = stack.getItem();
@@ -615,8 +616,9 @@ public class TileEntityCheeseVat extends GrcTileDeviceBase implements IItemHandl
 	}
 
 	@Override
-	public boolean tryTakeItem(EntityPlayer player, ItemStack onHand)
+	public boolean tryTakeItem(IItemHandler.Action action, EntityPlayer player, ItemStack onHand)
 	{
+		if (IItemHandler.Action.RIGHT != action) return false;
 		if (!isIdle()) return false;
 		if (onHand == null)
 		{

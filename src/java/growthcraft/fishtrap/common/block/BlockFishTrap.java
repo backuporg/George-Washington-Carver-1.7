@@ -59,7 +59,7 @@ public class BlockFishTrap extends GrcBlockContainer
 			{
 				for (int loopz = 0; loopz <= checkSize; loopz++)
 				{
-					final Block water = world.getBlock(i + loopx, j + loopy, k + loopz);
+					final Block water = world.getBlockState(i + loopx, j + loopy, k + loopz);
 					float f1 = 0.0F;
 					//1.038461538461538;
 
@@ -137,10 +137,10 @@ public class BlockFishTrap extends GrcBlockContainer
 
 	private boolean canCatch(World world, int x, int y, int z)
 	{
-		return isWater(world.getBlock(x, y, z - 1)) ||
-			isWater(world.getBlock(x, y, z + 1)) ||
-			isWater(world.getBlock(x - 1, y, z)) ||
-			isWater(world.getBlock(x + 1, y, z));
+		return isWater(world.getBlockState(x, y, z - 1)) ||
+			isWater(world.getBlockState(x, y, z + 1)) ||
+			isWater(world.getBlockState(x - 1, y, z)) ||
+			isWater(world.getBlockState(x + 1, y, z));
 	}
 
 	@Override
@@ -207,7 +207,7 @@ public class BlockFishTrap extends GrcBlockContainer
 	@SideOnly(Side.CLIENT)
 	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side)
 	{
-		if (this == world.getBlock(x, y, z)) return false;
+		if (this == world.getBlockState(x, y, z)) return false;
 		return super.shouldSideBeRendered(world, x, y, z, side);
 	}
 

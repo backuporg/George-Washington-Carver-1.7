@@ -116,7 +116,7 @@ public class GrowthCraftRice
 	@EventHandler
 	public void load(FMLInitializationEvent event)
 	{
-		PlayerInteractEventPaddy.paddyBlocks.put(Blocks.FARMLAND, blocks.paddyField.getBlock());
+		PlayerInteractEventPaddy.paddyBlocks.put(Blocks.FARMLAND, blocks.paddyField.getBlockState());
 		if (config.enableVillageGen) initVillageHandlers();
 		modules.init();
 	}

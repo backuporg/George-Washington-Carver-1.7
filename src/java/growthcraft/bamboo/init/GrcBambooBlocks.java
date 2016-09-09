@@ -76,8 +76,8 @@ public class GrcBambooBlocks extends GrcModuleBlocks
 		bambooDoor       = newDefinition(new BlockBambooDoor());
 		bambooFenceGate  = newDefinition(new BlockBambooFenceGate());
 		bambooScaffold   = newDefinition(new BlockBambooScaffold());
-		bambooFenceRope = newDefinition(new BlockFenceRope(bambooFence.getBlock(), "grc.bambooFenceRope"));
-		FenceRopeRegistry.instance().addEntry(bambooFence.getBlock(), bambooFenceRope.getBlock());
+		bambooFenceRope = newDefinition(new BlockFenceRope(bambooFence.getBlockState(), "grc.bambooFenceRope"));
+		FenceRopeRegistry.instance().addEntry(bambooFence.getBlockState(), bambooFenceRope.getBlockState());
 	}
 
 	@Override
@@ -100,16 +100,16 @@ public class GrcBambooBlocks extends GrcModuleBlocks
 		//====================
 		// ADDITIONAL PROPS.
 		//====================
-		Blocks.FIRE.setFireInfo(bambooBlock.getBlock(), 5, 20);
-		Blocks.FIRE.setFireInfo(bambooStalk.getBlock(), 5, 4);
-		Blocks.FIRE.setFireInfo(bambooLeaves.getBlock(), 30, 60);
-		Blocks.FIRE.setFireInfo(bambooFence.getBlock(), 5, 20);
-		Blocks.FIRE.setFireInfo(bambooFenceRope.getBlock(), 5, 20);
-		Blocks.FIRE.setFireInfo(bambooWall.getBlock(), 5, 20);
-		Blocks.FIRE.setFireInfo(bambooStairs.getBlock(), 5, 20);
-		Blocks.FIRE.setFireInfo(bambooSingleSlab.getBlock(), 5, 20);
-		Blocks.FIRE.setFireInfo(bambooDoubleSlab.getBlock(), 5, 20);
-		Blocks.FIRE.setFireInfo(bambooScaffold.getBlock(), 5, 20);
+		Blocks.FIRE.setFireInfo(bambooBlock.getBlockState(), 5, 20);
+		Blocks.FIRE.setFireInfo(bambooStalk.getBlockState(), 5, 4);
+		Blocks.FIRE.setFireInfo(bambooLeaves.getBlockState(), 30, 60);
+		Blocks.FIRE.setFireInfo(bambooFence.getBlockState(), 5, 20);
+		Blocks.FIRE.setFireInfo(bambooFenceRope.getBlockState(), 5, 20);
+		Blocks.FIRE.setFireInfo(bambooWall.getBlockState(), 5, 20);
+		Blocks.FIRE.setFireInfo(bambooStairs.getBlockState(), 5, 20);
+		Blocks.FIRE.setFireInfo(bambooSingleSlab.getBlockState(), 5, 20);
+		Blocks.FIRE.setFireInfo(bambooDoubleSlab.getBlockState(), 5, 20);
+		Blocks.FIRE.setFireInfo(bambooScaffold.getBlockState(), 5, 20);
 
 		NEI.hideItem(bambooDoor.asStack());
 		NEI.hideItem(bambooFenceRope.asStack());

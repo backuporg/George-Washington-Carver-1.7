@@ -89,7 +89,7 @@ public class BlockNetherPaddy extends BlockPaddyBase
 		super.randomDisplayTick(world, x, y, z, random);
 		if (filledPaddy)
 		{
-			if (world.getBlock(x, y + 1, z).getMaterial() == Material.air && !world.getBlock(x, y + 1, z).isOpaqueCube())
+			if (world.getBlockState(x, y + 1, z).getMaterial() == Material.air && !world.getBlockState(x, y + 1, z).isOpaqueCube())
 			{
 				if (random.nextInt(100) == 0)
 				{
@@ -134,7 +134,7 @@ public class BlockNetherPaddy extends BlockPaddyBase
 	@Override
 	public boolean isBelowFillingFluid(IBlockAccess world, int x, int y, int z)
 	{
-		return world.getBlock(x, y + 1, z).getMaterial() == Material.LAVA;
+		return world.getBlockState(x, y + 1, z).getMaterial() == Material.LAVA;
 	}
 
 	@Override
@@ -147,7 +147,7 @@ public class BlockNetherPaddy extends BlockPaddyBase
 		}
 		else
 		{
-			final Block targetBlock = netherloid.blocks.netherPaddyField.getBlock();
+			final Block targetBlock = netherloid.blocks.netherPaddyField.getBlockState();
 			if (this != targetBlock)
 			{
 				world.setBlock(x, y, z, targetBlock, 0, BlockFlags.SYNC);
@@ -158,7 +158,7 @@ public class BlockNetherPaddy extends BlockPaddyBase
 	@Override
 	public void fillPaddy(World world, int x, int y, int z)
 	{
-		final Block targetBlock = netherloid.blocks.netherPaddyFieldFilled.getBlock();
+		final Block targetBlock = netherloid.blocks.netherPaddyFieldFilled.getBlockState();
 		if (this != targetBlock)
 		{
 			world.setBlock(x, y, z, targetBlock, getMaxPaddyMeta(world, x, y, z), BlockFlags.SYNC);
@@ -240,6 +240,6 @@ public class BlockNetherPaddy extends BlockPaddyBase
 			meta = 1;
 		}
 
-		return NetherBlockCheck.isPaddy(world.getBlock(i, j, k)) && meta == m;
+		return NetherBlockCheck.isPaddy(world.getBlockState(i, j, k)) && meta == m;
 	}
 }

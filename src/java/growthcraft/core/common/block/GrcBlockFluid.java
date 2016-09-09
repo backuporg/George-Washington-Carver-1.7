@@ -97,14 +97,14 @@ public class GrcBlockFluid extends BlockFluidClassic
 	@Override
 	public boolean canDisplace(IBlockAccess world, int x, int y, int z)
 	{
-		if (world.getBlock(x, y, z).getMaterial().isLiquid()) return false;
+		if (world.getBlockState(x, y, z).getMaterial().isLiquid()) return false;
 		return super.canDisplace(world, x, y, z);
 	}
 
 	@Override
 	public boolean displaceIfPossible(World world, int x, int y, int z)
 	{
-		if (world.getBlock(x, y, z).getMaterial().isLiquid()) return false;
+		if (world.getBlockState(x, y, z).getMaterial().isLiquid()) return false;
 		return super.displaceIfPossible(world, x, y, z);
 	}
 
@@ -123,7 +123,7 @@ public class GrcBlockFluid extends BlockFluidClassic
 
 		if (rand.nextInt(10) == 0 &&
 			World.doesBlockHaveSolidTopSurface(world, x, y - 1, z) &&
-			!world.getBlock(x, y - 2, z).getMaterial().blocksMovement())
+			!world.getBlockState(x, y - 2, z).getMaterial().blocksMovement())
 		{
 			final double px = x + rand.nextFloat();
 			final double py = y - 1.05D;

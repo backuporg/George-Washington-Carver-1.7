@@ -8,7 +8,7 @@ public class BlockBambooStairs extends BlockStairs
 {
 	public BlockBambooStairs()
 	{
-		super(GrowthCraftBamboo.blocks.bambooBlock.getBlock(), 0);
+		super(GrowthCraftBamboo.blocks.bambooBlock.getBlockState(), 0);
 		this.useNeighborBrightness = true;
 		setCreativeTab(GrowthCraftBamboo.creativeTab);
 		setBlockName("grc.bambooStairs");

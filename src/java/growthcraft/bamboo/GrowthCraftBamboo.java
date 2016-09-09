@@ -112,16 +112,16 @@ public class GrowthCraftBamboo
 		//====================
 		// CRAFTING
 		//====================
-		GameRegistry.addShapedRecipe(blocks.bambooWall.asStack(6), "###", "###", '#', blocks.bambooBlock.getBlock());
-		GameRegistry.addShapedRecipe(blocks.bambooStairs.asStack(4), "#  ", "## ", "###", '#', blocks.bambooBlock.getBlock());
-		GameRegistry.addShapedRecipe(blocks.bambooSingleSlab.asStack(6), "###", '#', blocks.bambooBlock.getBlock());
-		GameRegistry.addShapedRecipe(items.bambooDoorItem.asStack(), "##", "##", "##", '#', blocks.bambooBlock.getBlock());
-		GameRegistry.addShapedRecipe(items.bambooRaft.asStack(), "A A", "AAA", 'A', blocks.bambooBlock.getBlock());
-		GameRegistry.addShapedRecipe(blocks.bambooBlock.asStack(), "A", "A", 'A', blocks.bambooSingleSlab.getBlock());
+		GameRegistry.addShapedRecipe(blocks.bambooWall.asStack(6), "###", "###", '#', blocks.bambooBlock.getBlockState());
+		GameRegistry.addShapedRecipe(blocks.bambooStairs.asStack(4), "#  ", "## ", "###", '#', blocks.bambooBlock.getBlockState());
+		GameRegistry.addShapedRecipe(blocks.bambooSingleSlab.asStack(6), "###", '#', blocks.bambooBlock.getBlockState());
+		GameRegistry.addShapedRecipe(items.bambooDoorItem.asStack(), "##", "##", "##", '#', blocks.bambooBlock.getBlockState());
+		GameRegistry.addShapedRecipe(items.bambooRaft.asStack(), "A A", "AAA", 'A', blocks.bambooBlock.getBlockState());
+		GameRegistry.addShapedRecipe(blocks.bambooBlock.asStack(), "A", "A", 'A', blocks.bambooSingleSlab.getBlockState());
 		GameRegistry.addShapedRecipe(blocks.bambooBlock.asStack(), "AA", "AA", 'A', items.bamboo.getItem());
 		GameRegistry.addShapedRecipe(blocks.bambooFence.asStack(3), "AAA", "AAA", 'A', items.bamboo.getItem());
-		GameRegistry.addShapedRecipe(blocks.bambooFenceGate.asStack(), "ABA", "ABA", 'A', items.bamboo.getItem(), 'B', blocks.bambooBlock.getBlock());
-		GameRegistry.addShapedRecipe(blocks.bambooScaffold.asStack(16), "BBB", " A ", "A A", 'A', items.bamboo.getItem(), 'B', blocks.bambooBlock.getBlock());
+		GameRegistry.addShapedRecipe(blocks.bambooFenceGate.asStack(), "ABA", "ABA", 'A', items.bamboo.getItem(), 'B', blocks.bambooBlock.getBlockState());
+		GameRegistry.addShapedRecipe(blocks.bambooScaffold.asStack(16), "BBB", " A ", "A A", 'A', items.bamboo.getItem(), 'B', blocks.bambooBlock.getBlockState());
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.TORCH, 2), new Object[] {"A", "B", 'A', items.bambooCoal.getItem(), 'B', "stickWood"}));
 
 		MapGenHelper.registerVillageStructure(ComponentVillageBambooYard.class, "grc.bambooyard");
@@ -144,34 +144,34 @@ public class GrowthCraftBamboo
 		// General ore dictionary names
 		OreDictionary.registerOre("stickWood", items.bamboo.getItem());
 		OreDictionary.registerOre("woodStick", items.bamboo.getItem());
-		OreDictionary.registerOre("plankWood", blocks.bambooBlock.getBlock());
-		OreDictionary.registerOre("woodPlank", blocks.bambooBlock.getBlock());
-		OreDictionary.registerOre("slabWood", blocks.bambooSingleSlab.getBlock());
-		OreDictionary.registerOre("woodSlab", blocks.bambooSingleSlab.getBlock());
-		OreDictionary.registerOre("stairWood", blocks.bambooStairs.getBlock());
-		OreDictionary.registerOre("woodStair", blocks.bambooStairs.getBlock());
-		OreDictionary.registerOre("leavesTree", blocks.bambooLeaves.getBlock());
-		OreDictionary.registerOre("treeLeaves", blocks.bambooLeaves.getBlock());
+		OreDictionary.registerOre("plankWood", blocks.bambooBlock.getBlockState());
+		OreDictionary.registerOre("woodPlank", blocks.bambooBlock.getBlockState());
+		OreDictionary.registerOre("slabWood", blocks.bambooSingleSlab.getBlockState());
+		OreDictionary.registerOre("woodSlab", blocks.bambooSingleSlab.getBlockState());
+		OreDictionary.registerOre("stairWood", blocks.bambooStairs.getBlockState());
+		OreDictionary.registerOre("woodStair", blocks.bambooStairs.getBlockState());
+		OreDictionary.registerOre("leavesTree", blocks.bambooLeaves.getBlockState());
+		OreDictionary.registerOre("treeLeaves", blocks.bambooLeaves.getBlockState());
 
 
 		// Bamboo specific
 		OreDictionary.registerOre("cropBamboo", items.bamboo.getItem());
 		OreDictionary.registerOre("materialBamboo", items.bamboo.getItem());
 		OreDictionary.registerOre("bamboo", items.bamboo.getItem());
-		OreDictionary.registerOre("plankBamboo", blocks.bambooBlock.getBlock());
-		OreDictionary.registerOre("slabBamboo", blocks.bambooSingleSlab.getBlock());
-		OreDictionary.registerOre("stairBamboo", blocks.bambooStairs.getBlock());
-		OreDictionary.registerOre("treeBambooLeaves", blocks.bambooLeaves.getBlock());
+		OreDictionary.registerOre("plankBamboo", blocks.bambooBlock.getBlockState());
+		OreDictionary.registerOre("slabBamboo", blocks.bambooSingleSlab.getBlockState());
+		OreDictionary.registerOre("stairBamboo", blocks.bambooStairs.getBlockState());
+		OreDictionary.registerOre("treeBambooLeaves", blocks.bambooLeaves.getBlockState());
 
-		OreDictionary.registerOre("foodBambooshoot", blocks.bambooShoot.getBlock());
+		OreDictionary.registerOre("foodBambooshoot", blocks.bambooShoot.getBlockState());
 		OreDictionary.registerOre("foodBambooshoot", items.bambooShootFood.getItem());
 
 		/*
 		 * For Pam's HarvestCraft
 		 *   Uses the same OreDict. names as HarvestCraft
 		 */
-		OreDictionary.registerOre("cropBambooshoot", blocks.bambooShoot.getBlock());
-		OreDictionary.registerOre("listAllveggie", blocks.bambooShoot.getBlock());
+		OreDictionary.registerOre("cropBambooshoot", blocks.bambooShoot.getBlockState());
+		OreDictionary.registerOre("listAllveggie", blocks.bambooShoot.getBlockState());
 		OreDictionary.registerOre("cropBambooshoot", items.bambooShootFood.getItem());
 		OreDictionary.registerOre("listAllveggie", items.bambooShootFood.getItem());
 	}

@@ -56,7 +56,7 @@ public class BlockBambooFence extends BlockFence
 	@Override
 	public boolean canConnectFenceTo(IBlockAccess world, int x, int y, int z)
 	{
-		final Block block = world.getBlock(x, y, z);
+		final Block block = world.getBlockState(x, y, z);
 
 		if (this == block ||
 			(block instanceof BlockFence) ||

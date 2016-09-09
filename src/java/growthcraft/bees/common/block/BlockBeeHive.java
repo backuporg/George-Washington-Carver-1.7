@@ -66,10 +66,10 @@ public class BlockBeeHive extends GrcBlockBase
 	{
 		if (!world.isRemote)
 		{
-			final Block zneg = world.getBlock(x, y, z - 1);
-			final Block zpos = world.getBlock(x, y, z + 1);
-			final Block xneg = world.getBlock(x - 1, y, z);
-			final Block xpos = world.getBlock(x + 1, y, z);
+			final Block zneg = world.getBlockState(x, y, z - 1);
+			final Block zpos = world.getBlockState(x, y, z + 1);
+			final Block xneg = world.getBlockState(x - 1, y, z);
+			final Block xpos = world.getBlockState(x + 1, y, z);
 			byte b0 = 3;
 
 			if (zneg.func_149730_j() && !zpos.func_149730_j())
@@ -147,7 +147,7 @@ public class BlockBeeHive extends GrcBlockBase
 		{
 			return false;
 		}
-		return world.getBlock(x, y + 1, z).isLeaves(world, x, y + 1, z);
+		return world.getBlockState(x, y + 1, z).isLeaves(world, x, y + 1, z);
 	}
 
 	/************

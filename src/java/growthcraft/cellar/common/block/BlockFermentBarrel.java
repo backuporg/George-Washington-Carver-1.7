@@ -52,7 +52,7 @@ public class BlockFermentBarrel extends BlockCellarContainer
 	}
 
 	@Override
-	public boolean isRotatable(IBlockAccess world, int x, int y, int z, ForgeDirection side)
+	public boolean isRotatable(IBlockAccess world, int x, int y, int z, EnumFacing side)
 	{
 		return true;
 	}
@@ -73,10 +73,10 @@ public class BlockFermentBarrel extends BlockCellarContainer
 	{
 		if (!world.isRemote)
 		{
-			final Block southBlock = world.getBlock(x, y, z - 1);
-			final Block northBlock = world.getBlock(x, y, z + 1);
-			final Block westBlock = world.getBlock(x - 1, y, z);
-			final Block eastBlock = world.getBlock(x + 1, y, z);
+			final Block southBlock = world.getBlockState(x, y, z - 1);
+			final Block northBlock = world.getBlockState(x, y, z + 1);
+			final Block westBlock = world.getBlockState(x - 1, y, z);
+			final Block eastBlock = world.getBlockState(x + 1, y, z);
 			byte meta = 3;
 
 			if (southBlock.func_149730_j() && !northBlock.func_149730_j())

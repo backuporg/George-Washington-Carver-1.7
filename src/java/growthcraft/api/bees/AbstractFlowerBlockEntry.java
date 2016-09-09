@@ -27,7 +27,7 @@ import net.minecraft.block.Block;
 
 public abstract class AbstractFlowerBlockEntry implements IFlowerBlockEntry
 {
-	private Block block;
+	public Block block;
 	private int meta;
 
 	public AbstractFlowerBlockEntry(Block pblock, int pmeta)
@@ -36,7 +36,7 @@ public abstract class AbstractFlowerBlockEntry implements IFlowerBlockEntry
 		this.meta = pmeta;
 	}
 
-	public Block getBlock()
+	public Block getBlockState()
 	{
 		return block;
 	}

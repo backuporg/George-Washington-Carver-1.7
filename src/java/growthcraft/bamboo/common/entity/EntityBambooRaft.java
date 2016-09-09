@@ -386,7 +386,7 @@ public class EntityBambooRaft extends Entity
 				for (int j1 = 0; j1 < 2; ++j1)
 				{
 					final int k = MathHelper.floor_double(this.posY) + j1;
-					final Block block = this.worldObj.getBlock(i1, k, j);
+					final Block block = this.worldObj.getBlockState(i1, k, j);
 
 					if (block == Blocks.SNOW_LAYER)
 					{
@@ -565,7 +565,7 @@ public class EntityBambooRaft extends Entity
 				this.fallDistance = 0.0F;
 			}
 		}
-		else if (this.worldObj.getBlock(i, j - 1, k).getMaterial() != Material.WATER && par1 < 0.0D)
+		else if (this.worldObj.getBlockState(i, j - 1, k).getMaterial() != Material.WATER && par1 < 0.0D)
 		{
 			this.fallDistance = (float)((double)this.fallDistance - par1);
 		}

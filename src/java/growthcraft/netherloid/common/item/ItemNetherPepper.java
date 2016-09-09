@@ -57,7 +57,7 @@ public class ItemNetherPepper extends Item implements IPlantable
 	@Override
 	public Block getPlant(IBlockAccess world, int x, int y, int z)
 	{
-		return netherloid.blocks.netherPepper.getBlock();
+		return netherloid.blocks.netherPepper.getBlockState();
 	}
 
 	@Override
@@ -67,14 +67,14 @@ public class ItemNetherPepper extends Item implements IPlantable
 	}
 
 	@Override
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int dir, float par8, float par9, float par10)
+	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int EnumFacing, float par8, float par9, float par10)
 	{
-		if (dir != 1) return false;
+		if (EnumFacing != 1) return false;
 
-		if (player.canPlayerEdit(x, y, z, dir, stack) && player.canPlayerEdit(x, y + 1, z, dir, stack))
+		if (player.canPlayerEdit(x, y, z, EnumFacing, stack) && player.canPlayerEdit(x, y + 1, z, EnumFacing, stack))
 		{
 			final BlockNetherPepper plant = (BlockNetherPepper)getPlant(world, x, y, z);
-			if (BlockCheck.canSustainPlant(world, x, y, z, ForgeDirection.UP, plant))
+			if (BlockCheck.canSustainPlant(world, x, y, z, EnumFacing.UP, plant))
 			{
 				world.setBlock(x, y + 1, z, plant);
 				ItemUtils.consumeStack(stack);

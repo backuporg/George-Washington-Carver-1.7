@@ -74,7 +74,7 @@ public class BlockNetherMaliceLeaves extends BlockLeavesBase implements IShearab
 	{
 		if (world.isAirBlock(x, y - 1, z))
 		{
-			world.setBlock(x, y - 1, z, netherloid.blocks.netherMaliceFruit.getBlock());
+			world.setBlock(x, y - 1, z, netherloid.blocks.netherMaliceFruit.getBlockState());
 		}
 	}
 
@@ -144,7 +144,7 @@ public class BlockNetherMaliceLeaves extends BlockLeavesBase implements IShearab
 						{
 							for (j2 = -b0; j2 <= b0; ++j2)
 							{
-								final Block block = world.getBlock(x + l1, y + i2, z + j2);
+								final Block block = world.getBlockState(x + l1, y + i2, z + j2);
 
 								if (!block.canSustainLeaves(world, x + l1, y + i2, z + j2))
 								{
@@ -262,7 +262,7 @@ public class BlockNetherMaliceLeaves extends BlockLeavesBase implements IShearab
 				{
 					for (int l1 = -b0; l1 <= b0; ++l1)
 					{
-						final Block block2 = world.getBlock(x + j1, y + k1, z + l1);
+						final Block block2 = world.getBlockState(x + j1, y + k1, z + l1);
 						if (block2.isLeaves(world, x + j1, y + k1, z + l1))
 						{
 							block2.beginLeavesDecay(world, x + j1, y + k1, z + l1);

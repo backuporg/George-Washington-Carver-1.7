@@ -52,6 +52,10 @@ public class ItemBeesWax extends GrcItemBase
 		setMaxDamage(0);
 	}
 
+	public ItemBeesWax(String beeswax) {
+		super();
+	}
+
 	public EnumBeesWax getEnumBeesWax(ItemStack stack)
 	{
 		return EnumBeesWax.VALUES.get(stack.getItemDamage());
