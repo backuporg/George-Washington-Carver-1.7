@@ -111,7 +111,11 @@ public class BoozeTag
 	//This beverage is made by fermenting chorus fruit
 	public static final FluidTag ORCHESTRAL = CoreRegistry.instance().fluidTags().createTag("orchestral");
 	//This beverage is made by distilling chorus fruit
-	public static final FluidTag CHOIRAL = CoreRegistry.instance().fluidTags().createTag("CHOIRAL");
+	public static final FluidTag CHORAL = CoreRegistry.instance().fluidTags().createTag("CHORAL");
+	//This beverage is an extended chorus fruit beverage
+	public static final FluidTag SYMPHONIC = CoreRegistry.instance().fluidTags().createTag("SYMPHONIC");
+	//This beverage is a magical chorus fruit beverage
+	public static final FluidTag HYMNODY = CoreRegistry.instance().fluidTags().createTag("HYMNODY");
 
 	private BoozeTag() {}
 }
