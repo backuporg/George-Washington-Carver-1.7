@@ -113,20 +113,20 @@ achievement.onTheGo.desc=Craft a Water Bag
 grc.cellar.format.waterBag.name=%s (%s)
 grc.cellar.format.fluid_container.contents=Contains: %2$dmB/%3$dmB of %1$s
 grc.cellar.format.tipsy_chance=%d%% Chance of Tipsy
-grc.cellar.item.booze_bucket.deprecated=DEPRECATED, craft to get updated bucket
+grc.cellar.item.booze_bucket.deprecated=DEPRECATED, pls craft again to get teh updated bukkit
 grc.cellar.item.booze_bucket.deprecated_suffix= (DEPRECATED)
 
-grc.cellar.brew_kettle.brewing_prefix=Brewing :
+grc.cellar.brew_kettle.brewing_prefix=Brewin :
 grc.cellar.brew_kettle.itemslot.item=Item : %s
-grc.cellar.brew_kettle.itemslot.residue=Residue : %s
-grc.cellar.ferment_barrel.itemslot.modifier=Modifier : %s
+grc.cellar.brew_kettle.itemslot.residue=Residu : %s
+grc.cellar.ferment_barrel.itemslot.modifier=Modifire : %s
 grc.cellar.ferment_jar.itemslot.yeast=%s
 grc.cellar.fruit_press.itemslot.item=Item : %s
-grc.cellar.fruit_press.itemslot.residue=Residue : %s
+grc.cellar.fruit_press.itemslot.residue=Residu : %s
 grc.cellar.fruit_presser.state.invalid=<Invalid>
-grc.cellar.fruit_presser.state.pressed=Pressed
-grc.cellar.fruit_presser.state.unpressed=Unpressed
-grc.cellar.fruit_presser.state_prefix=State :
+grc.cellar.fruit_presser.state.pressed=Smushed
+grc.cellar.fruit_presser.state.unpressed=Unsmushed
+grc.cellar.fruit_presser.state_prefix=Staet :
 
 # Waila Tooltips
 grccellar.waila.option.FruitPressExtras=Fruit Press Extras
