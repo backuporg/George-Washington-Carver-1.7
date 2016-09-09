@@ -23,12 +23,12 @@ item.grcmilk.IceCream.honey.name=Iced Crem (Hunni)
 item.grcmilk.IceCream.plain.name=Iced Crem (Borin)
 item.grcmilk.IceCream.watermelon.name=Iced Crem (wet juicy fruit)
 ## Yogurt
-item.grcmilk.Yogurt.apple.name=Yogurt (Mapple)
-item.grcmilk.Yogurt.chocolate.name=Yogurt (not fur catz)
-item.grcmilk.Yogurt.grape.name=Yogurt (Gurp)
-item.grcmilk.Yogurt.honey.name=Yogurt (Hunni)
-item.grcmilk.Yogurt.plain.name=Yogurt (Borin)
-item.grcmilk.Yogurt.watermelon.name=Yogurt (wet juicy fruit)
+item.grcmilk.Yogurt.apple.name=Smushy Mlk (Mapple)
+item.grcmilk.Yogurt.chocolate.name=Smushy Mlk (not fur catz)
+item.grcmilk.Yogurt.grape.name=Smushy Mlk (Gurp)
+item.grcmilk.Yogurt.honey.name=Smushy Mlk (Hunni)
+item.grcmilk.Yogurt.plain.name=Smushy Mlk (Borin)
+item.grcmilk.Yogurt.watermelon.name=Smushy Mlk (wet juicy fruit)
 ## Other
 item.grcmilk.StarterCulture.name=Starter Culture
 item.grcmilk.Stomach.name=Stomuch
