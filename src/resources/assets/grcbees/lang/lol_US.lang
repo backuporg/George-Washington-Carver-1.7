@@ -149,8 +149,8 @@ tile.grc.BeeBox.Natura.willow.name=Willow Ouchy Box
 tile.grc.beeHive.name=Nopenest
 
 # Items
-item.grc.honeyComb.empty.name=Empty Honeycomb
-item.grc.honeyComb.full.name=Honeycomb
+item.grc.honeyComb.empty.name=Empty HunniComb
+item.grc.honeyComb.full.name=HunniComb
 item.grc.honeyJar.name=Hunni
 item.grc.bee.name=A Nope
 item.grc.FoodBottleFluidHoney.name=Hunni Buttl
