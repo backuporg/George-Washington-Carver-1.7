@@ -164,9 +164,9 @@ tile.fluid.grcmilk.Kumis4.name=Rottn Mlk
 tile.fluid.grcmilk.Kumis5.name=Vile Milk
 
 ## Booze Bucket
-item.bucket.fluid.grcmilk.Kumis0.name=Kumis Bukkit
-item.bucket.fluid.grcmilk.Kumis1.name=Kumis Bukkit
-item.bucket.fluid.grcmilk.Kumis2.name=Kumis Bukkit
+item.bucket.fluid.grcmilk.Kumis0.name=Rottn Mlk Bukkit
+item.bucket.fluid.grcmilk.Kumis1.name=Rottn Mlk Bukkit
+item.bucket.fluid.grcmilk.Kumis2.name=Rottn Mlk Bukkit
 item.bucket.fluid.grcmilk.Kumis3.name=Rottn Mlk Bukkit
 item.bucket.fluid.grcmilk.Kumis4.name=Rottn Mlk Bukkit
 item.bucket.fluid.grcmilk.Kumis5.name=Vile Milk Bukkit
