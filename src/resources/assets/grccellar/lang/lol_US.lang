@@ -92,9 +92,9 @@ grc.fluids.tag.vinegar=Vineghur
 
 
 # GUI
-gui.grc.empty=Empty
-gui.grc.discard=Discard
-gui.grc.switch=Switch
+gui.grc.empty=Emptee
+gui.grc.discard=Twash
+gui.grc.switch=Swetch
 gui.grc.cantferment=Cannot Ferment.
 gui.grccellar.ferment_barrel.progress_name=Fermenting
 

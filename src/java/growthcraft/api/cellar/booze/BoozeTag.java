@@ -108,6 +108,8 @@ public class BoozeTag
 	public static final FluidTag BLOODWINE = CoreRegistry.instance().fluidTags().createTag("bloodwine");
 	//This is vinegar
 	public static final FluidTag VINEGAR = CoreRegistry.instance().fluidTags().createTag("vinegar");
+	//This beverage is made by fermenting chorus fruit
+	public static final FluidTag ORCHESTRAL = CoreRegistry.instance().fluidTags().createTag("orchestral");
 
 	private BoozeTag() {}
 }
