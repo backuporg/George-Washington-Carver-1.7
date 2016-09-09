@@ -201,11 +201,16 @@ public class TileEntityBeeBox extends GrcTileInventoryBase implements IItemHandl
 		final ItemStack beestack = getBeeStack();
 		if (beestack == null)
 		{
+			// Put a bee in the slot if we have none currently
 			setBeeStack(GrowthCraftBees.items.bee.asStack());
 		}
 		else
 		{
-			setBeeStack(ItemUtils.increaseStack(beestack));
+			// Ensure that the item in the slot IS a bee, and prevent duplication
+			if (BeesRegistry.instance().isItemBee(beestack))
+			{
+				setBeeStack(ItemUtils.increaseStack(beestack));
+			}
 		}
 	}
 
@@ -335,8 +340,9 @@ public class TileEntityBeeBox extends GrcTileInventoryBase implements IItemHandl
 	}
 
 	@Override
-	public boolean tryPlaceItem(EntityPlayer player, ItemStack stack)
+	public boolean tryPlaceItem(IItemHandler.Action action, EntityPlayer player, ItemStack stack)
 	{
+		if (IItemHandler.Action.RIGHT != action) return false;
 		if (stack != null)
 		{
 			final Item item = stack.getItem();
@@ -403,7 +409,7 @@ public class TileEntityBeeBox extends GrcTileInventoryBase implements IItemHandl
 	}
 
 	@Override
-	public boolean tryTakeItem(EntityPlayer player, ItemStack onHand)
+	public boolean tryTakeItem(IItemHandler.Action action, EntityPlayer player, ItemStack onHand)
 	{
 		return false;
 	}
