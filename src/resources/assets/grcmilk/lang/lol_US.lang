@@ -16,19 +16,19 @@ item.grcmilk.CheeseCloth.name=Cheez Cloth
 item.grcmilk.Butter.salted.name=Butter (Salted)
 item.grcmilk.Butter.unsalted.name=Butter (Unsalted)
 ## Iced Crem
-item.grcmilk.IceCream.apple.name=Iced Crem (Apple)
-item.grcmilk.IceCream.chocolate.name=Iced Crem (Chocolate)
+item.grcmilk.IceCream.apple.name=Iced Crem (Mapple)
+item.grcmilk.IceCream.chocolate.name=Iced Crem (not fur catz)
 item.grcmilk.IceCream.grape.name=Iced Crem (Gurp)
-item.grcmilk.IceCream.honey.name=Iced Crem (Honey)
-item.grcmilk.IceCream.plain.name=Iced Crem (Plain)
-item.grcmilk.IceCream.watermelon.name=Iced Crem (Watermelon)
+item.grcmilk.IceCream.honey.name=Iced Crem (Hunni)
+item.grcmilk.IceCream.plain.name=Iced Crem (Borin)
+item.grcmilk.IceCream.watermelon.name=Iced Crem (wet juicy fruit)
 ## Yogurt
-item.grcmilk.Yogurt.apple.name=Yogurt (Apple)
-item.grcmilk.Yogurt.chocolate.name=Yogurt (Chocolate)
+item.grcmilk.Yogurt.apple.name=Yogurt (Mapple)
+item.grcmilk.Yogurt.chocolate.name=Yogurt (not fur catz)
 item.grcmilk.Yogurt.grape.name=Yogurt (Gurp)
-item.grcmilk.Yogurt.honey.name=Yogurt (Honey)
-item.grcmilk.Yogurt.plain.name=Yogurt (Plain)
-item.grcmilk.Yogurt.watermelon.name=Yogurt (Watermelon)
+item.grcmilk.Yogurt.honey.name=Yogurt (Hunni)
+item.grcmilk.Yogurt.plain.name=Yogurt (Borin)
+item.grcmilk.Yogurt.watermelon.name=Yogurt (wet juicy fruit)
 ## Other
 item.grcmilk.StarterCulture.name=Starter Culture
 item.grcmilk.Stomach.name=Stomuch
