@@ -166,14 +166,14 @@ grc.bees.item.honeyComb.deprecated=This itum haf been deprecuted, pls craft agen
 container.grc.beeBox=Ouchy Box
 
 # Fluids
-fluid.grc.honey=Honey
-fluid.grc.honeyMead0=Mead Must
-fluid.grc.honeyMead1=Mead
-fluid.grc.honeyMead2=Mead
-fluid.grc.honeyMead3=Mead
-fluid.grc.honeyMead4=Mead
-fluid.grc.honeyMead5=Mead
-fluid.grc.honeyMead6=Mead
+fluid.grc.honey=Hunni
+fluid.grc.honeyMead0=Werd Hunni
+fluid.grc.honeyMead1=Funny Werd Hunni
+fluid.grc.honeyMead2=Funny Werd Hunni
+fluid.grc.honeyMead3=Funny Werd Hunni
+fluid.grc.honeyMead4=Funny Werd Hunni
+fluid.grc.honeyMead5=Funny Werd Hunni
+fluid.grc.honeyMead6=Funny Werd Hunni
 
 # Fluid Bottles
 item.grc.BottleFluidHoney.name=Hunni
