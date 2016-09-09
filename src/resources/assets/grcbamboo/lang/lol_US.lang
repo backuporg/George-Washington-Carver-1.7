@@ -1,5 +1,5 @@
 # Creative Tabs
-itemGroup.creative_tab_grcbamboo=Growthcraft Bamboo
+itemGroup.creative_tab_grcbamboo=Growthcraft Scratchin Poles
 # Blocks
 tile.grc.bambooBlock.name=Scratchin Pole
 tile.grc.bambooDoor.name=Bamboo Door
@@ -8,11 +8,11 @@ tile.grc.bambooFenceGate.name=Bamboo Fence Gate
 tile.grc.bambooFenceRope.name=Bamboo Fence with Rope
 tile.grc.bambooLeaves.name=Bamboo Leaves
 tile.grc.bambooScaffold.name=Bamboo Scaffold
-tile.grc.bambooShoot.name=Bamboo Shoot
-tile.grc.bambooSlab.name=Bamboo Slab
-tile.grc.bambooStairs.name=Bamboo Stairs
+tile.grc.bambooShoot.name=baby scratching pole
+tile.grc.bambooSlab.name=SCRATCHIN SLABS
+tile.grc.bambooStairs.name=SCRATCHIN STAIRS
 tile.grc.bambooStalk.name=Scratchin Pole
-tile.grc.bambooWall.name=Bamboo Wall
+tile.grc.bambooWall.name=SCRATCHIN WALL
 
 # Items
 item.grc.bamboo.name=Scratchin Pole
@@ -20,7 +20,7 @@ item.grc.bambooDoor.name=Bamboo Door
 item.grc.bambooSlab.name=Bamboo Slab
 item.grc.bambooRaft.name=Bamboo Raft
 item.grc.bambooCoal.name=Bamboo Charcoal
-item.grc.bambooShootFood.name=Bamboo Shoot
+item.grc.bambooShootFood.name=baby scratchin pole
 
 # Entities
-entity.Growthcraft|Bamboo.bambooRaft.name=Bamboo Raft
+entity.Growthcraft|Bamboo.bambooRaft.name=Scratchin Watr Car
