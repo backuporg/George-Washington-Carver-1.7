@@ -102,7 +102,7 @@ grc.fluids.tag.rennet=Rennet
 grc.fluids.tag.whey=Whey
 ## Standard
 ### Fluids
-fluid.grcmilk.ButterMilk=Butter Milk
+fluid.grcmilk.ButterMilk=Butter Mlk
 fluid.grcmilk.CheeseAppenzeller=Appenzeller Cheese
 fluid.grcmilk.CheeseAsiago=Asiago Cheese
 fluid.grcmilk.CheeseCheddar=Cheddar Cheese
@@ -113,37 +113,37 @@ fluid.grcmilk.CheeseParmesan=Parmesan Cheese
 fluid.grcmilk.CheeseRicotta=Ricotta Cheese
 fluid.grcmilk.Cream=Cream
 fluid.grcmilk.Curds=Milk Curds
-fluid.grcmilk.Milk=Milk
-fluid.grcmilk.PasteurizedMilk=Pasteurized Milk
+fluid.grcmilk.Milk=Mlk
+fluid.grcmilk.PasteurizedMilk=Pasteurized Mlk
 fluid.grcmilk.Rennet=Rennet
-fluid.grcmilk.SkimMilk=Skim Milk
+fluid.grcmilk.SkimMilk=Skim Mlk
 fluid.grcmilk.Whey=Whey
 ### Blocks
 tile.grcmilk.BlockFluidButterMilk.name=Butter Milk
 tile.grcmilk.BlockFluidCream.name=Cream
-tile.grcmilk.BlockFluidCurds.name=Milk Curds
-tile.grcmilk.BlockFluidMilk.name=Milk
-tile.grcmilk.BlockFluidPasteurizedMilk.name=Pasteurized Milk
+tile.grcmilk.BlockFluidCurds.name=Mlk Curds
+tile.grcmilk.BlockFluidMilk.name=Mlk
+tile.grcmilk.BlockFluidPasteurizedMilk.name=Pasteurized Mlk
 tile.grcmilk.BlockFluidRennet.name=Rennet
-tile.grcmilk.BlockFluidSkimMilk.name=Skim Milk
+tile.grcmilk.BlockFluidSkimMilk.name=Skim Mlk
 tile.grcmilk.BlockFluidWhey.name=Whey
 ### Bottles
-item.grcmilk.FoodBottleFluidButterMilk.name=Butter Milk Buttl
+item.grcmilk.FoodBottleFluidButterMilk.name=Butter Mlk Buttl
 item.grcmilk.BottleFluidCream.name=Cream Buttl
-item.grcmilk.BottleFluidCurds.name=Milk Curds Buttl
-item.grcmilk.FoodBottleFluidMilk.name=Milk Buttl
-item.grcmilk.BottleFluidPasteurizedMilk.name=Pasteurized Milk Buttl
+item.grcmilk.BottleFluidCurds.name=Mlk Curds Buttl
+item.grcmilk.FoodBottleFluidMilk.name=Mlk Buttl
+item.grcmilk.BottleFluidPasteurizedMilk.name=Pasteurized Mlk Buttl
 item.grcmilk.BottleFluidRennet.name=Rennet Buttl
-item.grcmilk.FoodBottleFluidSkimMilk.name=Skim Milk Buttl
+item.grcmilk.FoodBottleFluidSkimMilk.name=Skim Mlk Buttl
 item.grcmilk.FoodBottleFluidWhey.name=Whey Buttl
 ### Buckets
-item.bucket.fluid.grcmilk.ButterMilk.name=Butter Milk Bukkit
+item.bucket.fluid.grcmilk.ButterMilk.name=Butter Mlk Bukkit
 item.bucket.fluid.grcmilk.Cream.name=Cream Bukkit
-item.bucket.fluid.grcmilk.Curds.name=Milk Curds Bukkit
-item.bucket.fluid.grcmilk.Milk.name=Milk Bukkit
-item.bucket.fluid.grcmilk.PasteurizedMilk.name=Pasteurized Milk Bukkit
+item.bucket.fluid.grcmilk.Curds.name=Mlk Curds Bukkit
+item.bucket.fluid.grcmilk.Milk.name=Mlk Bukkit
+item.bucket.fluid.grcmilk.PasteurizedMilk.name=Pasteurized Mlk Bukkit
 item.bucket.fluid.grcmilk.Rennet.name=Rennet Bukkit
-item.bucket.fluid.grcmilk.SkimMilk.name=Skim Milk Bukkit
+item.bucket.fluid.grcmilk.SkimMilk.name=Skim Mlk Bukkit
 item.bucket.fluid.grcmilk.Whey.name=Whey Bukkit
 
 ## Booze
@@ -152,7 +152,7 @@ fluid.grcmilk.Kumis1=Kumis
 fluid.grcmilk.Kumis2=Kumis
 fluid.grcmilk.Kumis3=Kumis
 fluid.grcmilk.Kumis4=Kumis
-fluid.grcmilk.Kumis5=Vile Milk
+fluid.grcmilk.Kumis5=Gross Mlk
 fluid.grcmilk.Kumis5.desc=Even the sweetest of things can become corrupt.
 
 ## Booze Blocks
