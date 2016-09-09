@@ -147,28 +147,28 @@ item.bucket.fluid.grcmilk.SkimMilk.name=Skim Mlk Bukkit
 item.bucket.fluid.grcmilk.Whey.name=Whey Bukkit
 
 ## Booze
-fluid.grcmilk.Kumis0=Kumis
-fluid.grcmilk.Kumis1=Kumis
-fluid.grcmilk.Kumis2=Kumis
-fluid.grcmilk.Kumis3=Kumis
-fluid.grcmilk.Kumis4=Kumis
+fluid.grcmilk.Kumis0=Rottn Mlk
+fluid.grcmilk.Kumis1=Rottn Mlk
+fluid.grcmilk.Kumis2=Rottn Mlk
+fluid.grcmilk.Kumis3=Rottn Mlk
+fluid.grcmilk.Kumis4=Rottn Mlk
 fluid.grcmilk.Kumis5=Gross Mlk
 fluid.grcmilk.Kumis5.desc=Even the sweetest of things can become corrupt.
 
 ## Booze Blocks
-tile.fluid.grcmilk.Kumis0.name=Kumis
-tile.fluid.grcmilk.Kumis1.name=Kumis
-tile.fluid.grcmilk.Kumis2.name=Kumis
-tile.fluid.grcmilk.Kumis3.name=Kumis
-tile.fluid.grcmilk.Kumis4.name=Kumis
+tile.fluid.grcmilk.Kumis0.name=Rottn Mlk
+tile.fluid.grcmilk.Kumis1.name=Rottn Mlk
+tile.fluid.grcmilk.Kumis2.name=Rottn Mlk
+tile.fluid.grcmilk.Kumis3.name=Rottn Mlk
+tile.fluid.grcmilk.Kumis4.name=Rottn Mlk
 tile.fluid.grcmilk.Kumis5.name=Vile Milk
 
 ## Booze Bucket
 item.bucket.fluid.grcmilk.Kumis0.name=Kumis Bukkit
 item.bucket.fluid.grcmilk.Kumis1.name=Kumis Bukkit
 item.bucket.fluid.grcmilk.Kumis2.name=Kumis Bukkit
-item.bucket.fluid.grcmilk.Kumis3.name=Kumis Bukkit
-item.bucket.fluid.grcmilk.Kumis4.name=Kumis Bukkit
+item.bucket.fluid.grcmilk.Kumis3.name=Rottn Mlk Bukkit
+item.bucket.fluid.grcmilk.Kumis4.name=Rottn Mlk Bukkit
 item.bucket.fluid.grcmilk.Kumis5.name=Vile Milk Bukkit
 
 # Effects
