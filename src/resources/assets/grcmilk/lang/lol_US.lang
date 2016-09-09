@@ -15,17 +15,17 @@ item.grcmilk.CheeseCloth.name=Cheez Cloth
 ## Butter
 item.grcmilk.Butter.salted.name=Butter (Salted)
 item.grcmilk.Butter.unsalted.name=Butter (Unsalted)
-## Ice Cream
-item.grcmilk.IceCream.apple.name=Ice Cream (Apple)
-item.grcmilk.IceCream.chocolate.name=Ice Cream (Chocolate)
-item.grcmilk.IceCream.grape.name=Ice Cream (Grape)
-item.grcmilk.IceCream.honey.name=Ice Cream (Honey)
-item.grcmilk.IceCream.plain.name=Ice Cream (Plain)
-item.grcmilk.IceCream.watermelon.name=Ice Cream (Watermelon)
+## Iced Crem
+item.grcmilk.IceCream.apple.name=Iced Crem (Apple)
+item.grcmilk.IceCream.chocolate.name=Iced Crem (Chocolate)
+item.grcmilk.IceCream.grape.name=Iced Crem (Gurp)
+item.grcmilk.IceCream.honey.name=Iced Crem (Honey)
+item.grcmilk.IceCream.plain.name=Iced Crem (Plain)
+item.grcmilk.IceCream.watermelon.name=Iced Crem (Watermelon)
 ## Yogurt
 item.grcmilk.Yogurt.apple.name=Yogurt (Apple)
 item.grcmilk.Yogurt.chocolate.name=Yogurt (Chocolate)
-item.grcmilk.Yogurt.grape.name=Yogurt (Grape)
+item.grcmilk.Yogurt.grape.name=Yogurt (Gurp)
 item.grcmilk.Yogurt.honey.name=Yogurt (Honey)
 item.grcmilk.Yogurt.plain.name=Yogurt (Plain)
 item.grcmilk.Yogurt.watermelon.name=Yogurt (Watermelon)
