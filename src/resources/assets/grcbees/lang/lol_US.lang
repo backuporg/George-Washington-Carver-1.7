@@ -167,13 +167,13 @@ container.grc.beeBox=Ouchy Box
 
 # Fluids
 fluid.grc.honey=Hunni
-fluid.grc.honeyMead0=Werd Hunni
-fluid.grc.honeyMead1=Funny Werd Hunni
-fluid.grc.honeyMead2=Funny Werd Hunni
-fluid.grc.honeyMead3=Funny Werd Hunni
-fluid.grc.honeyMead4=Funny Werd Hunni
-fluid.grc.honeyMead5=Funny Werd Hunni
-fluid.grc.honeyMead6=Funny Werd Hunni
+fluid.grc.honeyMead0=Wet Hunni
+fluid.grc.honeyMead1=Funny Wet Hunni
+fluid.grc.honeyMead2=Funny Wet Hunni
+fluid.grc.honeyMead3=Funny Wet Hunni
+fluid.grc.honeyMead4=Funny Wet Hunni
+fluid.grc.honeyMead5=Funny Wet Hunni
+fluid.grc.honeyMead6=Funny Wet Hunni
 
 # Fluid Bottles
 item.grc.BottleFluidHoney.name=Hunni
