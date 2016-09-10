@@ -185,5 +185,5 @@ grcmilk.cheese_press.pressing.state.false=Unsquished
 grcmilk.cheese_press.pressing.state.prefix=Staet :
 grcmilk.cheese_press.pressing.state.true=Squished
 grcmilk.hanging_curds.dried=Drained
-grcmilk.hanging_curds.drying.prefix=Draining :
+grcmilk.hanging_curds.drying.prefix=Drainin :
 grcmilk.hanging_curds.drying.progress.format= %d%%
