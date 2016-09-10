@@ -8,9 +8,9 @@ tile.grc.etfuturum_fence_rope_dark_oak.name=Fence with Yarn (Dark Oak)
 tile.grc.etfuturum_fence_rope_jungle.name=Fence with Yarn (Jungle)
 tile.grc.etfuturum_fence_rope_oak.name=Fence with Yarn (Oak)
 tile.grc.etfuturum_fence_rope_spruce.name=Fence with Yarn (Spruce)
-tile.grc.fenceYarn.name=Fence with Yarn
-tile.grc.netherBrickFenceYarn.name=Fence with Yarn (Nether Brick)
-tile.grc.naturaFenceYarn.name=Fence with Yarn (%s)
+tile.grc.fenceRope.name=Fence with Yarn
+tile.grc.netherBrickFenceRope.name=Fence with Yarn (Nether Brick)
+tile.grc.naturaFenceRope.name=Fence with Yarn (%s)
 tile.grc.ropeBlock.name=Yarn
 tile.grccore.salt_block.name=Smushed Yucky Powder
 
