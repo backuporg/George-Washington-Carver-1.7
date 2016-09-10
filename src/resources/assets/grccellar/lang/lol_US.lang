@@ -1,5 +1,5 @@
 # Creative Tabs
-itemGroup.creative_tab_grccellar=Growthcraft Cellar
+itemGroup.creative_tab_grccellar=Growthcraft Hoelz
 
 # Blocks
 tile.grc.fruitPress.name=Smashin Machien
@@ -13,11 +13,10 @@ tile.grc.fermentJar.name=Small Buttl
 # this is no longer used
 item.grc.boozeBucket.name=Bukkit
 
-item.grc.yeast0.name=Brewers Yeast
-item.grc.yeast1.name=Lager Yeast
-item.grc.yeast2.name=Bayanus Yeast
-item.grc.yeast3.name=Ethereal Yeast
-item.grc.yeast4.name=Origin Yeast
+item.grc.yeast0.name=Magyk PowdR
+item.grc.yeast1.name=Cold Magyk PowdR
+item.grc.yeast2.name=Gurp Magyk PowdR
+item.grc.yeast3.name=Speshul PowdR
 
 # Leather WatR Things
 item.grc.waterBag0.name=Leather WatR Thing (White)
