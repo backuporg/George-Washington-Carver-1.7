@@ -1,5 +1,5 @@
 # Creative Tabs
-itemGroup.creative_tab_grcmilk=Growthcraft Dairy
+itemGroup.creative_tab_grcmilk=Growthcraft Cheez
 
 # Items
 ## Cheez
@@ -176,7 +176,7 @@ grc.effect.milk=Removes all effects (Except Tipsy)
 
 # WAILA
 grcmilk.butter_churn.itemslot.item=%s
-grcmilk.cheese.aging.prefix=Aging :
+grcmilk.cheese.aging.prefix=Agin :
 grcmilk.cheese.aging.progress.format= %d%%
 grcmilk.cheese.slices.prefix=Slices :
 grcmilk.cheese.slices.value.format= %d / %d
