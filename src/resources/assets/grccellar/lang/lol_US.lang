@@ -51,7 +51,7 @@ grc.booze=Funny WatR
 # Modifiers
 grc.fluids.tag.chilled=Cold
 grc.fluids.tag.cider=Mappley
-grc.fluids.tag.deadly=Deadly
+grc.fluids.tag.deadly=OUCHY
 grc.fluids.tag.extended=Extended
 grc.fluids.tag.fermented=Funny
 grc.fluids.tag.fortified=Strongk
@@ -70,7 +70,7 @@ grc.fluids.tag.whiskey=Whiskey
 grc.fluids.tag.pulque=Pulque
 grc.fluids.tag.rum=Rum
 grc.fluids.tag.kombucha=Kombucha
-grc.fluids.tag.arrack=Arrack
+grc.fluids.tag.arrack=Coconut Flavur
 grc.fluids.tag.malted=Malted
 grc.fluids.tag.medicinal=Medicinal
 grc.fluids.tag.cocktail=Cocktail
