@@ -3,7 +3,7 @@ itemGroup.creative_tab_grcmilk=Growthcraft Cheez
 
 # Items
 ## Cheez
-item.grcmilk.Cheez.cheddar.name=Cheddar Cheez
+item.grcmilk.Cheez.cheddar.name=Cheddur Cheez
 item.grcmilk.Cheez.gorgonzola.name=Gorgonzola Cheez
 item.grcmilk.Cheez.emmentaler.name=Swiss Cheez
 item.grcmilk.Cheez.appenzeller.name=Appenzeller Cheez
@@ -36,10 +36,10 @@ item.grcmilk.seed_thistle.name=Ouchy Flowr Sedz
 
 # Blocks
 ## Cheez
-tile.grcmilk.CheeseBlock.cheddar.unwaxed.name=Cheddar Cheez (Unwaxed)
-tile.grcmilk.CheeseBlock.cheddar.unaged.name=Cheddar Cheez (Unaged)
-tile.grcmilk.CheeseBlock.cheddar.aged.name=Cheddar Cheez (Aged)
-tile.grcmilk.CheeseBlock.cheddar.cut.name=Cheddar Cheez
+tile.grcmilk.CheeseBlock.cheddar.unwaxed.name=Cheddur Cheez (Unwaxed)
+tile.grcmilk.CheeseBlock.cheddar.unaged.name=Cheddur Cheez (Unaged)
+tile.grcmilk.CheeseBlock.cheddar.aged.name=Cheddur Cheez (Aged)
+tile.grcmilk.CheeseBlock.cheddar.cut.name=Cheddur Cheez
 tile.grcmilk.CheeseBlock.gorgonzola.unaged.name=Gorgonzola Cheez (Unaged)
 tile.grcmilk.CheeseBlock.gorgonzola.aged.name=Gorgonzola Cheez (Aged)
 tile.grcmilk.CheeseBlock.gorgonzola.cut.name=Gorgonzola Cheez
@@ -66,23 +66,23 @@ tile.grcmilk.ButterChurn.name=Fanceh Turnin Machien
 tile.grcmilk.CheeseBlock.name=Cheez Block
 tile.grcmilk.CheesePress.name=Squishin Machien
 tile.grcmilk.CheeseVat.name=Warm Box
-tile.grcmilk.HangingCurds.name=Hanging Curds
-tile.grcmilk.HangingCurds.cheddar.name=Cheddar Curds
-tile.grcmilk.HangingCurds.gorgonzola.name=Gorgonzola Curds
-tile.grcmilk.HangingCurds.emmentaler.name=Swiss Curds
-tile.grcmilk.HangingCurds.appenzeller.name=Appenzeller Curds
-tile.grcmilk.HangingCurds.asiago.name=Asiago Curds
-tile.grcmilk.HangingCurds.parmesan.name=Parmesan Curds
-tile.grcmilk.HangingCurds.monterey.name=Monterey Curds
-tile.grcmilk.HangingCurds.ricotta.name=Ricotta Curds
-tile.grcmilk.HangingCurds.cheddar.dried.name=Drained Cheddar Curds
-tile.grcmilk.HangingCurds.gorgonzola.dried.name=Drained Gorgonzola Curds
-tile.grcmilk.HangingCurds.emmentaler.dried.name=Drained Swiss Curds
-tile.grcmilk.HangingCurds.appenzeller.dried.name=Drained Appenzeller Curds
-tile.grcmilk.HangingCurds.asiago.dried.name=Drained Asiago Curds
-tile.grcmilk.HangingCurds.parmesan.dried.name=Drained Parmesan Curds
-tile.grcmilk.HangingCurds.monterey.dried.name=Drained Monterey Curds
-tile.grcmilk.HangingCurds.ricotta.dried.name=Drained Ricotta Curds
+tile.grcmilk.HangingCurds.name=Hangin Curdz
+tile.grcmilk.HangingCurds.cheddar.name=Cheddur Curdz
+tile.grcmilk.HangingCurds.gorgonzola.name=Gorgonzola Curdz
+tile.grcmilk.HangingCurds.emmentaler.name=Swiss Curdz
+tile.grcmilk.HangingCurds.appenzeller.name=Appenzeller Curdz
+tile.grcmilk.HangingCurds.asiago.name=Asiago Curdz
+tile.grcmilk.HangingCurds.parmesan.name=Parmesan Curdz
+tile.grcmilk.HangingCurds.monterey.name=Monterey Curdz
+tile.grcmilk.HangingCurds.ricotta.name=Ricotta Curdz
+tile.grcmilk.HangingCurds.cheddar.dried.name=Drained Cheddar Curdz
+tile.grcmilk.HangingCurds.gorgonzola.dried.name=Drained Gorgonzola Curdz
+tile.grcmilk.HangingCurds.emmentaler.dried.name=Drained Swiss Curdz
+tile.grcmilk.HangingCurds.appenzeller.dried.name=Drained Appenzeller Curdz
+tile.grcmilk.HangingCurds.asiago.dried.name=Drained Asiago Curdz
+tile.grcmilk.HangingCurds.parmesan.dried.name=Drained Parmesan Curdz
+tile.grcmilk.HangingCurds.monterey.dried.name=Drained Monterey Curdz
+tile.grcmilk.HangingCurds.ricotta.dried.name=Drained Ricotta Curdz
 tile.grcmilk.Pancheon.name=Long flowr pot
 tile.grcmilk.Thistle.name=Ouchy Flowr
 
@@ -97,7 +97,7 @@ grcmilk.cheese_vat.fluid_tank.recipe=Secondary
 grc.fluids.tag.cheese=Cheez
 grc.fluids.tag.cream=Cream
 grc.fluids.tag.milk=Mlk
-grc.fluids.tag.milk_curds=Mlk Curds
+grc.fluids.tag.milk_curds=Mlk Curdz
 grc.fluids.tag.rennet=Rennet
 grc.fluids.tag.whey=Whey
 ## Standard
@@ -105,14 +105,14 @@ grc.fluids.tag.whey=Whey
 fluid.grcmilk.ButterMilk=Butter Mlk
 fluid.grcmilk.CheeseAppenzeller=Appenzeller Cheez
 fluid.grcmilk.CheeseAsiago=Asiago Cheez
-fluid.grcmilk.CheeseCheddar=Cheddar Cheez
+fluid.grcmilk.CheeseCheddar=Cheddur Cheez
 fluid.grcmilk.CheeseEmmentaler=Swiss Cheez
 fluid.grcmilk.CheeseGorgonzola=Gorgonzola Cheez
 fluid.grcmilk.CheeseMonterey=Monterey Cheez
 fluid.grcmilk.CheeseParmesan=Parmesan Cheez
 fluid.grcmilk.CheeseRicotta=Ricotta Cheez
 fluid.grcmilk.Cream=Cream
-fluid.grcmilk.Curds=Mlk Curds
+fluid.grcmilk.Curdz=Mlk Curdz
 fluid.grcmilk.Milk=Mlk
 fluid.grcmilk.PasteurizedMilk=Pasteurized Mlk
 fluid.grcmilk.Rennet=Rennet
@@ -121,7 +121,7 @@ fluid.grcmilk.Whey=Whey
 ### Blocks
 tile.grcmilk.BlockFluidButterMilk.name=Butter Milk
 tile.grcmilk.BlockFluidCream.name=Cream
-tile.grcmilk.BlockFluidCurds.name=Mlk Curds
+tile.grcmilk.BlockFluidCurds.name=Mlk Curdz
 tile.grcmilk.BlockFluidMilk.name=Mlk
 tile.grcmilk.BlockFluidPasteurizedMilk.name=Pasteurized Mlk
 tile.grcmilk.BlockFluidRennet.name=Rennet
@@ -130,7 +130,7 @@ tile.grcmilk.BlockFluidWhey.name=Whey
 ### Bottles
 item.grcmilk.FoodBottleFluidButterMilk.name=Butter Mlk Buttl
 item.grcmilk.BottleFluidCream.name=Cream Buttl
-item.grcmilk.BottleFluidCurds.name=Mlk Curds Buttl
+item.grcmilk.BottleFluidCurds.name=Mlk Curdz Buttl
 item.grcmilk.FoodBottleFluidMilk.name=Mlk Buttl
 item.grcmilk.BottleFluidPasteurizedMilk.name=Pasteurized Mlk Buttl
 item.grcmilk.BottleFluidRennet.name=Rennet Buttl
@@ -139,7 +139,7 @@ item.grcmilk.FoodBottleFluidWhey.name=Whey Buttl
 ### Buckets
 item.bucket.fluid.grcmilk.ButterMilk.name=Butter Mlk Bukkit
 item.bucket.fluid.grcmilk.Cream.name=Cream Bukkit
-item.bucket.fluid.grcmilk.Curds.name=Mlk Curds Bukkit
+item.bucket.fluid.grcmilk.Curdz.name=Mlk Curdz Bukkit
 item.bucket.fluid.grcmilk.Milk.name=Mlk Bukkit
 item.bucket.fluid.grcmilk.PasteurizedMilk.name=Pasteurized Mlk Bukkit
 item.bucket.fluid.grcmilk.Rennet.name=Rennet Bukkit
