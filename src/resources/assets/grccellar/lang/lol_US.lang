@@ -49,12 +49,12 @@ grc.potion.tipsy=Catnip Intoxicashiun
 grc.booze=Funny WatR
 
 # Modifiers
-grc.fluids.tag.chilled=Lagered
-grc.fluids.tag.cider=Cider
+grc.fluids.tag.chilled=Cold
+grc.fluids.tag.cider=Mappley
 grc.fluids.tag.deadly=Deadly
 grc.fluids.tag.extended=Extended
 grc.fluids.tag.fermented=Funny
-grc.fluids.tag.fortified=Fortified
+grc.fluids.tag.fortified=Strongk
 grc.fluids.tag.hopped=Hopped
 grc.fluids.tag.hyper_extended=Hyper-extended
 grc.fluids.tag.intoxicated=Intoxicated
