@@ -45,8 +45,8 @@ container.grc.fermentBarrel=Mai Hoem
 container.grc.CultureJar=Small Buttl
 
 # Other
-grc.potion.tipsy=Tipsy
-grc.booze=Booze
+grc.potion.tipsy=Catnip Intoxicashiun
+grc.booze=Funny WatR
 
 # Modifiers
 grc.fluids.tag.chilled=Lagered
