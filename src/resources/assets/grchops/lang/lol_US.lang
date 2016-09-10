@@ -25,7 +25,9 @@ fluid.grc.lager5=Lager
 fluid.grc.lager6=Lager
 
 # Fluid Bukkits
+item.bucket.fluid.grc.hopAle0.name=Smushy Hoomin Catnip Bukkit
 item.bucket.fluid.grc.hopAle1.name=Hoomin Catnip Bukkit
+item.bucket.fluid.grc.hopAle2.name=Smushy Hoomin Catnip Bukkit
 item.bucket.fluid.grc.hopAle3.name=Hoomin Catnip Bukkit
 item.bucket.fluid.grc.hopAle4.name=Hoomin Catnip Bukkit
 item.bucket.fluid.grc.hopAle5.name=Hoomin Catnip Bukkit
@@ -43,9 +45,11 @@ item.bucket.fluid.grc.lager5.name=Lager Bukkit
 item.bucket.fluid.grc.lager6.name=Lager Bukkit
 
 # Fluid Blocks
+tile.fluid.grc.hopAle.name=Smushy Hoomin Catnip
 tile.fluid.grc.hopAle0.name=Hoomin Catnip
 tile.fluid.grc.hopAle1.name=Hoomin Catnip
 tile.fluid.grc.hopAle2.name=Hoomin Catnip
+tile.fluid.grc.hopAle3.name=Smushy Hoomin Catnip
 tile.fluid.grc.hopAle4.name=Hoomin Catnip
 tile.fluid.grc.hopAle5.name=Hoomin Catnip
 tile.fluid.grc.hopAle6.name=Hoomin Catnip
