@@ -16,13 +16,13 @@ fluid.grc.hopAle6=Hoomin Catnip
 fluid.grc.hopAle7=Hoomin Catnip
 fluid.grc.hopAle8=Hoomin Catnip
 
-fluid.grc.lager0=Lager Wort
-fluid.grc.lager1=Lager
-fluid.grc.lager2=Lager
-fluid.grc.lager3=Lager
-fluid.grc.lager4=Lager
-fluid.grc.lager5=Lager
-fluid.grc.lager6=Lager
+fluid.grc.lager0=Cold Smushy Hoomin Catnip
+fluid.grc.lager1=Cold Hoomin Catnip
+fluid.grc.lager2=Cold Hoomin Catnip
+fluid.grc.lager3=Cold Hoomin Catnip
+fluid.grc.lager4=Cold Hoomin Catnip
+fluid.grc.lager5=Cold Hoomin Catnip
+fluid.grc.lager6=Cold Hoomin Catnip
 
 # Fluid Bukkits
 item.bucket.fluid.grc.hopAle0.name=Smushy Hoomin Catnip Bukkit
@@ -35,14 +35,14 @@ item.bucket.fluid.grc.hopAle6.name=Hoomin Catnip Bukkit
 item.bucket.fluid.grc.hopAle7.name=Hoomin Catnip Bukkit
 item.bucket.fluid.grc.hopAle8.name=Hoomin Catnip Bukkit
 
-item.bucket.fluid.grc.lager.name=Lager Wort Bukkit
-item.bucket.fluid.grc.lager0.name=Lager Bukkit
-item.bucket.fluid.grc.lager1.name=Lager Bukkit
-item.bucket.fluid.grc.lager2.name=Lager Bukkit
-item.bucket.fluid.grc.lager3.name=Lager Bukkit
-item.bucket.fluid.grc.lager4.name=Lager Bukkit
-item.bucket.fluid.grc.lager5.name=Lager Bukkit
-item.bucket.fluid.grc.lager6.name=Lager Bukkit
+item.bucket.fluid.grc.lager.name=Cold Smushy Hoomin Catnip Bukkit
+item.bucket.fluid.grc.lager0.name=Cold Hoomin Catnip Bukkit
+item.bucket.fluid.grc.lager1.name=Cold Hoomin Catnip Bukkit
+item.bucket.fluid.grc.lager2.name=Cold Hoomin Catnip Bukkit
+item.bucket.fluid.grc.lager3.name=Cold Hoomin Catnip Bukkit
+item.bucket.fluid.grc.lager4.name=Cold Hoomin Catnip Bukkit
+item.bucket.fluid.grc.lager5.name=Cold Hoomin Catnip Bukkit
+item.bucket.fluid.grc.lager6.name=Cold Hoomin Catnip Bukkit
 
 # Fluid Blocks
 tile.fluid.grc.hopAle.name=Smushy Hoomin Catnip
@@ -56,14 +56,14 @@ tile.fluid.grc.hopAle6.name=Hoomin Catnip
 tile.fluid.grc.hopAle7.name=Hoomin Catnip
 tile.fluid.grc.hopAle8.name=Hoomin Catnip
 
-tile.fluid.grc.lager.name=Lager Wort
-tile.fluid.grc.lager0.name=Lager
-tile.fluid.grc.lager1.name=Lager
-tile.fluid.grc.lager2.name=Lager
-tile.fluid.grc.lager3.name=Lager
-tile.fluid.grc.lager4.name=Lager
-tile.fluid.grc.lager5.name=Lager
-tile.fluid.grc.lager6.name=Lager
+tile.fluid.grc.lager.name=Cold Smushy Hoomin Catnip
+tile.fluid.grc.lager0.name=Cold Hoomin Catnip
+tile.fluid.grc.lager1.name=Cold Hoomin Catnip
+tile.fluid.grc.lager2.name=Cold Hoomin Catnip
+tile.fluid.grc.lager3.name=Cold Hoomin Catnip
+tile.fluid.grc.lager4.name=Cold Hoomin Catnip
+tile.fluid.grc.lager5.name=Cold Hoomin Catnip
+tile.fluid.grc.lager6.name=Cold Hoomin Catnip
 
 # Fluid Tooltips
 fluid.grc.hopAle4.modifier=No Hops, Young
