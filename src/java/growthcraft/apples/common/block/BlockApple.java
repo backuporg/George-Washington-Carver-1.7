@@ -15,12 +15,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.IIcon;
+
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 

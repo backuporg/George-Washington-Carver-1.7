@@ -32,7 +32,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.util.IIcon;
+
 import net.minecraftforge.client.event.TextureStitchEvent;
 
 public class GrcBeesHandleTextureStitch
