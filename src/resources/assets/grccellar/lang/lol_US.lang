@@ -102,14 +102,14 @@ grc.fluids.tag.metallic=Groanin
 gui.grc.empty=Emptee
 gui.grc.discard=Twash
 gui.grc.switch=Swetch
-gui.grc.cantferment=Cannot Ferment.
-gui.grccellar.ferment_barrel.progress_name=Fermenting
+gui.grc.cantferment=Cant Fermunt.
+gui.grccellar.ferment_barrel.progress_name=Fermentin
 
 # Achievements
 achievement.craftBarrel=Cooper Extracshun
-achievement.craftBarrel.desc=Craft a fermentation barrel with three wooden planks and six iron ingots.
+achievement.craftBarrel.desc=Craft ur hoem.
 achievement.fermentBooze=It's The Yeast I Could Do...
-achievement.fermentBooze.desc=Ferment an alcoholic beverage.
+achievement.fermentBooze.desc=Make a funnee drInk.
 achievement.getDrunk=Is Trouble Brewing?
 achievement.getDrunk.desc=Acquire Tipsy V.
 achievement.onTheGo=On Teh Go
