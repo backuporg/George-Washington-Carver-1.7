@@ -28,6 +28,11 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.*;
+import net.minecraft.world.World;
+import net.minecraft.block.state.IBlockState;
+
 
 public class BlockBeeBox extends GrcBlockContainer
 {
@@ -102,7 +107,7 @@ public class BlockBeeBox extends GrcBlockContainer
 	@Override
 	public void updateTick(World world, int x, int y, int z, Random rand)
 	{
-		super.updateTick(world, x, y, z, rand);
+		super.updateTick(world, BlockPos, IBlockState, rand);
 		final TileEntityBeeBox te = getTileEntity(world, x, y, z);
 		if (te != null) te.updateBlockTick();
 	}
