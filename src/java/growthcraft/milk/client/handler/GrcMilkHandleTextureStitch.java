@@ -31,7 +31,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.client.event.TextureStitchEvent;
-import net.minecraft.util.IIcon;
+
 
 public class GrcMilkHandleTextureStitch
 {
