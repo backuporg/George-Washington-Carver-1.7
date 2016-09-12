@@ -46,7 +46,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 
-public class BlockThistle extends BlockBush implements ISpreadablePlant, IGrowable
+public abstract class BlockThistle extends BlockBush implements ISpreadablePlant, IGrowable
 {
 	public static class ThistleStage
 	{

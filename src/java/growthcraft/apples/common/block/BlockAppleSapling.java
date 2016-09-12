@@ -14,7 +14,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.event.terraingen.TerrainGen;
 
-public class BlockAppleSapling extends BlockBush implements IGrowable
+public abstract class BlockAppleSapling extends BlockBush implements IGrowable
 {
 	private final int growth = GrowthCraftApples.getConfig().appleSaplingGrowthRate;
 

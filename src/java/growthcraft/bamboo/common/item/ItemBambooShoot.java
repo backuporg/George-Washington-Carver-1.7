@@ -16,7 +16,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 
-public class ItemBambooShoot extends GrcItemFoodBase implements IPlantable
+public abstract class ItemBambooShoot extends GrcItemFoodBase implements IPlantable
 {
 	private Block cropBlock;
 
