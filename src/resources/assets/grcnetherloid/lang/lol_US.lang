@@ -20,17 +20,17 @@ tile.grcnetherloid.netherCinderrot.name=Cinderrot
 tile.grcnetherloid.netherFireLily.name=Fire Lily
 tile.grcnetherloid.netherKnifeBush.name=Knife Bush
 tile.grcnetherloid.netherMaliceFruit.name=Malice Fruit
-tile.grcnetherloid.netherMaliceLeaves.name=Malice Leaves
-tile.grcnetherloid.netherMaliceLog.name=Malice Log
-tile.grcnetherloid.netherMalicePlanks.name=Malice Planks
-tile.grcnetherloid.netherMaliceSapling.name=Malice Sapling
+tile.grcnetherloid.netherMaliceLeaves.name=NOPEWOOD Leaves
+tile.grcnetherloid.netherMaliceLog.name=NOPEWOOD Log
+tile.grcnetherloid.netherMalicePlanks.name=NOPEWOOD Planks
+tile.grcnetherloid.netherMaliceSapling.name=baby nopewood
 tile.grcnetherloid.netherMaraLotus.name=Maras Lotus
-tile.grcnetherloid.netherMolochsCompass.name=Moloch's Compass
+tile.grcnetherloid.netherMolochsCompass.name=Magic Shruum Pointer
 tile.grcnetherloid.netherMuertecap.name=Faek Shruum
 tile.grcnetherloid.netherPaddyField.name=Lava Patti
 tile.grcnetherloid.netherPepper.name=Peppurz dat arez not a ghostie
-tile.grcnetherloid.netherSquash.name=Soul Squash
-tile.grcnetherloid.netherSquashStem.name=Soul Squash Stem
+tile.grcnetherloid.netherSquash.name=Spookie Gourdie
+tile.grcnetherloid.netherSquashStem.name=Spookeh Gourdie Vien
 tile.grcnetherloid.netherStrangleroot.name=Meanie salaD
 
 // Booze
