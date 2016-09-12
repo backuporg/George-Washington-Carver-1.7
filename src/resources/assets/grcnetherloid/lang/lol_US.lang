@@ -34,57 +34,57 @@ tile.grcnetherloid.netherSquashStem.name=Soul Squash Stem
 tile.grcnetherloid.netherStrangleroot.name=Meanie salaD
 
 // Booze
-/// Fire Brandy
-fluid.grc.fireBrandy=Fire Brandy
-fluid.grc.fireBrandy0=Fire Brandy
-fluid.grc.fireBrandy1=Fire Brandy
-fluid.grc.fireBrandy2=Fire Brandy
-fluid.grc.fireBrandy3=Fire Brandy
+/// Stuff dat is nawt hawt
+fluid.grc.fireBrandy=Stuff dat is nawt hawt
+fluid.grc.fireBrandy0=Stuff dat is nawt hawt
+fluid.grc.fireBrandy1=Stuff dat is nawt hawt
+fluid.grc.fireBrandy2=Stuff dat is nawt hawt
+fluid.grc.fireBrandy3=Stuff dat is nawt hawt
 
-item.bucket.fluid.grc.fireBrandy.name=Fire Brandy Bukkit
-item.bucket.fluid.grc.fireBrandy0.name=Fire Brandy Bukkit
-item.bucket.fluid.grc.fireBrandy1.name=Fire Brandy Bukkit
-item.bucket.fluid.grc.fireBrandy2.name=Fire Brandy Bukkit
-item.bucket.fluid.grc.fireBrandy3.name=Fire Brandy Bukkit
+item.bucket.fluid.grc.fireBrandy.name=Stuff dat is nawt hawt Bukkit
+item.bucket.fluid.grc.fireBrandy0.name=Stuff dat is nawt hawt Bukkit
+item.bucket.fluid.grc.fireBrandy1.name=Stuff dat is nawt hawt Bukkit
+item.bucket.fluid.grc.fireBrandy2.name=Stuff dat is nawt hawt Bukkit
+item.bucket.fluid.grc.fireBrandy3.name=Stuff dat is nawt hawt Bukkit
 
-tile.fluid.grc.fireBrandy.name=Fire Brandy
-tile.fluid.grc.fireBrandy0.name=Fire Brandy
-tile.fluid.grc.fireBrandy1.name=Fire Brandy
-tile.fluid.grc.fireBrandy2.name=Fire Brandy
-tile.fluid.grc.fireBrandy3.name=Fire Brandy
+tile.fluid.grc.fireBrandy.name=Stuff dat is nawt hawt
+tile.fluid.grc.fireBrandy0.name=Stuff dat is nawt hawt
+tile.fluid.grc.fireBrandy1.name=Stuff dat is nawt hawt
+tile.fluid.grc.fireBrandy2.name=Stuff dat is nawt hawt
+tile.fluid.grc.fireBrandy3.name=Stuff dat is nawt hawt
 
-/// Malice Cider
-fluid.grc.maliceCider=Malice Cider
-fluid.grc.maliceCider0=Malice Cider
-fluid.grc.maliceCider1=Malice Cider
-fluid.grc.maliceCider2=Malice Cider
-fluid.grc.maliceCider3=Malice Cider
-fluid.grc.maliceCider4=Amrita
+/// Stuff dat is nawt angy
+fluid.grc.maliceCider=Stuff dat is nawt angy
+fluid.grc.maliceCider0=Stuff dat is nawt angy
+fluid.grc.maliceCider1=Stuff dat is nawt angy
+fluid.grc.maliceCider2=Stuff dat is nawt angy
+fluid.grc.maliceCider3=Stuff dat is nawt angy
+fluid.grc.maliceCider4=Nectar
 fluid.grc.maliceCider5=Cold Stuff
-fluid.grc.maliceCider6=Malice Cider
+fluid.grc.maliceCider6=Stuff dat is nawt angy
 fluid.grc.maliceCider7=Vile Slop
 
-item.bucket.fluid.grc.maliceCider.name=Malice Cider Bucket
-item.bucket.fluid.grc.maliceCider0.name=Malice Cider Bukkit
-item.bucket.fluid.grc.maliceCider1.name=Malice Cider Bukkit
-item.bucket.fluid.grc.maliceCider2.name=Malice Cider Bukkit
-item.bucket.fluid.grc.maliceCider3.name=Malice Cider Bukkit
-item.bucket.fluid.grc.maliceCider4.name=Amrita Bukkit
+item.bucket.fluid.grc.maliceCider.name=Stuff dat is nawt angy Bucket
+item.bucket.fluid.grc.maliceCider0.name=Stuff dat is nawt angy Bukkit
+item.bucket.fluid.grc.maliceCider1.name=Stuff dat is nawt angy Bukkit
+item.bucket.fluid.grc.maliceCider2.name=Stuff dat is nawt angy Bukkit
+item.bucket.fluid.grc.maliceCider3.name=Stuff dat is nawt angy Bukkit
+item.bucket.fluid.grc.maliceCider4.name=Nectar Bukkit
 item.bucket.fluid.grc.maliceCider5.name=Cold Stuff Bukkit
-item.bucket.fluid.grc.maliceCider6.name=Malice Cider Bukkit
+item.bucket.fluid.grc.maliceCider6.name=Stuff dat is nawt angy Bukkit
 item.bucket.fluid.grc.maliceCider7.name=Vile Slop Bukkit
 
-tile.fluid.grc.maliceCider.name=Malice Cider
-tile.fluid.grc.maliceCider0.name=Malice Cider
-tile.fluid.grc.maliceCider1.name=Malice Cider
-tile.fluid.grc.maliceCider2.name=Malice Cider
-tile.fluid.grc.maliceCider3.name=Malice Cider
-tile.fluid.grc.maliceCider4.name=Amrita
+tile.fluid.grc.maliceCider.name=Stuff dat is nawt angy
+tile.fluid.grc.maliceCider0.name=Stuff dat is nawt angy
+tile.fluid.grc.maliceCider1.name=Stuff dat is nawt angy
+tile.fluid.grc.maliceCider2.name=Stuff dat is nawt angy
+tile.fluid.grc.maliceCider3.name=Stuff dat is nawt angy
+tile.fluid.grc.maliceCider4.name=Nectar
 tile.fluid.grc.maliceCider5.name=Gelid Booze
-tile.fluid.grc.maliceCider6.name=Malice Cider
-tile.fluid.grc.maliceCider7.name=Vile Slop
+tile.fluid.grc.maliceCider6.name=Stuff dat is nawt angy
+tile.fluid.grc.maliceCider7.name=Gross Stuff
 
-fluid.grcnether.maliceCider7.modifier=Vile
+fluid.grcnether.maliceCider7.modifier=Gross
 
 // Death
 death.attack.muetercapFood=%s dieded
