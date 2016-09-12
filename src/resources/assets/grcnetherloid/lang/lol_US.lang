@@ -62,7 +62,7 @@ fluid.grc.maliceCider3=Stuff dat is nawt angy
 fluid.grc.maliceCider4=Nectar
 fluid.grc.maliceCider5=Cold Stuff
 fluid.grc.maliceCider6=Stuff dat is nawt angy
-fluid.grc.maliceCider7=Vile Slop
+fluid.grc.maliceCider7=Gross Stuff
 
 item.bucket.fluid.grc.maliceCider.name=Stuff dat is nawt angy Bucket
 item.bucket.fluid.grc.maliceCider0.name=Stuff dat is nawt angy Bukkit
@@ -72,7 +72,7 @@ item.bucket.fluid.grc.maliceCider3.name=Stuff dat is nawt angy Bukkit
 item.bucket.fluid.grc.maliceCider4.name=Nectar Bukkit
 item.bucket.fluid.grc.maliceCider5.name=Cold Stuff Bukkit
 item.bucket.fluid.grc.maliceCider6.name=Stuff dat is nawt angy Bukkit
-item.bucket.fluid.grc.maliceCider7.name=Vile Slop Bukkit
+item.bucket.fluid.grc.maliceCider7.name=Gross Stuff Bukkit
 
 tile.fluid.grc.maliceCider.name=Stuff dat is nawt angy
 tile.fluid.grc.maliceCider0.name=Stuff dat is nawt angy
