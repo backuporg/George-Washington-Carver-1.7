@@ -17,7 +17,7 @@ import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 import net.minecraft.util.EnumFacing;
 
-public class ItemHopSeeds extends GrcItemBase implements IPlantable
+public abstract class ItemHopSeeds extends GrcItemBase implements IPlantable
 {
 	public ItemHopSeeds()
 	{

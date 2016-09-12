@@ -17,7 +17,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 
-public class ItemAppleSeeds extends GrcItemBase implements IPlantable
+public abstract class ItemAppleSeeds extends GrcItemBase implements IPlantable
 {
 	private Block cropBlock;
 
