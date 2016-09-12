@@ -32,7 +32,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.init.MobEffects;
 
-public class BlockNetherBaalsRot extends BlockNetherFungusBase
+public abstract class BlockNetherBaalsRot extends BlockNetherFungusBase
 {
 	private final float baalsRotSpreadRate = netherloid.getConfig().baalsRotSpreadRate;
 

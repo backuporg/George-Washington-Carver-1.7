@@ -28,7 +28,7 @@ import growthcraft.netherloid.netherloid;
 import net.minecraft.entity.Entity;
 import net.minecraft.world.World;
 
-public class BlockNetherCinderrot extends BlockNetherFungusBase
+public abstract class BlockNetherCinderrot extends BlockNetherFungusBase
 {
 	private final float cinderrotSpreadRate = netherloid.getConfig().cinderrotSpreadRate;
 

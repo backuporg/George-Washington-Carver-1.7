@@ -26,7 +26,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProvider, IGrowable
+public abstract class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProvider, IGrowable
 {
 	public static class RiceStage
 	{

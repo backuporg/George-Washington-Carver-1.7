@@ -38,7 +38,7 @@ import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 import net.minecraft.util.EnumFacing;
 
-public class ItemNetherSquashSeeds extends Item implements IPlantable
+public abstract class ItemNetherSquashSeeds extends Item implements IPlantable
 {
 	public ItemNetherSquashSeeds()
 	{

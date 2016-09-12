@@ -32,7 +32,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
 
-public class BlockNetherMuertecap extends BlockNetherFungusBase
+public abstract class BlockNetherMuertecap extends BlockNetherFungusBase
 {
 	private final float muertecapSpreadRate = netherloid.getConfig().muertecapSpreadRate;
 

@@ -46,7 +46,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockNetherMaliceFruit extends Block implements IGrowable, ICropDataProvider
+public abstract class BlockNetherMaliceFruit extends Block implements IGrowable, ICropDataProvider
 {
 	public static class MaliceFruitStage
 	{

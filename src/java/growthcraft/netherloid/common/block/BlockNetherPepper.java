@@ -46,7 +46,7 @@ import net.minecraft.item.Item;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockNetherPepper extends BlockBush implements ICropDataProvider, IGrowable
+public abstract class BlockNetherPepper extends BlockBush implements ICropDataProvider, IGrowable
 {
 	public static class PepperStages
 	{

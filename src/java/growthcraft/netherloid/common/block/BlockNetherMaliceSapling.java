@@ -41,7 +41,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.event.terraingen.TerrainGen;
 
-public class BlockNetherMaliceSapling extends BlockBush implements IGrowable
+public abstract class BlockNetherMaliceSapling extends BlockBush implements IGrowable
 {
 	@SideOnly(Side.CLIENT)
 	private IIcon icon;
