@@ -1,10 +1,10 @@
 // Creative Tab
-itemGroup.tabNetherloid=Growthcraft Nether
+itemGroup.tabNetherloid=Growthcraft Edgy
 
 // Items
-item.grcnetherloid.ectoplasm.name=Ectoplasm
-item.grcnetherloid.ectoplasm.desc=It's the spooky stuff
-item.grcnetherloid.netherMaliceFruit.name=Malice Fruit
+item.grcnetherloid.ectoplasm.name=Ghostie Goo
+item.grcnetherloid.ectoplasm.desc=It's teh spookeh stuff
+item.grcnetherloid.netherMaliceFruit.name=Froot dat iz not angry
 item.grcnetherloid.netherMuertecapFood.name=Muertecap
 item.grcnetherloid.netherPepper.name=Ghost Pepper
 item.grcnetherloid.netherPepper.desc=Its like an inferno in your mouth, but hotter
