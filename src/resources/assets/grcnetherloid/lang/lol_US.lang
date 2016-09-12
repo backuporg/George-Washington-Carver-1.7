@@ -9,9 +9,9 @@ item.grcnetherloid.netherMuertecapFood.name=Faek Shruum
 item.grcnetherloid.netherPepper.name=Peppur dat iz not a ghostie
 item.grcnetherloid.netherPepper.desc=It burnz ur mouth
 item.grcnetherloid.netherRashSpores.name=Itchy itchy fungus
-item.grcnetherloid.netherRashSpores.desc=It burns, it itches, it spreads and well you know the rest
-item.grcnetherloid.netherSquashSeeds.name=Soul Squash Seeds
-item.grcnetherloid.netherSquashSeeds.desc=Spooky looking seeds
+item.grcnetherloid.netherRashSpores.desc=MAI SKIN ITCHES
+item.grcnetherloid.netherSquashSeeds.name=Spookeh Gourdie
+item.grcnetherloid.netherSquashSeeds.desc=Spookeh lookin sedz
 item.grcnetherloid.netherGhastPowder.name=Ghast Powder
 
 // Tiles
@@ -26,9 +26,9 @@ tile.grcnetherloid.netherMalicePlanks.name=Malice Planks
 tile.grcnetherloid.netherMaliceSapling.name=Malice Sapling
 tile.grcnetherloid.netherMaraLotus.name=Maras Lotus
 tile.grcnetherloid.netherMolochsCompass.name=Moloch's Compass
-tile.grcnetherloid.netherMuertecap.name=Muertecap
-tile.grcnetherloid.netherPaddyField.name=Lava Paddy
-tile.grcnetherloid.netherPepper.name=Ghost Peppers
+tile.grcnetherloid.netherMuertecap.name=Faek Shruum
+tile.grcnetherloid.netherPaddyField.name=Lava Patti
+tile.grcnetherloid.netherPepper.name=Peppurz dat arez not a ghostie
 tile.grcnetherloid.netherSquash.name=Soul Squash
 tile.grcnetherloid.netherSquashStem.name=Soul Squash Stem
 tile.grcnetherloid.netherStrangleroot.name=Strangleroot
