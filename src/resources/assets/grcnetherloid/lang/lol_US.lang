@@ -41,11 +41,11 @@ fluid.grc.fireBrandy1=Fire Brandy
 fluid.grc.fireBrandy2=Fire Brandy
 fluid.grc.fireBrandy3=Fire Brandy
 
-item.bucket.fluid.grc.fireBrandy.name=Fire Brandy Bucket
-item.bucket.fluid.grc.fireBrandy0.name=Fire Brandy Bucket
-item.bucket.fluid.grc.fireBrandy1.name=Fire Brandy Bucket
-item.bucket.fluid.grc.fireBrandy2.name=Fire Brandy Bucket
-item.bucket.fluid.grc.fireBrandy3.name=Fire Brandy Bucket
+item.bucket.fluid.grc.fireBrandy.name=Fire Brandy Bukkit
+item.bucket.fluid.grc.fireBrandy0.name=Fire Brandy Bukkit
+item.bucket.fluid.grc.fireBrandy1.name=Fire Brandy Bukkit
+item.bucket.fluid.grc.fireBrandy2.name=Fire Brandy Bukkit
+item.bucket.fluid.grc.fireBrandy3.name=Fire Brandy Bukkit
 
 tile.fluid.grc.fireBrandy.name=Fire Brandy
 tile.fluid.grc.fireBrandy0.name=Fire Brandy
@@ -60,19 +60,19 @@ fluid.grc.maliceCider1=Malice Cider
 fluid.grc.maliceCider2=Malice Cider
 fluid.grc.maliceCider3=Malice Cider
 fluid.grc.maliceCider4=Amrita
-fluid.grc.maliceCider5=Gelid Booze
+fluid.grc.maliceCider5=Cold Stuff
 fluid.grc.maliceCider6=Malice Cider
 fluid.grc.maliceCider7=Vile Slop
 
 item.bucket.fluid.grc.maliceCider.name=Malice Cider Bucket
-item.bucket.fluid.grc.maliceCider0.name=Malice Cider Bucket
-item.bucket.fluid.grc.maliceCider1.name=Malice Cider Bucket
-item.bucket.fluid.grc.maliceCider2.name=Malice Cider Bucket
-item.bucket.fluid.grc.maliceCider3.name=Malice Cider Bucket
-item.bucket.fluid.grc.maliceCider4.name=Amrita Bucket
-item.bucket.fluid.grc.maliceCider5.name=Gelid Booze Bucket
-item.bucket.fluid.grc.maliceCider6.name=Malice Cider Bucket
-item.bucket.fluid.grc.maliceCider7.name=Vile Slop Bucket
+item.bucket.fluid.grc.maliceCider0.name=Malice Cider Bukkit
+item.bucket.fluid.grc.maliceCider1.name=Malice Cider Bukkit
+item.bucket.fluid.grc.maliceCider2.name=Malice Cider Bukkit
+item.bucket.fluid.grc.maliceCider3.name=Malice Cider Bukkit
+item.bucket.fluid.grc.maliceCider4.name=Amrita Bukkit
+item.bucket.fluid.grc.maliceCider5.name=Cold Stuff Bukkit
+item.bucket.fluid.grc.maliceCider6.name=Malice Cider Bukkit
+item.bucket.fluid.grc.maliceCider7.name=Vile Slop Bukkit
 
 tile.fluid.grc.maliceCider.name=Malice Cider
 tile.fluid.grc.maliceCider0.name=Malice Cider
@@ -87,5 +87,5 @@ tile.fluid.grc.maliceCider7.name=Vile Slop
 fluid.grcnether.maliceCider7.modifier=Vile
 
 // Death
-death.attack.muetercapFood=%s ingested a Muertecap
-death.attack.knifeBush=%s played with knives
+death.attack.muetercapFood=%s dieded
+death.attack.knifeBush=%s cut demselves
