@@ -20,7 +20,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.util.EnumFacing;
 
-public class BlockGrapeVine1 extends BlockGrapeVineBase
+public abstract class BlockGrapeVine1 extends BlockGrapeVineBase
 {
 	public boolean graphicFlag;
 

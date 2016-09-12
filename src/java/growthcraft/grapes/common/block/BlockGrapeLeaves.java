@@ -12,7 +12,7 @@ import growthcraft.grapes.util.GrapeBlockCheck;
 
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraft.block.BlockLeavesBase;
+import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.material.Material;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -24,7 +24,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.util.EnumFacing;
 
-public class BlockGrapeLeaves extends BlockLeavesBase implements IBlockRope
+public abstract class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 {
 	@SideOnly(Side.CLIENT)
 	private IIcon[] icons;

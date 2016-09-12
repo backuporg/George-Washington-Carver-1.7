@@ -18,7 +18,7 @@ import net.minecraft.world.World;
 /**
  * This is the Grape Vine sapling block
  */
-public class BlockGrapeVine0 extends BlockGrapeVineBase
+public abstract class BlockGrapeVine0 extends BlockGrapeVineBase
 {
 	@SideOnly(Side.CLIENT)
 	private IIcon[] icons;
