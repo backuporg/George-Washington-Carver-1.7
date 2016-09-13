@@ -7,8 +7,10 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.IFluidBlock;
+import net.minecraft.block.state.IBlockState;
 
 @SideOnly(Side.CLIENT)
 public class EntityFXDropParticle extends Particle
@@ -78,17 +80,15 @@ public class EntityFXDropParticle extends Particle
 			this.motionZ *= 0.699999988079071D;
 		}
 
-		final int x = MathHelper.floor_double(this.posX);
-		final int y = MathHelper.floor_double(this.posY);
-		final int z = MathHelper.floor_double(this.posZ);
-		final Block block = worldObj.getBlockState(x, y, z);
-
+		final BlockPos pos = new BlockPos(posX, posY, posZ);
+		final IBlockState state = worldObj.getBlockState(pos);
+		final Block block = state.getBlock();
 		final Material material = block.getMaterial();
 
 		if ((material.isLiquid() || material.isSolid()) && block instanceof IFluidBlock)
 		{
 			final double d0 = MathHelper.floor_double(this.posY) + 1 -
-				((IFluidBlock)block).getFilledPercentage(worldObj, x, y, z);
+				((IFluidBlock)block).getFilledPercentage(worldObj, pos);
 
 			if (this.posY < d0)
 			{
