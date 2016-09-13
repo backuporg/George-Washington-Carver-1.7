@@ -16,7 +16,7 @@ import net.minecraft.item.ItemStack;
 
 import net.minecraft.world.World;
 
-public class BlockBambooSlab extends BlockSlab
+public abstract class BlockBambooSlab extends BlockSlab
 {
 	public BlockBambooSlab(boolean par2)
 	{

@@ -29,6 +29,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.block.state.IBlockState;
 import net.minecraftforge.common.IPlantable;
+import net.minecraft.init.Blocks;
 
 public class ForcedFlowerBlockEntry extends AbstractFlowerBlockEntry
 {
@@ -52,7 +53,7 @@ public class ForcedFlowerBlockEntry extends AbstractFlowerBlockEntry
 		if (soilBlock == null) return false;
 		if (getBlock() instanceof IPlantable)
 		{
-			return soilBlock.canSustainPlant(World world, pos.down(), EnumFacing.UP, (IPlantable) getBlock());
+			return soilBlock.canSustainPlant(World world, pos.down(), EnumFacing.UP, IBlockState (IPlantable)getBlock());
 		}
 		return true;
 	}
