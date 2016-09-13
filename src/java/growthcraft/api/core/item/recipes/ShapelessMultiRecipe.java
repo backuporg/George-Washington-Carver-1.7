@@ -22,7 +22,7 @@ import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
 
-public class ShapelessMultiRecipe implements IRecipe
+public abstract class ShapelessMultiRecipe implements IRecipe
 {
 
 	private ItemStack output;
