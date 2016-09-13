@@ -23,7 +23,6 @@
  */
 package growthcraft.api.bees;
 
-import com.sun.javafx.beans.annotations.NonNull;
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.util.EnumFacing;
@@ -32,10 +31,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.common.IPlantable;
 
-import java.util.*;
-import java.*;
-
-public class ForcedFlowerBlockEntry extends AbstractFlowerBlockEntry
+public abstract class ForcedFlowerBlockEntry extends AbstractFlowerBlockEntry
 {
 	public ForcedFlowerBlockEntry(Block pBlock, int pMeta)
 	{
@@ -55,9 +51,9 @@ public class ForcedFlowerBlockEntry extends AbstractFlowerBlockEntry
 		final IBlockState soilBlockState = world.getBlockState(pos.down());
 		final Block soilBlock = soilBlockState.getBlock();
 		if (soilBlock == null) return false;
-		if (getBlockState() instanceof IPlantable)
+		if (getBlockState().getBlockState() instanceof IPlantable)
 		{
-			return soilBlock.canSustainPlant(world, pos.down(), EnumFacing.UP, (IPlantable)getBlockState());
+			return soilBlock.canSustainPlant(soilBlockState, world, pos.down(), EnumFacing.UP, (IPlantable)getBlockState().getBlockState());
 		}
 		return true;
 	}
