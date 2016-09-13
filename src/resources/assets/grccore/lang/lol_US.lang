@@ -24,16 +24,16 @@ item.grccore.crowbar.red.name=Iron Lifty Thing (Red)
 item.grccore.crowbar.green.name=Iron Lifty Thing (Green)
 item.grccore.crowbar.brown.name=Iron Lifty Thing (Brown)
 item.grccore.crowbar.blue.name=Iron Lifty Thing (Blue)
-item.grccore.crowbar.purple.name=Iron Lifty Thing (Purple)
+item.grccore.crowbar.purple.name=Iron Lifty Thing (Purpel)
 item.grccore.crowbar.cyan.name=Iron Lifty Thing (Cyan)
 item.grccore.crowbar.light_gray.name=Iron Lifty Thing (Light Gray)
 item.grccore.crowbar.gray.name=Iron Lifty Thing (Gray)
-item.grccore.crowbar.pink.name=Iron Lifty Thing (Pink)
+item.grccore.crowbar.pink.name=Iron Lifty Thing (PINK)
 item.grccore.crowbar.lime.name=Iron Lifty Thing (Lime)
-item.grccore.crowbar.yellow.name=Iron Lifty Thing (Yellow)
+item.grccore.crowbar.yellow.name=Iron Lifty Thing (Yemlow)
 item.grccore.crowbar.light_blue.name=Iron Lifty Thing (Light Blue)
-item.grccore.crowbar.magenta.name=Iron Lifty Thing (Magenta)
-item.grccore.crowbar.orange.name=Iron Lifty Thing (Orange)
+item.grccore.crowbar.magenta.name=Iron Lifty Thing (Magentuh)
+item.grccore.crowbar.orange.name=Iron Lifty Thing (Oraneg)
 item.grccore.crowbar.white.name=Iron Lifty Thing (White)
 
 # Fluids
@@ -50,7 +50,7 @@ item.bucket.fluid.grccore.SaltWater.name=Yucky WatR Buckt
 achievementPage.pageGrowthCraft=Growthcraft
 
 # Colors
-grc.color.Black=Black
+grc.color.Black=Blapck
 grc.color.Blue=Blue
 grc.color.Brown=Brown
 grc.color.Cyan=Cyan
@@ -59,14 +59,14 @@ grc.color.Green=Green
 grc.color.LightBlue=Light Blue
 grc.color.LightGray=Light Gray
 grc.color.Lime=Lime
-grc.color.Magenta=Magenta
-grc.color.Orange=Orange
-grc.color.Pink=Pink
-grc.color.Purple=Purple
+grc.color.Magenta=Magentuh
+grc.color.Orange=Oraneg
+grc.color.Pink=PINK
+grc.color.Purple=Purpel
 grc.color.Red=Red
-grc.color.Transparent=Transparent
+grc.color.Transparent=See-thru
 grc.color.White=White
-grc.color.Yellow=Yellow
+grc.color.Yellow=Yemlow
 
 # Formats and Units
 grc.format.value.true=YES
@@ -107,20 +107,20 @@ grccore.waila.option.DisplayFluidContent=Fluid Tanks
 grccore.waila.option.DisplayHeated=Heated Devices
 
 # Effects
-grc.effect.chance.format=%d%% Chance of
+grc.effect.chance.format=%d%% Chance ov
 grc.effect.extinguish.desc=Stawps fier
 grc.effect.ignite.desc=Sets Fire for %ds
 grc.effect.list.head=Applies teh following:
 grc.effect.null.desc=Does Nothin
-grc.effect.random_list.head=Applies one of teh fallowing:
+grc.effect.random_list.head=Applies one ov teh fallowing:
 grc.effect.remove_potion_effect.format=Removes %s
-grc.effect.weighted_random_list.format=%d%% Chance of
+grc.effect.weighted_random_list.format=%d%% Chance ov
 
 # GUI
 gui.grc.progress.format=%s : %d / %d
 
 # Inventory
-grc.inventory.internal.name=Inventory
+grc.inventory.internal.name=Holdin Stuff
 
 # Tooltips
 grc.tooltip.detailed_information=Hold %s to show moar detailed infurmashiun
