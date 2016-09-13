@@ -21,11 +21,11 @@ item.grccore.bucketSalt.name=Yucky Powder in Bukkit
 item.grccore.bottleSalt.name=Yucky Powder in Buttl
 item.grccore.crowbar.black.name=Iron Lifty Thing (Blapck)
 item.grccore.crowbar.red.name=Iron Lifty Thing (Red)
-item.grccore.crowbar.green.name=Iron Lifty Thing (Green)
+item.grccore.crowbar.green.name=Iron Lifty Thing (Leaf)
 item.grccore.crowbar.brown.name=Iron Lifty Thing (Pewp)
 item.grccore.crowbar.blue.name=Iron Lifty Thing (Bloo)
 item.grccore.crowbar.purple.name=Iron Lifty Thing (Purpel)
-item.grccore.crowbar.cyan.name=Iron Lifty Thing (Cyan)
+item.grccore.crowbar.cyan.name=Iron Lifty Thing (Teel)
 item.grccore.crowbar.light_gray.name=Iron Lifty Thing (Light Boring)
 item.grccore.crowbar.gray.name=Iron Lifty Thing (Boring)
 item.grccore.crowbar.pink.name=Iron Lifty Thing (PINK)
@@ -34,7 +34,7 @@ item.grccore.crowbar.yellow.name=Iron Lifty Thing (Yemlow)
 item.grccore.crowbar.light_blue.name=Iron Lifty Thing (Light Boo)
 item.grccore.crowbar.magenta.name=Iron Lifty Thing (Magentuh)
 item.grccore.crowbar.orange.name=Iron Lifty Thing (Oraneg)
-item.grccore.crowbar.white.name=Iron Lifty Thing (White)
+item.grccore.crowbar.white.name=Iron Lifty Thing (Blank)
 
 # Fluids
 fluid.tile.water=WatR
@@ -53,9 +53,9 @@ achievementPage.pageGrowthCraft=Growthcraft
 grc.color.Black=Blapck
 grc.color.Blue=Bloo
 grc.color.Brown=Pewp
-grc.color.Cyan=Cyan
+grc.color.Cyan=Teel
 grc.color.Gray=Boring
-grc.color.Green=Green
+grc.color.Green=Leaf
 grc.color.LightBlue=Light Bloo
 grc.color.LightGray=Light Boring
 grc.color.Lime=Liem
@@ -65,7 +65,7 @@ grc.color.Pink=PINK
 grc.color.Purple=Purpel
 grc.color.Red=Red
 grc.color.Transparent=See-thru
-grc.color.White=White
+grc.color.White=Blank
 grc.color.Yellow=Yemlow
 
 # Formats and Units
