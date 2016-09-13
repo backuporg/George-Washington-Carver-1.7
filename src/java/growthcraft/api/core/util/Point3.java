@@ -23,7 +23,7 @@
  */
 package growthcraft.api.core.util;
 
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.Vec3i;
 
 /**
  * To mimic Forestry's internal Vect class
@@ -46,9 +46,9 @@ public class Point3
 		this(point.x, point.y, point.z);
 	}
 
-	public Point3(EnumFacing EnumFacing)
+	public Point3(Vec3i vec3)
 	{
-		this(EnumFacing.offsetX, EnumFacing.offsetY, EnumFacing.offsetZ);
+		this(vec3.getX(), vec3.getY(), vec3.getZ());
 	}
 
 	public Point3()
@@ -81,9 +81,9 @@ public class Point3
 		return add(point.x, point.y, point.z);
 	}
 
-	public Point3 add(EnumFacing EnumFacing)
+	public Point3 add(Vec3i vec3)
 	{
-		return add(EnumFacing.offsetX, EnumFacing.offsetY, EnumFacing.offsetZ);
+		return add(vec3.getX(), vec3.getY(), vec3.getZ());
 	}
 
 	public Point3 sub(int px, int py, int pz)
@@ -96,9 +96,9 @@ public class Point3
 		return sub(point.x, point.y, point.z);
 	}
 
-	public Point3 sub(EnumFacing EnumFacing)
+	public Point3 sub(Vec3i vec3)
 	{
-		return sub(EnumFacing.offsetX, EnumFacing.offsetY, EnumFacing.offsetZ);
+		return sub(vec3.getX(), vec3.getY(), vec3.getZ());
 	}
 
 	public Point3 mul(int px, int py, int pz)
@@ -116,9 +116,9 @@ public class Point3
 		return mul(point.x, point.y, point.z);
 	}
 
-	public Point3 mul(EnumFacing EnumFacing)
+	public Point3 mul(Vec3i vec3)
 	{
-		return mul(EnumFacing.offsetX, EnumFacing.offsetY, EnumFacing.offsetZ);
+		return mul(vec3.getX(), vec3.getY(), vec3.getZ());
 	}
 
 	@Override

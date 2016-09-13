@@ -11,6 +11,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.IFluidBlock;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.init.Blocks;
+import net.minecraft.world.*;
 
 @SideOnly(Side.CLIENT)
 public class EntityFXDropParticle extends Particle
@@ -83,7 +85,7 @@ public class EntityFXDropParticle extends Particle
 		final BlockPos pos = new BlockPos(posX, posY, posZ);
 		final IBlockState state = worldObj.getBlockState(pos);
 		final Block block = state.getBlock();
-		final Material material = block.getMaterial();
+		final Material material = block.getMaterial(IBlockState);
 
 		if ((material.isLiquid() || material.isSolid()) && block instanceof IFluidBlock)
 		{
