@@ -19,6 +19,9 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.IFluidHandler;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
+import net.minecraft.util.math.BlockPos;
+import net.minecraftforge.fluids.FluidContainerRegistry.FluidContainerData;
+import net.minecraft.block.state.IBlockState;
 
 public class FluidUtils
 {
@@ -79,22 +82,23 @@ public class FluidUtils
 		return fluidContainers;
 	}
 
-	public static FluidStack drainFluidBlock(World world, int x, int y, int z, boolean doDrain)
+	public static FluidStack drainFluidBlock(World world, BlockPos pos, boolean doDrain)
 	{
-		final Block block = world.getBlockState(x, y, z);
+		final IBlockState state = world.getBlockState(pos);
+		final Block block = state.getBlock();
 		if (block instanceof BlockFluidBase)
 		{
 			final BlockFluidBase bfb = (BlockFluidBase)block;
-			return bfb.drain(world, x, y, z, doDrain);
+			return bfb.drain(world, pos, doDrain);
 		}
 		else if (block == Blocks.LAVA)
 		{
-			if (doDrain) world.setBlockToAir(x, y, z);
+			if (doDrain) world.setBlockToAir(pos);
 			return new FluidStack(FluidRegistry.LAVA, FluidContainerRegistry.BUCKET_VOLUME);
 		}
 		else if (block == Blocks.WATER)
 		{
-			if (doDrain) world.setBlockToAir(x, y, z);
+			if (doDrain) world.setBlockToAir(pos);
 			return new FluidStack(FluidRegistry.WATER, FluidContainerRegistry.BUCKET_VOLUME);
 		}
 		return null;
