@@ -20,25 +20,25 @@ item.grccore.salt.name=Yucky Powder
 item.grccore.bucketSalt.name=Yucky Powder in Bukkit
 item.grccore.bottleSalt.name=Yucky Powder in Buttl
 item.grccore.crowbar.black.name=Iron Lifty Thing (Blapck)
-item.grccore.crowbar.red.name=Iron Lifty Thing (Berree)
+item.grccore.crowbar.red.name=Iron Lifty Thing (Redish)
 item.grccore.crowbar.green.name=Iron Lifty Thing (Leaf)
 item.grccore.crowbar.brown.name=Iron Lifty Thing (Pewp)
 item.grccore.crowbar.blue.name=Iron Lifty Thing (Bloo)
 item.grccore.crowbar.purple.name=Iron Lifty Thing (Purpel)
 item.grccore.crowbar.cyan.name=Iron Lifty Thing (Teel)
-item.grccore.crowbar.light_gray.name=Iron Lifty Thing (Light Boring)
+item.grccore.crowbar.light_gray.name=Iron Lifty Thing (Liht Boring)
 item.grccore.crowbar.gray.name=Iron Lifty Thing (Boring)
 item.grccore.crowbar.pink.name=Iron Lifty Thing (PINK)
 item.grccore.crowbar.lime.name=Iron Lifty Thing (Liem)
 item.grccore.crowbar.yellow.name=Iron Lifty Thing (Yemlow)
-item.grccore.crowbar.light_blue.name=Iron Lifty Thing (Light Boo)
+item.grccore.crowbar.light_blue.name=Iron Lifty Thing (Liht Boo)
 item.grccore.crowbar.magenta.name=Iron Lifty Thing (Magentuh)
-item.grccore.crowbar.orange.name=Iron Lifty Thing (Oraneg)
-item.grccore.crowbar.white.name=Iron Lifty Thing (Blank)
+item.grccore.crowbar.orange.name=Iron Lifty Thing (Ornge)
+item.grccore.crowbar.white.name=Iron Lifty Thing (Wite)
 
 # Fluids
 fluid.tile.water=WatR
-fluid.tile.lava=Lava
+fluid.tile.lava=Warm
 
 ## Salt Water
 fluid.grccore.SaltWater=Yucky WatR
@@ -60,12 +60,12 @@ grc.color.LightBlue=Liht Bloo
 grc.color.LightGray=Liht Boring
 grc.color.Lime=Liem
 grc.color.Magenta=Magentuh
-grc.color.Orange=Oraneg
+grc.color.Orange=Ornge
 grc.color.Pink=PINK
 grc.color.Purple=Purpel
-grc.color.Red=Berree
+grc.color.Red=Redish
 grc.color.Transparent=See-thru
-grc.color.White=Blank
+grc.color.White=Wite
 grc.color.Yellow=Yemlow
 
 # Formats and Units
