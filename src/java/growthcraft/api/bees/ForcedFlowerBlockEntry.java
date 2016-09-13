@@ -31,7 +31,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.common.IPlantable;
 
-public abstract class ForcedFlowerBlockEntry extends AbstractFlowerBlockEntry
+public class ForcedFlowerBlockEntry extends AbstractFlowerBlockEntry
 {
 	public ForcedFlowerBlockEntry(Block pBlock, int pMeta)
 	{
