@@ -27,8 +27,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Nonnull;
 
-import com.sun.istack.internal.NotNull;
-import com.sun.javafx.beans.annotations.NonNull;
 import growthcraft.api.core.definition.IItemStackFactory;
 import growthcraft.api.core.definition.IItemStackListProvider;
 import growthcraft.api.core.definition.IMultiItemStacks;
