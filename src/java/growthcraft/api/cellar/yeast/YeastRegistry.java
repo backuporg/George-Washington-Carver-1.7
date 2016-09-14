@@ -145,7 +145,7 @@ public class YeastRegistry implements IYeastRegistry
 		final Set<String> biomeNames = getBiomeNamesForYeast(yeast);
 		if (biomeNames != null)
 		{
-			if (biomeNames.contains(biome.biomeName)) return true;
+			if (biomeNames.contains(biome.getBiomeName())) return true;
 		}
 
 		final Set<BiomeDictionary.Type> yeastBiomeList = getBiomeTypesForYeast(yeast);

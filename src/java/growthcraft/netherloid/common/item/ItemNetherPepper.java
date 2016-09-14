@@ -38,7 +38,7 @@ import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 import net.minecraft.util.EnumFacing;
 
-public class ItemNetherPepper extends Item implements IPlantable
+public abstract class ItemNetherPepper extends Item implements IPlantable
 {
 	public ItemNetherPepper()
 	{

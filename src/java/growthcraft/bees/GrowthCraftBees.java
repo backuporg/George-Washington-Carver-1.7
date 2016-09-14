@@ -96,11 +96,6 @@ public class GrowthCraftBees
 	{
 		config.setLogger(logger);
 		config.load(event.getModConfigurationDirectory(), "growthcraft/bees.conf");
-		if (config.debugEnabled)
-		{
-			BeesRegistry.instance().setLogger(logger);
-			modules.setLogger(logger);
-		}
 		modules.add(blocks);
 		modules.add(items);
 		modules.add(fluids);
@@ -136,6 +131,11 @@ public class GrowthCraftBees
 		}
 
 		modules.add(CommonProxy.instance);
+		if (config.debugEnabled)
+		{
+			BeesRegistry.instance().setLogger(logger);
+			modules.setLogger(logger);
+		}
 		modules.freeze();
 		tab = new CreativeTabsGrowthcraftBees("creative_tab_grcbees");
 

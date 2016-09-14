@@ -29,11 +29,11 @@ import growthcraft.netherloid.netherloid;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockDirectional;
-import net.minecraft.client.renderer.texture.IIconRegister;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IIcon;
+
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 

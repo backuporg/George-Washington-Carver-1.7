@@ -37,16 +37,16 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.IIcon;
+import net.minecraft.util.math.AxisAlignedBB;
+
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockNetherMaliceFruit extends Block implements IGrowable, ICropDataProvider
+public abstract class BlockNetherMaliceFruit extends Block implements IGrowable, ICropDataProvider
 {
 	public static class MaliceFruitStage
 	{

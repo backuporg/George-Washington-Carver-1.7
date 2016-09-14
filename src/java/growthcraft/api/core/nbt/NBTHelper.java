@@ -34,6 +34,7 @@ import growthcraft.api.core.util.ConstID;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTBase;
+import net.minecraft.nbt.NBTPrimitive;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagIntArray;
 import net.minecraft.nbt.NBTTagList;
@@ -49,7 +50,7 @@ public class NBTHelper
 
 	public static int getInteger(@Nonnull NBTBase tag)
 	{
-		return tag != null && (tag instanceof NBTBase.NBTPrimitive) ? ((NBTBase.NBTPrimitive)tag).func_150287_d() : 0;
+		return tag != null && (tag instanceof NBTPrimitive) ? ((NBTPrimitive)tag).getInt() : 0;
 	}
 
 	public static int getInteger(@Nonnull NBTTagCompound tag, String name)

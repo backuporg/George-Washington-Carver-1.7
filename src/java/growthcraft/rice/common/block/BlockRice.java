@@ -18,15 +18,15 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
+
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.IIcon;
+import net.minecraft.util.math.AxisAlignedBB;
+
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProvider, IGrowable
+public abstract class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProvider, IGrowable
 {
 	public static class RiceStage
 	{

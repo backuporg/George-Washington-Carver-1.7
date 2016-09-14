@@ -35,7 +35,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 
-public class ItemNetherMuertecap extends ItemFood implements IPlantable
+public abstract class ItemNetherMuertecap extends ItemFood implements IPlantable
 {
 	public ItemNetherMuertecap()
 	{

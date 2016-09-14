@@ -7,10 +7,10 @@ import growthcraft.grapes.GrowthCraftGrapes;
 import net.minecraft.block.SoundType;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraft.client.renderer.texture.IIconRegister;
+
 import net.minecraft.item.Item;
 import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.IIcon;
+
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -18,7 +18,7 @@ import net.minecraft.world.World;
 /**
  * This is the Grape Vine sapling block
  */
-public class BlockGrapeVine0 extends BlockGrapeVineBase
+public abstract class BlockGrapeVine0 extends BlockGrapeVineBase
 {
 	@SideOnly(Side.CLIENT)
 	private IIcon[] icons;

@@ -9,19 +9,19 @@ import growthcraft.bamboo.GrowthCraftBamboo;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockLeavesBase;
+import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IIcon;
+
 import net.minecraft.world.ColorizerFoliage;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
 
-public class BlockBambooLeaves extends BlockLeavesBase implements IShearable
+public abstract class BlockBambooLeaves extends BlockLeaves implements IShearable
 {
 	@SideOnly(Side.CLIENT)
 	private IIcon[] icons;

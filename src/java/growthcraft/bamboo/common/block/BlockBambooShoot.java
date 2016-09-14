@@ -25,7 +25,7 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.event.terraingen.TerrainGen;
 import net.minecraft.util.EnumFacing;
 
-public class BlockBambooShoot extends BlockBush implements ICropDataProvider, IGrowable
+public abstract class BlockBambooShoot extends BlockBush implements ICropDataProvider, IGrowable
 {
 	//constants
 	private final int growth = GrowthCraftBamboo.getConfig().bambooShootGrowthRate;

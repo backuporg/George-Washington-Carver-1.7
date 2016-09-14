@@ -19,7 +19,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
 
-public class ShapedMultiRecipe implements IRecipe
+public abstract class ShapedMultiRecipe implements IRecipe
 {
 	// Added in for future ease of change, but hard coded for now.
 	private static final int MAX_CRAFT_GRID_WIDTH = 3;

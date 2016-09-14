@@ -35,7 +35,7 @@ import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 import net.minecraft.util.EnumFacing;
 
-public class ItemSeedThistle extends GrcItemBase implements IPlantable
+public abstract class ItemSeedThistle extends GrcItemBase implements IPlantable
 {
 	public ItemSeedThistle()
 	{

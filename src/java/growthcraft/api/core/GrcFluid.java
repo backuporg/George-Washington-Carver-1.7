@@ -30,6 +30,7 @@ import growthcraft.api.core.i18n.GrcI18n;
 import growthcraft.api.core.description.IDescribable;
 
 import net.minecraftforge.fluids.Fluid;
+import net.minecraft.util.ResourceLocation;
 
 /**
  * An extension of the default Forge Fluid class, adding descriptions and color
@@ -39,11 +40,12 @@ public class GrcFluid extends Fluid implements IDescribable
 {
 	protected int color;
 
-	public GrcFluid(@Nonnull String fluidName)
+	public GrcFluid(@Nonnull String fluidName, @Nonnull ResourceLocation still, @Nonnull ResourceLocation flowing)
 	{
-		super(fluidName);
+		super(fluidName, still, flowing);
 		this.color = 0xFFFFFF;
 	}
+
 
 	/**
 	 * Returns the color of the fluid

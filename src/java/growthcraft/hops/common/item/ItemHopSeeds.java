@@ -8,7 +8,7 @@ import growthcraft.hops.GrowthCraftHops;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.texture.IIconRegister;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.IBlockAccess;
@@ -17,7 +17,7 @@ import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 import net.minecraft.util.EnumFacing;
 
-public class ItemHopSeeds extends GrcItemBase implements IPlantable
+public abstract class ItemHopSeeds extends GrcItemBase implements IPlantable
 {
 	public ItemHopSeeds()
 	{

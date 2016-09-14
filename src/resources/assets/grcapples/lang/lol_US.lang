@@ -1,34 +1,34 @@
 # Blocks
-tile.grc.appleBlock.name=Apple
-tile.grc.appleSapling.name=Apple Sapling
-tile.grc.appleLeaves.name=Apple Leaves
+tile.grc.appleBlock.name=Mapple
+tile.grc.appleSapling.name=baby mapple
+tile.grc.appleLeaves.name=mapple salad
 # Items
-item.grc.appleSeeds.name=Apple Core
+item.grc.appleSeeds.name=Mapple Coer
 
 # Booze
 ## Fluids
-fluid.grc.appleCider0=Apple Juice
-fluid.grc.appleCider1=Apple Cider
-fluid.grc.appleCider2=Apple Cider
-fluid.grc.appleCider3=Apple Cider
-fluid.grc.appleCider4=Silken Nectar
-fluid.grc.appleCider5=Apple Cider
-fluid.grc.appleCider6=Apple Cider
+fluid.grc.appleCider0=Mapple Sauce
+fluid.grc.appleCider1=Bubbly Mapple Sauce
+fluid.grc.appleCider2=Bubbly Mapple Sauce
+fluid.grc.appleCider3=Bubbly Mapple Sauce
+fluid.grc.appleCider4=Smuf Mapple Sauce
+fluid.grc.appleCider5=Bubbly Mapple Sauce
+fluid.grc.appleCider6=Bubbly Mapple Sauce
 
 ## Fluid Bukkits
-item.bucket.fluid.grc.appleCider0.name=Apple Juice Bukkit
-item.bucket.fluid.grc.appleCider1.name=Apple Cider Bukkit
-item.bucket.fluid.grc.appleCider2.name=Apple Cider Bukkit
-item.bucket.fluid.grc.appleCider3.name=Apple Cider Bukkit
-item.bucket.fluid.grc.appleCider4.name=Silken Nectar Bukkit
-item.bucket.fluid.grc.appleCider5.name=Apple Cider Bukkit
-item.bucket.fluid.grc.appleCider6.name=Apple Cider Bukkit
+item.bucket.fluid.grc.appleCider0.name=Mapple Sauce Bukkit
+item.bucket.fluid.grc.appleCider1.name=Bubbly Mapple Sauce Bukkit
+item.bucket.fluid.grc.appleCider2.name=Bubbly Mapple Sauce Bukkit
+item.bucket.fluid.grc.appleCider3.name=Bubbly Mapple Sauce Bukkit
+item.bucket.fluid.grc.appleCider4.name=Smuf Mapple Sauce Bukkit
+item.bucket.fluid.grc.appleCider5.name=Bubbly Mapple Sauce Bukkit
+item.bucket.fluid.grc.appleCider6.name=Bubbly Mapple Sauce Bukkit
 
 ## Fluid Blocks
-tile.fluid.grc.appleCider0.name=Apple Juice
-tile.fluid.grc.appleCider1.name=Apple Cider
-tile.fluid.grc.appleCider2.name=Apple Cider
-tile.fluid.grc.appleCider3.name=Apple Cider
-tile.fluid.grc.appleCider4.name=Silken Nectar
-tile.fluid.grc.appleCider5.name=Apple Cider
-tile.fluid.grc.appleCider6.name=Apple Cider
+tile.fluid.grc.appleCider0.name=Mapple Sauce
+tile.fluid.grc.appleCider1.name=Bubbly Mapple Sauce
+tile.fluid.grc.appleCider2.name=Bubbly Mapple Sauce
+tile.fluid.grc.appleCider3.name=Bubbly Mapple Sauce
+tile.fluid.grc.appleCider4.name=Smuf Mapple Sauce
+tile.fluid.grc.appleCider5.name=Bubbly Mapple Sauce
+tile.fluid.grc.appleCider6.name=Bubbly Mapple Sauce

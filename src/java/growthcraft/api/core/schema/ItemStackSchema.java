@@ -37,6 +37,8 @@ import growthcraft.api.core.util.StringUtils;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 public class ItemStackSchema implements IItemStackFactory, IItemStackListProvider, IValidatable, ICommentable
 {
@@ -57,9 +59,9 @@ public class ItemStackSchema implements IItemStackFactory, IItemStackListProvide
 
 	public ItemStackSchema(@Nonnull ItemStack stack)
 	{
-		final UniqueIdentifier uuid = GameRegistry.findUniqueIdentifierFor(stack.getItem());
-		this.mod_id = uuid.modId;
-		this.name = uuid.name;
+		final ResourceLocation resloc = new ResourceLocation(stack.getItem().getRegistryName());
+		this.mod_id = resloc.getResourceDomain();
+		this.name = resloc.getResourcePath();
 		this.amount = stack.stackSize;
 		this.meta = stack.getItemDamage();
 		this.comment = stack.getDisplayName();
@@ -87,7 +89,7 @@ public class ItemStackSchema implements IItemStackFactory, IItemStackListProvide
 	public Item getItem()
 	{
 		if (mod_id == null || name == null) return null;
-		return GameRegistry.findItem(mod_id, name);
+		return ForgeRegistries.ITEMS.getValue(new ResourceLocation());
 	}
 
 	@Override

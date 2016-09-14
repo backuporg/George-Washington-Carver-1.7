@@ -5,7 +5,7 @@ import growthcraft.core.GrowthCraftCore;
 
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraft.client.renderer.texture.IIconRegister;
+
 
 public class ItemHops extends GrcItemBase
 {

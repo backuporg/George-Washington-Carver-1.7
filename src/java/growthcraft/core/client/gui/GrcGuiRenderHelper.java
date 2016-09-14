@@ -24,7 +24,7 @@
 package growthcraft.core.client.gui;
 
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.util.IIcon;
+
 
 public class GrcGuiRenderHelper
 {

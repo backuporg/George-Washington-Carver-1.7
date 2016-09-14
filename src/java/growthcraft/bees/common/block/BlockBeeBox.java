@@ -15,7 +15,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -23,11 +23,16 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.IIcon;
+
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.*;
+import net.minecraft.world.World;
+import net.minecraft.block.state.IBlockState;
+
 
 public class BlockBeeBox extends GrcBlockContainer
 {
@@ -102,7 +107,7 @@ public class BlockBeeBox extends GrcBlockContainer
 	@Override
 	public void updateTick(World world, int x, int y, int z, Random rand)
 	{
-		super.updateTick(world, x, y, z, rand);
+		super.updateTick(World world, BlockPos pos, IBlockState state, Random rand);
 		final TileEntityBeeBox te = getTileEntity(world, x, y, z);
 		if (te != null) te.updateBlockTick();
 	}
