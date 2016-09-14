@@ -215,7 +215,7 @@ public class GrcBeesRecipes extends GrcModuleBase
 		));
 
 		/// To Honey Bottle from `bucketHoney`
-		GameRegistry.addRecipe(new ShapelessOreRecipe(
+		GameRegistry.addRecipe(new ShapelessMultiRecipe(
 			GrowthCraftBees.fluids.honey.asBottleItemStack(3),
 			Items.GLASS_BOTTLE,
 			Items.GLASS_BOTTLE,
