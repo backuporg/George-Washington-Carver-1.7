@@ -34,6 +34,7 @@ import growthcraft.api.core.item.ItemKey;
 import growthcraft.api.core.item.MultiItemStacks;
 import growthcraft.api.core.util.StringUtils;
 
+import net.minecraft.util.registry.RegistryNamespacedDefaultedByKey;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -89,7 +90,7 @@ public class ItemStackSchema implements IItemStackFactory, IItemStackListProvide
 	public Item getItem()
 	{
 		if (mod_id == null || name == null) return null;
-		return ForgeRegistries.ITEMS.getValue(new ResourceLocation());
+		return GameRegistry.findItem(mod_id, name);
 	}
 
 	@Override
@@ -127,7 +128,7 @@ public class ItemStackSchema implements IItemStackFactory, IItemStackListProvide
 	public String toString()
 	{
 		return String.format("Schema<ItemStack>(comment: '%s', mod_id: '%s', name: '%s', meta: %d, amount: %d)",
-			StringUtils.inspect(comment), mod_id, name, meta, amount);
+				StringUtils.inspect(comment), mod_id, name, meta, amount);
 	}
 
 	@Override
