@@ -36,6 +36,7 @@ import growthcraft.api.core.description.Describer;
 import growthcraft.api.core.effect.IPotionEffectFactory;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.init.MobEffects;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
@@ -73,7 +74,7 @@ public class BoozePotionEffectFactory implements IPotionEffectFactory
 		return level;
 	}
 
-	public PotionEffect createPotionEffect(World world, Entity entity, Random random, Object data)
+	public MobEffects createPotionEffect(World world, Entity entity, Random random, Object data)
 	{
 		final Collection<FluidTag> tags = CoreRegistry.instance().fluidDictionary().getFluidTags(booze);
 
@@ -90,14 +91,14 @@ public class BoozePotionEffectFactory implements IPotionEffectFactory
 					lv = func.applyLevel(lv);
 				}
 			}
-			return new PotionEffect();
+			return new MobEffects();
 		}
 		return null;
 	}
 
 	public void getDescription(List<String> list)
 	{
-		final PotionEffect pe = createPotionEffect(null, null, null, null);
+		final MobEffects pe = createPotionEffect(null, null, null, null);
 		Describer.getPotionEffectDescription(list, pe);
 	}
 
