@@ -29,6 +29,7 @@ import growthcraft.api.core.i18n.GrcI18n;
 
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.text.TextFormatting;
 
 /**
@@ -46,7 +47,7 @@ public class Describer
 		}
 	}
 
-	public static void getPotionEffectDescription(List<String> list, MobEffects pe)
+	public static void getPotionEffectDescription(List<String> list, PotionEffect pe)
 	{
 		if (pe == null) return;
 
@@ -63,9 +64,9 @@ public class Describer
 			s += " " + GrcI18n.translate("potion.potency." + pe.getAmplifier()).trim();
 		}
 
-		if (getDuration() > 20)
+		if (getPotionDuration() > 20)
 		{
-			s += "" + TextFormatting.GRAY + " (" + Potion.getDurationString(pe) + ")";
+			s += "" + TextFormatting.GRAY + " (" + Potion.getPotionDurationString(pe) + ")";
 		}
 		list.add(s);
 	}

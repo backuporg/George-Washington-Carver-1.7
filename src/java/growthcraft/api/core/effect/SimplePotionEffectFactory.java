@@ -30,7 +30,6 @@ import growthcraft.api.core.CoreRegistry;
 import growthcraft.api.core.description.Describer;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.init.MobEffects;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
@@ -64,15 +63,15 @@ public class SimplePotionEffectFactory implements IPotionEffectFactory
 	}
 
 	@Override
-	public MobEffects createPotionEffect(World world, Entity entity, Random random, Object data)
+	public PotionEffect createPotionEffect(World world, Entity entity, Random random, Object data)
 	{
-		return new MobEffects();
+		return new PotionEffect();
 	}
 
 	@Override
 	public void getDescription(List<String> list)
 	{
-		final MobEffects pe = createPotionEffect(null, null, null, null);
+		final PotionEffect pe = createPotionEffect(null, null, null, null);
 		Describer.getPotionEffectDescription(list, pe);
 	}
 

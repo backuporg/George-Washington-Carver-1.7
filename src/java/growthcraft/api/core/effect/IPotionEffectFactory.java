@@ -29,7 +29,7 @@ import growthcraft.api.core.description.IDescribable;
 import growthcraft.api.core.nbt.INBTSerializableContext;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.init.MobEffects;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
 /**
@@ -38,5 +38,5 @@ import net.minecraft.world.World;
  */
 public interface IPotionEffectFactory extends IDescribable, INBTSerializableContext
 {
-	MobEffects createPotionEffect(World world, Entity entity, Random random, Object data);
+	PotionEffect createPotionEffect(World world, Entity entity, Random random, Object data);
 }
