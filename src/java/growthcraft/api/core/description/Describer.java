@@ -60,8 +60,8 @@ public class Describer {
             s += " " + GrcI18n.translate("potion.potency." + pe.getAmplifier()).trim();
         }
 
-        if (pe.potionDuration() > 20) {
-            s += "" + TextFormatting.GRAY + " (" + Potion.getPotionDurationString(pe) + ")";
+        if (pe.getDuration() > 20)  {
+            s += "" + TextFormatting.GRAY + " (" + Potion.getPotionDurationString() + ")";
         }
         list.add(s);
     }
