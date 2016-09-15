@@ -32,6 +32,7 @@ import growthcraft.api.core.description.Describer;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.MobEffects;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 public class SimplePotionEffectFactory implements IPotionEffectFactory
@@ -40,7 +41,7 @@ public class SimplePotionEffectFactory implements IPotionEffectFactory
 	private int time;
 	private int level;
 
-	public SimplePotionEffectFactory(int i, int tm, int lvl)
+	public SimplePotionEffectFactory(ResourceLocation i, int tm, int lvl)
 	{
 		this.id = i;
 		this.time = tm;
@@ -65,7 +66,7 @@ public class SimplePotionEffectFactory implements IPotionEffectFactory
 	@Override
 	public MobEffects createPotionEffect(World world, Entity entity, Random random, Object data)
 	{
-		return new MobEffects(getID(), getTime(), getLevel());
+		return new MobEffects();
 	}
 
 	@Override

@@ -86,7 +86,7 @@ public class BoozeEffect extends AbstractEffect
 
 	public EffectAddPotionEffect createPotionEntry(@Nonnull Potion p, int time, int level)
 	{
-		final BoozePotionEffectFactory factory = new BoozePotionEffectFactory(booze, p.id, time, level);
+		final BoozePotionEffectFactory factory = new BoozePotionEffectFactory(booze, p.getRegistryName(), time, level);
 		final EffectAddPotionEffect effect = new EffectAddPotionEffect(factory);
 		addEffect(effect);
 		return effect;

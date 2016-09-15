@@ -38,6 +38,7 @@ import growthcraft.api.core.effect.IPotionEffectFactory;
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -50,7 +51,7 @@ public class BoozePotionEffectFactory implements IPotionEffectFactory
 	private int level;
 	private Fluid booze;
 
-	public BoozePotionEffectFactory(@Nonnull Fluid b, int i, int tm, int lvl)
+	public BoozePotionEffectFactory(@Nonnull Fluid b, ResourceLocation i, int tm, int lvl)
 	{
 		this.booze = b;
 		this.id = i;

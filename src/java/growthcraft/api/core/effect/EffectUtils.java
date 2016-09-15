@@ -33,7 +33,7 @@ public class EffectUtils
 
 	public static EffectAddPotionEffect createAddPotionEffect(@Nonnull Potion p, int time, int level)
 	{
-		final IPotionEffectFactory factory = new SimplePotionEffectFactory(p.id, time, level);
+		final IPotionEffectFactory factory = new SimplePotionEffectFactory(p.getRegistryName(), time, level);
 		return new EffectAddPotionEffect(factory);
 	}
 }

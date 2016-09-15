@@ -31,7 +31,9 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.potion.*;
+import net.minecraft.potion.PotionUtils;
+import net.minecraft.potion.PotionHelper;
+import net.minecraft.potion.PotionType;
 
 /**
  * A nice way to add descriptions to a list if the Object is an IDescribable
@@ -60,12 +62,12 @@ public class Describer
 				s = TextFormatting.RED + s;
 		}
 
-		if (pe.getAmplifier() > 0)
+		if (getAmplifier() > 0)
 		{
 			s += " " + GrcI18n.translate("potion.potency." + pe.getAmplifier()).trim();
 		}
 
-		if (pe.getDuration() > 20)
+		if (getDuration() > 20)
 		{
 			s += "" + TextFormatting.GRAY + " (" + Potion.getDurationString(pe) + ")";
 		}
