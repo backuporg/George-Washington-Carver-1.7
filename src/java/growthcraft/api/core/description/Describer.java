@@ -46,7 +46,7 @@ public class Describer {
         }
     }
 
-    public void getPotionEffectDescription(List<String> list, PotionEffect pe) {
+    public static void getPotionEffectDescription(List<String> list, PotionEffect pe) {
         if (pe == null) return;
 
         String s = GrcI18n.translate(pe.getEffectName()).trim();
