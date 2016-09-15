@@ -52,7 +52,7 @@ public class Describer
 		if (pe == null) return;
 
 		String s = GrcI18n.translate(pe.getEffectName()).trim();
-		final Potion potion = Potion.REGISTRY[pe.getPotionID(int id)];
+		final Potion potion = Potion.potionTypes[pe.getPotionID()];
 		if (potion != null)
 		{
 			if (potion.isBadEffect())
