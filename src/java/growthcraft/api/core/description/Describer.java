@@ -52,19 +52,19 @@ public class Describer
 		if (pe == null) return;
 
 		String s = GrcI18n.translate(pe.getEffectName()).trim();
-		final Potion potion = Potion.potionTypes[pe.getPotionID()];
+		final Potion potion = Potion.REGISTRY[pe.getPotionID(int id)];
 		if (potion != null)
 		{
 			if (potion.isBadEffect())
 				s = TextFormatting.RED + s;
 		}
 
-		if (getAmplifier() > 0)
+		if (effect.getAmplifier() > 0)
 		{
 			s += " " + GrcI18n.translate("potion.potency." + pe.getAmplifier()).trim();
 		}
 
-		if (getPotionDuration() > 20)
+		if (duration() > 20)
 		{
 			s += "" + TextFormatting.GRAY + " (" + Potion.getPotionDurationString(pe) + ")";
 		}
@@ -109,4 +109,6 @@ public class Describer
 			}
 		}
 	}
+
+
 }
