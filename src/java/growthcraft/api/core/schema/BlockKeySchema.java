@@ -50,7 +50,7 @@ public class BlockKeySchema implements ICommentable, IValidatable
 
 	public BlockKeySchema(Block block, int pmeta)
 	{
-		final ResourceLocation resloc = new ResourceLocation(block.getRegistryName());
+		final ResourceLocation resloc = new ResourceLocation(block.getRegistryName().getResourceDomain());
 		this.mod_id = resloc.getResourceDomain();
 		this.name = resloc.getResourcePath();
 		this.meta = pmeta;

@@ -60,7 +60,7 @@ public class ItemStackSchema implements IItemStackFactory, IItemStackListProvide
 
 	public ItemStackSchema(@Nonnull ItemStack stack)
 	{
-		final ResourceLocation resloc = new ResourceLocation(stack.getItem().getRegistryName());
+		final ResourceLocation resloc = new ResourceLocation(stack.getItem().getRegistryName().getResourceDomain());
 		this.mod_id = resloc.getResourceDomain();
 		this.name = resloc.getResourcePath();
 		this.amount = stack.stackSize;
