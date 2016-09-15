@@ -40,6 +40,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraft.init.MobEffects;
 
 public class BoozeEffect extends AbstractEffect
 {

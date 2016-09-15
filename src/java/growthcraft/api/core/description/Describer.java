@@ -27,8 +27,8 @@ import java.util.List;
 
 import growthcraft.api.core.i18n.GrcI18n;
 
+import net.minecraft.init.MobEffects;
 import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.text.TextFormatting;
 
 /**
@@ -46,7 +46,7 @@ public class Describer
 		}
 	}
 
-	public static void getPotionEffectDescription(List<String> list, PotionEffect pe)
+	public static void getPotionEffectDescription(List<String> list, MobEffects pe)
 	{
 		if (pe == null) return;
 
