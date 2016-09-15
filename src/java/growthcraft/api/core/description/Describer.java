@@ -50,7 +50,7 @@ public class Describer {
         if (pe == null) return;
 
         String s = GrcI18n.translate(pe.getEffectName()).trim();
-        final Potion potion = Potion.PotionTypes[pe.getPotionID()];
+        final Potion potion = Potion.getPotionFromResourceLocation(String.valueOf(pe));
         if (potion != null) {
             if (potion.isBadEffect())
                 s = TextFormatting.RED + s;
