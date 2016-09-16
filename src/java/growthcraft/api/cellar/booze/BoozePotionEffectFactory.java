@@ -37,6 +37,7 @@ import growthcraft.api.core.effect.IPotionEffectFactory;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
@@ -90,7 +91,7 @@ public class BoozePotionEffectFactory implements IPotionEffectFactory
 					lv = func.applyLevel(lv);
 				}
 			}
-			return new PotionEffect();
+			return new PotionEffect(Potion.getPotionById(Integer.parseInt(id)), getTime(), getLevel());
 		}
 		return null;
 	}
