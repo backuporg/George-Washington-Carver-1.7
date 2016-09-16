@@ -61,7 +61,7 @@ public class Describer {
         }
 
         if (pe.getDuration() > 20)  {
-            s += "" + TextFormatting.GRAY + " (" + Potion.getPotionDurationString() + ")";
+            s += "" + TextFormatting.GRAY + " (" + Potion.getPotionDurationString(pe, 1.0F) + ")";
         }
         list.add(s);
     }
