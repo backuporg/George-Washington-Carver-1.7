@@ -225,8 +225,6 @@ public class GrcMilkFluids extends GrcModuleBase
 		if (milk != null)
 		{
 			OreDictionary.registerOre("bottleMilk", milk.foodBottle.asStack());
-			OreDictionary.registerOre("bucketMilk", Items.MILK_BUCKET);
-			// Milk bucket is the vanilla milk bucket, derp
 		}
 		// Milk bucket is the vanilla milk bucket, derp
 		OreDictionary.registerOre("bucketMilk", Items.MILK_BUCKET);
