@@ -42,13 +42,13 @@ public class SimplePotionEffectFactory implements IPotionEffectFactory
 	private int time;
 	private int level;
 
-	public SimplePotionEffectFactory(ResourceLocation potionIn, int tm, int lvl)
+	public SimplePotionEffectFactory(Potion potionIn, int tm, int lvl)
 	{
 		this.potion = potionIn;
 		this.time = tm;
 		this.level = lvl;
 	}
-
+	
 	public Potion getPotion()
 	{
 		return potion;
