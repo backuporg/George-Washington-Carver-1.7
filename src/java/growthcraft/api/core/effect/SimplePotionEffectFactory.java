@@ -48,7 +48,7 @@ public class SimplePotionEffectFactory implements IPotionEffectFactory
 		this.time = tm;
 		this.level = lvl;
 	}
-	
+
 	public Potion getPotion()
 	{
 		return potion;
