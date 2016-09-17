@@ -66,7 +66,7 @@ public class VillageHandlerBeesApiarist {
 			VillagerRegistry.instance().register(apiarist);
 		}
 
-	@Override
+
 	public PieceWeight getVillagePieceWeight(Random random, int i)
 	{
 		int num = MathHelper.getRandomIntegerInRange(random, 0 + i, 1 + i);
@@ -76,13 +76,11 @@ public class VillageHandlerBeesApiarist {
 		return new PieceWeight(ComponentVillageApiarist.class, 21, num);
 	}
 
-	@Override
 	public Class<?> getComponentClass()
 	{
 		return ComponentVillageApiarist.class;
 	}
 
-	@Override
 	@SuppressWarnings({"rawtypes", "unchecked"})
 	public Object buildComponent(PieceWeight villagePiece, Start startPiece, List pieces, Random random, int p1, int p2, int p3, int p4, int p5)
 	{

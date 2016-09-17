@@ -31,6 +31,7 @@ import growthcraft.api.core.i18n.GrcI18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
@@ -73,7 +74,7 @@ public class EffectRemovePotionEffect extends AbstractEffect
 		{
 			if (entity instanceof EntityLivingBase)
 			{
-				((EntityLivingBase)entity).removePotionEffect(potionId);
+				((EntityLivingBase)entity).removePotionEffect(Potion.getPotionById(potionId));
 			}
 		}
 	}
@@ -81,7 +82,7 @@ public class EffectRemovePotionEffect extends AbstractEffect
 	@Override
 	protected void getActualDescription(List<String> list)
 	{
-		final PotionEffect pe = new PotionEffect(getPotionID(), 1000, 0);
+		final PotionEffect pe = new PotionEffect(Potion.getPotionById(potionId), 1000, 0);
 		final String potionName = GrcI18n.translate(pe.getEffectName()).trim();
 		list.add(GrcI18n.translate("grc.effect.remove_potion_effect.format", potionName));
 	}

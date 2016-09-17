@@ -37,6 +37,7 @@ import growthcraft.api.core.effect.IPotionEffectFactory;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
@@ -44,12 +45,12 @@ import net.minecraftforge.fluids.FluidRegistry;
 
 public class BoozePotionEffectFactory implements IPotionEffectFactory
 {
-	private int id;
+	private String id;
 	private int time;
 	private int level;
 	private Fluid booze;
 
-	public BoozePotionEffectFactory(@Nonnull Fluid b, int i, int tm, int lvl)
+	public BoozePotionEffectFactory(@Nonnull Fluid b, String i, int tm, int lvl)
 	{
 		this.booze = b;
 		this.id = i;
@@ -57,7 +58,8 @@ public class BoozePotionEffectFactory implements IPotionEffectFactory
 		this.level = lvl;
 	}
 
-	public int getID()
+
+	public String getID()
 	{
 		return id;
 	}
@@ -89,7 +91,7 @@ public class BoozePotionEffectFactory implements IPotionEffectFactory
 					lv = func.applyLevel(lv);
 				}
 			}
-			return new PotionEffect(getID(), tm, lv);
+			return new PotionEffect(Potion.getPotionById(Integer.parseInt(id)), getTime(), getLevel());
 		}
 		return null;
 	}
@@ -103,7 +105,7 @@ public class BoozePotionEffectFactory implements IPotionEffectFactory
 	private void readFromNBT(NBTTagCompound data)
 	{
 		this.booze = null;
-		this.id = data.getInteger("id");
+		this.id = String.valueOf(data.getInteger("id"));
 		this.time = data.getInteger("time");
 		this.level = data.getInteger("level");
 		if (data.hasKey("fluid.name"))
@@ -128,7 +130,7 @@ public class BoozePotionEffectFactory implements IPotionEffectFactory
 
 	private void writeToNBT(NBTTagCompound data)
 	{
-		data.setInteger("id", getID());
+		data.setInteger("id", Integer.parseInt(getID()));
 		data.setInteger("time", getTime());
 		data.setInteger("level", getLevel());
 		if (booze != null)

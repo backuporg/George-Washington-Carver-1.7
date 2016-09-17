@@ -164,7 +164,7 @@ public class GrcBeesRecipes extends GrcModuleBase
 			Items.GLASS_BOTTLE,
 			Items.GLASS_BOTTLE,
 			new TaggedFluidStacks(1000, "honey"),
-			new FluidStack(FluidRegistry.WATER, 1000)));
+			new FluidStack(FluidRegistry.WATER, 1000))));
 
 		/// Bottles
 		GameRegistry.addRecipe(new ShapelessMultiRecipe(

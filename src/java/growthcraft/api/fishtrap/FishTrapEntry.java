@@ -38,7 +38,7 @@ public class FishTrapEntry extends WeightedRandom.Item
 
 		if (this.isEnchantable)
 		{
-			EnchantmentHelper.addRandomEnchantment(random, ret, 30);
+			EnchantmentHelper.addRandomEnchantment(random, ret, 1, false);
 			//1.6.4
 			/*if (ret.getItem() instanceof ItemEnchantedBook)
 			{

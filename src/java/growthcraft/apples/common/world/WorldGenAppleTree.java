@@ -12,7 +12,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraft.util.EnumFacing;
 
-public class WorldGenAppleTree extends WorldGenerator
+public abstract class WorldGenAppleTree extends WorldGenerator
 {
 	private final int minTreeHeight = 4;
 	private final int metaWood      = 0;

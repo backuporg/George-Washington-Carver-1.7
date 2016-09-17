@@ -1,18 +1,18 @@
 // Copied from Buildcraft core and edited for Growthcraft
 package growthcraft.api.core.client.particle;
 
+import net.minecraft.block.material.Material;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.IFluidBlock;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.init.Blocks;
-import net.minecraft.world.*;
+
 
 @SideOnly(Side.CLIENT)
 public class EntityFXDropParticle extends Particle
@@ -71,10 +71,10 @@ public class EntityFXDropParticle extends Particle
 
 		if (this.particleMaxAge-- <= 0)
 		{
-			setDead();
+			setExpired();
 		}
 
-		if (this.onGround)
+		if (this.isCollided)
 		{
 			setParticleTextureIndex(114);
 
@@ -84,8 +84,8 @@ public class EntityFXDropParticle extends Particle
 
 		final BlockPos pos = new BlockPos(posX, posY, posZ);
 		final IBlockState state = worldObj.getBlockState(pos);
+		final Material material = state.getMaterial();
 		final Block block = state.getBlock();
-		final Material material = block.getMaterial(IBlockState);
 
 		if ((material.isLiquid() || material.isSolid()) && block instanceof IFluidBlock)
 		{
@@ -94,7 +94,7 @@ public class EntityFXDropParticle extends Particle
 
 			if (this.posY < d0)
 			{
-				setDead();
+				setExpired();
 			}
 		}
 	}

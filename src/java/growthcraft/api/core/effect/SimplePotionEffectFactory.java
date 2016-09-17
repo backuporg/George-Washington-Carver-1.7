@@ -31,26 +31,27 @@ import growthcraft.api.core.description.Describer;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
+import net.minecraft.potion.Potion;
 
 public class SimplePotionEffectFactory implements IPotionEffectFactory
 {
-	private int id;
+	private Potion potion;
 	private int time;
 	private int level;
 
-	public SimplePotionEffectFactory(Potion i, int tm, int lvl)
+	public SimplePotionEffectFactory(Potion potionIn, int tm, int lvl)
 	{
-		this.id = i;
+		this.potion = potionIn;
 		this.time = tm;
 		this.level = lvl;
 	}
 
-	public int getID()
+	public Potion getPotion()
 	{
-		return id;
+		return potion;
 	}
 
 	public int getTime()
@@ -66,7 +67,7 @@ public class SimplePotionEffectFactory implements IPotionEffectFactory
 	@Override
 	public PotionEffect createPotionEffect(World world, Entity entity, Random random, Object data)
 	{
-		return new PotionEffect(getID(), getTime(), getLevel());
+		return new PotionEffect(getPotion(), getTime(), getLevel());
 	}
 
 	@Override
@@ -78,7 +79,7 @@ public class SimplePotionEffectFactory implements IPotionEffectFactory
 
 	private void readFromNBT(NBTTagCompound data)
 	{
-		this.id = data.getInteger("id");
+		this.potion = Potion.getPotionById(data.getInteger("id"));
 		this.time = data.getInteger("time");
 		this.level = data.getInteger("level");
 	}
@@ -99,7 +100,7 @@ public class SimplePotionEffectFactory implements IPotionEffectFactory
 
 	private void writeToNBT(NBTTagCompound data)
 	{
-		data.setInteger("id", getID());
+		data.setInteger("id", Potion.getIdFromPotion(getPotion()));
 		data.setInteger("time", getTime());
 		data.setInteger("level", getLevel());
 	}
@@ -115,4 +116,6 @@ public class SimplePotionEffectFactory implements IPotionEffectFactory
 
 		data.setTag(name, target);
 	}
+
+
 }

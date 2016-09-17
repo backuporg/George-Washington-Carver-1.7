@@ -24,7 +24,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockApple extends GrcBlockBase implements IGrowable, ICropDataProvider
+public abstract class BlockApple extends GrcBlockBase implements IGrowable, ICropDataProvider
 {
 	public static class AppleStage
 	{

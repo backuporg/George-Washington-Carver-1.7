@@ -25,12 +25,19 @@ package growthcraft.api.core.stream;
 
 import java.io.UnsupportedEncodingException;
 
+import java.io.UnsupportedEncodingException;
+import javax.annotation.Nonnull;
+
 import io.netty.buffer.ByteBuf;
 
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
+import net.minecraftforge.fluids.BlockFluidBase;
+import net.minecraftforge.fluids.capability.*;
+import net.minecraftforge.fluids.FluidContainerRegistry;
+import net.minecraftforge.fluids.IFluidHandler;
 
 /**
  * Utility class for handling data streams
@@ -80,21 +87,29 @@ public class StreamUtils
 		tank.setFluid(fluidStack);
 	}
 
-	public static void writeFluidTank(ByteBuf stream, FluidTank tank)
+	public static void writeFluidTank(@Nonnull ByteBuf stream, @Nonnull FluidTank tank)
 	{
-		int fluidId = -1;
+		String fluidName = "";
 		int fluidAmount = 0;
 		final int capacity = tank.getCapacity();
 		final FluidStack fs = tank.getFluid();
 
 		if (fs != null)
 		{
-			fluidId = fs.getFluidID();
+			if (fs.getFluid() != null)
+				fluidName = fs.getFluid().getName();
 			fluidAmount = fs.amount;
 		}
 
 		stream.writeInt(capacity);
-		stream.writeInt(fluidId);
+		try
+		{
+			writeStringASCII(stream, fluidName);
+		}
+		catch (UnsupportedEncodingException ex)
+		{
+			ex.printStackTrace();
+		}
 		stream.writeInt(fluidAmount);
 	}
 }

@@ -40,6 +40,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraft.init.MobEffects;
 
 public class BoozeEffect extends AbstractEffect
 {
@@ -85,7 +86,7 @@ public class BoozeEffect extends AbstractEffect
 
 	public EffectAddPotionEffect createPotionEntry(@Nonnull Potion p, int time, int level)
 	{
-		final BoozePotionEffectFactory factory = new BoozePotionEffectFactory(booze, p.id, time, level);
+		final BoozePotionEffectFactory factory = new BoozePotionEffectFactory(booze, p.getName(), time, level);
 		final EffectAddPotionEffect effect = new EffectAddPotionEffect(factory);
 		addEffect(effect);
 		return effect;
