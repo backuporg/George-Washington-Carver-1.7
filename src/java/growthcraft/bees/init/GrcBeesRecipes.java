@@ -160,8 +160,10 @@ public class GrcBeesRecipes extends GrcModuleBase
 		});
 
 		GameRegistry.addRecipe(new ShapelessMultiRecipe(
-				meadBucket,
-				Items.BUCKET,
+				GrowthCraftBees.fluids.honeyMeadBottle.asStack(3),
+				Items.GLASS_BOTTLE,
+				Items.GLASS_BOTTLE,
+				Items.GLASS_BOTTLE,
 				new TaggedFluidStacks(1000, "honey"),
 				new FluidStack(FluidRegistry.WATER, 1000)) {
 			@Override
@@ -169,13 +171,6 @@ public class GrcBeesRecipes extends GrcModuleBase
 				return new ItemStack[0];
 			}
 		});
-				
-			GrowthCraftBees.fluids.honeyMeadBottle.asStack(3),
-			Items.GLASS_BOTTLE,
-			Items.GLASS_BOTTLE,
-			Items.GLASS_BOTTLE,
-			new TaggedFluidStacks(1000, "honey"),
-			new FluidStack(FluidRegistry.WATER, 1000))));
 
 		/// Bottles
 		GameRegistry.addRecipe(new ShapelessMultiRecipe(
