@@ -107,7 +107,7 @@ public class BlockBeeBox extends GrcBlockContainer
 	@Override
 	public void updateTick(World world, int x, int y, int z, Random rand)
 	{
-		super.updateTick(World world, BlockPos pos, IBlockState state, Random rand);
+		super.updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand);
 		final TileEntityBeeBox te = getTileEntity(world, x, y, z);
 		if (te != null) te.updateBlockTick();
 	}
