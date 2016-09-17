@@ -285,7 +285,7 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 	{
 		if (shouldRestoreBlockState(world, pos, stack))
 		{
-			final TileEntity te = getTileEntity(world, pos.getX(), pos.getY(), pos.getZ());
+			final TileEntity te = getTileEntity(world, pos);
 			if (te instanceof INBTItemSerializable)
 			{
 				final NBTTagCompound tag = getTileTagCompound(world, pos.getX(), pos.getY(), pos.getZ(), stack);
@@ -326,7 +326,7 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 					}
 					inventory.setInventorySlotContents(index, (ItemStack)null);
 				}
-				world.func_147453_f(x, y, z, block);
+				world.notifyNeighborsOfStateChange(pos, block);
 			}
 		}
 	}

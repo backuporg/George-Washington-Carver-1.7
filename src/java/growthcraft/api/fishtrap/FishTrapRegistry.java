@@ -66,7 +66,7 @@ public class FishTrapRegistry implements ILoggable
 
 	public String getRandomCatchGroup(Random random)
 	{
-		final CatchGroupEntry entry = (CatchGroupEntry)WeightedRandom.getRandomItem(random, getCatchGroups());
+		final CatchGroupEntry entry = WeightedRandom.getRandomItem(random, (List<CatchGroupEntry>) getCatchGroups());
 		if (entry != null) return entry.getName();
 		return null;
 	}
