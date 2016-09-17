@@ -41,6 +41,7 @@ import growthcraft.core.Utils;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -54,15 +55,20 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidHandler;
+import net.minecraft.block.properties.PropertyInteger;
+import net.minecraft.block.properties.PropertyDirection;
 
 /**
  * Base class for machines and the like
  */
 public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppableBlock, IRotatableBlock, IWrenchable, ITileEntityProvider
 {
+	public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
+	public static final PropertyInteger ROTATION = PropertyInteger.create("rotation", 0, 15);
 	protected Random rand = new Random();
 	protected Class<? extends TileEntity> tileEntityType;
 
@@ -73,10 +79,10 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 	}
 
 	@Override
-	public boolean onBlockEventReceived(World world, int x, int y, int z, int code, int value)
+	public boolean onBlockEventReceived(World world, BlockPos pos, int code, int value)
 	{
-		super.onBlockEventReceived(world, x, y, z, code, value);
-		final TileEntity te = getTileEntity(world, x, y, z);
+		super.onBlockEventReceived(world, pos, code, value);
+		final TileEntity te = getTileEntity(world, pos);
 		return te != null ? te.receiveClientEvent(code, value) : false;
 	}
 
@@ -87,14 +93,14 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 
 	/* IRotatableBlock */
 	@Override
-	public boolean isRotatable(IBlockAccess world, int x, int y, int z, EnumFacing side)
+	public boolean isRotatable(IBlockAccess world, BlockPos pos, EnumFacing side)
 	{
 		return false;
 	}
 
-	public void doRotateBlock(World world, int x, int y, int z, EnumFacing side)
+	public void doRotateBlock(World world, BlockPos pos, EnumFacing side, IBlockState state)
 	{
-		final int meta = world.getBlockMetadata(x, y, z);
+		final int meta = world.getBlockMetadata(pos);
 		final EnumFacing current = EnumFacing.getFront(meta);
 		EnumFacing newDirection = current;
 		if (current == side)
@@ -149,91 +155,91 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 		}
 		if (newDirection != current)
 		{
-			world.setBlockMetadataWithNotify(x, y, z, newDirection.ordinal(), BlockFlags.UPDATE_AND_SYNC);
+			world.setBlockState(pos, state, BlockFlags.UPDATE_AND_SYNC);
 		}
 	}
 
 	@Override
-	public boolean rotateBlock(World world, int x, int y, int z, EnumFacing side)
+	public boolean rotateBlock(World world, BlockPos pos, EnumFacing side, IBlockState state)
 	{
-		if (isRotatable(world, x, y, z, side))
+		if (isRotatable(world, pos.getX(), pos.getY(), pos.getZ(), side))
 		{
-			doRotateBlock(world, x, y, z, side);
-			world.markBlockForUpdate(x, y, z);
+			doRotateBlock(world, pos, side, state);
+			world.markBlockForUpdate(pos);
 			return true;
 		}
 		return false;
 	}
 
-	protected void fellBlockFromWrench(World world, int x, int y, int z)
+	protected void fellBlockFromWrench(World world, BlockPos pos, IBlockState state)
 	{
-		final int metadata = world.getBlockMetadata(x, y, z);
+		final int metadata = world.getBlockMetadata(pos);
 		final List<ItemStack> drops = new ArrayList<ItemStack>();
-		if (shouldDropTileStack(world, x, y, z, metadata, 0))
+		if (shouldDropTileStack(world, pos, state, metadata, 0))
 		{
 			GrowthCraftCore.getLogger().info("Dropping Tile As ItemStack");
-			getTileItemStackDrops(drops, world, x, y, z, metadata, 0);
+			getTileItemStackDrops(drops, world, pos, state, metadata, 0);
 			for (ItemStack stack : drops)
 			{
-				ItemUtils.spawnItemStack(world, x, y, z, stack, world.rand);
+				ItemUtils.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), stack, world.rand);
 			}
-			final TileEntity te = getTileEntity(world, x, y, z);
+			final TileEntity te = getTileEntity(world, pos);
 			if (te instanceof IInventory)
 			{
 				GrowthCraftCore.getLogger().info("Clearing Inventory");
 				InventoryProcessor.instance().clearSlots((IInventory)te);
 			}
 			GrowthCraftCore.getLogger().info("Setting Block To Air");
-			world.setBlockToAir(x, y, z);
+			world.setBlockToAir(pos);
 		}
 		else
 		{
-			fellBlockAsItem(world, x, y, z);
+			fellBlockAsItem(world, pos.getX(), pos.getY(), pos.getZ());
 		}
 	}
 
 	@Override
-	public boolean wrenchBlock(World world, int x, int y, int z, EntityPlayer player, ItemStack wrench)
+	public boolean wrenchBlock(World world, BlockPos pos, IBlockState state, EntityPlayer player, ItemStack wrench)
 	{
 		if (player == null) return false;
-		if (!ItemUtils.canWrench(wrench, player, x, y, z)) return false;
+		if (!ItemUtils.canWrench(wrench, player, pos.getX(), pos.getY(), pos.getZ())) return false;
 		if (!player.isSneaking()) return false;
 		if (!world.isRemote)
 		{
-			fellBlockFromWrench(world, x, y, z);
-			ItemUtils.wrenchUsed(wrench, player, x, y, z);
+			fellBlockFromWrench(world, pos, state);
+			ItemUtils.wrenchUsed(wrench, player, pos.getX(), pos.getY(), pos.getZ());
 		}
 		return true;
 	}
 
-	public boolean tryWrenchItem(EntityPlayer player, World world, int x, int y, int z)
-	{
-		if (player == null) return false;
-		final ItemStack is = player.inventory.getCurrentItem();
-		return wrenchBlock(world, x, y, z, player, is);
-	}
+	//public boolean tryWrenchItem(EntityPlayer player, World world, BlockPos pos, IBlockState state)
+	//{
+	//	if (player == null) return false;
+	//	final ItemStack is = player.inventory.getCurrentItem();
+	//	return wrenchBlock(state, world, pos, player);
+	//}
 
-	protected void placeBlockByEntityDirection(World world, int x, int y, int z, EntityLivingBase entity, ItemStack stack)
+	protected void placeBlockByEntityDirection(World world, BlockPos pos, IBlockState state, EntityLivingBase entity, ItemStack stack)
 	{
-		if (isRotatable(world, x, y, z, EnumFacing.UNKNOWN))
+		final int l = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+		EnumFacing facing = EnumFacing.NORTH;
+
+		if (l == 0) facing = EnumFacing.SOUTH;
+		else if (l == 1) facing = EnumFacing.WEST;
+		else if (l == 2) facing = EnumFacing.NORTH;
+		else if (l == 3) facing = EnumFacing.EAST;
+
+		if (isRotatable(world, pos.getX(), pos.getY(), pos.getZ(), EnumFacing.UP))
 		{
-			final int l = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-
-			int meta = 2;
-
-			if (l == 0) meta = 1;
-			else if (l == 1) meta = 2;
-			else if (l == 2) meta = 0;
-			else if (l == 3) meta = 3;
-			world.setBlockMetadataWithNotify(x, y, z, meta, BlockFlags.SYNC);
+			world.setBlockState(pos, state.withProperty(ROTATION, facing.ordinal()));
 		}
 	}
 
-	protected void setupCustomDisplayName(World world, int x, int y, int z, ItemStack stack)
+	protected void setupCustomDisplayName(World world, BlockPos pos, ItemStack stack)
 	{
 		if (stack.hasDisplayName())
 		{
-			final TileEntity te = getTileEntity(world, x, y, z);
+			final TileEntity te = getTileEntity(world, pos);
 			if (te instanceof ICustomDisplayName)
 			{
 				((ICustomDisplayName)te).setGuiDisplayName(stack.getDisplayName());
@@ -270,19 +276,19 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 		}
 	}
 
-	protected boolean shouldRestoreBlockState(World world, int x, int y, int z, ItemStack stack)
+	protected boolean shouldRestoreBlockState(World world, BlockPos pos, ItemStack stack)
 	{
 		return false;
 	}
 
-	protected void restoreBlockStateFromStack(World world, int x, int y, int z, ItemStack stack)
+	protected void restoreBlockStateFromStack(World world, BlockPos pos, ItemStack stack)
 	{
-		if (shouldRestoreBlockState(world, x, y, z, stack))
+		if (shouldRestoreBlockState(world, pos, stack))
 		{
-			final TileEntity te = getTileEntity(world, x, y, z);
+			final TileEntity te = getTileEntity(world, pos);
 			if (te instanceof INBTItemSerializable)
 			{
-				final NBTTagCompound tag = getTileTagCompound(world, x, y, z, stack);
+				final NBTTagCompound tag = getTileTagCompound(world, pos.getX(), pos.getY(), pos.getZ(), stack);
 				if (tag != null)
 				{
 					((INBTItemSerializable)te).readFromNBTForItem(tag);
@@ -296,16 +302,16 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 	}
 
 	@Override
-	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack stack)
+	public void onBlockPlacedBy(World world, BlockPos pos, EntityLivingBase entity, ItemStack stack, IBlockState state)
 	{
-		super.onBlockPlacedBy(world, x, y, z, entity, stack);
-		restoreBlockStateFromStack(world, x, y, z, stack);
-		setupCustomDisplayName(world, x, y, z, stack);
+		super.onBlockPlacedBy(world, pos, state, entity, stack);
+		restoreBlockStateFromStack(world, pos, stack);
+		setupCustomDisplayName(world, pos, stack);
 	}
 
-	protected void scatterInventory(World world, int x, int y, int z, Block block)
+	protected void scatterInventory(World world, BlockPos pos, Block block)
 	{
-		final TileEntity te = getTileEntity(world, x, y, z);
+		final TileEntity te = getTileEntity(world, pos);
 		if (te instanceof IInventory)
 		{
 			final IInventory inventory = (IInventory)te;
@@ -316,127 +322,127 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 					final ItemStack stack = inventory.getStackInSlot(index);
 					if (stack != null)
 					{
-						ItemUtils.spawnItemStack(world, x, y, z, stack, rand);
+						ItemUtils.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), stack, rand);
 					}
 					inventory.setInventorySlotContents(index, (ItemStack)null);
 				}
-				world.func_147453_f(x, y, z, block);
+				world.notifyNeighborsOfStateChange(pos, block);
 			}
 		}
 	}
 
-	protected boolean shouldScatterInventoryOnBreak(World world, int x, int y, int z)
+	protected boolean shouldScatterInventoryOnBreak(World world, BlockPos pos)
 	{
 		return true;
 	}
 
 	@Override
-	public void breakBlock(World world, int x, int y, int z, Block block, int meta)
+	public void breakBlock(World world, BlockPos pos, Block block, int meta)
 	{
-		if (shouldScatterInventoryOnBreak(world, x, y, z))
-			scatterInventory(world, x, y, z, block);
-		world.removeTileEntity(x, y, z);
+		if (shouldScatterInventoryOnBreak(world, pos))
+			scatterInventory(world, pos, block);
+		world.removeTileEntity(pos);
 	}
 
-	protected ItemStack createHarvestedBlockItemStack(World world, EntityPlayer player, int x, int y, int z, int meta)
+	protected ItemStack createHarvestedBlockItemStack(World world, EntityPlayer player, BlockPos pos, int meta, IBlockState state)
 	{
-		return createStackedBlock(meta);
+		return createStackedBlock(state);
 	}
 
 	@Override
-	public void harvestBlock(World world, EntityPlayer player, int x, int y, int z, int meta)
+	public void harvestBlock(World world, EntityPlayer player, BlockPos pos, int meta, IBlockState state)
 	{
 		player.addStat(StatList.mineBlockStatArray[getIdFromBlock(this)], 1);
 		player.addExhaustion(0.025F);
 
-		if (this.canSilkHarvest(world, player, x, y, z, meta) && EnchantmentHelper.getSilkTouchModifier(player))
+		if (this.canSilkHarvest(world, pos, state, player) && EnchantmentHelper.getSilkTouchModifier(player))
 		{
 			final ArrayList<ItemStack> items = new ArrayList<ItemStack>();
-			final ItemStack itemstack = createHarvestedBlockItemStack(world, player, x, y, z, meta);
+			final ItemStack itemstack = createHarvestedBlockItemStack(world, player, pos, meta, state);
 
 			if (itemstack != null)
 			{
 				items.add(itemstack);
 			}
 
-			ForgeEventFactory.fireBlockHarvesting(items, world, this, x, y, z, meta, 0, 1.0f, true, player);
+			ForgeEventFactory.fireBlockHarvesting(items, world, pos, state, 0, 1.0f, true, player);
 			for (ItemStack is : items)
 			{
-				dropBlockAsItem(world, x, y, z, is);
+				dropBlockAsItem(world, pos, state, 0);
 			}
 		}
 		else
 		{
 			harvesters.set(player);
 			final int fortune = EnchantmentHelper.getFortuneModifier(player);
-			dropBlockAsItem(world, x, y, z, meta, fortune);
+			dropBlockAsItem(world, pos, state, fortune);
 			harvesters.set(null);
 		}
 	}
 
-	protected boolean shouldDropTileStack(World world, int x, int y, int z, int metadata, int fortune)
+	protected boolean shouldDropTileStack(World world, BlockPos pos, IBlockState state, int metadata, int fortune)
 	{
 		return false;
 	}
 
-	private void getDefaultDrops(List<ItemStack> ret, World world, int x, int y, int z, int metadata, int fortune)
+	private void getDefaultDrops(List<ItemStack> ret, World world, BlockPos pos, IBlockState state, int z, int metadata, int fortune)
 	{
-		final int count = quantityDropped(metadata, fortune, world.rand);
+		final int count = quantityDropped(state, fortune, world.rand);
 		for (int i = 0; i < count; ++i)
 		{
-			final Item item = getItemDropped(metadata, world.rand, fortune);
+			final Item item = getItemDropped(state, world.rand, fortune);
 			if (item != null)
 			{
-				ret.add(new ItemStack(item, 1, damageDropped(metadata)));
+				ret.add(new ItemStack(item, 1, damageDropped(state)));
 			}
 		}
 	}
 
-	protected void getTileItemStackDrops(List<ItemStack> ret, World world, int x, int y, int z, int metadata, int fortune)
+	protected void getTileItemStackDrops(List<ItemStack> ret, World world, BlockPos pos, IBlockState state, int metadata, int fortune)
 	{
-		final TileEntity te = getTileEntity(world, x, y, z);
+		final TileEntity te = getTileEntity(world, pos);
 		if (te instanceof INBTItemSerializable)
 		{
 			final NBTTagCompound tag = new NBTTagCompound();
 			((INBTItemSerializable)te).writeToNBTForItem(tag);
 			final ItemStack stack = new ItemStack(this, 1, metadata);
-			setTileTagCompound(world, x, y, z, stack, tag);
+			setTileTagCompound(world, pos.getX(), pos.getY(), pos.getZ(), stack, tag);
 			ret.add(stack);
 		}
 		else
 		{
-			getDefaultDrops(ret, world, x, y, z, metadata, fortune);
+			getDefaultDrops(ret, world, pos, state, pos.getZ(), metadata, fortune);
 		}
 	}
 
-	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune)
+	public ArrayList<ItemStack> getDrops(World world, BlockPos pos, IBlockState state, int metadata, int fortune)
 	{
 		final ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
-		if (shouldDropTileStack(world, x, y, z, metadata, fortune))
+		if (shouldDropTileStack(world, pos, state, metadata, fortune))
 		{
-			getTileItemStackDrops(ret, world, x, y, z, metadata, fortune);
+			getTileItemStackDrops(ret, world, pos, state, metadata, fortune);
 		}
 		else
 		{
-			getDefaultDrops(ret, world, x, y, z, metadata, fortune);
+			getDefaultDrops(ret, world, pos, state, fortune, metadata, pos.getZ());
 		}
 		return ret;
 	}
 
-	protected boolean playerFillTank(World world, int x, int y, int z, IFluidHandler fh, ItemStack is, EntityPlayer player)
+	protected boolean playerFillTank(World world, BlockPos pos, IFluidHandler fh, ItemStack is, EntityPlayer player)
 	{
-		return Utils.playerFillTank(world, x, y, z, fh, is, player);
+		return Utils.playerFillTank(world, pos.getX(), pos.getY(), pos.getZ(), fh, is, player);
 	}
 
-	protected boolean playerDrainTank(World world, int x, int y, int z, IFluidHandler fh, ItemStack is, EntityPlayer player)
+	protected boolean playerDrainTank(World world, BlockPos pos, IFluidHandler fh, ItemStack is, EntityPlayer player)
 	{
-		final FluidStack fs = Utils.playerDrainTank(world, x, y, z, fh, is, player);
+		final FluidStack fs = Utils.playerDrainTank(world, pos.getX(), pos.getY(), pos.getZ(), fh, is, player);
 		return fs != null && fs.amount > 0;
 	}
 
-	private boolean handleIFluidHandler(World world, int x, int y, int z, EntityPlayer player, int meta)
+	private boolean handleIFluidHandler(World world, BlockPos pos, EntityPlayer player, int meta)
 	{
-		final TileEntity te = world.getTileEntity(x, y, z);
+		final TileEntity te = world.getTileEntity(pos);
 		if (te instanceof IFluidHandler)
 		{
 			if (world.isRemote)
@@ -453,18 +459,18 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 				if (!player.isSneaking())
 				{
 					// While not sneaking, draining is given priority
-					if (playerDrainTank(world, x, y, z, fh, is, player) ||
-						playerFillTank(world, x, y, z, fh, is, player)) needUpdate = true;
+					if (playerDrainTank(world, pos, fh, is, player) ||
+						playerFillTank(world, pos, fh, is, player)) needUpdate = true;
 				}
 				else
 				{
 					// Otherwise filling is given priority
-					if (playerFillTank(world, x, y, z, fh, is, player) ||
-						playerDrainTank(world, x, y, z, fh, is, player)) needUpdate = true;
+					if (playerFillTank(world, pos, fh, is, player) ||
+						playerDrainTank(world, pos, fh, is, player)) needUpdate = true;
 				}
 				if (needUpdate)
 				{
-					world.markBlockForUpdate(x, y, z);
+					world.markBlockForUpdate(pos);
 					return true;
 				}
 			}
@@ -472,9 +478,9 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 		return false;
 	}
 
-	protected boolean handleOnUseItem(IItemHandler.Action action, World world, int x, int y, int z, EntityPlayer player)
+	protected boolean handleOnUseItem(IItemHandler.Action action, World world, BlockPos pos, EntityPlayer player)
 	{
-		final TileEntity te = world.getTileEntity(x, y, z);
+		final TileEntity te = world.getTileEntity(pos);
 		if (te instanceof IItemHandler)
 		{
 			if (world.isRemote)
@@ -498,7 +504,7 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 
 				if (needUpdate)
 				{
-					world.markBlockForUpdate(x, y, z);
+					world.markBlockForUpdate(pos);
 					return true;
 				}
 			}
@@ -508,35 +514,35 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 	}
 
 	@Override
-	public void onBlockClicked(World world, int x, int y, int z, EntityPlayer player)
+	public void onBlockClicked(World world, BlockPos pos, EntityPlayer player)
 	{
 		if (!world.isRemote)
 		{
-			final TileEntity te = world.getTileEntity(x, y, z);
+			final TileEntity te = world.getTileEntity(pos);
 			if (te instanceof IItemHandler)
 			{
-				if (handleOnUseItem(IItemHandler.Action.LEFT, world, x, y, z, player))
+				if (handleOnUseItem(IItemHandler.Action.LEFT, world, pos, player))
 				{
 					return;
 				}
 			}
 		}
-		super.onBlockClicked(world, x, y, z, player);
+		super.onBlockClicked(world, pos, player);
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int meta, float par7, float par8, float par9)
+	public boolean onBlockActivated(World world, BlockPos pos, EntityPlayer player, int meta, float par7, float par8, float par9)
 	{
-		if (tryWrenchItem(player, world, x, y, z)) return true;
-		if (handleIFluidHandler(world, x, y, z, player, meta)) return true;
-		if (handleOnUseItem(IItemHandler.Action.RIGHT, world, x, y, z, player)) return true;
+		if (tryWrenchItem(player, world, pos.getX(), pos.getY(), pos.getZ())) return true;
+		if (handleIFluidHandler(world, pos, player, meta)) return true;
+		if (handleOnUseItem(IItemHandler.Action.RIGHT, world, pos, player)) return true;
 		return false;
 	}
 
 	@SuppressWarnings("unchecked")
-	public <T extends TileEntity> T getTileEntity(IBlockAccess world, int x, int y, int z)
+	public <T extends TileEntity> T getTileEntity(IBlockAccess world, BlockPos pos)
 	{
-		final TileEntity te = world.getTileEntity(x, y, z);
+		final TileEntity te = world.getTileEntity(pos);
 		if (te != null)
 		{
 			if (tileEntityType.isInstance(te))

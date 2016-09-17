@@ -25,18 +25,26 @@ package growthcraft.api.fishtrap.user;
 
 import java.io.BufferedReader;
 
+import growthcraft.api.core.definition.IMultiItemStacks;
 import growthcraft.api.core.user.AbstractUserJSONConfig;
-import growthcraft.api.fishtrap.FishTrapEntry;
+import growthcraft.api.fishtrap.BaitRegistry;
 import growthcraft.api.fishtrap.FishTrapRegistry;
 
-public class UserFishTrapConfig extends AbstractUserJSONConfig
-{
-	private final UserFishTrapEntries defaultEntries = new UserFishTrapEntries();
-	private UserFishTrapEntries entries;
+import net.minecraft.item.ItemStack;
 
-	public void addDefault(String group, FishTrapEntry entry)
+public class UserBaitConfig extends AbstractUserJSONConfig
+{
+	private final UserBaitEntries defaultEntries = new UserBaitEntries();
+	private UserBaitEntries entries;
+
+	public void addDefault(UserBaitEntry entry)
 	{
-		defaultEntries.data.add(new UserFishTrapEntry(group, entry));
+		defaultEntries.data.add(entry);
+	}
+
+	public void addDefault(ItemStack stack, float base, float mul)
+	{
+		addDefault(new UserBaitEntry(stack, base, mul));
 	}
 
 	@Override
@@ -48,10 +56,10 @@ public class UserFishTrapConfig extends AbstractUserJSONConfig
 	@Override
 	protected void loadFromBuffer(BufferedReader buff) throws IllegalStateException
 	{
-		this.entries = gson.fromJson(buff, UserFishTrapEntries.class);
+		this.entries = gson.fromJson(buff, UserBaitEntries.class);
 	}
 
-	private void addFishTrapEntry(UserFishTrapEntry entry)
+	private void addBaitEntry(UserBaitEntry entry)
 	{
 		if (entry == null)
 		{
@@ -65,9 +73,10 @@ public class UserFishTrapConfig extends AbstractUserJSONConfig
 			return;
 		}
 
-		for (FishTrapEntry obj : entry.getFishTrapEntries())
+		final BaitRegistry.BaitHandle handle = new BaitRegistry.BaitHandle(entry.base_rate, entry.multiplier);
+		for (IMultiItemStacks item : entry.item.getMultiItemStacks())
 		{
-			FishTrapRegistry.instance().addCatchToGroup(obj, entry.group);
+			FishTrapRegistry.instance().addBait(item, handle);
 		}
 	}
 
@@ -78,8 +87,8 @@ public class UserFishTrapConfig extends AbstractUserJSONConfig
 		{
 			if (entries.data != null)
 			{
-				logger.debug("Adding %d user fish trap entries.", entries.data.size());
-				for (UserFishTrapEntry entry : entries.data) addFishTrapEntry(entry);
+				logger.debug("Adding %d user bait entries.", entries.data.size());
+				for (UserBaitEntry entry : entries.data) addBaitEntry(entry);
 			}
 			else
 			{
