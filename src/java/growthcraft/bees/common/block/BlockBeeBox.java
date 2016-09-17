@@ -107,7 +107,7 @@ public class BlockBeeBox extends GrcBlockContainer
 	public void updateTick(World world, BlockPos pos, Random rand, IBlockState state)
 	{
 		super.updateTick(world, pos, state, rand);
-		final TileEntityBeeBox te = getTileEntity(world, pos.getX(), pos.getY(), pos.getZ());
+		final TileEntityBeeBox te = getTileEntity(world, pos);
 		if (te != null) te.updateBlockTick();
 	}
 
@@ -141,9 +141,9 @@ public class BlockBeeBox extends GrcBlockContainer
 	 * TRIGGERS
 	 ************/
 		@Override
-		public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int meta, float par7, float par8, float par9)
+		public boolean onBlockActivated(World world, BlockPos pos, EntityPlayer player, int meta, float par7, float par8, float par9)
 	    {
-		if (super.onBlockActivated(world, x, y, z, player, meta, par7, par8, par9)) return true;
+		if (super.onBlockActivated(world, pos, player, meta, par7, par8, par9)) return true;
 		if (world.isRemote)
 		{
 			return true;
@@ -161,7 +161,7 @@ public class BlockBeeBox extends GrcBlockContainer
 	}
 
 	@Override
-	public void breakBlock(World world, BlockPos pos, IBlockState block)
+	public void breakBlock(World world, BlockPos pos, IBlockState block, int par5)
 	{
 		final TileEntityBeeBox te = (TileEntityBeeBox)world.getTileEntity(pos);
 
@@ -174,10 +174,10 @@ public class BlockBeeBox extends GrcBlockContainer
 				ItemUtils.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), stack, rand);
 			}
 
-			world.updateComparatorOutputLevel(x, y, z, par5);
+			world.updateComparatorOutputLevel(pos, par5);
 		}
 
-		super.breakBlock(world, pos, block);
+		super.breakBlock(world, pos);
 	}
 
 	/************
@@ -242,9 +242,9 @@ public class BlockBeeBox extends GrcBlockContainer
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(IBlockAccess world, int x, int y, int z, int side)
+	public IIcon getIcon(IBlockAccess world, BlockPos pos, int side);
 	{
-		final int meta = world.getBlockMetadata(x, y, z);
+		final int meta = world.getBlockMetadata(pos);
 		final int offset = calculateIconOffset(meta);
 		if (side == 0)
 		{
@@ -310,7 +310,7 @@ public class BlockBeeBox extends GrcBlockContainer
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side)
+	public boolean shouldSideBeRendered(IBlockAccess world, BlockPos pos, int side)
 	{
 		return true;
 	}
@@ -326,7 +326,7 @@ public class BlockBeeBox extends GrcBlockContainer
 
 	@Override
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB axis, List list, Entity entity)
+	public void addCollisionBoxesToList(World world, BlockPos pos, AxisAlignedBB axis, List list, Entity entity)
 	{
 		final float f = 0.0625F;
 		// LEGS
@@ -359,9 +359,9 @@ public class BlockBeeBox extends GrcBlockContainer
 	}
 
 	@Override
-	public int getComparatorInputOverride(World world, int x, int y, int z, int par5)
+	public int getComparatorInputOverride(World world, BlockPos pos, int par5)
 	{
-		final TileEntityBeeBox te = (TileEntityBeeBox)world.getTileEntity(x, y, z);
+		final TileEntityBeeBox te = (TileEntityBeeBox)world.getTileEntity(pos);
 		return te.countHoney() * 15 / 27;
 	}
 }
