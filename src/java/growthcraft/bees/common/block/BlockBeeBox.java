@@ -105,26 +105,34 @@ public class BlockBeeBox extends GrcBlockContainer
 	}
 
 	@Override
-	public void updateTick(World world, int x, int y, int z, Random rand)
+	public void updateTick(World world, BlockPos pos, Random rand, IBlockState state)
 	{
-		super.updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand);
-		final TileEntityBeeBox te = getTileEntity(world, x, y, z);
+		super.updateTick(world, pos, state, rand);
+		final TileEntityBeeBox te = getTileEntity(world, pos.getX(), pos.getY(), pos.getZ());
 		if (te != null) te.updateBlockTick();
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World world, int x, int y, int z, Random random)
+	public void randomDisplayTick(World world, BlockPos pos, Random rand)
 	{
-		if (random.nextInt(24) == 0)
+		if (rand.nextInt(24) == 0)
 		{
-			final TileEntityBeeBox te = (TileEntityBeeBox)world.getTileEntity(x, y, z);
+			final TileEntityBeeBox te = (TileEntityBeeBox)world.getTileEntity(pos);
 			if (te != null)
 			{
 				if (te.hasBees())
 				{
-					world.playSound((double)((float)x + 0.5F), (double)((float)y + 0.5F), (double)((float)z + 0.5F),
-						"grcbees:buzz", 1.0F + random.nextFloat(), random.nextFloat() * 0.7F + 0.3F, false);
+					if (te.hasBees())
+					{
+						world.playSound(
+								(double)pos.getX() + 0.5D,
+								(double)pos.getY() + 0.5D,
+								(double)pos.getZ() + 0.5D,
+								"grcbees:buzz",
+								1.0F + rand.nextFloat(),
+								0.3F + rand.nextFloat() * 0.7F,
+								false);
 				}
 			}
 		}
@@ -133,10 +141,10 @@ public class BlockBeeBox extends GrcBlockContainer
 	/************
 	 * TRIGGERS
 	 ************/
-	@Override
-	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int meta, float par7, float par8, float par9)
-	{
-		if (super.onBlockActivated(world, x, y, z, player, meta, par7, par8, par9)) return true;
+		@Override
+		public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing facing, float hitX, float hitY, float hitZ)
+	    {
+		if (super.onBlockActivated(world, pos, state, player, facing, hitX, hitY, hitZ)) return true;
 		if (world.isRemote)
 		{
 			return true;
@@ -154,7 +162,7 @@ public class BlockBeeBox extends GrcBlockContainer
 	}
 
 	@Override
-	public void breakBlock(World world, int x, int y, int z, Block par5, int par6)
+	public void breakBlock(World world, BlockPos pos, IBlockState block)
 	{
 		final TileEntityBeeBox te = (TileEntityBeeBox)world.getTileEntity(x, y, z);
 
@@ -177,7 +185,7 @@ public class BlockBeeBox extends GrcBlockContainer
 	 * CONDITIONS
 	 ************/
 	@Override
-	public boolean isSideSolid(IBlockAccess world, int x, int y, int z, EnumFacing side)
+	public boolean isSideSolid(IBlockAccess world, BlockPos pos, EnumFacing side)
 	{
 		return EnumFacing.UP == side;
 	}
