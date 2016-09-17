@@ -142,19 +142,19 @@ public class BlockBeeBox extends GrcBlockContainer
 	 * TRIGGERS
 	 ************/
 		@Override
-		public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing facing, float hitX, float hitY, float hitZ)
+		public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int meta, float par7, float par8, float par9)
 	    {
-		if (super.onBlockActivated(world, pos, state, player, facing, hitX, hitY, hitZ)) return true;
+		if (super.onBlockActivated(world, x, y, z, player, meta, par7, par8, par9)) return true;
 		if (world.isRemote)
 		{
 			return true;
 		}
 		else
 		{
-			final TileEntityBeeBox te = (TileEntityBeeBox)world.getTileEntity(x, y, z);
+			final TileEntityBeeBox te = (TileEntityBeeBox)world.getTileEntity(pos);
 			if (te != null)
 			{
-				player.openGui(GrowthCraftBees.instance, 0, world, x, y, z);
+				player.openGui(GrowthCraftBees.instance, 0, world, pos);
 				return true;
 			}
 			return false;
@@ -164,7 +164,7 @@ public class BlockBeeBox extends GrcBlockContainer
 	@Override
 	public void breakBlock(World world, BlockPos pos, IBlockState block)
 	{
-		final TileEntityBeeBox te = (TileEntityBeeBox)world.getTileEntity(x, y, z);
+		final TileEntityBeeBox te = (TileEntityBeeBox)world.getTileEntity(pos);
 
 		if (te != null)
 		{
@@ -172,13 +172,13 @@ public class BlockBeeBox extends GrcBlockContainer
 			{
 				final ItemStack stack = te.getStackInSlot(index);
 
-				ItemUtils.spawnItemStack(world, x, y, z, stack, world.rand);
+				ItemUtils.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), stack, rand);
 			}
 
-			world.func_147453_f(x, y, z, par5);
+			world.updateComparatorOutputLevel(x, y, z, par5);
 		}
 
-		super.breakBlock(world, x, y, z, par5, par6);
+		super.breakBlock(world, pos, block);
 	}
 
 	/************
