@@ -324,30 +324,30 @@ public class BlockBeeBox extends GrcBlockContainer
 		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 	}
 
-	@Override
-	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void addCollisionBoxesToList(World world, BlockPos pos, AxisAlignedBB axis, List list, Entity entity)
-	{
-		final float f = 0.0625F;
-		// LEGS
-		setBlockBounds(3*f, 0.0F, 3*f, 5*f, 3*f, 5*f);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
-		setBlockBounds(11*f, 0.0F, 3*f, 13*f, 3*f, 5*f);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
-		setBlockBounds(3*f, 0.0F, 11*f, 5*f, 3*f, 13*f);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
-		setBlockBounds(11*f, 0.0F, 11*f, 13*f, 3*f, 13*f);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
-		// BODY
-		setBlockBounds(1*f, 3*f, 1*f, 15*f, 10*f, 15*f);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
-		// ROOF
-		setBlockBounds(0.0F, 10*f, 0.0F, 1.0F, 13*f, 1.0F);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
-		setBlockBounds(2*f, 13*f, 2*f, 14*f, 1.0F, 14*f);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
-		setBlockBoundsForItemRender();
-	}
+		@Override
+		@SuppressWarnings({"rawtypes", "unchecked"})
+		public void addCollisionBoxesToList(World world, BlockPos pos, IBlockState state, AxisAlignedBB axis, List list, Entity entity)
+		{
+			final float f = 0.0625F;
+			// LEGS
+			setBlockBounds(3*f, 0.0F, 3*f, 5*f, 3*f, 5*f);
+			super.addCollisionBoxesToList(world, pos, state, axis, list, entity);
+			setBlockBounds(11*f, 0.0F, 3*f, 13*f, 3*f, 5*f);
+			super.addCollisionBoxesToList(world, pos, state, axis, list, entity);
+			setBlockBounds(3*f, 0.0F, 11*f, 5*f, 3*f, 13*f);
+			super.addCollisionBoxesToList(world, pos, state, axis, list, entity);
+			setBlockBounds(11*f, 0.0F, 11*f, 13*f, 3*f, 13*f);
+			super.addCollisionBoxesToList(world, pos, state, axis, list, entity);
+			// BODY
+			setBlockBounds(1*f, 3*f, 1*f, 15*f, 10*f, 15*f);
+			super.addCollisionBoxesToList(world, pos, state, axis, list, entity);
+			// ROOF
+			setBlockBounds(0.0F, 10*f, 0.0F, 1.0F, 13*f, 1.0F);
+			super.addCollisionBoxesToList(world, pos, state, axis, list, entity);
+			setBlockBounds(2*f, 13*f, 2*f, 14*f, 1.0F, 14*f);
+			super.addCollisionBoxesToList(world, pos, state, axis, list, entity);
+			setBlockBoundsForItemRender();
+		}
 
 	/************
 	 * COMPARATOR
