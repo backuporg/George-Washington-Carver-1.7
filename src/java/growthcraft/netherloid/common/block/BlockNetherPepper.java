@@ -75,7 +75,7 @@ public abstract class BlockNetherPepper extends BlockBush implements ICropDataPr
 
 	private void incrementGrowth(World world, int x, int y, int z, int meta)
 	{
-		world.setBlockMetadataWithNotify(x, y, z, meta + 1, BlockFlags.SYNC);
+		world.setBlockState(x, y, z, meta + 1, BlockFlags.SYNC);
 		AppleCore.announceGrowthTick(this, world, x, y, z, meta);
 	}
 
@@ -163,7 +163,7 @@ public abstract class BlockNetherPepper extends BlockBush implements ICropDataPr
 		{
 			if (!world.isRemote)
 			{
-				world.setBlockMetadataWithNotify(x, y, z, PepperStages.FULL, BlockFlags.SYNC);
+				world.setBlockState(x, y, z, PepperStages.FULL, BlockFlags.SYNC);
 				final int count = minPepperPicked + world.rand.nextInt(maxPepperPicked - minPepperPicked);
 				dropBlockAsItem(world, x, y, z, netherloid.items.netherPepper.asStack(count));
 			}

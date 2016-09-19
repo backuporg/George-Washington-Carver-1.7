@@ -66,11 +66,11 @@ public class CropBasicGrowthCraft extends AbstractForestryCrop
 		}
 		else
 		{
-			world.setBlockMetadataWithNotify(pos.x, pos.y, pos.z, 0, BlockFlags.SYNC);
+			world.setBlockState(pos.x, pos.y, pos.z, 0, BlockFlags.SYNC);
 		}
 
 		if (isRice) {
-			world.setBlockMetadataWithNotify(pos.x, pos.y - 1, pos.z, 7, BlockFlags.SYNC);
+			world.setBlockState(pos.x, pos.y - 1, pos.z, 7, BlockFlags.SYNC);
 		}
 
 		return harvest;

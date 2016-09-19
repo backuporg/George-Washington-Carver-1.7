@@ -64,7 +64,7 @@ public class BlockCheesePress extends GrcBlockContainer
 
 	public void doRotateBlock(World world, int x, int y, int z, EnumFacing side)
 	{
-		world.setBlockMetadataWithNotify(x, y, z, world.getBlockState(x, y, z) ^ 1, BlockFlags.SYNC);
+		world.setBlockState(x, y, z, world.getBlockState(x, y, z) ^ 1, BlockFlags.SYNC);
 	}
 
 	@Override
@@ -104,7 +104,7 @@ public class BlockCheesePress extends GrcBlockContainer
 				meta = 4;
 			}
 
-			world.setBlockMetadataWithNotify(x, y, z, meta, BlockFlags.UPDATE_AND_SYNC);
+			world.setBlockState(x, y, z, meta, BlockFlags.UPDATE_AND_SYNC);
 		}
 	}
 
@@ -115,11 +115,11 @@ public class BlockCheesePress extends GrcBlockContainer
 		final int a = MathHelper.floor_double((entity.rotationYaw * 4.0D / 360.0D) + 0.5D) & 3;
 		if (a == 0 || a == 2)
 		{
-			world.setBlockMetadataWithNotify(x, y, z, 0, BlockFlags.SYNC);
+			world.setBlockState(x, y, z, 0, BlockFlags.SYNC);
 		}
 		else if (a == 1 || a == 3)
 		{
-			world.setBlockMetadataWithNotify(x, y, z, 1, BlockFlags.SYNC);
+			world.setBlockState(x, y, z, 1, BlockFlags.SYNC);
 		}
 	}
 

@@ -82,7 +82,7 @@ public abstract class BlockNetherMaliceSapling extends BlockBush implements IGro
 
 		if ((meta & 8) == 0)
 		{
-			world.setBlockMetadataWithNotify(x, y, z, meta | 8, 4);
+			world.setBlockState(x, y, z, meta | 8, 4);
 		}
 		else
 		{

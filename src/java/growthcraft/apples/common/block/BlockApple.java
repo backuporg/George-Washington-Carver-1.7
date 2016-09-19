@@ -67,7 +67,7 @@ public abstract class BlockApple extends GrcBlockBase implements IGrowable, ICro
 
 	void incrementGrowth(World world, int x, int y, int z, int meta)
 	{
-		world.setBlockMetadataWithNotify(x, y, z, meta + 1, BlockFlags.SYNC);
+		world.setBlockState(x, y, z, meta + 1, BlockFlags.SYNC);
 		AppleCore.announceGrowthTick(this, world, x, y, z, meta);
 	}
 

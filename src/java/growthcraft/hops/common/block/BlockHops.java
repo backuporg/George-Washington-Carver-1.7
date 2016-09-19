@@ -80,7 +80,7 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 	{
 		final int previousMetadata = meta;
 		++meta;
-		world.setBlockMetadataWithNotify(x, y, z, meta, BlockFlags.SYNC);
+		world.setBlockState(x, y, z, meta, BlockFlags.SYNC);
 		AppleCore.announceGrowthTick(this, world, x, y, z, previousMetadata);
 	}
 
@@ -247,7 +247,7 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 
 	public void removeFruit(World world, int x, int y, int z)
 	{
-		world.setBlockMetadataWithNotify(x, y, z, HopsStage.BIG, BlockFlags.UPDATE_AND_SYNC);
+		world.setBlockState(x, y, z, HopsStage.BIG, BlockFlags.UPDATE_AND_SYNC);
 	}
 
 	/************

@@ -143,7 +143,7 @@ public class BlockNetherPaddy extends BlockPaddyBase
 		final int meta = world.getBlockState(x, y, z);
 		if (meta > 1)
 		{
-			world.setBlockMetadataWithNotify(x, y, z, meta - 1, BlockFlags.SYNC);
+			world.setBlockState(x, y, z, meta - 1, BlockFlags.SYNC);
 		}
 		else
 		{
@@ -165,7 +165,7 @@ public class BlockNetherPaddy extends BlockPaddyBase
 		}
 		else
 		{
-			world.setBlockMetadataWithNotify(x, y, z, getMaxPaddyMeta(world, x, y, z), BlockFlags.SYNC);
+			world.setBlockState(x, y, z, getMaxPaddyMeta(world, x, y, z), BlockFlags.SYNC);
 		}
 	}
 

@@ -200,7 +200,7 @@ public abstract class BlockAppleLeaves extends BlockLeaves implements IShearable
 
 				if (l1 >= 0)
 				{
-					world.setBlockMetadataWithNotify(x, y, z, meta & -9, BlockFlags.SUPRESS_RENDER);
+					world.setBlockState(x, y, z, meta & -9, BlockFlags.SUPRESS_RENDER);
 				}
 				else
 				{
@@ -271,7 +271,7 @@ public abstract class BlockAppleLeaves extends BlockLeaves implements IShearable
 	@Override
 	public void beginLeavesDecay(World world, int x, int y, int z)
 	{
-		world.setBlockMetadataWithNotify(x, y, z, world.getBlockState(x, y, z) | LeavesStage.DECAY_MASK, BlockFlags.SUPRESS_RENDER);
+		world.setBlockState(x, y, z, world.getBlockState(x, y, z) | LeavesStage.DECAY_MASK, BlockFlags.SUPRESS_RENDER);
 	}
 
 	@Override

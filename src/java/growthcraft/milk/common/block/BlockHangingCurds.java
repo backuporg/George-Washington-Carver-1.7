@@ -70,7 +70,7 @@ public class BlockHangingCurds extends GrcBlockContainer
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack stack)
 	{
 		super.onBlockPlacedBy(world, x, y, z, entity, stack);
-		world.setBlockMetadataWithNotify(x, y, z, stack.getItemDamage(), BlockFlags.NONE);
+		world.setBlockState(x, y, z, stack.getItemDamage(), BlockFlags.NONE);
 	}
 
 	@Override

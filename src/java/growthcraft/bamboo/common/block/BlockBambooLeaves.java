@@ -152,7 +152,7 @@ public abstract class BlockBambooLeaves extends BlockLeaves implements IShearabl
 
 				if (l1 >= 0)
 				{
-					world.setBlockMetadataWithNotify(x, y, z, meta & -9, BlockFlags.SUPRESS_RENDER);
+					world.setBlockState(x, y, z, meta & -9, BlockFlags.SUPRESS_RENDER);
 				}
 				else
 				{
@@ -211,7 +211,7 @@ public abstract class BlockBambooLeaves extends BlockLeaves implements IShearabl
 	@Override
 	public void beginLeavesDecay(World world, int x, int y, int z)
 	{
-		world.setBlockMetadataWithNotify(x, y, z, world.getBlockState(x, y, z) | 8, BlockFlags.SUPRESS_RENDER);
+		world.setBlockState(x, y, z, world.getBlockState(x, y, z) | 8, BlockFlags.SUPRESS_RENDER);
 	}
 
 	@Override

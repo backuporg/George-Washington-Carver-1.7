@@ -99,7 +99,7 @@ public class BlockFermentBarrel extends BlockCellarContainer
 				meta = 4;
 			}
 
-			world.setBlockMetadataWithNotify(x, y, z, meta, BlockFlags.UPDATE_AND_SYNC);
+			world.setBlockState(x, y, z, meta, BlockFlags.UPDATE_AND_SYNC);
 		}
 	}
 
@@ -115,7 +115,7 @@ public class BlockFermentBarrel extends BlockCellarContainer
 	{
 		super.onBlockPlacedBy(world, x, y, z, entity, stack);
 		final int meta = BlockPistonBase.determineOrientation(world, x, y, z, entity);
-		world.setBlockMetadataWithNotify(x, y, z, meta, BlockFlags.UPDATE_AND_SYNC);
+		world.setBlockState(x, y, z, meta, BlockFlags.UPDATE_AND_SYNC);
 	}
 
 	@Override

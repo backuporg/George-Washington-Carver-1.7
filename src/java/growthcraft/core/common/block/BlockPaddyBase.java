@@ -41,13 +41,13 @@ public abstract class BlockPaddyBase extends GrcBlockBase implements IPaddy
 		final int meta = world.getBlockState(x, y, z);
 		if (meta > 0)
 		{
-			world.setBlockMetadataWithNotify(x, y, z, meta - 1, BlockFlags.UPDATE_AND_SYNC);
+			world.setBlockState(x, y, z, meta - 1, BlockFlags.UPDATE_AND_SYNC);
 		}
 	}
 
 	public void fillPaddy(World world, int x, int y, int z)
 	{
-		world.setBlockMetadataWithNotify(x, y, z, getMaxPaddyMeta(world, x, y, z), BlockFlags.UPDATE_AND_SYNC);
+		world.setBlockState(x, y, z, getMaxPaddyMeta(world, x, y, z), BlockFlags.UPDATE_AND_SYNC);
 	}
 
 	/************

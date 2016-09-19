@@ -54,7 +54,7 @@ public class BlockNetherSquash extends BlockDirectional
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack itemstack)
 	{
 		final int meta = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 2.5D) & 3;
-		world.setBlockMetadataWithNotify(x, y, z, meta, BlockFlags.SYNC);
+		world.setBlockState(x, y, z, meta, BlockFlags.SYNC);
 	}
 
 	@Override

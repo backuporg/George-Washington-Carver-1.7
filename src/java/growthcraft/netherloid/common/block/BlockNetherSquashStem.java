@@ -106,7 +106,7 @@ public abstract class BlockNetherSquashStem extends BlockBush implements ICropDa
 	public void incrementGrowth(World world, int x, int y, int z, int previousMeta)
 	{
 		final int meta = MathHelper.clamp_int(previousMeta + MathHelper.getRandomIntegerInRange(world.rand, 2, 5), 0, StemStage.MATURE);
-		world.setBlockMetadataWithNotify(x, y, z, meta + 1, BlockFlags.SYNC);
+		world.setBlockState(x, y, z, meta + 1, BlockFlags.SYNC);
 		AppleCore.announceGrowthTick(this, world, x, y, z, previousMeta);
 	}
 

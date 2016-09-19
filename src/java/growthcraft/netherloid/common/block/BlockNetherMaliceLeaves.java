@@ -215,7 +215,7 @@ public abstract class BlockNetherMaliceLeaves extends BlockLeaves implements ISh
 
 				if (l1 >= 0)
 				{
-					world.setBlockMetadataWithNotify(x, y, z, meta & -9, 4);
+					world.setBlockState(x, y, z, meta & -9, 4);
 				}
 				else
 				{
@@ -285,7 +285,7 @@ public abstract class BlockNetherMaliceLeaves extends BlockLeaves implements ISh
 	@Override
 	public void beginLeavesDecay(World world, int x, int y, int z)
 	{
-		world.setBlockMetadataWithNotify(x, y, z, world.getBlockState(x, y, z) | LeavesStage.DECAY_MASK, 4);
+		world.setBlockState(x, y, z, world.getBlockState(x, y, z) | LeavesStage.DECAY_MASK, 4);
 	}
 
 	@Override
