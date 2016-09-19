@@ -127,17 +127,17 @@ public class ComponentVillageBambooYard extends StructureVillagePieces.Village i
 
 	public boolean addComponentParts(World world, Random random, StructureBoundingBox box)
 	{
-		if (this.field_143015_k < 0)
+		if (this.averageGroundLvl < 0)
 		{
-			this.field_143015_k = this.getAverageGroundLevel(world, box);
+			this.averageGroundLvl = this.getAverageGroundLevel(world, box);
 
-			if (this.field_143015_k < 0)
+			if (this.averageGroundLvl < 0)
 			{
 				return true;
 			}
 
 			// the structure is 1 block lower due to the water layer
-			this.boundingBox.offset(0, this.field_143015_k - this.boundingBox.maxY + 14, 0);
+			this.boundingBox.offset(0, this.averageGroundLvl - this.boundingBox.maxY + 14, 0);
 		}
 
 		// clear entire bounding box

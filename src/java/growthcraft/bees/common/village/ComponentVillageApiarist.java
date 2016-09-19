@@ -224,16 +224,16 @@ public class ComponentVillageApiarist extends StructureVillagePieces.Village imp
 
 	public boolean addComponentParts(World world, Random random, StructureBoundingBox box)
 	{
-		if (this.field_143015_k < 0)
+		if (this.averageGroundLvl < 0)
 		{
-			this.field_143015_k = this.getAverageGroundLevel(world, box);
+			this.averageGroundLvl = this.getAverageGroundLevel(world, box);
 
-			if (this.field_143015_k < 0)
+			if (this.averageGroundLvl < 0)
 			{
 				return true;
 			}
 
-			this.boundingBox.offset(0, this.field_143015_k - this.boundingBox.maxY + 7, 0);
+			this.boundingBox.offset(0, this.averageGroundLvl - this.boundingBox.maxY + 7, 0);
 		}
 
 		// clear entire bounding box
