@@ -139,17 +139,17 @@ public class RenderBambooFence implements ISimpleBlockRenderingHandler
 			final Block idZneg = world.getBlockState(x, y, z - 1);
 			final Block idZpos = world.getBlockState(x, y, z + 1);
 
-			final int metaXneg = world.getBlockMetadata(x - 1, y, z);
-			final int metaXpos = world.getBlockMetadata(x + 1, y, z);
-			final int metaZneg = world.getBlockMetadata(x, y, z - 1);
-			final int metaZpos = world.getBlockMetadata(x, y, z + 1);
+			final int metaXneg = world.getBlockState(x - 1, y, z);
+			final int metaXpos = world.getBlockState(x + 1, y, z);
+			final int metaZneg = world.getBlockState(x, y, z - 1);
+			final int metaZpos = world.getBlockState(x, y, z + 1);
 
 			if ((blk.canConnectFenceTo(world, x - 1, y, z) || (idXneg instanceof BlockStairs && (metaXneg & 3) == 0)) || (blk.canConnectFenceTo(world, x + 1, y, z) || (idXpos instanceof BlockStairs && (metaXpos & 3) == 1)))
 			{
 				flag1 = true;
 			}
 
-			if ((blk.canConnectFenceTo(world, x, y, z - 1)|| (idZneg instanceof BlockStairs && world.getBlockMetadata(x, y, z - 1) == 2)) || (blk.canConnectFenceTo(world, x, y, z + 1) || (idZpos instanceof BlockStairs && world.getBlockMetadata(x, y, z + 1) == 3)))
+			if ((blk.canConnectFenceTo(world, x, y, z - 1)|| (idZneg instanceof BlockStairs && world.getBlockState(x, y, z - 1) == 2)) || (blk.canConnectFenceTo(world, x, y, z + 1) || (idZpos instanceof BlockStairs && world.getBlockState(x, y, z + 1) == 3)))
 			{
 				flag2 = true;
 			}

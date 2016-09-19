@@ -50,8 +50,8 @@ public class BlockFruitPress extends BlockCellarContainer
 	@Override
 	public void doRotateBlock(World world, int x, int y, int z, EnumFacing side)
 	{
-		world.setBlockMetadataWithNotify(x, y, z, world.getBlockMetadata(x, y, z) ^ 1, BlockFlags.SYNC);
-		world.setBlockMetadataWithNotify(x, y + 1, z, world.getBlockMetadata(x, y + 1, z) ^ 1, BlockFlags.SYNC);
+		world.setBlockState(x, y, z, world.getBlockState(x, y, z) ^ 1, BlockFlags.SYNC);
+		world.setBlockState(x, y + 1, z, world.getBlockState(x, y + 1, z) ^ 1, BlockFlags.SYNC);
 	}
 
 	@Override
@@ -59,7 +59,7 @@ public class BlockFruitPress extends BlockCellarContainer
 	{
 		super.onBlockAdded(world, x, y, z);
 		this.setDefaultDirection(world, x, y, z);
-		world.setBlock(x, y + 1, z, getPresserBlock(), world.getBlockMetadata(x, y, z), 2);
+		world.setBlock(x, y + 1, z, getPresserBlock(), world.getBlockState(x, y, z), 2);
 	}
 
 	private void setDefaultDirection(World world, int x, int y, int z)
@@ -92,7 +92,7 @@ public class BlockFruitPress extends BlockCellarContainer
 				meta = 4;
 			}
 
-			world.setBlockMetadataWithNotify(x, y, z, meta, BlockFlags.UPDATE_AND_SYNC);
+			world.setBlockState(x, y, z, meta, BlockFlags.UPDATE_AND_SYNC);
 		}
 	}
 
@@ -104,14 +104,14 @@ public class BlockFruitPress extends BlockCellarContainer
 
 		if (a == 0 || a == 2)
 		{
-			world.setBlockMetadataWithNotify(x, y, z, 0, BlockFlags.SYNC);
+			world.setBlockState(x, y, z, 0, BlockFlags.SYNC);
 		}
 		else if (a == 1 || a == 3)
 		{
-			world.setBlockMetadataWithNotify(x, y, z, 1, BlockFlags.SYNC);
+			world.setBlockState(x, y, z, 1, BlockFlags.SYNC);
 		}
 
-		world.setBlock(x, y + 1, z, getPresserBlock(), world.getBlockMetadata(x, y, z), BlockFlags.SYNC);
+		world.setBlock(x, y + 1, z, getPresserBlock(), world.getBlockState(x, y, z), BlockFlags.SYNC);
 	}
 
 	@Override
@@ -139,7 +139,7 @@ public class BlockFruitPress extends BlockCellarContainer
 	@Override
 	public boolean isSideSolid(IBlockAccess world, int x, int y, int z, EnumFacing side)
 	{
-		final int meta = world.getBlockMetadata(x, y, z);
+		final int meta = world.getBlockState(x, y, z);
 
 		if (meta == 0)
 		{

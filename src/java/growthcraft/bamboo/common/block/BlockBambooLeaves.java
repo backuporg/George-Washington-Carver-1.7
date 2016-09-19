@@ -6,6 +6,8 @@ import java.util.Random;
 import growthcraft.api.core.util.BlockFlags;
 import growthcraft.bamboo.GrowthCraftBamboo;
 
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -39,21 +41,21 @@ public abstract class BlockBambooLeaves extends BlockLeaves implements IShearabl
 		setCreativeTab(GrowthCraftBamboo.creativeTab);
 	}
 
-	private void removeLeaves(World world, int x, int y, int z)
+	private void removeLeaves(World world, BlockPos pos)
 	{
-		this.dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
-		world.setBlockToAir(x, y, z);
+		this.dropBlockAsItem(world, pos, world.getBlockState(pos), 0);
+		world.setBlockToAir(pos);
 	}
 
 	/************
 	 * TICK
 	 ************/
 	@Override
-	public void updateTick(World world, int x, int y, int z, Random rand)
+	public void updateTick(World world, BlockPos pos, Random rand, IBlockState state)
 	{
 		if (!world.isRemote)
 		{
-			final int meta = world.getBlockMetadata(x, y, z);
+			final int meta = world.getBlockState(pos);
 
 			if ((meta & 8) != 0 && (meta & 4) == 0)
 			{
@@ -70,7 +72,7 @@ public abstract class BlockBambooLeaves extends BlockLeaves implements IShearabl
 
 				int l1;
 
-				if (world.checkChunksExist(x - i1, y - i1, z - i1, x + i1, y + i1, z + i1))
+				if (world.checkChunksExist(pos - i1, pos - i1, pos - i1, pos + i1, pos + i1, pos + i1))
 				{
 					int i2;
 					int j2;
@@ -88,7 +90,7 @@ public abstract class BlockBambooLeaves extends BlockLeaves implements IShearabl
 								{
 									this.adjacentTreeBlocks[(l1 + k1) * j1 + (i2 + k1) * b1 + j2 + k1] = 0;
 								}
-								else if (block != null && block.isLeaves(world, x + l1, y + i2, z + j2))
+								else if (block != null && block.isLeaves(world, pos.getX() + l1, pos.getY() + i2, pos.getZ() + j2))
 								{
 									this.adjacentTreeBlocks[(l1 + k1) * j1 + (i2 + k1) * b1 + j2 + k1] = -2;
 								}
@@ -150,7 +152,7 @@ public abstract class BlockBambooLeaves extends BlockLeaves implements IShearabl
 
 				if (l1 >= 0)
 				{
-					world.setBlockMetadataWithNotify(x, y, z, meta & -9, BlockFlags.SUPRESS_RENDER);
+					world.setBlockState(x, y, z, meta & -9, BlockFlags.SUPRESS_RENDER);
 				}
 				else
 				{
@@ -162,14 +164,14 @@ public abstract class BlockBambooLeaves extends BlockLeaves implements IShearabl
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World world, int x, int y, int z, Random random)
+	public void randomDisplayTick(World world, BlockPos pos, Random random, IBlockState state)
 	{
-		super.randomDisplayTick(world, x, y, z, random);
-		if (world.canLightningStrikeAt(x, y + 1, z) && !World.doesBlockHaveSolidTopSurface(world, x, y - 1, z) && random.nextInt(15) == 1)
+		super.randomDisplayTick(state, world, pos, random);
+		if (world.canLightningStrikeAt(x, y + 1, z) && !World.doesBlockHaveSolidTopSurface(world, pos.getX(), pos.getY() - 1, pos.getZ()) && random.nextInt(15) == 1)
 		{
-			final double d0 = (double)((float)x + random.nextFloat());
-			final double d1 = (double)y - 0.05D;
-			final double d2 = (double)((float)z + random.nextFloat());
+			final double d0 = (double)((float)pos.getX() + random.nextFloat());
+			final double d1 = (double)pos.getY() - 0.05D;
+			final double d2 = (double)((float)pos.getz() + random.nextFloat());
 			world.spawnParticle("dripWater", d0, d1, d2, 0.0D, 0.0D, 0.0D);
 		}
 	}
@@ -178,12 +180,12 @@ public abstract class BlockBambooLeaves extends BlockLeaves implements IShearabl
 	 * TRIGGERS
 	 ************/
 	@Override
-	public void breakBlock(World world, int x, int y, int z, Block par5, int par6)
+	public void breakBlock(World world, BlockPos pos, Block par5, int par6, IBlockState state)
 	{
 		final byte b0 = 1;
 		final int j1 = b0 + 1;
 
-		if (world.checkChunksExist(x - j1, y - j1, z - j1, x + j1, y + j1, z + j1))
+		if (world.checkChunksExist(pos.getX() - j1, pos.getY() - j1, pos.getZ() - j1, pos.getX() + j1, pos.getY() + j1, pos.getZ() + j1))
 		{
 			for (int k1 = -b0; k1 <= b0; ++k1)
 			{
@@ -191,11 +193,11 @@ public abstract class BlockBambooLeaves extends BlockLeaves implements IShearabl
 				{
 					for (int i2 = -b0; i2 <= b0; ++i2)
 					{
-						final Block j2 = world.getBlockState(x + k1, y + l1, z + i2);
+						final Block j2 = world.getBlockState(pos + k1, pos + l1, pos + i2);
 
 						if (j2 != null)
 						{
-							j2.beginLeavesDecay(world, x + k1, y + l1, z + i2);
+							j2.beginLeavesDecay(state, pos + k1, pos + l1, pos + i2, world);
 						}
 					}
 				}
@@ -209,7 +211,7 @@ public abstract class BlockBambooLeaves extends BlockLeaves implements IShearabl
 	@Override
 	public void beginLeavesDecay(World world, int x, int y, int z)
 	{
-		world.setBlockMetadataWithNotify(x, y, z, world.getBlockMetadata(x, y, z) | 8, BlockFlags.SUPRESS_RENDER);
+		world.setBlockState(x, y, z, world.getBlockState(x, y, z) | 8, BlockFlags.SUPRESS_RENDER);
 	}
 
 	@Override
@@ -296,7 +298,7 @@ public abstract class BlockBambooLeaves extends BlockLeaves implements IShearabl
 	@SideOnly(Side.CLIENT)
 	public int colorMultiplier(IBlockAccess world, int x, int y, int z)
 	{
-		final int meta = world.getBlockMetadata(x, y, z);
+		final int meta = world.getBlockState(x, y, z);
 		int r = 0;
 		int g = 0;
 		int b = 0;
@@ -328,7 +330,7 @@ public abstract class BlockBambooLeaves extends BlockLeaves implements IShearabl
 	public ArrayList<ItemStack> onSheared(ItemStack item, IBlockAccess world, int x, int y, int z, int fortune)
 	{
 		final ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
-		ret.add(new ItemStack(Blocks.LEAVES, 1, world.getBlockMetadata(x, y, z) & 3));
+		ret.add(new ItemStack(Blocks.LEAVES, 1, world.getBlockState(x, y, z) & 3));
 		return ret;
 	}
 }

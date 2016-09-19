@@ -52,7 +52,7 @@ public abstract class BlockRice extends GrcBlockBase implements IPaddyCrop, ICro
 
 	public boolean isMature(IBlockAccess world, int x, int y, int z)
 	{
-		final int meta = world.getBlockMetadata(x, y, z);
+		final int meta = world.getBlockState(x, y, z);
 		return meta >= RiceStage.MATURE;
 	}
 
@@ -63,7 +63,7 @@ public abstract class BlockRice extends GrcBlockBase implements IPaddyCrop, ICro
 
 	private void incrementGrowth(World world, int x, int y, int z, int meta)
 	{
-		world.setBlockMetadataWithNotify(x, y, z, meta + 1, BlockFlags.SYNC);
+		world.setBlockState(x, y, z, meta + 1, BlockFlags.SYNC);
 		AppleCore.announceGrowthTick(this, world, x, y, z, meta);
 	}
 
@@ -85,13 +85,13 @@ public abstract class BlockRice extends GrcBlockBase implements IPaddyCrop, ICro
 	{
 		this.checkCropChange(world, x, y, z);
 
-		if (world.getBlockLightValue(x, y + 1, z) >= 9 && world.getBlockMetadata(x, y - 1, z) > 0)
+		if (world.getBlockLightValue(x, y + 1, z) >= 9 && world.getBlockState(x, y - 1, z) > 0)
 		{
 			final Event.Result allowGrowthResult = AppleCore.validateGrowthTick(this, world, x, y, z, random);
 			if (allowGrowthResult == Event.Result.DENY)
 				return;
 
-			final int meta = world.getBlockMetadata(x, y, z);
+			final int meta = world.getBlockState(x, y, z);
 
 			if (meta < RiceStage.MATURE)
 			{
@@ -109,7 +109,7 @@ public abstract class BlockRice extends GrcBlockBase implements IPaddyCrop, ICro
 	@Override
 	public boolean func_149851_a(World world, int x, int y, int z, boolean isClient)
 	{
-		return world.getBlockMetadata(x, y, z) < RiceStage.MATURE;
+		return world.getBlockState(x, y, z) < RiceStage.MATURE;
 	}
 
 	/* SideOnly(Side.SERVER) Can this apply bonemeal effect? */
@@ -123,7 +123,7 @@ public abstract class BlockRice extends GrcBlockBase implements IPaddyCrop, ICro
 	@Override
 	public void func_149853_b(World world, Random random, int x, int y, int z)
 	{
-		final int meta = world.getBlockMetadata(x, y, z);
+		final int meta = world.getBlockState(x, y, z);
 		if (meta < RiceStage.MATURE)
 		{
 			growRice(world, x, y, z, meta);
@@ -156,7 +156,7 @@ public abstract class BlockRice extends GrcBlockBase implements IPaddyCrop, ICro
 				{
 					f1 = 1.0F;
 
-					if (world.getBlockMetadata(loop_i, y - 1, loop_k) > 0)
+					if (world.getBlockState(loop_i, y - 1, loop_k) > 0)
 					{
 						f1 = 3.0F;
 					}
@@ -183,7 +183,7 @@ public abstract class BlockRice extends GrcBlockBase implements IPaddyCrop, ICro
 	{
 		if (!this.canBlockStay(world, x, y, z))
 		{
-			this.dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
+			this.dropBlockAsItem(world, x, y, z, world.getBlockState(x, y, z), 0);
 			world.setBlockToAir(x, y, z);
 		}
 	}

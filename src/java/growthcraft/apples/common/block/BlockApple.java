@@ -56,7 +56,7 @@ public abstract class BlockApple extends GrcBlockBase implements IGrowable, ICro
 
 	public boolean isMature(IBlockAccess world, int x, int y, int z)
 	{
-		final int meta = world.getBlockMetadata(x, y, z);
+		final int meta = world.getBlockState(x, y, z);
 		return meta >= AppleStage.MATURE;
 	}
 
@@ -67,7 +67,7 @@ public abstract class BlockApple extends GrcBlockBase implements IGrowable, ICro
 
 	void incrementGrowth(World world, int x, int y, int z, int meta)
 	{
-		world.setBlockMetadataWithNotify(x, y, z, meta + 1, BlockFlags.SYNC);
+		world.setBlockState(x, y, z, meta + 1, BlockFlags.SYNC);
 		AppleCore.announceGrowthTick(this, world, x, y, z, meta);
 	}
 
@@ -80,7 +80,7 @@ public abstract class BlockApple extends GrcBlockBase implements IGrowable, ICro
 	@Override
 	public boolean func_149851_a(World world, int x, int y, int z, boolean isClient)
 	{
-		return world.getBlockMetadata(x, y, z) < AppleStage.MATURE;
+		return world.getBlockState(x, y, z) < AppleStage.MATURE;
 	}
 
 	/* SideOnly(Side.SERVER) Can this apply bonemeal effect? */
@@ -94,7 +94,7 @@ public abstract class BlockApple extends GrcBlockBase implements IGrowable, ICro
 	@Override
 	public void func_149853_b(World world, Random random, int x, int y, int z)
 	{
-		incrementGrowth(world, x, y, z, world.getBlockMetadata(x, y, z));
+		incrementGrowth(world, x, y, z, world.getBlockState(x, y, z));
 	}
 
 	/************
@@ -116,7 +116,7 @@ public abstract class BlockApple extends GrcBlockBase implements IGrowable, ICro
 			final boolean continueGrowth = random.nextInt(this.growth) == 0;
 			if (allowGrowthResult == Event.Result.ALLOW || continueGrowth)
 			{
-				final int meta = world.getBlockMetadata(x, y, z);
+				final int meta = world.getBlockState(x, y, z);
 				if (meta < AppleStage.MATURE)
 				{
 					incrementGrowth(world, x, y, z, meta);
@@ -135,7 +135,7 @@ public abstract class BlockApple extends GrcBlockBase implements IGrowable, ICro
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int EnumFacing, float par7, float par8, float par9)
 	{
-		if (world.getBlockMetadata(x, y, z) >= AppleStage.MATURE)
+		if (world.getBlockState(x, y, z) >= AppleStage.MATURE)
 		{
 			if (!world.isRemote)
 			{
@@ -162,7 +162,7 @@ public abstract class BlockApple extends GrcBlockBase implements IGrowable, ICro
 	public boolean canBlockStay(World world, int x, int y, int z)
 	{
 		return GrowthCraftApples.blocks.appleLeaves.equals(world.getBlockState(x, y + 1, z)) &&
-			(world.getBlockMetadata(x, y + 1, z) & 3) == 0;
+			(world.getBlockState(x, y + 1, z) & 3) == 0;
 	}
 
 	/************
@@ -259,7 +259,7 @@ public abstract class BlockApple extends GrcBlockBase implements IGrowable, ICro
 	@Override
 	public void setBlockBoundsBasedOnState(IBlockAccess world, int x, int y, int z)
 	{
-		final int meta = world.getBlockMetadata(x, y, z);
+		final int meta = world.getBlockState(x, y, z);
 		final float f = 0.0625F;
 
 		if (meta == AppleStage.YOUNG)

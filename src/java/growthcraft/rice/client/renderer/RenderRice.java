@@ -22,7 +22,7 @@ public class RenderRice implements ISimpleBlockRenderingHandler
 	{
 		if (modelId == id)
 		{
-			final int meta = world.getBlockMetadata(x, y, z);
+			final int meta = world.getBlockState(x, y, z);
 			final Tessellator tessellator = Tessellator.instance;
 			tessellator.setBrightness(block.getMixedBrightnessForBlock(world, x, y, z));
 			tessellator.setColorOpaque_F(1.0F, 1.0F, 1.0F);
@@ -44,7 +44,7 @@ public class RenderRice implements ISimpleBlockRenderingHandler
 		final Tessellator tessellator = Tessellator.instance;
 		tessellator.setBrightness(block.getMixedBrightnessForBlock(world, x, y, z));
 		tessellator.setColorOpaque_F(1.0F, 1.0F, 1.0F);
-		renderer.renderBlockCropsImpl(block, world.getBlockMetadata(x, y, z), (double)x, (double)((float)y - 0.125F), (double)z);
+		renderer.renderBlockCropsImpl(block, world.getBlockState(x, y, z), (double)x, (double)((float)y - 0.125F), (double)z);
 	}
 
 	private void renderCrossedRice(Block block, int x, int y, int z, IBlockAccess world, RenderBlocks renderer)
@@ -72,7 +72,7 @@ public class RenderRice implements ISimpleBlockRenderingHandler
 		final double d1 = (double)y - 0.125D;
 		final double d2 = (double)z;
 
-		renderer.drawCrossedSquares(renderer.getBlockIconFromSideAndMetadata(block, 0, world.getBlockMetadata(x, y, z)), d0, d1, d2, 1.0F);
+		renderer.drawCrossedSquares(renderer.getBlockIconFromSideAndMetadata(block, 0, world.getBlockState(x, y, z)), d0, d1, d2, 1.0F);
 	}
 
 	@Override

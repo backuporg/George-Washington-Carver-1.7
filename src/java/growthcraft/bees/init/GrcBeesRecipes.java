@@ -41,6 +41,7 @@ import growthcraft.core.GrowthCraftCore;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
@@ -148,52 +149,77 @@ public class GrcBeesRecipes extends GrcModuleBase
 		// Tagged Fluid compat
 		/// Buckets
 		GameRegistry.addRecipe(new ShapelessMultiRecipe(
-			meadBucket,
-			Items.BUCKET,
-			new TaggedFluidStacks(1000, "honey"),
-			new FluidStack(FluidRegistry.WATER, 1000)));
-
-		GameRegistry.addRecipe(new ShapelessMultiRecipe(
 				meadBucket,
 				Items.BUCKET,
 				new TaggedFluidStacks(1000, "honey"),
-				new FluidStack(FluidRegistry.WATER, 1000)));
-				
-			GrowthCraftBees.fluids.honeyMeadBottle.asStack(3),
-			Items.GLASS_BOTTLE,
-			Items.GLASS_BOTTLE,
-			Items.GLASS_BOTTLE,
-			new TaggedFluidStacks(1000, "honey"),
-			new FluidStack(FluidRegistry.WATER, 1000))));
+				new FluidStack(FluidRegistry.WATER, 1000)) {
+			@Override
+			public ItemStack[] getRemainingItems(InventoryCrafting inv) {
+				return new ItemStack[0];
+			}
+		});
+
+		GameRegistry.addRecipe(new ShapelessMultiRecipe(
+				GrowthCraftBees.fluids.honeyMeadBottle.asStack(3),
+				Items.GLASS_BOTTLE,
+				Items.GLASS_BOTTLE,
+				Items.GLASS_BOTTLE,
+				new TaggedFluidStacks(1000, "honey"),
+				new FluidStack(FluidRegistry.WATER, 1000)) {
+			@Override
+			public ItemStack[] getRemainingItems(InventoryCrafting inv) {
+				return new ItemStack[0];
+			}
+		});
 
 		/// Bottles
 		GameRegistry.addRecipe(new ShapelessMultiRecipe(
-			meadBottle,
-			Items.GLASS_BOTTLE,
-			new TaggedFluidStacks(bottleCapacity, "honey"),
-			new FluidStack(FluidRegistry.WATER, bottleCapacity)));
+				meadBottle,
+				Items.GLASS_BOTTLE,
+				new TaggedFluidStacks(bottleCapacity, "honey"),
+				new FluidStack(FluidRegistry.WATER, bottleCapacity)) {
+			@Override
+			public ItemStack[] getRemainingItems(InventoryCrafting inv) {
+				return new ItemStack[0];
+			}
+		});
 
 		// Ore Dictionary compat
 		/// Buckets
 		GameRegistry.addRecipe(new ShapelessMultiRecipe(
-			meadBucket,
-			Items.BUCKET,
-			new OreItemStacks("bucketHoney"),
-			new FluidStack(FluidRegistry.WATER, 1000)));
+				meadBucket,
+				Items.BUCKET,
+				new OreItemStacks("bucketHoney"),
+				new FluidStack(FluidRegistry.WATER, 1000)) {
+			@Override
+			public ItemStack[] getRemainingItems(InventoryCrafting inv) {
+				return new ItemStack[0];
+			}
+		});
 
 		GameRegistry.addRecipe(new ShapelessMultiRecipe(
-			meadBottle,
-			Items.GLASS_BOTTLE,
-			new OreItemStacks("bottleHoney"),
-			new FluidStack(FluidRegistry.WATER, bottleCapacity)));
+				meadBottle,
+				Items.GLASS_BOTTLE,
+				new OreItemStacks("bottleHoney"),
+				new FluidStack(FluidRegistry.WATER, bottleCapacity)) {
+			@Override
+			public ItemStack[] getRemainingItems(InventoryCrafting inv) {
+				return new ItemStack[0];
+			}
+		});
 
 		// Transfer recipes
 		/// To Honey Jar from `bucketHoney`
 		GameRegistry.addRecipe(new ShapelessMultiRecipe(
-			GrowthCraftBees.items.honeyJar.asStack(),
-			Blocks.FLOWER_POT,
-			new TaggedFluidStacks(1000, "honey")
-		));
+				GrowthCraftBees.items.honeyJar.asStack(),
+				Blocks.FLOWER_POT,
+				new TaggedFluidStacks(1000, "honey")
+		) {
+			@Override
+			public ItemStack[] getRemainingItems(InventoryCrafting inv) {
+				return new ItemStack[0];
+			}
+		});
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(
 			GrowthCraftBees.items.honeyJar.asStack(),
@@ -203,10 +229,15 @@ public class GrcBeesRecipes extends GrcModuleBase
 
 		/// To Honey Bucket from `bucketHoney`
 		GameRegistry.addRecipe(new ShapelessMultiRecipe(
-			GrowthCraftBees.fluids.honey.asBucketItemStack(),
-			Items.BUCKET,
-			new TaggedFluidStacks(1000, "honey")
-		));
+				GrowthCraftBees.fluids.honey.asBucketItemStack(),
+				Items.BUCKET,
+				new TaggedFluidStacks(1000, "honey")
+		) {
+			@Override
+			public ItemStack[] getRemainingItems(InventoryCrafting inv) {
+				return new ItemStack[0];
+			}
+		});
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(
 			GrowthCraftBees.fluids.honey.asBucketItemStack(),
@@ -216,12 +247,17 @@ public class GrcBeesRecipes extends GrcModuleBase
 
 		/// To Honey Bottle from `bucketHoney`
 		GameRegistry.addRecipe(new ShapelessMultiRecipe(
-			GrowthCraftBees.fluids.honey.asBottleItemStack(3),
-			Items.GLASS_BOTTLE,
-			Items.GLASS_BOTTLE,
-			Items.GLASS_BOTTLE,
-			new TaggedFluidStacks(1000, "honey")
-		));
+				GrowthCraftBees.fluids.honey.asBottleItemStack(3),
+				Items.GLASS_BOTTLE,
+				Items.GLASS_BOTTLE,
+				Items.GLASS_BOTTLE,
+				new TaggedFluidStacks(1000, "honey")
+		) {
+			@Override
+			public ItemStack[] getRemainingItems(InventoryCrafting inv) {
+				return new ItemStack[0];
+			}
+		});
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(
 			GrowthCraftBees.fluids.honey.asBottleItemStack(3),

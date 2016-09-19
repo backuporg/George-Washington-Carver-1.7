@@ -29,7 +29,7 @@ public class TileEntityFruitPresser extends GrcTileBase
 			invalidate();
 		}
 
-		final int meta = getBlockMetadata();
+		final int meta = getBlockState();
 		this.transPrev = this.trans;
 
 		if ((meta == 0 || meta == 1) && this.trans > this.transMin)

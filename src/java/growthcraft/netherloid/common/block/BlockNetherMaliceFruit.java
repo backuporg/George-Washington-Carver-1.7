@@ -83,7 +83,7 @@ public abstract class BlockNetherMaliceFruit extends Block implements IGrowable,
 
 	void incrementGrowth(World world, int x, int y, int z, int meta)
 	{
-		world.setBlockMetadataWithNotify(x, y, z, meta + 1, BlockFlags.SYNC);
+		world.setBlockState(x, y, z, meta + 1, BlockFlags.SYNC);
 		AppleCore.announceGrowthTick(this, world, x, y, z, meta);
 	}
 
@@ -91,7 +91,7 @@ public abstract class BlockNetherMaliceFruit extends Block implements IGrowable,
 	@Override
 	public boolean func_149851_a(World world, int x, int y, int z, boolean isClient)
 	{
-		return world.getBlockMetadata(x, y, z) < MaliceFruitStage.MATURE;
+		return world.getBlockState(x, y, z) < MaliceFruitStage.MATURE;
 	}
 
 	/* SideOnly(Side.SERVER) Can this apply bonemeal effect? */
@@ -105,7 +105,7 @@ public abstract class BlockNetherMaliceFruit extends Block implements IGrowable,
 	@Override
 	public void func_149853_b(World world, Random random, int x, int y, int z)
 	{
-		incrementGrowth(world, x, y, z, world.getBlockMetadata(x, y, z));
+		incrementGrowth(world, x, y, z, world.getBlockState(x, y, z));
 	}
 
 	/**
@@ -117,7 +117,7 @@ public abstract class BlockNetherMaliceFruit extends Block implements IGrowable,
 	 */
 	public void fellBlockAsItem(World world, int x, int y, int z)
 	{
-		this.dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
+		this.dropBlockAsItem(world, x, y, z, world.getBlockState(x, y, z), 0);
 		world.setBlockToAir(x, y, z);
 	}
 
@@ -126,7 +126,7 @@ public abstract class BlockNetherMaliceFruit extends Block implements IGrowable,
 	{
 		if (!this.canBlockStay(world, x, y, z))
 		{
-			this.dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
+			this.dropBlockAsItem(world, x, y, z, world.getBlockState(x, y, z), 0);
 			world.setBlock(x, y, z, Blocks.AIR, 0, BlockFlags.SYNC);
 		}
 		else
@@ -138,7 +138,7 @@ public abstract class BlockNetherMaliceFruit extends Block implements IGrowable,
 			final boolean continueGrowth = random.nextInt(this.growth) == 0;
 			if (allowGrowthResult == Event.Result.ALLOW || continueGrowth)
 			{
-				final int meta = world.getBlockMetadata(x, y, z);
+				final int meta = world.getBlockState(x, y, z);
 				if (meta < MaliceFruitStage.MATURE)
 				{
 					incrementGrowth(world, x, y, z, meta);
@@ -154,7 +154,7 @@ public abstract class BlockNetherMaliceFruit extends Block implements IGrowable,
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int EnumFacing, float par7, float par8, float par9)
 	{
-		if (world.getBlockMetadata(x, y, z) >= MaliceFruitStage.MATURE)
+		if (world.getBlockState(x, y, z) >= MaliceFruitStage.MATURE)
 		{
 			if (!world.isRemote)
 			{
@@ -178,7 +178,7 @@ public abstract class BlockNetherMaliceFruit extends Block implements IGrowable,
 	public boolean canBlockStay(World world, int x, int y, int z)
 	{
 		return netherloid.blocks.netherMaliceLeaves.getBlockState() == world.getBlockState(x, y + 1, z) &&
-			(world.getBlockMetadata(x, y + 1, z) & 3) == 0;
+			(world.getBlockState(x, y + 1, z) & 3) == 0;
 	}
 
 	@Override
@@ -256,7 +256,7 @@ public abstract class BlockNetherMaliceFruit extends Block implements IGrowable,
 	@Override
 	public void setBlockBoundsBasedOnState(IBlockAccess world, int x, int y, int z)
 	{
-		final int meta = world.getBlockMetadata(x, y, z);
+		final int meta = world.getBlockState(x, y, z);
 		final float f = 0.0625F;
 
 		if (meta == MaliceFruitStage.YOUNG)

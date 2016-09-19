@@ -82,7 +82,7 @@ public abstract class BlockNetherMaliceLeaves extends BlockLeaves implements ISh
 	@Override
 	public boolean func_149851_a(World world, int x, int y, int z, boolean isClient)
 	{
-		return world.isAirBlock(x, y - 1, z) && (world.getBlockMetadata(x, y, z) & 3) == 0;
+		return world.isAirBlock(x, y - 1, z) && (world.getBlockState(x, y, z) & 3) == 0;
 	}
 
 	/* SideOnly(Side.SERVER) Can this apply bonemeal effect? */
@@ -107,7 +107,7 @@ public abstract class BlockNetherMaliceLeaves extends BlockLeaves implements ISh
 	{
 		if (!world.isRemote)
 		{
-			final int meta = world.getBlockMetadata(x, y, z);
+			final int meta = world.getBlockState(x, y, z);
 
 			if ((meta & 4) == 0)
 			{
@@ -215,7 +215,7 @@ public abstract class BlockNetherMaliceLeaves extends BlockLeaves implements ISh
 
 				if (l1 >= 0)
 				{
-					world.setBlockMetadataWithNotify(x, y, z, meta & -9, 4);
+					world.setBlockState(x, y, z, meta & -9, 4);
 				}
 				else
 				{
@@ -227,7 +227,7 @@ public abstract class BlockNetherMaliceLeaves extends BlockLeaves implements ISh
 
 	private void removeLeaves(World world, int x, int y, int z)
 	{
-		this.dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
+		this.dropBlockAsItem(world, x, y, z, world.getBlockState(x, y, z), 0);
 		world.setBlockToAir(x, y, z);
 	}
 
@@ -285,7 +285,7 @@ public abstract class BlockNetherMaliceLeaves extends BlockLeaves implements ISh
 	@Override
 	public void beginLeavesDecay(World world, int x, int y, int z)
 	{
-		world.setBlockMetadataWithNotify(x, y, z, world.getBlockMetadata(x, y, z) | LeavesStage.DECAY_MASK, 4);
+		world.setBlockState(x, y, z, world.getBlockState(x, y, z) | LeavesStage.DECAY_MASK, 4);
 	}
 
 	@Override
@@ -412,7 +412,7 @@ public abstract class BlockNetherMaliceLeaves extends BlockLeaves implements ISh
 	public ArrayList<ItemStack> onSheared(ItemStack item, IBlockAccess world, int x, int y, int z, int fortune)
 	{
 		final ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
-		ret.add(new ItemStack(Blocks.LEAVES, 1, world.getBlockMetadata(x, y, z) & 3));
+		ret.add(new ItemStack(Blocks.LEAVES, 1, world.getBlockState(x, y, z) & 3));
 		return ret;
 	}
 }

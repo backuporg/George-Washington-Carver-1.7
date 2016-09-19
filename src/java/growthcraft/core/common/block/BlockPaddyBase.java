@@ -38,16 +38,16 @@ public abstract class BlockPaddyBase extends GrcBlockBase implements IPaddy
 
 	public void drainPaddy(World world, int x, int y, int z)
 	{
-		final int meta = world.getBlockMetadata(x, y, z);
+		final int meta = world.getBlockState(x, y, z);
 		if (meta > 0)
 		{
-			world.setBlockMetadataWithNotify(x, y, z, meta - 1, BlockFlags.UPDATE_AND_SYNC);
+			world.setBlockState(x, y, z, meta - 1, BlockFlags.UPDATE_AND_SYNC);
 		}
 	}
 
 	public void fillPaddy(World world, int x, int y, int z)
 	{
-		world.setBlockMetadataWithNotify(x, y, z, getMaxPaddyMeta(world, x, y, z), BlockFlags.UPDATE_AND_SYNC);
+		world.setBlockState(x, y, z, getMaxPaddyMeta(world, x, y, z), BlockFlags.UPDATE_AND_SYNC);
 	}
 
 	/************
@@ -130,7 +130,7 @@ public abstract class BlockPaddyBase extends GrcBlockBase implements IPaddy
 			final Block plant = world.getBlockState(x, y + 1, z);
 			if (plant instanceof IPaddyCrop)
 			{
-				plant.dropBlockAsItem(world, x, y + 1, z, world.getBlockMetadata(x, y + 1, z), 0);
+				plant.dropBlockAsItem(world, x, y + 1, z, world.getBlockState(x, y + 1, z), 0);
 				world.setBlockToAir(x, y + 1, z);
 			}
 		}
@@ -207,7 +207,7 @@ public abstract class BlockPaddyBase extends GrcBlockBase implements IPaddy
 	@SuppressWarnings({"rawtypes", "unchecked"})
 	public void addCollisionBoxesToList(World world, int i, int j, int k, AxisAlignedBB axis, List list, Entity entity)
 	{
-		final int meta = world.getBlockMetadata(i, j, k);
+		final int meta = world.getBlockState(i, j, k);
 
 		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.875F, 1.0F);
 		super.addCollisionBoxesToList(world, i, j, k, axis, list, entity);
@@ -304,7 +304,7 @@ public abstract class BlockPaddyBase extends GrcBlockBase implements IPaddy
 			m = 1;
 		}
 
-		int meta = world.getBlockMetadata(i, j, k);
+		int meta = world.getBlockState(i, j, k);
 
 		if (meta > 0)
 		{

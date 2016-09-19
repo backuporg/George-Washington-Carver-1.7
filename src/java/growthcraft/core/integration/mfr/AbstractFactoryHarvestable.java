@@ -86,7 +86,7 @@ public abstract class AbstractFactoryHarvestable<TBlock extends Block> implement
 	public List<ItemStack> getDrops(World world, Random rand, Map<String, Boolean> harvesterSettings, int x, int y, int z)
 	{
 		if (plantBlock != null)
-			return plantBlock.getDrops(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
+			return plantBlock.getDrops(world, x, y, z, world.getBlockState(x, y, z), 0);
 		return new ArrayList<ItemStack>();
 	}
 

@@ -50,7 +50,7 @@ public class RenderBamboo implements ISimpleBlockRenderingHandler
 			final Tessellator tessellator = Tessellator.instance;
 			tessellator.setBrightness(block.getMixedBrightnessForBlock(world, x, y, z));
 			final float f = 1.0F;
-			final int meta = world.getBlockMetadata(x, y, z);
+			final int meta = world.getBlockState(x, y, z);
 			int color = 0xFFFFFF;
 			if (meta == 0)
 			{
@@ -307,10 +307,10 @@ public class RenderBamboo implements ISimpleBlockRenderingHandler
 
 		if (m == RenderUtils.Face.ZNEG)
 		{
-			tm0 = world.getBlockMetadata(x, y, z - 1);
+			tm0 = world.getBlockState(x, y, z - 1);
 			if ((tm0 & 8) > 7)
 			{
-				tm0 = world.getBlockMetadata(x, y - 1, z - 1);
+				tm0 = world.getBlockState(x, y - 1, z - 1);
 			}
 			tm = tm0 & 3;
 			if (tm == 0)
@@ -337,10 +337,10 @@ public class RenderBamboo implements ISimpleBlockRenderingHandler
 		}
 		else if (m == RenderUtils.Face.ZPOS)
 		{
-			tm0 = world.getBlockMetadata(x, y, z + 1);
+			tm0 = world.getBlockState(x, y, z + 1);
 			if ((tm0 & 8) > 7)
 			{
-				tm0 = world.getBlockMetadata(x, y - 1, z + 1);
+				tm0 = world.getBlockState(x, y - 1, z + 1);
 			}
 
 			tm = tm0 & 3;
@@ -368,10 +368,10 @@ public class RenderBamboo implements ISimpleBlockRenderingHandler
 		}
 		else if (m == RenderUtils.Face.XNEG)
 		{
-			tm0 = world.getBlockMetadata(x - 1, y, z);
+			tm0 = world.getBlockState(x - 1, y, z);
 			if ((tm0 & 8) > 7)
 			{
-				tm0 = world.getBlockMetadata(x - 1, y - 1, z);
+				tm0 = world.getBlockState(x - 1, y - 1, z);
 			}
 			tm = tm0 & 3;
 			if (tm == 1)
@@ -400,10 +400,10 @@ public class RenderBamboo implements ISimpleBlockRenderingHandler
 		}
 		else if (m == RenderUtils.Face.XPOS)
 		{
-			tm0 = world.getBlockMetadata(x + 1, y, z);
+			tm0 = world.getBlockState(x + 1, y, z);
 			if ((tm0 & 8) > 7)
 			{
-				tm0 = world.getBlockMetadata(x + 1, y - 1, z);
+				tm0 = world.getBlockState(x + 1, y - 1, z);
 			}
 			tm = tm0 & 3;
 			if (tm == 1)

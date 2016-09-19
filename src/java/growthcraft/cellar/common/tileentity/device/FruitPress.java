@@ -63,7 +63,7 @@ public class FruitPress extends DeviceProgressive
 	 */
 	public int getPresserMetadata()
 	{
-		return getWorld().getBlockMetadata(parent.xCoord, parent.yCoord + 1, parent.zCoord);
+		return getWorld().getBlockState(parent.xCoord, parent.yCoord + 1, parent.zCoord);
 	}
 
 	private boolean preparePressing()

@@ -24,7 +24,7 @@ public class BonemealEventBamboo
 			{
 				event.setResult(Result.DENY);
 			}
-			else if (event.world.getBlockMetadata(event.x, event.y, event.z) != 0)
+			else if (event.world.getBlockState(event.x, event.y, event.z) != 0)
 			{
 				event.setResult(Result.DENY);
 			}

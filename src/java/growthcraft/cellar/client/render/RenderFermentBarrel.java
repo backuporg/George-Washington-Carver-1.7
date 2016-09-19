@@ -133,7 +133,7 @@ public class RenderFermentBarrel implements ISimpleBlockRenderingHandler
 				fermentBarrel.getIconByIndex(2),
 				fermentBarrel.getIconByIndex(3)
 			};
-			final int meta = world.getBlockMetadata(x, y, z);
+			final int meta = world.getBlockState(x, y, z);
 			final double d = 0.0625D;
 
 			if (meta == 0 || meta == 1)

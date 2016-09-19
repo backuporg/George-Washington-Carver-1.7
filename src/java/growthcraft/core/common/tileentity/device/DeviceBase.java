@@ -57,7 +57,7 @@ public class DeviceBase implements INBTSerializableContext, IStreamable
 
 	public int getMetadata()
 	{
-		return parent.getBlockMetadata();
+		return parent.getBlockState();
 	}
 
 	public IInventory getInventory()

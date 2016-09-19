@@ -26,7 +26,7 @@ public class RenderFishTrap implements ISimpleBlockRenderingHandler
 	{
 		if (modelId == id)
 		{
-			final int meta = world.getBlockMetadata(x, y, z);
+			final int meta = world.getBlockState(x, y, z);
 			renderer.renderStandardBlock(block, x, y, z);
 			final Tessellator tes = Tessellator.instance;
 			tes.setBrightness(block.getMixedBrightnessForBlock(world, x, y, z));

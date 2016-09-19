@@ -49,11 +49,11 @@ public abstract class BlockAppleSapling extends BlockBush implements IGrowable
 
 	public void markOrGrowMarked(World world, int x, int y, int z, Random random)
 	{
-		final int meta = world.getBlockMetadata(x, y, z);
+		final int meta = world.getBlockState(x, y, z);
 
 		if ((meta & 8) == 0)
 		{
-			world.setBlockMetadataWithNotify(x, y, z, meta | 8, BlockFlags.SUPRESS_RENDER);
+			world.setBlockState(x, y, z, meta | 8, BlockFlags.SUPRESS_RENDER);
 		}
 		else
 		{
@@ -65,7 +65,7 @@ public abstract class BlockAppleSapling extends BlockBush implements IGrowable
 	{
 		if (!TerrainGen.saplingGrowTree(world, random, x, y, z)) return;
 
-		final int meta = world.getBlockMetadata(x, y, z) & 3;
+		final int meta = world.getBlockState(x, y, z) & 3;
 		final WorldGenerator generator = new WorldGenAppleTree(true);
 
 		world.setBlockToAir(x, y, z);
@@ -80,7 +80,7 @@ public abstract class BlockAppleSapling extends BlockBush implements IGrowable
 	@Override
 	public boolean func_149851_a(World world, int x, int y, int z, boolean isClient)
 	{
-		return (world.getBlockMetadata(x, y, z) & 8) == 0;
+		return (world.getBlockState(x, y, z) & 8) == 0;
 	}
 
 	/* SideOnly(Side.SERVER) Can this apply bonemeal effect? */

@@ -53,7 +53,7 @@ public abstract class BlockAppleLeaves extends BlockLeaves implements IShearable
 	@Override
 	public boolean func_149851_a(World world, int x, int y, int z, boolean isClient)
 	{
-		return world.isAirBlock(x, y - 1, z) && (world.getBlockMetadata(x, y, z) & 3) == 0;
+		return world.isAirBlock(x, y - 1, z) && (world.getBlockState(x, y, z) & 3) == 0;
 	}
 
 	/* SideOnly(Side.SERVER) Can this apply bonemeal effect? */
@@ -80,7 +80,7 @@ public abstract class BlockAppleLeaves extends BlockLeaves implements IShearable
 
 	private void removeLeaves(World world, int x, int y, int z)
 	{
-		this.dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
+		this.dropBlockAsItem(world, x, y, z, world.getBlockState(x, y, z), 0);
 		world.setBlockToAir(x, y, z);
 	}
 
@@ -92,7 +92,7 @@ public abstract class BlockAppleLeaves extends BlockLeaves implements IShearable
 	{
 		if (!world.isRemote)
 		{
-			final int meta = world.getBlockMetadata(x, y, z);
+			final int meta = world.getBlockState(x, y, z);
 
 			if ((meta & 4) == 0)
 			{
@@ -200,7 +200,7 @@ public abstract class BlockAppleLeaves extends BlockLeaves implements IShearable
 
 				if (l1 >= 0)
 				{
-					world.setBlockMetadataWithNotify(x, y, z, meta & -9, BlockFlags.SUPRESS_RENDER);
+					world.setBlockState(x, y, z, meta & -9, BlockFlags.SUPRESS_RENDER);
 				}
 				else
 				{
@@ -271,7 +271,7 @@ public abstract class BlockAppleLeaves extends BlockLeaves implements IShearable
 	@Override
 	public void beginLeavesDecay(World world, int x, int y, int z)
 	{
-		world.setBlockMetadataWithNotify(x, y, z, world.getBlockMetadata(x, y, z) | LeavesStage.DECAY_MASK, BlockFlags.SUPRESS_RENDER);
+		world.setBlockState(x, y, z, world.getBlockState(x, y, z) | LeavesStage.DECAY_MASK, BlockFlags.SUPRESS_RENDER);
 	}
 
 	@Override
@@ -384,7 +384,7 @@ public abstract class BlockAppleLeaves extends BlockLeaves implements IShearable
 	@SideOnly(Side.CLIENT)
 	public int colorMultiplier(IBlockAccess world, int x, int y, int z)
 	{
-		final int meta = world.getBlockMetadata(x, y, z);
+		final int meta = world.getBlockState(x, y, z);
 
 		int r = 0;
 		int g = 0;
@@ -417,7 +417,7 @@ public abstract class BlockAppleLeaves extends BlockLeaves implements IShearable
 	public ArrayList<ItemStack> onSheared(ItemStack item, IBlockAccess world, int x, int y, int z, int fortune)
 	{
 		final ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
-		ret.add(new ItemStack(Blocks.LEAVES, 1, world.getBlockMetadata(x, y, z) & 3));
+		ret.add(new ItemStack(Blocks.LEAVES, 1, world.getBlockState(x, y, z) & 3));
 		return ret;
 	}
 }

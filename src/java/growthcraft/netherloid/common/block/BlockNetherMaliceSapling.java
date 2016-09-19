@@ -78,11 +78,11 @@ public abstract class BlockNetherMaliceSapling extends BlockBush implements IGro
 
 	public void markOrGrowMarked(World world, int x, int y, int z, Random random)
 	{
-		final int meta = world.getBlockMetadata(x, y, z);
+		final int meta = world.getBlockState(x, y, z);
 
 		if ((meta & 8) == 0)
 		{
-			world.setBlockMetadataWithNotify(x, y, z, meta | 8, 4);
+			world.setBlockState(x, y, z, meta | 8, 4);
 		}
 		else
 		{
@@ -94,7 +94,7 @@ public abstract class BlockNetherMaliceSapling extends BlockBush implements IGro
 	{
 		if (!TerrainGen.saplingGrowTree(world, random, x, y, z)) return;
 
-		final int meta = world.getBlockMetadata(x, y, z) & 3;
+		final int meta = world.getBlockState(x, y, z) & 3;
 		final WorldGenerator generator = new WorldGeneratorMaliceTree(true);
 
 		world.setBlock(x, y, z, Blocks.AIR, 0, BlockFlags.ALL);
@@ -109,7 +109,7 @@ public abstract class BlockNetherMaliceSapling extends BlockBush implements IGro
 	@Override
 	public boolean func_149851_a(World world, int x, int y, int z, boolean isClient)
 	{
-		return (world.getBlockMetadata(x, y, z) & 8) == 0;
+		return (world.getBlockState(x, y, z) & 8) == 0;
 	}
 
 	/* SideOnly(Side.SERVER) Can this apply bonemeal effect? */

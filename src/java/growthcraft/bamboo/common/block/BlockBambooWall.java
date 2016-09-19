@@ -6,6 +6,8 @@ import growthcraft.bamboo.GrowthCraftBamboo;
 import growthcraft.bamboo.client.renderer.RenderBambooWall;
 import growthcraft.core.common.block.GrcBlockBase;
 
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -42,16 +44,16 @@ public class BlockBambooWall extends GrcBlockBase
 	 * STUFF
 	 ************/
 	@Override
-	public boolean getBlocksMovement(IBlockAccess world, int x, int y, int z)
+	public boolean getBlocksMovement(IBlockAccess world, BlockPos pos, IBlockState state)
 	{
 		return false;
 	}
 
-	public boolean canConnectWallTo(IBlockAccess world, int x, int y, int z)
+	public boolean canConnectWallTo(IBlockAccess world, BlockPos pos, IBlockState state)
 	{
-		if (world.isAirBlock(x, y, z)) return false;
+		if (world.isAirBlock(pos)) return false;
 
-		final Block block = world.getBlockState(x, y, z);
+		final IBlockState block = world.getBlockState(pos);
 
 		if (this == block ||
 			GrowthCraftBamboo.blocks.bambooStalk.getBlockState() == block ||
@@ -115,19 +117,19 @@ public class BlockBambooWall extends GrcBlockBase
 	 * BOXES
 	 ************/
 	@Override
-	public void setBlockBoundsBasedOnState(IBlockAccess world, int x, int y, int z)
+	public void setBlockBoundsBasedOnState(IBlockAccess world, BlockPos pos)
 	{
 		int tm;
 
-		final Block idXneg = world.getBlockState(x - 1, y, z);
+		final Block idXneg = world.getBlockState(pos.getX() - 1, pos.getY(), pos.getZ());
 		final Block idXpos = world.getBlockState(x + 1, y, z);
 		final Block idZneg = world.getBlockState(x, y, z - 1);
 		final Block idZpos = world.getBlockState(x, y, z + 1);
 
-		int metaXneg = world.getBlockMetadata(x - 1, y, z);
-		int metaXpos = world.getBlockMetadata(x + 1, y, z);
-		int metaZneg = world.getBlockMetadata(x, y, z - 1);
-		int metaZpos = world.getBlockMetadata(x, y, z + 1);
+		int metaXneg = world.getBlockState(x - 1, y, z);
+		int metaXpos = world.getBlockState(x + 1, y, z);
+		int metaZneg = world.getBlockState(x, y, z - 1);
+		int metaZpos = world.getBlockState(x, y, z + 1);
 
 		final boolean flagXneg = this.canConnectWallTo(world, x - 1, y, z) || (idXneg instanceof BlockStairs && (metaXneg & 3) == 0);
 		final boolean flagXpos = this.canConnectWallTo(world, x + 1, y, z) || (idXpos instanceof BlockStairs && (metaXpos & 3) == 1);
@@ -148,7 +150,7 @@ public class BlockBambooWall extends GrcBlockBase
 		{
 			if ((metaZneg & 8) > 7)
 			{
-				metaZneg = world.getBlockMetadata(x, y - 1, z - 1);
+				metaZneg = world.getBlockState(pos.getX(), pos.getY() - 1, pos.getZ() - 1);
 			}
 
 			tm = metaZneg & 3;
@@ -178,7 +180,7 @@ public class BlockBambooWall extends GrcBlockBase
 		{
 			if ((metaZpos & 8) > 7)
 			{
-				metaZpos = world.getBlockMetadata(x, y - 1, z + 1);
+				metaZpos = world.getBlockState(x, y - 1, z + 1);
 			}
 
 			tm = metaZpos & 3;
@@ -208,7 +210,7 @@ public class BlockBambooWall extends GrcBlockBase
 		{
 			if ((metaXneg & 8) > 7)
 			{
-				metaXneg = world.getBlockMetadata(x - 1, y - 1, z);
+				metaXneg = world.getBlockState(x - 1, y - 1, z);
 			}
 
 			tm = metaXneg & 3;
@@ -238,7 +240,7 @@ public class BlockBambooWall extends GrcBlockBase
 		{
 			if ((metaXpos & 8) > 7)
 			{
-				metaXpos = world.getBlockMetadata(x + 1, y - 1, z);
+				metaXpos = world.getBlockState(x + 1, y - 1, z);
 			}
 
 			tm = metaXpos & 3;
@@ -273,10 +275,10 @@ public class BlockBambooWall extends GrcBlockBase
 		final Block idZneg = world.getBlockState(x, y, z - 1);
 		final Block idZpos = world.getBlockState(x, y, z + 1);
 
-		int metaXneg = world.getBlockMetadata(x - 1, y, z);
-		int metaXpos = world.getBlockMetadata(x + 1, y, z);
-		int metaZneg = world.getBlockMetadata(x, y, z - 1);
-		int metaZpos = world.getBlockMetadata(x, y, z + 1);
+		int metaXneg = world.getBlockState(x - 1, y, z);
+		int metaXpos = world.getBlockState(x + 1, y, z);
+		int metaZneg = world.getBlockState(x, y, z - 1);
+		int metaZpos = world.getBlockState(x, y, z + 1);
 
 		final boolean flagXneg = this.canConnectWallTo(world, x - 1, y, z) || (idXneg instanceof BlockStairs && (metaXneg & 3) == 0);
 		final boolean flagXpos = this.canConnectWallTo(world, x + 1, y, z) || (idXpos instanceof BlockStairs && (metaXpos & 3) == 1);
@@ -306,7 +308,7 @@ public class BlockBambooWall extends GrcBlockBase
 		{
 			if ((metaXneg & 8) > 7)
 			{
-				metaXneg = world.getBlockMetadata(x - 1, y - 1, z);
+				metaXneg = world.getBlockState(x - 1, y - 1, z);
 			}
 
 			tm = metaXneg & 3;
@@ -362,7 +364,7 @@ public class BlockBambooWall extends GrcBlockBase
 		{
 			if ((metaXpos & 8) > 7)
 			{
-				metaXpos = world.getBlockMetadata(x + 1, y - 1, z);
+				metaXpos = world.getBlockState(x + 1, y - 1, z);
 			}
 
 			tm = metaXpos & 3;
@@ -417,7 +419,7 @@ public class BlockBambooWall extends GrcBlockBase
 		{
 			if ((metaZneg & 8) > 7)
 			{
-				metaZneg = world.getBlockMetadata(x, y - 1, z - 1);
+				metaZneg = world.getBlockState(x, y - 1, z - 1);
 			}
 
 			tm = metaZneg & 3;
@@ -471,7 +473,7 @@ public class BlockBambooWall extends GrcBlockBase
 		{
 			if ((metaZpos & 8) > 7)
 			{
-				metaZpos = world.getBlockMetadata(x, y - 1, z + 1);
+				metaZpos = world.getBlockState(x, y - 1, z + 1);
 			}
 
 			tm = metaZpos & 3;

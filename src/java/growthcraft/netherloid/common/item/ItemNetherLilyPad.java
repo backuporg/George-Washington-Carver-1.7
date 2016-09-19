@@ -67,7 +67,7 @@ public class ItemNetherLilyPad extends ItemBlock
 					return itemstack;
 				}
 
-				if (world.getBlockState(x, y, z).getMaterial() == Material.LAVA && world.getBlockMetadata(x, y, z) == 0 && world.isAirBlock(x, y + 1, z))
+				if (world.getBlockState(x, y, z).getMaterial() == Material.LAVA && world.getBlockState(x, y, z) == 0 && world.isAirBlock(x, y + 1, z))
 				{
 					world.setBlock(x, y + 1, z, lilypadBlock);
 

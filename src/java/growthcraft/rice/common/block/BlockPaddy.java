@@ -42,10 +42,10 @@ public class BlockPaddy extends BlockPaddyBase
 	{
 		if (world.rand.nextInt(20) == 0)
 		{
-			final int meta = world.getBlockMetadata(x, y, z);
+			final int meta = world.getBlockState(x, y, z);
 			if (meta < paddyFieldMax)
 			{
-				world.setBlockMetadataWithNotify(x, y, z, meta + 1, BlockFlags.UPDATE_AND_SYNC);
+				world.setBlockState(x, y, z, meta + 1, BlockFlags.UPDATE_AND_SYNC);
 			}
 		}
 	}

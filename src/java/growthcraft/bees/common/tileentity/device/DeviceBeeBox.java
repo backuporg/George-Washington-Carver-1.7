@@ -123,7 +123,7 @@ public class DeviceBeeBox extends DeviceBase
 				if (!world.isAirBlock(fx, fy, fz))
 				{
 					final Block flower = world.getBlockState(fx, y, fz);
-					final int fm = world.getBlockMetadata(fx, y, fz);
+					final int fm = world.getBlockState(fx, y, fz);
 					if (flower != null)
 					{
 						if (isBlockFlower(flower, fm))
@@ -149,7 +149,7 @@ public class DeviceBeeBox extends DeviceBase
 			for (int loopz = -checkSize; loopz < checkSize; loopz++)
 			{
 				final Block flower = world.getBlockState(i + loopx, y, k + loopz);
-				final int fm = world.getBlockMetadata(i + loopx, y, k + loopz);
+				final int fm = world.getBlockState(i + loopx, y, k + loopz);
 				final Block soil = world.getBlockState(i + loopx, y - 1, k + loopz);
 				float f1 = 0.0F;
 
@@ -164,8 +164,8 @@ public class DeviceBeeBox extends DeviceBase
 						f1 = 1.08F;
 					}
 				}
-				else if (flower == Blocks.FLOWER_POT && (world.getBlockMetadata(i + loopx, y, k + loopz) == 1 ||
-					world.getBlockMetadata(i + loopx, y, k + loopz) == 2))
+				else if (flower == Blocks.FLOWER_POT && (world.getBlockState(i + loopx, y, k + loopz) == 1 ||
+					world.getBlockState(i + loopx, y, k + loopz) == 2))
 				{
 					//f1 = 2.0F;
 					f1 = 0.72F;

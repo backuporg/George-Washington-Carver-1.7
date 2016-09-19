@@ -27,14 +27,14 @@ public class BonemealEventRice
 			for (int k = z - 1; k <= z + 1; ++k)
 			{
 				final boolean isRiceBlock = (GrowthCraftRice.blocks.riceBlock.getBlockState() == world.getBlockState(i, y, k)) &&
-					(world.getBlockMetadata(i, y, k) != 7);
+					(world.getBlockState(i, y, k) != 7);
 				final boolean isPaddyBelow = RiceBlockCheck.isPaddy(world.getBlockState(i, y - 1, k)) &&
-					(world.getBlockMetadata(i, y - 1, k) != 0);
+					(world.getBlockState(i, y - 1, k) != 0);
 
 				if (isRiceBlock && isPaddyBelow)
 				{
-					mplus = world.getBlockMetadata(i, y, k) + r;
-					mminus = world.getBlockMetadata(i, y - 1, k) - r;
+					mplus = world.getBlockState(i, y, k) + r;
+					mminus = world.getBlockState(i, y - 1, k) - r;
 					if (mplus > 7)
 					{
 						mplus = 7;
@@ -43,8 +43,8 @@ public class BonemealEventRice
 					{
 						mminus = 0;
 					}
-					world.setBlockMetadataWithNotify(i, y, k, mplus, BlockFlags.SYNC);
-					world.setBlockMetadataWithNotify(i, y - 1, k, mminus, BlockFlags.SYNC);
+					world.setBlockState(i, y, k, mplus, BlockFlags.SYNC);
+					world.setBlockState(i, y - 1, k, mminus, BlockFlags.SYNC);
 					world.playAuxSFX(AuxFX.BONEMEAL, i, y, k, 0);
 					world.notifyBlockChange(i, y, k, Blocks.AIR);
 					world.notifyBlockChange(i, y - 1, k, Blocks.AIR);

@@ -100,7 +100,7 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 
 	public void doRotateBlock(World world, BlockPos pos, EnumFacing side, IBlockState state)
 	{
-		final int meta = world.getBlockMetadata(pos);
+		final int meta = world.getBlockState(pos);
 		final EnumFacing current = EnumFacing.getFront(meta);
 		EnumFacing newDirection = current;
 		if (current == side)
@@ -173,7 +173,7 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 
 	protected void fellBlockFromWrench(World world, BlockPos pos, IBlockState state)
 	{
-		final int metadata = world.getBlockMetadata(pos);
+		final int metadata = world.getBlockState(pos);
 		final List<ItemStack> drops = new ArrayList<ItemStack>();
 		if (shouldDropTileStack(world, pos, state, metadata, 0))
 		{

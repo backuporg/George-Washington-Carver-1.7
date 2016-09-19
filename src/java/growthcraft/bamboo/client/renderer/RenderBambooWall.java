@@ -90,10 +90,10 @@ public class RenderBambooWall implements ISimpleBlockRenderingHandler
 			final Block idZneg = world.getBlockState(x, y, z - 1);
 			final Block idZpos = world.getBlockState(x, y, z + 1);
 
-			int metaXneg = world.getBlockMetadata(x - 1, y, z);
-			int metaXpos = world.getBlockMetadata(x + 1, y, z);
-			int metaZneg = world.getBlockMetadata(x, y, z - 1);
-			int metaZpos = world.getBlockMetadata(x, y, z + 1);
+			int metaXneg = world.getBlockState(x - 1, y, z);
+			int metaXpos = world.getBlockState(x + 1, y, z);
+			int metaZneg = world.getBlockState(x, y, z - 1);
+			int metaZpos = world.getBlockState(x, y, z + 1);
 
 			final boolean flagXneg = blk.canConnectWallTo(world, x - 1, y, z) || (idXneg instanceof BlockStairs && (metaXneg & 3) == 0);
 			final boolean flagXpos = blk.canConnectWallTo(world, x + 1, y, z) || (idXpos instanceof BlockStairs && (metaXpos & 3) == 1);
@@ -115,7 +115,7 @@ public class RenderBambooWall implements ISimpleBlockRenderingHandler
 			{
 				if ((metaXneg & 8) > 7)
 				{
-					metaXneg = world.getBlockMetadata(x - 1, y - 1, z);
+					metaXneg = world.getBlockState(x - 1, y - 1, z);
 				}
 
 				tm = metaXneg & 3;
@@ -171,7 +171,7 @@ public class RenderBambooWall implements ISimpleBlockRenderingHandler
 			{
 				if ((metaXpos & 8) > 7)
 				{
-					metaXpos = world.getBlockMetadata(x + 1, y - 1, z);
+					metaXpos = world.getBlockState(x + 1, y - 1, z);
 				}
 
 				tm = metaXpos & 3;
@@ -225,7 +225,7 @@ public class RenderBambooWall implements ISimpleBlockRenderingHandler
 			{
 				if ((metaZneg & 8) > 7)
 				{
-					metaZneg = world.getBlockMetadata(x, y - 1, z - 1);
+					metaZneg = world.getBlockState(x, y - 1, z - 1);
 				}
 
 				tm = metaZneg & 3;
@@ -279,7 +279,7 @@ public class RenderBambooWall implements ISimpleBlockRenderingHandler
 			{
 				if ((metaZpos & 8) > 7)
 				{
-					metaZpos = world.getBlockMetadata(x, y - 1, z + 1);
+					metaZpos = world.getBlockState(x, y - 1, z + 1);
 				}
 
 				tm = metaZpos & 3;

@@ -11,6 +11,8 @@ import growthcraft.core.util.SchemaToVillage;
 
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
@@ -87,35 +89,35 @@ public class ComponentVillageAppleFarm extends StructureVillagePieces.Village im
 		return null;
 	}
 
-	public void placeBlockAtCurrentPositionPub(World world, Block block, int meta, int x, int y, int z, StructureBoundingBox box)
+	public void placeBlockAtCurrentPositionPub(World world, Block block, int meta, BlockPos pos, Vec3i vec, StructureBoundingBox box)
 	{
-		placeBlockAtCurrentPosition(world, block, meta, x, y, z, box);
+		placeBlockAtCurrentPosition(world, block, meta, pos, box);
 	}
 
-	protected void placeWorldGenAt(World world, Random random, int tx, int ty, int tz, StructureBoundingBox bb, WorldGenerator generator)
+	protected void placeWorldGenAt(World world, Random random, int tx, int ty, int tz, StructureBoundingBox bb, WorldGenerator generator, BlockPos pos, Vec3i vec)
 	{
 		final int x = this.getXWithOffset(tx, tz);
 		final int y = this.getYWithOffset(ty);
 		final int z = this.getZWithOffset(tx, tz);
 
-		if (bb.isVecInside(x, y, z))
+		if (bb.isVecInside(vec))
 		{
-			generator.generate(world, random, x, y, z);
+			generator.generate(world, random, pos);
 		}
 	}
 
 	public boolean addComponentParts(World world, Random random, StructureBoundingBox box)
 	{
-		if (field_143015_k < 0)
+		if (averageGroundLvl < 0)
 		{
-			this.field_143015_k = this.getAverageGroundLevel(world, box);
+			this.averageGroundLvl = this.getAverageGroundLevel(world, box);
 
-			if (field_143015_k < 0)
+			if (averageGroundLvl < 0)
 			{
 				return true;
 			}
 
-			boundingBox.offset(0, field_143015_k - boundingBox.maxY + 9, 0);
+			boundingBox.offset(0, averageGroundLvl - boundingBox.maxY + 9, 0);
 		}
 
 		// clear entire bounding box

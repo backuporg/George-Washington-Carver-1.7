@@ -36,7 +36,7 @@ public abstract class ItemAppleSeeds extends GrcItemBase implements IPlantable
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int EnumFacing, float par8, float par9, float par10)
 	{
 		final Block block = world.getBlockState(x, y, z);
-		if (block == Blocks.SNOW_LAYER && (world.getBlockMetadata(x, y, z) & 7) < 1)
+		if (block == Blocks.SNOW_LAYER && (world.getBlockState(x, y, z) & 7) < 1)
 		{
 			EnumFacing = 1;
 		}

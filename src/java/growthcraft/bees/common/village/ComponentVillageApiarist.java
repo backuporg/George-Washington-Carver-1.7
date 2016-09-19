@@ -191,7 +191,8 @@ public class ComponentVillageApiarist extends StructureVillagePieces.Village imp
 		new WeightedRandomChestContent(GrowthCraftBees.items.honeyCombEmpty.asStack(), 1, 3, 5),
 		new WeightedRandomChestContent(GrowthCraftBees.items.honeyCombFilled.asStack(), 1, 3, 5),
 		new WeightedRandomChestContent(GrowthCraftBees.items.honeyJar.asStack(), 1, 1, 10),
-		new WeightedRandomChestContent(GrowthCraftBees.blocks.beeBox.asStack(), 1, 2, 5)
+		new WeightedRandomChestContent(GrowthCraftBees.blocks.beeBox.asStack(), 1, 2, 5),
+		new WeightedRandomChestContent(GrowthCraftBees.items.beesWax.asStack(), 1, 10, 5)
 	};
 
 	// DO NOT REMOVE
@@ -223,16 +224,16 @@ public class ComponentVillageApiarist extends StructureVillagePieces.Village imp
 
 	public boolean addComponentParts(World world, Random random, StructureBoundingBox box)
 	{
-		if (this.field_143015_k < 0)
+		if (this.averageGroundLvl < 0)
 		{
-			this.field_143015_k = this.getAverageGroundLevel(world, box);
+			this.averageGroundLvl = this.getAverageGroundLevel(world, box);
 
-			if (this.field_143015_k < 0)
+			if (this.averageGroundLvl < 0)
 			{
 				return true;
 			}
 
-			this.boundingBox.offset(0, this.field_143015_k - this.boundingBox.maxY + 7, 0);
+			this.boundingBox.offset(0, this.averageGroundLvl - this.boundingBox.maxY + 7, 0);
 		}
 
 		// clear entire bounding box

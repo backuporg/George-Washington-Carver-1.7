@@ -65,7 +65,7 @@ public class HeatBlockComponent
 		final int z = tileEntity.zCoord + EnumFacing.offsetZ;
 
 		final Block block = getWorld().getBlockState(x, y, z);
-		final int meta = getWorld().getBlockMetadata(x, y, z);
+		final int meta = getWorld().getBlockState(x, y, z);
 
 		final IHeatSourceBlock heatSource = CellarRegistry.instance().heatSource().getHeatSource(block, meta);
 

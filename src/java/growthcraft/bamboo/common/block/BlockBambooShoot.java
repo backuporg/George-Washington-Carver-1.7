@@ -79,7 +79,7 @@ public abstract class BlockBambooShoot extends BlockBush implements ICropDataPro
 	{
 		if (!canBlockStay(world, x, y, z))
 		{
-			dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
+			dropBlockAsItem(world, x, y, z, world.getBlockState(x, y, z), 0);
 			world.setBlockToAir(x, y, z);
 		}
 	}
@@ -115,7 +115,7 @@ public abstract class BlockBambooShoot extends BlockBush implements ICropDataPro
 	{
 		if (!TerrainGen.saplingGrowTree(world, rand, x, y, z)) return;
 
-		final int meta = world.getBlockMetadata(x, y, z) & 3;
+		final int meta = world.getBlockState(x, y, z) & 3;
 		final WorldGenerator generator = new WorldGenBamboo(true);
 
 		world.setBlockToAir(x, y, z);
@@ -128,11 +128,11 @@ public abstract class BlockBambooShoot extends BlockBush implements ICropDataPro
 
 	public void markOrGrowMarked(World world, int x, int y, int z, Random random)
 	{
-		final int meta = world.getBlockMetadata(x, y, z);
+		final int meta = world.getBlockState(x, y, z);
 
 		if ((meta & 8) == 0)
 		{
-			world.setBlockMetadataWithNotify(x, y, z, meta | 8, BlockFlags.SUPRESS_RENDER);
+			world.setBlockState(x, y, z, meta | 8, BlockFlags.SUPRESS_RENDER);
 		}
 		else
 		{

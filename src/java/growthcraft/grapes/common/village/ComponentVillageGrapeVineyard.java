@@ -38,16 +38,16 @@ public class ComponentVillageGrapeVineyard extends StructureVillagePieces.Villag
 
 	public boolean addComponentParts(World world, Random random, StructureBoundingBox box)
 	{
-		if (this.field_143015_k < 0)
+		if (this.averageGroundLvl < 0)
 		{
-			this.field_143015_k = this.getAverageGroundLevel(world, box);
+			this.averageGroundLvl = this.getAverageGroundLevel(world, box);
 
-			if (this.field_143015_k < 0)
+			if (this.averageGroundLvl < 0)
 			{
 				return true;
 			}
 
-			this.boundingBox.offset(0, this.field_143015_k - this.boundingBox.maxY + 6 - 1, 0);
+			this.boundingBox.offset(0, this.averageGroundLvl - this.boundingBox.maxY + 6 - 1, 0);
 		}
 
 		this.fillWithBlocks(world, box, 0, 1, 0, 12, 6, 8, Blocks.AIR, Blocks.AIR, false);

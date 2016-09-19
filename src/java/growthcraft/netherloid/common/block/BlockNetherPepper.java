@@ -75,18 +75,18 @@ public abstract class BlockNetherPepper extends BlockBush implements ICropDataPr
 
 	private void incrementGrowth(World world, int x, int y, int z, int meta)
 	{
-		world.setBlockMetadataWithNotify(x, y, z, meta + 1, BlockFlags.SYNC);
+		world.setBlockState(x, y, z, meta + 1, BlockFlags.SYNC);
 		AppleCore.announceGrowthTick(this, world, x, y, z, meta);
 	}
 
 	public boolean isFullyGrown(World world, int x, int y, int z)
 	{
-		return world.getBlockMetadata(x, y, z) >= PepperStages.FRUIT;
+		return world.getBlockState(x, y, z) >= PepperStages.FRUIT;
 	}
 
 	public boolean canGrow(World world, int x, int y, int z)
 	{
-		return world.getBlockMetadata(x, y, z) < PepperStages.FRUIT;
+		return world.getBlockState(x, y, z) < PepperStages.FRUIT;
 	}
 
 	/* IGrowable: can this grow anymore */
@@ -109,7 +109,7 @@ public abstract class BlockNetherPepper extends BlockBush implements ICropDataPr
 		{
 			if (!world.isRemote)
 			{
-				incrementGrowth(world, x, y, z, world.getBlockMetadata(x, y, z));
+				incrementGrowth(world, x, y, z, world.getBlockState(x, y, z));
 			}
 			return true;
 		}
@@ -143,7 +143,7 @@ public abstract class BlockNetherPepper extends BlockBush implements ICropDataPr
 		{
 			if (Event.Result.ALLOW == result || random.nextInt(10) == 0)
 			{
-				incrementGrowth(world, x, y, z, world.getBlockMetadata(x, y, z));
+				incrementGrowth(world, x, y, z, world.getBlockState(x, y, z));
 			}
 		}
 		super.updateTick(world, x, y, z, random);
@@ -163,7 +163,7 @@ public abstract class BlockNetherPepper extends BlockBush implements ICropDataPr
 		{
 			if (!world.isRemote)
 			{
-				world.setBlockMetadataWithNotify(x, y, z, PepperStages.FULL, BlockFlags.SYNC);
+				world.setBlockState(x, y, z, PepperStages.FULL, BlockFlags.SYNC);
 				final int count = minPepperPicked + world.rand.nextInt(maxPepperPicked - minPepperPicked);
 				dropBlockAsItem(world, x, y, z, netherloid.items.netherPepper.asStack(count));
 			}
