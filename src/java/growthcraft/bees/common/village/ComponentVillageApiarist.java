@@ -192,7 +192,7 @@ public class ComponentVillageApiarist extends StructureVillagePieces.Village imp
 		new WeightedRandomChestContent(GrowthCraftBees.items.honeyCombFilled.asStack(), 1, 3, 5),
 		new WeightedRandomChestContent(GrowthCraftBees.items.honeyJar.asStack(), 1, 1, 10),
 		new WeightedRandomChestContent(GrowthCraftBees.blocks.beeBox.asStack(), 1, 2, 5),
-		new WeightedRandomChestContent(GrowthCraftBees.items.beesWax.asStack(), 1, 10, 5),
+		new WeightedRandomChestContent(GrowthCraftBees.items.beesWax.asStack(), 1, 10, 5)
 	};
 
 	// DO NOT REMOVE
