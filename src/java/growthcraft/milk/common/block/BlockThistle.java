@@ -102,7 +102,7 @@ public abstract class BlockThistle extends BlockBush implements ISpreadablePlant
 		super.updateTick(world, x, y, z, random);
 		if (!world.isRemote)
 		{
-			final int meta = world.getBlockMetadata(x, y, z);
+			final int meta = world.getBlockState(x, y, z);
 			if (meta >= ThistleStage.FLOWER)
 			{
 				final int spreadChance = GrowthCraftMilk.getConfig().thistleSpreadChance;
@@ -177,7 +177,7 @@ public abstract class BlockThistle extends BlockBush implements ISpreadablePlant
 	@Override
 	public void func_149853_b(World world, Random random, int x, int y, int z)
 	{
-		final int meta = world.getBlockMetadata(x, y, z);
+		final int meta = world.getBlockState(x, y, z);
 		if (meta < ThistleStage.FLOWER)
 		{
 			final int growthChance = GrowthCraftMilk.getConfig().thistleGrowthChance;

@@ -136,7 +136,7 @@ public class BlockBeeHive extends GrcBlockBase
 		super.onNeighborBlockChange(world, x, y, z, par5);
 		if (!this.canBlockStay(world, x, y, z))
 		{
-			dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
+			dropBlockAsItem(world, x, y, z, world.getBlockState(x, y, z), 0);
 			world.setBlockToAir(x, y, z);
 		}
 	}

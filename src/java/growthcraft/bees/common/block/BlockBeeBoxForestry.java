@@ -65,7 +65,7 @@ public class BlockBeeBoxForestry extends BlockBeeBox
 
 	public EnumBeeBoxForestry getBeeBoxType(World world, int x, int y, int z)
 	{
-		final int meta = world.getBlockMetadata(x, y, z);
+		final int meta = world.getBlockState(x, y, z);
 		return beeboxTypes[MathHelper.clamp_int(meta, 0, beeboxTypes.length)];
 	}
 

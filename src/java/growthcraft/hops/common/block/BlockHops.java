@@ -67,7 +67,7 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 
 	public boolean isMature(IBlockAccess world, int x, int y, int z)
 	{
-		final int meta = world.getBlockMetadata(x, y, z);
+		final int meta = world.getBlockState(x, y, z);
 		return meta >= HopsStage.FRUIT;
 	}
 
@@ -110,7 +110,7 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 			if (allowGrowthResult == Event.Result.DENY)
 				return;
 
-			final int meta = world.getBlockMetadata(x, y, z);
+			final int meta = world.getBlockState(x, y, z);
 			final float f = this.getGrowthRateLoop(world, x, y, z);
 
 			if (meta < HopsStage.BIG)
@@ -141,7 +141,7 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 	@Override
 	public boolean func_149851_a(World world, int x, int y, int z, boolean isClient)
 	{
-		final int meta = world.getBlockMetadata(x, y, z);
+		final int meta = world.getBlockState(x, y, z);
 		return (meta < HopsStage.FRUIT) || canSpreadLeaves(world, x, y, z);
 	}
 
@@ -156,7 +156,7 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 	@Override
 	public void func_149853_b(World world, Random random, int x, int y, int z)
 	{
-		final int meta = world.getBlockMetadata(x, y, z);
+		final int meta = world.getBlockState(x, y, z);
 		if (meta < HopsStage.BIG)
 		{
 			incrementGrowth(world, x, y, z, meta);
@@ -256,7 +256,7 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int EnumFacing, float par7, float par8, float par9)
 	{
-		if (world.getBlockMetadata(x, y, z) >= HopsStage.FRUIT)
+		if (world.getBlockState(x, y, z) >= HopsStage.FRUIT)
 		{
 			if (!world.isRemote)
 			{
@@ -304,7 +304,7 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 	{
 		return world.getBlockState(x, y, z) == this &&
 			BlockCheck.canSustainPlant(world, x, y - 1, z, EnumFacing.UP, this) &&
-			world.getBlockMetadata(x, y, z) >= HopsStage.BIG;
+			world.getBlockState(x, y, z) >= HopsStage.BIG;
 	}
 
 	/************
@@ -314,7 +314,7 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 	@SideOnly(Side.CLIENT)
 	public Item getItem(World world, int x, int y, int z)
 	{
-		final int meta = world.getBlockMetadata(x, y, z);
+		final int meta = world.getBlockState(x, y, z);
 		return meta < HopsStage.FRUIT ? GrowthCraftHops.items.hopSeeds.getItem() : GrowthCraftHops.items.hops.getItem();
 	}
 
@@ -354,7 +354,7 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 	{
 		final ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
 		ret.add(GrowthCraftCore.items.rope.asStack());
-		if (world.getBlockMetadata(x, y, z) >= HopsStage.BIG)
+		if (world.getBlockState(x, y, z) >= HopsStage.BIG)
 		{
 			ret.add(GrowthCraftHops.items.hops.asStack(1 + world.rand.nextInt(8)));
 		}
@@ -448,7 +448,7 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 	@SideOnly(Side.CLIENT)
 	public int colorMultiplier(IBlockAccess world, int x, int y, int z)
 	{
-		final int meta = world.getBlockMetadata(x, y, z);
+		final int meta = world.getBlockState(x, y, z);
 
 		int r = 0;
 		int g = 0;
@@ -548,7 +548,7 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 	@Override
 	public void setBlockBoundsBasedOnState(IBlockAccess world, int x, int y, int z)
 	{
-		final int meta = world.getBlockMetadata(x, y, z);
+		final int meta = world.getBlockState(x, y, z);
 		final float f = 0.0625F;
 
 		switch (meta)
@@ -583,6 +583,6 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 	@Override
 	public int getPlantMetadata(IBlockAccess world, int x, int y, int z)
 	{
-		return world.getBlockMetadata(x, y, z);
+		return world.getBlockState(x, y, z);
 	}
 }

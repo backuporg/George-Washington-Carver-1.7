@@ -45,7 +45,7 @@ public abstract class BlockGrapeVine1 extends BlockGrapeVineBase
 	@Override
 	protected boolean canUpdateGrowth(World world, int x, int y, int z)
 	{
-		return world.getBlockMetadata(x, y, z) == 0 || world.isAirBlock(x, y + 1, z);
+		return world.getBlockState(x, y, z) == 0 || world.isAirBlock(x, y + 1, z);
 	}
 
 	@Override
@@ -144,7 +144,7 @@ public abstract class BlockGrapeVine1 extends BlockGrapeVineBase
 	@SuppressWarnings({"rawtypes", "unchecked"})
 	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB aabb, List list, Entity entity)
 	{
-		final int meta = world.getBlockMetadata(x, y, z);
+		final int meta = world.getBlockState(x, y, z);
 		final float f = 0.0625F;
 
 		if (meta == 0)
@@ -166,7 +166,7 @@ public abstract class BlockGrapeVine1 extends BlockGrapeVineBase
 	@Override
 	public void setBlockBoundsBasedOnState(IBlockAccess world, int x, int y, int z)
 	{
-		final int meta = world.getBlockMetadata(x, y, z);
+		final int meta = world.getBlockState(x, y, z);
 		final float f = 0.0625F;
 
 		if (meta == 0)

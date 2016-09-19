@@ -145,7 +145,7 @@ public class RenderFruitPress implements ISimpleBlockRenderingHandler
 		if (modelId == RENDER_ID)
 		{
 			final BlockFruitPress fruitPress = (BlockFruitPress)block;
-			final int    m    = world.getBlockMetadata(x, y, z);
+			final int    m    = world.getBlockState(x, y, z);
 			final double d    = 0.0625D;
 
 			final Tessellator tessellator = Tessellator.instance;

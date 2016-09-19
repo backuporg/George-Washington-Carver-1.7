@@ -244,7 +244,7 @@ public class BlockBeeBox extends GrcBlockContainer
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(IBlockAccess world, BlockPos pos, int side);
 	{
-		final int meta = world.getBlockMetadata(pos);
+		final int meta = world.getBlockState(pos);
 		final int offset = calculateIconOffset(meta);
 		if (side == 0)
 		{

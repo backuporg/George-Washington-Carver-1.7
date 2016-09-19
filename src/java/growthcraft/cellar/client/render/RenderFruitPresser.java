@@ -51,7 +51,7 @@ public class RenderFruitPresser implements ISimpleBlockRenderingHandler
 		{
 			final BlockFruitPresser fruitPresser = (BlockFruitPresser)block;
 			final IIcon[] icon = {fruitPresser.getIconByIndex(0), fruitPresser.getIconByIndex(1), fruitPresser.getIconByIndex(2), fruitPresser.getIconByIndex(3)};
-			final int    m    = world.getBlockMetadata(x, y, z);
+			final int    m    = world.getBlockState(x, y, z);
 			final double d    = 0.0625D;
 
 			// Render Machine

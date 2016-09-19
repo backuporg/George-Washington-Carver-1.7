@@ -36,7 +36,7 @@ public class ItemRice extends GrcItemBase
 		{
 			final Block soil = world.getBlockState(x, y, z);
 
-			if (soil != null && RiceBlockCheck.isPaddy(soil) && world.isAirBlock(x, y + 1, z) && world.getBlockMetadata(x, y, z) > 0)
+			if (soil != null && RiceBlockCheck.isPaddy(soil) && world.isAirBlock(x, y + 1, z) && world.getBlockState(x, y, z) > 0)
 			{
 				world.setBlock(x, y + 1, z, GrowthCraftRice.blocks.riceBlock.getBlockState());
 				--stack.stackSize;

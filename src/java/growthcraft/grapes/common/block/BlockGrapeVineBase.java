@@ -148,7 +148,7 @@ public abstract class BlockGrapeVineBase extends GrcBlockBase implements IPlanta
 	{
 		if (!this.canBlockStay(world, x, y, z))
 		{
-			this.dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
+			this.dropBlockAsItem(world, x, y, z, world.getBlockState(x, y, z), 0);
 			world.setBlockToAir(x, y, z);
 		}
 	}
@@ -189,7 +189,7 @@ public abstract class BlockGrapeVineBase extends GrcBlockBase implements IPlanta
 	@Override
 	public int getPlantMetadata(IBlockAccess world, int x, int y, int z)
 	{
-		return world.getBlockMetadata(x, y, z);
+		return world.getBlockState(x, y, z);
 	}
 
 	/**
@@ -224,7 +224,7 @@ public abstract class BlockGrapeVineBase extends GrcBlockBase implements IPlanta
 			if (Event.Result.DENY == allowGrowthResult)
 				return;
 
-			final int meta = world.getBlockMetadata(x, y, z);
+			final int meta = world.getBlockState(x, y, z);
 			final float f = this.getGrowthRate(world, x, y, z);
 
 			final boolean continueGrowth = random.nextInt((int)(getGrowthRateMultiplier() / f) + 1) == 0;
@@ -255,7 +255,7 @@ public abstract class BlockGrapeVineBase extends GrcBlockBase implements IPlanta
 	{
 		if (random.nextFloat() < 0.5D)
 		{
-			doGrowth(world, x, y, z, world.getBlockMetadata(x, y, z));
+			doGrowth(world, x, y, z, world.getBlockState(x, y, z));
 		}
 	}
 }

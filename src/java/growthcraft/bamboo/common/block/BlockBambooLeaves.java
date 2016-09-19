@@ -43,7 +43,7 @@ public abstract class BlockBambooLeaves extends BlockLeaves implements IShearabl
 
 	private void removeLeaves(World world, BlockPos pos)
 	{
-		this.dropBlockAsItem(world, pos, world.getBlockMetadata(pos), 0);
+		this.dropBlockAsItem(world, pos, world.getBlockState(pos), 0);
 		world.setBlockToAir(pos);
 	}
 
@@ -55,7 +55,7 @@ public abstract class BlockBambooLeaves extends BlockLeaves implements IShearabl
 	{
 		if (!world.isRemote)
 		{
-			final int meta = world.getBlockMetadata(pos);
+			final int meta = world.getBlockState(pos);
 
 			if ((meta & 8) != 0 && (meta & 4) == 0)
 			{
@@ -211,7 +211,7 @@ public abstract class BlockBambooLeaves extends BlockLeaves implements IShearabl
 	@Override
 	public void beginLeavesDecay(World world, int x, int y, int z)
 	{
-		world.setBlockMetadataWithNotify(x, y, z, world.getBlockMetadata(x, y, z) | 8, BlockFlags.SUPRESS_RENDER);
+		world.setBlockMetadataWithNotify(x, y, z, world.getBlockState(x, y, z) | 8, BlockFlags.SUPRESS_RENDER);
 	}
 
 	@Override
@@ -298,7 +298,7 @@ public abstract class BlockBambooLeaves extends BlockLeaves implements IShearabl
 	@SideOnly(Side.CLIENT)
 	public int colorMultiplier(IBlockAccess world, int x, int y, int z)
 	{
-		final int meta = world.getBlockMetadata(x, y, z);
+		final int meta = world.getBlockState(x, y, z);
 		int r = 0;
 		int g = 0;
 		int b = 0;
@@ -330,7 +330,7 @@ public abstract class BlockBambooLeaves extends BlockLeaves implements IShearabl
 	public ArrayList<ItemStack> onSheared(ItemStack item, IBlockAccess world, int x, int y, int z, int fortune)
 	{
 		final ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
-		ret.add(new ItemStack(Blocks.LEAVES, 1, world.getBlockMetadata(x, y, z) & 3));
+		ret.add(new ItemStack(Blocks.LEAVES, 1, world.getBlockState(x, y, z) & 3));
 		return ret;
 	}
 }

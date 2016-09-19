@@ -59,7 +59,7 @@ public class FarmableBasicGrowthCraft implements IFarmable
 	public ICrop getCropAt(World world, int x, int y, int z)
 	{
 		if (world.getBlockState(x, y, z) != block) return null;
-		if (world.getBlockMetadata(x, y, z) != matureMeta) return null;
+		if (world.getBlockState(x, y, z) != matureMeta) return null;
 		return new CropBasicGrowthCraft(world, block, matureMeta, new Point3(x, y, z), isRice, isGrape);
 	}
 

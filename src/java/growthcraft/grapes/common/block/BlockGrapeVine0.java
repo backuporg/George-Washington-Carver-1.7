@@ -107,7 +107,7 @@ public abstract class BlockGrapeVine0 extends BlockGrapeVineBase
 	@Override
 	public void setBlockBoundsBasedOnState(IBlockAccess world, int x, int y, int z)
 	{
-		final int meta = world.getBlockMetadata(x, y, z);
+		final int meta = world.getBlockState(x, y, z);
 		final float f = 0.0625F;
 
 		if (meta == 0)

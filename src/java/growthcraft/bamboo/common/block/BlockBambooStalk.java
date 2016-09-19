@@ -63,7 +63,7 @@ public class BlockBambooStalk extends GrcBlockBase
 	@Override
 	public void updateTick(World world, int x, int y, int z, Random rand)
 	{
-		if (world.getBlockMetadata(x, y, z) == 0)
+		if (world.getBlockState(x, y, z) == 0)
 		{
 			int x1 = x;
 			int y1 = y;
@@ -141,9 +141,9 @@ public class BlockBambooStalk extends GrcBlockBase
 			}
 		}
 
-		if (flag && world.getBlockMetadata(x, y, z) == 0)
+		if (flag && world.getBlockState(x, y, z) == 0)
 		{
-			this.dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
+			this.dropBlockAsItem(world, x, y, z, world.getBlockState(x, y, z), 0);
 			world.setBlockToAir(x, y, z);
 		}
 
@@ -153,7 +153,7 @@ public class BlockBambooStalk extends GrcBlockBase
 	@Override
 	public void breakBlock(World world, int x, int y, int z, Block par5, int par6)
 	{
-		if (world.getBlockMetadata(x, y, z) == 0)
+		if (world.getBlockState(x, y, z) == 0)
 		{
 			final byte b0 = 4;
 			final int j1 = b0 + 1;
@@ -188,7 +188,7 @@ public class BlockBambooStalk extends GrcBlockBase
 	@Override
 	public boolean canSustainLeaves(IBlockAccess world, int x, int y, int z)
 	{
-		return world.getBlockMetadata(x, y, z) == 0 ? true : false;
+		return world.getBlockState(x, y, z) == 0 ? true : false;
 	}
 
 	@Override
@@ -309,7 +309,7 @@ public class BlockBambooStalk extends GrcBlockBase
 	@SideOnly(Side.CLIENT)
 	public int colorMultiplier(IBlockAccess world, int x, int y, int z)
 	{
-		if (world.getBlockMetadata(x, y, z) == 0)
+		if (world.getBlockState(x, y, z) == 0)
 		{
 			int r = 0;
 			int g = 0;
@@ -342,7 +342,7 @@ public class BlockBambooStalk extends GrcBlockBase
 		float z1 = 0.25F;
 		float z2 = 0.75F;
 
-		if (world.getBlockMetadata(x, y, z) != 0)
+		if (world.getBlockState(x, y, z) != 0)
 		{
 			if (this.canFence(world, x, y, z - 1) || this.canWall(world, x, y, z - 1) || this.canDoor(world, x, y, z - 1))
 			{
@@ -380,7 +380,7 @@ public class BlockBambooStalk extends GrcBlockBase
 		this.setBlockBounds(x1, 0.0F, z1, x2, 1.0F, z2);
 		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
 
-		if (world.getBlockMetadata(x, y, z) != 0)
+		if (world.getBlockState(x, y, z) != 0)
 		{
 			if (this.canFence(world, x, y, z - 1))
 			{
@@ -577,10 +577,10 @@ public class BlockBambooStalk extends GrcBlockBase
 
 		if (m == RenderUtils.Face.ZNEG)
 		{
-			tm0 = world.getBlockMetadata(x, y, z - 1);
+			tm0 = world.getBlockState(x, y, z - 1);
 			if ((tm0 & 8) > 7)
 			{
-				tm0 = world.getBlockMetadata(x, y - 1, z - 1);
+				tm0 = world.getBlockState(x, y - 1, z - 1);
 			}
 			tm = tm0 & 3;
 			if (tm == 0)
@@ -607,10 +607,10 @@ public class BlockBambooStalk extends GrcBlockBase
 		}
 		else if (m == RenderUtils.Face.ZPOS)
 		{
-			tm0 = world.getBlockMetadata(x, y, z + 1);
+			tm0 = world.getBlockState(x, y, z + 1);
 			if ((tm0 & 8) > 7)
 			{
-				tm0 = world.getBlockMetadata(x, y - 1, z + 1);
+				tm0 = world.getBlockState(x, y - 1, z + 1);
 			}
 
 			tm = tm0 & 3;
@@ -638,10 +638,10 @@ public class BlockBambooStalk extends GrcBlockBase
 		}
 		else if (m == RenderUtils.Face.XNEG)
 		{
-			tm0 = world.getBlockMetadata(x - 1, y, z);
+			tm0 = world.getBlockState(x - 1, y, z);
 			if ((tm0 & 8) > 7)
 			{
-				tm0 = world.getBlockMetadata(x - 1, y - 1, z);
+				tm0 = world.getBlockState(x - 1, y - 1, z);
 			}
 			tm = tm0 & 3;
 			if (tm == 1)
@@ -670,10 +670,10 @@ public class BlockBambooStalk extends GrcBlockBase
 		}
 		else if (m == RenderUtils.Face.XPOS)
 		{
-			tm0 = world.getBlockMetadata(x + 1, y, z);
+			tm0 = world.getBlockState(x + 1, y, z);
 			if ((tm0 & 8) > 7)
 			{
-				tm0 = world.getBlockMetadata(x + 1, y - 1, z);
+				tm0 = world.getBlockState(x + 1, y - 1, z);
 			}
 			tm = tm0 & 3;
 			if (tm == 1)

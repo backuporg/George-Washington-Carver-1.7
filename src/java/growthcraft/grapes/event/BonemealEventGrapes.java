@@ -18,7 +18,7 @@ public class BonemealEventGrapes
 	private void bonemealGrapeVine0(BonemealEvent event)
 	{
 		final BlockGrapeVine0 vine = (BlockGrapeVine0)event.block;
-		final int meta = event.world.getBlockMetadata(event.x, event.y, event.z);
+		final int meta = event.world.getBlockState(event.x, event.y, event.z);
 
 		if (!event.world.isRemote)
 		{
@@ -60,7 +60,7 @@ public class BonemealEventGrapes
 	private void bonemealGrapeVine1(BonemealEvent event)
 	{
 		final BlockGrapeVine1 vine = (BlockGrapeVine1)event.block;
-		final int meta = event.world.getBlockMetadata(event.x, event.y, event.z);
+		final int meta = event.world.getBlockState(event.x, event.y, event.z);
 		if (meta == 0 && BlockCheck.isRope(event.world.getBlockState(event.x, event.y + 1, event.z)))
 		{
 			if (!event.world.isRemote)

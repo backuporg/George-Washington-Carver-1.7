@@ -27,14 +27,14 @@ public class BonemealEventRice
 			for (int k = z - 1; k <= z + 1; ++k)
 			{
 				final boolean isRiceBlock = (GrowthCraftRice.blocks.riceBlock.getBlockState() == world.getBlockState(i, y, k)) &&
-					(world.getBlockMetadata(i, y, k) != 7);
+					(world.getBlockState(i, y, k) != 7);
 				final boolean isPaddyBelow = RiceBlockCheck.isPaddy(world.getBlockState(i, y - 1, k)) &&
-					(world.getBlockMetadata(i, y - 1, k) != 0);
+					(world.getBlockState(i, y - 1, k) != 0);
 
 				if (isRiceBlock && isPaddyBelow)
 				{
-					mplus = world.getBlockMetadata(i, y, k) + r;
-					mminus = world.getBlockMetadata(i, y - 1, k) - r;
+					mplus = world.getBlockState(i, y, k) + r;
+					mminus = world.getBlockState(i, y - 1, k) - r;
 					if (mplus > 7)
 					{
 						mplus = 7;

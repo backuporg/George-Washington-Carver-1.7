@@ -64,7 +64,7 @@ public class BlockCheesePress extends GrcBlockContainer
 
 	public void doRotateBlock(World world, int x, int y, int z, EnumFacing side)
 	{
-		world.setBlockMetadataWithNotify(x, y, z, world.getBlockMetadata(x, y, z) ^ 1, BlockFlags.SYNC);
+		world.setBlockMetadataWithNotify(x, y, z, world.getBlockState(x, y, z) ^ 1, BlockFlags.SYNC);
 	}
 
 	@Override

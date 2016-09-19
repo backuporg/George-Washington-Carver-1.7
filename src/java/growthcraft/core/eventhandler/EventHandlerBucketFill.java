@@ -70,7 +70,7 @@ public class EventHandlerBucketFill
 
 			if (block.equals(srcBlock))
 			{
-				return world.getBlockMetadata(pos.blockX, pos.blockY, pos.blockZ) == 0;
+				return world.getBlockState(pos.blockX, pos.blockY, pos.blockZ) == 0;
 			}
 			return false;
 		}

@@ -110,7 +110,7 @@ public class BlockFruitPresser extends BlockCellarContainer implements IWrenchab
 	public void onBlockAdded(World world, int x, int y, int z)
 	{
 		super.onBlockAdded(world, x, y, z);
-		final int m = world.getBlockMetadata(x,  y - 1, z);
+		final int m = world.getBlockState(x,  y - 1, z);
 		world.setBlockMetadataWithNotify(x, y, z, m, BlockFlags.UPDATE_AND_SYNC);
 
 		if (!world.isRemote)
@@ -122,7 +122,7 @@ public class BlockFruitPresser extends BlockCellarContainer implements IWrenchab
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack stack)
 	{
-		final int m = world.getBlockMetadata(x,  y - 1, z);
+		final int m = world.getBlockState(x,  y - 1, z);
 		world.setBlockMetadataWithNotify(x, y, z, m, BlockFlags.UPDATE_AND_SYNC);
 
 		if (!world.isRemote)
@@ -147,7 +147,7 @@ public class BlockFruitPresser extends BlockCellarContainer implements IWrenchab
 
 	private void updatePressState(World world, int x, int y, int z)
 	{
-		final int     meta = world.getBlockMetadata(x, y, z);
+		final int     meta = world.getBlockState(x, y, z);
 		final boolean flag = world.isBlockIndirectlyGettingPowered(x, y, z);
 
 		if (flag && (meta == 0 || meta == 1))
@@ -176,7 +176,7 @@ public class BlockFruitPresser extends BlockCellarContainer implements IWrenchab
 	@Override
 	public boolean isSideSolid(IBlockAccess world, int x, int y, int z, EnumFacing side)
 	{
-		final int meta = world.getBlockMetadata(x, y, z);
+		final int meta = world.getBlockState(x, y, z);
 
 		if (meta == 0 || meta == 2)
 		{

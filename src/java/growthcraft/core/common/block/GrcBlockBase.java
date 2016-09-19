@@ -43,7 +43,7 @@ public class GrcBlockBase extends Block
 	 */
 	public void fellBlockAsItem(World world, int x, int y, int z)
 	{
-		dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
+		dropBlockAsItem(world, x, y, z, world.getBlockState(x, y, z), 0);
 		world.setBlockToAir(x, y, z);
 	}
 }

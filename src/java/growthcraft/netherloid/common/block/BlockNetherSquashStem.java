@@ -131,7 +131,7 @@ public abstract class BlockNetherSquashStem extends BlockBush implements ICropDa
 
 		if (allowGrowthResult == Event.Result.ALLOW || random.nextInt(10) == 0)
 		{
-			final int meta = world.getBlockMetadata(x, y, z);
+			final int meta = world.getBlockState(x, y, z);
 			growStem(world, x, y, z, meta);
 		}
 	}
@@ -140,7 +140,7 @@ public abstract class BlockNetherSquashStem extends BlockBush implements ICropDa
 	@Override
 	public boolean func_149851_a(World world, int x, int y, int z, boolean isClient)
 	{
-		return world.getBlockMetadata(x, y, z) < StemStage.MATURE || canGrowFruit(world, x, y, z);
+		return world.getBlockState(x, y, z) < StemStage.MATURE || canGrowFruit(world, x, y, z);
 	}
 
 	/* SideOnly(Side.SERVER) Can this apply bonemeal effect? */
@@ -154,7 +154,7 @@ public abstract class BlockNetherSquashStem extends BlockBush implements ICropDa
 	@Override
 	public void func_149853_b(World world, Random random, int x, int y, int z)
 	{
-		growStem(world, x, y, z, world.getBlockMetadata(x, y, z));
+		growStem(world, x, y, z, world.getBlockState(x, y, z));
 	}
 
 	@Override

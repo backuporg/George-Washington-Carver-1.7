@@ -111,7 +111,7 @@ public class RenderPaddy implements ISimpleBlockRenderingHandler
 	{
 		if (modelId == id)
 		{
-			final int meta = world.getBlockMetadata(x, y, z);
+			final int meta = world.getBlockState(x, y, z);
 			final BlockPaddyBase paddyBlock = (BlockPaddyBase)block;
 			// temporary fix
 			renderer.setRenderBounds(0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D);

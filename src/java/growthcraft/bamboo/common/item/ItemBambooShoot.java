@@ -33,7 +33,7 @@ public abstract class ItemBambooShoot extends GrcItemFoodBase implements IPlanta
 	{
 		final Block block1 = world.getBlockState(x, y, z);
 
-		if (block1 == Blocks.SNOW && (world.getBlockMetadata(x, y, z) & 7) < 1)
+		if (block1 == Blocks.SNOW && (world.getBlockState(x, y, z) & 7) < 1)
 		{
 			EnumFacing = 1;
 		}

@@ -54,7 +54,7 @@ public abstract class AbstractForestryCrop implements ICrop
 
 	protected final int getBlockMeta(Point3 pos)
 	{
-		return world.getBlockMetadata(pos.x, pos.y, pos.z);
+		return world.getBlockState(pos.x, pos.y, pos.z);
 	}
 
 	protected abstract boolean isCrop(Point3 pos);

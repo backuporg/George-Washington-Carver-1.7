@@ -175,7 +175,7 @@ public class RenderBlockFruit implements ISimpleBlockRenderingHandler
 			final Tessellator tessellator = Tessellator.instance;
 			tessellator.setBrightness(block.getMixedBrightnessForBlock(world, x, y, z));
 			tessellator.setColorOpaque_F(1.0F, 1.0F, 1.0F);
-			final int meta = MathHelper.clamp_int(world.getBlockMetadata(x, y, z), 0, 2);
+			final int meta = MathHelper.clamp_int(world.getBlockState(x, y, z), 0, 2);
 			final IIcon icon = block.getIcon(0, meta);
 			final double d = 0.0625D;
 

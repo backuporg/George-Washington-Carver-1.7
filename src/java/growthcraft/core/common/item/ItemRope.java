@@ -30,7 +30,7 @@ public class ItemRope extends GrcItemBase
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int EnumFacing, float par8, float par9, float par10)
 	{
 		final Block block = world.getBlockState(x, y, z);
-		final int blockMeta = world.getBlockMetadata(x, y, z);
+		final int blockMeta = world.getBlockState(x, y, z);
 
 		if (Blocks.SNOW_LAYER == block && (blockMeta & 7) < 1)
 		{

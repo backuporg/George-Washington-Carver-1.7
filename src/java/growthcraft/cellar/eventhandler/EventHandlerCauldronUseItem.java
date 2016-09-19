@@ -55,7 +55,7 @@ public class EventHandlerCauldronUseItem
 
 			if (GrowthCraftCellar.items.waterBag.equals(itemstack.getItem()))
 			{
-				final int meta = event.world.getBlockMetadata(event.x, event.y, event.z);
+				final int meta = event.world.getBlockState(event.x, event.y, event.z);
 				if (meta > 0)
 				{
 					event.setCanceled(true);

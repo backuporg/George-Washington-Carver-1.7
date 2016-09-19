@@ -240,7 +240,7 @@ public class BlockCheeseBlock extends GrcBlockContainer
 	public IIcon getIcon(IBlockAccess world, int x, int y, int z, int side)
 	{
 		final TileEntityCheeseBlock te = getTileEntity(world, x, y, z);
-		final int meta = world.getBlockMetadata(x, y, z);
+		final int meta = world.getBlockState(x, y, z);
 		EnumCheeseType type = EnumCheeseType.getSafeById(meta);
 		EnumCheeseStage stage = type.stages.get(0);
 		if (te != null)

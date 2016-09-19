@@ -73,7 +73,7 @@ public class RiceBlockCheck
 		final Block block = world.getBlockState(x, y, z);
 		if (isPaddy(block))
 		{
-			final int meta = world.getBlockMetadata(x, y, z);
+			final int meta = world.getBlockState(x, y, z);
 			return meta >= amount;
 		}
 		return false;

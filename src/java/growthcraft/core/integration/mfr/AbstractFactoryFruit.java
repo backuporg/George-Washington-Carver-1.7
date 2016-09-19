@@ -78,7 +78,7 @@ public abstract class AbstractFactoryFruit<TBlock extends Block> implements IFac
 	public List<ItemStack> getDrops(World world, Random rand, int x, int y, int z)
 	{
 		if (plantBlock != null)
-			return plantBlock.getDrops(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
+			return plantBlock.getDrops(world, x, y, z, world.getBlockState(x, y, z), 0);
 		return new ArrayList<ItemStack>();
 	}
 

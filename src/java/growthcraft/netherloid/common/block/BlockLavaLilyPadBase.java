@@ -76,6 +76,6 @@ public class BlockLavaLilyPadBase extends BlockBush
 
 	public boolean canBlockStay(World world, int x, int y, int z)
 	{
-		return y >= 0 && y < 256 ? world.getBlockState(x, y - 1, z).getMaterial() == Material.LAVA && world.getBlockMetadata(x, y - 1, z) == 0 : false;
+		return y >= 0 && y < 256 ? world.getBlockState(x, y - 1, z).getMaterial() == Material.LAVA && world.getBlockState(x, y - 1, z) == 0 : false;
 	}
 }

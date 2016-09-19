@@ -50,7 +50,7 @@ public class SaltBucketEntry implements IBucketEntry
 	{
 		if (Blocks.WATER.equals(world.getBlockState(pos.blockX, pos.blockY, pos.blockZ)))
 		{
-			if (world.getBlockMetadata(pos.blockX, pos.blockY, pos.blockZ) == 0)
+			if (world.getBlockState(pos.blockX, pos.blockY, pos.blockZ) == 0)
 			{
 				final Biome biome = world.getBiomeGenForCoords(pos.blockX, pos.blockZ);
 				if (BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.OCEAN))

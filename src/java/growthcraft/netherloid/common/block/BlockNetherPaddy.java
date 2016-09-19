@@ -140,7 +140,7 @@ public class BlockNetherPaddy extends BlockPaddyBase
 	@Override
 	public void drainPaddy(World world, int x, int y, int z)
 	{
-		final int meta = world.getBlockMetadata(x, y, z);
+		final int meta = world.getBlockState(x, y, z);
 		if (meta > 1)
 		{
 			world.setBlockMetadataWithNotify(x, y, z, meta - 1, BlockFlags.SYNC);
@@ -233,7 +233,7 @@ public class BlockNetherPaddy extends BlockPaddyBase
 			m = 1;
 		}
 
-		int meta = world.getBlockMetadata(i, j, k);
+		int meta = world.getBlockState(i, j, k);
 
 		if (meta > 0)
 		{
