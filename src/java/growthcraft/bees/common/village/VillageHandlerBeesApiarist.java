@@ -60,7 +60,6 @@ public class VillageHandlerBeesApiarist {
 			career.addTrade(2, new EntityVillager.EmeraldForItems(BeesItemList.ItemBeesWax, new EntityVillager.PriceInfo(1, 3)));
 		}
 	}
-	}
 	public static void addVillagers ()
 		{
 			VillagerRegistry.instance().register(apiarist);
