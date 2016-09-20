@@ -4,6 +4,8 @@ import java.util.Random;
 
 import growthcraft.bamboo.GrowthCraftBamboo;
 
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockDoor;
@@ -70,11 +72,11 @@ public class BlockBambooDoor extends BlockDoor
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(IBlockAccess world, int x, int y, int z, int side)
+	public IIcon getIcon(IBlockAccess world, BlockPos pos, IBlockState state, int side)
 	{
 		if (side != 1 && side != 0)
 		{
-			final int meta = this.func_150012_g(world, x, y, z);
+			final int meta = this.getMetaFromState(state);
 			final int j1 = meta & 3;
 			final boolean flag = (meta & 4) != 0;
 			final boolean flag2 = (meta & 8) != 0;

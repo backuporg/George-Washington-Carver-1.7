@@ -52,7 +52,7 @@ public abstract class BlockGrapeVine0 extends BlockGrapeVineBase
 		}
 		else
 		{
-			world.setBlock(x, y, z, GrowthCraftGrapes.blocks.grapeVine1.getBlockState(), 0, BlockFlags.UPDATE_AND_SYNC);
+			world.setBlockState(x, y, z, GrowthCraftGrapes.blocks.grapeVine1.getBlockState(), 0, BlockFlags.UPDATE_AND_SYNC);
 		}
 	}
 

@@ -74,7 +74,7 @@ public abstract class BlockAppleLeaves extends BlockLeaves implements IShearable
 	{
 		if (world.isAirBlock(x, y - 1, z))
 		{
-			world.setBlock(x, y - 1, z, GrowthCraftApples.blocks.appleBlock.getBlockState());
+			world.setBlockState(x, y - 1, z, GrowthCraftApples.blocks.appleBlock.getBlockState());
 		}
 	}
 

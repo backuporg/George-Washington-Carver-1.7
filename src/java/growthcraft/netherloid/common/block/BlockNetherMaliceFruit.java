@@ -127,7 +127,7 @@ public abstract class BlockNetherMaliceFruit extends Block implements IGrowable,
 		if (!this.canBlockStay(world, x, y, z))
 		{
 			this.dropBlockAsItem(world, x, y, z, world.getBlockState(x, y, z), 0);
-			world.setBlock(x, y, z, Blocks.AIR, 0, BlockFlags.SYNC);
+			world.setBlockState(x, y, z, Blocks.AIR, 0, BlockFlags.SYNC);
 		}
 		else
 		{

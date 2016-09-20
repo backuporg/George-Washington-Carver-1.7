@@ -63,7 +63,7 @@ public class BlockBambooScaffold extends GrcBlockBase
 					{
 						if (!world.isRemote)
 						{
-							if (world.setBlock(x, j, z, this, 0, 3) && !player.capabilities.isCreativeMode)
+							if (world.setBlockState(x, j, z, this, 0, 3) && !player.capabilities.isCreativeMode)
 							{
 								itemstack.stackSize -= 1;
 							}

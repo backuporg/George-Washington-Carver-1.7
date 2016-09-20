@@ -66,7 +66,7 @@ public class WorldGeneratorThistle implements IWorldGenerator
 			final Block block = world.getBlockState(x, y - 1, z);
 			if (canPlaceOnBlock(world, x, y - 1, z, block))
 			{
-				world.setBlock(x, y, z, GrowthCraftMilk.blocks.thistle.getBlockState());
+				world.setBlockState(x, y, z, GrowthCraftMilk.blocks.thistle.getBlockState());
 			}
 		}
 	}

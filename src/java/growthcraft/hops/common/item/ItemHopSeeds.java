@@ -40,7 +40,7 @@ public abstract class ItemHopSeeds extends GrcItemBase implements IPlantable
 		{
 			if (BlockCheck.canSustainPlant(world, x, y, z, EnumFacing.UP, GrowthCraftHops.blocks.hopVine.getBlockState()) && BlockCheck.isRope(world, x, y + 1, z))
 			{
-				world.setBlock(x, y + 1, z, GrowthCraftHops.blocks.hopVine.getBlockState());
+				world.setBlockState(x, y + 1, z, GrowthCraftHops.blocks.hopVine.getBlockState());
 				--stack.stackSize;
 				return true;
 			}

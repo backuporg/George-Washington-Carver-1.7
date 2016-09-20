@@ -97,11 +97,11 @@ public abstract class BlockNetherMaliceSapling extends BlockBush implements IGro
 		final int meta = world.getBlockState(x, y, z) & 3;
 		final WorldGenerator generator = new WorldGeneratorMaliceTree(true);
 
-		world.setBlock(x, y, z, Blocks.AIR, 0, BlockFlags.ALL);
+		world.setBlockState(x, y, z, Blocks.AIR, 0, BlockFlags.ALL);
 
 		if (!generator.generate(world, random, x, y, z))
 		{
-			world.setBlock(x, y, z, this, meta, BlockFlags.ALL);
+			world.setBlockState(x, y, z, this, meta, BlockFlags.ALL);
 		}
 	}
 

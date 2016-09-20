@@ -61,7 +61,7 @@ public abstract class BlockNetherFungusBase extends BlockBush implements IPlanta
 	{
 		if (world.isAirBlock(x, y, z) && canBlockStay(world, x, y, z))
 		{
-			world.setBlock(x, y, z, this, 0, BlockFlags.SYNC);
+			world.setBlockState(x, y, z, this, 0, BlockFlags.SYNC);
 		}
 	}
 
@@ -107,7 +107,7 @@ public abstract class BlockNetherFungusBase extends BlockBush implements IPlanta
 		if (!this.canBlockStay(world, x, y, z))
 		{
 			this.dropBlockAsItem(world, x, y, z, world.getBlockState(x, y, z), 0);
-			world.setBlock(x, y, z, Blocks.AIR, 0, BlockFlags.SYNC);
+			world.setBlockState(x, y, z, Blocks.AIR, 0, BlockFlags.SYNC);
 		}
 		else if (random.nextFloat() <= getSpreadRate(world, x, y, z))
 		{

@@ -72,7 +72,7 @@ public abstract class BlockAppleSapling extends BlockBush implements IGrowable
 
 		if (!generator.generate(world, random, x, y, z))
 		{
-			world.setBlock(x, y, z, this, meta, BlockFlags.ALL);
+			world.setBlockState(x, y, z, this, meta, BlockFlags.ALL);
 		}
 	}
 

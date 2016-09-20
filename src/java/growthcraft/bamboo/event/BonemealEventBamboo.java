@@ -49,7 +49,7 @@ public class BonemealEventBamboo
 
 							if (event.world.isAirBlock(x, y, z) && GrowthCraftBamboo.blocks.bambooShoot.getBlockState().canBlockStay(event.world, x, y, z))
 							{
-								event.world.setBlock(x, y, z, GrowthCraftBamboo.blocks.bambooShoot.getBlockState(), 0, 3);
+								event.world.setBlockState(x, y, z, GrowthCraftBamboo.blocks.bambooShoot.getBlockState(), 0, 3);
 								flag = true;
 							}
 						}

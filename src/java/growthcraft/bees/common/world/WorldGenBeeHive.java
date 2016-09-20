@@ -26,7 +26,7 @@ public class WorldGenBeeHive extends WorldGenerator
 			if (world.isAirBlock(i, j, k) && beeHive.canBlockStay(world, i, j, k))
 			{
 				//				System.out.println(x + " " + y + " " + z);
-				world.setBlock(i, j, k, beeHive, new Random().nextInt(4) + 2, 2);
+				world.setBlockState(i, j, k, beeHive, new Random().nextInt(4) + 2, 2);
 			}
 		}
 		return true;

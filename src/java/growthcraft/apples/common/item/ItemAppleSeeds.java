@@ -88,7 +88,7 @@ public abstract class ItemAppleSeeds extends GrcItemBase implements IPlantable
 			{
 				final int meta = cropBlock.onBlockPlaced(world, x, y, z, EnumFacing, par8, par9, par10, 0);
 
-				if (world.setBlock(x, y, z, cropBlock, meta, 3))
+				if (world.setBlockState(x, y, z, cropBlock, meta, 3))
 				{
 					if (world.getBlockState(x, y, z) == cropBlock)
 					{

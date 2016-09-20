@@ -150,7 +150,7 @@ public class BlockNetherPaddy extends BlockPaddyBase
 			final Block targetBlock = netherloid.blocks.netherPaddyField.getBlockState();
 			if (this != targetBlock)
 			{
-				world.setBlock(x, y, z, targetBlock, 0, BlockFlags.SYNC);
+				world.setBlockState(x, y, z, targetBlock, 0, BlockFlags.SYNC);
 			}
 		}
 	}
@@ -161,7 +161,7 @@ public class BlockNetherPaddy extends BlockPaddyBase
 		final Block targetBlock = netherloid.blocks.netherPaddyFieldFilled.getBlockState();
 		if (this != targetBlock)
 		{
-			world.setBlock(x, y, z, targetBlock, getMaxPaddyMeta(world, x, y, z), BlockFlags.SYNC);
+			world.setBlockState(x, y, z, targetBlock, getMaxPaddyMeta(world, x, y, z), BlockFlags.SYNC);
 		}
 		else
 		{

@@ -53,7 +53,7 @@ public class ItemRope extends GrcItemBase
 				int targetMeta = entry.getFenceRopeBlockMetadata();
 				if (targetMeta == ItemKey.WILDCARD_VALUE) targetMeta = blockMeta;
 
-				world.setBlock(x, y, z, entry.getFenceRopeBlock(), targetMeta, BlockFlags.UPDATE_AND_SYNC);
+				world.setBlockState(x, y, z, entry.getFenceRopeBlock(), targetMeta, BlockFlags.UPDATE_AND_SYNC);
 				--stack.stackSize;
 				return true;
 			}
@@ -106,7 +106,7 @@ public class ItemRope extends GrcItemBase
 			{
 				final int meta = block2.onBlockPlaced(world, x, y, z, EnumFacing, par8, par9, par10, 0);
 
-				if (world.setBlock(x, y, z, block2, meta, 3))
+				if (world.setBlockState(x, y, z, block2, meta, 3))
 				{
 					if (world.getBlockState(x, y, z) == block2)
 					{
