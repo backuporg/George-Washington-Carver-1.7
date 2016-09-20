@@ -97,8 +97,8 @@ public class ItemBambooDoor extends GrcItemBase
 			flag2 = true;
 		}
 
-		world.setBlock(i, j, k, block, side, 2);
-		world.setBlock(i, j + 1, k, block, 8 | (flag2 ? 1 : 0), 2);
+		world.setBlockState(i, j, k, block, side, 2);
+		world.setBlockState(i, j + 1, k, block, 8 | (flag2 ? 1 : 0), 2);
 		world.notifyBlocksOfNeighborChange(i, j, k, block);
 		world.notifyBlocksOfNeighborChange(i, j + 1, k, block);
 	}

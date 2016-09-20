@@ -76,7 +76,7 @@ public class BlockFenceRope extends GrcBlockBase implements IBlockRope
 		{
 			if (!world.isRemote)
 			{
-				world.setBlock(x, y, z, getFenceBlock(), getFenceBlockMetadata(), BlockFlags.UPDATE_AND_SYNC);
+				world.setBlockState(x, y, z, getFenceBlock(), getFenceBlockMetadata(), BlockFlags.UPDATE_AND_SYNC);
 				this.dropBlockAsItem(world, x, y, z, GrowthCraftCore.items.rope.asStack());
 			}
 		}

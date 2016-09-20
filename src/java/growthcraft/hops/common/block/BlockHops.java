@@ -86,7 +86,7 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 
 	public void spreadLeaves(World world, int x, int y, int z)
 	{
-		world.setBlock(x, y + 1, z, this, HopsStage.SMALL, BlockFlags.UPDATE_AND_SYNC);
+		world.setBlockState(x, y + 1, z, this, HopsStage.SMALL, BlockFlags.UPDATE_AND_SYNC);
 	}
 
 	public boolean canSpreadLeaves(World world, int x, int y, int z)
@@ -102,7 +102,7 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 	{
 		if (!this.canBlockStay(world, x, y, z))
 		{
-			world.setBlock(x, y, z, GrowthCraftCore.blocks.ropeBlock.getBlockState());
+			world.setBlockState(x, y, z, GrowthCraftCore.blocks.ropeBlock.getBlockState());
 		}
 		else
 		{

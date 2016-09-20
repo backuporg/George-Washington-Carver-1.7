@@ -122,7 +122,7 @@ public abstract class BlockBambooShoot extends BlockBush implements ICropDataPro
 
 		if (!generator.generate(world, rand, x, y, z))
 		{
-			world.setBlock(x, y, z, this, meta, BlockFlags.ALL);
+			world.setBlockState(x, y, z, this, meta, BlockFlags.ALL);
 		}
 	}
 

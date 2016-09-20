@@ -38,7 +38,7 @@ public class ItemRice extends GrcItemBase
 
 			if (soil != null && RiceBlockCheck.isPaddy(soil) && world.isAirBlock(x, y + 1, z) && world.getBlockState(x, y, z) > 0)
 			{
-				world.setBlock(x, y + 1, z, GrowthCraftRice.blocks.riceBlock.getBlockState());
+				world.setBlockState(x, y + 1, z, GrowthCraftRice.blocks.riceBlock.getBlockState());
 				--stack.stackSize;
 				return true;
 			}

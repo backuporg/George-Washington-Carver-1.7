@@ -59,7 +59,7 @@ public class BlockFruitPress extends BlockCellarContainer
 	{
 		super.onBlockAdded(world, x, y, z);
 		this.setDefaultDirection(world, x, y, z);
-		world.setBlock(x, y + 1, z, getPresserBlock(), world.getBlockState(x, y, z), 2);
+		world.setBlockState(x, y + 1, z, getPresserBlock(), world.getBlockState(x, y, z), 2);
 	}
 
 	private void setDefaultDirection(World world, int x, int y, int z)
@@ -111,7 +111,7 @@ public class BlockFruitPress extends BlockCellarContainer
 			world.setBlockState(x, y, z, 1, BlockFlags.SYNC);
 		}
 
-		world.setBlock(x, y + 1, z, getPresserBlock(), world.getBlockState(x, y, z), BlockFlags.SYNC);
+		world.setBlockState(x, y + 1, z, getPresserBlock(), world.getBlockState(x, y, z), BlockFlags.SYNC);
 	}
 
 	@Override

@@ -62,7 +62,7 @@ public class FlowerSpread
 			final int fy = y + i;
 			if (canSpreadTo(block, world, fx, fy, fz))
 			{
-				world.setBlock(fx, fy, fz, block, meta, BlockFlags.UPDATE_AND_SYNC);
+				world.setBlockState(fx, fy, fz, block, meta, BlockFlags.UPDATE_AND_SYNC);
 				return true;
 			}
 		}

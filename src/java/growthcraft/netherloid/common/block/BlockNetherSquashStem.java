@@ -118,7 +118,7 @@ public abstract class BlockNetherSquashStem extends BlockBush implements ICropDa
 		}
 		else if (canGrowFruit(world, x, y, z))
 		{
-			world.setBlock(x, y - 1, z, fruitBlock, world.rand.nextInt(4), BlockFlags.SYNC);
+			world.setBlockState(x, y - 1, z, fruitBlock, world.rand.nextInt(4), BlockFlags.SYNC);
 		}
 	}
 

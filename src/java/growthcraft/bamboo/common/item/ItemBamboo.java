@@ -80,7 +80,7 @@ public class ItemBamboo extends GrcItemBase
 			final Block block = GrowthCraftBamboo.blocks.bambooStalk.getBlockState();
 			if (world.canPlaceEntityOnSide(block, x, y, z, false, EnumFacing, (Entity)null, stack))
 			{
-				if (world.setBlock(x, y, z, block, 1, 3))
+				if (world.setBlockState(x, y, z, block, 1, 3))
 				{
 					if (world.getBlockState(x, y, z) == block)
 					{

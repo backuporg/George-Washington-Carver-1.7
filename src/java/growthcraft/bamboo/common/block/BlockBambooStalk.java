@@ -9,6 +9,8 @@ import growthcraft.core.common.block.GrcBlockBase;
 import growthcraft.core.util.BlockCheck;
 import growthcraft.core.util.RenderUtils;
 
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -46,7 +48,7 @@ public class BlockBambooStalk extends GrcBlockBase
 	}
 
 	@Override
-	public boolean canPlaceTorchOnTop(World world, int x, int y, int z)
+	public boolean canPlaceTorchOnTop(World world, BlockPos pos)
 	{
 		return true;
 	}
@@ -61,15 +63,15 @@ public class BlockBambooStalk extends GrcBlockBase
 	}
 
 	@Override
-	public void updateTick(World world, int x, int y, int z, Random rand)
+	public void updateTick(World world, BlockPos pos, Random rand, IBlockState state)
 	{
-		if (world.getBlockState(x, y, z) == 0)
+		if (world.getBlockState(pos) == 0)
 		{
-			int x1 = x;
-			int y1 = y;
-			int z1 = z;
+			int x1 = pos.getX();
+			int y1 = pos.getY();
+			int z1 = pos.getZ();
 
-			if (isBambooOnGround(world, x, y, z))
+			if (isBambooOnGround(world, pos.getX(), pos.getY(), pos.getZ()))
 			{
 				if (rand.nextInt(this.growth) == 0)
 				{
@@ -77,14 +79,14 @@ public class BlockBambooStalk extends GrcBlockBase
 					int amount = 10;
 					final BlockBambooShoot bambooShoot = GrowthCraftBamboo.blocks.bambooShoot.getBlockState();
 
-					for (x1 = x - b; x1 <= x + b; ++x1)
+					for (x1 = pos.getX() - b; x1 <= pos.getX() + b; ++x1)
 					{
-						for (z1 = z - b; z1 <= z + b; ++z1)
+						for (z1 = pos.getZ() - b; z1 <= pos.getZ() + b; ++z1)
 						{
-							for (y1 = y - 1; y1 <= y + 1; ++y1)
+							for (y1 = pos.getY() - 1; y1 <= pos.getY() + 1; ++y1)
 							{
-								final boolean flag1 = world.getBlockState(x1, y1, z1) == this && isBambooOnGround(world, x1, y1, z1);
-								final boolean flag2 = world.getBlockState(x1, y1, z1) == bambooShoot;
+								final boolean flag1 = world.getBlockState(pos) == this && isBambooOnGround(world, x1, y1, z1);
+								final boolean flag2 = world.getBlockState(pos) == bambooShoot;
 								if (flag1 || flag2)
 								{
 									--amount;
@@ -97,27 +99,27 @@ public class BlockBambooStalk extends GrcBlockBase
 						}
 					}
 
-					x1 = x + rand.nextInt(3) - 1;
-					y1 = y + rand.nextInt(2) - rand.nextInt(2);
-					z1 = z + rand.nextInt(3) - 1;
+					x1 = pos.getX() + rand.nextInt(3) - 1;
+					y1 = pos.getY() + rand.nextInt(2) - rand.nextInt(2);
+					z1 = pos.getZ() + rand.nextInt(3) - 1;
 
 					for (int loop = 0; loop < 4; ++loop)
 					{
-						if (world.isAirBlock(x1, y1, z1) && bambooShoot.canBlockStay(world, x1, y1, z1))
+						if (world.isAirBlock(pos) && bambooShoot.canBlockStay(world, x1, y1, z1))
 						{
 							x = x1;
 							y = y1;
 							z = z1;
 						}
 
-						x1 = x + rand.nextInt(3) - 1;
-						y1 = y + rand.nextInt(2) - rand.nextInt(2);
-						z1 = z + rand.nextInt(3) - 1;
+						x1 = pos.getX() + rand.nextInt(3) - 1;
+						y1 = pos.getY() + rand.nextInt(2) - rand.nextInt(2);
+						z1 = pos.getZ() + rand.nextInt(3) - 1;
 					}
 
-					if (world.isAirBlock(x1, y1, z1) && bambooShoot.canBlockStay(world, x1, y1, z1))
+					if (world.isAirBlock(pos) && bambooShoot.canBlockStay(world, x1, y1, z1));
 					{
-						world.setBlock(x1, y1, z1, bambooShoot);
+						world.setBlockState(pos, IBlockState state);
 					}
 				}
 
@@ -151,9 +153,9 @@ public class BlockBambooStalk extends GrcBlockBase
 	}
 
 	@Override
-	public void breakBlock(World world, int x, int y, int z, Block par5, int par6)
+	public void breakBlock(World world, BlockPos pos, Block par5, int par6)
 	{
-		if (world.getBlockState(x, y, z) == 0)
+		if (world.getBlockState(pos) == 0)
 		{
 			final byte b0 = 4;
 			final int j1 = b0 + 1;
@@ -166,7 +168,7 @@ public class BlockBambooStalk extends GrcBlockBase
 					{
 						for (int z1 = -b0; z1 <= b0; ++z1)
 						{
-							final Block block = world.getBlockState(x + x1, y + y1, z + z1);
+							final Block block = world.getBlockState(pos);
 							if (block != null)
 							{
 								block.beginLeavesDecay(world, x + x1, y + y1, z + z1);

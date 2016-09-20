@@ -76,7 +76,7 @@ public abstract class ItemNetherSquashSeeds extends Item implements IPlantable
 			final BlockNetherSquashStem plant = (BlockNetherSquashStem)getPlant(world, x, y, z);
 			if (BlockCheck.canSustainPlant(world, x, y, z, EnumFacing.DOWN, plant))
 			{
-				world.setBlock(x, y - 1, z, plant);
+				world.setBlockState(x, y - 1, z, plant);
 				ItemUtils.consumeStack(stack);
 				return true;
 			}

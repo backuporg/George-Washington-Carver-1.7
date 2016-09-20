@@ -76,7 +76,7 @@ public abstract class ItemNetherPepper extends Item implements IPlantable
 			final BlockNetherPepper plant = (BlockNetherPepper)getPlant(world, x, y, z);
 			if (BlockCheck.canSustainPlant(world, x, y, z, EnumFacing.UP, plant))
 			{
-				world.setBlock(x, y + 1, z, plant);
+				world.setBlockState(x, y + 1, z, plant);
 				ItemUtils.consumeStack(stack);
 				return true;
 			}

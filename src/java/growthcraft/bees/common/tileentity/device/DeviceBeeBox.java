@@ -305,7 +305,7 @@ public class DeviceBeeBox extends DeviceBase
 					{
 						if (entry.canPlaceAt(getWorld(), random_x, y, random_z))
 						{
-							getWorld().setBlock(random_x, y, random_z, block, meta, BlockFlags.SYNC);
+							getWorld().setBlockState(random_x, y, random_z, block, meta, BlockFlags.SYNC);
 						}
 					}
 				}

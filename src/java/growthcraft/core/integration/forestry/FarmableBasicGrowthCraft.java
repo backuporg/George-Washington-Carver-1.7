@@ -74,7 +74,7 @@ public class FarmableBasicGrowthCraft implements IFarmable
 	@Optional.Method(modid="ForestryAPI|farming")
 	public boolean plantSaplingAt(EntityPlayer player, ItemStack germling, World world, int x, int y, int z)
 	{
-		return world.setBlock(x, y, z, block, 0, BlockFlags.SYNC);
+		return world.setBlockState(x, y, z, block, 0, BlockFlags.SYNC);
 	}
 
 	@Override

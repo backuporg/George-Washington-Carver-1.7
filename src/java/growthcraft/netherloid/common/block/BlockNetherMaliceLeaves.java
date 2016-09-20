@@ -74,7 +74,7 @@ public abstract class BlockNetherMaliceLeaves extends BlockLeaves implements ISh
 	{
 		if (world.isAirBlock(x, y - 1, z))
 		{
-			world.setBlock(x, y - 1, z, netherloid.blocks.netherMaliceFruit.getBlockState());
+			world.setBlockState(x, y - 1, z, netherloid.blocks.netherMaliceFruit.getBlockState());
 		}
 	}
 

@@ -42,9 +42,9 @@ public abstract class AbstractForestryCrop implements ICrop
 		this.position = pos;
 	}
 
-	protected final void setBlock(Point3 pos, Block block, int meta)
+	protected final void setBlockState(Point3 pos, Block block, int meta)
 	{
-		world.setBlock(pos.x, pos.y, pos.z, block, meta, BlockFlags.SYNC);
+		world.setBlockState(pos.x, pos.y, pos.z, block, meta, BlockFlags.SYNC);
 	}
 
 	protected final Block getBlockState(Point3 pos)

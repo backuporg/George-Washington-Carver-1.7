@@ -77,7 +77,7 @@ public abstract class ItemSeedThistle extends GrcItemBase implements IPlantable
 				{
 					if (soil != null && !world.isAirBlock(x, y, z) && soil.canSustainPlant(world, x, y + 1, z, EnumFacing.UP, (IPlantable)plant))
 					{
-						world.setBlock(x, y + 1, z, plant);
+						world.setBlockState(x, y + 1, z, plant);
 						--stack.stackSize;
 						return true;
 					}
