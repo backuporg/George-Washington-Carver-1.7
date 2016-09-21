@@ -25,6 +25,7 @@ package growthcraft.netherloid.common.block;
 
 import growthcraft.netherloid.netherloid;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public abstract class BlockNetherCinderrot extends BlockNetherFungusBase

@@ -35,6 +35,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -63,14 +64,14 @@ public class BlockCheesePress extends GrcBlockContainer
 
 	public void doRotateBlock(World world, BlockPos pos, EnumFacing side)
 	{
-		world.setBlockState(x, y, z, world.getBlockState(x, y, z) ^ 1, BlockFlags.SYNC);
+		world.setBlockState(pos, world.getBlockState(pos) ^ 1, BlockFlags.SYNC);
 	}
 
 	@Override
 	public void onBlockAdded(World world, BlockPos pos)
 	{
-		super.onBlockAdded(world, x, y, z);
-		this.setDefaultDirection(world, x, y, z);
+		super.onBlockAdded(world, pos);
+		this.setDefaultDirection(world, pos);
 	}
 
 	private void setDefaultDirection(World world, BlockPos pos)
@@ -103,14 +104,14 @@ public class BlockCheesePress extends GrcBlockContainer
 				meta = 4;
 			}
 
-			world.setBlockState(x, y, z, meta, BlockFlags.UPDATE_AND_SYNC);
+			world.setBlockState(pos, meta, BlockFlags.UPDATE_AND_SYNC);
 		}
 	}
 
 	@Override
 	public void onBlockPlacedBy(World world, BlockPos pos, EntityLivingBase entity, ItemStack stack)
 	{
-		super.onBlockPlacedBy(world, x, y, z, entity, stack);
+		super.onBlockPlacedBy(world, pos, entity, stack);
 		final int a = MathHelper.floor_double((entity.rotationYaw * 4.0D / 360.0D) + 0.5D) & 3;
 		if (a == 0 || a == 2)
 		{
@@ -125,7 +126,7 @@ public class BlockCheesePress extends GrcBlockContainer
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, EntityPlayer player, int meta, float par7, float par8, float par9)
 	{
-		if (super.onBlockActivated(world, x, y, z, player, meta, par7, par8, par9)) return true;
+		if (super.onBlockActivated(world, pos, player, meta, par7, par8, par9)) return true;
 		if (GrowthCraftMilk.getConfig().cheesePressHandOperated)
 		{
 			if (!player.isSneaking())

@@ -34,6 +34,7 @@ import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
@@ -75,7 +76,7 @@ public abstract class BlockThistle extends BlockBush implements ISpreadablePlant
 	@Override
 	public boolean canSpreadTo(World world, BlockPos pos)
 	{
-		if (world.isAirBlock(x, y, z) && canBlockStay(world, x, y, z))
+		if (world.isAirBlock(pos) && canBlockStay(world, pos))
 		{
 			return true;
 		}
@@ -89,17 +90,17 @@ public abstract class BlockThistle extends BlockBush implements ISpreadablePlant
 
 	private void incrementGrowth(World world, BlockPos pos, int meta)
 	{
-		world.setBlockState(x, y, z, meta + 1, BlockFlags.SYNC);
-		AppleCore.announceGrowthTick(this, world, x, y, z, meta);
+		world.setBlockState(pos, meta + 1, BlockFlags.SYNC);
+		AppleCore.announceGrowthTick(this, world, pos);
 	}
 
 	@Override
 	public void updateTick(World world, BlockPos pos, Random random)
 	{
-		super.updateTick(world, x, y, z, random);
+		super.updateTick(world, pos, random);
 		if (!world.isRemote)
 		{
-			final int meta = world.getBlockState(x, y, z);
+			final int meta = world.getBlockState(pos);
 			if (meta >= ThistleStage.FLOWER)
 			{
 				final int spreadChance = GrowthCraftMilk.getConfig().thistleSpreadChance;
@@ -107,14 +108,14 @@ public abstract class BlockThistle extends BlockBush implements ISpreadablePlant
 				{
 					if (random.nextInt(spreadChance) == 0)
 					{
-						runSpread(world, x, y, z, random);
+						runSpread(world, pos, random);
 					}
 				}
 			}
 			else
 			{
 				final int growthChance = GrowthCraftMilk.getConfig().thistleGrowthChance;
-				final Event.Result allowGrowthResult = AppleCore.validateGrowthTick(this, world, x, y, z, random);
+				final Event.Result allowGrowthResult = AppleCore.validateGrowthTick(this, world, pos, random);
 				if (allowGrowthResult == Event.Result.DENY)
 				{
 					return;
@@ -124,7 +125,7 @@ public abstract class BlockThistle extends BlockBush implements ISpreadablePlant
 				{
 					if (meta < ThistleStage.FLOWER)
 					{
-						incrementGrowth(world, x, y, z, meta);
+						incrementGrowth(world, pos, meta);
 					}
 				}
 			}
@@ -151,7 +152,7 @@ public abstract class BlockThistle extends BlockBush implements ISpreadablePlant
 
 	/* SideOnly(Side.SERVER) Can this apply bonemeal effect? */
 	@Override
-	public boolean func_149852_a(World world, Random random, BlockPos pos)
+	public boolean func_149851_a(World world, Random random, BlockPos pos)
 	{
 		return true;
 	}
@@ -174,7 +175,7 @@ public abstract class BlockThistle extends BlockBush implements ISpreadablePlant
 	@Override
 	public void func_149853_b(World world, Random random, BlockPos pos)
 	{
-		final int meta = world.getBlockState(x, y, z);
+		final int meta = world.getBlockState(pos);
 		if (meta < ThistleStage.FLOWER)
 		{
 			final int growthChance = GrowthCraftMilk.getConfig().thistleGrowthChance;
@@ -182,11 +183,11 @@ public abstract class BlockThistle extends BlockBush implements ISpreadablePlant
 			{
 				if (random.nextInt(growthChance) != 0) return;
 			}
-			incrementGrowth(world, x, y, z, meta);
+			incrementGrowth(world, pos, meta);
 		}
 		else
 		{
-			runSpread(world, x, y, z, random);
+			runSpread(world, pos, random);
 		}
 	}
 

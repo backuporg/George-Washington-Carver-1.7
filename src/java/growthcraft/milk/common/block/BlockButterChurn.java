@@ -30,6 +30,7 @@ import growthcraft.milk.client.render.RenderButterChurn;
 import growthcraft.milk.common.tileentity.TileEntityButterChurn;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -72,10 +73,10 @@ public class BlockButterChurn extends GrcBlockContainer
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, EntityPlayer player, int meta, float par7, float par8, float par9)
 	{
-		if (super.onBlockActivated(world, x, y, z, player, meta, par7, par8, par9)) return true;
+		if (super.onBlockActivated(world, pos, player, meta, par7, par8, par9)) return true;
 		if (!player.isSneaking())
 		{
-			if (tryChurning(world, x, y, z, player)) return true;
+			if (tryChurning(world, pos, player)) return true;
 		}
 		return false;
 	}

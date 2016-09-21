@@ -110,7 +110,7 @@ public class BlockBambooWall extends GrcBlockBase
 	 * BOXES
 	 ************/
 	@Override
-	public void setBlockBoundsBasedOnState(IBlockAccess world, BlockPos pos,)
+	public void setBlockBoundsBasedOnState(IBlockAccess world, BlockPos pos)
 	{
 		int tm;
 
