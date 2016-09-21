@@ -13,6 +13,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
@@ -76,22 +77,22 @@ public class BlockFermentBarrel extends BlockCellarContainer
 			final Block eastBlock = world.getBlockState(x + 1, y, z);
 			byte meta = 3;
 
-			if (southBlock.func_149730_j() && !northBlock.func_149730_j())
+			if (southBlock.isFullBlock() && !northBlock.isFullBlock())
 			{
 				meta = 3;
 			}
 
-			if (northBlock.func_149730_j() && !southBlock.func_149730_j())
+			if (northBlock.isFullBlock() && !southBlock.isFullBlock())
 			{
 				meta = 2;
 			}
 
-			if (westBlock.func_149730_j() && !eastBlock.func_149730_j())
+			if (westBlock.isFullBlock() && !eastBlock.isFullBlock())
 			{
 				meta = 5;
 			}
 
-			if (eastBlock.func_149730_j() && !westBlock.func_149730_j())
+			if (eastBlock.isFullBlock() && !westBlock.isFullBlock())
 			{
 				meta = 4;
 			}

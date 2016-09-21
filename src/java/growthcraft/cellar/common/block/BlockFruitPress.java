@@ -10,6 +10,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -69,22 +70,22 @@ public class BlockFruitPress extends BlockCellarContainer
 			final Block block3 = world.getBlockState(x + 1, y, z);
 			byte meta = 3;
 
-			if (block.func_149730_j() && !block1.func_149730_j())
+			if (block.isFullBlock() && !block1.isFullBlock())
 			{
 				meta = 3;
 			}
 
-			if (block1.func_149730_j() && !block.func_149730_j())
+			if (block1.isFullBlock() && !block.isFullBlock())
 			{
 				meta = 2;
 			}
 
-			if (block2.func_149730_j() && !block3.func_149730_j())
+			if (block2.isFullBlock() && !block3.isFullBlock())
 			{
 				meta = 5;
 			}
 
-			if (block3.func_149730_j() && !block2.func_149730_j())
+			if (block3.isFullBlock() && !block2.isFullBlock())
 			{
 				meta = 4;
 			}

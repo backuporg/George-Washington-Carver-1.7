@@ -5,6 +5,7 @@ import growthcraft.cellar.GrowthCraftCellar;
 import growthcraft.cellar.client.render.RenderCultureJar;
 import growthcraft.cellar.common.tileentity.TileEntityCultureJar;
 import net.minecraft.block.material.Material;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;

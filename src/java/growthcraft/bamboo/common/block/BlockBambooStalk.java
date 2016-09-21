@@ -134,23 +134,23 @@ public class BlockBambooStalk extends GrcBlockBase
 
 		if (world.getBlockState(x, y - 1, z) != this)
 		{
-			if (!isBambooOnGround(world, x, y, z))
+			if (!isBambooOnGround(world, pos))
 			{
 				flag = true;
 			}
 		}
 
-		if (flag && world.getBlockState(x, y, z) == 0)
+		if (flag && world.getBlockState(pos) == 0)
 		{
-			this.dropBlockAsItem(world, x, y, z, world.getBlockState(x, y, z), 0);
-			world.setBlockToAir(x, y, z);
+			this.dropBlockAsItem(world, pos, world.getBlockState(pos), 0);
+			world.setBlockToAir(pos);
 		}
 
-		super.onNeighborBlockChange(world, x, y, z, s);
+		super.onNeighborBlockChange(world, pos, s);
 	}
 
 	@Override
-	public void breakBlock(World world, BlockPos pos,, Block par5, int par6)
+	public void breakBlock(World world, BlockPos pos, Block par5, int par6)
 	{
 		if (world.getBlockState(pos) == 0)
 		{

@@ -6,12 +6,14 @@ import growthcraft.bees.client.renderer.RenderBeeHive;
 import growthcraft.core.common.block.GrcBlockBase;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -53,10 +55,10 @@ public class BlockBeeHive extends GrcBlockBase
 	 * TRIGGERS
 	 ************/
 	@Override
-	public void onBlockAdded(World world, BlockPos pos)
+	public void onBlockAdded(World world, BlockPos pos, IBlockState state)
 	{
-		super.onBlockAdded(world, x, y, z);
-		this.setDefaultDirection(world, x, y, z);
+		super.onBlockAdded(world, pos, state);
+		this.setDefaultDirection(world, pos);
 	}
 
 	private void setDefaultDirection(World world, BlockPos pos)
@@ -69,22 +71,22 @@ public class BlockBeeHive extends GrcBlockBase
 			final Block xpos = world.getBlockState(x + 1, y, z);
 			byte b0 = 3;
 
-			if (zneg.func_149730_j() && !zpos.func_149730_j())
+			if (zneg.isFullBlock() && !zpos.isFullBlock())
 			{
 				b0 = 3;
 			}
 
-			if (zpos.func_149730_j() && !zneg.func_149730_j())
+			if (zpos.isFullBlock() && !zneg.isFullBlock())
 			{
 				b0 = 2;
 			}
 
-			if (xneg.func_149730_j() && !xpos.func_149730_j())
+			if (xneg.isFullBlock() && !xpos.isFullBlock())
 			{
 				b0 = 5;
 			}
 
-			if (xpos.func_149730_j() && !xneg.func_149730_j())
+			if (xpos.isFullBlock() && !xneg.isFullBlock())
 			{
 				b0 = 4;
 			}
