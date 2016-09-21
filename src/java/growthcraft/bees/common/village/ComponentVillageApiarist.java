@@ -206,7 +206,7 @@ public class ComponentVillageApiarist extends StructureVillagePieces.Village imp
 	}
 
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	public static ComponentVillageApiarist buildComponent(Start startPiece, List list, Random random, int x, int y, int z, int coordBaseMode, int par7)
+	public static ComponentVillageApiarist buildComponent(Start startPiece, List list, Random random, BlockPos pos, int coordBaseMode, int par7)
 	{
 		final StructureBoundingBox structureboundingbox = StructureBoundingBox.getComponentToAddBoundingBox(x, y, z, 0, 0, 0, 9, 8, 14, coordBaseMode);
 		if (canVillageGoDeeper(structureboundingbox)) {
@@ -217,7 +217,7 @@ public class ComponentVillageApiarist extends StructureVillagePieces.Village imp
 		return null;
 	}
 
-	public void placeBlockAtCurrentPositionPub(World world, Block block, int meta, int x, int y, int z, StructureBoundingBox box)
+	public void placeBlockAtCurrentPositionPub(World world, Block block, int meta, BlockPos pos, StructureBoundingBox box)
 	{
 		placeBlockAtCurrentPosition(world, block, meta, x, y, z, box);
 	}

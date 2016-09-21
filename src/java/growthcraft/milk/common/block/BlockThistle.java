@@ -76,7 +76,7 @@ public abstract class BlockThistle extends BlockBush implements ISpreadablePlant
 	}
 
 	@Override
-	public boolean canSpreadTo(World world, int x, int y, int z)
+	public boolean canSpreadTo(World world, BlockPos pos)
 	{
 		if (world.isAirBlock(x, y, z) && canBlockStay(world, x, y, z))
 		{
@@ -85,19 +85,19 @@ public abstract class BlockThistle extends BlockBush implements ISpreadablePlant
 		return false;
 	}
 
-	private void runSpread(World world, int x, int y, int z, Random random)
+	private void runSpread(World world, BlockPos pos, Random random)
 	{
 		spreadLogic.run(this, 0, world, x, y, z, random);
 	}
 
-	private void incrementGrowth(World world, int x, int y, int z, int meta)
+	private void incrementGrowth(World world, BlockPos pos, int meta)
 	{
 		world.setBlockState(x, y, z, meta + 1, BlockFlags.SYNC);
 		AppleCore.announceGrowthTick(this, world, x, y, z, meta);
 	}
 
 	@Override
-	public void updateTick(World world, int x, int y, int z, Random random)
+	public void updateTick(World world, BlockPos pos, Random random)
 	{
 		super.updateTick(world, x, y, z, random);
 		if (!world.isRemote)
@@ -135,7 +135,7 @@ public abstract class BlockThistle extends BlockBush implements ISpreadablePlant
 	}
 
 	@Override
-	public EnumPlantType getPlantType(IBlockAccess world, int x, int y, int z)
+	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos)
 	{
 		return EnumPlantType.Plains;
 	}
@@ -147,14 +147,14 @@ public abstract class BlockThistle extends BlockBush implements ISpreadablePlant
 
 	/* Can this accept bonemeal? */
 	@Override
-	public boolean func_149851_a(World world, int x, int y, int z, boolean isClient)
+	public boolean func_149851_a(World world, BlockPos pos, boolean isClient)
 	{
 		return true;
 	}
 
 	/* SideOnly(Side.SERVER) Can this apply bonemeal effect? */
 	@Override
-	public boolean func_149852_a(World world, Random random, int x, int y, int z)
+	public boolean func_149852_a(World world, Random random, BlockPos pos)
 	{
 		return true;
 	}
@@ -175,7 +175,7 @@ public abstract class BlockThistle extends BlockBush implements ISpreadablePlant
 
 	/* Apply bonemeal effect */
 	@Override
-	public void func_149853_b(World world, Random random, int x, int y, int z)
+	public void func_149853_b(World world, Random random, BlockPos pos)
 	{
 		final int meta = world.getBlockState(x, y, z);
 		if (meta < ThistleStage.FLOWER)

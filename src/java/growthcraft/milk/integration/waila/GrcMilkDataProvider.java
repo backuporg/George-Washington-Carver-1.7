@@ -142,7 +142,7 @@ public class GrcMilkDataProvider implements IWailaDataProvider
 
 	@Override
 	@Optional.Method(modid="Waila")
-	public NBTTagCompound getNBTData(EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, int x, int y, int z)
+	public NBTTagCompound getNBTData(EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, BlockPos pos)
 	{
 		if (te instanceof TileEntityButterChurn) getButterChurnData((TileEntityButterChurn)te, tag);
 		if (te instanceof TileEntityCheesePress) getCheesePressData((TileEntityCheesePress)te, tag);

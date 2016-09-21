@@ -75,7 +75,7 @@ public class RenderPancheon implements ISimpleBlockRenderingHandler
 		}
 	}
 
-	private void renderFluidLayer(Block block, RenderBlocks renderer, Fluid fluid, double y0, double y1, int x, int y, int z)
+	private void renderFluidLayer(Block block, RenderBlocks renderer, Fluid fluid, double y0, double y1, BlockPos pos)
 	{
 		if (fluid == null) return;
 		final float[] colorAry = new float[3];
@@ -88,7 +88,7 @@ public class RenderPancheon implements ISimpleBlockRenderingHandler
 	}
 
 	@Override
-	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer)
+	public boolean renderWorldBlock(IBlockAccess world, BlockPos pos, Block block, int modelId, RenderBlocks renderer)
 	{
 		if (modelId == RENDER_ID)
 		{

@@ -42,7 +42,7 @@ public class BlockNetherKnifeBush extends BlockBush
 	}
 
 	@Override
-	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
+	public void onEntityCollidedWithBlock(World world, BlockPos pos, Entity entity)
 	{
 		if (world.isRemote) return;
 		if (entity instanceof EntityLivingBase)

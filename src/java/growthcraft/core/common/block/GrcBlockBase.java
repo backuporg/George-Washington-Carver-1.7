@@ -41,7 +41,7 @@ public class GrcBlockBase extends Block
 	 * @param y - y Coord
 	 * @param z - z Coord
 	 */
-	public void fellBlockAsItem(World world, int x, int y, int z)
+	public void fellBlockAsItem(World world, BlockPos pos)
 	{
 		dropBlockAsItem(world, x, y, z, world.getBlockState(x, y, z), 0);
 		world.setBlockToAir(x, y, z);

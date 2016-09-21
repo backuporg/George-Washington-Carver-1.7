@@ -122,7 +122,7 @@ public class RenderFermentBarrel implements ISimpleBlockRenderingHandler
 	}
 
 	@Override
-	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer)
+	public boolean renderWorldBlock(IBlockAccess world, BlockPos pos, Block block, int modelId, RenderBlocks renderer)
 	{
 		if (modelId == RENDER_ID)
 		{

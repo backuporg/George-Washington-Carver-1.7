@@ -38,13 +38,13 @@ public abstract class BlockGrapeVine0 extends BlockGrapeVineBase
 	 * TICK
 	 ************/
 	@Override
-	protected boolean canUpdateGrowth(World world, int x, int y, int z)
+	protected boolean canUpdateGrowth(World world, BlockPos pos)
 	{
 		return world.getBlockLightValue(x, y + 1, z) >= 9;
 	}
 
 	@Override
-	protected void doGrowth(World world, int x, int y, int z, int meta)
+	protected void doGrowth(World world, BlockPos pos, int meta)
 	{
 		if (meta == 0)
 		{
@@ -61,7 +61,7 @@ public abstract class BlockGrapeVine0 extends BlockGrapeVineBase
 	 ************/
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Item getItem(World world, int x, int y, int z)
+	public Item getItem(World world, BlockPos pos)
 	{
 		return GrowthCraftGrapes.items.grapeSeeds.getItem();
 	}
@@ -99,13 +99,13 @@ public abstract class BlockGrapeVine0 extends BlockGrapeVineBase
 	 * BOXES
 	 ************/
 	@Override
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, BlockPos pos)
 	{
 		return null;
 	}
 
 	@Override
-	public void setBlockBoundsBasedOnState(IBlockAccess world, int x, int y, int z)
+	public void setBlockBoundsBasedOnState(IBlockAccess world, BlockPos pos)
 	{
 		final int meta = world.getBlockState(x, y, z);
 		final float f = 0.0625F;

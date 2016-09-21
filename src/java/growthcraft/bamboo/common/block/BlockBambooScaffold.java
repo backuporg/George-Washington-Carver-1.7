@@ -40,7 +40,7 @@ public class BlockBambooScaffold extends GrcBlockBase
 	 * TICK
 	 ************/
 	@Override
-	public void updateTick(World world, int x, int y, int z, Random random)
+	public void updateTick(World world, BlockPos pos, Random random)
 	{
 		this.onNeighborBlockChange(world, x, y, z, null);
 	}
@@ -48,7 +48,7 @@ public class BlockBambooScaffold extends GrcBlockBase
 	/************
 	 * TRIGGERS
 	 ************/
-	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int meta, float float7, float float8, float float9)
+	public boolean onBlockActivated(World world, BlockPos pos, EntityPlayer player, int meta, float float7, float float8, float float9)
 	{
 		final ItemStack itemstack = player.inventory.getCurrentItem();
 		if (itemstack != null)
@@ -81,7 +81,7 @@ public class BlockBambooScaffold extends GrcBlockBase
 	}
 
 	@Override
-	public void onNeighborBlockChange(World world, int x, int y, int z, Block par5)
+	public void onNeighborBlockChange(World world, BlockPos pos, Block par5)
 	{
 		if (!this.canBlockStay(world, x, y, z))
 		{
@@ -91,7 +91,7 @@ public class BlockBambooScaffold extends GrcBlockBase
 	}
 
 	@Override
-	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
+	public void onEntityCollidedWithBlock(World world, BlockPos pos, Entity entity)
 	{
 		entity.fallDistance = 0.0F;
 		if (entity.isCollidedHorizontally)
@@ -115,13 +115,13 @@ public class BlockBambooScaffold extends GrcBlockBase
 	 * CONDITIONS
 	 ************/
 	@Override
-	public boolean canPlaceBlockAt(World world, int x, int y, int z)
+	public boolean canPlaceBlockAt(World world, BlockPos pos)
 	{
 		return canBlockStay(world, x, y, z);
 	}
 
 	@Override
-	public boolean canBlockStay(World world, int x, int y, int z)
+	public boolean canBlockStay(World world, BlockPos pos)
 	{
 		if (world.getBlockState(x, y -1 , z).isSideSolid(world, x, y - 1, z, EnumFacing.UP)) return true;
 		if (checkSides(world, x, y, z)) return true;
@@ -129,7 +129,7 @@ public class BlockBambooScaffold extends GrcBlockBase
 		return false;
 	}
 
-	private boolean checkSides(World world, int x, int y, int z)
+	private boolean checkSides(World world, BlockPos pos)
 	{
 		final boolean flag = world.getBlockState(x + 1, y, z) == this;
 		final boolean flag1 = world.getBlockState(x - 1, y, z) == this;
@@ -156,7 +156,7 @@ public class BlockBambooScaffold extends GrcBlockBase
 	 ************/
 
 	@Override
-	public boolean isSideSolid(IBlockAccess world, int x, int y, int z, EnumFacing side)
+	public boolean isSideSolid(IBlockAccess world, BlockPos pos, EnumFacing side)
 	{
 		return EnumFacing.UP == side;
 	}
@@ -208,12 +208,12 @@ public class BlockBambooScaffold extends GrcBlockBase
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side)
+	public boolean shouldSideBeRendered(IBlockAccess world, BlockPos pos, int side)
 	{
 		return true;
 	}
 
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, BlockPos pos)
 	{
 		final float f = 0.125F;
 		return AxisAlignedBB.getBoundingBox(x + this.minX + f, y + this.minY, z + this.minZ + f, x + this.maxX - f, y + this.maxY, z + this.maxZ - f);

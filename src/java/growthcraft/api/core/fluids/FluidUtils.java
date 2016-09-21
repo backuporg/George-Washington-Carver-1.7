@@ -82,7 +82,7 @@ public class FluidUtils
 		return fluidContainers;
 	}
 
-	public static FluidStack drainFluidBlock(World world, BlockPos pos, boolean doDrain)
+	public static FluidStack drainFluidBlock(World world, BlockPos pos,, boolean doDrain)
 	{
 		final IBlockState state = world.getBlockState(pos);
 		final Block block = state.getBlock();

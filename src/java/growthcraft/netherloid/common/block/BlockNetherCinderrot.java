@@ -42,13 +42,13 @@ public abstract class BlockNetherCinderrot extends BlockNetherFungusBase
 	}
 
 	@Override
-	protected float getSpreadRate(World world, int x, int y, int z)
+	protected float getSpreadRate(World world, BlockPos pos)
 	{
 		return cinderrotSpreadRate;
 	}
 
 	@Override
-	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
+	public void onEntityCollidedWithBlock(World world, BlockPos pos, Entity entity)
 	{
 		if (world.isRemote) return;
 		entity.setFire(15);

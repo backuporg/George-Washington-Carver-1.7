@@ -67,26 +67,26 @@ public class BlockHangingCurds extends GrcBlockContainer
 	}
 
 	@Override
-	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack stack)
+	public void onBlockPlacedBy(World world, BlockPos pos, EntityLivingBase entity, ItemStack stack)
 	{
 		super.onBlockPlacedBy(world, x, y, z, entity, stack);
 		world.setBlockState(x, y, z, stack.getItemDamage(), BlockFlags.NONE);
 	}
 
 	@Override
-	protected boolean shouldRestoreBlockState(World world, int x, int y, int z, ItemStack stack)
+	protected boolean shouldRestoreBlockState(World world, BlockPos pos, ItemStack stack)
 	{
 		return true;
 	}
 
 	@Override
-	protected boolean shouldDropTileStack(World world, int x, int y, int z, int metadata, int fortune)
+	protected boolean shouldDropTileStack(World world, BlockPos pos, int metadata, int fortune)
 	{
 		return true;
 	}
 
 	@Override
-	protected ItemStack createHarvestedBlockItemStack(World world, EntityPlayer player, int x, int y, int z, int meta)
+	protected ItemStack createHarvestedBlockItemStack(World world, EntityPlayer player, BlockPos pos, int meta)
 	{
 		final TileEntityHangingCurds te = getTileEntity(world, x, y, z);
 		if (te != null)
@@ -97,7 +97,7 @@ public class BlockHangingCurds extends GrcBlockContainer
 	}
 
 	@Override
-	protected void getTileItemStackDrops(List<ItemStack> ret, World world, int x, int y, int z, int metadata, int fortune)
+	protected void getTileItemStackDrops(List<ItemStack> ret, World world, BlockPos pos, int metadata, int fortune)
 	{
 		final TileEntityHangingCurds te = getTileEntity(world, x, y, z);
 		if (te != null)
@@ -111,7 +111,7 @@ public class BlockHangingCurds extends GrcBlockContainer
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int meta, float par7, float par8, float par9)
+	public boolean onBlockActivated(World world, BlockPos pos, EntityPlayer player, int meta, float par7, float par8, float par9)
 	{
 		if (super.onBlockActivated(world, x, y, z, player, meta, par7, par8, par9)) return true;
 		if (!player.isSneaking())
@@ -150,7 +150,7 @@ public class BlockHangingCurds extends GrcBlockContainer
 	}
 
 	@Override
-	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z, EntityPlayer player)
+	public ItemStack getPickBlock(MovingObjectPosition target, World world, BlockPos pos, EntityPlayer player)
 	{
 		final TileEntityHangingCurds teHangingCurds = getTileEntity(world, x, y, z);
 		if (teHangingCurds != null)
@@ -161,20 +161,20 @@ public class BlockHangingCurds extends GrcBlockContainer
 	}
 
 	@Override
-	public boolean canBlockStay(World world, int x, int y, int z)
+	public boolean canBlockStay(World world, BlockPos pos)
 	{
 		return !world.isAirBlock(x, y + 1, z) &&
 			BlockCheck.isBlockPlacableOnSide(world, x, y + 1, z, EnumFacing.DOWN);
 	}
 
 	@Override
-	public boolean canPlaceBlockAt(World world, int x, int y, int z)
+	public boolean canPlaceBlockAt(World world, BlockPos pos)
 	{
 		return super.canPlaceBlockAt(world, x, y, z) && canBlockStay(world, x, y, z);
 	}
 
 	@Override
-	public void onNeighborBlockChange(World world, int x, int y, int z, Block block)
+	public void onNeighborBlockChange(World world, BlockPos pos, Block block)
 	{
 		if (!this.canBlockStay(world, x, y, z))
 		{
@@ -183,7 +183,7 @@ public class BlockHangingCurds extends GrcBlockContainer
 	}
 
 	@Override
-	public void updateTick(World world, int x, int y, int z, Random random)
+	public void updateTick(World world, BlockPos pos, Random random)
 	{
 		super.updateTick(world, x, y, z, random);
 		if (!world.isRemote)
@@ -222,7 +222,7 @@ public class BlockHangingCurds extends GrcBlockContainer
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side)
+	public boolean shouldSideBeRendered(IBlockAccess world, BlockPos pos, int side)
 	{
 		return true;
 	}

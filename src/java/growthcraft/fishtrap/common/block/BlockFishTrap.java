@@ -73,7 +73,7 @@ public class BlockFishTrap extends GrcBlockContainer
 		setCreativeTab(GrowthCraftFishtrap.creativeTab);
 	}
 
-	protected boolean openGui(EntityPlayer player, World world, int x, int y, int z)
+	protected boolean openGui(EntityPlayer player, World world, BlockPos pos)
 	{
 		final TileEntity te = getTileEntity(world, x, y, z);
 		if (te instanceof IInteractionObject)
@@ -85,7 +85,7 @@ public class BlockFishTrap extends GrcBlockContainer
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int meta, float par7, float par8, float par9)
+	public boolean onBlockActivated(World world, BlockPos pos, EntityPlayer player, int meta, float par7, float par8, float par9)
 	{
 		if (super.onBlockActivated(world, x, y, z, player, meta, par7, par8, par9)) return true;
 		return !player.isSneaking() && openGui(player, world, x, y, z);
@@ -96,7 +96,7 @@ public class BlockFishTrap extends GrcBlockContainer
 		return BlockCheck.isWater(block);
 	}
 
-	private float applyBiomeCatchModifier(World world, int x, int y, int z, float f)
+	private float applyBiomeCatchModifier(World world, BlockPos pos, float f)
 	{
 		boolean isInWaterBiome;
 		if (GrowthCraftFishTrap.getConfig().useBiomeDict)
@@ -116,7 +116,7 @@ public class BlockFishTrap extends GrcBlockContainer
 		return f;
 	}
 
-	private float getCatchRate(World world, int x, int y, int z)
+	private float getCatchRate(World world, BlockPos pos)
 	{
 		final TileEntityFishTrap te = getTileEntity(world, x, y, z);
 		if (te == null) return 0.0f;
@@ -153,7 +153,7 @@ public class BlockFishTrap extends GrcBlockContainer
 		return te.applyBaitModifier(f);
 	}
 
-	protected ItemStack pickCatch(World world, int x, int y, int z)
+	protected ItemStack pickCatch(World world, BlockPos pos)
 	{
 		float f = this.getCatchRate(world, x, y, z);
 		boolean flag;
@@ -176,7 +176,7 @@ public class BlockFishTrap extends GrcBlockContainer
 		return FishTrapRegistry.instance().getRandomCatchFromGroup(world.rand, catchGroup);
 	}
 
-	protected void doCatch(World world, int x, int y, int z, TileEntityFishTrap te)
+	protected void doCatch(World world, BlockPos pos, TileEntityFishTrap te)
 	{
 		final ItemStack item = pickCatch(world, x, y, z);
 		if (item != null)
@@ -190,7 +190,7 @@ public class BlockFishTrap extends GrcBlockContainer
 		}
 	}
 
-	protected void attemptCatch(World world, int x, int y, int z, Random random, TileEntityFishTrap te, boolean debugFlag)
+	protected void attemptCatch(World world, BlockPos pos, Random random, TileEntityFishTrap te, boolean debugFlag)
 	{
 		final float f = this.getCatchRate(world, x, y, z);
 		GrowthCraftFishTrap.getLogger().debug("Attempting Catch x=%d y=%d z=%d dimension=%d rate=%f", x, y, z, world.provider.dimensionId, f);
@@ -200,7 +200,7 @@ public class BlockFishTrap extends GrcBlockContainer
 		}
 	}
 
-	private boolean canCatch(World world, int x, int y, int z)
+	private boolean canCatch(World world, BlockPos pos)
 	{
 		return isWater(world.getBlockState(x, y, z - 1)) ||
 			isWater(world.getBlockState(x, y, z + 1)) ||
@@ -209,7 +209,7 @@ public class BlockFishTrap extends GrcBlockContainer
 	}
 
 	@Override
-	public void updateTick(World world, int x, int y, int z, Random random)
+	public void updateTick(World world, BlockPos pos, Random random)
 	{
 		super.updateTick(world, x, y, z, random);
 		final TileEntityFishTrap te = getTileEntity(world, x, y, z);
@@ -257,7 +257,7 @@ public class BlockFishTrap extends GrcBlockContainer
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side)
+	public boolean shouldSideBeRendered(IBlockAccess world, BlockPos pos, int side)
 	{
 		if (this == world.getBlockState(x, y, z)) return false;
 		return super.shouldSideBeRendered(world, x, y, z, side);
@@ -277,7 +277,7 @@ public class BlockFishTrap extends GrcBlockContainer
 	}
 
 	@Override
-	public int getComparatorInputOverride(World world, int x, int y, int z, int par5)
+	public int getComparatorInputOverride(World world, BlockPos pos, int par5)
 	{
 		final TileEntityFishTrap te = getTileEntity(world, x, y, z);
 		if (te != null)

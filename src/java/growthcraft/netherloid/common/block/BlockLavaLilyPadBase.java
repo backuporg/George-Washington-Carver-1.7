@@ -60,7 +60,7 @@ public class BlockLavaLilyPadBase extends BlockBush
 		return Blocks.LAVA == block;
 	}
 
-	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB bb, List list, Entity entity)
+	public void addCollisionBoxesToList(World world, BlockPos pos, AxisAlignedBB bb, List list, Entity entity)
 	{
 		if (entity == null || !(entity instanceof EntityBoat))
 		{
@@ -68,13 +68,13 @@ public class BlockLavaLilyPadBase extends BlockBush
 		}
 	}
 
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, BlockPos pos)
 	{
 		return AxisAlignedBB.getBoundingBox((double)x + getBlockBoundsMinX(), (double)y + getBlockBoundsMinY(), (double)z + getBlockBoundsMinZ(),
 			(double)x + getBlockBoundsMaxX(), (double)y + getBlockBoundsMaxY(), (double)z + getBlockBoundsMaxZ());
 	}
 
-	public boolean canBlockStay(World world, int x, int y, int z)
+	public boolean canBlockStay(World world, BlockPos pos)
 	{
 		return y >= 0 && y < 256 ? world.getBlockState(x, y - 1, z).getMaterial() == Material.LAVA && world.getBlockState(x, y - 1, z) == 0 : false;
 	}

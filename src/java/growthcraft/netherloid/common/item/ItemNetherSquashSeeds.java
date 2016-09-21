@@ -49,25 +49,25 @@ public abstract class ItemNetherSquashSeeds extends Item implements IPlantable
 	}
 
 	@Override
-	public EnumPlantType getPlantType(IBlockAccess world, int x, int y, int z)
+	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos)
 	{
 		return EnumPlantType.Nether;
 	}
 
 	@Override
-	public Block getPlant(IBlockAccess world, int x, int y, int z)
+	public Block getPlant(IBlockAccess world, BlockPos pos)
 	{
 		return netherloid.blocks.netherSquashStem.getBlockState();
 	}
 
 	@Override
-	public int getPlantMetadata(IBlockAccess world, int x, int y, int z)
+	public int getPlantMetadata(IBlockAccess world, BlockPos pos)
 	{
 		return 0;
 	}
 
 	@Override
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int EnumFacing, float par8, float par9, float par10)
+	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, int EnumFacing, float par8, float par9, float par10)
 	{
 		if (EnumFacing != 0) return false;
 

@@ -10,7 +10,7 @@ public class PacketClearTankButton extends AbstractPacketButton
 {
 	public PacketClearTankButton(){}
 
-	public PacketClearTankButton(int x, int y, int z)
+	public PacketClearTankButton(BlockPos pos)
 	{
 		super(x, y, z);
 	}

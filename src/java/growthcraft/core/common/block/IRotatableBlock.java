@@ -15,5 +15,5 @@ public interface IRotatableBlock
 	 * @param side - side that block should be rotated from
 	 * @return true, if it can be rotated, false otherwise
 	 */
-	boolean isRotatable(IBlockAccess world, int x, int y, int z, EnumFacing side);
+	boolean isRotatable(IBlockAccess world, BlockPos pos, EnumFacing side);
 }

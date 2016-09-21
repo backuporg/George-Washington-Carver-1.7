@@ -42,7 +42,7 @@ public abstract class BlockCellarContainer extends GrcBlockContainer
 		super(material);
 	}
 
-	protected boolean openGui(EntityPlayer player, World world, int x, int y, int z)
+	protected boolean openGui(EntityPlayer player, World world, BlockPos pos)
 	{
 		final TileEntity te = getTileEntity(world, x, y, z);
 		if (te instanceof IInteractionObject)
@@ -54,7 +54,7 @@ public abstract class BlockCellarContainer extends GrcBlockContainer
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int meta, float par7, float par8, float par9)
+	public boolean onBlockActivated(World world, BlockPos pos, EntityPlayer player, int meta, float par7, float par8, float par9)
 	{
 		if (super.onBlockActivated(world, x, y, z, player, meta, par7, par8, par9)) return true;
 		return !player.isSneaking() && openGui(player, world, x, y, z);

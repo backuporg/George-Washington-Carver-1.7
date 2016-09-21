@@ -46,25 +46,25 @@ public abstract class ItemSeedThistle extends GrcItemBase implements IPlantable
 	}
 
 	@Override
-	public EnumPlantType getPlantType(IBlockAccess world, int x, int y, int z)
+	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos)
 	{
 		return EnumPlantType.Plains;
 	}
 
 	@Override
-	public Block getPlant(IBlockAccess world, int x, int y, int z)
+	public Block getPlant(IBlockAccess world, BlockPos pos)
 	{
 		return GrowthCraftMilk.blocks.thistle.getBlockState();
 	}
 
 	@Override
-	public int getPlantMetadata(IBlockAccess world, int x, int y, int z)
+	public int getPlantMetadata(IBlockAccess world, BlockPos pos)
 	{
 		return 0;
 	}
 
 	@Override
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int EnumFacing, float tx, float ty, float tz)
+	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, int EnumFacing, float tx, float ty, float tz)
 	{
 		if (EnumFacing == 1)
 		{

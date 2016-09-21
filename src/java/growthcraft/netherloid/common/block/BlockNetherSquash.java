@@ -51,7 +51,7 @@ public class BlockNetherSquash extends BlockDirectional
 		setCreativeTab(netherloid.tab);
 	}
 
-	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack itemstack)
+	public void onBlockPlacedBy(World world, BlockPos pos, EntityLivingBase entity, ItemStack itemstack)
 	{
 		final int meta = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 2.5D) & 3;
 		world.setBlockState(x, y, z, meta, BlockFlags.SYNC);

@@ -29,7 +29,7 @@ public abstract class ItemBambooShoot extends GrcItemFoodBase implements IPlanta
 	}
 
 	@Override
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int EnumFacing, float par8, float par9, float par10)
+	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, int EnumFacing, float par8, float par9, float par10)
 	{
 		final Block block1 = world.getBlockState(x, y, z);
 
@@ -102,19 +102,19 @@ public abstract class ItemBambooShoot extends GrcItemFoodBase implements IPlanta
 	}
 
 	@Override
-	public EnumPlantType getPlantType(IBlockAccess world, int x, int y, int z)
+	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos)
 	{
 		return EnumPlantType.Plains;
 	}
 
 	@Override
-	public Block getPlant(IBlockAccess world, int x, int y, int z)
+	public Block getPlant(IBlockAccess world, BlockPos pos)
 	{
 		return cropBlock;
 	}
 
 	@Override
-	public int getPlantMetadata(IBlockAccess world, int x, int y, int z)
+	public int getPlantMetadata(IBlockAccess world, BlockPos pos)
 	{
 		return 0;
 	}

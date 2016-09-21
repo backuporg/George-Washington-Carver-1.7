@@ -11,7 +11,7 @@ public abstract class AbstractPacketButton extends AbstractPacket
 
 	public AbstractPacketButton() {}
 
-	public AbstractPacketButton(int x, int y, int z)
+	public AbstractPacketButton(BlockPos pos)
 	{
 		this.xCoord = x;
 		this.yCoord = y;

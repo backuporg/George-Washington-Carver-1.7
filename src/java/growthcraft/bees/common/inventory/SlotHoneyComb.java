@@ -10,7 +10,7 @@ public class SlotHoneyComb extends SlotInput
 {
 	final ContainerBeeBox container;
 
-	public SlotHoneyComb(ContainerBeeBox cont, IInventory inv, int x, int y, int z)
+	public SlotHoneyComb(ContainerBeeBox cont, IInventory inv, BlockPos pos)
 	{
 		super(inv, x, y, z);
 		this.container = cont;

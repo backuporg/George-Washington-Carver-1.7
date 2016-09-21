@@ -61,12 +61,12 @@ public class BonemealEventBamboo
 		}
 	}
 
-	private boolean isBambooOnGround(World world, int x, int y, int z)
+	private boolean isBambooOnGround(World world, BlockPos pos)
 	{
 		return GrowthCraftBamboo.blocks.bambooStalk.getBlockState().isBambooOnGround(world, x, y, z);
 	}
 
-	private int countNearbyValidSoil(World world, int x, int y, int z, int b)
+	private int countNearbyValidSoil(World world, BlockPos pos, int b)
 	{
 		int count = 0;
 		int x1 = x;

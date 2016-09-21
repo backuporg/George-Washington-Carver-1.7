@@ -69,12 +69,12 @@ public class BlockBeeBox extends GrcBlockContainer {
 	}
 
 	@Override
-	public int getFlammability(IBlockAccess world, int x, int y, int z, EnumFacing face) {
+	public int getFlammability(IBlockAccess world, BlockPos pos,, EnumFacing face) {
 		return flammability;
 	}
 
 	@Override
-	public int getFireSpreadSpeed(IBlockAccess world, int x, int y, int z, EnumFacing face) {
+	public int getFireSpreadSpeed(IBlockAccess world, BlockPos pos,, EnumFacing face) {
 		return fireSpreadSpeed;
 	}
 
@@ -88,14 +88,14 @@ public class BlockBeeBox extends GrcBlockContainer {
 	}
 
 	@Override
-	public void updateTick(World world, BlockPos pos, Random rand, IBlockState state) {
+	public void updateTick(World world, BlockPos pos,, Random rand, IBlockState state) {
 		super.updateTick(world, pos, state, rand);
 		final TileEntityBeeBox te = getTileEntity(world, pos);
 		if (te != null) te.updateBlockTick();
 	}
 
 	@SideOnly(Side.CLIENT)
-	public int randomDisplayTick(World world, BlockPos pos, Random rand) {
+	public int randomDisplayTick(World world, BlockPos pos,, Random rand) {
 		if (rand.nextInt(24) == 0) {
 			final TileEntityBeeBox te = (TileEntityBeeBox) world.getTileEntity(pos);
 			if (te != null) {
@@ -118,7 +118,7 @@ public class BlockBeeBox extends GrcBlockContainer {
 		 * TRIGGERS
 		 ************/
 		@Override
-		public boolean onBlockActivated (World world, BlockPos pos, EntityPlayer player,int meta, float par7,
+		public boolean onBlockActivated (World world, BlockPos pos,, EntityPlayer player,int meta, float par7,
 		float par8, float par9)
 		{
 			if (super.onBlockActivated(world, pos, player, meta, par7, par8, par9)) return true;
@@ -135,7 +135,7 @@ public class BlockBeeBox extends GrcBlockContainer {
 		}
 
 		@Override
-		public void breakBlock (World world, BlockPos pos, IBlockState block,int par5)
+		public void breakBlock (World world, BlockPos pos,, IBlockState block,int par5)
 		{
 			final TileEntityBeeBox te = (TileEntityBeeBox) world.getTileEntity(pos);
 
@@ -156,7 +156,7 @@ public class BlockBeeBox extends GrcBlockContainer {
 		 * CONDITIONS
 		 ************/
 		@Override
-		public boolean isSideSolid (IBlockAccess world, BlockPos pos, EnumFacing side)
+		public boolean isSideSolid (IBlockAccess world, BlockPos pos,, EnumFacing side)
 		{
 			return EnumFacing.UP == side;
 		}
@@ -213,7 +213,7 @@ public class BlockBeeBox extends GrcBlockContainer {
 
 		@Override
 		@SideOnly(Side.CLIENT)
-		public IIcon getIcon (IBlockAccess world, BlockPos pos,int side);
+		public IIcon getIcon (IBlockAccess world, BlockPos pos,,int side);
 		{
 			final int meta = world.getBlockState(pos);
 			final int offset = calculateIconOffset(meta);
@@ -272,7 +272,7 @@ public class BlockBeeBox extends GrcBlockContainer {
 
 		@Override
 		@SideOnly(Side.CLIENT)
-		public boolean shouldSideBeRendered (IBlockAccess world, BlockPos pos,int side)
+		public boolean shouldSideBeRendered (IBlockAccess world, BlockPos pos,,int side)
 		{
 			return true;
 		}
@@ -322,7 +322,7 @@ public class BlockBeeBox extends GrcBlockContainer {
 		}
 
 		@Override
-		public int getComparatorInputOverride (World world, BlockPos pos,int par5)
+		public int getComparatorInputOverride (World world, BlockPos pos,,int par5)
 		{
 			final TileEntityBeeBox te = (TileEntityBeeBox) world.getTileEntity(pos);
 			return te.countHoney() * 15 / 27;

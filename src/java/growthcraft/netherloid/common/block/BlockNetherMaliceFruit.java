@@ -76,12 +76,12 @@ public abstract class BlockNetherMaliceFruit extends Block implements IGrowable,
 		setCreativeTab(null);
 	}
 
-	public float getGrowthProgress(IBlockAccess world, int x, int y, int z, int meta)
+	public float getGrowthProgress(IBlockAccess world, BlockPos pos, int meta)
 	{
 		return (float)meta / (float)MaliceFruitStage.MATURE;
 	}
 
-	void incrementGrowth(World world, int x, int y, int z, int meta)
+	void incrementGrowth(World world, BlockPos pos, int meta)
 	{
 		world.setBlockState(x, y, z, meta + 1, BlockFlags.SYNC);
 		AppleCore.announceGrowthTick(this, world, x, y, z, meta);
@@ -89,21 +89,21 @@ public abstract class BlockNetherMaliceFruit extends Block implements IGrowable,
 
 	/* Can this accept bonemeal? */
 	@Override
-	public boolean func_149851_a(World world, int x, int y, int z, boolean isClient)
+	public boolean func_149851_a(World world, BlockPos pos, boolean isClient)
 	{
 		return world.getBlockState(x, y, z) < MaliceFruitStage.MATURE;
 	}
 
 	/* SideOnly(Side.SERVER) Can this apply bonemeal effect? */
 	@Override
-	public boolean func_149852_a(World world, Random random, int x, int y, int z)
+	public boolean func_149852_a(World world, Random random, BlockPos pos)
 	{
 		return true;
 	}
 
 	/* Apply bonemeal effect */
 	@Override
-	public void func_149853_b(World world, Random random, int x, int y, int z)
+	public void func_149853_b(World world, Random random, BlockPos pos)
 	{
 		incrementGrowth(world, x, y, z, world.getBlockState(x, y, z));
 	}
@@ -115,14 +115,14 @@ public abstract class BlockNetherMaliceFruit extends Block implements IGrowable,
 	 * @param y - y Coord
 	 * @param z - z Coord
 	 */
-	public void fellBlockAsItem(World world, int x, int y, int z)
+	public void fellBlockAsItem(World world, BlockPos pos)
 	{
 		this.dropBlockAsItem(world, x, y, z, world.getBlockState(x, y, z), 0);
 		world.setBlockToAir(x, y, z);
 	}
 
 	@Override
-	public void updateTick(World world, int x, int y, int z, Random random)
+	public void updateTick(World world, BlockPos pos, Random random)
 	{
 		if (!this.canBlockStay(world, x, y, z))
 		{
@@ -152,7 +152,7 @@ public abstract class BlockNetherMaliceFruit extends Block implements IGrowable,
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int EnumFacing, float par7, float par8, float par9)
+	public boolean onBlockActivated(World world, BlockPos pos, EntityPlayer player, int EnumFacing, float par7, float par8, float par9)
 	{
 		if (world.getBlockState(x, y, z) >= MaliceFruitStage.MATURE)
 		{
@@ -166,7 +166,7 @@ public abstract class BlockNetherMaliceFruit extends Block implements IGrowable,
 	}
 
 	@Override
-	public void onNeighborBlockChange(World world, int x, int y, int z, Block block)
+	public void onNeighborBlockChange(World world, BlockPos pos, Block block)
 	{
 		if (!this.canBlockStay(world, x, y, z))
 		{
@@ -175,7 +175,7 @@ public abstract class BlockNetherMaliceFruit extends Block implements IGrowable,
 	}
 
 	@Override
-	public boolean canBlockStay(World world, int x, int y, int z)
+	public boolean canBlockStay(World world, BlockPos pos)
 	{
 		return netherloid.blocks.netherMaliceLeaves.getBlockState() == world.getBlockState(x, y + 1, z) &&
 			(world.getBlockState(x, y + 1, z) & 3) == 0;
@@ -183,7 +183,7 @@ public abstract class BlockNetherMaliceFruit extends Block implements IGrowable,
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Item getItem(World world, int x, int y, int z)
+	public Item getItem(World world, BlockPos pos)
 	{
 		return netherloid.items.netherMaliceFruit.getItem();
 	}
@@ -239,7 +239,7 @@ public abstract class BlockNetherMaliceFruit extends Block implements IGrowable,
 	}
 
 	@Override
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, BlockPos pos)
 	{
 		this.setBlockBoundsBasedOnState(world, x, y, z);
 		return super.getCollisionBoundingBoxFromPool(world, x, y, z);
@@ -247,14 +247,14 @@ public abstract class BlockNetherMaliceFruit extends Block implements IGrowable,
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public AxisAlignedBB getSelectedBoundingBoxFromPool(World world, int x, int y, int z)
+	public AxisAlignedBB getSelectedBoundingBoxFromPool(World world, BlockPos pos)
 	{
 		this.setBlockBoundsBasedOnState(world, x, y, z);
 		return super.getSelectedBoundingBoxFromPool(world, x, y, z);
 	}
 
 	@Override
-	public void setBlockBoundsBasedOnState(IBlockAccess world, int x, int y, int z)
+	public void setBlockBoundsBasedOnState(IBlockAccess world, BlockPos pos)
 	{
 		final int meta = world.getBlockState(x, y, z);
 		final float f = 0.0625F;

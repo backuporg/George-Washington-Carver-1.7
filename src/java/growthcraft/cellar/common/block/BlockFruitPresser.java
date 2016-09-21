@@ -61,7 +61,7 @@ public class BlockFruitPresser extends BlockCellarContainer implements IWrenchab
 
 	/* IRotatableBLock */
 	@Override
-	public boolean isRotatable(IBlockAccess world, int x, int y, int z, EnumFacing side)
+	public boolean isRotatable(IBlockAccess world, BlockPos pos, EnumFacing side)
 	{
 		final Block below = world.getBlockState(x, y - 1, z);
 		if (below instanceof IRotatableBlock)
@@ -72,7 +72,7 @@ public class BlockFruitPresser extends BlockCellarContainer implements IWrenchab
 	}
 
 	@Override
-	public boolean rotateBlock(World world, int x, int y, int z, EnumFacing side)
+	public boolean rotateBlock(World world, BlockPos pos, EnumFacing side)
 	{
 		if (isRotatable(world, x, y, z, side))
 		{
@@ -84,7 +84,7 @@ public class BlockFruitPresser extends BlockCellarContainer implements IWrenchab
 
 	/* IWrenchable */
 	@Override
-	public boolean wrenchBlock(World world, int x, int y, int z, EntityPlayer player, ItemStack wrench)
+	public boolean wrenchBlock(World world, BlockPos pos, EntityPlayer player, ItemStack wrench)
 	{
 		final Block below = world.getBlockState(x, y - 1, z);
 		if (below instanceof BlockFruitPress)
@@ -95,7 +95,7 @@ public class BlockFruitPresser extends BlockCellarContainer implements IWrenchab
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int meta, float par7, float par8, float par9)
+	public boolean onBlockActivated(World world, BlockPos pos, EntityPlayer player, int meta, float par7, float par8, float par9)
 	{
 		if (world.isRemote) return true;
 		final Block below = world.getBlockState(x, y - 1, z);
@@ -107,7 +107,7 @@ public class BlockFruitPresser extends BlockCellarContainer implements IWrenchab
 	}
 
 	@Override
-	public void onBlockAdded(World world, int x, int y, int z)
+	public void onBlockAdded(World world, BlockPos pos)
 	{
 		super.onBlockAdded(world, x, y, z);
 		final int m = world.getBlockState(x,  y - 1, z);
@@ -120,7 +120,7 @@ public class BlockFruitPresser extends BlockCellarContainer implements IWrenchab
 	}
 
 	@Override
-	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack stack)
+	public void onBlockPlacedBy(World world, BlockPos pos, EntityLivingBase entity, ItemStack stack)
 	{
 		final int m = world.getBlockState(x,  y - 1, z);
 		world.setBlockState(x, y, z, m, BlockFlags.UPDATE_AND_SYNC);
@@ -132,7 +132,7 @@ public class BlockFruitPresser extends BlockCellarContainer implements IWrenchab
 	}
 
 	@Override
-	public void onNeighborBlockChange(World world, int x, int y, int z, Block block)
+	public void onNeighborBlockChange(World world, BlockPos pos, Block block)
 	{
 		if (!this.canBlockStay(world, x, y, z))
 		{
@@ -145,7 +145,7 @@ public class BlockFruitPresser extends BlockCellarContainer implements IWrenchab
 		}
 	}
 
-	private void updatePressState(World world, int x, int y, int z)
+	private void updatePressState(World world, BlockPos pos)
 	{
 		final int     meta = world.getBlockState(x, y, z);
 		final boolean flag = world.isBlockIndirectlyGettingPowered(x, y, z);
@@ -168,13 +168,13 @@ public class BlockFruitPresser extends BlockCellarContainer implements IWrenchab
 	 * CONDITIONS
 	 ************/
 	@Override
-	public boolean canBlockStay(World world, int x, int y, int z)
+	public boolean canBlockStay(World world, BlockPos pos)
 	{
 		return GrowthCraftCellar.blocks.fruitPress.getBlockState() == world.getBlockState(x, y - 1, z);
 	}
 
 	@Override
-	public boolean isSideSolid(IBlockAccess world, int x, int y, int z, EnumFacing side)
+	public boolean isSideSolid(IBlockAccess world, BlockPos pos, EnumFacing side)
 	{
 		final int meta = world.getBlockState(x, y, z);
 
@@ -195,7 +195,7 @@ public class BlockFruitPresser extends BlockCellarContainer implements IWrenchab
 	 ************/
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Item getItem(World world, int x, int y, int z)
+	public Item getItem(World world, BlockPos pos)
 	{
 		return GrowthCraftCellar.blocks.fruitPress.getItem();
 	}
@@ -266,7 +266,7 @@ public class BlockFruitPresser extends BlockCellarContainer implements IWrenchab
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side)
+	public boolean shouldSideBeRendered(IBlockAccess world, BlockPos pos, int side)
 	{
 		return true;
 	}

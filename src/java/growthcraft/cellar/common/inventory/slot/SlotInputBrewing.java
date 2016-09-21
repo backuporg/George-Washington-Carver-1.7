@@ -8,7 +8,7 @@ import net.minecraft.item.ItemStack;
 
 public class SlotInputBrewing extends SlotInput
 {
-	public SlotInputBrewing(IInventory inv, int x, int y, int z)
+	public SlotInputBrewing(IInventory inv, BlockPos pos)
 	{
 		super(inv, x, y, z);
 	}

@@ -82,7 +82,7 @@ public class EntityFXDropParticle extends Particle
 			this.motionZ *= 0.699999988079071D;
 		}
 
-		final BlockPos pos = new BlockPos(posX, posY, posZ);
+		final BlockPos pos, = new BlockPos(posX, posY, posZ);
 		final IBlockState state = worldObj.getBlockState(pos);
 		final Material material = state.getMaterial();
 		final Block block = state.getBlock();

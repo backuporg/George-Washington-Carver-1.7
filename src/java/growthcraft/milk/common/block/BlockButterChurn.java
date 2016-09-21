@@ -52,7 +52,7 @@ public class BlockButterChurn extends GrcBlockContainer
 		setBlockTextureName("grcmilk:butter_churn");
 	}
 
-	private boolean tryChurning(World world, int x, int y, int z, EntityPlayer player)
+	private boolean tryChurning(World world, BlockPos pos, EntityPlayer player)
 	{
 		final TileEntityButterChurn butterChurn = getTileEntity(world, x, y, z);
 		if (butterChurn != null)
@@ -71,7 +71,7 @@ public class BlockButterChurn extends GrcBlockContainer
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int meta, float par7, float par8, float par9)
+	public boolean onBlockActivated(World world, BlockPos pos, EntityPlayer player, int meta, float par7, float par8, float par9)
 	{
 		if (super.onBlockActivated(world, x, y, z, player, meta, par7, par8, par9)) return true;
 		if (!player.isSneaking())
@@ -101,7 +101,7 @@ public class BlockButterChurn extends GrcBlockContainer
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side)
+	public boolean shouldSideBeRendered(IBlockAccess world, BlockPos pos, int side)
 	{
 		return true;
 	}

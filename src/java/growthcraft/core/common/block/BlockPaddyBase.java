@@ -31,12 +31,12 @@ public abstract class BlockPaddyBase extends GrcBlockBase implements IPaddy
 	}
 
 	@Override
-	public boolean isFilledWithFluid(IBlockAccess world, int x, int y, int z, int meta)
+	public boolean isFilledWithFluid(IBlockAccess world, BlockPos pos, int meta)
 	{
 		return meta >= getMaxPaddyMeta(world, x, y, z);
 	}
 
-	public void drainPaddy(World world, int x, int y, int z)
+	public void drainPaddy(World world, BlockPos pos)
 	{
 		final int meta = world.getBlockState(x, y, z);
 		if (meta > 0)
@@ -45,7 +45,7 @@ public abstract class BlockPaddyBase extends GrcBlockBase implements IPaddy
 		}
 	}
 
-	public void fillPaddy(World world, int x, int y, int z)
+	public void fillPaddy(World world, BlockPos pos)
 	{
 		world.setBlockState(x, y, z, getMaxPaddyMeta(world, x, y, z), BlockFlags.UPDATE_AND_SYNC);
 	}
@@ -55,7 +55,7 @@ public abstract class BlockPaddyBase extends GrcBlockBase implements IPaddy
 	 ************/
 
 	@Override
-	public void updateTick(World world, int x, int y, int z, Random random)
+	public void updateTick(World world, BlockPos pos, Random random)
 	{
 		if (isBelowFillingFluid(world, x, y, z) && world.canLightningStrikeAt(x, y + 1, z))
 		{
@@ -67,7 +67,7 @@ public abstract class BlockPaddyBase extends GrcBlockBase implements IPaddy
 	 * TRIGGERS
 	 ************/
 	@Override
-	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int meta, float par7, float par8, float par9)
+	public boolean onBlockActivated(World world, BlockPos pos, EntityPlayer player, int meta, float par7, float par8, float par9)
 	{
 		if (world.isRemote)
 		{
@@ -118,7 +118,7 @@ public abstract class BlockPaddyBase extends GrcBlockBase implements IPaddy
 	}
 
 	@Override
-	public void onFallenUpon(World world, int x, int y, int z, Entity entity, float par6)
+	public void onFallenUpon(World world, BlockPos pos, Entity entity, float par6)
 	{
 		if (!world.isRemote && world.rand.nextFloat() < par6 - 0.5F)
 		{
@@ -137,7 +137,7 @@ public abstract class BlockPaddyBase extends GrcBlockBase implements IPaddy
 	}
 
 	@Override
-	public void onNeighborBlockChange(World world, int x, int y, int z, Block par5)
+	public void onNeighborBlockChange(World world, BlockPos pos, Block par5)
 	{
 		super.onNeighborBlockChange(world, x, y, z, par5);
 		if (isBelowFillingFluid(world, x, y, z))
@@ -153,7 +153,7 @@ public abstract class BlockPaddyBase extends GrcBlockBase implements IPaddy
 	}
 
 	@Override
-	public boolean canSilkHarvest(World world, EntityPlayer player, int x, int y, int z, int metadata)
+	public boolean canSilkHarvest(World world, EntityPlayer player, BlockPos pos, int metadata)
 	{
 		return false;
 	}

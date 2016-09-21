@@ -63,7 +63,7 @@ public abstract class BlockNetherMaliceSapling extends BlockBush implements IGro
 	/************
 	 * MAIN
 	 ************/
-	public void updateTick(World world, int x, int y, int z, Random random)
+	public void updateTick(World world, BlockPos pos, Random random)
 	{
 		if (!world.isRemote)
 		{
@@ -76,7 +76,7 @@ public abstract class BlockNetherMaliceSapling extends BlockBush implements IGro
 		}
 	}
 
-	public void markOrGrowMarked(World world, int x, int y, int z, Random random)
+	public void markOrGrowMarked(World world, BlockPos pos, Random random)
 	{
 		final int meta = world.getBlockState(x, y, z);
 
@@ -90,7 +90,7 @@ public abstract class BlockNetherMaliceSapling extends BlockBush implements IGro
 		}
 	}
 
-	public void growTree(World world, int x, int y, int z, Random random)
+	public void growTree(World world, BlockPos pos, Random random)
 	{
 		if (!TerrainGen.saplingGrowTree(world, random, x, y, z)) return;
 
@@ -107,21 +107,21 @@ public abstract class BlockNetherMaliceSapling extends BlockBush implements IGro
 
 	/* Both side */
 	@Override
-	public boolean func_149851_a(World world, int x, int y, int z, boolean isClient)
+	public boolean func_149851_a(World world, BlockPos pos, boolean isClient)
 	{
 		return (world.getBlockState(x, y, z) & 8) == 0;
 	}
 
 	/* SideOnly(Side.SERVER) Can this apply bonemeal effect? */
 	@Override
-	public boolean func_149852_a(World world, Random random, int x, int y, int z)
+	public boolean func_149852_a(World world, Random random, BlockPos pos)
 	{
 		return true;
 	}
 
 	/* Apply bonemeal effect */
 	@Override
-	public void func_149853_b(World world, Random random, int x, int y, int z)
+	public void func_149853_b(World world, Random random, BlockPos pos)
 	{
 		if (random.nextFloat() < 0.45D)
 		{

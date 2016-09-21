@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack;
 
 public class SlotBrewKettleResidue extends GrcSlot
 {
-	public SlotBrewKettleResidue(IInventory inv, int x, int y, int z)
+	public SlotBrewKettleResidue(IInventory inv, BlockPos pos)
 	{
 		super(inv, x, y, z);
 	}

@@ -77,13 +77,13 @@ public abstract class AbstractFactoryHarvestable<TBlock extends Block> implement
 	}
 
 	@Override
-	public boolean canBeHarvested(World world, Map<String, Boolean> harvesterSettings, int x, int y, int z)
+	public boolean canBeHarvested(World world, Map<String, Boolean> harvesterSettings, BlockPos pos)
 	{
 		return true;
 	}
 
 	@Override
-	public List<ItemStack> getDrops(World world, Random rand, Map<String, Boolean> harvesterSettings, int x, int y, int z)
+	public List<ItemStack> getDrops(World world, Random rand, Map<String, Boolean> harvesterSettings, BlockPos pos)
 	{
 		if (plantBlock != null)
 			return plantBlock.getDrops(world, x, y, z, world.getBlockState(x, y, z), 0);
@@ -91,12 +91,12 @@ public abstract class AbstractFactoryHarvestable<TBlock extends Block> implement
 	}
 
 	@Override
-	public void preHarvest(World world, int x, int y, int z)
+	public void preHarvest(World world, BlockPos pos)
 	{
 	}
 
 	@Override
-	public void postHarvest(World world, int x, int y, int z)
+	public void postHarvest(World world, BlockPos pos)
 	{
 		if (plantBlock != null) world.notifyBlocksOfNeighborChange(x, y, z, plantBlock);
 	}

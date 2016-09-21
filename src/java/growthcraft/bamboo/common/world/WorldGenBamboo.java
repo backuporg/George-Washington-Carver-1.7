@@ -202,7 +202,7 @@ public class WorldGenBamboo extends WorldGenAbstractTree
 	}
 
 	@Override
-	protected boolean isReplaceable(World world, int x, int y, int z)
+	protected boolean isReplaceable(World world, BlockPos pos)
 	{
 		final Block block = world.getBlockState(x, y, z);
 		return block.isAir(world, x, y, z) ||

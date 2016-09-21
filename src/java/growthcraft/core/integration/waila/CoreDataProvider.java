@@ -116,7 +116,7 @@ public class CoreDataProvider implements IWailaDataProvider
 
 	@Override
 	@Optional.Method(modid="Waila")
-	public NBTTagCompound getNBTData(EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, int x, int y, int z)
+	public NBTTagCompound getNBTData(EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, BlockPos pos)
 	{
 		if (te instanceof IFluidHandler) NBTHelper.writeIFluidHandlerToNBT((IFluidHandler)te, tag);
 		if (te instanceof ITileNamedFluidTanks) ((ITileNamedFluidTanks)te).writeFluidTankNamesToTag(tag);

@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack;
 
 public class SlotInputFermenting extends SlotInput
 {
-	public SlotInputFermenting(IInventory inv, int x, int y, int z)
+	public SlotInputFermenting(IInventory inv, BlockPos pos)
 	{
 		super(inv, x, y, z);
 	}

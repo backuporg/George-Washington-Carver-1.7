@@ -62,20 +62,20 @@ public abstract class AbstractFactoryFruit<TBlock extends Block> implements IFac
 	}
 
 	@Override
-	public boolean canBePicked(World world, int x, int y, int z)
+	public boolean canBePicked(World world, BlockPos pos)
 	{
 		return true;
 	}
 
 	@Override
 	@Optional.Method(modid=MFRModuleBase.MOD_ID)
-	public ReplacementBlock getReplacementBlock(World world, int x, int y, int z)
+	public ReplacementBlock getReplacementBlock(World world, BlockPos pos)
 	{
 		return null;
 	}
 
 	@Override
-	public List<ItemStack> getDrops(World world, Random rand, int x, int y, int z)
+	public List<ItemStack> getDrops(World world, Random rand, BlockPos pos)
 	{
 		if (plantBlock != null)
 			return plantBlock.getDrops(world, x, y, z, world.getBlockState(x, y, z), 0);
@@ -83,12 +83,12 @@ public abstract class AbstractFactoryFruit<TBlock extends Block> implements IFac
 	}
 
 	@Override
-	public void prePick(World world, int x, int y, int z)
+	public void prePick(World world, BlockPos pos)
 	{
 	}
 
 	@Override
-	public void postPick(World world, int x, int y, int z)
+	public void postPick(World world, BlockPos pos)
 	{
 		if (plantBlock != null) world.notifyBlocksOfNeighborChange(x, y, z, plantBlock);
 	}

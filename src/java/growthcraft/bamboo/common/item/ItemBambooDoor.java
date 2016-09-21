@@ -25,7 +25,7 @@ public class ItemBambooDoor extends GrcItemBase
 	/************
 	 * MAIN
 	 ************/
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float par8, float par9, float par10)
+	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, int side, float par8, float par9, float par10)
 	{
 		if (side != 1)
 		{

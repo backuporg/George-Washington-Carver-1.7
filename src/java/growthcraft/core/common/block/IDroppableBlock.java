@@ -8,5 +8,5 @@ import net.minecraft.world.World;
  */
 public interface IDroppableBlock
 {
-	void fellBlockAsItem(World world, int x, int y, int z);
+	void fellBlockAsItem(World world, BlockPos pos);
 }

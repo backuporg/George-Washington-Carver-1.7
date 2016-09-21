@@ -40,25 +40,25 @@ public class BlockFermentBarrel extends BlockCellarContainer
 	}
 
 	@Override
-	protected boolean shouldRestoreBlockState(World world, int x, int y, int z, ItemStack stack)
+	protected boolean shouldRestoreBlockState(World world, BlockPos pos, ItemStack stack)
 	{
 		return true;
 	}
 
 	@Override
-	protected boolean shouldDropTileStack(World world, int x, int y, int z, int metadata, int fortune)
+	protected boolean shouldDropTileStack(World world, BlockPos pos, int metadata, int fortune)
 	{
 		return true;
 	}
 
 	@Override
-	public boolean isRotatable(IBlockAccess world, int x, int y, int z, EnumFacing side)
+	public boolean isRotatable(IBlockAccess world, BlockPos pos, EnumFacing side)
 	{
 		return true;
 	}
 
 	@Override
-	protected boolean playerDrainTank(World world, int x, int y, int z, IFluidHandler tank, ItemStack held, EntityPlayer player)
+	protected boolean playerDrainTank(World world, BlockPos pos, IFluidHandler tank, ItemStack held, EntityPlayer player)
 	{
 		final FluidStack available = Utils.playerDrainTank(world, x, y, z, tank, held, player);
 		if (available != null && available.amount > 0)
@@ -69,7 +69,7 @@ public class BlockFermentBarrel extends BlockCellarContainer
 		return false;
 	}
 
-	private void setDefaultDirection(World world, int x, int y, int z)
+	private void setDefaultDirection(World world, BlockPos pos)
 	{
 		if (!world.isRemote)
 		{
@@ -104,14 +104,14 @@ public class BlockFermentBarrel extends BlockCellarContainer
 	}
 
 	@Override
-	public void onBlockAdded(World world, int x, int y, int z)
+	public void onBlockAdded(World world, BlockPos pos)
 	{
 		super.onBlockAdded(world, x, y, z);
 		setDefaultDirection(world, x, y, z);
 	}
 
 	@Override
-	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack stack)
+	public void onBlockPlacedBy(World world, BlockPos pos, EntityLivingBase entity, ItemStack stack)
 	{
 		super.onBlockPlacedBy(world, x, y, z, entity, stack);
 		final int meta = BlockPistonBase.determineOrientation(world, x, y, z, entity);
@@ -175,7 +175,7 @@ public class BlockFermentBarrel extends BlockCellarContainer
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side)
+	public boolean shouldSideBeRendered(IBlockAccess world, BlockPos pos, int side)
 	{
 		return true;
 	}
@@ -190,7 +190,7 @@ public class BlockFermentBarrel extends BlockCellarContainer
 	}
 
 	@Override
-	public int getComparatorInputOverride(World world, int x, int y, int z, int par5)
+	public int getComparatorInputOverride(World world, BlockPos pos, int par5)
 	{
 		final TileEntityFermentBarrel te = getTileEntity(world, x, y, z);
 		if (te != null)

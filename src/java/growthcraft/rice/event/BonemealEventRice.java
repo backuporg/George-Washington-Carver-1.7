@@ -16,7 +16,7 @@ import net.minecraftforge.event.entity.player.BonemealEvent;
 
 public class BonemealEventRice
 {
-	private void appleBonemealEffect(World world, Random rand, int x, int y, int z)
+	private void appleBonemealEffect(World world, Random rand, BlockPos pos)
 	{
 		final int r =  MathHelper.getRandomIntegerInRange(rand, 2, 5);
 		int mplus;

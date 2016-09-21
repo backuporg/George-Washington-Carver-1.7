@@ -44,12 +44,12 @@ public class BlockBambooWall extends GrcBlockBase
 	 * STUFF
 	 ************/
 	@Override
-	public boolean getBlocksMovement(IBlockAccess world, BlockPos pos, IBlockState state)
+	public boolean getBlocksMovement(IBlockAccess world, BlockPos pos,, IBlockState state)
 	{
 		return false;
 	}
 
-	public boolean canConnectWallTo(IBlockAccess world, BlockPos pos, IBlockState state)
+	public boolean canConnectWallTo(IBlockAccess world, BlockPos pos,, IBlockState state)
 	{
 		if (world.isAirBlock(pos)) return false;
 
@@ -117,7 +117,7 @@ public class BlockBambooWall extends GrcBlockBase
 	 * BOXES
 	 ************/
 	@Override
-	public void setBlockBoundsBasedOnState(IBlockAccess world, BlockPos pos)
+	public void setBlockBoundsBasedOnState(IBlockAccess world, BlockPos pos,)
 	{
 		int tm;
 
@@ -266,7 +266,7 @@ public class BlockBambooWall extends GrcBlockBase
 
 	@Override
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB axis, List list, Entity entity)
+	public void addCollisionBoxesToList(World world, BlockPos pos, AxisAlignedBB axis, List list, Entity entity)
 	{
 		int tm;
 

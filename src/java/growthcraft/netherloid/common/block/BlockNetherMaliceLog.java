@@ -49,7 +49,7 @@ public class BlockNetherMaliceLog extends Block
 	}
 
 	@Override
-	public boolean canSustainLeaves(IBlockAccess world, int x, int y, int z)
+	public boolean canSustainLeaves(IBlockAccess world, BlockPos pos)
 	{
 		return true;
 	}

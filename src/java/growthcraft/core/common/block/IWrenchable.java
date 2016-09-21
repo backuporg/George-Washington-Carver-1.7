@@ -10,5 +10,5 @@ import net.minecraft.world.World;
  */
 public interface IWrenchable
 {
-	public boolean wrenchBlock(World world, int x, int y, int z, EntityPlayer player, ItemStack wrench);
+	public boolean wrenchBlock(World world, BlockPos pos, EntityPlayer player, ItemStack wrench);
 }

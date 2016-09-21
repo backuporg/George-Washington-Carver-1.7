@@ -54,7 +54,7 @@ public class BlockFenceRope extends GrcBlockBase implements IBlockRope
 	}
 
 	@Override
-	public float getBlockHardness(World world, int x, int y, int z)
+	public float getBlockHardness(World world, BlockPos pos)
 	{
 		return getFenceBlock().getBlockHardness(world, x, y, z);
 	}
@@ -66,7 +66,7 @@ public class BlockFenceRope extends GrcBlockBase implements IBlockRope
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int EnumFacing, float par7, float par8, float par9)
+	public boolean onBlockActivated(World world, BlockPos pos, EntityPlayer player, int EnumFacing, float par7, float par8, float par9)
 	{
 		if (player.inventory.getCurrentItem() != null && GrowthCraftCore.items.rope.equals(player.inventory.getCurrentItem().getItem()))
 		{
@@ -85,13 +85,13 @@ public class BlockFenceRope extends GrcBlockBase implements IBlockRope
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Item getItem(World world, int x, int y, int z)
+	public Item getItem(World world, BlockPos pos)
 	{
 		return Item.getItemFromBlock(getFenceBlock());
 	}
 
 	@Override
-	public boolean canConnectRopeTo(IBlockAccess world, int x, int y, int z)
+	public boolean canConnectRopeTo(IBlockAccess world, BlockPos pos)
 	{
 		return world.getBlockState(x, y, z) instanceof IBlockRope;
 	}
@@ -109,7 +109,7 @@ public class BlockFenceRope extends GrcBlockBase implements IBlockRope
 	}
 
 	@Override
-	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune)
+	public ArrayList<ItemStack> getDrops(World world, BlockPos pos, int metadata, int fortune)
 	{
 		final ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
 		ret.add(new ItemStack(getFenceBlock()));
@@ -118,7 +118,7 @@ public class BlockFenceRope extends GrcBlockBase implements IBlockRope
 	}
 
 	@Override
-	public void setBlockBoundsBasedOnState(IBlockAccess world, int x, int y, int z)
+	public void setBlockBoundsBasedOnState(IBlockAccess world, BlockPos pos)
 	{
 		final boolean flag = this.canConnectRopeTo(world, x, y, z - 1);
 		final boolean flag1 = this.canConnectRopeTo(world, x, y, z + 1);
@@ -154,7 +154,7 @@ public class BlockFenceRope extends GrcBlockBase implements IBlockRope
 
 	@Override
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB aabb, List list, Entity entity)
+	public void addCollisionBoxesToList(World world, BlockPos pos, AxisAlignedBB aabb, List list, Entity entity)
 	{
 		final boolean flag = this.canConnectRopeTo(world, x, y, z - 1);
 		final boolean flag1 = this.canConnectRopeTo(world, x, y, z + 1);
@@ -242,7 +242,7 @@ public class BlockFenceRope extends GrcBlockBase implements IBlockRope
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(IBlockAccess world, int x, int y, int z, int side)
+	public IIcon getIcon(IBlockAccess world, BlockPos pos, int side)
 	{
 		return getFenceBlock().getIcon(world, x, y, z, side);
 	}
@@ -267,7 +267,7 @@ public class BlockFenceRope extends GrcBlockBase implements IBlockRope
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int par5)
+	public boolean shouldSideBeRendered(IBlockAccess world, BlockPos pos, int par5)
 	{
 		return true;
 	}

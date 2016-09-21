@@ -41,7 +41,7 @@ public abstract class BlockBambooLeaves extends BlockLeaves implements IShearabl
 		setCreativeTab(GrowthCraftBamboo.creativeTab);
 	}
 
-	private void removeLeaves(World world, BlockPos pos)
+	private void removeLeaves(World world, BlockPos pos,)
 	{
 		this.dropBlockAsItem(world, pos, world.getBlockState(pos), 0);
 		world.setBlockToAir(pos);
@@ -51,7 +51,7 @@ public abstract class BlockBambooLeaves extends BlockLeaves implements IShearabl
 	 * TICK
 	 ************/
 	@Override
-	public void updateTick(World world, BlockPos pos, Random rand, IBlockState state)
+	public void updateTick(World world, BlockPos pos,, Random rand, IBlockState state)
 	{
 		if (!world.isRemote)
 		{
@@ -152,11 +152,11 @@ public abstract class BlockBambooLeaves extends BlockLeaves implements IShearabl
 
 				if (l1 >= 0)
 				{
-					world.setBlockState(x, y, z, meta & -9, BlockFlags.SUPRESS_RENDER);
+					world.setBlockState(pos, meta & -9, BlockFlags.SUPRESS_RENDER);
 				}
 				else
 				{
-					this.removeLeaves(world, x, y, z);
+					this.removeLeaves(world, pos);
 				}
 			}
 		}
@@ -180,7 +180,7 @@ public abstract class BlockBambooLeaves extends BlockLeaves implements IShearabl
 	 * TRIGGERS
 	 ************/
 	@Override
-	public void breakBlock(World world, BlockPos pos, Block par5, int par6, IBlockState state)
+	public void breakBlock(World world, BlockPos pos,, Block par5, int par6, IBlockState state)
 	{
 		final byte b0 = 1;
 		final int j1 = b0 + 1;
@@ -209,13 +209,13 @@ public abstract class BlockBambooLeaves extends BlockLeaves implements IShearabl
 	 * STUFF
 	 ************/
 	@Override
-	public void beginLeavesDecay(World world, int x, int y, int z)
+	public void beginLeavesDecay(World world, BlockPos pos)
 	{
 		world.setBlockState(x, y, z, world.getBlockState(x, y, z) | 8, BlockFlags.SUPRESS_RENDER);
 	}
 
 	@Override
-	public boolean isLeaves(IBlockAccess world, int x, int y, int z)
+	public boolean isLeaves(IBlockAccess world, BlockPos pos)
 	{
 		return true;
 	}
@@ -273,7 +273,7 @@ public abstract class BlockBambooLeaves extends BlockLeaves implements IShearabl
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side)
+	public boolean shouldSideBeRendered(IBlockAccess world, BlockPos pos, int side)
 	{
 		return true;
 	}
@@ -296,7 +296,7 @@ public abstract class BlockBambooLeaves extends BlockLeaves implements IShearabl
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public int colorMultiplier(IBlockAccess world, int x, int y, int z)
+	public int colorMultiplier(IBlockAccess world, BlockPos pos)
 	{
 		final int meta = world.getBlockState(x, y, z);
 		int r = 0;
@@ -321,13 +321,13 @@ public abstract class BlockBambooLeaves extends BlockLeaves implements IShearabl
 	 * SHEARS
 	 ************/
 	@Override
-	public boolean isShearable(ItemStack item, IBlockAccess world, int x, int y, int z)
+	public boolean isShearable(ItemStack item, IBlockAccess world, BlockPos pos)
 	{
 		return true;
 	}
 
 	@Override
-	public ArrayList<ItemStack> onSheared(ItemStack item, IBlockAccess world, int x, int y, int z, int fortune)
+	public ArrayList<ItemStack> onSheared(ItemStack item, IBlockAccess world, BlockPos pos, int fortune)
 	{
 		final ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
 		ret.add(new ItemStack(Blocks.LEAVES, 1, world.getBlockState(x, y, z) & 3));

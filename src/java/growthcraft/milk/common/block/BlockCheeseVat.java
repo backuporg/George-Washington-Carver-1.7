@@ -55,7 +55,7 @@ public class BlockCheeseVat extends GrcBlockContainer
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World world, int x, int y, int z, Random random)
+	public void randomDisplayTick(World world, BlockPos pos, Random random)
 	{
 		if (random.nextInt(12) == 0)
 		{
@@ -85,7 +85,7 @@ public class BlockCheeseVat extends GrcBlockContainer
 
 	@Override
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB axis, List list, Entity entity)
+	public void addCollisionBoxesToList(World world, BlockPos pos, AxisAlignedBB axis, List list, Entity entity)
 	{
 		final float unit = 1f / 16f;
 		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, unit, 1.0F);
@@ -126,7 +126,7 @@ public class BlockCheeseVat extends GrcBlockContainer
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side)
+	public boolean shouldSideBeRendered(IBlockAccess world, BlockPos pos, int side)
 	{
 		return true;
 	}
@@ -138,7 +138,7 @@ public class BlockCheeseVat extends GrcBlockContainer
 	}
 
 	@Override
-	public int getComparatorInputOverride(World world, int x, int y, int z, int par5)
+	public int getComparatorInputOverride(World world, BlockPos pos, int par5)
 	{
 		final TileEntityCheeseVat te = getTileEntity(world, x, y, z);
 		if (te != null)

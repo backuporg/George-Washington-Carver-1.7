@@ -46,14 +46,14 @@ public abstract class BlockNetherMuertecap extends BlockNetherFungusBase
 	}
 
 	@Override
-	protected float getSpreadRate(World world, int x, int y, int z)
+	protected float getSpreadRate(World world, BlockPos pos)
 	{
 		return muertecapSpreadRate;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Item getItem(World world, int x, int y, int z)
+	public Item getItem(World world, BlockPos pos)
 	{
 		return netherloid.items.netherMuertecap.getItem();
 	}

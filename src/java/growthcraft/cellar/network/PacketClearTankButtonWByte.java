@@ -14,7 +14,7 @@ public class PacketClearTankButtonWByte extends AbstractPacketButton
 
 	public PacketClearTankButtonWByte(){}
 
-	public PacketClearTankButtonWByte(int x, int y, int z, byte byt)
+	public PacketClearTankButtonWByte(BlockPos pos, byte byt)
 	{
 		super(x, y, z);
 		this.b = byt;

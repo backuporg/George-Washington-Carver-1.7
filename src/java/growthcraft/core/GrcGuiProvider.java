@@ -132,7 +132,7 @@ public class GrcGuiProvider implements IGuiHandler
 	}
 
 	@Override
-	public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z)
+	public Object getServerGuiElement(int id, EntityPlayer player, World world, BlockPos pos)
 	{
 		final TileEntity te = world.getTileEntity(x, y, z);
 		if (te instanceof IInteractionObject)
@@ -149,7 +149,7 @@ public class GrcGuiProvider implements IGuiHandler
 
 	@Override
 	@SuppressWarnings({"rawtypes"})
-	public Object getClientGuiElement(int id, EntityPlayer player, World world, int x, int y, int z)
+	public Object getClientGuiElement(int id, EntityPlayer player, World world, BlockPos pos)
 	{
 		final TileEntity te = world.getTileEntity(x, y, z);
 		if (te instanceof IInteractionObject)

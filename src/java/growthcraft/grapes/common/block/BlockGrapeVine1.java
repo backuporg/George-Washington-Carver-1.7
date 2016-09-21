@@ -43,13 +43,13 @@ public abstract class BlockGrapeVine1 extends BlockGrapeVineBase
 	 * TICK
 	 ************/
 	@Override
-	protected boolean canUpdateGrowth(World world, int x, int y, int z)
+	protected boolean canUpdateGrowth(World world, BlockPos pos)
 	{
 		return world.getBlockState(x, y, z) == 0 || world.isAirBlock(x, y + 1, z);
 	}
 
 	@Override
-	protected void doGrowth(World world, int x, int y, int z, int meta)
+	protected void doGrowth(World world, BlockPos pos, int meta)
 	{
 		final Block above = world.getBlockState(x, y + 1, z);
 		/* Is there a rope block above this? */
@@ -70,7 +70,7 @@ public abstract class BlockGrapeVine1 extends BlockGrapeVineBase
 	}
 
 	@Override
-	protected float getGrowthRate(World world, int x, int y, int z)
+	protected float getGrowthRate(World world, BlockPos pos)
 	{
 		int j = y;
 		if (world.getBlockState(x, j - 1, z) == this && world.getBlockState(x, j - 2, z) == Blocks.FARMLAND)
@@ -84,7 +84,7 @@ public abstract class BlockGrapeVine1 extends BlockGrapeVineBase
 	 * CONDITIONS
 	 ************/
 	@Override
-	public boolean canBlockStay(World world, int x, int y, int z)
+	public boolean canBlockStay(World world, BlockPos pos)
 	{
 		return BlockCheck.canSustainPlant(world, x, y - 1, z, EnumFacing.UP, this) ||
 			this == world.getBlockState(x, y - 1, z);
@@ -95,7 +95,7 @@ public abstract class BlockGrapeVine1 extends BlockGrapeVineBase
 	 ************/
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Item getItem(World world, int x, int y, int z)
+	public Item getItem(World world, BlockPos pos)
 	{
 		return GrowthCraftGrapes.items.grapeSeeds.getItem();
 	}
@@ -142,7 +142,7 @@ public abstract class BlockGrapeVine1 extends BlockGrapeVineBase
 	 ************/
 	@Override
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB aabb, List list, Entity entity)
+	public void addCollisionBoxesToList(World world, BlockPos pos, AxisAlignedBB aabb, List list, Entity entity)
 	{
 		final int meta = world.getBlockState(x, y, z);
 		final float f = 0.0625F;
@@ -164,7 +164,7 @@ public abstract class BlockGrapeVine1 extends BlockGrapeVineBase
 	}
 
 	@Override
-	public void setBlockBoundsBasedOnState(IBlockAccess world, int x, int y, int z)
+	public void setBlockBoundsBasedOnState(IBlockAccess world, BlockPos pos)
 	{
 		final int meta = world.getBlockState(x, y, z);
 		final float f = 0.0625F;

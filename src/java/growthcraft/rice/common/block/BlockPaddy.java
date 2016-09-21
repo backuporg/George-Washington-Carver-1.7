@@ -38,7 +38,7 @@ public class BlockPaddy extends BlockPaddyBase
 	}
 
 	@Override
-	public void fillWithRain(World world, int x, int y, int z)
+	public void fillWithRain(World world, BlockPos pos)
 	{
 		if (world.rand.nextInt(20) == 0)
 		{
@@ -68,13 +68,13 @@ public class BlockPaddy extends BlockPaddyBase
 	}
 
 	@Override
-	public int getMaxPaddyMeta(IBlockAccess world, int x, int y, int z)
+	public int getMaxPaddyMeta(IBlockAccess world, BlockPos pos)
 	{
 		return paddyFieldMax;
 	}
 
 	@Override
-	public boolean isBelowFillingFluid(IBlockAccess world, int x, int y, int z)
+	public boolean isBelowFillingFluid(IBlockAccess world, BlockPos pos)
 	{
 		return world.getBlockState(x, y + 1, z).getMaterial() == Material.WATER;
 	}
@@ -84,7 +84,7 @@ public class BlockPaddy extends BlockPaddyBase
 	 ************/
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Item getItem(World world, int x, int y, int z)
+	public Item getItem(World world, BlockPos pos)
 	{
 		return Item.getItemFromBlock(Blocks.DIRT);
 	}

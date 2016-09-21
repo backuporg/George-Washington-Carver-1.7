@@ -96,7 +96,7 @@ public class ComponentVillageBambooYard extends StructureVillagePieces.Village i
 	}
 
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	public static ComponentVillageBambooYard buildComponent(Start startPiece, List list, Random random, int x, int y, int z, int coordBaseMode, int par7)
+	public static ComponentVillageBambooYard buildComponent(Start startPiece, List list, Random random, BlockPos pos, int coordBaseMode, int par7)
 	{
 		// the height of the structure is 15 blocks, since the maximum height of bamboo is 12~14 blocks (+1 for the water layer)
 		final StructureBoundingBox structureboundingbox = StructureBoundingBox.getComponentToAddBoundingBox(x, y, z, 0, 0, 0, 11, 16, 12, coordBaseMode);
@@ -108,7 +108,7 @@ public class ComponentVillageBambooYard extends StructureVillagePieces.Village i
 		return null;
 	}
 
-	public void placeBlockAtCurrentPositionPub(World world, Block block, int meta, int x, int y, int z, StructureBoundingBox box)
+	public void placeBlockAtCurrentPositionPub(World world, Block block, int meta, BlockPos pos, StructureBoundingBox box)
 	{
 		placeBlockAtCurrentPosition(world, block, meta, x, y, z, box);
 	}

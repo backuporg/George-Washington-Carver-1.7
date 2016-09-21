@@ -63,14 +63,14 @@ public class BlockBeeBoxForestry extends BlockBeeBox
 		return super.getMetaname(meta);
 	}
 
-	public EnumBeeBoxForestry getBeeBoxType(World world, int x, int y, int z)
+	public EnumBeeBoxForestry getBeeBoxType(World world, BlockPos pos)
 	{
 		final int meta = world.getBlockState(x, y, z);
 		return beeboxTypes[MathHelper.clamp_int(meta, 0, beeboxTypes.length)];
 	}
 
 	@Override
-	public float getBlockHardness(World world, int x, int y, int z)
+	public float getBlockHardness(World world, BlockPos pos)
 	{
 		return getBeeBoxType(world, x, y, z).getHardness();
 	}

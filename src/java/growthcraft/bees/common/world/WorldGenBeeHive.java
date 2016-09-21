@@ -14,7 +14,7 @@ public class WorldGenBeeHive extends WorldGenerator
 	private final int density = GrowthCraftBees.getConfig().beeWorldGenDensity;
 
 	@Override
-	public boolean generate(World world, Random random, int x, int y, int z)
+	public boolean generate(World world, Random random, BlockPos pos)
 	{
 		for (int loop = 0; loop < this.density; ++loop)
 		{

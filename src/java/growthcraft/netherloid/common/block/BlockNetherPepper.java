@@ -73,37 +73,37 @@ public abstract class BlockNetherPepper extends BlockBush implements ICropDataPr
 		setBlockName("grcnetherloid.netherPepper");
 	}
 
-	private void incrementGrowth(World world, int x, int y, int z, int meta)
+	private void incrementGrowth(World world, BlockPos pos, int meta)
 	{
 		world.setBlockState(x, y, z, meta + 1, BlockFlags.SYNC);
 		AppleCore.announceGrowthTick(this, world, x, y, z, meta);
 	}
 
-	public boolean isFullyGrown(World world, int x, int y, int z)
+	public boolean isFullyGrown(World world, BlockPos pos)
 	{
 		return world.getBlockState(x, y, z) >= PepperStages.FRUIT;
 	}
 
-	public boolean canGrow(World world, int x, int y, int z)
+	public boolean canGrow(World world, BlockPos pos)
 	{
 		return world.getBlockState(x, y, z) < PepperStages.FRUIT;
 	}
 
 	/* IGrowable: can this grow anymore */
 	@Override
-	public boolean func_149851_a(World world, int x, int y, int z, boolean b)
+	public boolean func_149851_a(World world, BlockPos pos, boolean b)
 	{
 		return !isFullyGrown(world, x, y, z);
 	}
 
 	/* IGrowable: does this accept bonemeal */
 	@Override
-	public boolean func_149852_a(World world, Random random, int x, int y, int z)
+	public boolean func_149852_a(World world, Random random, BlockPos pos)
 	{
 		return canGrow(world, x, y, z);
 	}
 
-	public boolean onUseBonemeal(World world, int x, int y, int z)
+	public boolean onUseBonemeal(World world, BlockPos pos)
 	{
 		if (canGrow(world, x, y, z))
 		{
@@ -117,13 +117,13 @@ public abstract class BlockNetherPepper extends BlockBush implements ICropDataPr
 	}
 
 	/* IGrowable: Apply bonemeal effect */
-	public void func_149853_b(World world, Random random, int x, int y, int z)
+	public void func_149853_b(World world, Random random, BlockPos pos)
 	{
 		onUseBonemeal(world, x, y, z);
 	}
 
 	@Override
-	public float getGrowthProgress(IBlockAccess world, int x, int y, int z, int meta)
+	public float getGrowthProgress(IBlockAccess world, BlockPos pos, int meta)
 	{
 		return (float)meta / (float)PepperStages.FRUIT;
 	}
@@ -134,7 +134,7 @@ public abstract class BlockNetherPepper extends BlockBush implements ICropDataPr
 	}
 
 	@Override
-	public void updateTick(World world, int x, int y, int z, Random random)
+	public void updateTick(World world, BlockPos pos, Random random)
 	{
 		final Event.Result result = AppleCore.validateGrowthTick(this, world, x, y, z, random);
 		if (Event.Result.DENY == result) return;
@@ -151,13 +151,13 @@ public abstract class BlockNetherPepper extends BlockBush implements ICropDataPr
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Item getItem(World world, int x, int y, int z)
+	public Item getItem(World world, BlockPos pos)
 	{
 		return netherloid.items.netherPepper.getItem();
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float par7, float par8, float par9)
+	public boolean onBlockActivated(World world, BlockPos pos, EntityPlayer player, int side, float par7, float par8, float par9)
 	{
 		if (isFullyGrown(world, x, y, z))
 		{

@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack;
 
 public class SlotFruitPressResidue extends GrcSlot
 {
-	public SlotFruitPressResidue(IInventory inv, int x, int y, int z)
+	public SlotFruitPressResidue(IInventory inv, BlockPos pos)
 	{
 		super(inv, x, y, z);
 	}

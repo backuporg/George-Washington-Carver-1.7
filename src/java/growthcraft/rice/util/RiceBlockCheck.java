@@ -52,7 +52,7 @@ public class RiceBlockCheck
 	 * @param z - z coord
 	 * @return true, the block is a paddy, false otherwise
 	 */
-	public static boolean isPaddy(IBlockAccess world, int x, int y, int z)
+	public static boolean isPaddy(IBlockAccess world, BlockPos pos)
 	{
 		final Block block = world.getBlockState(x, y, z);
 		return isPaddy(block);
@@ -68,7 +68,7 @@ public class RiceBlockCheck
 	 * @param amount - metadata, how much water should be present
 	 * @return true, the block is a paddy, false otherwise
 	 */
-	public static boolean isPaddyWithWater(IBlockAccess world, int x, int y, int z, int amount)
+	public static boolean isPaddyWithWater(IBlockAccess world, BlockPos pos, int amount)
 	{
 		final Block block = world.getBlockState(x, y, z);
 		if (isPaddy(block))

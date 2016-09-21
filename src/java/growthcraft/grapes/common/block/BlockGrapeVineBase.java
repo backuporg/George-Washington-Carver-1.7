@@ -72,7 +72,7 @@ public abstract class BlockGrapeVineBase extends GrcBlockBase implements IPlanta
 		return 1;
 	}
 
-	public float getGrowthProgress(IBlockAccess world, int x, int y, int z, int meta)
+	public float getGrowthProgress(IBlockAccess world, BlockPos pos, int meta)
 	{
 		return (float)meta / (float)getGrowthMax();
 	}
@@ -82,13 +82,13 @@ public abstract class BlockGrapeVineBase extends GrcBlockBase implements IPlanta
 		return GrapeBlockCheck.isGrapeVine(block);
 	}
 
-	public void incrementGrowth(World world, int x, int y, int z, int meta)
+	public void incrementGrowth(World world, BlockPos pos, int meta)
 	{
 		world.setBlockState(x, y, z, meta + 1, BlockFlags.SYNC);
 		AppleCore.announceGrowthTick(this, world, x, y, z, meta);
 	}
 
-	protected float getGrowthRate(World world, int x, int y, int z)
+	protected float getGrowthRate(World world, BlockPos pos)
 	{
 		final Block l = world.getBlockState(x, y, z - 1);
 		final Block i1 = world.getBlockState(x, y, z + 1);
@@ -138,13 +138,13 @@ public abstract class BlockGrapeVineBase extends GrcBlockBase implements IPlanta
 	}
 
 	@Override
-	public boolean canBlockStay(World world, int x, int y, int z)
+	public boolean canBlockStay(World world, BlockPos pos)
 	{
 		return BlockCheck.canSustainPlant(world, x, y - 1, z, EnumFacing.UP, this);
 	}
 
 	@Override
-	public void onNeighborBlockChange(World world, int x, int y, int z, Block par5)
+	public void onNeighborBlockChange(World world, BlockPos pos, Block par5)
 	{
 		if (!this.canBlockStay(world, x, y, z))
 		{
@@ -154,7 +154,7 @@ public abstract class BlockGrapeVineBase extends GrcBlockBase implements IPlanta
 	}
 
 	@Override
-	public boolean canSilkHarvest(World world, EntityPlayer player, int x, int y, int z, int metadata)
+	public boolean canSilkHarvest(World world, EntityPlayer player, BlockPos pos, int metadata)
 	{
 		return false;
 	}
@@ -175,19 +175,19 @@ public abstract class BlockGrapeVineBase extends GrcBlockBase implements IPlanta
 	 * IPLANTABLE
 	 ************/
 	@Override
-	public EnumPlantType getPlantType(IBlockAccess world, int x, int y, int z)
+	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos)
 	{
 		return EnumPlantType.Crop;
 	}
 
 	@Override
-	public Block getPlant(IBlockAccess world, int x, int y, int z)
+	public Block getPlant(IBlockAccess world, BlockPos pos)
 	{
 		return this;
 	}
 
 	@Override
-	public int getPlantMetadata(IBlockAccess world, int x, int y, int z)
+	public int getPlantMetadata(IBlockAccess world, BlockPos pos)
 	{
 		return world.getBlockState(x, y, z);
 	}
@@ -201,7 +201,7 @@ public abstract class BlockGrapeVineBase extends GrcBlockBase implements IPlanta
 	 * @param z - z coord
 	 * @param meta - block metadata
 	 */
-	protected abstract void doGrowth(World world, int x, int y, int z, int meta);
+	protected abstract void doGrowth(World world, BlockPos pos, int meta);
 
 	/**
 	 * Are the conditions right for this plant to grow?
@@ -212,10 +212,10 @@ public abstract class BlockGrapeVineBase extends GrcBlockBase implements IPlanta
 	 * @param z - z coord
 	 * @return true, it can grow, false otherwise
 	 */
-	protected abstract boolean canUpdateGrowth(World world, int x, int y, int z);
+	protected abstract boolean canUpdateGrowth(World world, BlockPos pos);
 
 	@Override
-	public void updateTick(World world, int x, int y, int z, Random random)
+	public void updateTick(World world, BlockPos pos, Random random)
 	{
 		super.updateTick(world, x, y, z, random);
 		if (canUpdateGrowth(world, x, y, z))
@@ -237,21 +237,21 @@ public abstract class BlockGrapeVineBase extends GrcBlockBase implements IPlanta
 
 	/* Can this accept bonemeal? */
 	@Override
-	public boolean func_149851_a(World world, int x, int y, int z, boolean isClient)
+	public boolean func_149851_a(World world, BlockPos pos, boolean isClient)
 	{
 		return canUpdateGrowth(world, x, y, z);
 	}
 
 	/* SideOnly(Side.SERVER) Can this apply bonemeal effect? */
 	@Override
-	public boolean func_149852_a(World world, Random random, int x, int y, int z)
+	public boolean func_149852_a(World world, Random random, BlockPos pos)
 	{
 		return true;
 	}
 
 	/* Apply bonemeal effect */
 	@Override
-	public void func_149853_b(World world, Random random, int x, int y, int z)
+	public void func_149853_b(World world, Random random, BlockPos pos)
 	{
 		if (random.nextFloat() < 0.5D)
 		{

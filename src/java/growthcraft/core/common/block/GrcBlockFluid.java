@@ -95,14 +95,14 @@ public class GrcBlockFluid extends BlockFluidClassic
 	}
 
 	@Override
-	public boolean canDisplace(IBlockAccess world, int x, int y, int z)
+	public boolean canDisplace(IBlockAccess world, BlockPos pos)
 	{
 		if (world.getBlockState(x, y, z).getMaterial().isLiquid()) return false;
 		return super.canDisplace(world, x, y, z);
 	}
 
 	@Override
-	public boolean displaceIfPossible(World world, int x, int y, int z)
+	public boolean displaceIfPossible(World world, BlockPos pos)
 	{
 		if (world.getBlockState(x, y, z).getMaterial().isLiquid()) return false;
 		return super.displaceIfPossible(world, x, y, z);
@@ -110,14 +110,14 @@ public class GrcBlockFluid extends BlockFluidClassic
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public int colorMultiplier(IBlockAccess world, int x, int y, int z)
+	public int colorMultiplier(IBlockAccess world, BlockPos pos)
 	{
 		return color;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World world, int x, int y, int z, Random rand)
+	public void randomDisplayTick(World world, BlockPos pos, Random rand)
 	{
 		super.randomDisplayTick(world, x, y, z, rand);
 

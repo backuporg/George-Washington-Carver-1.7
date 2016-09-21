@@ -162,7 +162,7 @@ public class ItemUtils
 		return player.inventory.decrStackSize(player.inventory.currentItem, amount);
 	}
 
-	public static void addStackToPlayer(ItemStack itemstack, @Nonnull EntityPlayer player, World world, int x, int y, int z, boolean checkCreative)
+	public static void addStackToPlayer(ItemStack itemstack, @Nonnull EntityPlayer player, World world, BlockPos pos, boolean checkCreative)
 	{
 		final boolean flag = checkCreative ? !player.capabilities.isCreativeMode : true;
 		if (flag)
@@ -205,7 +205,7 @@ public class ItemUtils
 		}
 	}
 
-	public static void spawnBrokenItemStack(World world, int x, int y, int z, ItemStack stack, Random random)
+	public static void spawnBrokenItemStack(World world, BlockPos pos, ItemStack stack, Random random)
 	{
 		if (stack != null)
 		{
@@ -300,7 +300,7 @@ public class ItemUtils
 		return isIToolWrench(item);
 	}
 
-	public static boolean canWrench(ItemStack item, EntityPlayer player, int x, int y, int z)
+	public static boolean canWrench(ItemStack item, EntityPlayer player, BlockPos pos)
 	{
 		if (isIToolWrench(item))
 		{
@@ -309,7 +309,7 @@ public class ItemUtils
 		return false;
 	}
 
-	public static void wrenchUsed(ItemStack item, EntityPlayer player, int x, int y, int z)
+	public static void wrenchUsed(ItemStack item, EntityPlayer player, BlockPos pos)
 	{
 		if (item == null) return;
 		if (isIToolWrench(item))

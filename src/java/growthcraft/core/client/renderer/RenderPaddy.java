@@ -19,7 +19,7 @@ public class RenderPaddy implements ISimpleBlockRenderingHandler
 {
 	public static final int id = RenderingRegistry.getNextAvailableRenderId();
 
-	private int mixedBrightness(IBlockAccess world, int x, int y, int z)
+	private int mixedBrightness(IBlockAccess world, BlockPos pos)
 	{
 		final int l = world.getLightBrightnessForSkyBlocks(x, y, z, 0);
 		final int i1 = world.getLightBrightnessForSkyBlocks(x, y + 1, z, 0);
@@ -107,7 +107,7 @@ public class RenderPaddy implements ISimpleBlockRenderingHandler
 	}
 
 	@Override
-	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer)
+	public boolean renderWorldBlock(IBlockAccess world, BlockPos pos, Block block, int modelId, RenderBlocks renderer)
 	{
 		if (modelId == id)
 		{
@@ -252,7 +252,7 @@ public class RenderPaddy implements ISimpleBlockRenderingHandler
 		return true;
 	}
 
-	private int colorMultiplier(IBlockAccess world, int x, int y, int z)
+	private int colorMultiplier(IBlockAccess world, BlockPos pos)
 	{
 		int l = 0;
 		int i1 = 0;

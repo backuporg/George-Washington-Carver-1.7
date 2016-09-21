@@ -20,13 +20,13 @@ public class WorldGeneratorThistle implements IWorldGenerator
 {
 	private WorldGenerator thistle;
 
-	private boolean canPlaceOnBlock(World world, int x, int y, int z, Block block)
+	private boolean canPlaceOnBlock(World world, BlockPos pos, Block block)
 	{
 		return Blocks.DIRT.equals(block) ||
 			Blocks.GRASS.equals(block);
 	}
 
-	private boolean canReplaceBlock(World world, int x, int y, int z, Block block)
+	private boolean canReplaceBlock(World world, BlockPos pos, Block block)
 	{
 		return block.isAir(world, x, y, z) ||
 			block.isLeaves(world, x, y, z) ||

@@ -36,25 +36,25 @@ public class BlockBambooFence extends BlockFence
 	 * STUFF
 	 ************/
 	@Override
-	public boolean getBlocksMovement(IBlockAccess world, int x, int y, int z)
+	public boolean getBlocksMovement(IBlockAccess world, BlockPos pos)
 	{
 		return false;
 	}
 
 	@Override
-	public boolean canPlaceTorchOnTop(World world, int x, int y, int z)
+	public boolean canPlaceTorchOnTop(World world, BlockPos pos)
 	{
 		return true;
 	}
 
 	@Override
-	public boolean isSideSolid(IBlockAccess world, int x, int y, int z, EnumFacing side)
+	public boolean isSideSolid(IBlockAccess world, BlockPos pos, EnumFacing side)
 	{
 		return side == EnumFacing.UP;
 	}
 
 	@Override
-	public boolean canConnectFenceTo(IBlockAccess world, int x, int y, int z)
+	public boolean canConnectFenceTo(IBlockAccess world, BlockPos pos)
 	{
 		final Block block = world.getBlockState(x, y, z);
 

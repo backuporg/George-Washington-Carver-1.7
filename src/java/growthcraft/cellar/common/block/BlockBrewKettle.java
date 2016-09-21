@@ -49,7 +49,7 @@ public class BlockBrewKettle extends BlockCellarContainer
 	}
 
 	@Override
-	public void fillWithRain(World world, int x, int y, int z)
+	public void fillWithRain(World world, BlockPos pos)
 	{
 		if (fillsWithRain)
 		{
@@ -63,7 +63,7 @@ public class BlockBrewKettle extends BlockCellarContainer
 	}
 
 	@Override
-	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
+	public void onEntityCollidedWithBlock(World world, BlockPos pos, Entity entity)
 	{
 		if (!world.isRemote)
 		{
@@ -102,7 +102,7 @@ public class BlockBrewKettle extends BlockCellarContainer
 	}
 
 	@Override
-	protected boolean playerDrainTank(World world, int x, int y, int z, IFluidHandler fh, ItemStack is, EntityPlayer player)
+	protected boolean playerDrainTank(World world, BlockPos pos, IFluidHandler fh, ItemStack is, EntityPlayer player)
 	{
 		final FluidStack fs = Utils.playerDrainTank(world, x, y, z, fh, is, player);
 		return fs != null && fs.amount > 0;
@@ -173,7 +173,7 @@ public class BlockBrewKettle extends BlockCellarContainer
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side)
+	public boolean shouldSideBeRendered(IBlockAccess world, BlockPos pos, int side)
 	{
 		return true;
 	}
@@ -189,7 +189,7 @@ public class BlockBrewKettle extends BlockCellarContainer
 
 	@Override
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB axis, List list, Entity entity)
+	public void addCollisionBoxesToList(World world, BlockPos pos, AxisAlignedBB axis, List list, Entity entity)
 	{
 		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.3125F, 1.0F);
 		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
@@ -215,7 +215,7 @@ public class BlockBrewKettle extends BlockCellarContainer
 	}
 
 	@Override
-	public int getComparatorInputOverride(World world, int x, int y, int z, int par5)
+	public int getComparatorInputOverride(World world, BlockPos pos, int par5)
 	{
 		final TileEntityBrewKettle te = getTileEntity(world, x, y, z);
 		if (te != null)

@@ -43,7 +43,7 @@ public class RenderBamboo implements ISimpleBlockRenderingHandler
 	}
 
 	@Override
-	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer)
+	public boolean renderWorldBlock(IBlockAccess world, BlockPos pos, Block block, int modelId, RenderBlocks renderer)
 	{
 		if (modelId == id)
 		{
@@ -149,24 +149,24 @@ public class RenderBamboo implements ISimpleBlockRenderingHandler
 		return true;
 	}
 
-	private boolean canFence(IBlockAccess world, int x, int y, int z)
+	private boolean canFence(IBlockAccess world, BlockPos pos)
 	{
 		return world.getBlockState(x, y, z) == GrowthCraftBamboo.blocks.bambooFence.getBlockState() ||
 			world.getBlockState(x, y, z) == Blocks.OAK_FENCE_GATE ||
 			world.getBlockState(x, y, z) == GrowthCraftBamboo.blocks.bambooFenceGate.getBlockState();
 	}
 
-	private boolean canWall(IBlockAccess world, int x, int y, int z)
+	private boolean canWall(IBlockAccess world, BlockPos pos)
 	{
 		return world.getBlockState(x, y, z) == GrowthCraftBamboo.blocks.bambooWall.getBlockState();
 	}
 
-	private boolean canDoor(IBlockAccess world, int x, int y, int z)
+	private boolean canDoor(IBlockAccess world, BlockPos pos)
 	{
 		return world.getBlockState(x, y, z) instanceof BlockDoor;
 	}
 
-	private void renderFence(RenderBlocks renderer, IBlockAccess world, Block block, int x, int y, int z, RenderUtils.Face m)
+	private void renderFence(RenderBlocks renderer, IBlockAccess world, Block block, BlockPos pos, RenderUtils.Face m)
 	{
 		renderer.setOverrideBlockTexture(BlockBambooStalk.tex[3]);
 		double x1 = x;
@@ -246,7 +246,7 @@ public class RenderBamboo implements ISimpleBlockRenderingHandler
 		renderer.clearOverrideBlockTexture();
 	}
 
-	private void renderWall(RenderBlocks renderer, IBlockAccess world, Block block, int x, int y, int z, RenderUtils.Face m)
+	private void renderWall(RenderBlocks renderer, IBlockAccess world, Block block, BlockPos pos, RenderUtils.Face m)
 	{
 		renderer.setOverrideBlockTexture(BlockBambooStalk.tex[4]);
 		double x1 = x;
@@ -291,7 +291,7 @@ public class RenderBamboo implements ISimpleBlockRenderingHandler
 		renderer.clearOverrideBlockTexture();
 	}
 
-	private void renderDoor(RenderBlocks renderer, IBlockAccess world, Block block, int x, int y, int z, RenderUtils.Face m)
+	private void renderDoor(RenderBlocks renderer, IBlockAccess world, Block block, BlockPos pos, RenderUtils.Face m)
 	{
 		renderer.setOverrideBlockTexture(BlockBambooStalk.tex[4]);
 		double x1 = x;

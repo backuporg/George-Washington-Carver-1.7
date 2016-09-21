@@ -26,7 +26,7 @@ public class ItemBamboo extends GrcItemBase
 	 * MAIN
 	 ************/
 	@Override
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int EnumFacing, float par8, float par9, float par10)
+	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, int EnumFacing, float par8, float par9, float par10)
 	{
 		final Block block1 = world.getBlockState(x, y, z);
 

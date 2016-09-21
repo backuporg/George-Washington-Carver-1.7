@@ -39,7 +39,7 @@ public class SchemaToVillage
 
 	public static interface IVillage
 	{
-		public void placeBlockAtCurrentPositionPub(World world, Block block, int meta, int x, int y, int z, StructureBoundingBox box);
+		public void placeBlockAtCurrentPositionPub(World world, Block block, int meta, BlockPos pos, StructureBoundingBox box);
 	}
 
 	public static interface IBlockEntries

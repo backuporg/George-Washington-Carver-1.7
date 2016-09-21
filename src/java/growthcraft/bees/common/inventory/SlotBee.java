@@ -10,7 +10,7 @@ public class SlotBee extends SlotInput
 {
 	final ContainerBeeBox container;
 
-	public SlotBee(ContainerBeeBox cont, IInventory inv, int x, int y, int z)
+	public SlotBee(ContainerBeeBox cont, IInventory inv, BlockPos pos)
 	{
 		super(inv, x, y, z);
 		this.container = cont;

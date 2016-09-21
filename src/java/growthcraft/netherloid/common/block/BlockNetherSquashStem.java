@@ -71,7 +71,7 @@ public abstract class BlockNetherSquashStem extends BlockBush implements ICropDa
 	}
 
 	@Override
-	public float getGrowthProgress(IBlockAccess world, int x, int y, int z, int meta)
+	public float getGrowthProgress(IBlockAccess world, BlockPos pos, int meta)
 	{
 		return (float)meta / (float)StemStage.MATURE;
 	}
@@ -82,35 +82,35 @@ public abstract class BlockNetherSquashStem extends BlockBush implements ICropDa
 	}
 
 	@Override
-	public boolean canPlaceBlockAt(World world, int x, int y, int z)
+	public boolean canPlaceBlockAt(World world, BlockPos pos)
 	{
 		return super.canPlaceBlockAt(world, x, y, z) && func_149854_a(world.getBlockState(x, y + 1, z));
 	}
 
 	@Override
-	public boolean canBlockStay(World world, int x, int y, int z)
+	public boolean canBlockStay(World world, BlockPos pos)
 	{
 		return func_149854_a(world.getBlockState(x, y + 1, z));
 	}
 
-	public boolean hasGrownFruit(World world, int x, int y, int z)
+	public boolean hasGrownFruit(World world, BlockPos pos)
 	{
 		return fruitBlock == world.getBlockState(x, y - 1, z);
 	}
 
-	public boolean canGrowFruit(World world, int x, int y, int z)
+	public boolean canGrowFruit(World world, BlockPos pos)
 	{
 		return world.isAirBlock(x, y - 1, z);
 	}
 
-	public void incrementGrowth(World world, int x, int y, int z, int previousMeta)
+	public void incrementGrowth(World world, BlockPos pos, int previousMeta)
 	{
 		final int meta = MathHelper.clamp_int(previousMeta + MathHelper.getRandomIntegerInRange(world.rand, 2, 5), 0, StemStage.MATURE);
 		world.setBlockState(x, y, z, meta + 1, BlockFlags.SYNC);
 		AppleCore.announceGrowthTick(this, world, x, y, z, previousMeta);
 	}
 
-	private void growStem(World world, int x, int y, int z, int meta)
+	private void growStem(World world, BlockPos pos, int meta)
 	{
 		if (meta < StemStage.MATURE)
 		{
@@ -123,7 +123,7 @@ public abstract class BlockNetherSquashStem extends BlockBush implements ICropDa
 	}
 
 	@Override
-	public void updateTick(World world, int x, int y, int z, Random random)
+	public void updateTick(World world, BlockPos pos, Random random)
 	{
 		final Event.Result allowGrowthResult = AppleCore.validateGrowthTick(this, world, x, y, z, random);
 		if (allowGrowthResult == Event.Result.DENY)
@@ -138,27 +138,27 @@ public abstract class BlockNetherSquashStem extends BlockBush implements ICropDa
 
 	/* Client Side: can bonemeal */
 	@Override
-	public boolean func_149851_a(World world, int x, int y, int z, boolean isClient)
+	public boolean func_149851_a(World world, BlockPos pos, boolean isClient)
 	{
 		return world.getBlockState(x, y, z) < StemStage.MATURE || canGrowFruit(world, x, y, z);
 	}
 
 	/* SideOnly(Side.SERVER) Can this apply bonemeal effect? */
 	@Override
-	public boolean func_149852_a(World world, Random random, int x, int y, int z)
+	public boolean func_149852_a(World world, Random random, BlockPos pos)
 	{
 		return true;
 	}
 
 	/* IGrowable: Apply bonemeal effect */
 	@Override
-	public void func_149853_b(World world, Random random, int x, int y, int z)
+	public void func_149853_b(World world, Random random, BlockPos pos)
 	{
 		growStem(world, x, y, z, world.getBlockState(x, y, z));
 	}
 
 	@Override
-	public void dropBlockAsItemWithChance(World world, int x, int y, int z, int meta, float f, int weight)
+	public void dropBlockAsItemWithChance(World world, BlockPos pos, int meta, float f, int weight)
 	{
 		super.dropBlockAsItemWithChance(world, x, y, z, meta, f, weight);
 		if (!world.isRemote)
@@ -187,7 +187,7 @@ public abstract class BlockNetherSquashStem extends BlockBush implements ICropDa
 	}
 
 	@Override
-	public Item getItem(World world, int x, int y, int z)
+	public Item getItem(World world, BlockPos pos)
 	{
 		return netherloid.items.netherSquashSeeds.getItem();
 	}

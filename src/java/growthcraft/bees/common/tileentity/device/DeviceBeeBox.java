@@ -108,7 +108,7 @@ public class DeviceBeeBox extends DeviceBase
 	}
 
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	private List<List> gatherFlowersInRadius(World world, int x, int y, int z, int checkSize, List<List> list)
+	private List<List> gatherFlowersInRadius(World world, BlockPos pos, int checkSize, List<List> list)
 	{
 		final int i = x - ((checkSize - 1) / 2);
 		final int k = z - ((checkSize - 1) / 2);
@@ -137,7 +137,7 @@ public class DeviceBeeBox extends DeviceBase
 		return list;
 	}
 
-	private float calcGrowthRate(World world, int x, int y, int z)
+	private float calcGrowthRate(World world, BlockPos pos)
 	{
 		final int checkSize = 5;
 		final int i = x - ((checkSize - 1) / 2);

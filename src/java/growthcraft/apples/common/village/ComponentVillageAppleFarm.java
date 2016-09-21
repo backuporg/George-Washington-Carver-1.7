@@ -76,7 +76,7 @@ public class ComponentVillageAppleFarm extends StructureVillagePieces.Village im
 	}
 
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	public static ComponentVillageAppleFarm buildComponent(Start startPiece, List list, Random random, int x, int y, int z, int coordBaseMode, int par7)
+	public static ComponentVillageAppleFarm buildComponent(Start startPiece, List list, Random random, BlockPos pos, int coordBaseMode, int par7)
 	{
 		final StructureBoundingBox structureboundingbox = StructureBoundingBox.getComponentToAddBoundingBox(x, y, z, 0, 0, 0, 11, 11, 11, coordBaseMode);
 		if (canVillageGoDeeper(structureboundingbox))
@@ -89,12 +89,12 @@ public class ComponentVillageAppleFarm extends StructureVillagePieces.Village im
 		return null;
 	}
 
-	public void placeBlockAtCurrentPositionPub(World world, Block block, int meta, BlockPos pos, Vec3i vec, StructureBoundingBox box)
+	public void placeBlockAtCurrentPositionPub(World world, Block block, int meta, BlockPos pos,, Vec3i vec, StructureBoundingBox box)
 	{
 		placeBlockAtCurrentPosition(world, block, meta, pos, box);
 	}
 
-	protected void placeWorldGenAt(World world, Random random, int tx, int ty, int tz, StructureBoundingBox bb, WorldGenerator generator, BlockPos pos, Vec3i vec)
+	protected void placeWorldGenAt(World world, Random random, int tx, int ty, int tz, StructureBoundingBox bb, WorldGenerator generator, BlockPos pos,, Vec3i vec)
 	{
 		final int x = this.getXWithOffset(tx, tz);
 		final int y = this.getYWithOffset(ty);

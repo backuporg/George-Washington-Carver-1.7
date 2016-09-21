@@ -39,7 +39,7 @@ public class BlockGrapeBlock extends GrcBlockBase
 	 * TICK
 	 ************/
 	@Override
-	public void updateTick(World world, int x, int y, int z, Random random)
+	public void updateTick(World world, BlockPos pos, Random random)
 	{
 		if (!this.canBlockStay(world, x, y, z))
 		{
@@ -51,7 +51,7 @@ public class BlockGrapeBlock extends GrcBlockBase
 	 * TRIGGERS
 	 ************/
 	@Override
-	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int EnumFacing, float par7, float par8, float par9)
+	public boolean onBlockActivated(World world, BlockPos pos, EntityPlayer player, int EnumFacing, float par7, float par8, float par9)
 	{
 		if (!world.isRemote)
 		{
@@ -61,7 +61,7 @@ public class BlockGrapeBlock extends GrcBlockBase
 	}
 
 	@Override
-	public void onNeighborBlockChange(World world, int x, int y, int z, Block par5)
+	public void onNeighborBlockChange(World world, BlockPos pos, Block par5)
 	{
 		if (!this.canBlockStay(world, x, y, z))
 		{
@@ -73,7 +73,7 @@ public class BlockGrapeBlock extends GrcBlockBase
 	 * CONDITIONS
 	 ************/
 	@Override
-	public boolean canBlockStay(World world, int x, int y, int z)
+	public boolean canBlockStay(World world, BlockPos pos)
 	{
 		return GrowthCraftGrapes.blocks.grapeLeaves.getBlockState() == world.getBlockState(x, y + 1, z);
 	}
@@ -83,13 +83,13 @@ public class BlockGrapeBlock extends GrcBlockBase
 	 ************/
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Item getItem(World world, int x, int y, int z)
+	public Item getItem(World world, BlockPos pos)
 	{
 		return GrowthCraftGrapes.items.grapes.getItem();
 	}
 
 	@Override
-	public boolean canSilkHarvest(World world, EntityPlayer player, int x, int y, int z, int metadata)
+	public boolean canSilkHarvest(World world, EntityPlayer player, BlockPos pos, int metadata)
 	{
 		return false;
 	}
@@ -110,7 +110,7 @@ public class BlockGrapeBlock extends GrcBlockBase
 	}
 
 	@Override
-	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune)
+	public ArrayList<ItemStack> getDrops(World world, BlockPos pos, int metadata, int fortune)
 	{
 		final ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
 		final int count = quantityDropped(metadata, fortune, world.rand);
@@ -154,7 +154,7 @@ public class BlockGrapeBlock extends GrcBlockBase
 	 * BOXES
 	 ************/
 	@Override
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, BlockPos pos)
 	{
 		return null;
 	}

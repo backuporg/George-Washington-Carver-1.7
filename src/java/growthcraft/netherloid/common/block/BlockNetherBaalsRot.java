@@ -46,7 +46,7 @@ public abstract class BlockNetherBaalsRot extends BlockNetherFungusBase
 	}
 
 	@Override
-	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
+	public void onEntityCollidedWithBlock(World world, BlockPos pos, Entity entity)
 	{
 		if (world.isRemote) return;
 		if (entity instanceof EntityLivingBase)
@@ -59,7 +59,7 @@ public abstract class BlockNetherBaalsRot extends BlockNetherFungusBase
 	}
 
 	@Override
-	protected float getSpreadRate(World world, int x, int y, int z)
+	protected float getSpreadRate(World world, BlockPos pos)
 	{
 		return baalsRotSpreadRate;
 	}
