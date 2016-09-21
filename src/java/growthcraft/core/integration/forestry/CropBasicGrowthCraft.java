@@ -15,15 +15,14 @@
  */
 package growthcraft.core.integration.forestry;
 
-import java.util.List;
-import java.util.Collection;
-
 import growthcraft.api.core.util.BlockFlags;
 import growthcraft.api.core.util.Point3;
-
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+
+import java.util.Collection;
+import java.util.List;
 
 public class CropBasicGrowthCraft extends AbstractForestryCrop
 {

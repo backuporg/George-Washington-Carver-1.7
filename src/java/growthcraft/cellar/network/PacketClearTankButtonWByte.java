@@ -1,7 +1,6 @@
 package growthcraft.cellar.network;
 
 import growthcraft.cellar.common.tileentity.TileEntityCellarDevice;
-
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import net.minecraft.entity.player.EntityPlayer;

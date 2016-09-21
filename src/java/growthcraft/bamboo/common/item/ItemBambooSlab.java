@@ -1,7 +1,6 @@
 package growthcraft.bamboo.common.item;
 
 import growthcraft.bamboo.GrowthCraftBamboo;
-
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemSlab;
 

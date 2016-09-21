@@ -23,20 +23,19 @@
  */
 package growthcraft.api.cellar.util;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-import growthcraft.api.cellar.booze.BoozeEffect;
 import growthcraft.api.cellar.CellarRegistry;
+import growthcraft.api.cellar.booze.BoozeEffect;
 import growthcraft.api.cellar.common.Residue;
 import growthcraft.api.core.CoreRegistry;
 import growthcraft.api.core.definition.IMultiFluidStacks;
 import growthcraft.api.core.fluids.FluidTag;
 import growthcraft.api.core.util.MultiStacksUtil;
-
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * If you find yourself making some seriously gnarly spaghetti code, this may

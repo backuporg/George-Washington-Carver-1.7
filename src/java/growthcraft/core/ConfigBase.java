@@ -23,20 +23,19 @@
  */
 package growthcraft.core;
 
+import growthcraft.api.core.log.ILoggable;
+import growthcraft.api.core.log.ILogger;
+import growthcraft.api.core.log.NullLogger;
+import growthcraft.api.core.util.StringUtils;
+import net.minecraftforge.common.config.Configuration;
+
+import javax.annotation.Nonnull;
 import java.io.File;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import java.lang.reflect.Field;
-import javax.annotation.Nonnull;
-
-import growthcraft.api.core.log.ILoggable;
-import growthcraft.api.core.log.ILogger;
-import growthcraft.api.core.log.NullLogger;
-import growthcraft.api.core.util.StringUtils;
-
-import net.minecraftforge.common.config.Configuration;
 
 /**
  * Extend this class when you need config for another module, see the other

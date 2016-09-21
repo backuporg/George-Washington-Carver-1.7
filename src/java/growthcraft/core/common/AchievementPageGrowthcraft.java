@@ -1,12 +1,11 @@
 package growthcraft.core.common;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import growthcraft.api.core.i18n.GrcI18n;
-
 import net.minecraft.stats.Achievement;
 import net.minecraftforge.common.AchievementPage;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AchievementPageGrowthcraft
 {

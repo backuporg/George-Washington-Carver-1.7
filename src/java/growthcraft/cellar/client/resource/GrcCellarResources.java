@@ -2,10 +2,9 @@ package growthcraft.cellar.client.resource;
 
 import growthcraft.cellar.client.model.ModelCultureJar;
 import growthcraft.cellar.client.model.ModelFruitPresser;
-
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraft.util.ResourceLocation;
 
 @SideOnly(Side.CLIENT)
 public class GrcCellarResources

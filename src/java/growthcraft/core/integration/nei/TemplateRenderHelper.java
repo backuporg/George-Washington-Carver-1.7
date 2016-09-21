@@ -23,18 +23,14 @@
  */
 package growthcraft.core.integration.nei;
 
-import growthcraft.core.client.gui.GrcGuiRenderHelper;
-
-import org.lwjgl.opengl.GL11;
-
 import codechicken.lib.gui.GuiDraw;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import growthcraft.core.client.gui.GrcGuiRenderHelper;
 import net.minecraft.client.renderer.texture.TextureMap;
-
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
 public class TemplateRenderHelper

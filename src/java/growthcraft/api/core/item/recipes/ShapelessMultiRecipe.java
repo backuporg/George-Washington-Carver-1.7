@@ -5,13 +5,6 @@ import growthcraft.api.core.definition.IMultiItemStacks;
 import growthcraft.api.core.item.MultiItemStacks;
 import growthcraft.api.core.item.OreItemStacks;
 import growthcraft.api.core.util.MultiStacksUtil;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
 import net.minecraft.block.Block;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
@@ -21,6 +14,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
+
+import java.util.*;
 
 public abstract class ShapelessMultiRecipe implements IRecipe
 {

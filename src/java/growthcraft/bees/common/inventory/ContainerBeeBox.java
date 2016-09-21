@@ -2,7 +2,6 @@ package growthcraft.bees.common.inventory;
 
 import growthcraft.bees.common.tileentity.TileEntityBeeBox;
 import growthcraft.core.common.inventory.GrcContainer;
-
 import net.minecraft.entity.player.InventoryPlayer;
 
 public class ContainerBeeBox extends GrcContainer

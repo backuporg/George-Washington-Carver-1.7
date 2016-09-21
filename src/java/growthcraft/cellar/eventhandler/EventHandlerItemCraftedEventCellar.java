@@ -3,10 +3,9 @@ package growthcraft.cellar.eventhandler;
 import growthcraft.cellar.common.item.ItemWaterBag;
 import growthcraft.cellar.common.itemblock.ItemBlockFermentBarrel;
 import growthcraft.cellar.stats.CellarAchievement;
-
+import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
-import net.minecraft.item.Item;
 
 public class EventHandlerItemCraftedEventCellar
 {

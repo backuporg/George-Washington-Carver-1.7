@@ -3,9 +3,8 @@ package growthcraft.core.common.item;
 import growthcraft.api.core.item.ItemKey;
 import growthcraft.api.core.util.BlockFlags;
 import growthcraft.core.GrowthCraftCore;
-import growthcraft.core.registry.FenceRopeRegistry.FenceRopeEntry;
 import growthcraft.core.registry.FenceRopeRegistry;
-
+import growthcraft.core.registry.FenceRopeRegistry.FenceRopeEntry;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;

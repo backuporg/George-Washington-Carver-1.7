@@ -34,14 +34,12 @@ import growthcraft.api.core.util.TickUtils;
 import growthcraft.apples.GrowthCraftApples;
 import growthcraft.cellar.GrowthCraftCellar;
 import growthcraft.cellar.util.BoozeUtils;
-import growthcraft.core.common.GrcModuleBase;
 import growthcraft.core.GrowthCraftCore;
-
+import growthcraft.core.common.GrcModuleBase;
 import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
-import net.minecraftforge.fluids.FluidStack;
 import net.minecraft.init.MobEffects;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
 
 public class GrcApplesRecipes extends GrcModuleBase
 {

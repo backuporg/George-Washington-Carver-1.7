@@ -23,14 +23,9 @@
  */
 package growthcraft.bamboo.client;
 
-import growthcraft.bamboo.client.renderer.RenderBamboo;
-import growthcraft.bamboo.client.renderer.RenderBambooFence;
-import growthcraft.bamboo.client.renderer.RenderBambooRaft;
-import growthcraft.bamboo.client.renderer.RenderBambooScaffold;
-import growthcraft.bamboo.client.renderer.RenderBambooWall;
+import growthcraft.bamboo.client.renderer.*;
 import growthcraft.bamboo.common.CommonProxy;
 import growthcraft.bamboo.common.entity.EntityBambooRaft;
-
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 public class ClientProxy extends CommonProxy

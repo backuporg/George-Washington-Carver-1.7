@@ -25,8 +25,8 @@ package growthcraft.milk.init;
 
 import growthcraft.api.core.CoreRegistry;
 import growthcraft.api.core.IEffectRegistry;
-import growthcraft.milk.common.effect.EffectMilk;
 import growthcraft.milk.common.effect.EffectEvilBoozeMilk;
+import growthcraft.milk.common.effect.EffectMilk;
 
 public class GrcMilkEffects
 {

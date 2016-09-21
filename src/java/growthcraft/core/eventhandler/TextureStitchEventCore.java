@@ -1,13 +1,11 @@
 package growthcraft.core.eventhandler;
 
 import growthcraft.core.GrowthCraftCore;
-
+import net.minecraft.block.BlockLiquid;
+import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.client.event.TextureStitchEvent;
-
-import net.minecraft.block.BlockLiquid;
 
 public class TextureStitchEventCore
 {

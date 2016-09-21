@@ -1,26 +1,25 @@
 package growthcraft.core.common.block;
 
-import java.util.List;
-import java.util.Random;
-
-import growthcraft.core.util.ItemUtils;
 import growthcraft.api.core.util.BlockFlags;
 import growthcraft.core.client.ClientProxy;
 import growthcraft.core.client.renderer.RenderPaddy;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import growthcraft.core.util.ItemUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraft.util.EnumFacing;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.List;
+import java.util.Random;
 
 public abstract class BlockPaddyBase extends GrcBlockBase implements IPaddy
 {

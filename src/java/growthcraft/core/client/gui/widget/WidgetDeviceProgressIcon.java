@@ -24,7 +24,6 @@
 package growthcraft.core.client.gui.widget;
 
 import growthcraft.core.common.tileentity.feature.ITileProgressiveDevice;
-
 import net.minecraft.tileentity.TileEntity;
 
 public class WidgetDeviceProgressIcon extends WidgetIconBase

@@ -23,10 +23,10 @@
  */
 package growthcraft.api.cellar.culturing;
 
-import javax.annotation.Nullable;
-
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
+
+import javax.annotation.Nullable;
 
 public interface ICultureRecipe
 {

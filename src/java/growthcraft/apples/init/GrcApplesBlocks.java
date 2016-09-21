@@ -26,10 +26,9 @@ package growthcraft.apples.init;
 import growthcraft.apples.common.block.BlockApple;
 import growthcraft.apples.common.block.BlockAppleLeaves;
 import growthcraft.apples.common.block.BlockAppleSapling;
+import growthcraft.core.common.GrcModuleBlocks;
 import growthcraft.core.common.definition.BlockDefinition;
 import growthcraft.core.common.definition.BlockTypeDefinition;
-import growthcraft.core.common.GrcModuleBlocks;
-
 import net.minecraft.init.Blocks;
 import net.minecraftforge.oredict.OreDictionary;
 

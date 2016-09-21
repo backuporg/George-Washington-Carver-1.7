@@ -23,19 +23,16 @@
  */
 package growthcraft.milk.common.item;
 
-import java.util.List;
-
 import growthcraft.core.common.item.GrcItemFoodBase;
 import growthcraft.milk.GrowthCraftMilk;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-
 import net.minecraft.util.math.MathHelper;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.List;
 
 public class ItemYogurt extends GrcItemFoodBase
 {

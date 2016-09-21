@@ -23,16 +23,15 @@
  */
 package growthcraft.milk.common.block;
 
-import growthcraft.core.common.block.GrcBlockContainer;
 import growthcraft.api.core.util.BBox;
+import growthcraft.core.common.block.GrcBlockContainer;
+import growthcraft.milk.GrowthCraftMilk;
 import growthcraft.milk.client.render.RenderPancheon;
 import growthcraft.milk.common.tileentity.TileEntityPancheon;
-import growthcraft.milk.GrowthCraftMilk;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.material.Material;
 import net.minecraft.world.IBlockAccess;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockPancheon extends GrcBlockContainer
 {

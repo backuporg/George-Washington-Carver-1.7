@@ -25,10 +25,9 @@ package growthcraft.core.eventhandler;
 
 import growthcraft.core.common.item.ItemCrowbar;
 import growthcraft.core.stats.CoreAchievement;
-
+import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
-import net.minecraft.item.Item;
 
 public class EventHandlerItemCraftedEventCore
 {

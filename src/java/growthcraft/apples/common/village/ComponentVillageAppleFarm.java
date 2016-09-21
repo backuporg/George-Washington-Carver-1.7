@@ -1,14 +1,9 @@
 package growthcraft.apples.common.village;
 
-import java.util.List;
-import java.util.Random;
-import java.util.HashMap;
-
 import growthcraft.apples.common.world.WorldGenAppleTree;
+import growthcraft.core.util.SchemaToVillage;
 import growthcraft.core.util.SchemaToVillage.BlockEntry;
 import growthcraft.core.util.SchemaToVillage.IBlockEntries;
-import growthcraft.core.util.SchemaToVillage;
-
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
@@ -19,6 +14,10 @@ import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
 import net.minecraft.world.gen.structure.StructureVillagePieces;
 import net.minecraft.world.gen.structure.StructureVillagePieces.Start;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Random;
 
 public class ComponentVillageAppleFarm extends StructureVillagePieces.Village implements SchemaToVillage.IVillage
 {

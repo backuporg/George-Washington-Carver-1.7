@@ -23,8 +23,8 @@
  */
 package growthcraft.rice.init;
 
-import growthcraft.core.common.definition.ItemDefinition;
 import growthcraft.core.common.GrcModuleItems;
+import growthcraft.core.common.definition.ItemDefinition;
 import growthcraft.rice.common.item.ItemRice;
 import growthcraft.rice.common.item.ItemRiceBall;
 

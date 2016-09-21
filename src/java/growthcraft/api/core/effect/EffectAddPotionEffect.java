@@ -23,17 +23,16 @@
  */
 package growthcraft.api.core.effect;
 
-import java.util.List;
-import java.util.Random;
-import javax.annotation.Nonnull;
-
 import growthcraft.api.core.CoreRegistry;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
+
+import javax.annotation.Nonnull;
+import java.util.List;
+import java.util.Random;
 
 /**
  * As its name implies, this Effect, will ADD a Potion Effect to the target.

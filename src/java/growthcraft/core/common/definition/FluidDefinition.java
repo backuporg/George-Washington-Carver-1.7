@@ -23,9 +23,9 @@
  */
 package growthcraft.core.common.definition;
 
-import javax.annotation.Nonnull;
-
 import net.minecraftforge.fluids.Fluid;
+
+import javax.annotation.Nonnull;
 
 public class FluidDefinition extends FluidTypeDefinition<Fluid>
 {

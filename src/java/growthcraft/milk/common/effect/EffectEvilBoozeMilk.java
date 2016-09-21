@@ -23,21 +23,16 @@
  */
 package growthcraft.milk.common.effect;
 
-import java.util.List;
-import java.util.Random;
-
 import growthcraft.api.core.CoreRegistry;
-import growthcraft.api.core.effect.EffectAddPotionEffect;
-import growthcraft.api.core.effect.EffectChance;
-import growthcraft.api.core.effect.EffectList;
-import growthcraft.api.core.effect.IEffect;
-import growthcraft.api.core.effect.SimplePotionEffectFactory;
-
+import growthcraft.api.core.effect.*;
 import net.minecraft.entity.Entity;
+import net.minecraft.init.MobEffects;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.world.World;
-import net.minecraft.init.MobEffects;
+
+import java.util.List;
+import java.util.Random;
 
 /**
  * If milk removes effects, then evil booze milk will add them.

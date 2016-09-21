@@ -23,14 +23,13 @@
  */
 package growthcraft.netherloid.common.block;
 
-import java.util.Random;
-
 import growthcraft.netherloid.netherloid;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.Random;
 
 public abstract class BlockNetherMuertecap extends BlockNetherFungusBase
 {

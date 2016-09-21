@@ -25,17 +25,14 @@ package growthcraft.netherloid.common.block;
 
 import growthcraft.api.core.util.BlockFlags;
 import growthcraft.netherloid.netherloid;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockDirectional;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockNetherSquash extends BlockDirectional
 {

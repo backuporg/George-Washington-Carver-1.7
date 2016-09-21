@@ -1,14 +1,13 @@
 package growthcraft.cellar.stats;
 
-import java.util.Map;
-import java.util.EnumMap;
-
-import growthcraft.core.common.AchievementPageGrowthcraft;
 import growthcraft.cellar.GrowthCraftCellar;
-
+import growthcraft.core.common.AchievementPageGrowthcraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.stats.Achievement;
+
+import java.util.EnumMap;
+import java.util.Map;
 
 public class GrcCellarAchievements
 {

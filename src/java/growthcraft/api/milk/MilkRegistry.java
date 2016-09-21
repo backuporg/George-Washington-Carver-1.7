@@ -23,8 +23,6 @@
  */
 package growthcraft.api.milk;
 
-import javax.annotation.Nonnull;
-
 import growthcraft.api.core.log.ILoggable;
 import growthcraft.api.core.log.ILogger;
 import growthcraft.api.core.log.NullLogger;
@@ -36,6 +34,8 @@ import growthcraft.api.milk.churn.ChurnRegistry;
 import growthcraft.api.milk.churn.IChurnRegistry;
 import growthcraft.api.milk.pancheon.IPancheonRegistry;
 import growthcraft.api.milk.pancheon.PancheonRegistry;
+
+import javax.annotation.Nonnull;
 
 public class MilkRegistry implements ILoggable
 {

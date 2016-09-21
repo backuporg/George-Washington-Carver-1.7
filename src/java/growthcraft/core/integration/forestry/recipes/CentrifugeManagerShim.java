@@ -23,13 +23,12 @@
  */
 package growthcraft.core.integration.forestry.recipes;
 
-import java.util.Map;
-
 import forestry.api.recipes.ICentrifugeManager;
 import forestry.api.recipes.ICentrifugeRecipe;
-
-import net.minecraftforge.fml.common.Optional;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.Optional;
+
+import java.util.Map;
 
 @Optional.Interface(iface="forestry.api.recipes.ICentrifugeManager", modid="ForestryAPI|recipes")
 public class CentrifugeManagerShim extends AbstractManagerShim<ICentrifugeRecipe> implements ICentrifugeManager

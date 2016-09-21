@@ -23,25 +23,14 @@
  */
 package growthcraft.bamboo.init;
 
-import growthcraft.bamboo.common.block.BlockBamboo;
-import growthcraft.bamboo.common.block.BlockBambooDoor;
-import growthcraft.bamboo.common.block.BlockBambooFence;
-import growthcraft.bamboo.common.block.BlockBambooFenceGate;
-import growthcraft.bamboo.common.block.BlockBambooLeaves;
-import growthcraft.bamboo.common.block.BlockBambooScaffold;
-import growthcraft.bamboo.common.block.BlockBambooShoot;
-import growthcraft.bamboo.common.block.BlockBambooSlab;
-import growthcraft.bamboo.common.block.BlockBambooStairs;
-import growthcraft.bamboo.common.block.BlockBambooStalk;
-import growthcraft.bamboo.common.block.BlockBambooWall;
+import growthcraft.bamboo.common.block.*;
 import growthcraft.bamboo.common.item.ItemBambooSlab;
+import growthcraft.core.common.GrcModuleBlocks;
 import growthcraft.core.common.block.BlockFenceRope;
 import growthcraft.core.common.definition.BlockDefinition;
 import growthcraft.core.common.definition.BlockTypeDefinition;
-import growthcraft.core.common.GrcModuleBlocks;
 import growthcraft.core.integration.NEI;
 import growthcraft.core.registry.FenceRopeRegistry;
-
 import net.minecraft.block.BlockSlab;
 import net.minecraft.init.Blocks;
 

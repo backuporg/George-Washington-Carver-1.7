@@ -3,13 +3,10 @@ package growthcraft.fishtrap.client.gui;
 import growthcraft.core.client.gui.GrcGuiContainer;
 import growthcraft.fishtrap.common.inventory.ContainerFishTrap;
 import growthcraft.fishtrap.common.tileentity.TileEntityFishTrap;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraft.client.gui.inventory.GuiContainer;
-
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class GuiFishTrap extends GrcGuiContainer<ContainerFishTrap, TileEntityFishTrap>

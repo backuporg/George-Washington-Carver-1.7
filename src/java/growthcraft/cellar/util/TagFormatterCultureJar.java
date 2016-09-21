@@ -1,13 +1,12 @@
 package growthcraft.cellar.util;
 
-import java.util.List;
-
 import growthcraft.api.core.i18n.GrcI18n;
 import growthcraft.api.core.util.ITagFormatter;
 import growthcraft.core.util.TagFormatterItem;
-
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumChatFormatting;
+
+import java.util.List;
 
 public class TagFormatterCultureJar implements ITagFormatter
 {

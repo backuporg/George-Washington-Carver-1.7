@@ -23,15 +23,13 @@
  */
 package growthcraft.core.common.tileentity.event;
 
+import growthcraft.api.core.stream.IStreamable;
+import io.netty.buffer.ByteBuf;
+import net.minecraft.nbt.NBTTagCompound;
+
+import javax.annotation.Nonnull;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import javax.annotation.Nonnull;
-
-import io.netty.buffer.ByteBuf;
-
-import growthcraft.api.core.stream.IStreamable;
-
-import net.minecraft.nbt.NBTTagCompound;
 
 public class EventFunction
 {

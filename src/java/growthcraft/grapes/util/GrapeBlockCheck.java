@@ -24,7 +24,6 @@
 package growthcraft.grapes.util;
 
 import growthcraft.grapes.GrowthCraftGrapes;
-
 import net.minecraft.block.Block;
 
 public class GrapeBlockCheck

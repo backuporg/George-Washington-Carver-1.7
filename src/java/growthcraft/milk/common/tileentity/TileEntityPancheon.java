@@ -24,10 +24,9 @@
 package growthcraft.milk.common.tileentity;
 
 import growthcraft.api.core.fluids.FluidTest;
-import growthcraft.core.common.tileentity.feature.ITileProgressiveDevice;
 import growthcraft.core.common.tileentity.GrcTileDeviceBase;
+import growthcraft.core.common.tileentity.feature.ITileProgressiveDevice;
 import growthcraft.milk.common.tileentity.device.Pancheon;
-
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;

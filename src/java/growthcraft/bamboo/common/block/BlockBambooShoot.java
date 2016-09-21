@@ -1,30 +1,29 @@
 package growthcraft.bamboo.common.block;
 
-import java.util.Random;
-
-import growthcraft.bamboo.common.world.WorldGenBamboo;
-import growthcraft.bamboo.GrowthCraftBamboo;
-import growthcraft.core.common.block.ICropDataProvider;
-import growthcraft.core.util.BlockCheck;
 import growthcraft.api.core.util.BlockFlags;
 import growthcraft.api.core.util.RenderType;
-
-import net.minecraft.block.SoundType;
-import net.minecraft.util.math.BlockPos;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import growthcraft.bamboo.GrowthCraftBamboo;
+import growthcraft.bamboo.common.world.WorldGenBamboo;
+import growthcraft.core.common.block.ICropDataProvider;
+import growthcraft.core.util.BlockCheck;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.event.terraingen.TerrainGen;
-import net.minecraft.util.EnumFacing;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.Random;
 
 public abstract class BlockBambooShoot extends BlockBush implements ICropDataProvider, IGrowable
 {

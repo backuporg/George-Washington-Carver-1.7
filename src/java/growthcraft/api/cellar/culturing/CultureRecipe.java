@@ -23,13 +23,12 @@
  */
 package growthcraft.api.cellar.culturing;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import growthcraft.api.core.fluids.FluidTest;
-
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public class CultureRecipe implements ICultureRecipe
 {

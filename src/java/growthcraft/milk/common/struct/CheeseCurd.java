@@ -26,9 +26,7 @@ package growthcraft.milk.common.struct;
 import growthcraft.api.core.nbt.INBTSerializableContext;
 import growthcraft.api.core.stream.IStreamable;
 import growthcraft.milk.common.item.EnumCheeseType;
-
 import io.netty.buffer.ByteBuf;
-
 import net.minecraft.nbt.NBTTagCompound;
 
 public class CheeseCurd implements INBTSerializableContext, IStreamable

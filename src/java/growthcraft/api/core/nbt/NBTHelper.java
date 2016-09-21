@@ -23,26 +23,21 @@
  */
 package growthcraft.api.core.nbt;
 
-import java.util.Collection;
-import java.util.List;
-import javax.annotation.Nullable;
-import javax.annotation.Nonnull;
-
 import growthcraft.api.core.CoreRegistry;
 import growthcraft.api.core.effect.IEffect;
 import growthcraft.api.core.util.ConstID;
-
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTBase;
-import net.minecraft.nbt.NBTPrimitive;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagIntArray;
-import net.minecraft.nbt.NBTTagList;
+import net.minecraft.nbt.*;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.Collection;
+import java.util.List;
 
 public class NBTHelper
 {

@@ -1,10 +1,9 @@
 package growthcraft.bamboo.common.block;
 
 import growthcraft.bamboo.GrowthCraftBamboo;
-
+import net.minecraft.block.BlockFenceGate;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraft.block.BlockFenceGate;
 
 
 

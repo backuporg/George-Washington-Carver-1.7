@@ -23,17 +23,15 @@
  */
 package growthcraft.core.common.tileentity.device;
 
-import java.util.Random;
-
-import io.netty.buffer.ByteBuf;
-
 import growthcraft.api.core.nbt.INBTSerializableContext;
 import growthcraft.api.core.stream.IStreamable;
-
+import io.netty.buffer.ByteBuf;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.world.World;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
+
+import java.util.Random;
 
 public class DeviceBase implements INBTSerializableContext, IStreamable
 {

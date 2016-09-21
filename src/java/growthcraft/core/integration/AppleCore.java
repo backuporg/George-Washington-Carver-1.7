@@ -1,15 +1,14 @@
 package growthcraft.core.integration;
 
-import java.util.Random;
-
 import growthcraft.core.GrowthCraftCore;
-import squeek.applecore.api.AppleCoreAPI;
-
+import net.minecraft.block.Block;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.common.eventhandler.Event;
-import net.minecraft.block.Block;
-import net.minecraft.world.World;
+import squeek.applecore.api.AppleCoreAPI;
+
+import java.util.Random;
 
 public class AppleCore extends ModIntegrationBase
 {

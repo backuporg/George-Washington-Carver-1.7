@@ -1,12 +1,6 @@
 package growthcraft.rice.common.village;
 
-import java.util.List;
-import java.util.Random;
-
 import growthcraft.rice.GrowthCraftRice;
-
-import net.minecraftforge.fml.common.registry.VillagerRegistry.IVillageCreationHandler;
-import net.minecraftforge.fml.common.registry.VillagerRegistry.IVillageTradeHandler;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -15,6 +9,11 @@ import net.minecraft.village.MerchantRecipe;
 import net.minecraft.village.MerchantRecipeList;
 import net.minecraft.world.gen.structure.StructureVillagePieces.PieceWeight;
 import net.minecraft.world.gen.structure.StructureVillagePieces.Start;
+import net.minecraftforge.fml.common.registry.VillagerRegistry.IVillageCreationHandler;
+import net.minecraftforge.fml.common.registry.VillagerRegistry.IVillageTradeHandler;
+
+import java.util.List;
+import java.util.Random;
 
 public class VillageHandlerRice implements IVillageTradeHandler, IVillageCreationHandler
 {

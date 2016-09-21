@@ -1,7 +1,7 @@
 package growthcraft.core.common.block;
 
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.world.IBlockAccess;
 
 public interface IRotatableBlock
 {

@@ -23,15 +23,12 @@
  */
 package growthcraft.api.core.description;
 
-import java.util.List;
-
 import growthcraft.api.core.i18n.GrcI18n;
-
-import net.minecraft.init.MobEffects;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.init.PotionTypes;
+
+import java.util.List;
 
 /**
  * A nice way to add descriptions to a list if the Object is an IDescribable

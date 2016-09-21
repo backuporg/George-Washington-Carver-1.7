@@ -1,10 +1,6 @@
 package growthcraft.core.util;
 
-import java.util.Random;
-import javax.annotation.Nonnull;
-
 import buildcraft.api.tools.IToolWrench;
-
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
@@ -17,6 +13,9 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+
+import javax.annotation.Nonnull;
+import java.util.Random;
 
 /**
  * Utility class for item handling.

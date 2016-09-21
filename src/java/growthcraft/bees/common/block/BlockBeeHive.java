@@ -1,28 +1,25 @@
 package growthcraft.bees.common.block;
 
-import java.util.List;
-import java.util.Random;
-
 import growthcraft.api.core.util.BlockFlags;
-import growthcraft.bees.client.renderer.RenderBeeHive;
 import growthcraft.bees.GrowthCraftBees;
+import growthcraft.bees.client.renderer.RenderBeeHive;
 import growthcraft.core.common.block.GrcBlockBase;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
-
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.List;
+import java.util.Random;
 
 public class BlockBeeHive extends GrcBlockBase
 {

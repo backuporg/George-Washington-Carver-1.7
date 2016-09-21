@@ -25,7 +25,6 @@ package growthcraft.api.core.registry;
 
 import growthcraft.api.core.definition.IMultiItemStacks;
 import growthcraft.api.core.util.MultiStacksUtil;
-
 import net.minecraft.item.ItemStack;
 
 public class ItemRegistryEntry<T> implements IItemRegistryEntry<ItemStack>

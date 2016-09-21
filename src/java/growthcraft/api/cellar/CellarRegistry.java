@@ -23,8 +23,6 @@
  */
 package growthcraft.api.cellar;
 
-import javax.annotation.Nonnull;
-
 import growthcraft.api.cellar.booze.BoozeRegistry;
 import growthcraft.api.cellar.booze.IBoozeRegistry;
 import growthcraft.api.cellar.brewing.BrewingRegistry;
@@ -44,6 +42,8 @@ import growthcraft.api.cellar.yeast.IYeastRegistry;
 import growthcraft.api.cellar.yeast.YeastRegistry;
 import growthcraft.api.core.log.ILogger;
 import growthcraft.api.core.log.NullLogger;
+
+import javax.annotation.Nonnull;
 
 public class CellarRegistry implements ICellarRegistry
 {

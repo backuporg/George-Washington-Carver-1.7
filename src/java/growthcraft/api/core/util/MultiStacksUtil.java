@@ -23,10 +23,6 @@
  */
 package growthcraft.api.core.util;
 
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nonnull;
-
 import growthcraft.api.core.definition.IMultiFluidStacks;
 import growthcraft.api.core.definition.IMultiItemStacks;
 import growthcraft.api.core.fluids.MultiFluidStacks;
@@ -35,9 +31,12 @@ import growthcraft.api.core.item.MultiItemStacks;
 import growthcraft.api.core.item.OreItemStacks;
 import growthcraft.api.core.log.ILogger;
 import growthcraft.api.core.log.NullLogger;
-
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
+
+import javax.annotation.Nonnull;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MultiStacksUtil
 {

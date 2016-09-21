@@ -26,13 +26,12 @@ package growthcraft.milk.client.render;
 import growthcraft.api.core.util.BBox;
 import growthcraft.milk.common.block.BlockCheeseBlock;
 import growthcraft.milk.common.tileentity.TileEntityCheeseBlock;
-
-import net.minecraftforge.fml.client.registry.ISimpleBlockRenderingHandler;
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.world.IBlockAccess;
+import net.minecraftforge.fml.client.registry.ISimpleBlockRenderingHandler;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 public class RenderCheeseBlock implements ISimpleBlockRenderingHandler
 {

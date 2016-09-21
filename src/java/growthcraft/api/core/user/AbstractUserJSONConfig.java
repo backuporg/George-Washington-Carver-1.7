@@ -23,23 +23,17 @@
  */
 package growthcraft.api.core.user;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import javax.annotation.Nonnull;
-
+import com.google.common.io.Files;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.common.io.Files;
-
-import growthcraft.api.core.log.ILogger;
 import growthcraft.api.core.log.ILoggable;
+import growthcraft.api.core.log.ILogger;
 import growthcraft.api.core.log.NullLogger;
 import growthcraft.api.core.module.IModule;
-
 import net.minecraftforge.common.config.Configuration.UnicodeInputStreamReader;
+
+import javax.annotation.Nonnull;
+import java.io.*;
 
 /**
  * This is a base class for defining JSON config definitions, its purpose

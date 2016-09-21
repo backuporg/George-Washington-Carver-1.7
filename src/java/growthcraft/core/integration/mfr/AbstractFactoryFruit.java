@@ -23,19 +23,17 @@
  */
 package growthcraft.core.integration.mfr;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
 import growthcraft.core.integration.MFRModuleBase;
-
-import powercrystals.minefactoryreloaded.api.IFactoryFruit;
-import powercrystals.minefactoryreloaded.api.ReplacementBlock;
-
-import net.minecraftforge.fml.common.Optional;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.Optional;
+import powercrystals.minefactoryreloaded.api.IFactoryFruit;
+import powercrystals.minefactoryreloaded.api.ReplacementBlock;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 @Optional.Interface(iface="powercrystals.minefactoryreloaded.api.IFactoryFruit", modid=MFRModuleBase.MOD_ID)
 public abstract class AbstractFactoryFruit<TBlock extends Block> implements IFactoryFruit

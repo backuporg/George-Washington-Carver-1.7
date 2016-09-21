@@ -23,23 +23,20 @@
  */
 package growthcraft.netherloid.common.block;
 
-import java.util.Random;
-
 import growthcraft.api.core.util.BlockFlags;
 import growthcraft.netherloid.common.world.WorldGeneratorMaliceTree;
 import growthcraft.netherloid.netherloid;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
-
 import net.minecraft.init.Blocks;
-
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.event.terraingen.TerrainGen;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.Random;
 
 public abstract class BlockNetherMaliceSapling extends BlockBush implements IGrowable
 {

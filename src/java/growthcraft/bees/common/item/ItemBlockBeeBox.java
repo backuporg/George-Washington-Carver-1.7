@@ -2,7 +2,6 @@ package growthcraft.bees.common.item;
 
 import growthcraft.bees.common.block.BlockBeeBox;
 import growthcraft.core.common.item.GrcItemBlockBase;
-
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 

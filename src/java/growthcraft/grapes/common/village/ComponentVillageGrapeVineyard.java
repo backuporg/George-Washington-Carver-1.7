@@ -1,11 +1,7 @@
 package growthcraft.grapes.common.village;
 
-import java.util.List;
-import java.util.Random;
-
 import growthcraft.core.GrowthCraftCore;
 import growthcraft.grapes.GrowthCraftGrapes;
-
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -13,6 +9,9 @@ import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
 import net.minecraft.world.gen.structure.StructureVillagePieces;
 import net.minecraft.world.gen.structure.StructureVillagePieces.Start;
+
+import java.util.List;
+import java.util.Random;
 
 public class ComponentVillageGrapeVineyard extends StructureVillagePieces.Village
 {

@@ -23,29 +23,24 @@
  */
 package growthcraft.cellar.client;
 
+import growthcraft.cellar.GrowthCraftCellar;
 import growthcraft.cellar.client.gui.GuiBrewKettle;
 import growthcraft.cellar.client.gui.GuiCultureJar;
 import growthcraft.cellar.client.gui.GuiFermentBarrel;
 import growthcraft.cellar.client.gui.GuiFruitPress;
+import growthcraft.cellar.client.render.*;
 import growthcraft.cellar.client.render.item.ItemRenderCultureJar;
-import growthcraft.cellar.client.render.RenderBrewKettle;
-import growthcraft.cellar.client.render.RenderCultureJar;
-import growthcraft.cellar.client.render.RenderFermentBarrel;
-import growthcraft.cellar.client.render.RenderFruitPress;
-import growthcraft.cellar.client.render.RenderFruitPresser;
 import growthcraft.cellar.client.renderer.TileEntityCultureJarRenderer;
 import growthcraft.cellar.client.renderer.TileEntityFruitPresserRenderer;
 import growthcraft.cellar.client.resource.GrcCellarResources;
 import growthcraft.cellar.common.CommonProxy;
 import growthcraft.cellar.common.tileentity.TileEntityCultureJar;
 import growthcraft.cellar.common.tileentity.TileEntityFruitPresser;
-import growthcraft.cellar.GrowthCraftCellar;
-
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.MinecraftForgeClient;
 
 public class ClientProxy extends CommonProxy
 {

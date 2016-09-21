@@ -23,17 +23,16 @@
  */
 package growthcraft.api.milk.churn.user;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import growthcraft.api.core.schema.FluidStackSchema;
 import growthcraft.api.core.schema.ICommentable;
 import growthcraft.api.core.schema.ItemKeySchema;
 import growthcraft.api.milk.churn.ChurnRecipe;
 import growthcraft.api.milk.churn.IChurnRecipe;
-
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserChurnRecipe implements ICommentable
 {

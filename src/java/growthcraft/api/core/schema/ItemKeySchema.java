@@ -23,16 +23,15 @@
  */
 package growthcraft.api.core.schema;
 
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nonnull;
-
 import growthcraft.api.core.definition.IItemStackListProvider;
 import growthcraft.api.core.definition.IMultiItemStacks;
 import growthcraft.api.core.item.OreItemStacks;
-
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
+
+import javax.annotation.Nonnull;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ItemKeySchema extends ItemStackSchema implements IItemStackListProvider, IValidatable
 {

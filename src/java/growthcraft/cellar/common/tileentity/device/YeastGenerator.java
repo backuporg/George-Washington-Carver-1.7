@@ -23,12 +23,8 @@
  */
 package growthcraft.cellar.common.tileentity.device;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
-
-import growthcraft.api.cellar.booze.BoozeTag;
 import growthcraft.api.cellar.CellarRegistry;
+import growthcraft.api.cellar.booze.BoozeTag;
 import growthcraft.api.cellar.yeast.IYeastRegistry;
 import growthcraft.api.core.CoreRegistry;
 import growthcraft.api.core.item.WeightedItemStack;
@@ -37,12 +33,15 @@ import growthcraft.core.common.tileentity.device.DeviceFluidSlot;
 import growthcraft.core.common.tileentity.device.DeviceInventorySlot;
 import growthcraft.core.common.tileentity.device.DeviceProgressive;
 import growthcraft.core.util.ItemUtils;
-
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.WeightedRandom;
 import net.minecraft.world.biome.Biome;
-import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.BiomeDictionary;
+import net.minecraftforge.common.BiomeDictionary.Type;
+
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 public class YeastGenerator extends DeviceProgressive
 {

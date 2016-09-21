@@ -23,17 +23,16 @@
  */
 package growthcraft.core.util;
 
-import java.util.Random;
-
-import growthcraft.core.common.block.IBlockRope;
 import growthcraft.core.GrowthCraftCore;
-
+import growthcraft.core.common.block.IBlockRope;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.world.World;
-import net.minecraft.world.IBlockAccess;
-import net.minecraftforge.common.IPlantable;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
+import net.minecraftforge.common.IPlantable;
+
+import java.util.Random;
 
 public class BlockCheck
 {

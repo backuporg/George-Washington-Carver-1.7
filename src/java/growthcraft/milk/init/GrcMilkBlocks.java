@@ -23,22 +23,15 @@
  */
 package growthcraft.milk.init;
 
-import growthcraft.core.common.definition.BlockDefinition;
 import growthcraft.core.common.GrcModuleBlocks;
-import growthcraft.milk.common.block.BlockButterChurn;
-import growthcraft.milk.common.block.BlockCheeseBlock;
-import growthcraft.milk.common.block.BlockCheesePress;
-import growthcraft.milk.common.block.BlockCheeseVat;
-import growthcraft.milk.common.block.BlockHangingCurds;
-import growthcraft.milk.common.block.BlockPancheon;
-import growthcraft.milk.common.block.BlockThistle;
+import growthcraft.core.common.definition.BlockDefinition;
+import growthcraft.milk.GrowthCraftMilk;
+import growthcraft.milk.common.block.*;
 import growthcraft.milk.common.item.EnumCheeseType;
 import growthcraft.milk.common.item.ItemBlockCheeseBlock;
 import growthcraft.milk.common.item.ItemBlockHangingCurds;
-import growthcraft.milk.GrowthCraftMilk;
-
-import net.minecraftforge.oredict.OreDictionary;
 import net.minecraft.init.Blocks;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class GrcMilkBlocks extends GrcModuleBlocks
 {

@@ -25,9 +25,7 @@ package growthcraft.core.integration.forestry.recipes;
 
 import forestry.api.recipes.IStillManager;
 import forestry.api.recipes.IStillRecipe;
-
 import net.minecraftforge.fluids.FluidStack;
-
 import net.minecraftforge.fml.common.Optional;
 
 @Optional.Interface(iface="forestry.api.recipes.IStillManager", modid="ForestryAPI|recipes")

@@ -23,9 +23,8 @@
  */
 package growthcraft.api.bees.user;
 
-import growthcraft.api.core.schema.ICommentable;
 import growthcraft.api.core.schema.BlockKeySchema;
-
+import growthcraft.api.core.schema.ICommentable;
 import net.minecraft.block.Block;
 
 public class UserFlowerEntry implements ICommentable

@@ -1,14 +1,14 @@
 // This has been stolen from Botania by IceDragon (blame him if anything goes wrong)
 package growthcraft.core.client.util;
 
-import java.lang.reflect.Field;
-
-import net.minecraftforge.fml.relauncher.ReflectionHelper;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureUtil;
 import net.minecraft.client.resources.data.AnimationMetadataSection;
+import net.minecraftforge.fml.relauncher.ReflectionHelper;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.lang.reflect.Field;
 
 // This is all vanilla code from 1.8, thanks to ganymedes01 porting it to 1.7 :D
 @SideOnly(Side.CLIENT)

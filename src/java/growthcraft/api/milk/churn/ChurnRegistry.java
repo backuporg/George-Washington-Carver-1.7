@@ -23,21 +23,20 @@
  */
 package growthcraft.api.milk.churn;
 
+import growthcraft.api.core.fluids.FluidKey;
+import growthcraft.api.core.fluids.FluidTest;
+import growthcraft.api.core.log.ILogger;
+import growthcraft.api.core.log.NullLogger;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidStack;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-import growthcraft.api.core.log.ILogger;
-import growthcraft.api.core.log.NullLogger;
-import growthcraft.api.core.fluids.FluidKey;
-import growthcraft.api.core.fluids.FluidTest;
-
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidStack;
 
 public class ChurnRegistry implements IChurnRegistry
 {

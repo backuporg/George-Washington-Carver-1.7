@@ -23,10 +23,7 @@
  */
 package growthcraft.netherloid.common.block;
 
-import java.util.List;
-
 import growthcraft.api.core.util.RenderType;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.SoundType;
@@ -36,6 +33,8 @@ import net.minecraft.entity.item.EntityBoat;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
+
+import java.util.List;
 
 public class BlockLavaLilyPadBase extends BlockBush
 {

@@ -23,12 +23,11 @@
  */
 package growthcraft.bees.common.block;
 
-import java.util.Locale;
-
-import growthcraft.bees.GrowthCraftBees;
 import growthcraft.api.core.definition.IItemStackFactory;
-
+import growthcraft.bees.GrowthCraftBees;
 import net.minecraft.item.ItemStack;
+
+import java.util.Locale;
 
 public enum EnumBeeBoxThaumcraft implements IItemStackFactory
 {

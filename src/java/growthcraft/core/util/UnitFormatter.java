@@ -23,21 +23,18 @@
  */
 package growthcraft.core.util;
 
-import java.util.Collection;
-
-import javax.annotation.Nullable;
-
 import com.google.common.base.Joiner;
-
 import growthcraft.api.cellar.booze.BoozeTag;
 import growthcraft.api.core.CoreRegistry;
 import growthcraft.api.core.fluids.FluidTag;
 import growthcraft.api.core.i18n.GrcI18n;
 import growthcraft.core.GrowthCraftCore;
-
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
+
+import javax.annotation.Nullable;
+import java.util.Collection;
 
 /**
  * Utility class for formatting data into strings for descriptions, item names

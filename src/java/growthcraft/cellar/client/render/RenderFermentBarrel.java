@@ -2,14 +2,12 @@ package growthcraft.cellar.client.render;
 
 import growthcraft.cellar.common.block.BlockFermentBarrel;
 import growthcraft.core.util.RenderUtils;
-
-import net.minecraftforge.fml.client.registry.ISimpleBlockRenderingHandler;
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
-
 import net.minecraft.world.IBlockAccess;
+import net.minecraftforge.fml.client.registry.ISimpleBlockRenderingHandler;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import org.lwjgl.opengl.GL11;
 
 public class RenderFermentBarrel implements ISimpleBlockRenderingHandler

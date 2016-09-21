@@ -23,12 +23,10 @@
  */
 package growthcraft.core.common.tileentity.device;
 
-import io.netty.buffer.ByteBuf;
-
 import growthcraft.api.core.nbt.INBTSerializableContext;
 import growthcraft.api.core.stream.IStreamable;
 import growthcraft.api.core.stream.StreamUtils;
-
+import io.netty.buffer.ByteBuf;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.fluids.Fluid;

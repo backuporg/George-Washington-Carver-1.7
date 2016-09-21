@@ -23,17 +23,10 @@
  */
 package growthcraft.core.client.gui;
 
-import java.util.List;
-
-import org.lwjgl.opengl.GL11;
-
 import growthcraft.api.core.i18n.GrcI18n;
 import growthcraft.api.core.util.Rectangle;
 import growthcraft.core.client.gui.widget.WidgetManager;
 import growthcraft.core.util.UnitFormatter;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.RenderHelper;
@@ -41,11 +34,15 @@ import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.tileentity.TileEntity;
-
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.GL11;
+
+import java.util.List;
 
 @SideOnly(Side.CLIENT)
 public abstract class GrcGuiContainer<C extends Container, T extends TileEntity> extends GuiContainer

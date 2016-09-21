@@ -23,18 +23,11 @@
  */
 package growthcraft.api.cellar.booze;
 
-import java.util.Random;
-import java.util.List;
-import java.util.Collection;
-
-import javax.annotation.Nonnull;
-
 import growthcraft.api.cellar.CellarRegistry;
 import growthcraft.api.core.CoreRegistry;
-import growthcraft.api.core.fluids.FluidTag;
 import growthcraft.api.core.description.Describer;
 import growthcraft.api.core.effect.IPotionEffectFactory;
-
+import growthcraft.api.core.fluids.FluidTag;
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
@@ -42,6 +35,11 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
+
+import javax.annotation.Nonnull;
+import java.util.Collection;
+import java.util.List;
+import java.util.Random;
 
 public class BoozePotionEffectFactory implements IPotionEffectFactory
 {

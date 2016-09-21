@@ -25,11 +25,9 @@ package growthcraft.core.integration;
 
 import growthcraft.core.common.GrcModuleBase;
 import growthcraft.core.util.Platform;
-
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.common.FMLCommonHandler;
-import net.minecraftforge.common.Loader;
 import net.minecraftforge.common.ModContainer;
+import net.minecraftforge.fml.common.Loader;
 
 /**
  * Base class for integrating other mods with Growthcraft, this idea was

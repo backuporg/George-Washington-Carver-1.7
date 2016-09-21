@@ -23,14 +23,12 @@
  */
 package growthcraft.api.core;
 
-import javax.annotation.Nonnull;
-
-import growthcraft.api.core.nbt.INBTSerializableContext;
-
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
-
+import growthcraft.api.core.nbt.INBTSerializableContext;
 import net.minecraft.nbt.NBTTagCompound;
+
+import javax.annotation.Nonnull;
 
 /**
  * Don't even try to understand this, save yourself the trouble.

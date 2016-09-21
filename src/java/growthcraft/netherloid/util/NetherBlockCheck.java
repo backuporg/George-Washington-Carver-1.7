@@ -24,7 +24,6 @@
 package growthcraft.netherloid.util;
 
 import growthcraft.netherloid.netherloid;
-
 import net.minecraft.block.Block;
 
 public class NetherBlockCheck

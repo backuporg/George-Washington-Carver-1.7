@@ -1,14 +1,13 @@
 package growthcraft.cellar.common.block;
 
+import growthcraft.api.core.util.BBox;
+import growthcraft.cellar.GrowthCraftCellar;
 import growthcraft.cellar.client.render.RenderCultureJar;
 import growthcraft.cellar.common.tileentity.TileEntityCultureJar;
-import growthcraft.cellar.GrowthCraftCellar;
-import growthcraft.api.core.util.BBox;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.material.Material;
 import net.minecraft.world.IBlockAccess;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockCultureJar extends BlockCellarContainer
 {

@@ -23,15 +23,14 @@
  */
 package growthcraft.api.core.vines.user;
 
-import java.io.BufferedReader;
-import javax.annotation.Nonnull;
-
 import growthcraft.api.core.CoreRegistry;
 import growthcraft.api.core.schema.BlockKeySchema;
 import growthcraft.api.core.user.AbstractUserJSONConfig;
 import growthcraft.api.core.util.BlockKey;
-
 import net.minecraft.block.Block;
+
+import javax.annotation.Nonnull;
+import java.io.BufferedReader;
 
 public class UserVinesConfig extends AbstractUserJSONConfig
 {

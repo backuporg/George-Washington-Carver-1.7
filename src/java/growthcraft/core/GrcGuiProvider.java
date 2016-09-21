@@ -23,19 +23,18 @@
  */
 package growthcraft.core;
 
-import java.lang.reflect.Constructor;
-import java.util.HashMap;
-import java.util.Map;
-import javax.annotation.Nonnull;
-
 import growthcraft.api.core.log.ILogger;
 import growthcraft.core.common.tileentity.feature.IInteractionObject;
-
-import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.network.IGuiHandler;
+
+import javax.annotation.Nonnull;
+import java.lang.reflect.Constructor;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Cross Ported from YATM

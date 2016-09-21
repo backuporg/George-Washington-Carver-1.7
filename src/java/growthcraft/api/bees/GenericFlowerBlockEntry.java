@@ -24,8 +24,8 @@
 package growthcraft.api.bees;
 
 import net.minecraft.block.Block;
-import net.minecraft.world.World;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 public class GenericFlowerBlockEntry extends AbstractFlowerBlockEntry
 {

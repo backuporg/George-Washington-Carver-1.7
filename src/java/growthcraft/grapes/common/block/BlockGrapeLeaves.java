@@ -1,28 +1,25 @@
 package growthcraft.grapes.common.block;
 
-import java.util.Random;
-
-import growthcraft.core.common.block.IBlockRope;
-import growthcraft.core.GrowthCraftCore;
-import growthcraft.core.util.BlockCheck;
 import growthcraft.api.core.util.BlockFlags;
-import growthcraft.grapes.client.renderer.RenderGrapeLeaves;
+import growthcraft.core.GrowthCraftCore;
+import growthcraft.core.common.block.IBlockRope;
+import growthcraft.core.util.BlockCheck;
 import growthcraft.grapes.GrowthCraftGrapes;
+import growthcraft.grapes.client.renderer.RenderGrapeLeaves;
 import growthcraft.grapes.util.GrapeBlockCheck;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.material.Material;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
-
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.ColorizerFoliage;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraft.util.EnumFacing;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.Random;
 
 public abstract class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 {

@@ -23,14 +23,13 @@
  */
 package growthcraft.api.fishtrap.user;
 
-import java.io.BufferedReader;
-
 import growthcraft.api.core.definition.IMultiItemStacks;
 import growthcraft.api.core.user.AbstractUserJSONConfig;
 import growthcraft.api.fishtrap.BaitRegistry;
 import growthcraft.api.fishtrap.FishTrapRegistry;
-
 import net.minecraft.item.ItemStack;
+
+import java.io.BufferedReader;
 
 public class UserBaitConfig extends AbstractUserJSONConfig
 {

@@ -24,7 +24,6 @@
 package growthcraft.rice.common;
 
 import growthcraft.core.common.GrcModuleProxyBase;
-
 import net.minecraftforge.fml.common.SidedProxy;
 
 public class CommonProxy extends GrcModuleProxyBase

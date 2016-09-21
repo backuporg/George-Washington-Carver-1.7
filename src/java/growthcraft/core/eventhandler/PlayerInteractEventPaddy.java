@@ -1,17 +1,16 @@
 package growthcraft.core.eventhandler;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import growthcraft.api.core.util.BlockFlags;
-
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class PlayerInteractEventPaddy
 {

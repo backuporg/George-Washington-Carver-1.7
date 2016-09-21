@@ -23,20 +23,18 @@
  */
 package growthcraft.core.integration.mfr;
 
+import growthcraft.core.integration.MFRModuleBase;
+import net.minecraft.block.Block;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.common.Optional;
+import powercrystals.minefactoryreloaded.api.HarvestType;
+import powercrystals.minefactoryreloaded.api.IFactoryHarvestable;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-
-import growthcraft.core.integration.MFRModuleBase;
-
-import powercrystals.minefactoryreloaded.api.HarvestType;
-import powercrystals.minefactoryreloaded.api.IFactoryHarvestable;
-
-import net.minecraftforge.fml.common.Optional;
-import net.minecraft.block.Block;
-import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
 
 @Optional.Interface(iface="powercrystals.minefactoryreloaded.api.IFactoryHarvestable", modid=MFRModuleBase.MOD_ID)
 public abstract class AbstractFactoryHarvestable<TBlock extends Block> implements IFactoryHarvestable

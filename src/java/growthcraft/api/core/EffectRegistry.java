@@ -23,22 +23,12 @@
  */
 package growthcraft.api.core;
 
-import javax.annotation.Nonnull;
-
-import growthcraft.api.core.effect.EffectAddPotionEffect;
-import growthcraft.api.core.effect.EffectChance;
-import growthcraft.api.core.effect.EffectExtinguish;
-import growthcraft.api.core.effect.EffectIgnite;
-import growthcraft.api.core.effect.EffectList;
-import growthcraft.api.core.effect.EffectNull;
-import growthcraft.api.core.effect.EffectRandomList;
-import growthcraft.api.core.effect.EffectRemovePotionEffect;
-import growthcraft.api.core.effect.EffectWeightedRandomList;
-import growthcraft.api.core.effect.IEffect;
+import growthcraft.api.core.effect.*;
 import growthcraft.api.core.log.ILogger;
 import growthcraft.api.core.log.NullLogger;
-
 import net.minecraft.nbt.NBTTagCompound;
+
+import javax.annotation.Nonnull;
 
 public class EffectRegistry extends AbstractClassRegistry<IEffect> implements IEffectRegistry
 {

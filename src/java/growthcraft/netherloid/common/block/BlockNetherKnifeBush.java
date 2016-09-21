@@ -25,7 +25,6 @@ package growthcraft.netherloid.common.block;
 
 import growthcraft.netherloid.netherloid;
 import growthcraft.netherloid.util.DamageSources;
-
 import net.minecraft.block.BlockBush;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;

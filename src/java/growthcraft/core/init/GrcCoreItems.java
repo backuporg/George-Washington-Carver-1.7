@@ -23,14 +23,9 @@
  */
 package growthcraft.core.init;
 
-import growthcraft.core.common.definition.ItemDefinition;
 import growthcraft.core.common.GrcModuleItems;
-import growthcraft.core.common.item.ItemBottleSalt;
-import growthcraft.core.common.item.ItemBucketSalt;
-import growthcraft.core.common.item.ItemCrowbar;
-import growthcraft.core.common.item.ItemRope;
-import growthcraft.core.common.item.ItemSalt;
-
+import growthcraft.core.common.definition.ItemDefinition;
+import growthcraft.core.common.item.*;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class GrcCoreItems extends GrcModuleItems

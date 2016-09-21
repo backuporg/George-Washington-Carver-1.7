@@ -23,13 +23,12 @@
  */
 package growthcraft.api.core.schema;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import growthcraft.api.core.definition.IItemStackListProvider;
-
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class OreItemSchema implements IItemStackListProvider, IValidatable, ICommentable
 {

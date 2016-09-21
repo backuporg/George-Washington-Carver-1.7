@@ -23,9 +23,9 @@
  */
 package growthcraft.grapes.init;
 
+import growthcraft.core.common.GrcModuleBlocks;
 import growthcraft.core.common.definition.BlockDefinition;
 import growthcraft.core.common.definition.BlockTypeDefinition;
-import growthcraft.core.common.GrcModuleBlocks;
 import growthcraft.grapes.common.block.BlockGrapeBlock;
 import growthcraft.grapes.common.block.BlockGrapeLeaves;
 import growthcraft.grapes.common.block.BlockGrapeVine0;

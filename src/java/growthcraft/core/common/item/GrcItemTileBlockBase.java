@@ -24,7 +24,6 @@
 package growthcraft.core.common.item;
 
 import growthcraft.api.core.nbt.NBTHelper;
-
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;

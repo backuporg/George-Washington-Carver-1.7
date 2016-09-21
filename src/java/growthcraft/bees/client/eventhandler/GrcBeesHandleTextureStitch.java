@@ -24,16 +24,14 @@
 package growthcraft.bees.client.eventhandler;
 
 import growthcraft.bees.GrowthCraftBees;
-import growthcraft.core.client.util.InterpolatedIcon;
 import growthcraft.core.GrowthCraftCore;
+import growthcraft.core.client.util.InterpolatedIcon;
 import growthcraft.core.integration.botania.EnumBotaniaWoodType;
-
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-
-import net.minecraftforge.client.event.TextureStitchEvent;
 
 public class GrcBeesHandleTextureStitch
 {

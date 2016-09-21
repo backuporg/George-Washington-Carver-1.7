@@ -1,26 +1,23 @@
 package growthcraft.bamboo.common.block;
 
-import java.util.Random;
-
-import growthcraft.bamboo.client.renderer.RenderBambooScaffold;
 import growthcraft.bamboo.GrowthCraftBamboo;
+import growthcraft.bamboo.client.renderer.RenderBambooScaffold;
 import growthcraft.core.common.block.GrcBlockBase;
-
-import net.minecraft.util.math.BlockPos;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
-
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraft.util.EnumFacing;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.Random;
 
 public class BlockBambooScaffold extends GrcBlockBase
 {

@@ -23,10 +23,10 @@
  */
 package growthcraft.cellar.event;
 
-import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.eventhandler.Event;
 
 public class EventWaterBag extends Event
 {

@@ -23,30 +23,26 @@
  */
 package growthcraft.core.common.item;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import buildcraft.api.tools.IToolWrench;
-
 import growthcraft.api.core.item.EnumDye;
 import growthcraft.core.GrowthCraftCore;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockButton;
 import net.minecraft.block.BlockChest;
 import net.minecraft.block.BlockLever;
-
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import net.minecraft.util.EnumFacing;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class ItemCrowbar extends GrcItemBase implements IToolWrench
 {

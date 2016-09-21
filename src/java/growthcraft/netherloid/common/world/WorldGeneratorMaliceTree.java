@@ -23,17 +23,16 @@
  */
 package growthcraft.netherloid.common.world;
 
-import java.util.Random;
-
 import growthcraft.netherloid.netherloid;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSapling;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
-import net.minecraft.util.EnumFacing;
+
+import java.util.Random;
 
 public class WorldGeneratorMaliceTree extends WorldGenerator
 {

@@ -1,21 +1,18 @@
 package growthcraft.hops.common.item;
 
-import growthcraft.core.common.item.GrcItemBase;
 import growthcraft.core.GrowthCraftCore;
+import growthcraft.core.common.item.GrcItemBase;
 import growthcraft.core.util.BlockCheck;
 import growthcraft.hops.GrowthCraftHops;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
-import net.minecraft.util.EnumFacing;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public abstract class ItemHopSeeds extends GrcItemBase implements IPlantable
 {

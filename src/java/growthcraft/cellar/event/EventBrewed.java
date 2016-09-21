@@ -24,9 +24,8 @@
 package growthcraft.cellar.event;
 
 import growthcraft.api.cellar.brewing.BrewingRecipe;
-
-import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.fml.common.eventhandler.Event;
 
 /**
  * Event emitted when a BrewKettle brews something

@@ -23,11 +23,11 @@
  */
 package growthcraft.api.core.fluids;
 
-import java.util.List;
-import java.util.Collection;
-import javax.annotation.Nonnull;
-
 import growthcraft.api.core.log.ILoggable;
+
+import javax.annotation.Nonnull;
+import java.util.Collection;
+import java.util.List;
 
 public interface IFluidTagsRegistry extends ILoggable
 {

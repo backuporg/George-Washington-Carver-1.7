@@ -23,11 +23,11 @@
  */
 package growthcraft.api.cellar.heatsource.user;
 
-import java.util.Map;
-import java.util.HashMap;
-
-import growthcraft.api.core.schema.ICommentable;
 import growthcraft.api.core.item.ItemKey;
+import growthcraft.api.core.schema.ICommentable;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class UserHeatSourceEntry implements ICommentable
 {

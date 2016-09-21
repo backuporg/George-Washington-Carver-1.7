@@ -23,13 +23,12 @@
  */
 package growthcraft.core.integration.mfr;
 
-import powercrystals.minefactoryreloaded.api.ReplacementBlock;
-import powercrystals.minefactoryreloaded.api.IFactoryPlantable;
-
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import powercrystals.minefactoryreloaded.api.IFactoryPlantable;
+import powercrystals.minefactoryreloaded.api.ReplacementBlock;
 
 public abstract class AbstractFactoryPlantable<T extends Block> implements IFactoryPlantable
 {

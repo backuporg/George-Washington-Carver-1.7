@@ -24,18 +24,12 @@
 package growthcraft.milk.integration;
 
 import growthcraft.core.integration.WailaIntegrationBase;
-import growthcraft.milk.common.block.BlockButterChurn;
-import growthcraft.milk.common.block.BlockCheeseBlock;
-import growthcraft.milk.common.block.BlockCheesePress;
-import growthcraft.milk.common.block.BlockCheeseVat;
-import growthcraft.milk.common.block.BlockHangingCurds;
 import growthcraft.milk.GrowthCraftMilk;
+import growthcraft.milk.common.block.*;
 import growthcraft.milk.integration.waila.GrcMilkDataProvider;
-
-import net.minecraftforge.fml.common.Optional;
-
 import mcp.mobius.waila.api.IWailaDataProvider;
 import mcp.mobius.waila.api.IWailaRegistrar;
+import net.minecraftforge.fml.common.Optional;
 
 public class Waila extends WailaIntegrationBase
 {

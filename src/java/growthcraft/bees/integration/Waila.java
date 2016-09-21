@@ -23,15 +23,13 @@
  */
 package growthcraft.bees.integration;
 
-import growthcraft.bees.common.block.BlockBeeBox;
 import growthcraft.bees.GrowthCraftBees;
+import growthcraft.bees.common.block.BlockBeeBox;
 import growthcraft.bees.integration.waila.BeesDataProvider;
 import growthcraft.core.integration.WailaIntegrationBase;
-
-import net.minecraftforge.fml.common.Optional;
-
 import mcp.mobius.waila.api.IWailaDataProvider;
 import mcp.mobius.waila.api.IWailaRegistrar;
+import net.minecraftforge.fml.common.Optional;
 
 public class Waila extends WailaIntegrationBase
 {

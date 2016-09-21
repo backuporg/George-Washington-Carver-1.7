@@ -1,24 +1,21 @@
 package growthcraft.grapes.common.block;
 
-import java.util.List;
-
-import growthcraft.core.util.BlockCheck;
 import growthcraft.api.core.util.BlockFlags;
-import growthcraft.grapes.client.renderer.RenderGrapeVine1;
+import growthcraft.core.util.BlockCheck;
 import growthcraft.grapes.GrowthCraftGrapes;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import growthcraft.grapes.client.renderer.RenderGrapeVine1;
 import net.minecraft.block.Block;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
-
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraft.util.EnumFacing;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.List;
 
 public abstract class BlockGrapeVine1 extends BlockGrapeVineBase
 {

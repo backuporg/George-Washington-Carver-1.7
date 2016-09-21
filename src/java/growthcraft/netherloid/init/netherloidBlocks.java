@@ -23,29 +23,14 @@
  */
 package growthcraft.netherloid.init;
 
-import growthcraft.core.common.definition.BlockDefinition;
 import growthcraft.core.common.GrcModuleBase;
+import growthcraft.core.common.definition.BlockDefinition;
 import growthcraft.core.eventhandler.PlayerInteractEventPaddy;
 import growthcraft.core.integration.NEI;
-import growthcraft.netherloid.common.block.BlockNetherBaalsRot;
-import growthcraft.netherloid.common.block.BlockNetherCinderrot;
-import growthcraft.netherloid.common.block.BlockNetherFireLily;
-import growthcraft.netherloid.common.block.BlockNetherKnifeBush;
-import growthcraft.netherloid.common.block.BlockNetherMaliceFruit;
-import growthcraft.netherloid.common.block.BlockNetherMaliceLeaves;
-import growthcraft.netherloid.common.block.BlockNetherMaliceLog;
-import growthcraft.netherloid.common.block.BlockNetherMalicePlanks;
-import growthcraft.netherloid.common.block.BlockNetherMaliceSapling;
-import growthcraft.netherloid.common.block.BlockNetherMaraLotus;
-import growthcraft.netherloid.common.block.BlockNetherMuertecap;
-import growthcraft.netherloid.common.block.BlockNetherPaddy;
-import growthcraft.netherloid.common.block.BlockNetherPepper;
-import growthcraft.netherloid.common.block.BlockNetherSquash;
-import growthcraft.netherloid.common.block.BlockNetherSquashStem;
+import growthcraft.netherloid.common.block.*;
 import growthcraft.netherloid.common.item.ItemNetherLilyPad;
-
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class netherloidBlocks extends GrcModuleBase

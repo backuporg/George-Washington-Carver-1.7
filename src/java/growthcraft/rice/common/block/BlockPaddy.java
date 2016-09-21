@@ -1,25 +1,21 @@
 package growthcraft.rice.common.block;
 
-import java.util.Random;
-
-import javax.annotation.Nonnull;
-
 import growthcraft.api.core.util.BlockFlags;
 import growthcraft.core.common.block.BlockPaddyBase;
 import growthcraft.rice.GrowthCraftRice;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
-
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nonnull;
+import java.util.Random;
 
 public class BlockPaddy extends BlockPaddyBase
 {

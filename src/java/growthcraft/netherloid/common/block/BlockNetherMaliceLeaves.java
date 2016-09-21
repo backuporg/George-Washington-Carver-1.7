@@ -23,26 +23,23 @@
  */
 package growthcraft.netherloid.common.block;
 
-import java.util.ArrayList;
-import java.util.Random;
-
-import growthcraft.netherloid.netherloid;
 import growthcraft.core.common.block.Materials;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import growthcraft.netherloid.netherloid;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.IGrowable;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 public abstract class BlockNetherMaliceLeaves extends BlockLeaves implements IShearable, IGrowable
 {

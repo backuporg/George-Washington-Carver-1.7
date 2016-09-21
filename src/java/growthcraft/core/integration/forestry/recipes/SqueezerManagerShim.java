@@ -23,15 +23,13 @@
  */
 package growthcraft.core.integration.forestry.recipes;
 
-import javax.annotation.Nullable;
-
 import forestry.api.recipes.ISqueezerManager;
 import forestry.api.recipes.ISqueezerRecipe;
-
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
-
 import net.minecraftforge.fml.common.Optional;
+
+import javax.annotation.Nullable;
 
 @Optional.Interface(iface="forestry.api.recipes.ISqueezerManager", modid="ForestryAPI|recipes")
 public class SqueezerManagerShim extends AbstractManagerShim<ISqueezerRecipe> implements ISqueezerManager

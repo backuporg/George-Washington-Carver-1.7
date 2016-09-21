@@ -23,12 +23,12 @@
  */
 package growthcraft.core.util;
 
-import java.util.Map;
-import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
+
+import java.util.Map;
+import java.util.Random;
 
 /**
  * Utility class for drawing Schema String Arrays as structures

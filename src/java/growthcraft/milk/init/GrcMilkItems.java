@@ -24,27 +24,15 @@
 package growthcraft.milk.init;
 
 import growthcraft.api.core.item.EnumDye;
-import growthcraft.core.common.definition.ItemDefinition;
 import growthcraft.core.common.GrcModuleItems;
-import growthcraft.milk.common.item.EnumButter;
-import growthcraft.milk.common.item.EnumCheeseType;
-import growthcraft.milk.common.item.EnumIceCream;
-import growthcraft.milk.common.item.EnumYogurt;
-import growthcraft.milk.common.item.ItemButter;
-import growthcraft.milk.common.item.ItemCheese;
-import growthcraft.milk.common.item.ItemCheeseCloth;
-import growthcraft.milk.common.item.ItemIceCream;
-import growthcraft.milk.common.item.ItemSeedThistle;
-import growthcraft.milk.common.item.ItemStarterCulture;
-import growthcraft.milk.common.item.ItemStomach;
-import growthcraft.milk.common.item.ItemYogurt;
+import growthcraft.core.common.definition.ItemDefinition;
 import growthcraft.milk.GrowthCraftMilk;
-
+import growthcraft.milk.common.item.*;
 import net.minecraft.init.Items;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
-import net.minecraftforge.oredict.ShapelessOreRecipe;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 public class GrcMilkItems extends GrcModuleItems
 {

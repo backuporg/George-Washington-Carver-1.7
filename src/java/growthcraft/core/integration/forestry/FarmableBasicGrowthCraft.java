@@ -15,18 +15,16 @@
  */
 package growthcraft.core.integration.forestry;
 
+import forestry.api.farming.ICrop;
+import forestry.api.farming.IFarmable;
 import growthcraft.api.core.util.BlockFlags;
 import growthcraft.api.core.util.Point3;
 import growthcraft.core.util.ItemUtils;
-
-import forestry.api.farming.ICrop;
-import forestry.api.farming.IFarmable;
-
-import net.minecraftforge.fml.common.Optional;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.Optional;
 
 /**
  * This was taken from Forestry

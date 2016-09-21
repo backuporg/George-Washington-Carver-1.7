@@ -24,14 +24,9 @@
 package growthcraft.api.core.schema;
 
 import growthcraft.api.core.util.BlockKey;
-
+import net.minecraft.block.Block;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraft.block.Block;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.world.World;
 
 public class BlockKeySchema implements ICommentable, IValidatable
 {

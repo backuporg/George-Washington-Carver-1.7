@@ -23,17 +23,12 @@
  */
 package growthcraft.api.core.fluids;
 
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nonnull;
-
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-
 import growthcraft.api.core.common.DuplicateRegistrationError;
 import growthcraft.api.core.log.ILogger;
 import growthcraft.api.core.log.NullLogger;
+
+import javax.annotation.Nonnull;
+import java.util.*;
 
 public class FluidTagsRegistry implements IFluidTagsRegistry
 {

@@ -23,8 +23,8 @@
  */
 package growthcraft.core.common.inventory.slot;
 
-import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.Slot;
 
 public class GrcSlot extends Slot
 {

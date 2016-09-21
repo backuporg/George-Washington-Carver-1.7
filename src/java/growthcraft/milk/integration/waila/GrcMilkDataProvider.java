@@ -23,8 +23,6 @@
  */
 package growthcraft.milk.integration.waila;
 
-import java.util.List;
-
 import growthcraft.api.core.i18n.GrcI18n;
 import growthcraft.api.core.nbt.NBTHelper;
 import growthcraft.milk.common.tileentity.TileEntityButterChurn;
@@ -33,19 +31,18 @@ import growthcraft.milk.common.tileentity.TileEntityCheesePress;
 import growthcraft.milk.common.tileentity.TileEntityHangingCurds;
 import growthcraft.milk.util.TagFormatterButterChurn;
 import growthcraft.milk.util.TagFormatterCheesePress;
-
-import net.minecraftforge.fml.common.Optional;
-
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
-
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.Optional;
+
+import java.util.List;
 
 public class GrcMilkDataProvider implements IWailaDataProvider
 {

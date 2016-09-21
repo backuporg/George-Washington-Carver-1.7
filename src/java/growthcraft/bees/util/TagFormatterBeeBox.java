@@ -1,14 +1,13 @@
 package growthcraft.bees.util;
 
-import java.util.List;
-
 import growthcraft.api.core.i18n.GrcI18n;
 import growthcraft.api.core.util.ITagFormatter;
 import growthcraft.core.util.TagFormatterItem;
 import growthcraft.core.util.UnitFormatter;
-
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumChatFormatting;
+
+import java.util.List;
 
 public class TagFormatterBeeBox implements ITagFormatter
 {

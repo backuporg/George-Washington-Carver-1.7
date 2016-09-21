@@ -23,14 +23,12 @@
  */
 package growthcraft.core.common.item;
 
+import net.minecraft.init.Items;
+import net.minecraft.item.EnumAction;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.EnumAction;
-
-import net.minecraftforge.fluids.Fluid;
 
 /**
  * Generic fluid bottle for growthcraft fluids that are edible

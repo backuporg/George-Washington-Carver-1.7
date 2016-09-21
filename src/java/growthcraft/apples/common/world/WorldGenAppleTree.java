@@ -1,16 +1,15 @@
 package growthcraft.apples.common.world;
 
-import java.util.Random;
-
 import growthcraft.apples.GrowthCraftApples;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSapling;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
-import net.minecraft.util.EnumFacing;
+
+import java.util.Random;
 
 public abstract class WorldGenAppleTree extends WorldGenerator
 {

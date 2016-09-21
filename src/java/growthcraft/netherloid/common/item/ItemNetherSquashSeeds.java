@@ -25,9 +25,8 @@ package growthcraft.netherloid.common.item;
 
 import growthcraft.core.util.BlockCheck;
 import growthcraft.core.util.ItemUtils;
-import growthcraft.netherloid.netherloid;
 import growthcraft.netherloid.common.block.BlockNetherSquashStem;
-
+import growthcraft.netherloid.netherloid;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -36,7 +35,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
-import net.minecraft.util.EnumFacing;
 
 public abstract class ItemNetherSquashSeeds extends Item implements IPlantable
 {

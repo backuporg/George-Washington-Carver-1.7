@@ -1,16 +1,15 @@
 package growthcraft.bamboo.common.world;
 
-import java.util.Random;
-
 import growthcraft.bamboo.GrowthCraftBamboo;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSapling;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
-import net.minecraft.util.EnumFacing;
+
+import java.util.Random;
 
 public class WorldGenBamboo extends WorldGenAbstractTree
 {

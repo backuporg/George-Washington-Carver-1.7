@@ -1,17 +1,16 @@
 package growthcraft.grapes.event;
 
-import growthcraft.core.util.BlockCheck;
 import growthcraft.api.core.util.BlockFlags;
+import growthcraft.core.util.BlockCheck;
+import growthcraft.grapes.GrowthCraftGrapes;
+import growthcraft.grapes.common.block.BlockGrapeLeaves;
 import growthcraft.grapes.common.block.BlockGrapeVine0;
 import growthcraft.grapes.common.block.BlockGrapeVine1;
-import growthcraft.grapes.common.block.BlockGrapeLeaves;
-import growthcraft.grapes.GrowthCraftGrapes;
-
-import net.minecraftforge.fml.common.eventhandler.Event.Result;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.event.entity.player.BonemealEvent;
-import net.minecraft.util.EnumFacing;
+import net.minecraftforge.fml.common.eventhandler.Event.Result;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class BonemealEventGrapes
 {

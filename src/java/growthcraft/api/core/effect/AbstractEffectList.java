@@ -23,13 +23,12 @@
  */
 package growthcraft.api.core.effect;
 
+import growthcraft.api.core.nbt.NBTHelper;
+import net.minecraft.nbt.NBTTagCompound;
+
+import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.Nonnull;
-
-import growthcraft.api.core.nbt.NBTHelper;
-
-import net.minecraft.nbt.NBTTagCompound;
 
 /**
  * Base class for defining Effect lists

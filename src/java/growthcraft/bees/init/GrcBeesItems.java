@@ -23,15 +23,9 @@
  */
 package growthcraft.bees.init;
 
-import growthcraft.bees.common.item.EnumBeesWax;
-import growthcraft.bees.common.item.ItemBee;
-import growthcraft.bees.common.item.ItemBeesWax;
-import growthcraft.bees.common.item.ItemHoneyCombEmpty;
-import growthcraft.bees.common.item.ItemHoneyCombFilled;
-import growthcraft.bees.common.item.ItemHoneyJar;
-import growthcraft.core.common.definition.ItemDefinition;
+import growthcraft.bees.common.item.*;
 import growthcraft.core.common.GrcModuleItems;
-
+import growthcraft.core.common.definition.ItemDefinition;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class GrcBeesItems extends GrcModuleItems

@@ -23,8 +23,8 @@
  */
 package growthcraft.core.common.item;
 
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 
 public interface IItemTileBlock
 {

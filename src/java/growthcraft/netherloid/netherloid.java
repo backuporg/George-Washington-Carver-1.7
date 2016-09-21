@@ -23,28 +23,27 @@
  */
 package growthcraft.netherloid;
 
-import growthcraft.api.core.log.ILogger;
 import growthcraft.api.cellar.booze.Booze;
 import growthcraft.api.core.log.GrcLogger;
+import growthcraft.api.core.log.ILogger;
 import growthcraft.api.core.module.ModuleContainer;
 import growthcraft.core.GrowthCraftCore;
 import growthcraft.netherloid.common.CommonProxy;
 import growthcraft.netherloid.creativetab.CreativeTabsGrowthcraftNether;
-import growthcraft.netherloid.init.netherloidItems;
-import growthcraft.netherloid.init.netherloidFluids;
 import growthcraft.netherloid.init.netherloidBlocks;
-
+import growthcraft.netherloid.init.netherloidFluids;
+import growthcraft.netherloid.init.netherloidItems;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraftforge.client.event.TextureStitchEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.Mod.Instance;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraftforge.client.event.TextureStitchEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Mod(
 	modid = netherloid.MOD_ID,

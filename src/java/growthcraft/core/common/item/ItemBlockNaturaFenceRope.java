@@ -26,7 +26,6 @@ package growthcraft.core.common.item;
 import growthcraft.api.core.i18n.GrcI18n;
 import growthcraft.api.core.item.ItemKey;
 import growthcraft.core.common.block.BlockFenceRope;
-
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 

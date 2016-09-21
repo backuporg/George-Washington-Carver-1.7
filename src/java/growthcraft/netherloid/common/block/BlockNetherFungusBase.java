@@ -23,20 +23,19 @@
  */
 package growthcraft.netherloid.common.block;
 
-import java.util.Random;
-
-import growthcraft.core.util.BlockCheck;
 import growthcraft.api.core.util.BlockFlags;
-
+import growthcraft.core.util.BlockCheck;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
-import net.minecraft.util.EnumFacing;
+
+import java.util.Random;
 
 public abstract class BlockNetherFungusBase extends BlockBush implements IPlantable, IGrowable
 {

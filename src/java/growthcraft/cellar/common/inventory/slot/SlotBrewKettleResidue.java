@@ -1,7 +1,6 @@
 package growthcraft.cellar.common.inventory.slot;
 
 import growthcraft.core.common.inventory.slot.GrcSlot;
-
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 

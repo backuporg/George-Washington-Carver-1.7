@@ -23,11 +23,11 @@
  */
 package growthcraft.core.integration.EBXL;
 
-import java.util.Locale;
-
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+
+import java.util.Locale;
 
 public enum EnumEBXLWoodType
 {

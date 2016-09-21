@@ -1,22 +1,19 @@
 package growthcraft.core.common.block;
 
-import java.util.List;
-import java.util.Random;
-
 import growthcraft.core.GrowthCraftCore;
 import growthcraft.core.client.renderer.RenderRope;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.util.math.AxisAlignedBB;
-
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.List;
+import java.util.Random;
 
 public class BlockRope extends GrcBlockBase implements IBlockRope
 {

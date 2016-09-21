@@ -26,7 +26,6 @@ package growthcraft.cellar.common.block;
 import growthcraft.cellar.GrowthCraftCellar;
 import growthcraft.core.common.block.GrcBlockContainer;
 import growthcraft.core.common.tileentity.feature.IInteractionObject;
-
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;

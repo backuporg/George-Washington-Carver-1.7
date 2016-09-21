@@ -1,7 +1,6 @@
 package growthcraft.grapes;
 
 import growthcraft.core.ConfigBase;
-
 import net.minecraft.util.math.MathHelper;
 
 public class GrcGrapesConfig extends ConfigBase

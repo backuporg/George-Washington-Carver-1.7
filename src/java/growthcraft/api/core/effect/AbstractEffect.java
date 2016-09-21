@@ -23,11 +23,10 @@
  */
 package growthcraft.api.core.effect;
 
-import java.util.List;
-
 import growthcraft.api.core.CoreRegistry;
-
 import net.minecraft.nbt.NBTTagCompound;
+
+import java.util.List;
 
 /**
  * Because sometimes you want an Effect that does ABSOLUTELY NOTHING.

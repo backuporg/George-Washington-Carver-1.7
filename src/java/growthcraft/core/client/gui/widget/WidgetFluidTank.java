@@ -25,7 +25,6 @@ package growthcraft.core.client.gui.widget;
 
 import growthcraft.api.core.util.Rectangle;
 import growthcraft.core.common.tileentity.device.IFluidTanks;
-
 import net.minecraft.tileentity.TileEntity;
 
 public class WidgetFluidTank extends Widget

@@ -23,8 +23,8 @@
  */
 package growthcraft.api.core.nbt;
 
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
 
 public enum NBTType
 {

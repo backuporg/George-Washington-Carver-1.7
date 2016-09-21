@@ -24,7 +24,6 @@
 package growthcraft.cellar.common.item;
 
 import growthcraft.core.common.item.ItemGrcBlockFluid;
-
 import net.minecraft.block.Block;
 
 public class ItemBlockFluidBooze extends ItemGrcBlockFluid

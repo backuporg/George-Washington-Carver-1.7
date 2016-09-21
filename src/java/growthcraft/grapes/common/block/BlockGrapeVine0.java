@@ -3,17 +3,14 @@ package growthcraft.grapes.common.block;
 import growthcraft.api.core.util.BlockFlags;
 import growthcraft.api.core.util.RenderType;
 import growthcraft.grapes.GrowthCraftGrapes;
-
 import net.minecraft.block.SoundType;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-
 import net.minecraft.item.Item;
 import net.minecraft.util.math.AxisAlignedBB;
-
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * This is the Grape Vine sapling block

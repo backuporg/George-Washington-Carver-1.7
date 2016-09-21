@@ -24,12 +24,11 @@
 package growthcraft.api.core.util;
 
 import growthcraft.api.core.client.particle.EntityFXDropParticle;
-
+import net.minecraft.client.particle.Particle;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraft.client.particle.Particle;
-import net.minecraft.world.World;
 
 public class FXHelper
 {

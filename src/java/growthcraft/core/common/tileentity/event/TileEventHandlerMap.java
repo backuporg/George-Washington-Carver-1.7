@@ -23,13 +23,13 @@
  */
 package growthcraft.core.common.tileentity.event;
 
+import net.minecraft.tileentity.TileEntity;
+
+import javax.annotation.Nonnull;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import javax.annotation.Nonnull;
-
-import net.minecraft.tileentity.TileEntity;
 
 public class TileEventHandlerMap<T extends TileEntity> extends HashMap<Class<? extends T>, TileEventFunctionMap>
 {

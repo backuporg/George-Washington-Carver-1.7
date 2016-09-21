@@ -23,20 +23,17 @@
  */
 package growthcraft.core.integration;
 
+import growthcraft.core.GrowthCraftCore;
 import growthcraft.core.common.block.GrcBlockContainer;
 import growthcraft.core.common.block.ICropDataProvider;
 import growthcraft.core.common.block.IPaddy;
-import growthcraft.core.GrowthCraftCore;
 import growthcraft.core.integration.waila.CoreDataProvider;
 import growthcraft.core.integration.waila.CropDataProvider;
 import growthcraft.core.integration.waila.PaddyDataProvider;
-
-import net.minecraftforge.fml.common.Optional;
-
 import mcp.mobius.waila.api.IWailaDataProvider;
 import mcp.mobius.waila.api.IWailaRegistrar;
-
 import net.minecraft.item.Item;
+import net.minecraftforge.fml.common.Optional;
 
 public class Waila extends WailaIntegrationBase
 {

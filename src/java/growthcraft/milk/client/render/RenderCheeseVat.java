@@ -29,17 +29,15 @@ import growthcraft.milk.client.model.ModelCheeseVat;
 import growthcraft.milk.client.resource.GrcMilkResources;
 import growthcraft.milk.common.block.BlockCheeseVat;
 import growthcraft.milk.common.tileentity.TileEntityCheeseVat;
-
-import net.minecraftforge.fml.client.registry.ISimpleBlockRenderingHandler;
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.world.IBlockAccess;
-
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fml.client.registry.ISimpleBlockRenderingHandler;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import org.lwjgl.opengl.GL11;
 
 public class RenderCheeseVat implements ISimpleBlockRenderingHandler

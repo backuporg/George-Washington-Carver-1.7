@@ -23,16 +23,14 @@
  */
 package growthcraft.cellar.integration;
 
+import growthcraft.cellar.GrowthCraftCellar;
 import growthcraft.cellar.common.block.BlockCellarContainer;
 import growthcraft.cellar.common.block.BlockFruitPresser;
-import growthcraft.cellar.GrowthCraftCellar;
 import growthcraft.cellar.integration.waila.CellarDataProvider;
 import growthcraft.core.integration.WailaIntegrationBase;
-
-import net.minecraftforge.fml.common.Optional;
-
 import mcp.mobius.waila.api.IWailaDataProvider;
 import mcp.mobius.waila.api.IWailaRegistrar;
+import net.minecraftforge.fml.common.Optional;
 
 public class Waila extends WailaIntegrationBase
 {

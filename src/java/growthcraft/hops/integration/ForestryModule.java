@@ -23,15 +23,14 @@
  */
 package growthcraft.hops.integration;
 
+import growthcraft.core.integration.ForestryModuleBase;
 import growthcraft.core.integration.forestry.FarmableBasicGrowthCraft;
 import growthcraft.core.integration.forestry.ForestryFluids;
-import growthcraft.core.integration.ForestryModuleBase;
-import growthcraft.hops.common.block.BlockHops;
 import growthcraft.hops.GrowthCraftHops;
-
-import net.minecraftforge.fml.common.Optional;
+import growthcraft.hops.common.block.BlockHops;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.Optional;
 
 public class ForestryModule extends ForestryModuleBase
 {

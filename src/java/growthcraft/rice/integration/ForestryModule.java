@@ -23,14 +23,13 @@
  */
 package growthcraft.rice.integration;
 
+import growthcraft.core.integration.ForestryModuleBase;
 import growthcraft.core.integration.forestry.FarmableBasicGrowthCraft;
 import growthcraft.core.integration.forestry.ForestryFluids;
-import growthcraft.core.integration.ForestryModuleBase;
 import growthcraft.rice.GrowthCraftRice;
-
-import net.minecraftforge.fml.common.Optional;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.Optional;
 
 public class ForestryModule extends ForestryModuleBase
 {

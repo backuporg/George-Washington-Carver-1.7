@@ -1,17 +1,16 @@
 package growthcraft.milk.common.world;
 
-import java.util.Random;
-
 import growthcraft.api.core.util.BiomeUtils;
 import growthcraft.milk.GrowthCraftMilk;
-
-import net.minecraftforge.fml.common.IWorldGenerator;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenerator;
-import net.minecraft.world.World;
+import net.minecraftforge.fml.common.IWorldGenerator;
+
+import java.util.Random;
 
 /**
  * Created by Firedingo on 25/02/2016.

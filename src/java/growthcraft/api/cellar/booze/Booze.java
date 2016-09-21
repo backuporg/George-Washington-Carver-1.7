@@ -23,12 +23,10 @@
  */
 package growthcraft.api.cellar.booze;
 
-import javax.annotation.Nonnull;
-
 import growthcraft.api.core.GrcFluid;
-
-import net.minecraftforge.fluids.Fluid;
 import net.minecraft.util.ResourceLocation;
+
+import javax.annotation.Nonnull;
 
 public class Booze extends GrcFluid
 {

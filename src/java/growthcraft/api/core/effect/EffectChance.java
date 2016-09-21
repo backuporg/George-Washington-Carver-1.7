@@ -23,17 +23,16 @@
  */
 package growthcraft.api.core.effect;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
 import growthcraft.api.core.CoreRegistry;
 import growthcraft.api.core.description.Describer;
 import growthcraft.api.core.i18n.GrcI18n;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 /**
  * Has a random chance of applying its sub effect to the target

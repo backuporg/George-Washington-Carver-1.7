@@ -23,24 +23,21 @@
  */
 package growthcraft.api.cellar.booze.effect;
 
-import java.util.Random;
-import java.util.List;
-
 import growthcraft.api.core.effect.AbstractEffect;
 import growthcraft.api.core.i18n.GrcI18n;
 import growthcraft.api.core.stats.IAchievement;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.PotionTypes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraft.init.MobEffects;
+
+import java.util.List;
+import java.util.Random;
 
 public class EffectTipsy extends AbstractEffect
 {

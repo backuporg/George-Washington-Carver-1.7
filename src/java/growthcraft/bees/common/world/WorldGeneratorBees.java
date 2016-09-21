@@ -1,16 +1,15 @@
 package growthcraft.bees.common.world;
 
-import java.util.Random;
-
 import growthcraft.bees.GrowthCraftBees;
 import growthcraft.core.Utils;
-
-import net.minecraftforge.fml.common.IWorldGenerator;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
+import net.minecraftforge.fml.common.IWorldGenerator;
+
+import java.util.Random;
 
 public class WorldGeneratorBees implements IWorldGenerator
 {

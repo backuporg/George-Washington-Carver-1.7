@@ -23,8 +23,8 @@
  */
 package growthcraft.core.common.tileentity.feature;
 
-import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.ICrafting;
 
 public interface IGuiNetworkSync
 {

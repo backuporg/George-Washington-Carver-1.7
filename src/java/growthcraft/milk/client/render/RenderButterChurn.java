@@ -25,15 +25,15 @@ package growthcraft.milk.client.render;
 
 import growthcraft.milk.client.model.ModelButterChurn;
 import growthcraft.milk.client.resource.GrcMilkResources;
-
-import net.minecraftforge.fml.client.registry.ISimpleBlockRenderingHandler;
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderBlocks;
-//import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.world.IBlockAccess;
+import net.minecraftforge.fml.client.registry.ISimpleBlockRenderingHandler;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import org.lwjgl.opengl.GL11;
+
+//import net.minecraft.client.renderer.Tessellator;
 
 public class RenderButterChurn implements ISimpleBlockRenderingHandler
 {

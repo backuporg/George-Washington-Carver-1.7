@@ -25,7 +25,6 @@ package growthcraft.netherloid.common.item;
 
 import growthcraft.netherloid.netherloid;
 import growthcraft.netherloid.util.DamageSources;
-
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemFood;

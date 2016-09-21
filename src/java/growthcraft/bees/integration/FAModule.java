@@ -23,15 +23,14 @@
  */
 package growthcraft.bees.integration;
 
+import growthcraft.bees.GrowthCraftBees;
 import growthcraft.bees.common.block.BlockBeeBoxFossilsAndArchaeology;
 import growthcraft.bees.common.item.ItemBlockBeeBox;
-import growthcraft.bees.GrowthCraftBees;
-import growthcraft.core.integration.FA.FAPlatform;
 import growthcraft.core.integration.FA.EnumFAWoodType;
+import growthcraft.core.integration.FA.FAPlatform;
 import growthcraft.core.integration.ModIntegrationBase;
-
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class FAModule extends ModIntegrationBase
 {

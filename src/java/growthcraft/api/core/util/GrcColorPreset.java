@@ -31,10 +31,10 @@
 
 package growthcraft.api.core.util;
 
+import net.minecraft.util.text.translation.I18n;
+
 import java.util.Arrays;
 import java.util.List;
-
-import net.minecraft.util.text.translation.I18n;
 
 /**
  * Pretty much stolen from Applied Energistics 2, thanks AlgorithmX2.

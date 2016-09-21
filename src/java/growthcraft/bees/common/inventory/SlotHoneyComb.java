@@ -2,7 +2,6 @@ package growthcraft.bees.common.inventory;
 
 import growthcraft.api.bees.BeesRegistry;
 import growthcraft.core.common.inventory.slot.SlotInput;
-
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 

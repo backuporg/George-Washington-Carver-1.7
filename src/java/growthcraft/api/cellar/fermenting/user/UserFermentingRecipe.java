@@ -23,12 +23,12 @@
  */
 package growthcraft.api.cellar.fermenting.user;
 
-import javax.annotation.Nonnull;
-
-import growthcraft.api.core.schema.MultiFluidStackSchema;
 import growthcraft.api.core.schema.FluidStackSchema;
 import growthcraft.api.core.schema.ICommentable;
 import growthcraft.api.core.schema.ItemKeySchema;
+import growthcraft.api.core.schema.MultiFluidStackSchema;
+
+import javax.annotation.Nonnull;
 
 public class UserFermentingRecipe implements ICommentable
 {

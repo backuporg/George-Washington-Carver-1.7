@@ -1,12 +1,12 @@
 package growthcraft.cellar.common.village;
 
-import java.util.List;
-import java.util.Random;
-
-import net.minecraftforge.fml.common.registry.VillagerRegistry.IVillageCreationHandler;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.gen.structure.StructureVillagePieces.PieceWeight;
 import net.minecraft.world.gen.structure.StructureVillagePieces.Start;
+import net.minecraftforge.fml.common.registry.VillagerRegistry.IVillageCreationHandler;
+
+import java.util.List;
+import java.util.Random;
 
 public class VillageHandlerCellar implements IVillageCreationHandler
 {

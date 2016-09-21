@@ -1,13 +1,11 @@
 package growthcraft.cellar.eventhandler;
 
 import growthcraft.cellar.GrowthCraftCellar;
-
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.potion.Potion;
+import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
-import net.minecraft.init.MobEffects;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class EventHandlerLivingUpdateEventCellar
 {

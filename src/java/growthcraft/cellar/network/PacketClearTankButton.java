@@ -1,7 +1,6 @@
 package growthcraft.cellar.network;
 
 import growthcraft.cellar.common.tileentity.TileEntityCellarDevice;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;

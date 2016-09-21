@@ -1,15 +1,9 @@
 package growthcraft.grapes.common.block;
 
-import java.util.ArrayList;
-import java.util.Random;
-
 import growthcraft.cellar.common.item.EnumYeast;
 import growthcraft.core.common.block.GrcBlockBase;
-import growthcraft.grapes.client.renderer.RenderGrape;
 import growthcraft.grapes.GrowthCraftGrapes;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import growthcraft.grapes.client.renderer.RenderGrape;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
@@ -17,6 +11,11 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 public class BlockGrapeBlock extends GrcBlockBase
 {

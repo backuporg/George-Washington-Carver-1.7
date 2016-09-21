@@ -24,10 +24,9 @@
 package growthcraft.core.integration.forestry;
 
 import growthcraft.api.core.definition.IItemStackFactory;
-
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public enum ForestryItems implements IItemStackFactory
 {

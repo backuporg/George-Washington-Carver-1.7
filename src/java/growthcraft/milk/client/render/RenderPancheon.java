@@ -29,9 +29,6 @@ import growthcraft.milk.client.model.ModelPancheon;
 import growthcraft.milk.client.resource.GrcMilkResources;
 import growthcraft.milk.common.block.BlockPancheon;
 import growthcraft.milk.common.tileentity.TileEntityPancheon;
-
-import net.minecraftforge.fml.client.registry.ISimpleBlockRenderingHandler;
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderBlocks;
@@ -39,6 +36,8 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fml.client.registry.ISimpleBlockRenderingHandler;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import org.lwjgl.opengl.GL11;
 
 public class RenderPancheon implements ISimpleBlockRenderingHandler

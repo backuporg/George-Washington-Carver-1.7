@@ -1,23 +1,22 @@
 package growthcraft.bees.common.village;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
-
 import growthcraft.bees.GrowthCraftBees;
+import growthcraft.core.util.SchemaToVillage;
 import growthcraft.core.util.SchemaToVillage.BlockEntry;
 import growthcraft.core.util.SchemaToVillage.IBlockEntries;
 import growthcraft.core.util.SchemaToVillage.MultiBlockEntries;
-import growthcraft.core.util.SchemaToVillage;
-
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.WeightedRandomChestContent;
+import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
-import net.minecraft.world.gen.structure.StructureVillagePieces.Start;
 import net.minecraft.world.gen.structure.StructureVillagePieces;
-import net.minecraft.world.World;
+import net.minecraft.world.gen.structure.StructureVillagePieces.Start;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Random;
 
 public class ComponentVillageApiarist extends StructureVillagePieces.Village implements SchemaToVillage.IVillage
 {

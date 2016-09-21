@@ -23,15 +23,14 @@
  */
 package growthcraft.core.util;
 
-import java.util.List;
-
 import growthcraft.api.core.i18n.GrcI18n;
 import growthcraft.api.core.util.ConstID;
 import growthcraft.api.core.util.ITagFormatter;
-
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumChatFormatting;
+
+import java.util.List;
 
 /**
  * Tag Formatter for item NBT data

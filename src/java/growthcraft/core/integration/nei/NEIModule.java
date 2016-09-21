@@ -1,8 +1,8 @@
 package growthcraft.core.integration.nei;
 
+import codechicken.nei.api.API;
 import growthcraft.core.GrowthCraftCore;
 import growthcraft.core.integration.NEIModuleBase;
-import codechicken.nei.api.API;
 import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;

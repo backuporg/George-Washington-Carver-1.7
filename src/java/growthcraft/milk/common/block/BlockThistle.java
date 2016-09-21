@@ -23,8 +23,6 @@
  */
 package growthcraft.milk.common.block;
 
-import java.util.Random;
-
 import growthcraft.api.core.util.BBox;
 import growthcraft.api.core.util.BlockFlags;
 import growthcraft.api.core.util.CuboidI;
@@ -32,19 +30,18 @@ import growthcraft.core.integration.AppleCore;
 import growthcraft.core.logic.FlowerSpread;
 import growthcraft.core.logic.ISpreadablePlant;
 import growthcraft.milk.GrowthCraftMilk;
-
-import net.minecraftforge.fml.common.eventhandler.Event;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
-
 import net.minecraft.item.Item;
-
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
+import net.minecraftforge.fml.common.eventhandler.Event;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.Random;
 
 public abstract class BlockThistle extends BlockBush implements ISpreadablePlant, IGrowable
 {

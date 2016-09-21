@@ -1,10 +1,9 @@
 package growthcraft.apples.handler;
 
 import growthcraft.apples.GrowthCraftApples;
-
-import net.minecraftforge.fml.common.IFuelHandler;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.IFuelHandler;
 
 /**
  * Created by Alatyami on 8/30/2015.

@@ -24,35 +24,30 @@
  */
 package growthcraft.fishtrap.common.block;
 
-import java.util.Random;
-
 import growthcraft.api.fishtrap.FishTrapRegistry;
+import growthcraft.core.Utils;
 import growthcraft.core.common.block.GrcBlockContainer;
 import growthcraft.core.common.tileentity.feature.IInteractionObject;
-import growthcraft.core.GrowthCraftCore;
 import growthcraft.core.util.BlockCheck;
-import growthcraft.core.Utils;
-import growthcraft.fishtrap.common.tileentity.TileEntityFishTrap;
 import growthcraft.fishtrap.GrowthCraftFishTrap;
-import growthcraft.fishtrap.creativetab.CreativeTabsGrowthcraftFishtrap;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import growthcraft.fishtrap.common.tileentity.TileEntityFishTrap;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
-
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.BiomeDictionary.Type;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.BiomeDictionary;
+import net.minecraftforge.common.BiomeDictionary.Type;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.Random;
 
 public class BlockFishTrap extends GrcBlockContainer
 {

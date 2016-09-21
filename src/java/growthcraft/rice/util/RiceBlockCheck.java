@@ -24,7 +24,6 @@
 package growthcraft.rice.util;
 
 import growthcraft.rice.GrowthCraftRice;
-
 import net.minecraft.block.Block;
 import net.minecraft.world.IBlockAccess;
 

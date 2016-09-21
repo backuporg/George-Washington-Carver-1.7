@@ -23,11 +23,11 @@
  */
 package growthcraft.api.fishtrap.user;
 
-import java.io.BufferedReader;
-import java.util.Map;
-
 import growthcraft.api.core.user.AbstractUserJSONConfig;
 import growthcraft.api.fishtrap.FishTrapRegistry;
+
+import java.io.BufferedReader;
+import java.util.Map;
 
 public class UserCatchGroupConfig extends AbstractUserJSONConfig
 {

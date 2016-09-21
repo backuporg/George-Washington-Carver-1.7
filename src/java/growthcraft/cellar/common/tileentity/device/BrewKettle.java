@@ -23,20 +23,18 @@
  */
 package growthcraft.cellar.common.tileentity.device;
 
-import io.netty.buffer.ByteBuf;
-
-import growthcraft.api.cellar.brewing.BrewingRecipe;
 import growthcraft.api.cellar.CellarRegistry;
+import growthcraft.api.cellar.brewing.BrewingRecipe;
 import growthcraft.api.cellar.common.Residue;
 import growthcraft.api.core.definition.IMultiItemStacks;
-import growthcraft.cellar.common.tileentity.component.TileHeatingComponent;
-import growthcraft.cellar.common.tileentity.TileEntityCellarDevice;
-import growthcraft.cellar.event.EventBrewed;
 import growthcraft.cellar.GrowthCraftCellar;
+import growthcraft.cellar.common.tileentity.TileEntityCellarDevice;
+import growthcraft.cellar.common.tileentity.component.TileHeatingComponent;
+import growthcraft.cellar.event.EventBrewed;
 import growthcraft.core.common.tileentity.device.DeviceBase;
 import growthcraft.core.common.tileentity.device.DeviceFluidSlot;
 import growthcraft.core.common.tileentity.device.DeviceInventorySlot;
-
+import io.netty.buffer.ByteBuf;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.FluidStack;
 

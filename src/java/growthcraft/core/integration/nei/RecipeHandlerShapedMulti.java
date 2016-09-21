@@ -1,18 +1,5 @@
 package growthcraft.core.integration.nei;
 
-import growthcraft.api.core.definition.IItemStackListProvider;
-import growthcraft.api.core.item.recipes.ShapedMultiRecipe;
-
-import java.awt.Rectangle;
-import java.util.ArrayList;
-import java.util.List;
-
-import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.client.gui.inventory.GuiCrafting;
-import net.minecraft.inventory.Container;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
-import net.minecraft.item.crafting.IRecipe;
 import codechicken.core.ReflectionManager;
 import codechicken.nei.NEIClientConfig;
 import codechicken.nei.NEIClientUtils;
@@ -24,6 +11,18 @@ import codechicken.nei.api.IRecipeOverlayRenderer;
 import codechicken.nei.api.IStackPositioner;
 import codechicken.nei.recipe.RecipeInfo;
 import codechicken.nei.recipe.TemplateRecipeHandler;
+import growthcraft.api.core.definition.IItemStackListProvider;
+import growthcraft.api.core.item.recipes.ShapedMultiRecipe;
+import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.gui.inventory.GuiCrafting;
+import net.minecraft.inventory.Container;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.CraftingManager;
+import net.minecraft.item.crafting.IRecipe;
+
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RecipeHandlerShapedMulti extends TemplateRecipeHandler
 {

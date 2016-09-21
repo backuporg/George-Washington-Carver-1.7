@@ -1,30 +1,27 @@
 package growthcraft.rice.common.block;
 
-import java.util.ArrayList;
-import java.util.Random;
-
 import growthcraft.api.core.util.BlockFlags;
 import growthcraft.core.common.block.GrcBlockBase;
 import growthcraft.core.common.block.ICropDataProvider;
 import growthcraft.core.common.block.IPaddyCrop;
 import growthcraft.core.integration.AppleCore;
-import growthcraft.rice.client.renderer.RenderRice;
 import growthcraft.rice.GrowthCraftRice;
+import growthcraft.rice.client.renderer.RenderRice;
 import growthcraft.rice.util.RiceBlockCheck;
-
-import net.minecraftforge.fml.common.eventhandler.Event;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
-
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
-
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.eventhandler.Event;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 public abstract class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProvider, IGrowable
 {
