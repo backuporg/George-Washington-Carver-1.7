@@ -285,8 +285,7 @@ public class BlockBeeBox extends GrcBlockContainer {
 
 		@Override
 		@SuppressWarnings({"rawtypes", "unchecked"})
-		public void addCollisionBoxesToList (World world, BlockPos pos, IBlockState state, AxisAlignedBB axis, List
-		list, Entity entity)
+		public void addCollisionBoxesToList (World world, BlockPos pos, IBlockState state, AxisAlignedBB axis, List list, Entity entity)
 		{
 			final float f = 0.0625F;
 			// LEGS

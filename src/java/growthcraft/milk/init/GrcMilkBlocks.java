@@ -30,8 +30,13 @@ import growthcraft.milk.common.block.*;
 import growthcraft.milk.common.item.EnumCheeseType;
 import growthcraft.milk.common.item.ItemBlockCheeseBlock;
 import growthcraft.milk.common.item.ItemBlockHangingCurds;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
+
+import java.util.Random;
 
 public class GrcMilkBlocks extends GrcModuleBlocks
 {
@@ -54,7 +59,22 @@ public class GrcMilkBlocks extends GrcModuleBlocks
 		this.pancheon = newDefinition(new BlockPancheon());
 		if (GrowthCraftMilk.getConfig().thistleEnabled)
 		{
-			this.thistle = newDefinition(new BlockThistle());
+			this.thistle = newDefinition(new BlockThistle() {
+				@Override
+				public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {
+					return false;
+				}
+
+				@Override
+				public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+					return false;
+				}
+
+				@Override
+				public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+
+				}
+			});
 		}
 	}
 

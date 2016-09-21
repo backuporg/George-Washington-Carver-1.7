@@ -48,7 +48,7 @@ public abstract class BlockBambooLeaves extends BlockLeaves implements IShearabl
 	 * TICK
 	 ************/
 	@Override
-	public void updateTick(World world, BlockPos pos,, Random rand, IBlockState state)
+	public void updateTick(World world, BlockPos pos, Random rand, IBlockState state)
 	{
 		if (!world.isRemote)
 		{

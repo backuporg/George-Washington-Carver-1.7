@@ -6,6 +6,7 @@ import growthcraft.grapes.GrowthCraftGrapes;
 import net.minecraft.block.SoundType;
 import net.minecraft.item.Item;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;

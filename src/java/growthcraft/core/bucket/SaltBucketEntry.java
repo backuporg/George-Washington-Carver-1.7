@@ -30,6 +30,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
@@ -45,13 +46,13 @@ public class SaltBucketEntry implements IBucketEntry
 	}
 
 	@Override
-	public boolean matches(@Nonnull World world, @Nonnull MovingObjectPosition pos)
+	public boolean matches(@Nonnull World world, @Nonnull MovingObjectPosition pos, BlockPos pos1)
 	{
-		if (Blocks.WATER.equals(world.getBlockState(pos.blockX, pos.blockY, pos.blockZ)))
+		if (Blocks.WATER.equals(world.getBlockState(pos1)))
 		{
-			if (world.getBlockState(pos.blockX, pos.blockY, pos.blockZ) == 0)
+			if (world.getBlockState(pos1) == 0)
 			{
-				final Biome biome = world.getBiome(pos.blockX, pos.blockZ);
+				final Biome biome = world.getBiome(pos1);
 				if (BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.OCEAN))
 				{
 					return true;
@@ -62,9 +63,9 @@ public class SaltBucketEntry implements IBucketEntry
 	}
 
 	@Override
-	public void commit(@Nonnull EntityPlayer player, @Nonnull World world, @Nonnull MovingObjectPosition pos)
+	public void commit(@Nonnull EntityPlayer player, @Nonnull World world, @Nonnull MovingObjectPosition pos, BlockPos pos1)
 	{
-		world.setBlockToAir(pos.blockX, pos.blockY, pos.blockZ);
+		world.setBlockToAir(pos1);
 		CoreAchievement.SALTY_SITUATION.unlock(player);
 	}
 }
