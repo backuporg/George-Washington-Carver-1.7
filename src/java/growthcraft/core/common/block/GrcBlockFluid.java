@@ -25,6 +25,7 @@ package growthcraft.core.common.block;
 
 import growthcraft.api.core.util.FXHelper;
 import net.minecraft.block.material.Material;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;

@@ -25,6 +25,7 @@ package growthcraft.core.common.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class GrcBlockBase extends Block
@@ -43,7 +44,7 @@ public class GrcBlockBase extends Block
 	 */
 	public void fellBlockAsItem(World world, BlockPos pos)
 	{
-		dropBlockAsItem(world, x, y, z, world.getBlockState(x, y, z), 0);
-		world.setBlockToAir(x, y, z);
+		dropBlockAsItem(world, pos, world.getBlockState(pos), 0);
+		world.setBlockToAir(pos);
 	}
 }

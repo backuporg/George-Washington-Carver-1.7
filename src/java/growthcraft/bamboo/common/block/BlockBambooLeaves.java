@@ -177,7 +177,7 @@ public abstract class BlockBambooLeaves extends BlockLeaves implements IShearabl
 	 * TRIGGERS
 	 ************/
 	@Override
-	public void breakBlock(World world, BlockPos pos,, Block par5, int par6, IBlockState state)
+	public void breakBlock(World world, BlockPos pos, Block par5, int par6, IBlockState state)
 	{
 		final byte b0 = 1;
 		final int j1 = b0 + 1;
@@ -293,9 +293,9 @@ public abstract class BlockBambooLeaves extends BlockLeaves implements IShearabl
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public int colorMultiplier(IBlockAccess world, BlockPos pos)
+	public int colorMultiplier(IBlockAccess world, BlockPos pos, IBlockState state)
 	{
-		final int meta = world.getBlockState(x, y, z);
+		final int meta = world.getBlockState(pos);
 		int r = 0;
 		int g = 0;
 		int b = 0;

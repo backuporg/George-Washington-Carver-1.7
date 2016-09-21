@@ -92,7 +92,7 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 
 	/* IRotatableBlock */
 	@Override
-	public boolean isRotatable(IBlockAccess world, BlockPos pos,, EnumFacing side)
+	public boolean isRotatable(IBlockAccess world, BlockPos pos, EnumFacing side)
 	{
 		return false;
 	}

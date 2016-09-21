@@ -5,11 +5,13 @@ import growthcraft.api.core.util.BlockKey;
 import growthcraft.core.GrowthCraftCore;
 import growthcraft.core.client.renderer.RenderFenceRope;
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -51,9 +53,9 @@ public class BlockFenceRope extends GrcBlockBase implements IBlockRope
 	}
 
 	@Override
-	public float getBlockHardness(World world, BlockPos pos)
+	public float getBlockHardness(World world, BlockPos pos, IBlockState state)
 	{
-		return getFenceBlock().getBlockHardness(world, x, y, z);
+		return getFenceBlock().getBlockHardness(state, world, pos);
 	}
 
 	@Override
@@ -90,7 +92,7 @@ public class BlockFenceRope extends GrcBlockBase implements IBlockRope
 	@Override
 	public boolean canConnectRopeTo(IBlockAccess world, BlockPos pos)
 	{
-		return world.getBlockState(x, y, z) instanceof IBlockRope;
+		return world.getBlockState(pos) instanceof IBlockRope;
 	}
 
 	@Override
@@ -207,7 +209,7 @@ public class BlockFenceRope extends GrcBlockBase implements IBlockRope
 			f3 = 1.0F;
 		}
 
-		this.setBlockBoundsBasedOnState(world, x, y, z);
+		this.setBlockBoundsBasedOnState(world, pos);
 	}
 
 	@Override
@@ -241,7 +243,7 @@ public class BlockFenceRope extends GrcBlockBase implements IBlockRope
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(IBlockAccess world, BlockPos pos, int side)
 	{
-		return getFenceBlock().getIcon(world, x, y, z, side);
+		return getFenceBlock().getIcon(world, pos, side);
 	}
 
 	@Override
