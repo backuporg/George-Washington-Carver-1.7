@@ -72,7 +72,7 @@ public class BlockBambooDoor extends BlockDoor
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(IBlockAccess world, BlockPos pos,, IBlockState state, int side)
+	public IIcon getIcon(IBlockAccess world, BlockPos pos, IBlockState state, int side)
 	{
 		if (side != 1 && side != 0)
 		{

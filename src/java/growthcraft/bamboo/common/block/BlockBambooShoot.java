@@ -10,6 +10,7 @@ import growthcraft.api.core.util.BlockFlags;
 import growthcraft.api.core.util.RenderType;
 
 import net.minecraft.block.SoundType;
+import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;

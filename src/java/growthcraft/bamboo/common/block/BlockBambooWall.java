@@ -44,12 +44,12 @@ public class BlockBambooWall extends GrcBlockBase
 	 * STUFF
 	 ************/
 	@Override
-	public boolean getBlocksMovement(IBlockAccess world, BlockPos pos,, IBlockState state)
+	public boolean getBlocksMovement(IBlockAccess world, BlockPos pos, IBlockState state)
 	{
 		return false;
 	}
 
-	public boolean canConnectWallTo(IBlockAccess world, BlockPos pos,, IBlockState state)
+	public boolean canConnectWallTo(IBlockAccess world, BlockPos pos, IBlockState state)
 	{
 		if (world.isAirBlock(pos)) return false;
 

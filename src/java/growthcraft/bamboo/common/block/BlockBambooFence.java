@@ -4,6 +4,7 @@ import growthcraft.bamboo.GrowthCraftBamboo;
 import growthcraft.bamboo.client.renderer.RenderBambooFence;
 
 import net.minecraft.block.SoundType;
+import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;

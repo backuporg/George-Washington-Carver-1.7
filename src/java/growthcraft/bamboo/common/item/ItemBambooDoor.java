@@ -3,6 +3,7 @@ package growthcraft.bamboo.common.item;
 import growthcraft.bamboo.GrowthCraftBamboo;
 import growthcraft.core.common.item.GrcItemBase;
 
+import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;

@@ -6,6 +6,7 @@ import growthcraft.bamboo.client.renderer.RenderBambooScaffold;
 import growthcraft.bamboo.GrowthCraftBamboo;
 import growthcraft.core.common.block.GrcBlockBase;
 
+import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
