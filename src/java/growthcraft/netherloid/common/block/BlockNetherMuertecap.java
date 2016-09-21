@@ -25,6 +25,7 @@ package growthcraft.netherloid.common.block;
 
 import growthcraft.netherloid.netherloid;
 import net.minecraft.item.Item;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;

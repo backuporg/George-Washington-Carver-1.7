@@ -116,7 +116,7 @@ public class BlockBambooStalk extends GrcBlockBase
 
 					if (world.isAirBlock(pos) && bambooShoot.canBlockStay(world, x1, y1, z1));
 					{
-						world.setBlockState(pos, IBlockState state);
+						world.setBlockState(pos);
 					}
 				}
 

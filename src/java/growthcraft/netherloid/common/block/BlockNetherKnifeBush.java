@@ -28,6 +28,7 @@ import growthcraft.netherloid.util.DamageSources;
 import net.minecraft.block.BlockBush;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class BlockNetherKnifeBush extends BlockBush

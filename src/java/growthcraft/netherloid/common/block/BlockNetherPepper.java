@@ -35,6 +35,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.eventhandler.Event;
@@ -78,19 +79,19 @@ public abstract class BlockNetherPepper extends BlockBush implements ICropDataPr
 
 	public boolean isFullyGrown(World world, BlockPos pos)
 	{
-		return world.getBlockState(x, y, z) >= PepperStages.FRUIT;
+		return world.getBlockState(pos) >= PepperStages.FRUIT;
 	}
 
 	public boolean canGrow(World world, BlockPos pos)
 	{
-		return world.getBlockState(x, y, z) < PepperStages.FRUIT;
+		return world.getBlockState(pos) < PepperStages.FRUIT;
 	}
 
 	/* IGrowable: can this grow anymore */
 	@Override
 	public boolean func_149851_a(World world, BlockPos pos, boolean b)
 	{
-		return !isFullyGrown(world, x, y, z);
+		return !isFullyGrown(world, pos);
 	}
 
 	/* IGrowable: does this accept bonemeal */
