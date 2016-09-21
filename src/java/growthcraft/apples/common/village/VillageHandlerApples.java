@@ -15,7 +15,7 @@ import net.minecraftforge.fml.common.registry.VillagerRegistry.IVillageTradeHand
 import java.util.List;
 import java.util.Random;
 
-public class VillageHandlerApples implements IVillageTradeHandler, IVillageCreationHandler
+public abstract class VillageHandlerApples implements IVillageTradeHandler, IVillageCreationHandler
 {
 	private boolean generateAppleFarms = GrowthCraftApples.getConfig().generateAppleFarms;
 

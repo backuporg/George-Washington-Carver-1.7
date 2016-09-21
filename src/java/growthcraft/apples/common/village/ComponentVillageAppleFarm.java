@@ -6,6 +6,7 @@ import growthcraft.core.util.SchemaToVillage.BlockEntry;
 import growthcraft.core.util.SchemaToVillage.IBlockEntries;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
@@ -19,7 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
-public class ComponentVillageAppleFarm extends StructureVillagePieces.Village implements SchemaToVillage.IVillage
+public abstract class ComponentVillageAppleFarm extends StructureVillagePieces.Village implements SchemaToVillage.IVillage
 {
 	// Design by Ar97x
 	private static final String[][] appleFarmSchema = {
@@ -75,9 +76,9 @@ public class ComponentVillageAppleFarm extends StructureVillagePieces.Village im
 	}
 
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	public static ComponentVillageAppleFarm buildComponent(Start startPiece, List list, Random random, BlockPos pos, int coordBaseMode, int par7)
+	public static ComponentVillageAppleFarm buildComponent(Start startPiece, List list, Random random, BlockPos pos, int coordBaseMode, int par7, EnumFacing face)
 	{
-		final StructureBoundingBox structureboundingbox = StructureBoundingBox.getComponentToAddBoundingBox(x, y, z, 0, 0, 0, 11, 11, 11, coordBaseMode);
+		final StructureBoundingBox structureboundingbox = StructureBoundingBox.getComponentToAddBoundingBox(pos.getX(), pos.getY(), pos.getZ(), 0, 0, 0, 11, 11, 11, face);
 		if (canVillageGoDeeper(structureboundingbox))
 		{
 			if (StructureComponent.findIntersecting(list, structureboundingbox) == null)
@@ -88,12 +89,12 @@ public class ComponentVillageAppleFarm extends StructureVillagePieces.Village im
 		return null;
 	}
 
-	public void placeBlockAtCurrentPositionPub(World world, Block block, int meta, BlockPos pos,, Vec3i vec, StructureBoundingBox box)
+	public void placeBlockAtCurrentPositionPub(World world, Block block, int meta, BlockPos pos, Vec3i vec, StructureBoundingBox box)
 	{
 		placeBlockAtCurrentPosition(world, block, meta, pos, box);
 	}
 
-	protected void placeWorldGenAt(World world, Random random, int tx, int ty, int tz, StructureBoundingBox bb, WorldGenerator generator, BlockPos pos,, Vec3i vec)
+	protected void placeWorldGenAt(World world, Random random, int tx, int ty, int tz, StructureBoundingBox bb, WorldGenerator generator, BlockPos pos, Vec3i vec)
 	{
 		final int x = this.getXWithOffset(tx, tz);
 		final int y = this.getYWithOffset(ty);
