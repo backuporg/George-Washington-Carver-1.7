@@ -38,7 +38,7 @@ public abstract class BlockBambooLeaves extends BlockLeaves implements IShearabl
 		setCreativeTab(GrowthCraftBamboo.creativeTab);
 	}
 
-	private void removeLeaves(World world, BlockPos pos,)
+	private void removeLeaves(World world, BlockPos pos)
 	{
 		this.dropBlockAsItem(world, pos, world.getBlockState(pos), 0);
 		world.setBlockToAir(pos);
