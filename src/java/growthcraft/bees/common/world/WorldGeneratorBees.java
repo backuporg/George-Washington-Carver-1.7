@@ -36,14 +36,14 @@ public class WorldGeneratorBees implements IWorldGenerator
 			boolean flag = true;
 			if (GrowthCraftBees.getConfig().useBiomeDict)
 			{
-				final Biome biome = world.getBiomeGenForCoords(i, k);
+				final Biome biome = world.getBiome(i, k);
 				flag = (BiomeDictionary.isBiomeOfType(biome, Type.FOREST) ||
 						BiomeDictionary.isBiomeOfType(biome, Type.PLAINS))
 						&& !BiomeDictionary.isBiomeOfType(biome, Type.SNOWY);
 			}
 			else
 			{
-				flag = Utils.isIDInList(world.getBiomeGenForCoords(i, k).biomeID, GrowthCraftBees.getConfig().beeBiomesList);
+				flag = Utils.isIDInList(world.getBiome(i, k).biomeID, GrowthCraftBees.getConfig().beeBiomesList);
 			}
 
 			if (flag)

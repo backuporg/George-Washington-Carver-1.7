@@ -263,7 +263,7 @@ public class TileEntityCheeseVat extends GrcTileDeviceBase implements IItemHandl
 			GrowthCraftMilk.getLogger().debug("Primary Fluid is NOT milk.");
 			return false;
 		}
-		if (!primaryFluidSlot.isFull())
+		if (!primaryFluidSlot.containedBlock())
 		{
 			GrowthCraftMilk.getLogger().debug("Primary Fluid Tank is NOT full.");
 			return false;
@@ -275,7 +275,7 @@ public class TileEntityCheeseVat extends GrcTileDeviceBase implements IItemHandl
 			GrowthCraftMilk.getLogger().debug("Rennet contains NON rennet fluid.");
 			return false;
 		}
-		if (!rennetFluidSlot.isFull())
+		if (!rennetFluidSlot.containedBlock())
 		{
 			GrowthCraftMilk.getLogger().debug("Rennet Fluid Tank is NOT full.");
 			return false;
@@ -295,7 +295,7 @@ public class TileEntityCheeseVat extends GrcTileDeviceBase implements IItemHandl
 	private boolean activateWheyTransition(boolean checkOnly)
 	{
 		final FluidStack milkStack = primaryFluidSlot.get();
-		if (FluidTest.hasTags(milkStack, MilkFluidTags.WHEY) && primaryFluidSlot.isFull())
+		if (FluidTest.hasTags(milkStack, MilkFluidTags.WHEY) && primaryFluidSlot.containedBlock())
 		{
 			if (!checkOnly)
 			{

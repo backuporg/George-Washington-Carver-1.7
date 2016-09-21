@@ -30,7 +30,7 @@ public class WorldGeneratorBamboo implements IWorldGenerator
 			final int j = random.nextInt(128);
 			final int k = chunkZ * 16 + random.nextInt(16) + 8;
 
-			final Biome biome = world.getBiomeGenForCoords(i, k);
+			final Biome biome = world.getBiome(i, k);
 			if (GrowthCraftBamboo.getConfig().useBiomeDict)
 			{
 				if (!BiomeUtils.testBiomeTypeTagsTable(biome, GrowthCraftBamboo.getConfig().bambooBiomesTypeList)) return;

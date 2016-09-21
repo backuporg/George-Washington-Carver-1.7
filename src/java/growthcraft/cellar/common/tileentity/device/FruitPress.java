@@ -74,7 +74,7 @@ public class FruitPress extends DeviceProgressive
 		final int m = getPresserMetadata();
 		if (m < 2) return false;
 
-		if (fluidSlot.isFull()) return false;
+		if (fluidSlot.containedBlock()) return false;
 
 		final PressingRecipe result = CellarRegistry.instance().pressing().getPressingRecipe(primarySlotItem);
 		if (result == null) return false;

@@ -124,7 +124,7 @@ public class DeviceInventorySlot
 	 *
 	 * @return true, the slot is full, false otherwise
 	 */
-	public boolean isFull()
+	public boolean containedBlock()
 	{
 		return getAvailableCapacity() <= 0;
 	}

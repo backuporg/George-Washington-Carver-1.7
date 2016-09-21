@@ -304,7 +304,7 @@ public abstract class BlockBambooLeaves extends BlockLeaves implements IShearabl
 		{
 			for (int z1 = -1; z1 <= 1; ++z1)
 			{
-				final int j2 = world.getBiomeGenForCoords(x + z1, z + x1).getBiomeFoliageColor(x + z1, y, z + x1);
+				final int j2 = world.getBiome(x + z1, z + x1).getBiomeFoliageColor(x + z1, y, z + x1);
 				r += (j2 & 16711680) >> 16;
 				g += (j2 & 65280) >> 8;
 				b += j2 & 255;

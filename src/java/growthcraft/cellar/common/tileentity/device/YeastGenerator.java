@@ -83,7 +83,7 @@ public class YeastGenerator extends DeviceProgressive
 	 */
 	public Biome getCurrentBiome()
 	{
-		return getWorld().getBiomeGenForCoords(parent.xCoord, parent.zCoord);
+		return getWorld().getBiome(parent.xCoord, parent.zCoord);
 	}
 
 	/**

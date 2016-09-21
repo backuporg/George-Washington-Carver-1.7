@@ -455,7 +455,7 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 		{
 			for (int i2 = -1; i2 <= 1; ++i2)
 			{
-				final int j2 = world.getBiomeGenForCoords(x + i2, z + l1).getBiomeFoliageColor(x + i2, y, z + l1);
+				final int j2 = world.getBiome(x + i2, z + l1).getBiomeFoliageColor(x + i2, y, z + l1);
 				r += (j2 & 16711680) >> 16;
 				g += (j2 & 65280) >> 8;
 				b += j2 & 255;

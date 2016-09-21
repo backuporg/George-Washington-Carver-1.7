@@ -75,7 +75,7 @@ public class WorldGeneratorThistle implements IWorldGenerator
 	{
 		if (world.provider.dimensionId == 0)
 		{
-			final Biome biome = world.getBiomeGenForCoords(chunkX, chunkZ);
+			final Biome biome = world.getBiome(chunkX, chunkZ);
 			if (GrowthCraftMilk.getConfig().thistleUseBiomeDict)
 			{
 				if (!BiomeUtils.testBiomeTypeTagsTable(biome, GrowthCraftMilk.getConfig().thistleBiomesTypeList)) return;

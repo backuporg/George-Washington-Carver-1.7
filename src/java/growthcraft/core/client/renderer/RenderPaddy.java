@@ -259,7 +259,7 @@ public class RenderPaddy implements ISimpleBlockRenderingHandler
 		{
 			for (int l1 = -1; l1 <= 1; ++l1)
 			{
-				final int i2 = world.getBiomeGenForCoords(x + l1, z + k1).getWaterColorMultiplier();
+				final int i2 = world.getBiome(x + l1, z + k1).getWaterColorMultiplier();
 				l += (i2 & 16711680) >> 16;
 				i1 += (i2 & 65280) >> 8;
 				j1 += i2 & 255;
