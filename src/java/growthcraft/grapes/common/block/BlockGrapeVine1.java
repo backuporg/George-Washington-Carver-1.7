@@ -18,7 +18,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-public abstract class BlockGrapeVine1 extends BlockGrapeVineBase
+public class BlockGrapeVine1 extends BlockGrapeVineBase
 {
 	public boolean graphicFlag;
 

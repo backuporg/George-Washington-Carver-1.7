@@ -8,10 +8,12 @@ import growthcraft.grapes.GrowthCraftGrapes;
 import growthcraft.grapes.client.renderer.RenderGrapeLeaves;
 import growthcraft.grapes.util.GrapeBlockCheck;
 import net.minecraft.block.BlockLeaves;
+import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.ColorizerFoliage;
@@ -20,9 +22,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import java.util.List;
 import java.util.Random;
 
-public abstract class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
+public class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 {
 	@SideOnly(Side.CLIENT)
 	private IIcon[] icons;
@@ -255,6 +258,11 @@ public abstract class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 		return 1;
 	}
 
+	@Override
+	public BlockPlanks.EnumType getWoodType(int meta) {
+		return null;
+	}
+
 	/************
 	 * TEXTURES
 	 ************/
@@ -352,5 +360,10 @@ public abstract class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 		}
 
 		return (r / 9 & 255) << 16 | (g / 9 & 255) << 8 | b / 9 & 255;
+	}
+
+	@Override
+	public List<ItemStack> onSheared(ItemStack item, IBlockAccess world, BlockPos pos, int fortune) {
+		return null;
 	}
 }

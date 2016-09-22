@@ -23,8 +23,23 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
-public abstract class BlockApple extends GrcBlockBase implements IGrowable, ICropDataProvider
+public class BlockApple extends GrcBlockBase implements IGrowable, ICropDataProvider
 {
+	@Override
+	public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {
+		return false;
+	}
+
+	@Override
+	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+		return false;
+	}
+
+	@Override
+	public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+
+	}
+
 	public static class AppleStage
 	{
 		public static final int YOUNG = 0;

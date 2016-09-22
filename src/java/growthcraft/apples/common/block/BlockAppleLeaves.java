@@ -4,8 +4,10 @@ import growthcraft.api.core.util.BlockFlags;
 import growthcraft.apples.GrowthCraftApples;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
+import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -21,8 +23,23 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.ArrayList;
 import java.util.Random;
 
-public abstract class BlockAppleLeaves extends BlockLeaves implements IShearable, IGrowable
+public class BlockAppleLeaves extends BlockLeaves implements IShearable, IGrowable
 {
+	@Override
+	public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {
+		return false;
+	}
+
+	@Override
+	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+		return false;
+	}
+
+	@Override
+	public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+
+	}
+
 	public static class LeavesStage
 	{
 		public static final int DECAY_MASK = 8;
@@ -297,6 +314,11 @@ public abstract class BlockAppleLeaves extends BlockLeaves implements IShearable
 	public int quantityDropped(Random random)
 	{
 		return random.nextInt(20) == 0 ? 1 : 0;
+	}
+
+	@Override
+	public BlockPlanks.EnumType getWoodType(int meta) {
+		return null;
 	}
 
 	@Override

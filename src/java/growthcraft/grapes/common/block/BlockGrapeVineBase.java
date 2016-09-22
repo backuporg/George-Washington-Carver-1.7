@@ -9,6 +9,7 @@ import growthcraft.grapes.util.GrapeBlockCheck;
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -23,7 +24,7 @@ import net.minecraftforge.fml.common.eventhandler.Event;
 
 import java.util.Random;
 
-public abstract class BlockGrapeVineBase extends GrcBlockBase implements IPlantable, ICropDataProvider, IGrowable
+public class BlockGrapeVineBase extends GrcBlockBase implements IPlantable, ICropDataProvider, IGrowable
 {
 	private ItemStack itemDrop;
 	private float growthRateMultiplier;
@@ -257,5 +258,20 @@ public abstract class BlockGrapeVineBase extends GrcBlockBase implements IPlanta
 		{
 			doGrowth(world, x, y, z, world.getBlockState(x, y, z));
 		}
+	}
+
+	@Override
+	public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {
+		return false;
+	}
+
+	@Override
+	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+		return false;
+	}
+
+	@Override
+	public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+
 	}
 }
