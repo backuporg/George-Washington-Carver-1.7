@@ -68,7 +68,7 @@ public class BlockBambooStalk extends GrcBlockBase
 			int y1 = pos.getY();
 			int z1 = pos.getZ();
 
-			if (isBambooOnGround(world, pos.getX(), pos.getY(), pos.getZ()))
+			if (isBambooOnGround(world, pos))
 			{
 				if (rand.nextInt(this.growth) == 0)
 				{
@@ -82,7 +82,7 @@ public class BlockBambooStalk extends GrcBlockBase
 						{
 							for (y1 = pos.getY() - 1; y1 <= pos.getY() + 1; ++y1)
 							{
-								final boolean flag1 = world.getBlockState(pos) == this && isBambooOnGround(world, x1, y1, z1);
+								final boolean flag1 = world.getBlockState(pos) == this && isBambooOnGround(world, pos);
 								final boolean flag2 = world.getBlockState(pos) == bambooShoot;
 								if (flag1 || flag2)
 								{
@@ -102,7 +102,7 @@ public class BlockBambooStalk extends GrcBlockBase
 
 					for (int loop = 0; loop < 4; ++loop)
 					{
-						if (world.isAirBlock(pos) && bambooShoot.canBlockStay(world, x1, y1, z1))
+						if (world.isAirBlock(pos) && bambooShoot.canBlockStay(world, pos))
 						{
 							x = x1;
 							y = y1;
@@ -114,7 +114,7 @@ public class BlockBambooStalk extends GrcBlockBase
 						z1 = pos.getZ() + rand.nextInt(3) - 1;
 					}
 
-					if (world.isAirBlock(pos) && bambooShoot.canBlockStay(world, x1, y1, z1));
+					if (world.isAirBlock(pos) && bambooShoot.canBlockStay(world, pos));
 					{
 						world.setBlockState(pos);
 					}
@@ -132,7 +132,7 @@ public class BlockBambooStalk extends GrcBlockBase
 	{
 		boolean flag = false;
 
-		if (world.getBlockState(x, y - 1, z) != this)
+		if (world.getBlockState(pos) != this)
 		{
 			if (!isBambooOnGround(world, pos))
 			{
@@ -150,14 +150,14 @@ public class BlockBambooStalk extends GrcBlockBase
 	}
 
 	@Override
-	public void breakBlock(World world, BlockPos pos, Block par5, int par6)
+	public void breakBlock(World world, BlockPos pos, IBlockState state, Block par5, int par6)
 	{
 		if (world.getBlockState(pos) == 0)
 		{
 			final byte b0 = 4;
 			final int j1 = b0 + 1;
 
-			if (world.checkChunksExist(x - j1, y - j1, z - j1, x + j1, y + j1, z + j1))
+			if (world.isBlockLoaded(pos))
 			{
 				for (int x1 = -b0; x1 <= b0; ++x1)
 				{
@@ -168,7 +168,7 @@ public class BlockBambooStalk extends GrcBlockBase
 							final Block block = world.getBlockState(pos);
 							if (block != null)
 							{
-								block.beginLeavesDecay(world, x + x1, y + y1, z + z1);
+								block.beginLeavesDecay(state, world, pos);
 							}
 						}
 					}
@@ -204,8 +204,8 @@ public class BlockBambooStalk extends GrcBlockBase
 
 	public boolean isBambooOnGround(World world, BlockPos pos)
 	{
-		if (!BlockCheck.canSustainPlant(world, x, y - 1, z, EnumFacing.UP, GrowthCraftBamboo.blocks.bambooShoot.getBlockState())) return false;
-		return this == world.getBlockState(x, y, z);
+		if (!BlockCheck.canSustainPlant(world, pos, pos, pos, EnumFacing.UP, GrowthCraftBamboo.blocks.bambooShoot.getBlockState())) return false;
+		return this == world.getBlockState(pos);
 	}
 
 	@Override
@@ -216,19 +216,19 @@ public class BlockBambooStalk extends GrcBlockBase
 
 	private boolean canFence(IBlockAccess world, BlockPos pos)
 	{
-		return world.getBlockState(x, y, z) == GrowthCraftBamboo.blocks.bambooFence.getBlockState() ||
-			world.getBlockState(x, y, z) == Blocks.OAK_FENCE_GATE ||
-			world.getBlockState(x, y, z) == GrowthCraftBamboo.blocks.bambooFenceGate.getBlockState();
+		return world.getBlockState(pos) == GrowthCraftBamboo.blocks.bambooFence.getBlockState() ||
+			world.getBlockState(pos) == Blocks.OAK_FENCE_GATE ||
+			world.getBlockState(pos) == GrowthCraftBamboo.blocks.bambooFenceGate.getBlockState();
 	}
 
 	private boolean canWall(IBlockAccess world, BlockPos pos)
 	{
-		return world.getBlockState(x, y, z) == GrowthCraftBamboo.blocks.bambooWall.getBlockState();
+		return world.getBlockState(pos) == GrowthCraftBamboo.blocks.bambooWall.getBlockState();
 	}
 
 	private boolean canDoor(IBlockAccess world, BlockPos pos)
 	{
-		return world.getBlockState(x, y, z) instanceof BlockDoor;
+		return world.getBlockState(pos) instanceof BlockDoor;
 	}
 
 	@Override
@@ -308,7 +308,7 @@ public class BlockBambooStalk extends GrcBlockBase
 	@SideOnly(Side.CLIENT)
 	public int colorMultiplier(IBlockAccess world, BlockPos pos)
 	{
-		if (world.getBlockState(x, y, z) == 0)
+		if (world.getBlockState(pos) == 0)
 		{
 			int r = 0;
 			int g = 0;
