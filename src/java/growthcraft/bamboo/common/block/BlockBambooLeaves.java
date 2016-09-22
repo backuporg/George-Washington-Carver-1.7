@@ -4,6 +4,7 @@ import growthcraft.api.core.util.BlockFlags;
 import growthcraft.bamboo.GrowthCraftBamboo;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
+import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
@@ -20,7 +21,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.ArrayList;
 import java.util.Random;
 
-public abstract class BlockBambooLeaves extends BlockLeaves implements IShearable
+public class BlockBambooLeaves extends BlockLeaves implements IShearable
 {
 	@SideOnly(Side.CLIENT)
 	private IIcon[] icons;
@@ -237,6 +238,11 @@ public abstract class BlockBambooLeaves extends BlockLeaves implements IShearabl
 	public int quantityDropped(Random par1Random)
 	{
 		return 0;
+	}
+
+	@Override
+	public BlockPlanks.EnumType getWoodType(int meta) {
+		return null;
 	}
 
 	/************

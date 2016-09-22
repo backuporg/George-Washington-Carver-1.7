@@ -15,7 +15,7 @@ import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public abstract class ItemBambooShoot extends GrcItemFoodBase implements IPlantable
+public class ItemBambooShoot extends GrcItemFoodBase implements IPlantable
 {
 	private Block cropBlock;
 

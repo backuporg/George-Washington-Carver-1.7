@@ -1,7 +1,10 @@
 package growthcraft.bamboo.common.village;
 
 import growthcraft.bamboo.GrowthCraftBamboo;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.gen.structure.StructureComponent;
+import net.minecraft.world.gen.structure.StructureVillagePieces;
 import net.minecraft.world.gen.structure.StructureVillagePieces.PieceWeight;
 import net.minecraft.world.gen.structure.StructureVillagePieces.Start;
 import net.minecraftforge.fml.common.registry.VillagerRegistry.IVillageCreationHandler;
@@ -25,6 +28,11 @@ public class VillageHandlerBamboo implements IVillageCreationHandler
 	public Class<?> getComponentClass()
 	{
 		return ComponentVillageBambooYard.class;
+	}
+
+	@Override
+	public StructureVillagePieces.Village buildComponent(PieceWeight villagePiece, Start startPiece, List<StructureComponent> pieces, Random random, int p1, int p2, int p3, EnumFacing facing, int p5) {
+		return null;
 	}
 
 	@Override

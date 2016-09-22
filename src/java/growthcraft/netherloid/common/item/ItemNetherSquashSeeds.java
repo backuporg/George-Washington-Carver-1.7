@@ -31,12 +31,13 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 
-public abstract class ItemNetherSquashSeeds extends Item implements IPlantable
+public class ItemNetherSquashSeeds extends Item implements IPlantable
 {
 	public ItemNetherSquashSeeds()
 	{

@@ -11,6 +11,7 @@ import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.util.EnumFacing;
@@ -25,7 +26,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
-public abstract class BlockBambooShoot extends BlockBush implements ICropDataProvider, IGrowable
+public class BlockBambooShoot extends BlockBush implements ICropDataProvider, IGrowable
 {
 	//constants
 	private final int growth = GrowthCraftBamboo.getConfig().bambooShootGrowthRate;
@@ -198,5 +199,20 @@ public abstract class BlockBambooShoot extends BlockBush implements ICropDataPro
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, BlockPos pos)
 	{
 		return null;
+	}
+
+	@Override
+	public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {
+		return false;
+	}
+
+	@Override
+	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+		return false;
+	}
+
+	@Override
+	public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+
 	}
 }

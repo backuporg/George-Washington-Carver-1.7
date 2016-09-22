@@ -11,9 +11,11 @@ import growthcraft.rice.util.RiceBlockCheck;
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.eventhandler.Event;
@@ -23,8 +25,23 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.ArrayList;
 import java.util.Random;
 
-public abstract class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProvider, IGrowable
+public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProvider, IGrowable
 {
+	@Override
+	public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {
+		return false;
+	}
+
+	@Override
+	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+		return false;
+	}
+
+	@Override
+	public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+
+	}
+
 	public static class RiceStage
 	{
 		public static final int MATURE = 7;

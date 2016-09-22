@@ -31,6 +31,7 @@ import growthcraft.netherloid.netherloid;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -45,8 +46,23 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
-public abstract class BlockNetherSquashStem extends BlockBush implements ICropDataProvider, IGrowable, IPlantable
+public class BlockNetherSquashStem extends BlockBush implements ICropDataProvider, IGrowable, IPlantable
 {
+	@Override
+	public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {
+		return false;
+	}
+
+	@Override
+	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+		return false;
+	}
+
+	@Override
+	public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+
+	}
+
 	public static class StemStage
 	{
 		public static final int MATURE = 7;

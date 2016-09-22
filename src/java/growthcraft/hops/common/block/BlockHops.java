@@ -12,6 +12,7 @@ import growthcraft.hops.client.renderer.RenderHops;
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -19,6 +20,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.ColorizerFoliage;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -62,9 +64,9 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 		this.setCreativeTab(null);
 	}
 
-	public boolean isMature(IBlockAccess world, BlockPos pos)
+	public boolean isMature(IBlockAccess world, BlockPos pos, IBlockState state)
 	{
-		final int meta = world.getBlockState(x, y, z);
+		final int meta = world.getBlockState(state);
 		return meta >= HopsStage.FRUIT;
 	}
 
@@ -77,8 +79,8 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 	{
 		final int previousMetadata = meta;
 		++meta;
-		world.setBlockState(x, y, z, meta, BlockFlags.SYNC);
-		AppleCore.announceGrowthTick(this, world, x, y, z, previousMetadata);
+		world.setBlockState(pos, meta, BlockFlags.SYNC);
+		AppleCore.announceGrowthTick(this, world, pos, previousMetadata);
 	}
 
 	public void spreadLeaves(World world, BlockPos pos)
@@ -97,18 +99,18 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 	@Override
 	public void updateTick(World world, BlockPos pos, Random random)
 	{
-		if (!this.canBlockStay(world, x, y, z))
+		if (!this.canBlockStay(world, pos))
 		{
-			world.setBlockState(x, y, z, GrowthCraftCore.blocks.ropeBlock.getBlockState());
+			world.setBlockState(pos, GrowthCraftCore.blocks.ropeBlock.getBlockState());
 		}
 		else
 		{
-			final Event.Result allowGrowthResult = AppleCore.validateGrowthTick(this, world, x, y, z, random);
+			final Event.Result allowGrowthResult = AppleCore.validateGrowthTick(this, world, pos, random);
 			if (allowGrowthResult == Event.Result.DENY)
 				return;
 
-			final int meta = world.getBlockState(x, y, z);
-			final float f = this.getGrowthRateLoop(world, x, y, z);
+			final int meta = world.getBlockState(pos);
+			final float f = this.getGrowthRateLoop(world, pos);
 
 			if (meta < HopsStage.BIG)
 			{

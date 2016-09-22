@@ -4,9 +4,12 @@ import growthcraft.rice.GrowthCraftRice;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.village.MerchantRecipe;
 import net.minecraft.village.MerchantRecipeList;
+import net.minecraft.world.gen.structure.StructureComponent;
+import net.minecraft.world.gen.structure.StructureVillagePieces;
 import net.minecraft.world.gen.structure.StructureVillagePieces.PieceWeight;
 import net.minecraft.world.gen.structure.StructureVillagePieces.Start;
 import net.minecraftforge.fml.common.registry.VillagerRegistry.IVillageCreationHandler;
@@ -41,6 +44,11 @@ public class VillageHandlerRice implements IVillageTradeHandler, IVillageCreatio
 	public Class<?> getComponentClass()
 	{
 		return ComponentVillageRiceField.class;
+	}
+
+	@Override
+	public StructureVillagePieces.Village buildComponent(PieceWeight villagePiece, Start startPiece, List<StructureComponent> pieces, Random random, int p1, int p2, int p3, EnumFacing facing, int p5) {
+		return null;
 	}
 
 	@Override
