@@ -97,7 +97,7 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 		return false;
 	}
 
-	public void doRotateBlock(World world, BlockPos pos,, EnumFacing side, IBlockState state)
+	public void doRotateBlock(World world, BlockPos pos, EnumFacing side, IBlockState state)
 	{
 		final int meta = world.getBlockState(pos);
 		final EnumFacing current = EnumFacing.getFront(meta);
@@ -159,9 +159,9 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 	}
 
 	@Override
-	public boolean rotateBlock(World world, BlockPos pos,, EnumFacing side, IBlockState state)
+	public boolean rotateBlock(World world, BlockPos pos, EnumFacing side, IBlockState state)
 	{
-		if (isRotatable(world, pos.getX(), pos.getY(), pos.getZ(), side))
+		if (isRotatable(world, pos, side))
 		{
 			doRotateBlock(world, pos, side, state);
 			world.markBlockForUpdate(pos);
@@ -198,15 +198,15 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 	}
 
 	@Override
-	public boolean wrenchBlock(World world, BlockPos pos,, IBlockState state, EntityPlayer player, ItemStack wrench)
+	public boolean wrenchBlock(World world, BlockPos pos, IBlockState state, EntityPlayer player, ItemStack wrench)
 	{
 		if (player == null) return false;
-		if (!ItemUtils.canWrench(wrench, player, pos.getX(), pos.getY(), pos.getZ())) return false;
+		if (!ItemUtils.canWrench(wrench, player, pos) return false;
 		if (!player.isSneaking()) return false;
 		if (!world.isRemote)
 		{
 			fellBlockFromWrench(world, pos, state);
-			ItemUtils.wrenchUsed(wrench, player, pos.getX(), pos.getY(), pos.getZ());
+			ItemUtils.wrenchUsed(wrench, player, pos);
 		}
 		return true;
 	}
@@ -228,13 +228,13 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 		else if (l == 2) facing = EnumFacing.NORTH;
 		else if (l == 3) facing = EnumFacing.EAST;
 
-		if (isRotatable(world, pos.getX(), pos.getY(), pos.getZ(), EnumFacing.UP))
+		if (isRotatable(world, pos, EnumFacing.UP))
 		{
 			world.setBlockState(pos, state.withProperty(ROTATION, facing.ordinal()));
 		}
 	}
 
-	protected void setupCustomDisplayName(World world, BlockPos pos,, ItemStack stack)
+	protected void setupCustomDisplayName(World world, BlockPos pos, ItemStack stack)
 	{
 		if (stack.hasDisplayName())
 		{
@@ -275,19 +275,19 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 		}
 	}
 
-	protected boolean shouldRestoreBlockState(World world, BlockPos pos,, ItemStack stack)
+	protected boolean shouldRestoreBlockState(World world, BlockPos pos, ItemStack stack)
 	{
 		return false;
 	}
 
-	protected void restoreBlockStateFromStack(World world, BlockPos pos,, ItemStack stack)
+	protected void restoreBlockStateFromStack(World world, BlockPos pos, ItemStack stack)
 	{
 		if (shouldRestoreBlockState(world, pos, stack))
 		{
 			final TileEntity te = getTileEntity(world, pos);
 			if (te instanceof INBTItemSerializable)
 			{
-				final NBTTagCompound tag = getTileTagCompound(world, pos.getX(), pos.getY(), pos.getZ(), stack);
+				final NBTTagCompound tag = getTileTagCompound(world, pos, stack);
 				if (tag != null)
 				{
 					((INBTItemSerializable)te).readFromNBTForItem(tag);
@@ -308,7 +308,7 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 		setupCustomDisplayName(world, pos, stack);
 	}
 
-	protected void scatterInventory(World world, BlockPos pos,, Block block)
+	protected void scatterInventory(World world, BlockPos pos, Block block)
 	{
 		final TileEntity te = getTileEntity(world, pos);
 		if (te instanceof IInventory)
@@ -349,7 +349,7 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 	}
 
 	@Override
-	public void harvestBlock(World world, EntityPlayer player, BlockPos pos,, int meta, IBlockState state)
+	public void harvestBlock(World world, EntityPlayer player, BlockPos pos, int meta, IBlockState state)
 	{
 		player.addStat(StatList.mineBlockStatArray[getIdFromBlock(this)], 1);
 		player.addExhaustion(0.025F);
@@ -379,12 +379,12 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 		}
 	}
 
-	protected boolean shouldDropTileStack(World world, BlockPos pos,, IBlockState state, int metadata, int fortune)
+	protected boolean shouldDropTileStack(World world, BlockPos pos, IBlockState state, int metadata, int fortune)
 	{
 		return false;
 	}
 
-	private void getDefaultDrops(List<ItemStack> ret, World world, BlockPos pos,, IBlockState state, int z, int metadata, int fortune)
+	private void getDefaultDrops(List<ItemStack> ret, World world, BlockPos pos, IBlockState state, int z, int metadata, int fortune)
 	{
 		final int count = quantityDropped(state, fortune, world.rand);
 		for (int i = 0; i < count; ++i)
@@ -397,7 +397,7 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 		}
 	}
 
-	protected void getTileItemStackDrops(List<ItemStack> ret, World world, BlockPos pos,, IBlockState state, int metadata, int fortune)
+	protected void getTileItemStackDrops(List<ItemStack> ret, World world, BlockPos pos, IBlockState state, int metadata, int fortune)
 	{
 		final TileEntity te = getTileEntity(world, pos);
 		if (te instanceof INBTItemSerializable)
@@ -405,7 +405,7 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 			final NBTTagCompound tag = new NBTTagCompound();
 			((INBTItemSerializable)te).writeToNBTForItem(tag);
 			final ItemStack stack = new ItemStack(this, 1, metadata);
-			setTileTagCompound(world, pos.getX(), pos.getY(), pos.getZ(), stack, tag);
+			setTileTagCompound(world, pos, stack, tag);
 			ret.add(stack);
 		}
 		else
@@ -414,7 +414,7 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 		}
 	}
 
-	public ArrayList<ItemStack> getDrops(World world, BlockPos pos,, IBlockState state, int metadata, int fortune)
+	public ArrayList<ItemStack> getDrops(World world, BlockPos pos, IBlockState state, int metadata, int fortune)
 	{
 		final ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
 		if (shouldDropTileStack(world, pos, state, metadata, fortune))
@@ -428,18 +428,18 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 		return ret;
 	}
 
-	protected boolean playerFillTank(World world, BlockPos pos,, IFluidHandler fh, ItemStack is, EntityPlayer player)
+	protected boolean playerFillTank(World world, BlockPos pos, IFluidHandler fh, ItemStack is, EntityPlayer player)
 	{
-		return Utils.playerFillTank(world, pos.getX(), pos.getY(), pos.getZ(), fh, is, player);
+		return Utils.playerFillTank(world, pos, fh, is, player);
 	}
 
-	protected boolean playerDrainTank(World world, BlockPos pos,, IFluidHandler fh, ItemStack is, EntityPlayer player)
+	protected boolean playerDrainTank(World world, BlockPos pos, IFluidHandler fh, ItemStack is, EntityPlayer player)
 	{
 		final FluidStack fs = Utils.playerDrainTank(world, pos.getX(), pos.getY(), pos.getZ(), fh, is, player);
 		return fs != null && fs.amount > 0;
 	}
 
-	private boolean handleIFluidHandler(World world, BlockPos pos,, EntityPlayer player, int meta)
+	private boolean handleIFluidHandler(World world, BlockPos pos, EntityPlayer player, int meta)
 	{
 		final TileEntity te = world.getTileEntity(pos);
 		if (te instanceof IFluidHandler)
@@ -477,7 +477,7 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 		return false;
 	}
 
-	protected boolean handleOnUseItem(IItemHandler.Action action, World world, BlockPos pos,, EntityPlayer player)
+	protected boolean handleOnUseItem(IItemHandler.Action action, World world, BlockPos pos, EntityPlayer player)
 	{
 		final TileEntity te = world.getTileEntity(pos);
 		if (te instanceof IItemHandler)
@@ -513,7 +513,7 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 	}
 
 	@Override
-	public void onBlockClicked(World world, BlockPos pos,, EntityPlayer player)
+	public void onBlockClicked(World world, BlockPos pos, EntityPlayer player)
 	{
 		if (!world.isRemote)
 		{
@@ -530,7 +530,7 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos,, EntityPlayer player, int meta, float par7, float par8, float par9)
+	public boolean onBlockActivated(World world, BlockPos pos, EntityPlayer player, int meta, float par7, float par8, float par9)
 	{
 		if (tryWrenchItem(player, world, pos.getX(), pos.getY(), pos.getZ())) return true;
 		if (handleIFluidHandler(world, pos, player, meta)) return true;
