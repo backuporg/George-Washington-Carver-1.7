@@ -75,15 +75,15 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 		return (float)meta / (float)RiceStage.MATURE;
 	}
 
-	private void incrementGrowth(World world, BlockPos pos, int meta)
+	private void incrementGrowth(World world, BlockPos pos, int meta, IBlockState state)
 	{
-		world.setBlockState(x, y, z, meta + 1, BlockFlags.SYNC);
-		AppleCore.announceGrowthTick(this, world, x, y, z, meta);
+		world.setBlockState(pos, state, BlockFlags.SYNC);
+		AppleCore.announceGrowthTick(this, world, pos, meta);
 	}
 
-	private void growRice(World world, BlockPos pos, int meta)
+	private void growRice(World world, BlockPos pos, int meta, IBlockState state)
 	{
-		incrementGrowth(world, x, y, z, meta);
+		incrementGrowth(world, pos, meta, state);
 		final Block paddyBlock = world.getBlockState(x, y - 1, z);
 		if (RiceBlockCheck.isPaddy(paddyBlock))
 		{
@@ -97,7 +97,7 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 	@Override
 	public void updateTick(World world, BlockPos pos, Random random)
 	{
-		this.checkCropChange(world, x, y, z);
+		this.checkCropChange(world, pos);
 
 		if (world.getBlockLightValue(x, y + 1, z) >= 9 && world.getBlockState(x, y - 1, z) > 0)
 		{
@@ -123,7 +123,7 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 	@Override
 	public boolean func_149851_a(World world, BlockPos pos, boolean isClient)
 	{
-		return world.getBlockState(x, y, z) < RiceStage.MATURE;
+		return world.getBlockState(pos) < RiceStage.MATURE;
 	}
 
 	/* SideOnly(Side.SERVER) Can this apply bonemeal effect? */
@@ -135,12 +135,12 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 
 	/* Apply bonemeal effect */
 	@Override
-	public void func_149853_b(World world, Random random, BlockPos pos)
+	public void func_149853_b(World world, Random random, BlockPos pos, IBlockState state)
 	{
-		final int meta = world.getBlockState(x, y, z);
+		final int meta = world.getBlockState(int);
 		if (meta < RiceStage.MATURE)
 		{
-			growRice(world, x, y, z, meta);
+			growRice(world, pos, meta, state);
 		}
 	}
 

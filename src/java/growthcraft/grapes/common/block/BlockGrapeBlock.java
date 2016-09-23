@@ -41,9 +41,9 @@ public class BlockGrapeBlock extends GrcBlockBase
 	@Override
 	public void updateTick(World world, BlockPos pos, Random random)
 	{
-		if (!this.canBlockStay(world, x, y, z))
+		if (!this.canBlockStay(world, pos))
 		{
-			fellBlockAsItem(world, x, y, z);
+			fellBlockAsItem(world, pos);
 		}
 	}
 
@@ -55,7 +55,7 @@ public class BlockGrapeBlock extends GrcBlockBase
 	{
 		if (!world.isRemote)
 		{
-			fellBlockAsItem(world, x, y, z);
+			fellBlockAsItem(world, pos);
 		}
 		return true;
 	}
@@ -63,9 +63,9 @@ public class BlockGrapeBlock extends GrcBlockBase
 	@Override
 	public void onNeighborBlockChange(World world, BlockPos pos, Block par5)
 	{
-		if (!this.canBlockStay(world, x, y, z))
+		if (!this.canBlockStay(world, pos))
 		{
-			fellBlockAsItem(world, x, y, z);
+			fellBlockAsItem(world, pos);
 		}
 	}
 

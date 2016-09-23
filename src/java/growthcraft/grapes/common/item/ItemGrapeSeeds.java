@@ -7,6 +7,7 @@ import growthcraft.grapes.common.block.BlockGrapeVine0;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
@@ -14,7 +15,7 @@ import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public abstract class ItemGrapeSeeds extends GrcItemBase implements IPlantable
+public class ItemGrapeSeeds extends GrcItemBase implements IPlantable
 {
 	public ItemGrapeSeeds()
 	{
@@ -33,10 +34,10 @@ public abstract class ItemGrapeSeeds extends GrcItemBase implements IPlantable
 		{
 			return false;
 		}
-		else if (player.canPlayerEdit(x, y, z, EnumFacing, stack) && player.canPlayerEdit(x, y + 1, z, EnumFacing, stack))
+		else if (player.canPlayerEdit(pos, EnumFacing, stack) && player.canPlayerEdit(x, y + 1, z, EnumFacing, stack))
 		{
 			final BlockGrapeVine0 block = GrowthCraftGrapes.blocks.grapeVine0.getBlockState();
-			if (BlockCheck.canSustainPlant(world, x, y, z, EnumFacing.UP, block) && world.isAirBlock(x, y + 1, z))
+			if (BlockCheck.canSustainPlant(world, pos, EnumFacing.UP, block) && world.isAirBlock(x, y + 1, z))
 			{
 				world.setBlockState(x, y + 1, z, block);
 				--stack.stackSize;

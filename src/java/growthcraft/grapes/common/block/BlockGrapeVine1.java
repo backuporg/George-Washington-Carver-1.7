@@ -43,7 +43,7 @@ public class BlockGrapeVine1 extends BlockGrapeVineBase
 	@Override
 	protected boolean canUpdateGrowth(World world, BlockPos pos)
 	{
-		return world.getBlockState(x, y, z) == 0 || world.isAirBlock(x, y + 1, z);
+		return world.getBlockState(pos) == 0 || world.isAirBlock(x, y + 1, z);
 	}
 
 	@Override
@@ -53,17 +53,17 @@ public class BlockGrapeVine1 extends BlockGrapeVineBase
 		/* Is there a rope block above this? */
 		if (BlockCheck.isRope(above))
 		{
-			incrementGrowth(world, x, y, z, meta);
+			incrementGrowth(world, pos, meta);
 			world.setBlockState(x, y + 1, z, GrowthCraftGrapes.blocks.grapeLeaves.getBlockState(), 0, BlockFlags.UPDATE_AND_SYNC);
 		}
 		else if (world.isAirBlock(x, y + 1, z))
 		{
-			incrementGrowth(world, x, y, z, meta);
+			incrementGrowth(world, pos, meta);
 			world.setBlockState(x, y + 1, z, this, 0, BlockFlags.UPDATE_AND_SYNC);
 		}
 		else if (GrowthCraftGrapes.blocks.grapeLeaves.getBlockState() == above)
 		{
-			incrementGrowth(world, x, y, z, meta);
+			incrementGrowth(world, pos, meta);
 		}
 	}
 
@@ -142,29 +142,29 @@ public class BlockGrapeVine1 extends BlockGrapeVineBase
 	@SuppressWarnings({"rawtypes", "unchecked"})
 	public void addCollisionBoxesToList(World world, BlockPos pos, AxisAlignedBB aabb, List list, Entity entity)
 	{
-		final int meta = world.getBlockState(x, y, z);
+		final int meta = world.getBlockState(pos);
 		final float f = 0.0625F;
 
 		if (meta == 0)
 		{
 			this.setBlockBounds(6*f, 0.0F, 6*f, 10*f, 0.5F, 10*f);
-			super.addCollisionBoxesToList(world, x, y, z, aabb, list, entity);
+			super.addCollisionBoxesToList(world, pos, aabb, list, entity);
 			this.setBlockBounds(4*f, 0.5F, 4*f, 12*f, 1.0F, 12*f);
-			super.addCollisionBoxesToList(world, x, y, z, aabb, list, entity);
+			super.addCollisionBoxesToList(world, pos, aabb, list, entity);
 		}
 		else if (meta == 1)
 		{
 			this.setBlockBounds(6*f, 0.0F, 6*f, 10*f, 1.0F, 10*f);
-			super.addCollisionBoxesToList(world, x, y, z, aabb, list, entity);
+			super.addCollisionBoxesToList(world, pos, aabb, list, entity);
 		}
 
-		this.setBlockBoundsBasedOnState(world, x, y, z);
+		this.setBlockBoundsBasedOnState(world, pos);
 	}
 
 	@Override
 	public void setBlockBoundsBasedOnState(IBlockAccess world, BlockPos pos)
 	{
-		final int meta = world.getBlockState(x, y, z);
+		final int meta = world.getBlockState(pos);
 		final float f = 0.0625F;
 
 		if (meta == 0)

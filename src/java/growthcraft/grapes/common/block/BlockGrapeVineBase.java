@@ -182,7 +182,7 @@ public class BlockGrapeVineBase extends GrcBlockBase implements IPlantable, ICro
 	}
 
 	@Override
-	public Block getPlant(IBlockAccess world, BlockPos pos)
+	public IBlockState getPlant(IBlockAccess world, BlockPos pos)
 	{
 		return this;
 	}
