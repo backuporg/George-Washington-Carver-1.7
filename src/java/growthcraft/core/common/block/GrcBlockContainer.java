@@ -78,7 +78,7 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 	}
 
 	@Override
-	public boolean onBlockEventReceived(World world, BlockPos pos,, int code, int value)
+	public boolean onBlockEventReceived(World world, BlockPos pos, int code, int value)
 	{
 		super.onBlockEventReceived(world, pos, code, value);
 		final TileEntity te = getTileEntity(world, pos);
@@ -301,7 +301,7 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 	}
 
 	@Override
-	public void onBlockPlacedBy(World world, BlockPos pos,, EntityLivingBase entity, ItemStack stack, IBlockState state)
+	public void onBlockPlacedBy(World world, BlockPos pos, EntityLivingBase entity, ItemStack stack, IBlockState state)
 	{
 		super.onBlockPlacedBy(world, pos, state, entity, stack);
 		restoreBlockStateFromStack(world, pos, stack);
@@ -336,7 +336,7 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 	}
 
 	@Override
-	public void breakBlock(World world, BlockPos pos,, Block block, int meta)
+	public void breakBlock(World world, BlockPos pos, Block block, int meta)
 	{
 		if (shouldScatterInventoryOnBreak(world, pos))
 			scatterInventory(world, pos, block);
