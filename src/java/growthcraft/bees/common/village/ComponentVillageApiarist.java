@@ -344,7 +344,7 @@ public class ComponentVillageApiarist extends StructureVillagePieces.Village imp
 			for (int col = 0; col < 9; ++col)
 			{
 				this.clearCurrentPositionBlocksUpwards(world, col, 8, row, box);
-				this.func_151554_b(world, Blocks.COBBLESTONE, 0, col, -1, row, box);
+				this.replaceAirAndLiquidDownwards(world, Blocks.COBBLESTONE, 0, col, -1, row, box);
 			}
 		}
 

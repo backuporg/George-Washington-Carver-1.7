@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
-public abstract class ComponentVillageAppleFarm extends StructureVillagePieces.Village implements SchemaToVillage.IVillage
+public class ComponentVillageAppleFarm extends StructureVillagePieces.Village implements SchemaToVillage.IVillage
 {
 	// Design by Ar97x
 	private static final String[][] appleFarmSchema = {
@@ -148,9 +148,14 @@ public abstract class ComponentVillageAppleFarm extends StructureVillagePieces.V
 			for (int col = 0; col < 11; ++col)
 			{
 				clearCurrentPositionBlocksUpwards(world, col, 7, row, box);
-				func_151554_b(world, Blocks.DIRT, 0, col, -1, row, box);
+				replaceAirAndLiquidDownwards(world, Blocks.DIRT, 0, col, -1, row, box);
 			}
 		}
 		return true;
+	}
+
+	@Override
+	public void placeBlockAtCurrentPositionPub(World world, Block block, int meta, BlockPos pos, StructureBoundingBox box) {
+
 	}
 }

@@ -174,7 +174,7 @@ public class ComponentVillageBambooYard extends StructureVillagePieces.Village i
 			for (int col = 0; col < 11; ++col)
 			{
 				this.clearCurrentPositionBlocksUpwards(world, col, 16, row, box);
-				this.func_151554_b(world, Blocks.DIRT, 0, col, -1, row, box);
+				this.replaceAirAndLiquidDownwards(world, Blocks.DIRT, 0, col, -1, row, box);
 			}
 		}
 

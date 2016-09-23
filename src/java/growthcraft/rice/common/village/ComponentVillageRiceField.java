@@ -147,7 +147,7 @@ public class ComponentVillageRiceField extends StructureVillagePieces.Village im
 			for (int col = 0; col < 11; ++col)
 			{
 				this.clearCurrentPositionBlocksUpwards(world, col, 4, row, box);
-				this.func_151554_b(world, Blocks.DIRT, 0, col, -1, row, box);
+				this.replaceAirAndLiquidDownwards(world, Blocks.DIRT, 0, col, -1, row, box);
 			}
 		}
 

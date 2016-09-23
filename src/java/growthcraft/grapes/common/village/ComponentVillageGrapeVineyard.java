@@ -85,7 +85,7 @@ public class ComponentVillageGrapeVineyard extends StructureVillagePieces.Villag
 			for (loop2 = 0; loop2 < 13; ++loop2)
 			{
 				this.clearCurrentPositionBlocksUpwards(world, loop2, 6, loop, box);
-				this.func_151554_b(world, Blocks.DIRT, 0, loop2, -1, loop, box);
+				this.replaceAirAndLiquidDownwards(world, Blocks.DIRT, 0, loop2, -1, loop, box);
 			}
 		}
 

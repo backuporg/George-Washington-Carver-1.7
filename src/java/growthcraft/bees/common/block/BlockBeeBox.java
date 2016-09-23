@@ -87,14 +87,14 @@ public class BlockBeeBox extends GrcBlockContainer {
 	}
 
 	@Override
-	public void updateTick(World world, BlockPos pos,, Random rand, IBlockState state) {
+	public void updateTick(World world, BlockPos pos, Random rand, IBlockState state) {
 		super.updateTick(world, pos, state, rand);
 		final TileEntityBeeBox te = getTileEntity(world, pos);
 		if (te != null) te.updateBlockTick();
 	}
 
 	@SideOnly(Side.CLIENT)
-	public int randomDisplayTick(World world, BlockPos pos,, Random rand) {
+	public int randomDisplayTick(World world, BlockPos pos, Random rand) {
 		if (rand.nextInt(24) == 0) {
 			final TileEntityBeeBox te = (TileEntityBeeBox) world.getTileEntity(pos);
 			if (te != null) {
@@ -134,7 +134,7 @@ public class BlockBeeBox extends GrcBlockContainer {
 		}
 
 		@Override
-		public void breakBlock (World world, BlockPos pos,, IBlockState block,int par5)
+		public void breakBlock (World world, BlockPos pos, IBlockState block, int par5)
 		{
 			final TileEntityBeeBox te = (TileEntityBeeBox) world.getTileEntity(pos);
 

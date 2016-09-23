@@ -84,7 +84,7 @@ public class ComponentVillageHopVineyard extends StructureVillagePieces.Village
 			for (loop2 = 0; loop2 < 13; ++loop2)
 			{
 				this.clearCurrentPositionBlocksUpwards(world, loop2, 9, loop, box);
-				this.func_151554_b(world, Blocks.DIRT, 0, loop2, -1, loop, box);
+				this.replaceAirAndLiquidDownwards(world, Blocks.DIRT, 0, loop2, -1, loop, box);
 			}
 		}
 

@@ -168,7 +168,7 @@ public class ComponentVillageTavern extends StructureVillagePieces.Village
 			for (x = 0; x < 13; ++x)
 			{
 				this.clearCurrentPositionBlocksUpwards(world, x, 9, z, box);
-				this.func_151554_b(world, Blocks.COBBLESTONE, 0, x, -1, z, box);
+				this.replaceAirAndLiquidDownwards(world, Blocks.COBBLESTONE, 0, x, -1, z, box);
 			}
 		}
 
