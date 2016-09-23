@@ -117,8 +117,7 @@ public class BlockBeeBox extends GrcBlockContainer {
 		 * TRIGGERS
 		 ************/
 		@Override
-		public boolean onBlockActivated (World world, BlockPos pos, EntityPlayer player, int meta, float par7,
-		float par8, float par9)
+		public boolean onBlockActivated (World world, BlockPos pos, EntityPlayer player, int meta, float par7, float par8, float par9);
 		{
 			if (super.onBlockActivated(world, pos, player, meta, par7, par8, par9)) return true;
 			if (world.isRemote) {
@@ -161,7 +160,7 @@ public class BlockBeeBox extends GrcBlockContainer {
 		}
 
 		@Override
-		public TileEntity createNewTileEntity (World world,int par2)
+		public TileEntity createNewTileEntity (World world, int par2)
 		{
 			return new TileEntityBeeBox();
 		}
