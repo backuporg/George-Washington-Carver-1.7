@@ -32,7 +32,7 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -74,9 +74,9 @@ public class ItemBlockFermentBarrel extends GrcItemTileBlockBase
 					}
 					else
 					{
-						list.add(EnumChatFormatting.GRAY +
+						list.add(TextFormatting.GRAY +
 							GrcI18n.translate("grc.tooltip.detailed_information",
-							EnumChatFormatting.WHITE + GrcCoreState.detailedKey + EnumChatFormatting.GRAY));
+							TextFormatting.WHITE + GrcCoreState.detailedKey + TextFormatting.GRAY));
 					}
 				}
 			}

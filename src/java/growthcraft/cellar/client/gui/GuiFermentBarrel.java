@@ -14,7 +14,7 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -140,9 +140,9 @@ public class GuiFermentBarrel extends GuiCellar<ContainerFermentBarrel, TileEnti
 		{
 			case "progress_indicator":
 				tooltip.add(GrcI18n.translate("gui.grc.progress.format",
-					EnumChatFormatting.GRAY + GrcI18n.translate("gui.grccellar.ferment_barrel.progress_name"),
-					"" + EnumChatFormatting.WHITE + tileEntity.getTime(),
-					"" + EnumChatFormatting.GRAY + tileEntity.getTimeMax()));
+					TextFormatting.GRAY + GrcI18n.translate("gui.grccellar.ferment_barrel.progress_name"),
+					"" + TextFormatting.WHITE + tileEntity.getTime(),
+					"" + TextFormatting.GRAY + tileEntity.getTimeMax()));
 				break;
 			case "fluidtank.primary":
 				if (tileEntity.isFluidTankFilled(0))

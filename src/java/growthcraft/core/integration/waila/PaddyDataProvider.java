@@ -10,7 +10,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Optional;
@@ -43,8 +43,8 @@ public class PaddyDataProvider implements IWailaDataProvider
 			final IPaddy prov = (IPaddy)block;
 			final MovingObjectPosition pos = accessor.getPosition();
 			final boolean filledWithFluid = prov.isFilledWithFluid(accessor.getWorld(), pos.blockX, pos.blockY, pos.blockZ, accessor.getMetadata());
-			final String content = EnumChatFormatting.GRAY + GrcI18n.translate("grc.format.paddy.hasFluid") + " " +
-				EnumChatFormatting.WHITE + GrcI18n.translate("grc.format.value." + filledWithFluid);
+			final String content = TextFormatting.GRAY + GrcI18n.translate("grc.format.paddy.hasFluid") + " " +
+				TextFormatting.WHITE + GrcI18n.translate("grc.format.value." + filledWithFluid);
 			tooltip.add(content);
 		}
 		return tooltip;

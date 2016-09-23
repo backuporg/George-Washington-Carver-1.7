@@ -38,7 +38,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Optional;
 
@@ -87,14 +87,14 @@ public class GrcMilkDataProvider implements IWailaDataProvider
 		{
 			if (nbt.getBoolean("is_aged"))
 			{
-				tooltip.add(EnumChatFormatting.GRAY + GrcI18n.translate("grcmilk.cheese.slices.prefix") +
-					EnumChatFormatting.WHITE + GrcI18n.translate("grcmilk.cheese.slices.value.format", nbt.getInteger("slices"), nbt.getInteger("slices_max")));
+				tooltip.add(TextFormatting.GRAY + GrcI18n.translate("grcmilk.cheese.slices.prefix") +
+					TextFormatting.WHITE + GrcI18n.translate("grcmilk.cheese.slices.value.format", nbt.getInteger("slices"), nbt.getInteger("slices_max")));
 			}
 			else
 			{
 				final float ageProgress = nbt.getFloat("age_progress");
-				final String result = EnumChatFormatting.GRAY + GrcI18n.translate("grcmilk.cheese.aging.prefix") +
-					EnumChatFormatting.WHITE + GrcI18n.translate("grcmilk.cheese.aging.progress.format", (int)(ageProgress * 100));
+				final String result = TextFormatting.GRAY + GrcI18n.translate("grcmilk.cheese.aging.prefix") +
+					TextFormatting.WHITE + GrcI18n.translate("grcmilk.cheese.aging.progress.format", (int)(ageProgress * 100));
 				tooltip.add(result);
 			}
 		}
@@ -103,8 +103,8 @@ public class GrcMilkDataProvider implements IWailaDataProvider
 			final float progress = nbt.getFloat("progress");
 			if (progress < 1f)
 			{
-				final String result = EnumChatFormatting.GRAY + GrcI18n.translate("grcmilk.hanging_curds.drying.prefix") +
-					EnumChatFormatting.WHITE + GrcI18n.translate("grcmilk.hanging_curds.drying.progress.format", (int)(progress * 100));
+				final String result = TextFormatting.GRAY + GrcI18n.translate("grcmilk.hanging_curds.drying.prefix") +
+					TextFormatting.WHITE + GrcI18n.translate("grcmilk.hanging_curds.drying.progress.format", (int)(progress * 100));
 				tooltip.add(result);
 			}
 			if (nbt.hasKey("dried"))

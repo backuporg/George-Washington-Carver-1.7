@@ -38,7 +38,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fml.relauncher.Side;
@@ -150,9 +150,9 @@ public class ItemBoozeBottle extends GrcItemFoodBase implements IFluidItem
 		BoozeUtils.addBottleInformation(getFluid(stack), stack, player, list, bool, showDetailed);
 		if (!showDetailed)
 		{
-			list.add(EnumChatFormatting.GRAY +
+			list.add(TextFormatting.GRAY +
 					GrcI18n.translate("grc.tooltip.detailed_information",
-						EnumChatFormatting.WHITE + GrcCoreState.detailedKey + EnumChatFormatting.GRAY));
+						TextFormatting.WHITE + GrcCoreState.detailedKey + TextFormatting.GRAY));
 		}
 	}
 

@@ -15,7 +15,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -66,12 +68,12 @@ public class BlockBeeBox extends GrcBlockContainer {
 	}
 
 	@Override
-	public int getFlammability(IBlockAccess world, BlockPos pos,, EnumFacing face) {
+	public int getFlammability(IBlockAccess world, BlockPos pos, EnumFacing face) {
 		return flammability;
 	}
 
 	@Override
-	public int getFireSpreadSpeed(IBlockAccess world, BlockPos pos,, EnumFacing face) {
+	public int getFireSpreadSpeed(IBlockAccess world, BlockPos pos, EnumFacing face) {
 		return fireSpreadSpeed;
 	}
 
@@ -115,7 +117,7 @@ public class BlockBeeBox extends GrcBlockContainer {
 		 * TRIGGERS
 		 ************/
 		@Override
-		public boolean onBlockActivated (World world, BlockPos pos,, EntityPlayer player,int meta, float par7,
+		public boolean onBlockActivated (World world, BlockPos pos, EntityPlayer player, int meta, float par7,
 		float par8, float par9)
 		{
 			if (super.onBlockActivated(world, pos, player, meta, par7, par8, par9)) return true;
@@ -153,7 +155,7 @@ public class BlockBeeBox extends GrcBlockContainer {
 		 * CONDITIONS
 		 ************/
 		@Override
-		public boolean isSideSolid (IBlockAccess world, BlockPos pos,, EnumFacing side)
+		public boolean isSideSolid (IBlockAccess world, BlockPos pos, EnumFacing side)
 		{
 			return EnumFacing.UP == side;
 		}
@@ -168,7 +170,7 @@ public class BlockBeeBox extends GrcBlockContainer {
 		 * DROPS
 		 ************/
 		@Override
-		public int damageDropped ( int damage)
+		public int damageDropped (int damage)
 		{
 			return damage;
 		}
@@ -183,7 +185,7 @@ public class BlockBeeBox extends GrcBlockContainer {
 		 * TEXTURES
 		 ************/
 		@SideOnly(Side.CLIENT)
-		protected void registerBeeBoxIcons (IIconRegister reg, String basename,int offset)
+		protected void registerBeeBoxIcons (IIconRegister reg, String basename, int offset)
 		{
 			icons[offset * 4] = reg.registerIcon(getTextureName() + basename + "bottom");
 			icons[offset * 4 + 1] = reg.registerIcon(getTextureName() + basename + "top");
@@ -210,7 +212,7 @@ public class BlockBeeBox extends GrcBlockContainer {
 
 		@Override
 		@SideOnly(Side.CLIENT)
-		public IIcon getIcon (IBlockAccess world, BlockPos pos,,int side);
+		public IIcon getIcon (IBlockAccess world, BlockPos pos, int side);
 		{
 			final int meta = world.getBlockState(pos);
 			final int offset = calculateIconOffset(meta);
@@ -269,7 +271,7 @@ public class BlockBeeBox extends GrcBlockContainer {
 
 		@Override
 		@SideOnly(Side.CLIENT)
-		public boolean shouldSideBeRendered (IBlockAccess world, BlockPos pos,,int side)
+		public boolean shouldSideBeRendered (IBlockAccess world, BlockPos pos, int side)
 		{
 			return true;
 		}

@@ -10,7 +10,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Optional;
@@ -43,7 +43,7 @@ public class CropDataProvider implements IWailaDataProvider
 			final ICropDataProvider	prov = (ICropDataProvider)block;
 			final MovingObjectPosition pos = accessor.getPosition();
 			final float growth = prov.getGrowthProgress(accessor.getWorld(), pos.blockX, pos.blockY, pos.blockZ, accessor.getMetadata());
-			String content = EnumChatFormatting.GRAY + GrcI18n.translate("grc.format.crop.growth_prefix") + " " + EnumChatFormatting.WHITE;
+			String content = TextFormatting.GRAY + GrcI18n.translate("grc.format.crop.growth_prefix") + " " + TextFormatting.WHITE;
 			if (growth >= 1.0f)
 			{
 				content += GrcI18n.translate("grc.format.crop.mature");

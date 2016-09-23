@@ -42,7 +42,7 @@ import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
@@ -478,9 +478,9 @@ public class ItemWaterBag extends GrcItemBase implements IFluidContainerItem, IE
 			}
 			else
 			{
-				list.add(EnumChatFormatting.GRAY +
+				list.add(TextFormatting.GRAY +
 					GrcI18n.translate("grc.tooltip.detailed_information",
-						EnumChatFormatting.WHITE + GrcCoreState.detailedKey + EnumChatFormatting.GRAY));
+						TextFormatting.WHITE + GrcCoreState.detailedKey + TextFormatting.GRAY));
 			}
 		}
 	}

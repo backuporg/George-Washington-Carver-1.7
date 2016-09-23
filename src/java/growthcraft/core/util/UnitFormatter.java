@@ -29,7 +29,7 @@ import growthcraft.api.core.CoreRegistry;
 import growthcraft.api.core.fluids.FluidTag;
 import growthcraft.api.core.i18n.GrcI18n;
 import growthcraft.core.GrowthCraftCore;
-import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 
@@ -42,7 +42,7 @@ import java.util.Collection;
  */
 public class UnitFormatter
 {
-	public static final String fractionSeparator = EnumChatFormatting.GRAY + " / ";
+	public static final String fractionSeparator = TextFormatting.GRAY + " / ";
 
 	private UnitFormatter() {}
 
@@ -53,7 +53,7 @@ public class UnitFormatter
 
 	public static String fractionNum(int a, int b)
 	{
-		return fraction("" + EnumChatFormatting.WHITE + a, "" + EnumChatFormatting.WHITE + b);
+		return fraction("" + TextFormatting.WHITE + a, "" + TextFormatting.WHITE + b);
 	}
 
 	public static String fluidBucketName(Fluid fluid)
@@ -85,7 +85,7 @@ public class UnitFormatter
 			modifierString = str;
 		}
 
-		return EnumChatFormatting.GREEN + modifierString;
+		return TextFormatting.GREEN + modifierString;
 	}
 
 	@Nullable
@@ -105,12 +105,12 @@ public class UnitFormatter
 			if (modifier != null)
 			{
 				return GrcI18n.translate("grc.format.booze.name",
-					EnumChatFormatting.WHITE + fluidStack.getLocalizedName(), modifier);
+					TextFormatting.WHITE + fluidStack.getLocalizedName(), modifier);
 			}
 			else
 			{
 				return GrcI18n.translate("grc.format.fluid.name",
-						EnumChatFormatting.WHITE + fluidStack.getLocalizedName());
+						TextFormatting.WHITE + fluidStack.getLocalizedName());
 			}
 		}
 		return null;
@@ -135,7 +135,7 @@ public class UnitFormatter
 	 */
 	public static String noItem()
 	{
-		return EnumChatFormatting.GRAY + GrcI18n.translate("grc.format.itemslot.empty");
+		return TextFormatting.GRAY + GrcI18n.translate("grc.format.itemslot.empty");
 	}
 
 	/**
@@ -143,7 +143,7 @@ public class UnitFormatter
 	 */
 	public static String invalidItem()
 	{
-		return EnumChatFormatting.RED + GrcI18n.translate("grc.format.itemslot.invalid");
+		return TextFormatting.RED + GrcI18n.translate("grc.format.itemslot.invalid");
 	}
 
 	/**
@@ -151,7 +151,7 @@ public class UnitFormatter
 	 */
 	public static String noFluid()
 	{
-		return EnumChatFormatting.GRAY + GrcI18n.translate("grc.format.tank.empty");
+		return TextFormatting.GRAY + GrcI18n.translate("grc.format.tank.empty");
 	}
 
 	/**
@@ -159,7 +159,7 @@ public class UnitFormatter
 	 */
 	public static String invalidFluid()
 	{
-		return EnumChatFormatting.RED + GrcI18n.translate("grc.format.invalid_fluid");
+		return TextFormatting.RED + GrcI18n.translate("grc.format.invalid_fluid");
 	}
 
 	/**

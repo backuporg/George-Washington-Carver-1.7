@@ -28,7 +28,7 @@ import growthcraft.api.core.util.ConstID;
 import growthcraft.api.core.util.ITagFormatter;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.text.TextFormatting;
 
 import java.util.List;
 
@@ -51,7 +51,7 @@ public class TagFormatterItem implements ITagFormatter
 			final ItemStack stack = ItemStack.loadItemStackFromNBT(tag);
 			if (stack != null)
 			{
-				return EnumChatFormatting.WHITE + GrcI18n.translate("grc.format.itemslot.item", stack.getDisplayName(), stack.stackSize);
+				return TextFormatting.WHITE + GrcI18n.translate("grc.format.itemslot.item", stack.getDisplayName(), stack.stackSize);
 			}
 			else
 			{
