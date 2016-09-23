@@ -330,7 +330,7 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 		}
 	}
 
-	protected boolean shouldScatterInventoryOnBreak(World world, BlockPos pos,)
+	protected boolean shouldScatterInventoryOnBreak(World world, BlockPos pos)
 	{
 		return true;
 	}
@@ -539,7 +539,7 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 	}
 
 	@SuppressWarnings("unchecked")
-	public <T extends TileEntity> T getTileEntity(IBlockAccess world, BlockPos pos,)
+	public <T extends TileEntity> T getTileEntity(IBlockAccess world, BlockPos pos)
 	{
 		final TileEntity te = world.getTileEntity(pos);
 		if (te != null)
