@@ -43,7 +43,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
@@ -395,11 +395,11 @@ public class ItemWaterBag extends GrcItemBase implements IFluidContainerItem, IE
 
 	private boolean tryFillByBlock(ItemStack stack, World world, EntityPlayer player)
 	{
-		final MovingObjectPosition pos = this.getMovingObjectPositionFromPlayer(world, player, true);
+		final RayTraceResult pos = this.getMovingObjectPositionFromPlayer(world, player, true);
 
 		if (pos != null)
 		{
-			if (pos.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK)
+			if (pos.typeOfHit == RayTraceResult.MovingObjectType.BLOCK)
 			{
 				final int i = pos.blockX;
 				final int j = pos.blockY;

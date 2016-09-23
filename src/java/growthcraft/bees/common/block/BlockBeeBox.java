@@ -10,12 +10,12 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
@@ -94,7 +94,7 @@ public class BlockBeeBox extends GrcBlockContainer {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public int randomDisplayTick(World world, BlockPos pos, Random rand) {
+	public boolean randomDisplayTick(World world, BlockPos pos, Random rand) {
 		if (rand.nextInt(24) == 0) {
 			final TileEntityBeeBox te = (TileEntityBeeBox) world.getTileEntity(pos);
 			if (te != null) {
@@ -281,31 +281,38 @@ public class BlockBeeBox extends GrcBlockContainer {
 		@Override
 		public void setBlockBoundsForItemRender ()
 		{
-			setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+			getBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 		}
 
 		@Override
 		@SuppressWarnings({"rawtypes", "unchecked"})
-		public void addCollisionBoxesToList (World world, BlockPos pos, IBlockState state, AxisAlignedBB axis, List list, Entity entity)
+		public void getCollisionBoundingBox (World world, BlockPos pos, IBlockState state, AxisAlignedBB axis, List list, Entity entity)
 		{
+			final AxisAlignedBB axis = null;
+			final BlockPos pos = null;
+			final IBlockState state = null;
+			final List list = null;
+			final Entity entity = null;
+			final World world = null;
+
 			final float f = 0.0625F;
 			// LEGS
-			setBlockBounds(3 * f, 0.0F, 3 * f, 5 * f, 3 * f, 5 * f);
-			super.addCollisionBoxesToList(world, pos, state, axis, list, entity);
-			setBlockBounds(11 * f, 0.0F, 3 * f, 13 * f, 3 * f, 5 * f);
-			super.addCollisionBoxesToList(world, pos, state, axis, list, entity);
-			setBlockBounds(3 * f, 0.0F, 11 * f, 5 * f, 3 * f, 13 * f);
-			super.addCollisionBoxesToList(world, pos, state, axis, list, entity);
-			setBlockBounds(11 * f, 0.0F, 11 * f, 13 * f, 3 * f, 13 * f);
-			super.addCollisionBoxesToList(world, pos, state, axis, list, entity);
+			getBoundingBox(3 * f, 0.0F, 3 * f, 5 * f, 3 * f, 5 * f);
+			super.getCollisionBoundingBox (world, pos, state, axis, list, entity);
+			getBoundingBox(11 * f, 0.0F, 3 * f, 13 * f, 3 * f, 5 * f);
+			super.getCollisionBoundingBox(world, pos, state, axis, list, entity);
+			getBoundingBox(3 * f, 0.0F, 11 * f, 5 * f, 3 * f, 13 * f);
+			super.getCollisionBoundingBox (world, pos, state, axis, list, entity);
+			getBoundingBox(11 * f, 0.0F, 11 * f, 13 * f, 3 * f, 13 * f);
+			super.getCollisionBoundingBox (world, pos, state, axis, list, entity);
 			// BODY
-			setBlockBounds(1 * f, 3 * f, 1 * f, 15 * f, 10 * f, 15 * f);
-			super.addCollisionBoxesToList(world, pos, state, axis, list, entity);
+			getBoundingBox(1 * f, 3 * f, 1 * f, 15 * f, 10 * f, 15 * f);
+			super.getCollisionBoundingBox (world, pos, state, axis, list, entity);
 			// ROOF
-			setBlockBounds(0.0F, 10 * f, 0.0F, 1.0F, 13 * f, 1.0F);
-			super.addCollisionBoxesToList(world, pos, state, axis, list, entity);
-			setBlockBounds(2 * f, 13 * f, 2 * f, 14 * f, 1.0F, 14 * f);
-			super.addCollisionBoxesToList(world, pos, state, axis, list, entity);
+			getBoundingBox(0.0F, 10 * f, 0.0F, 1.0F, 13 * f, 1.0F);
+			super.getCollisionBoundingBox (world, pos, state, axis, list, entity);
+			getBoundingBox(2 * f, 13 * f, 2 * f, 14 * f, 1.0F, 14 * f);
+			super.getCollisionBoundingBox (world, pos, state, axis, list, entity);
 			setBlockBoundsForItemRender();
 		}
 

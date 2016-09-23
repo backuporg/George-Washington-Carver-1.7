@@ -148,12 +148,12 @@ public class BlockFenceRope extends GrcBlockBase implements IBlockRope
 			f1 = 1.0F;
 		}
 
-		this.setBlockBounds(f, 0.0F, f2, f1, 1.0F, f3);
+		this.getBoundingBox(f, 0.0F, f2, f1, 1.0F, f3);
 	}
 
 	@Override
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void addCollisionBoxesToList(World world, BlockPos pos, AxisAlignedBB aabb, List list, Entity entity)
+	public void getCollisionBoundingBox(World world, BlockPos pos, AxisAlignedBB aabb, List list, Entity entity)
 	{
 		final boolean flag = this.canConnectRopeTo(world, x, y, z - 1);
 		final boolean flag1 = this.canConnectRopeTo(world, x, y, z + 1);
@@ -176,8 +176,8 @@ public class BlockFenceRope extends GrcBlockBase implements IBlockRope
 
 		if (flag || flag1)
 		{
-			this.setBlockBounds(f, 0.4375F, f2, f1, 0.5625F, f3);
-			super.addCollisionBoxesToList(world, x, y, z, aabb, list, entity);
+			this.getBoundingBox(f, 0.4375F, f2, f1, 0.5625F, f3);
+			super.getCollisionBoundingBox(world, x, y, z, aabb, list, entity);
 		}
 
 		f2 = 0.375F;
@@ -195,8 +195,8 @@ public class BlockFenceRope extends GrcBlockBase implements IBlockRope
 
 		if (flag2 || flag3 || !flag && !flag1)
 		{
-			this.setBlockBounds(f, 0.4375F, f2, f1, 0.5625F, f3);
-			super.addCollisionBoxesToList(world, x, y, z, aabb, list, entity);
+			this.getBoundingBox(f, 0.4375F, f2, f1, 0.5625F, f3);
+			super.getCollisionBoundingBox(world, x, y, z, aabb, list, entity);
 		}
 
 		if (flag)

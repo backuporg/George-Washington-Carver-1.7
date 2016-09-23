@@ -69,7 +69,7 @@ public abstract class BlockThistle extends BlockBush implements ISpreadablePlant
 		setStepSound(soundTypeGrass);
 		setCreativeTab(GrowthCraftMilk.creativeTab);
 		final BBox bb = BBox.newCube(2f, 0f, 2f, 12f, 16f, 12f).scale(1f / 16f);
-		setBlockBounds(bb.x0(), bb.y0(), bb.z0(), bb.x1(), bb.y1(), bb.z1());
+		getBoundingBox(bb.x0(), bb.y0(), bb.z0(), bb.x1(), bb.y1(), bb.z1());
 		this.spreadLogic = new FlowerSpread(new CuboidI(-1, -1, -1, 2, 2, 2));
 	}
 

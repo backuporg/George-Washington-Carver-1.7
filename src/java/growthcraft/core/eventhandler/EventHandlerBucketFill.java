@@ -28,7 +28,7 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.FillBucketEvent;
 import net.minecraftforge.fml.common.eventhandler.Event.Result;
@@ -43,8 +43,8 @@ public class EventHandlerBucketFill
 	public static interface IBucketEntry
 	{
 		ItemStack getItemStack();
-		boolean matches(@Nonnull World world, @Nonnull MovingObjectPosition pos);
-		void commit(@Nonnull EntityPlayer player, @Nonnull World world, @Nonnull MovingObjectPosition pos);
+		boolean matches(@Nonnull World world, @Nonnull RayTraceResult pos);
+		void commit(@Nonnull EntityPlayer player, @Nonnull World world, @Nonnull RayTraceResult pos);
 	}
 
 	public static class GenericBucketEntry implements IBucketEntry
@@ -63,7 +63,7 @@ public class EventHandlerBucketFill
 			return itemStack;
 		}
 
-		public boolean matches(@Nonnull World world, @Nonnull MovingObjectPosition pos)
+		public boolean matches(@Nonnull World world, @Nonnull RayTraceResult pos)
 		{
 			final Block srcBlock = world.getBlockState(pos.blockX, pos.blockY, pos.blockZ);
 
@@ -74,7 +74,7 @@ public class EventHandlerBucketFill
 			return false;
 		}
 
-		public void commit(@Nonnull EntityPlayer player, @Nonnull World world, @Nonnull MovingObjectPosition pos)
+		public void commit(@Nonnull EntityPlayer player, @Nonnull World world, @Nonnull RayTraceResult pos)
 		{
 			world.setBlockToAir(pos.blockX, pos.blockY, pos.blockZ);
 		}

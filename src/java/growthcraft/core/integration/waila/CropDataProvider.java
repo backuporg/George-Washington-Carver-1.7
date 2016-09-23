@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Optional;
 
@@ -41,7 +41,7 @@ public class CropDataProvider implements IWailaDataProvider
 		if (block instanceof ICropDataProvider)
 		{
 			final ICropDataProvider	prov = (ICropDataProvider)block;
-			final MovingObjectPosition pos = accessor.getPosition();
+			final RayTraceResult pos = accessor.getPosition();
 			final float growth = prov.getGrowthProgress(accessor.getWorld(), pos.blockX, pos.blockY, pos.blockZ, accessor.getMetadata());
 			String content = TextFormatting.GRAY + GrcI18n.translate("grc.format.crop.growth_prefix") + " " + TextFormatting.WHITE;
 			if (growth >= 1.0f)

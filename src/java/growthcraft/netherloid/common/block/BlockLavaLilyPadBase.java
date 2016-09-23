@@ -46,7 +46,7 @@ public class BlockLavaLilyPadBase extends BlockBush
 		setSoundType(SoundType.PLANT);
 		final float var1 = 0.5F;
 		final float var2 = 0.015625F;
-		setBlockBounds(0.5F - var1, 0.0F, 0.5F - var1, 0.5F + var1, var2, 0.5F + var1);
+		getBoundingBox(0.5F - var1, 0.0F, 0.5F - var1, 0.5F + var1, var2, 0.5F + var1);
 	}
 
 	@Override
@@ -60,11 +60,11 @@ public class BlockLavaLilyPadBase extends BlockBush
 		return Blocks.LAVA == block;
 	}
 
-	public void addCollisionBoxesToList(World world, BlockPos pos, AxisAlignedBB bb, List list, Entity entity)
+	public void getCollisionBoundingBox(World world, BlockPos pos, AxisAlignedBB bb, List list, Entity entity)
 	{
 		if (entity == null || !(entity instanceof EntityBoat))
 		{
-			super.addCollisionBoxesToList(world, x, y, z, bb, list, entity);
+			super.getCollisionBoundingBox(world, x, y, z, bb, list, entity);
 		}
 	}
 

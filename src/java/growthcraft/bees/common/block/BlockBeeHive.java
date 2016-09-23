@@ -252,22 +252,22 @@ public class BlockBeeHive extends GrcBlockBase
 	public void setBlockBoundsForItemRender()
 	{
 		final float f = 0.0625F;
-		this.setBlockBounds(2*f, 0.0F, 2*f, 14*f, 1.0F, 14*f);
+		this.getBoundingBox(2*f, 0.0F, 2*f, 14*f, 1.0F, 14*f);
 	}
 
 	@Override
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void addCollisionBoxesToList(World world, BlockPos pos, AxisAlignedBB axis, List list, Entity entity)
+	public void getCollisionBoundingBox(World world, BlockPos pos, AxisAlignedBB axis, List list, Entity entity)
 	{
 		final float f = 0.0625F;
-		this.setBlockBounds(4*f, 0.0F, 4*f, 12*f, 14*f, 12*f);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
-		this.setBlockBounds(3*f, 1*f, 3*f, 13*f, 13*f, 13*f);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
-		this.setBlockBounds(2*f, 4*f, 2*f, 14*f, 10*f, 14*f);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
-		this.setBlockBounds(7*f, 14*f, 7*f, 9*f, 1.0F, 9*f);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(4*f, 0.0F, 4*f, 12*f, 14*f, 12*f);
+		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(3*f, 1*f, 3*f, 13*f, 13*f, 13*f);
+		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(2*f, 4*f, 2*f, 14*f, 10*f, 14*f);
+		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(7*f, 14*f, 7*f, 9*f, 1.0F, 9*f);
+		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 		this.setBlockBoundsForItemRender();
 	}
 }

@@ -472,7 +472,7 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 	 ************/
 	@Override
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void addCollisionBoxesToList(World world, BlockPos pos, AxisAlignedBB aabb, List list, Entity entity)
+	public void getCollisionBoundingBox(World world, BlockPos pos, AxisAlignedBB aabb, List list, Entity entity)
 	{
 		final boolean flag = this.canConnectRopeTo(world, x, y, z - 1);
 		final boolean flag1 = this.canConnectRopeTo(world, x, y, z + 1);
@@ -499,8 +499,8 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 
 		if (flag || flag1)
 		{
-			this.setBlockBounds(f, f4, f2, f1, f5, f3);
-			super.addCollisionBoxesToList(world, x, y, z, aabb, list, entity);
+			this.getBoundingBox(f, f4, f2, f1, f5, f3);
+			super.getCollisionBoundingBox(world, x, y, z, aabb, list, entity);
 		}
 
 		f2 = 0.4375F;
@@ -518,8 +518,8 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 
 		if (flag2 || flag3)
 		{
-			this.setBlockBounds(f, f4, f2, f1, f5, f3);
-			super.addCollisionBoxesToList(world, x, y, z, aabb, list, entity);
+			this.getBoundingBox(f, f4, f2, f1, f5, f3);
+			super.getCollisionBoundingBox(world, x, y, z, aabb, list, entity);
 		}
 
 		f = 0.4375F;
@@ -537,8 +537,8 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 
 		if (flag4 || flag5)
 		{
-			this.setBlockBounds(f, f4, f2, f1, f5, f3);
-			super.addCollisionBoxesToList(world, x, y, z, aabb, list, entity);
+			this.getBoundingBox(f, f4, f2, f1, f5, f3);
+			super.getCollisionBoundingBox(world, x, y, z, aabb, list, entity);
 		}
 
 		this.setBlockBoundsBasedOnState(world, x, y, z);
@@ -553,13 +553,13 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 		switch (meta)
 		{
 			case 0:
-				this.setBlockBounds(6*f, 0.0F, 6*f, 10*f, 5*f, 10*f);
+				this.getBoundingBox(6*f, 0.0F, 6*f, 10*f, 5*f, 10*f);
 				break;
 			case 1:
-				this.setBlockBounds(4*f, 0.0F, 4*f, 12*f, 8*f, 12*f);
+				this.getBoundingBox(4*f, 0.0F, 4*f, 12*f, 8*f, 12*f);
 				break;
 			default:
-				this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+				this.getBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 				break;
 		}
 	}

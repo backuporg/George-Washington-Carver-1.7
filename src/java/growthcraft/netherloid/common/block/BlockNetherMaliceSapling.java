@@ -56,7 +56,7 @@ public class BlockNetherMaliceSapling extends BlockBush implements IGrowable
 		setTickRandomly(true);
 		setCreativeTab(netherloid.tab);
 		final float f = 0.4F;
-		setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 2.0F, 0.5F + f);
+		getBoundingBox(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 2.0F, 0.5F + f);
 	}
 
 	/************

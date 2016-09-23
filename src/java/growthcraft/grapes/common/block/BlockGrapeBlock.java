@@ -31,7 +31,7 @@ public class BlockGrapeBlock extends GrcBlockBase
 		setHardness(0.0F);
 		setStepSound(soundTypeGrass);
 		setBlockName("grc.grapeBlock");
-		setBlockBounds(0.1875F, 0.5F, 0.1875F, 0.8125F, 1.0F, 0.8125F);
+		getBoundingBox(0.1875F, 0.5F, 0.1875F, 0.8125F, 1.0F, 0.8125F);
 		setCreativeTab(null);
 	}
 

@@ -346,7 +346,7 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 	@Override
 	public void setBlockBoundsBasedOnState(IBlockAccess world, BlockPos pos)
 	{
-		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.25F, 1.0F);
+		this.getBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 0.25F, 1.0F);
 	}
 
 	@Override

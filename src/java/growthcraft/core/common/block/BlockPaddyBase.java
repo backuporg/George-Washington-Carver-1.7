@@ -200,17 +200,17 @@ public abstract class BlockPaddyBase extends GrcBlockBase implements IPaddy
 	@Override
 	public void setBlockBoundsForItemRender()
 	{
-		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+		this.getBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 	}
 
 	@Override
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void addCollisionBoxesToList(World world, int i, int j, int k, AxisAlignedBB axis, List list, Entity entity)
+	public void getCollisionBoundingBox(World world, int i, int j, int k, AxisAlignedBB axis, List list, Entity entity)
 	{
 		final int meta = world.getBlockState(i, j, k);
 
-		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.875F, 1.0F);
-		super.addCollisionBoxesToList(world, i, j, k, axis, list, entity);
+		this.getBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 0.875F, 1.0F);
+		super.getCollisionBoundingBox(world, i, j, k, axis, list, entity);
 
 		final float thick = 0.125F;
 		final float j1 = 0.875F;
@@ -232,8 +232,8 @@ public abstract class BlockPaddyBase extends GrcBlockBase implements IPaddy
 			k1 = 0.0F + thick;
 			k2 = 1.0F - thick;
 
-			this.setBlockBounds(i1, j1, k1, i2, j2, k2);
-			super.addCollisionBoxesToList(world, i, j, k, axis, list, entity);
+			this.getBoundingBox(i1, j1, k1, i2, j2, k2);
+			super.getCollisionBoundingBox(world, i, j, k, axis, list, entity);
 		}
 
 		if (!boolXNeg)
@@ -243,8 +243,8 @@ public abstract class BlockPaddyBase extends GrcBlockBase implements IPaddy
 			k1 = 0.0F + thick;
 			k2 = 1.0F - thick;
 
-			this.setBlockBounds(i1, j1, k1, i2, j2, k2);
-			super.addCollisionBoxesToList(world, i, j, k, axis, list, entity);
+			this.getBoundingBox(i1, j1, k1, i2, j2, k2);
+			super.getCollisionBoundingBox(world, i, j, k, axis, list, entity);
 		}
 
 		if (!boolYPos)
@@ -254,8 +254,8 @@ public abstract class BlockPaddyBase extends GrcBlockBase implements IPaddy
 			k1 = 1.0F - thick;
 			k2 = 1.0F;
 
-			this.setBlockBounds(i1, j1, k1, i2, j2, k2);
-			super.addCollisionBoxesToList(world, i, j, k, axis, list, entity);
+			this.getBoundingBox(i1, j1, k1, i2, j2, k2);
+			super.getCollisionBoundingBox(world, i, j, k, axis, list, entity);
 		}
 
 		if (!boolYNeg)
@@ -265,33 +265,33 @@ public abstract class BlockPaddyBase extends GrcBlockBase implements IPaddy
 			k1 = 0.0F;
 			k2 = 0.0F + thick;
 
-			this.setBlockBounds(i1, j1, k1, i2, j2, k2);
-			super.addCollisionBoxesToList(world, i, j, k, axis, list, entity);
+			this.getBoundingBox(i1, j1, k1, i2, j2, k2);
+			super.getCollisionBoundingBox(world, i, j, k, axis, list, entity);
 		}
 
 		//corners
 		if ((!canConnectPaddyTo(world, i - 1, j, k - 1, meta)) || (!boolXNeg) || (!boolYNeg))
 		{
-			this.setBlockBounds(0.0F, j1, 0.0F, 0.0F + thick, j2, 0.0F + thick);
-			super.addCollisionBoxesToList(world, i, j, k, axis, list, entity);
+			this.getBoundingBox(0.0F, j1, 0.0F, 0.0F + thick, j2, 0.0F + thick);
+			super.getCollisionBoundingBox(world, i, j, k, axis, list, entity);
 		}
 
 		if ((!canConnectPaddyTo(world, i + 1, j, k - 1, meta)) || (!boolXPos) || (!boolYNeg))
 		{
-			this.setBlockBounds(1.0F - thick, j1, 0.0F, 1.0F, j2, 0.0F + thick);
-			super.addCollisionBoxesToList(world, i, j, k, axis, list, entity);
+			this.getBoundingBox(1.0F - thick, j1, 0.0F, 1.0F, j2, 0.0F + thick);
+			super.getCollisionBoundingBox(world, i, j, k, axis, list, entity);
 		}
 
 		if ((!canConnectPaddyTo(world, i - 1, j, k + 1, meta)) || (!boolXNeg) || (!boolYPos))
 		{
-			this.setBlockBounds(0.0F, j1, 1.0F - thick, 0.0F + thick, j2, 1.0F);
-			super.addCollisionBoxesToList(world, i, j, k, axis, list, entity);
+			this.getBoundingBox(0.0F, j1, 1.0F - thick, 0.0F + thick, j2, 1.0F);
+			super.getCollisionBoundingBox(world, i, j, k, axis, list, entity);
 		}
 
 		if ((!canConnectPaddyTo(world, i + 1, j, k + 1, meta)) || (!boolXPos) || (!boolYPos))
 		{
-			this.setBlockBounds(1.0F - thick, j1, 1.0F - thick, 1.0F, j2, 1.0F);
-			super.addCollisionBoxesToList(world, i, j, k, axis, list, entity);
+			this.getBoundingBox(1.0F - thick, j1, 1.0F - thick, 1.0F, j2, 1.0F);
+			super.getCollisionBoundingBox(world, i, j, k, axis, list, entity);
 		}
 
 		this.setBlockBoundsForItemRender();

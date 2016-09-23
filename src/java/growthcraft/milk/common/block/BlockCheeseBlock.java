@@ -38,7 +38,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -63,7 +63,7 @@ public class BlockCheeseBlock extends GrcBlockContainer
 		setCreativeTab(GrowthCraftMilk.creativeTab);
 		setTileEntityType(TileEntityCheeseBlock.class);
 		final BBox bb = BBox.newCube(4f, 0f, 4f, 8f, 8f, 8f).scale(1f / 16f);
-		setBlockBounds(bb.x0(), bb.y0(), bb.z0(), bb.x1(), bb.y1(), bb.z1());
+		getBoundingBox(bb.x0(), bb.y0(), bb.z0(), bb.x1(), bb.y1(), bb.z1());
 	}
 
 	@Override
@@ -125,7 +125,7 @@ public class BlockCheeseBlock extends GrcBlockContainer
 	}
 
 	@Override
-	public ItemStack getPickBlock(MovingObjectPosition target, World world, BlockPos pos, EntityPlayer player)
+	public ItemStack getPickBlock(RayTraceResult target, World world, BlockPos pos, EntityPlayer player)
 	{
 		final TileEntityCheeseBlock teCheeseBlock = getTileEntity(world, x, y, z);
 		if (teCheeseBlock != null)

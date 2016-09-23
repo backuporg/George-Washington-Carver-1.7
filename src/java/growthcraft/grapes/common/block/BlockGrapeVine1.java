@@ -140,22 +140,22 @@ public class BlockGrapeVine1 extends BlockGrapeVineBase
 	 ************/
 	@Override
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void addCollisionBoxesToList(World world, BlockPos pos, AxisAlignedBB aabb, List list, Entity entity)
+	public void getCollisionBoundingBox(World world, BlockPos pos, AxisAlignedBB aabb, List list, Entity entity)
 	{
 		final int meta = world.getBlockState(pos);
 		final float f = 0.0625F;
 
 		if (meta == 0)
 		{
-			this.setBlockBounds(6*f, 0.0F, 6*f, 10*f, 0.5F, 10*f);
-			super.addCollisionBoxesToList(world, pos, aabb, list, entity);
-			this.setBlockBounds(4*f, 0.5F, 4*f, 12*f, 1.0F, 12*f);
-			super.addCollisionBoxesToList(world, pos, aabb, list, entity);
+			this.getBoundingBox(6*f, 0.0F, 6*f, 10*f, 0.5F, 10*f);
+			super.getCollisionBoundingBox(world, pos, aabb, list, entity);
+			this.getBoundingBox(4*f, 0.5F, 4*f, 12*f, 1.0F, 12*f);
+			super.getCollisionBoundingBox(world, pos, aabb, list, entity);
 		}
 		else if (meta == 1)
 		{
-			this.setBlockBounds(6*f, 0.0F, 6*f, 10*f, 1.0F, 10*f);
-			super.addCollisionBoxesToList(world, pos, aabb, list, entity);
+			this.getBoundingBox(6*f, 0.0F, 6*f, 10*f, 1.0F, 10*f);
+			super.getCollisionBoundingBox(world, pos, aabb, list, entity);
 		}
 
 		this.setBlockBoundsBasedOnState(world, pos);
@@ -169,11 +169,11 @@ public class BlockGrapeVine1 extends BlockGrapeVineBase
 
 		if (meta == 0)
 		{
-			this.setBlockBounds(4*f, 0.0F, 4*f, 12*f, 1.0F, 12*f);
+			this.getBoundingBox(4*f, 0.0F, 4*f, 12*f, 1.0F, 12*f);
 		}
 		else
 		{
-			this.setBlockBounds(6*f, 0.0F, 6*f, 10*f, 1.0F, 10*f);
+			this.getBoundingBox(6*f, 0.0F, 6*f, 10*f, 1.0F, 10*f);
 		}
 	}
 }

@@ -259,15 +259,15 @@ public abstract class BlockNetherMaliceFruit extends Block implements IGrowable,
 
 		if (meta == MaliceFruitStage.YOUNG)
 		{
-			this.setBlockBounds(6*f, 11*f, 6*f, 10*f, 15*f, 10*f);
+			this.getBoundingBox(6*f, 11*f, 6*f, 10*f, 15*f, 10*f);
 		}
 		else if (meta == MaliceFruitStage.MID)
 		{
-			this.setBlockBounds((float)(5.5*f), 10*f, (float)(5.5*f), (float)(10.5*f), 15*f, (float)(10.5*f));
+			this.getBoundingBox((float)(5.5*f), 10*f, (float)(5.5*f), (float)(10.5*f), 15*f, (float)(10.5*f));
 		}
 		else
 		{
-			this.setBlockBounds(5*f, 9*f, 5*f, 11*f, 15*f, 11*f);
+			this.getBoundingBox(5*f, 9*f, 5*f, 11*f, 15*f, 11*f);
 		}
 	}
 }

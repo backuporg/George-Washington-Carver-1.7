@@ -364,20 +364,20 @@ public class BlockBambooStalk extends GrcBlockBase
 			}
 		}
 
-		this.setBlockBounds(x1, 0.0F, z1, x2, 1.0F, z2);
+		this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
 	}
 
 	@Override
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void addCollisionBoxesToList(World world, BlockPos pos, AxisAlignedBB axis, List list, Entity entity)
+	public void getCollisionBoundingBox(World world, BlockPos pos, AxisAlignedBB axis, List list, Entity entity)
 	{
 		final float x1 = 0.25F;
 		final float x2 = 0.75F;
 		final float z1 = 0.25F;
 		final float z2 = 0.75F;
 
-		this.setBlockBounds(x1, 0.0F, z1, x2, 1.0F, z2);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
+		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 
 		if (world.getBlockState(x, y, z) != 0)
 		{
@@ -477,8 +477,8 @@ public class BlockBambooStalk extends GrcBlockBase
 			x2 = 1.0F;
 		}
 
-		this.setBlockBounds(x1, y1, z1, x2, y2, z2);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(x1, y1, z1, x2, y2, z2);
+		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 
 		y1 = 0.375F;
 		y2 = 0.5625F;
@@ -512,8 +512,8 @@ public class BlockBambooStalk extends GrcBlockBase
 			x2 = 1.0F;
 		}
 
-		this.setBlockBounds(x1, y1, z1, x2, y2, z2);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(x1, y1, z1, x2, y2, z2);
+		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 	}
 
 	@SuppressWarnings({"rawtypes", "unchecked"})
@@ -556,8 +556,8 @@ public class BlockBambooStalk extends GrcBlockBase
 			x2 = 1.0F;
 		}
 
-		this.setBlockBounds(x1, 0.0F, z1, x2, 1.0F, z2);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
+		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 	}
 
 	@SuppressWarnings({"rawtypes", "unchecked"})
@@ -589,8 +589,8 @@ public class BlockBambooStalk extends GrcBlockBase
 				z1 = 0.0F;
 				z2 = 0.25F;
 
-				this.setBlockBounds(x1, y1, z1, x2, y2, z2);
-				super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+				this.getBoundingBox(x1, y1, z1, x2, y2, z2);
+				super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 			}
 
 			if (tm == 2)
@@ -600,8 +600,8 @@ public class BlockBambooStalk extends GrcBlockBase
 				z1 = 0.0F;
 				z2 = 0.25F;
 
-				this.setBlockBounds(x1, y1, z1, x2, y2, z2);
-				super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+				this.getBoundingBox(x1, y1, z1, x2, y2, z2);
+				super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 			}
 		}
 		else if (m == RenderUtils.Face.ZPOS)
@@ -620,8 +620,8 @@ public class BlockBambooStalk extends GrcBlockBase
 				z1 = 0.75F;
 				z2 = 1.0F;
 
-				this.setBlockBounds(x1, y1, z1, x2, y2, z2);
-				super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+				this.getBoundingBox(x1, y1, z1, x2, y2, z2);
+				super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 			}
 
 			if (tm == 2)
@@ -631,8 +631,8 @@ public class BlockBambooStalk extends GrcBlockBase
 				z1 = 0.75F;
 				z2 = 1.0F;
 
-				this.setBlockBounds(x1, y1, z1, x2, y2, z2);
-				super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+				this.getBoundingBox(x1, y1, z1, x2, y2, z2);
+				super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 			}
 		}
 		else if (m == RenderUtils.Face.XNEG)
@@ -651,8 +651,8 @@ public class BlockBambooStalk extends GrcBlockBase
 				z1 = 0.0F;
 				z2 = 0.375F;
 
-				this.setBlockBounds(x1, y1, z1, x2, y2, z2);
-				super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+				this.getBoundingBox(x1, y1, z1, x2, y2, z2);
+				super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 			}
 
 			if (tm == 3)
@@ -663,8 +663,8 @@ public class BlockBambooStalk extends GrcBlockBase
 				z1 = 0.625F;
 				z2 = 1.0F;
 
-				this.setBlockBounds(x1, y1, z1, x2, y2, z2);
-				super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+				this.getBoundingBox(x1, y1, z1, x2, y2, z2);
+				super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 			}
 		}
 		else if (m == RenderUtils.Face.XPOS)
@@ -682,8 +682,8 @@ public class BlockBambooStalk extends GrcBlockBase
 				z1 = 0.0F;
 				z2 = 0.375F;
 
-				this.setBlockBounds(x1, y1, z1, x2, y2, z2);
-				super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+				this.getBoundingBox(x1, y1, z1, x2, y2, z2);
+				super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 			}
 
 			if (tm == 3)
@@ -693,8 +693,8 @@ public class BlockBambooStalk extends GrcBlockBase
 				z1 = 0.625F;
 				z2 = 1.0F;
 
-				this.setBlockBounds(x1, y1, z1, x2, y2, z2);
-				super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+				this.getBoundingBox(x1, y1, z1, x2, y2, z2);
+				super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 			}
 		}
 	}

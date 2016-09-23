@@ -41,7 +41,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -62,7 +62,7 @@ public class BlockHangingCurds extends GrcBlockContainer
 		setBlockName("grcmilk.HangingCurds");
 		setTileEntityType(TileEntityHangingCurds.class);
 		final BBox bb = BBox.newCube(4f, 0f, 4f, 8f, 16f, 8f).scale(1f / 16f);
-		setBlockBounds(bb.x0(), bb.y0(), bb.z0(), bb.x1(), bb.y1(), bb.z1());
+		getBoundingBox(bb.x0(), bb.y0(), bb.z0(), bb.x1(), bb.y1(), bb.z1());
 		setBlockTextureName("grcmilk:hanging_curds");
 		setCreativeTab(GrowthCraftMilk.creativeTab);
 	}
@@ -151,7 +151,7 @@ public class BlockHangingCurds extends GrcBlockContainer
 	}
 
 	@Override
-	public ItemStack getPickBlock(MovingObjectPosition target, World world, BlockPos pos, EntityPlayer player)
+	public ItemStack getPickBlock(RayTraceResult target, World world, BlockPos pos, EntityPlayer player)
 	{
 		final TileEntityHangingCurds teHangingCurds = getTileEntity(world, pos);
 		if (teHangingCurds != null)

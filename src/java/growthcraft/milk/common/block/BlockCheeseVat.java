@@ -80,28 +80,28 @@ public class BlockCheeseVat extends GrcBlockContainer
 	@Override
 	public void setBlockBoundsForItemRender()
 	{
-		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+		this.getBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 	}
 
 	@Override
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void addCollisionBoxesToList(World world, BlockPos pos, AxisAlignedBB axis, List list, Entity entity)
+	public void getCollisionBoundingBox(World world, BlockPos pos, AxisAlignedBB axis, List list, Entity entity)
 	{
 		final float unit = 1f / 16f;
-		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, unit, 1.0F);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, unit, 1.0F);
+		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 
-		this.setBlockBounds(0.0F, 0.0F, 0.0F, unit, 1.0F, 1.0F);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(0.0F, 0.0F, 0.0F, unit, 1.0F, 1.0F);
+		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 
-		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, unit);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, unit);
+		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 
-		this.setBlockBounds(1.0F - unit, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(1.0F - unit, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 
-		this.setBlockBounds(0.0F, 0.0F, 1.0F - unit, 1.0F, 1.0F, 1.0F);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(0.0F, 0.0F, 1.0F - unit, 1.0F, 1.0F, 1.0F);
+		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 
 		this.setBlockBoundsForItemRender();
 	}

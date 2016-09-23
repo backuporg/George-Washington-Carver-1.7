@@ -110,11 +110,11 @@ public class BlockGrapeVine0 extends BlockGrapeVineBase
 
 		if (meta == 0)
 		{
-			this.setBlockBounds(6*f, 0.0F, 6*f, 10*f, 5*f, 10*f);
+			this.getBoundingBox(6*f, 0.0F, 6*f, 10*f, 5*f, 10*f);
 		}
 		else
 		{
-			this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+			this.getBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 		}
 	}
 }

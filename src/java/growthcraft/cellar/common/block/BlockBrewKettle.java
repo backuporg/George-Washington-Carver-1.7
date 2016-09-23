@@ -182,24 +182,24 @@ public class BlockBrewKettle extends BlockCellarContainer
 	@Override
 	public void setBlockBoundsForItemRender()
 	{
-		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+		this.getBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 	}
 
 	@Override
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void addCollisionBoxesToList(World world, BlockPos pos, AxisAlignedBB axis, List list, Entity entity)
+	public void getCollisionBoundingBox(World world, BlockPos pos, AxisAlignedBB axis, List list, Entity entity)
 	{
-		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.3125F, 1.0F);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 0.3125F, 1.0F);
+		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 		final float f = 0.125F;
-		this.setBlockBounds(0.0F, 0.0F, 0.0F, f, 1.0F, 1.0F);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
-		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, f);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
-		this.setBlockBounds(1.0F - f, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
-		this.setBlockBounds(0.0F, 0.0F, 1.0F - f, 1.0F, 1.0F, 1.0F);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(0.0F, 0.0F, 0.0F, f, 1.0F, 1.0F);
+		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, f);
+		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(1.0F - f, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(0.0F, 0.0F, 1.0F - f, 1.0F, 1.0F, 1.0F);
+		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 		this.setBlockBoundsForItemRender();
 	}
 

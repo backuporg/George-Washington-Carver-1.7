@@ -159,7 +159,7 @@ public class BlockRope extends GrcBlockBase implements IBlockRope
 	 ************/
 	@Override
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void addCollisionBoxesToList(World world, BlockPos pos, AxisAlignedBB aabb, List list, Entity entity)
+	public void getCollisionBoundingBox(World world, BlockPos pos, AxisAlignedBB aabb, List list, Entity entity)
 	{
 		final boolean flag = this.canConnectRopeTo(world, x, y, z - 1);
 		final boolean flag1 = this.canConnectRopeTo(world, x, y, z + 1);
@@ -186,8 +186,8 @@ public class BlockRope extends GrcBlockBase implements IBlockRope
 
 		if (flag || flag1)
 		{
-			this.setBlockBounds(f, f4, f2, f1, f5, f3);
-			super.addCollisionBoxesToList(world, x, y, z, aabb, list, entity);
+			this.getBoundingBox(f, f4, f2, f1, f5, f3);
+			super.getCollisionBoundingBox(world, x, y, z, aabb, list, entity);
 		}
 
 		f2 = 0.4375F;
@@ -205,8 +205,8 @@ public class BlockRope extends GrcBlockBase implements IBlockRope
 
 		if (flag2 || flag3)
 		{
-			this.setBlockBounds(f, f4, f2, f1, f5, f3);
-			super.addCollisionBoxesToList(world, x, y, z, aabb, list, entity);
+			this.getBoundingBox(f, f4, f2, f1, f5, f3);
+			super.getCollisionBoundingBox(world, x, y, z, aabb, list, entity);
 		}
 
 		f = 0.4375F;
@@ -224,8 +224,8 @@ public class BlockRope extends GrcBlockBase implements IBlockRope
 
 		if (flag4 || flag5)
 		{
-			this.setBlockBounds(f, f4, f2, f1, f5, f3);
-			super.addCollisionBoxesToList(world, x, y, z, aabb, list, entity);
+			this.getBoundingBox(f, f4, f2, f1, f5, f3);
+			super.getCollisionBoundingBox(world, x, y, z, aabb, list, entity);
 		}
 
 		this.setBlockBoundsBasedOnState(world, x, y, z);
@@ -277,7 +277,7 @@ public class BlockRope extends GrcBlockBase implements IBlockRope
 			f5 = 1.0F;
 		}
 
-		this.setBlockBounds(f, f4, f2, f1, f5, f3);
+		this.getBoundingBox(f, f4, f2, f1, f5, f3);
 	}
 
 }
