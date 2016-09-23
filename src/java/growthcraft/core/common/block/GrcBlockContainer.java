@@ -170,7 +170,7 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 		return false;
 	}
 
-	protected void fellBlockFromWrench(World world, BlockPos pos,, IBlockState state)
+	protected void fellBlockFromWrench(World world, BlockPos pos, IBlockState state)
 	{
 		final int metadata = world.getBlockState(pos);
 		final List<ItemStack> drops = new ArrayList<ItemStack>();
@@ -218,7 +218,7 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 	//	return wrenchBlock(state, world, pos, player);
 	//}
 
-	protected void placeBlockByEntityDirection(World world, BlockPos pos,, IBlockState state, EntityLivingBase entity, ItemStack stack)
+	protected void placeBlockByEntityDirection(World world, BlockPos pos, IBlockState state, EntityLivingBase entity, ItemStack stack)
 	{
 		final int l = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
 		EnumFacing facing = EnumFacing.NORTH;
@@ -343,7 +343,7 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 		world.removeTileEntity(pos);
 	}
 
-	protected ItemStack createHarvestedBlockItemStack(World world, EntityPlayer player, BlockPos pos,, int meta, IBlockState state)
+	protected ItemStack createHarvestedBlockItemStack(World world, EntityPlayer player, BlockPos pos, int meta, IBlockState state)
 	{
 		return createStackedBlock(state);
 	}
