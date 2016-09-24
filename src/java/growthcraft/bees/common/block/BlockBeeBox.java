@@ -293,6 +293,7 @@ public class BlockBeeBox extends GrcBlockContainer {
 
 		@Override
 		@SuppressWarnings({"rawtypes", "unchecked"})
+		public void getCollisionBoundingBox (World world, BlockPos pos, IBlockState state, AxisAlignedBB axis, List list, Entity entity, IBlockAccess source)
 		{
 			final AxisAlignedBB axis = null;
 			final IBlockState state = null;
