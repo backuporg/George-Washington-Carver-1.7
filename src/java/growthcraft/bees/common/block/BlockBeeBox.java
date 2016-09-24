@@ -230,8 +230,8 @@ public class BlockBeeBox extends GrcBlockContainer {
 			return icons[offset + 2];
 		}
 
-		@Override
-		@SideOnly(Side.CLIENT)
+
+
 		public IIcon getIcon (IBlockState state, int side, int meta)
 		{
 			final int offset = calculateIconOffset(meta);
@@ -252,26 +252,21 @@ public class BlockBeeBox extends GrcBlockContainer {
 		/************
 		 * RENDERS
 		 ************/
-		@Override
 		public int getRenderType (IBlockState state);
 		{
 			return RenderBeeBox.id;
 		}
 
-		@Override
 		public boolean isOpaqueCube ()
 		{
 			return false;
 		}
 
-		@Override
 		public boolean renderAsNormalBlock ()
 		{
 			return false;
 		}
 
-		@Override
-		@SideOnly(Side.CLIENT)
 		public boolean shouldSideBeRendered (IBlockAccess world, BlockPos pos, int side, IBlockState state, IBlockAccess source)
 		{
 			return true;
@@ -280,26 +275,14 @@ public class BlockBeeBox extends GrcBlockContainer {
 		/************
 		 * BOXES
 		 ************/
-		@Override
-		public void setBlockBoundsForItemRender ()
+		public void setBlockBoundsForItemRender (World world, BlockPos pos, IBlockState state, AxisAlignedBB axis, List list, Entity entity, IBlockAccess source)
 		{
-			final AxisAlignedBB axis = null;
-			final IBlockState state = null;
-			final List list = null;
-			final Entity entity = null;
-			final IBlockAccess source = null;
 			getBoundingBox(state, source, pos);
 		}
 
-		@Override
-		@SuppressWarnings({"rawtypes", "unchecked"})
+
 		public void getCollisionBoundingBox (World world, BlockPos pos, IBlockState state, AxisAlignedBB axis, List list, Entity entity, IBlockAccess source)
 		{
-			final AxisAlignedBB axis = null;
-			final IBlockState state = null;
-			final List list = null;
-			final Entity entity = null;
-			final IBlockAccess source = null;
 
 			final float f = 0.0625F;
 			// LEGS
