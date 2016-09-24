@@ -23,10 +23,10 @@
  */
 package growthcraft.hops.init;
 
-import growthcraft.core.common.definition.ItemDefinition;
 import growthcraft.core.common.GrcModuleItems;
-import growthcraft.hops.common.item.ItemHops;
+import growthcraft.core.common.definition.ItemDefinition;
 import growthcraft.hops.common.item.ItemHopSeeds;
+import growthcraft.hops.common.item.ItemHops;
 
 public class GrcHopsItems extends GrcModuleItems
 {

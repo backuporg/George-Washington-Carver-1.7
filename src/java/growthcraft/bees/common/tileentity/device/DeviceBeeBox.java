@@ -23,26 +23,24 @@
  */
 package growthcraft.bees.common.tileentity.device;
 
-import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
-import io.netty.buffer.ByteBuf;
-
 import growthcraft.api.bees.BeesRegistry;
 import growthcraft.api.bees.IFlowerBlockEntry;
-import growthcraft.api.core.util.RandomUtils;
 import growthcraft.api.core.util.BlockFlags;
-import growthcraft.bees.common.tileentity.TileEntityBeeBox;
+import growthcraft.api.core.util.RandomUtils;
 import growthcraft.bees.GrowthCraftBees;
+import growthcraft.bees.common.tileentity.TileEntityBeeBox;
 import growthcraft.core.common.tileentity.device.DeviceBase;
-
+import io.netty.buffer.ByteBuf;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
 public class DeviceBeeBox extends DeviceBase
 {
@@ -108,7 +106,7 @@ public class DeviceBeeBox extends DeviceBase
 	}
 
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	private List<List> gatherFlowersInRadius(World world, int x, int y, int z, int checkSize, List<List> list)
+	private List<List> gatherFlowersInRadius(World world, BlockPos pos, int checkSize, List<List> list)
 	{
 		final int i = x - ((checkSize - 1) / 2);
 		final int k = z - ((checkSize - 1) / 2);
@@ -137,7 +135,7 @@ public class DeviceBeeBox extends DeviceBase
 		return list;
 	}
 
-	private float calcGrowthRate(World world, int x, int y, int z)
+	private float calcGrowthRate(World world, BlockPos pos)
 	{
 		final int checkSize = 5;
 		final int i = x - ((checkSize - 1) / 2);

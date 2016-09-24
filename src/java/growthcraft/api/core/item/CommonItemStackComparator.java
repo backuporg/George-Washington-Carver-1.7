@@ -23,9 +23,9 @@
  */
 package growthcraft.api.core.item;
 
-import javax.annotation.Nonnull;
-
 import net.minecraft.item.ItemStack;
+
+import javax.annotation.Nonnull;
 
 public class CommonItemStackComparator implements IItemStackComparator
 {

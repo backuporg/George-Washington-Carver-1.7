@@ -1,8 +1,7 @@
 package growthcraft.cellar.common.inventory;
 
-import growthcraft.cellar.common.tileentity.TileEntityFermentBarrel;
 import growthcraft.cellar.common.inventory.slot.SlotInputFermenting;
-
+import growthcraft.cellar.common.tileentity.TileEntityFermentBarrel;
 import net.minecraft.entity.player.InventoryPlayer;
 
 public class ContainerFermentBarrel extends CellarContainer

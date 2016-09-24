@@ -1,28 +1,21 @@
 package growthcraft.bamboo.common.block;
 
-import java.util.List;
-
 import growthcraft.bamboo.GrowthCraftBamboo;
 import growthcraft.bamboo.client.renderer.RenderBambooWall;
 import growthcraft.core.common.block.GrcBlockBase;
-
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.util.math.BlockPos;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockDoor;
-import net.minecraft.block.BlockFence;
-import net.minecraft.block.BlockFenceGate;
-import net.minecraft.block.BlockStairs;
+import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
-
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.AxisAlignedBB;
-
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.List;
 
 public class BlockBambooWall extends GrcBlockBase
 {
@@ -261,12 +254,12 @@ public class BlockBambooWall extends GrcBlockBase
 			}
 		}
 
-		this.setBlockBounds(x1, 0.0F, z1, x2, 1.0F, z2);
+		this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
 	}
 
 	@Override
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB axis, List list, Entity entity)
+	public void getCollisionBoundingBox(World world, BlockPos pos, AxisAlignedBB axis, List list, Entity entity)
 	{
 		int tm;
 
@@ -290,8 +283,8 @@ public class BlockBambooWall extends GrcBlockBase
 		float z1 = 0.375F;
 		float z2 = 0.625F;
 
-		this.setBlockBounds(x1, 0.0F, z1, x2, 1.0F, z2);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
+		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 
 		//XNEG
 		if (flagXneg)
@@ -301,8 +294,8 @@ public class BlockBambooWall extends GrcBlockBase
 			z1 = 0.375F;
 			z2 = 0.625F;
 
-			this.setBlockBounds(x1, 0.0F, z1, x2, 1.0F, z2);
-			super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+			this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
+			super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 		}
 		else if (idXneg instanceof BlockDoor)
 		{
@@ -320,8 +313,8 @@ public class BlockBambooWall extends GrcBlockBase
 				z1 = 0.375F;
 				z2 = 0.625F;
 
-				this.setBlockBounds(x1, 0.0F, z1, x2, 1.0F, z2);
-				super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+				this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
+				super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 
 				if (tm == 1)
 				{
@@ -331,8 +324,8 @@ public class BlockBambooWall extends GrcBlockBase
 					z1 = 0.0F;
 					z2 = 0.375F;
 
-					this.setBlockBounds(x1, 0.0F, z1, x2, 1.0F, z2);
-					super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+					this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
+					super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 				}
 
 				if (tm == 3)
@@ -343,8 +336,8 @@ public class BlockBambooWall extends GrcBlockBase
 					z1 = 0.625F;
 					z2 = 1.0F;
 
-					this.setBlockBounds(x1, 0.0F, z1, x2, 1.0F, z2);
-					super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+					this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
+					super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 				}
 			}
 		}
@@ -357,8 +350,8 @@ public class BlockBambooWall extends GrcBlockBase
 			z1 = 0.375F;
 			z2 = 0.625F;
 
-			this.setBlockBounds(x1, 0.0F, z1, x2, 1.0F, z2);
-			super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+			this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
+			super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 		}
 		else if (idXpos instanceof BlockDoor)
 		{
@@ -376,8 +369,8 @@ public class BlockBambooWall extends GrcBlockBase
 				z1 = 0.375F;
 				z2 = 0.625F;
 
-				this.setBlockBounds(x1, 0.0F, z1, x2, 1.0F, z2);
-				super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+				this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
+				super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 
 				if (tm == 1)
 				{
@@ -386,8 +379,8 @@ public class BlockBambooWall extends GrcBlockBase
 					z1 = 0.0F;
 					z2 = 0.375F;
 
-					this.setBlockBounds(x1, 0.0F, z1, x2, 1.0F, z2);
-					super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+					this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
+					super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 				}
 
 				if (tm == 3)
@@ -397,8 +390,8 @@ public class BlockBambooWall extends GrcBlockBase
 					z1 = 0.625F;
 					z2 = 1.0F;
 
-					this.setBlockBounds(x1, 0.0F, z1, x2, 1.0F, z2);
-					super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+					this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
+					super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 				}
 			}
 		}
@@ -412,8 +405,8 @@ public class BlockBambooWall extends GrcBlockBase
 			z1 = 0.0F;
 			z2 = 0.375F;
 
-			this.setBlockBounds(x1, 0.0F, z1, x2, 1.0F, z2);
-			super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+			this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
+			super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 		}
 		else if (idZneg instanceof BlockDoor)
 		{
@@ -431,8 +424,8 @@ public class BlockBambooWall extends GrcBlockBase
 				z1 = 0.0F;
 				z2 = 0.375F;
 
-				this.setBlockBounds(x1, 0.0F, z1, x2, 1.0F, z2);
-				super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+				this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
+				super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 
 				if (tm == 0)
 				{
@@ -441,8 +434,8 @@ public class BlockBambooWall extends GrcBlockBase
 					z1 = 0.0F;
 					z2 = 0.25F;
 
-					this.setBlockBounds(x1, 0.0F, z1, x2, 1.0F, z2);
-					super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+					this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
+					super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 				}
 
 				if (tm == 2)
@@ -452,8 +445,8 @@ public class BlockBambooWall extends GrcBlockBase
 					z1 = 0.0F;
 					z2 = 0.25F;
 
-					this.setBlockBounds(x1, 0.0F, z1, x2, 1.0F, z2);
-					super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+					this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
+					super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 				}
 			}
 		}
@@ -466,8 +459,8 @@ public class BlockBambooWall extends GrcBlockBase
 			z1 = 0.625F;
 			z2 = 1.0F;
 
-			this.setBlockBounds(x1, 0.0F, z1, x2, 1.0F, z2);
-			super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+			this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
+			super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 		}
 		else if (idZpos instanceof BlockDoor)
 		{
@@ -485,8 +478,8 @@ public class BlockBambooWall extends GrcBlockBase
 				z1 = 0.625F;
 				z2 = 1.0F;
 
-				this.setBlockBounds(x1, 0.0F, z1, x2, 1.0F, z2);
-				super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+				this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
+				super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 
 				if (tm == 0)
 				{
@@ -495,8 +488,8 @@ public class BlockBambooWall extends GrcBlockBase
 					z1 = 0.75F;
 					z2 = 1.0F;
 
-					this.setBlockBounds(x1, 0.0F, z1, x2, 1.0F, z2);
-					super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+					this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
+					super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 				}
 
 				if (tm == 2)
@@ -506,8 +499,8 @@ public class BlockBambooWall extends GrcBlockBase
 					z1 = 0.75F;
 					z2 = 1.0F;
 
-					this.setBlockBounds(x1, 0.0F, z1, x2, 1.0F, z2);
-					super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+					this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
+					super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 				}
 			}
 		}

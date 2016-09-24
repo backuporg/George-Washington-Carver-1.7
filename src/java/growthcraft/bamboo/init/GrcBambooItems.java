@@ -23,13 +23,9 @@
  */
 package growthcraft.bamboo.init;
 
-import growthcraft.bamboo.common.item.ItemBamboo;
-import growthcraft.bamboo.common.item.ItemBambooCoal;
-import growthcraft.bamboo.common.item.ItemBambooDoor;
-import growthcraft.bamboo.common.item.ItemBambooRaft;
-import growthcraft.bamboo.common.item.ItemBambooShoot;
-import growthcraft.core.common.definition.ItemDefinition;
+import growthcraft.bamboo.common.item.*;
 import growthcraft.core.common.GrcModuleItems;
+import growthcraft.core.common.definition.ItemDefinition;
 
 public class GrcBambooItems extends GrcModuleItems
 {

@@ -23,14 +23,14 @@
  */
 package growthcraft.netherloid.common.block;
 
-import java.util.Random;
-
 import growthcraft.netherloid.netherloid;
-
+import net.minecraft.item.Item;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraft.item.Item;
-import net.minecraft.world.World;
+
+import java.util.Random;
 
 public abstract class BlockNetherMuertecap extends BlockNetherFungusBase
 {
@@ -41,19 +41,19 @@ public abstract class BlockNetherMuertecap extends BlockNetherFungusBase
 		super();
 		setBlockName("grcnetherloid.netherMuertecap");
 		setBlockTextureName("grcnetherloid:muertecap");
-		setBlockBounds(0.375F, 0.0F, 0.375F, 0.625F, 0.375F, 0.625F);
+		getBoundingBox(0.375F, 0.0F, 0.375F, 0.625F, 0.375F, 0.625F);
 		setCreativeTab(netherloid.tab);
 	}
 
 	@Override
-	protected float getSpreadRate(World world, int x, int y, int z)
+	protected float getSpreadRate(World world, BlockPos pos)
 	{
 		return muertecapSpreadRate;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Item getItem(World world, int x, int y, int z)
+	public Item getItem(World world, BlockPos pos)
 	{
 		return netherloid.items.netherMuertecap.getItem();
 	}

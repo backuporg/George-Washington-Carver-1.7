@@ -24,9 +24,8 @@
 package growthcraft.core.common.tileentity.device;
 
 import io.netty.buffer.ByteBuf;
-
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 
 public class DeviceProgressive extends DeviceBase
 {

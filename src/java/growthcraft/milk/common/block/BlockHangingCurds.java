@@ -23,32 +23,33 @@
  */
 package growthcraft.milk.common.block;
 
-import java.util.List;
-import java.util.Random;
-
 import growthcraft.api.core.util.BBox;
 import growthcraft.api.core.util.BlockFlags;
 import growthcraft.api.core.util.RenderType;
 import growthcraft.core.common.block.GrcBlockContainer;
 import growthcraft.core.util.BlockCheck;
+import growthcraft.milk.GrowthCraftMilk;
 import growthcraft.milk.common.item.EnumCheeseType;
 import growthcraft.milk.common.item.ItemBlockHangingCurds;
 import growthcraft.milk.common.tileentity.TileEntityHangingCurds;
-import growthcraft.milk.GrowthCraftMilk;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraft.util.EnumFacing;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.List;
+import java.util.Random;
 
 public class BlockHangingCurds extends GrcBlockContainer
 {
@@ -61,34 +62,34 @@ public class BlockHangingCurds extends GrcBlockContainer
 		setBlockName("grcmilk.HangingCurds");
 		setTileEntityType(TileEntityHangingCurds.class);
 		final BBox bb = BBox.newCube(4f, 0f, 4f, 8f, 16f, 8f).scale(1f / 16f);
-		setBlockBounds(bb.x0(), bb.y0(), bb.z0(), bb.x1(), bb.y1(), bb.z1());
+		getBoundingBox(bb.x0(), bb.y0(), bb.z0(), bb.x1(), bb.y1(), bb.z1());
 		setBlockTextureName("grcmilk:hanging_curds");
 		setCreativeTab(GrowthCraftMilk.creativeTab);
 	}
 
 	@Override
-	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack stack)
+	public void onBlockPlacedBy(World world, BlockPos pos, EntityLivingBase entity, ItemStack stack)
 	{
-		super.onBlockPlacedBy(world, x, y, z, entity, stack);
-		world.setBlockState(x, y, z, stack.getItemDamage(), BlockFlags.NONE);
+		super.onBlockPlacedBy(world, pos, entity, stack);
+		world.setBlockState(pos, stack.getItemDamage(), BlockFlags.NONE);
 	}
 
 	@Override
-	protected boolean shouldRestoreBlockState(World world, int x, int y, int z, ItemStack stack)
+	protected boolean shouldRestoreBlockState(World world, BlockPos pos, ItemStack stack)
 	{
 		return true;
 	}
 
 	@Override
-	protected boolean shouldDropTileStack(World world, int x, int y, int z, int metadata, int fortune)
+	protected boolean shouldDropTileStack(World world, BlockPos pos, int metadata, int fortune)
 	{
 		return true;
 	}
 
 	@Override
-	protected ItemStack createHarvestedBlockItemStack(World world, EntityPlayer player, int x, int y, int z, int meta)
+	protected ItemStack createHarvestedBlockItemStack(World world, EntityPlayer player, BlockPos pos, int meta)
 	{
-		final TileEntityHangingCurds te = getTileEntity(world, x, y, z);
+		final TileEntityHangingCurds te = getTileEntity(world, pos);
 		if (te != null)
 		{
 			return te.asItemStack();
@@ -97,31 +98,31 @@ public class BlockHangingCurds extends GrcBlockContainer
 	}
 
 	@Override
-	protected void getTileItemStackDrops(List<ItemStack> ret, World world, int x, int y, int z, int metadata, int fortune)
+	protected void getTileItemStackDrops(List<ItemStack> ret, World world, BlockPos pos, IBlockState state, int metadata, int fortune)
 	{
-		final TileEntityHangingCurds te = getTileEntity(world, x, y, z);
+		final TileEntityHangingCurds te = getTileEntity(world, pos);
 		if (te != null)
 		{
 			ret.add(te.asItemStack());
 		}
 		else
 		{
-			super.getTileItemStackDrops(ret, world, x, y, z, metadata, fortune);
+			super.getTileItemStackDrops(ret, world, pos, state, metadata, fortune);
 		}
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int meta, float par7, float par8, float par9)
+	public boolean onBlockActivated(World world, BlockPos pos, EntityPlayer player, int meta, float par7, float par8, float par9)
 	{
-		if (super.onBlockActivated(world, x, y, z, player, meta, par7, par8, par9)) return true;
+		if (super.onBlockActivated(world, pos, player, meta, par7, par8, par9)) return true;
 		if (!player.isSneaking())
 		{
-			final TileEntityHangingCurds hangingCurd = getTileEntity(world, x, y, z);
+			final TileEntityHangingCurds hangingCurd = getTileEntity(world, pos);
 			if (hangingCurd != null)
 			{
 				if (hangingCurd.isDried())
 				{
-					fellBlockAsItem(world, x, y, z);
+					fellBlockAsItem(world, pos);
 					return true;
 				}
 			}
@@ -150,48 +151,48 @@ public class BlockHangingCurds extends GrcBlockContainer
 	}
 
 	@Override
-	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z, EntityPlayer player)
+	public ItemStack getPickBlock(RayTraceResult target, World world, BlockPos pos, EntityPlayer player)
 	{
-		final TileEntityHangingCurds teHangingCurds = getTileEntity(world, x, y, z);
+		final TileEntityHangingCurds teHangingCurds = getTileEntity(world, pos);
 		if (teHangingCurds != null)
 		{
 			return teHangingCurds.asItemStack();
 		}
-		return super.getPickBlock(target, world, x, y, z, player);
+		return super.getPickBlock(target, world, pos, player);
 	}
 
 	@Override
-	public boolean canBlockStay(World world, int x, int y, int z)
+	public boolean canBlockStay(World world, BlockPos pos)
 	{
 		return !world.isAirBlock(x, y + 1, z) &&
 			BlockCheck.isBlockPlacableOnSide(world, x, y + 1, z, EnumFacing.DOWN);
 	}
 
 	@Override
-	public boolean canPlaceBlockAt(World world, int x, int y, int z)
+	public boolean canPlaceBlockAt(World world, BlockPos pos)
 	{
-		return super.canPlaceBlockAt(world, x, y, z) && canBlockStay(world, x, y, z);
+		return super.canPlaceBlockAt(world, pos) && canBlockStay(world, pos);
 	}
 
 	@Override
-	public void onNeighborBlockChange(World world, int x, int y, int z, Block block)
+	public void onNeighborBlockChange(World world, BlockPos pos, Block block)
 	{
-		if (!this.canBlockStay(world, x, y, z))
+		if (!this.canBlockStay(world, pos))
 		{
-			fellBlockAsItem(world, x, y, z);
+			fellBlockAsItem(world, pos);
 		}
 	}
 
 	@Override
-	public void updateTick(World world, int x, int y, int z, Random random)
+	public void updateTick(World world, BlockPos pos, Random random, IBlockState state)
 	{
-		super.updateTick(world, x, y, z, random);
+		super.updateTick(world, pos, state, random);
 		if (!world.isRemote)
 		{
-			if (!canBlockStay(world, x, y, z))
+			if (!canBlockStay(world, pos))
 			{
-				dropBlockAsItem(world, x, y, z, world.getBlockState(x, y, z), 0);
-				world.setBlockToAir(x, y, z);
+				dropBlockAsItem(world, pos, world.getBlockState(pos), 0);
+				world.setBlockToAir(pos);
 			}
 		}
 	}
@@ -222,7 +223,7 @@ public class BlockHangingCurds extends GrcBlockContainer
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side)
+	public boolean shouldSideBeRendered(IBlockAccess world, BlockPos pos, int side)
 	{
 		return true;
 	}

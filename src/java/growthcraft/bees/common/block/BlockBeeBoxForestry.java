@@ -23,17 +23,15 @@
  */
 package growthcraft.bees.common.block;
 
-import java.util.List;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.List;
 
 public class BlockBeeBoxForestry extends BlockBeeBox
 {
@@ -63,14 +61,14 @@ public class BlockBeeBoxForestry extends BlockBeeBox
 		return super.getMetaname(meta);
 	}
 
-	public EnumBeeBoxForestry getBeeBoxType(World world, int x, int y, int z)
+	public EnumBeeBoxForestry getBeeBoxType(World world, BlockPos pos)
 	{
 		final int meta = world.getBlockState(x, y, z);
 		return beeboxTypes[MathHelper.clamp_int(meta, 0, beeboxTypes.length)];
 	}
 
 	@Override
-	public float getBlockHardness(World world, int x, int y, int z)
+	public float getBlockHardness(World world, BlockPos pos)
 	{
 		return getBeeBoxType(world, x, y, z).getHardness();
 	}

@@ -1,31 +1,29 @@
 package growthcraft.cellar.common.block;
 
-import java.util.List;
-import java.util.Random;
-
 import growthcraft.api.core.util.BBox;
+import growthcraft.cellar.GrowthCraftCellar;
 import growthcraft.cellar.client.render.RenderBrewKettle;
 import growthcraft.cellar.common.tileentity.TileEntityBrewKettle;
-import growthcraft.cellar.GrowthCraftCellar;
 import growthcraft.core.Utils;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.material.Material;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
-
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.fluids.IFluidHandler;
-import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraft.util.EnumFacing;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.IFluidHandler;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.List;
+import java.util.Random;
 
 public class BlockBrewKettle extends BlockCellarContainer
 {
@@ -49,7 +47,7 @@ public class BlockBrewKettle extends BlockCellarContainer
 	}
 
 	@Override
-	public void fillWithRain(World world, int x, int y, int z)
+	public void fillWithRain(World world, BlockPos pos)
 	{
 		if (fillsWithRain)
 		{
@@ -63,7 +61,7 @@ public class BlockBrewKettle extends BlockCellarContainer
 	}
 
 	@Override
-	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
+	public void onEntityCollidedWithBlock(World world, BlockPos pos, Entity entity)
 	{
 		if (!world.isRemote)
 		{
@@ -102,7 +100,7 @@ public class BlockBrewKettle extends BlockCellarContainer
 	}
 
 	@Override
-	protected boolean playerDrainTank(World world, int x, int y, int z, IFluidHandler fh, ItemStack is, EntityPlayer player)
+	protected boolean playerDrainTank(World world, BlockPos pos, IFluidHandler fh, ItemStack is, EntityPlayer player)
 	{
 		final FluidStack fs = Utils.playerDrainTank(world, x, y, z, fh, is, player);
 		return fs != null && fs.amount > 0;
@@ -173,7 +171,7 @@ public class BlockBrewKettle extends BlockCellarContainer
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side)
+	public boolean shouldSideBeRendered(IBlockAccess world, BlockPos pos, int side)
 	{
 		return true;
 	}
@@ -184,24 +182,24 @@ public class BlockBrewKettle extends BlockCellarContainer
 	@Override
 	public void setBlockBoundsForItemRender()
 	{
-		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+		this.getBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 	}
 
 	@Override
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB axis, List list, Entity entity)
+	public void getCollisionBoundingBox(World world, BlockPos pos, AxisAlignedBB axis, List list, Entity entity)
 	{
-		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.3125F, 1.0F);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 0.3125F, 1.0F);
+		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 		final float f = 0.125F;
-		this.setBlockBounds(0.0F, 0.0F, 0.0F, f, 1.0F, 1.0F);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
-		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, f);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
-		this.setBlockBounds(1.0F - f, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
-		this.setBlockBounds(0.0F, 0.0F, 1.0F - f, 1.0F, 1.0F, 1.0F);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(0.0F, 0.0F, 0.0F, f, 1.0F, 1.0F);
+		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, f);
+		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(1.0F - f, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(0.0F, 0.0F, 1.0F - f, 1.0F, 1.0F, 1.0F);
+		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 		this.setBlockBoundsForItemRender();
 	}
 
@@ -215,7 +213,7 @@ public class BlockBrewKettle extends BlockCellarContainer
 	}
 
 	@Override
-	public int getComparatorInputOverride(World world, int x, int y, int z, int par5)
+	public int getComparatorInputOverride(World world, BlockPos pos, int par5)
 	{
 		final TileEntityBrewKettle te = getTileEntity(world, x, y, z);
 		if (te != null)

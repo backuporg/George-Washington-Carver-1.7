@@ -1,23 +1,22 @@
 package growthcraft.bees.common.village;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
-
 import growthcraft.bees.GrowthCraftBees;
+import growthcraft.core.util.SchemaToVillage;
 import growthcraft.core.util.SchemaToVillage.BlockEntry;
 import growthcraft.core.util.SchemaToVillage.IBlockEntries;
 import growthcraft.core.util.SchemaToVillage.MultiBlockEntries;
-import growthcraft.core.util.SchemaToVillage;
-
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.WeightedRandomChestContent;
+import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
-import net.minecraft.world.gen.structure.StructureVillagePieces.Start;
 import net.minecraft.world.gen.structure.StructureVillagePieces;
-import net.minecraft.world.World;
+import net.minecraft.world.gen.structure.StructureVillagePieces.Start;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Random;
 
 public class ComponentVillageApiarist extends StructureVillagePieces.Village implements SchemaToVillage.IVillage
 {
@@ -206,7 +205,7 @@ public class ComponentVillageApiarist extends StructureVillagePieces.Village imp
 	}
 
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	public static ComponentVillageApiarist buildComponent(Start startPiece, List list, Random random, int x, int y, int z, int coordBaseMode, int par7)
+	public static ComponentVillageApiarist buildComponent(Start startPiece, List list, Random random, BlockPos pos, int coordBaseMode, int par7)
 	{
 		final StructureBoundingBox structureboundingbox = StructureBoundingBox.getComponentToAddBoundingBox(x, y, z, 0, 0, 0, 9, 8, 14, coordBaseMode);
 		if (canVillageGoDeeper(structureboundingbox)) {
@@ -217,7 +216,7 @@ public class ComponentVillageApiarist extends StructureVillagePieces.Village imp
 		return null;
 	}
 
-	public void placeBlockAtCurrentPositionPub(World world, Block block, int meta, int x, int y, int z, StructureBoundingBox box)
+	public void placeBlockAtCurrentPositionPub(World world, Block block, int meta, BlockPos pos, StructureBoundingBox box)
 	{
 		placeBlockAtCurrentPosition(world, block, meta, x, y, z, box);
 	}
@@ -345,7 +344,7 @@ public class ComponentVillageApiarist extends StructureVillagePieces.Village imp
 			for (int col = 0; col < 9; ++col)
 			{
 				this.clearCurrentPositionBlocksUpwards(world, col, 8, row, box);
-				this.func_151554_b(world, Blocks.COBBLESTONE, 0, col, -1, row, box);
+				this.replaceAirAndLiquidDownwards(world, Blocks.COBBLESTONE, 0, col, -1, row, box);
 			}
 		}
 

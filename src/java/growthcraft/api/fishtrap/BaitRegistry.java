@@ -25,7 +25,6 @@ package growthcraft.api.fishtrap;
 
 import growthcraft.api.core.registry.GenericItemRegistry;
 import growthcraft.api.core.registry.ItemRegistryEntry;
-
 import net.minecraft.item.ItemStack;
 
 public class BaitRegistry extends GenericItemRegistry<ItemStack, ItemRegistryEntry<BaitRegistry.BaitHandle>>

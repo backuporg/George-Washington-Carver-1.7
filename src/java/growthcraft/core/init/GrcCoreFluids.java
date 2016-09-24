@@ -24,12 +24,11 @@
 package growthcraft.core.init;
 
 import growthcraft.api.core.GrcFluid;
+import growthcraft.core.GrowthCraftCore;
 import growthcraft.core.bucket.SaltBucketEntry;
 import growthcraft.core.common.GrcModuleBase;
 import growthcraft.core.eventhandler.EventHandlerBucketFill;
-import growthcraft.core.GrowthCraftCore;
 import growthcraft.core.util.FluidFactory;
-
 import net.minecraftforge.oredict.OreDictionary;
 
 public class GrcCoreFluids extends GrcModuleBase

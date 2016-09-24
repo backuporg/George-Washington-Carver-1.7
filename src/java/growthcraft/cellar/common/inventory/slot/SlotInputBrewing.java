@@ -2,13 +2,12 @@ package growthcraft.cellar.common.inventory.slot;
 
 import growthcraft.api.cellar.CellarRegistry;
 import growthcraft.core.common.inventory.slot.SlotInput;
-
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 
 public class SlotInputBrewing extends SlotInput
 {
-	public SlotInputBrewing(IInventory inv, int x, int y, int z)
+	public SlotInputBrewing(IInventory inv, BlockPos pos)
 	{
 		super(inv, x, y, z);
 	}

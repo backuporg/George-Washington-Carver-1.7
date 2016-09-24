@@ -2,15 +2,13 @@ package growthcraft.cellar.client.render;
 
 import growthcraft.cellar.common.block.BlockFruitPress;
 import growthcraft.core.util.RenderUtils;
-
-import net.minecraftforge.fml.client.registry.ISimpleBlockRenderingHandler;
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.EntityRenderer;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
-
 import net.minecraft.world.IBlockAccess;
+import net.minecraftforge.fml.client.registry.ISimpleBlockRenderingHandler;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 public class RenderFruitPress implements ISimpleBlockRenderingHandler
 {
@@ -120,13 +118,13 @@ public class RenderFruitPress implements ISimpleBlockRenderingHandler
 		}
 	}
 
-	private void renderWoodSlats(RenderBlocks r, Block b, int x, int y, int z, double x1, double x2, double z1, double z2)
+	private void renderWoodSlats(RenderBlocks r, Block b, BlockPos pos, double x1, double x2, double z1, double z2)
 	{
 		r.setRenderBounds(x1, 0.375D, z1, x2, 1.0D, z2);
 		r.renderStandardBlock(b, x, y, z);
 	}
 
-	private void renderMetalRings(RenderBlocks r, Block b, int x, int y, int z, double y1, double y2)
+	private void renderMetalRings(RenderBlocks r, Block b, BlockPos pos, double y1, double y2)
 	{
 		final double d = 0.0625D;
 		r.setRenderBounds(1.5*d, y1, 1.5*d, 2.5*d,  y2, 14.5*d);
@@ -140,7 +138,7 @@ public class RenderFruitPress implements ISimpleBlockRenderingHandler
 	}
 
 	@Override
-	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer)
+	public boolean renderWorldBlock(IBlockAccess world, BlockPos pos, Block block, int modelId, RenderBlocks renderer)
 	{
 		if (modelId == RENDER_ID)
 		{

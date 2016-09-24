@@ -23,11 +23,10 @@
  */
 package growthcraft.api.core.schema;
 
-import javax.annotation.Nonnull;
-
 import growthcraft.api.cellar.common.Residue;
-
 import net.minecraft.item.ItemStack;
+
+import javax.annotation.Nonnull;
 
 public class ResidueSchema extends ItemKeySchema
 {

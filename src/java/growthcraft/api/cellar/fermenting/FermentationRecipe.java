@@ -23,16 +23,15 @@
  */
 package growthcraft.api.cellar.fermenting;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import growthcraft.api.core.definition.IMultiFluidStacks;
 import growthcraft.api.core.definition.IMultiItemStacks;
 import growthcraft.api.core.fluids.FluidTest;
 import growthcraft.api.core.item.ItemTest;
-
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public class FermentationRecipe implements IFermentationRecipe
 {

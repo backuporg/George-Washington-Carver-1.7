@@ -1,16 +1,16 @@
 package growthcraft.apples.common.world;
 
-import java.util.Random;
-
 import growthcraft.apples.GrowthCraftApples;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSapling;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
-import net.minecraft.util.EnumFacing;
+
+import java.util.Random;
 
 public abstract class WorldGenAppleTree extends WorldGenerator
 {
@@ -25,7 +25,7 @@ public abstract class WorldGenAppleTree extends WorldGenerator
 		super(doblocknotify);
 	}
 
-	public boolean generate(World world, Random random, int x, int y, int z)
+	public boolean generate(World world, Random random, BlockPos pos)
 	{
 		final int l = random.nextInt(3) + this.minTreeHeight;
 		boolean flag = true;
@@ -152,7 +152,7 @@ public abstract class WorldGenAppleTree extends WorldGenerator
 			block == Blocks.VINE;
 	}
 
-	protected boolean isReplaceable(World world, int x, int y, int z)
+	protected boolean isReplaceable(World world, BlockPos pos)
 	{
 		final Block block = world.getBlockState(x, y, z);
 		return block.isAir(world, x, y, z) ||

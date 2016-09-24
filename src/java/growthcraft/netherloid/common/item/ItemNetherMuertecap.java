@@ -25,7 +25,6 @@ package growthcraft.netherloid.common.item;
 
 import growthcraft.netherloid.netherloid;
 import growthcraft.netherloid.util.DamageSources;
-
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemFood;
@@ -54,17 +53,17 @@ public abstract class ItemNetherMuertecap extends ItemFood implements IPlantable
 		}
 	}
 
-	public EnumPlantType getPlantType(IBlockAccess world, int x, int y, int z)
+	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos)
 	{
 		return EnumPlantType.Nether;
 	}
 
-	public Block getPlant(IBlockAccess world, int x, int y, int z)
+	public Block getPlant(IBlockAccess world, BlockPos pos)
 	{
 		return netherloid.blocks.netherMuertecap.getBlockState();
 	}
 
-	public int getPlantMetadata(IBlockAccess world, int x, int y, int z)
+	public int getPlantMetadata(IBlockAccess world, BlockPos pos)
 	{
 		return 0;
 	}

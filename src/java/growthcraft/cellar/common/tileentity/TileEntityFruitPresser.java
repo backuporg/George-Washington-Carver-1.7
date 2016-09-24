@@ -1,14 +1,12 @@
 package growthcraft.cellar.common.tileentity;
 
-import java.io.IOException;
-
-import io.netty.buffer.ByteBuf;
-
 import growthcraft.cellar.GrowthCraftCellar;
-import growthcraft.core.common.tileentity.event.TileEventHandler;
 import growthcraft.core.common.tileentity.GrcTileBase;
-
+import growthcraft.core.common.tileentity.event.TileEventHandler;
+import io.netty.buffer.ByteBuf;
 import net.minecraft.nbt.NBTTagCompound;
+
+import java.io.IOException;
 
 public class TileEntityFruitPresser extends GrcTileBase
 {

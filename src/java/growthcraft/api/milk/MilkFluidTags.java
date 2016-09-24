@@ -23,8 +23,8 @@
  */
 package growthcraft.api.milk;
 
-import growthcraft.api.core.fluids.FluidTag;
 import growthcraft.api.core.CoreRegistry;
+import growthcraft.api.core.fluids.FluidTag;
 
 public class MilkFluidTags
 {

@@ -25,7 +25,6 @@ package growthcraft.api.fishtrap.user;
 
 import growthcraft.api.core.schema.ICommentable;
 import growthcraft.api.core.schema.ItemKeySchema;
-
 import net.minecraft.item.ItemStack;
 
 public class UserBaitEntry implements ICommentable

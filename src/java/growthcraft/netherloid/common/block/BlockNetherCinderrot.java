@@ -24,8 +24,8 @@
 package growthcraft.netherloid.common.block;
 
 import growthcraft.netherloid.netherloid;
-
 import net.minecraft.entity.Entity;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public abstract class BlockNetherCinderrot extends BlockNetherFungusBase
@@ -38,17 +38,17 @@ public abstract class BlockNetherCinderrot extends BlockNetherFungusBase
 		setBlockName("grcnetherloid.netherCinderrot");
 		setCreativeTab(netherloid.tab);
 		setBlockTextureName("grcnetherloid:cinderrot");
-		setBlockBounds(0.375F, 0.0F, 0.375F, 0.625F, 0.375F, 0.625F);
+		getBoundingBox(0.375F, 0.0F, 0.375F, 0.625F, 0.375F, 0.625F);
 	}
 
 	@Override
-	protected float getSpreadRate(World world, int x, int y, int z)
+	protected float getSpreadRate(World world, BlockPos pos)
 	{
 		return cinderrotSpreadRate;
 	}
 
 	@Override
-	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
+	public void onEntityCollidedWithBlock(World world, BlockPos pos, Entity entity)
 	{
 		if (world.isRemote) return;
 		entity.setFire(15);

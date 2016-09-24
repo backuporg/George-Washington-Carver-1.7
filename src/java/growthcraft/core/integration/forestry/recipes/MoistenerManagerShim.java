@@ -25,9 +25,7 @@ package growthcraft.core.integration.forestry.recipes;
 
 import forestry.api.recipes.IMoistenerManager;
 import forestry.api.recipes.IMoistenerRecipe;
-
 import net.minecraft.item.ItemStack;
-
 import net.minecraftforge.fml.common.Optional;
 
 @Optional.Interface(iface="forestry.api.recipes.IMoistenerManager", modid="ForestryAPI|recipes")

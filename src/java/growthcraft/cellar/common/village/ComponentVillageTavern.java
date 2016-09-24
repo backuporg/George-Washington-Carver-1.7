@@ -1,16 +1,15 @@
 package growthcraft.cellar.common.village;
 
-import java.util.List;
-import java.util.Random;
-
 import growthcraft.cellar.GrowthCraftCellar;
-
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
 import net.minecraft.world.gen.structure.StructureVillagePieces;
 import net.minecraft.world.gen.structure.StructureVillagePieces.Start;
+
+import java.util.List;
+import java.util.Random;
 
 public class ComponentVillageTavern extends StructureVillagePieces.Village
 {
@@ -169,7 +168,7 @@ public class ComponentVillageTavern extends StructureVillagePieces.Village
 			for (x = 0; x < 13; ++x)
 			{
 				this.clearCurrentPositionBlocksUpwards(world, x, 9, z, box);
-				this.func_151554_b(world, Blocks.COBBLESTONE, 0, x, -1, z, box);
+				this.replaceAirAndLiquidDownwards(world, Blocks.COBBLESTONE, 0, x, -1, z, box);
 			}
 		}
 

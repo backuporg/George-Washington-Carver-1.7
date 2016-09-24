@@ -23,15 +23,14 @@
  */
 package growthcraft.api.core.fluids.user;
 
-import java.io.BufferedReader;
-
 import growthcraft.api.core.CoreRegistry;
 import growthcraft.api.core.fluids.FluidTag;
-import growthcraft.api.core.fluids.IFluidTagsRegistry;
 import growthcraft.api.core.fluids.IFluidDictionary;
+import growthcraft.api.core.fluids.IFluidTagsRegistry;
 import growthcraft.api.core.user.AbstractUserJSONConfig;
-
 import net.minecraftforge.fluids.Fluid;
+
+import java.io.BufferedReader;
 
 public class UserFluidDictionaryConfig extends AbstractUserJSONConfig
 {

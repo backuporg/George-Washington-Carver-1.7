@@ -1,33 +1,47 @@
 package growthcraft.rice.common.block;
 
-import java.util.ArrayList;
-import java.util.Random;
-
 import growthcraft.api.core.util.BlockFlags;
 import growthcraft.core.common.block.GrcBlockBase;
 import growthcraft.core.common.block.ICropDataProvider;
 import growthcraft.core.common.block.IPaddyCrop;
 import growthcraft.core.integration.AppleCore;
-import growthcraft.rice.client.renderer.RenderRice;
 import growthcraft.rice.GrowthCraftRice;
+import growthcraft.rice.client.renderer.RenderRice;
 import growthcraft.rice.util.RiceBlockCheck;
-
-import net.minecraftforge.fml.common.eventhandler.Event;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
-
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
-
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.eventhandler.Event;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
-public abstract class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProvider, IGrowable
+import java.util.ArrayList;
+import java.util.Random;
+
+public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProvider, IGrowable
 {
+	@Override
+	public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {
+		return false;
+	}
+
+	@Override
+	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+		return false;
+	}
+
+	@Override
+	public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+
+	}
+
 	public static class RiceStage
 	{
 		public static final int MATURE = 7;
@@ -50,26 +64,26 @@ public abstract class BlockRice extends GrcBlockBase implements IPaddyCrop, ICro
 		this.setStepSound(soundTypeGrass);
 	}
 
-	public boolean isMature(IBlockAccess world, int x, int y, int z)
+	public boolean isMature(IBlockAccess world, BlockPos pos)
 	{
 		final int meta = world.getBlockState(x, y, z);
 		return meta >= RiceStage.MATURE;
 	}
 
-	public float getGrowthProgress(IBlockAccess world, int x, int y, int z, int meta)
+	public float getGrowthProgress(IBlockAccess world, BlockPos pos, int meta)
 	{
 		return (float)meta / (float)RiceStage.MATURE;
 	}
 
-	private void incrementGrowth(World world, int x, int y, int z, int meta)
+	private void incrementGrowth(World world, BlockPos pos, int meta, IBlockState state)
 	{
-		world.setBlockState(x, y, z, meta + 1, BlockFlags.SYNC);
-		AppleCore.announceGrowthTick(this, world, x, y, z, meta);
+		world.setBlockState(pos, state, BlockFlags.SYNC);
+		AppleCore.announceGrowthTick(this, world, pos, meta);
 	}
 
-	private void growRice(World world, int x, int y, int z, int meta)
+	private void growRice(World world, BlockPos pos, int meta, IBlockState state)
 	{
-		incrementGrowth(world, x, y, z, meta);
+		incrementGrowth(world, pos, meta, state);
 		final Block paddyBlock = world.getBlockState(x, y - 1, z);
 		if (RiceBlockCheck.isPaddy(paddyBlock))
 		{
@@ -81,9 +95,9 @@ public abstract class BlockRice extends GrcBlockBase implements IPaddyCrop, ICro
 	 * TICK
 	 ************/
 	@Override
-	public void updateTick(World world, int x, int y, int z, Random random)
+	public void updateTick(World world, BlockPos pos, Random random)
 	{
-		this.checkCropChange(world, x, y, z);
+		this.checkCropChange(world, pos);
 
 		if (world.getBlockLightValue(x, y + 1, z) >= 9 && world.getBlockState(x, y - 1, z) > 0)
 		{
@@ -107,30 +121,30 @@ public abstract class BlockRice extends GrcBlockBase implements IPaddyCrop, ICro
 
 	/* Both side */
 	@Override
-	public boolean func_149851_a(World world, int x, int y, int z, boolean isClient)
+	public boolean func_149851_a(World world, BlockPos pos, boolean isClient)
 	{
-		return world.getBlockState(x, y, z) < RiceStage.MATURE;
+		return world.getBlockState(pos) < RiceStage.MATURE;
 	}
 
 	/* SideOnly(Side.SERVER) Can this apply bonemeal effect? */
 	@Override
-	public boolean func_149852_a(World world, Random random, int x, int y, int z)
+	public boolean func_149852_a(World world, Random random, BlockPos pos)
 	{
 		return true;
 	}
 
 	/* Apply bonemeal effect */
 	@Override
-	public void func_149853_b(World world, Random random, int x, int y, int z)
+	public void func_149853_b(World world, Random random, BlockPos pos, IBlockState state)
 	{
-		final int meta = world.getBlockState(x, y, z);
+		final int meta = world.getBlockState(int);
 		if (meta < RiceStage.MATURE)
 		{
-			growRice(world, x, y, z, meta);
+			growRice(world, pos, meta, state);
 		}
 	}
 
-	private float getGrowthRate(World world, int x, int y, int z)
+	private float getGrowthRate(World world, BlockPos pos)
 	{
 		float f = 1.0F;
 		final Block l = world.getBlockState(x, y, z - 1);
@@ -179,7 +193,7 @@ public abstract class BlockRice extends GrcBlockBase implements IPaddyCrop, ICro
 		return f;
 	}
 
-	protected final void checkCropChange(World world, int x, int y, int z)
+	protected final void checkCropChange(World world, BlockPos pos)
 	{
 		if (!this.canBlockStay(world, x, y, z))
 		{
@@ -192,7 +206,7 @@ public abstract class BlockRice extends GrcBlockBase implements IPaddyCrop, ICro
 	 * TRIGGERS
 	 ************/
 	@Override
-	public void onNeighborBlockChange(World world, int x, int y, int z, Block par5)
+	public void onNeighborBlockChange(World world, BlockPos pos, Block par5)
 	{
 		this.checkCropChange(world, x, y, z);
 	}
@@ -211,7 +225,7 @@ public abstract class BlockRice extends GrcBlockBase implements IPaddyCrop, ICro
 	}
 
 	@Override
-	public boolean canBlockStay(World world, int x, int y, int z)
+	public boolean canBlockStay(World world, BlockPos pos)
 	{
 		return (world.getFullBlockLightValue(x, y, z) >= 8 ||
 			world.canBlockSeeTheSky(x, y, z)) &&
@@ -223,7 +237,7 @@ public abstract class BlockRice extends GrcBlockBase implements IPaddyCrop, ICro
 	 ************/
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Item getItem(World world, int x, int y, int z)
+	public Item getItem(World world, BlockPos pos)
 	{
 		return GrowthCraftRice.items.rice.getItem();
 	}
@@ -244,13 +258,13 @@ public abstract class BlockRice extends GrcBlockBase implements IPaddyCrop, ICro
 	}
 
 	@Override
-	public void dropBlockAsItemWithChance(World world, int x, int y, int z, int par5, float par6, int par7)
+	public void dropBlockAsItemWithChance(World world, BlockPos pos, int par5, float par6, int par7)
 	{
 		super.dropBlockAsItemWithChance(world, x, y, z, par5, par6, 0);
 	}
 
 	@Override
-	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune)
+	public ArrayList<ItemStack> getDrops(World world, BlockPos pos, int metadata, int fortune)
 	{
 		final ArrayList<ItemStack> ret = super.getDrops(world, x, y, z, metadata, fortune);
 
@@ -330,20 +344,20 @@ public abstract class BlockRice extends GrcBlockBase implements IPaddyCrop, ICro
 	 * BOXES
 	 ************/
 	@Override
-	public void setBlockBoundsBasedOnState(IBlockAccess world, int x, int y, int z)
+	public void setBlockBoundsBasedOnState(IBlockAccess world, BlockPos pos)
 	{
-		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.25F, 1.0F);
+		this.getBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 0.25F, 1.0F);
 	}
 
 	@Override
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, BlockPos pos)
 	{
 		return null;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public AxisAlignedBB getSelectedBoundingBoxFromPool(World world, int x, int y, int z)
+	public AxisAlignedBB getSelectedBoundingBoxFromPool(World world, BlockPos pos)
 	{
 		this.setBlockBoundsBasedOnState(world, x, y, z);
 		return super.getSelectedBoundingBoxFromPool(world, x, y, z);

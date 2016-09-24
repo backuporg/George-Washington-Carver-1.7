@@ -23,17 +23,16 @@
  */
 package growthcraft.core.common.item.crafting;
 
+import growthcraft.api.core.item.IItemStackComparator;
+import net.minecraft.inventory.InventoryCrafting;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.world.World;
+
+import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import javax.annotation.Nonnull;
-
-import growthcraft.api.core.item.IItemStackComparator;
-
-import net.minecraft.inventory.InventoryCrafting;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
 
 public class ShapelessItemComparableRecipe implements IRecipe
 {

@@ -23,28 +23,25 @@
  */
 package growthcraft.netherloid.common.block;
 
-import java.util.Random;
-
-import javax.annotation.Nonnull;
-
-import growthcraft.core.common.block.BlockPaddyBase;
 import growthcraft.api.core.util.BlockFlags;
+import growthcraft.core.common.block.BlockPaddyBase;
 import growthcraft.netherloid.netherloid;
 import growthcraft.netherloid.util.NetherBlockCheck;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
-
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nonnull;
+import java.util.Random;
 
 public class BlockNetherPaddy extends BlockPaddyBase
 {
@@ -71,7 +68,7 @@ public class BlockNetherPaddy extends BlockPaddyBase
 		}
 	}
 
-	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
+	public void onEntityCollidedWithBlock(World world, BlockPos pos, Entity entity)
 	{
 		if (world.isRemote) return;
 
@@ -84,7 +81,7 @@ public class BlockNetherPaddy extends BlockPaddyBase
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World world, int x, int y, int z, Random random)
+	public void randomDisplayTick(World world, BlockPos pos, Random random)
 	{
 		super.randomDisplayTick(world, x, y, z, random);
 		if (filledPaddy)
@@ -126,19 +123,19 @@ public class BlockNetherPaddy extends BlockPaddyBase
 	}
 
 	@Override
-	public int getMaxPaddyMeta(IBlockAccess world, int x, int y, int z)
+	public int getMaxPaddyMeta(IBlockAccess world, BlockPos pos)
 	{
 		return paddyFieldMax;
 	}
 
 	@Override
-	public boolean isBelowFillingFluid(IBlockAccess world, int x, int y, int z)
+	public boolean isBelowFillingFluid(IBlockAccess world, BlockPos pos)
 	{
 		return world.getBlockState(x, y + 1, z).getMaterial() == Material.LAVA;
 	}
 
 	@Override
-	public void drainPaddy(World world, int x, int y, int z)
+	public void drainPaddy(World world, BlockPos pos)
 	{
 		final int meta = world.getBlockState(x, y, z);
 		if (meta > 1)
@@ -156,7 +153,7 @@ public class BlockNetherPaddy extends BlockPaddyBase
 	}
 
 	@Override
-	public void fillPaddy(World world, int x, int y, int z)
+	public void fillPaddy(World world, BlockPos pos)
 	{
 		final Block targetBlock = netherloid.blocks.netherPaddyFieldFilled.getBlockState();
 		if (this != targetBlock)
@@ -174,7 +171,7 @@ public class BlockNetherPaddy extends BlockPaddyBase
 	 ************/
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Item getItem(World world, int x, int y, int z)
+	public Item getItem(World world, BlockPos pos)
 	{
 		return Item.getItemFromBlock(Blocks.SOUL_SAND);
 	}

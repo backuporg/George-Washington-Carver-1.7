@@ -2,21 +2,20 @@ package growthcraft.bamboo.common.item;
 
 import growthcraft.bamboo.GrowthCraftBamboo;
 import growthcraft.core.common.item.GrcItemFoodBase;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
-public abstract class ItemBambooShoot extends GrcItemFoodBase implements IPlantable
+public class ItemBambooShoot extends GrcItemFoodBase implements IPlantable
 {
 	private Block cropBlock;
 
@@ -29,7 +28,7 @@ public abstract class ItemBambooShoot extends GrcItemFoodBase implements IPlanta
 	}
 
 	@Override
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int EnumFacing, float par8, float par9, float par10)
+	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, int EnumFacing, float par8, float par9, float par10)
 	{
 		final Block block1 = world.getBlockState(x, y, z);
 
@@ -102,19 +101,19 @@ public abstract class ItemBambooShoot extends GrcItemFoodBase implements IPlanta
 	}
 
 	@Override
-	public EnumPlantType getPlantType(IBlockAccess world, int x, int y, int z)
+	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos)
 	{
 		return EnumPlantType.Plains;
 	}
 
 	@Override
-	public Block getPlant(IBlockAccess world, int x, int y, int z)
+	public Block getPlant(IBlockAccess world, BlockPos pos)
 	{
 		return cropBlock;
 	}
 
 	@Override
-	public int getPlantMetadata(IBlockAccess world, int x, int y, int z)
+	public int getPlantMetadata(IBlockAccess world, BlockPos pos)
 	{
 		return 0;
 	}

@@ -23,15 +23,14 @@
  */
 package growthcraft.core.stats;
 
-import java.util.Map;
-import java.util.EnumMap;
-
 import growthcraft.api.core.item.EnumSkull;
-import growthcraft.core.common.AchievementPageGrowthcraft;
 import growthcraft.core.GrowthCraftCore;
-
+import growthcraft.core.common.AchievementPageGrowthcraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.stats.Achievement;
+
+import java.util.EnumMap;
+import java.util.Map;
 
 public class GrcCoreAchievements
 {

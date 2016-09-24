@@ -1,7 +1,5 @@
 package growthcraft.core;
 
-import java.util.List;
-
 import growthcraft.api.core.CoreRegistry;
 import growthcraft.api.core.fluids.FluidUtils;
 import growthcraft.api.core.fluids.user.UserFluidDictionaryConfig;
@@ -15,27 +13,13 @@ import growthcraft.core.common.AchievementPageGrowthcraft;
 import growthcraft.core.common.CommonProxy;
 import growthcraft.core.common.item.crafting.ShapelessItemComparableRecipe;
 import growthcraft.core.creativetab.CreativeTabsGrowthcraft;
-import growthcraft.core.eventhandler.EventHandlerBucketFill;
-import growthcraft.core.eventhandler.EventHandlerItemCraftedEventCore;
-import growthcraft.core.eventhandler.EventHandlerLivingDeathCore;
-import growthcraft.core.eventhandler.HarvestDropsEventCore;
-import growthcraft.core.eventhandler.PlayerInteractEventPaddy;
-import growthcraft.core.eventhandler.TextureStitchEventCore;
+import growthcraft.core.eventhandler.*;
 import growthcraft.core.init.GrcCoreBlocks;
 import growthcraft.core.init.GrcCoreFluids;
 import growthcraft.core.init.GrcCoreItems;
 import growthcraft.core.init.GrcCoreRecipes;
 import growthcraft.core.integration.bop.BopPlatform;
 import growthcraft.core.stats.GrcCoreAchievements;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.FMLCommonHandler;
-import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.Mod.Instance;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -43,8 +27,19 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.FluidContainerRegistry.FluidContainerData;
 import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.Mod.Instance;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.RecipeSorter;
+
+import java.util.List;
 
 @Mod(
 	modid = GrowthCraftCore.MOD_ID,

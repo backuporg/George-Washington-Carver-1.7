@@ -23,18 +23,17 @@
  */
 package growthcraft.cellar.util;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import growthcraft.api.cellar.common.Residue;
 import growthcraft.api.cellar.util.CellarBoozeBuilder;
 import growthcraft.api.cellar.util.ICellarBoozeBuilder;
 import growthcraft.api.core.definition.IMultiFluidStacks;
 import growthcraft.api.core.util.MultiStacksUtil;
-
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * This is a variant to the CellarBoozeBuilder provided in the API

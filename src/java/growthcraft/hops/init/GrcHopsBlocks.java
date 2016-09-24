@@ -23,8 +23,8 @@
  */
 package growthcraft.hops.init;
 
-import growthcraft.core.common.definition.BlockTypeDefinition;
 import growthcraft.core.common.GrcModuleBlocks;
+import growthcraft.core.common.definition.BlockTypeDefinition;
 import growthcraft.hops.common.block.BlockHops;
 
 public class GrcHopsBlocks extends GrcModuleBlocks

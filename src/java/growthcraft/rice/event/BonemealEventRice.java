@@ -1,22 +1,21 @@
 package growthcraft.rice.event;
 
-import java.util.Random;
-
-import growthcraft.rice.GrowthCraftRice;
-import growthcraft.api.core.util.BlockFlags;
 import growthcraft.api.core.util.AuxFX;
+import growthcraft.api.core.util.BlockFlags;
+import growthcraft.rice.GrowthCraftRice;
 import growthcraft.rice.util.RiceBlockCheck;
-
-import net.minecraftforge.fml.common.eventhandler.Event.Result;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.BonemealEvent;
+import net.minecraftforge.fml.common.eventhandler.Event.Result;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+import java.util.Random;
 
 public class BonemealEventRice
 {
-	private void appleBonemealEffect(World world, Random rand, int x, int y, int z)
+	private void appleBonemealEffect(World world, Random rand, BlockPos pos)
 	{
 		final int r =  MathHelper.getRandomIntegerInRange(rand, 2, 5);
 		int mplus;

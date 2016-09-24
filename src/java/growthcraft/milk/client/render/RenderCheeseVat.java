@@ -29,17 +29,15 @@ import growthcraft.milk.client.model.ModelCheeseVat;
 import growthcraft.milk.client.resource.GrcMilkResources;
 import growthcraft.milk.common.block.BlockCheeseVat;
 import growthcraft.milk.common.tileentity.TileEntityCheeseVat;
-
-import net.minecraftforge.fml.client.registry.ISimpleBlockRenderingHandler;
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.world.IBlockAccess;
-
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fml.client.registry.ISimpleBlockRenderingHandler;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import org.lwjgl.opengl.GL11;
 
 public class RenderCheeseVat implements ISimpleBlockRenderingHandler
@@ -76,7 +74,7 @@ public class RenderCheeseVat implements ISimpleBlockRenderingHandler
 		}
 	}
 
-	private void renderFluidLayer(Block block, RenderBlocks renderer, Fluid fluid, double y0, double y1, int x, int y, int z)
+	private void renderFluidLayer(Block block, RenderBlocks renderer, Fluid fluid, double y0, double y1, BlockPos pos)
 	{
 		if (fluid == null) return;
 		final IIcon icon = fluid.getIcon();
@@ -91,7 +89,7 @@ public class RenderCheeseVat implements ISimpleBlockRenderingHandler
 	}
 
 	@Override
-	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer)
+	public boolean renderWorldBlock(IBlockAccess world, BlockPos pos, Block block, int modelId, RenderBlocks renderer)
 	{
 		if (modelId == RENDER_ID)
 		{

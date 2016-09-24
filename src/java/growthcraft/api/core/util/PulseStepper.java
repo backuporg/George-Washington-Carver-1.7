@@ -23,11 +23,9 @@
  */
 package growthcraft.api.core.util;
 
-import io.netty.buffer.ByteBuf;
-
 import growthcraft.api.core.nbt.INBTSerializableContext;
 import growthcraft.api.core.stream.IStreamable;
-
+import io.netty.buffer.ByteBuf;
 import net.minecraft.nbt.NBTTagCompound;
 
 /**

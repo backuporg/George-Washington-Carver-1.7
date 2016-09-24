@@ -23,14 +23,13 @@
  */
 package growthcraft.api.milk.churn;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import growthcraft.api.core.log.ILoggable;
-
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public interface IChurnRegistry extends ILoggable
 {

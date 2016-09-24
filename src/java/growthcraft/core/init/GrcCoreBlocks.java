@@ -23,26 +23,25 @@
  */
 package growthcraft.core.init;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import growthcraft.core.GrowthCraftCore;
+import growthcraft.core.common.GrcModuleBlocks;
 import growthcraft.core.common.block.BlockFenceRope;
 import growthcraft.core.common.block.BlockRope;
 import growthcraft.core.common.block.BlockSaltBlock;
 import growthcraft.core.common.definition.BlockDefinition;
-import growthcraft.core.common.GrcModuleBlocks;
 import growthcraft.core.common.item.ItemBlockFenceRope;
 import growthcraft.core.common.item.ItemBlockNaturaFenceRope;
-import growthcraft.core.integration.minecraft.EnumMinecraftWoodType;
 import growthcraft.core.integration.NEI;
+import growthcraft.core.integration.minecraft.EnumMinecraftWoodType;
 import growthcraft.core.registry.FenceRopeRegistry;
-import growthcraft.core.GrowthCraftCore;
-
-import net.minecraftforge.fml.common.Loader;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class GrcCoreBlocks extends GrcModuleBlocks
 {

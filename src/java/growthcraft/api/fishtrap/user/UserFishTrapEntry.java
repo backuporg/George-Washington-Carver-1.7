@@ -23,14 +23,13 @@
  */
 package growthcraft.api.fishtrap.user;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import growthcraft.api.core.schema.ICommentable;
 import growthcraft.api.core.schema.ItemKeySchema;
 import growthcraft.api.fishtrap.FishTrapEntry;
-
 import net.minecraft.item.ItemStack;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserFishTrapEntry implements ICommentable
 {

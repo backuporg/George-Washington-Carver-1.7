@@ -1,17 +1,16 @@
 // Copied from Buildcraft core and edited for Growthcraft
 package growthcraft.api.core.client.particle;
 
-import net.minecraft.block.material.Material;
-import net.minecraft.block.state.BlockStateContainer;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.particle.Particle;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.IFluidBlock;
-import net.minecraft.block.state.IBlockState;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 
 @SideOnly(Side.CLIENT)

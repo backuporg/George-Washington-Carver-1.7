@@ -28,7 +28,6 @@ import growthcraft.core.client.renderer.RenderFenceRope;
 import growthcraft.core.client.renderer.RenderPaddy;
 import growthcraft.core.client.renderer.RenderRope;
 import growthcraft.core.common.CommonProxy;
-
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 public class ClientProxy extends CommonProxy

@@ -23,26 +23,17 @@
  */
 package growthcraft.api.core.schema;
 
-import java.util.Set;
-import java.util.HashSet;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import javax.annotation.Nonnull;
-
 import growthcraft.api.core.CoreRegistry;
 import growthcraft.api.core.definition.IMultiFluidStacks;
-import growthcraft.api.core.fluids.FluidTag;
-import growthcraft.api.core.fluids.FluidTest;
-import growthcraft.api.core.fluids.FluidUtils;
-import growthcraft.api.core.fluids.MultiFluidStacks;
-import growthcraft.api.core.fluids.TaggedFluidStacks;
+import growthcraft.api.core.fluids.*;
 import growthcraft.api.core.util.StringUtils;
-
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
+
+import javax.annotation.Nonnull;
+import java.util.*;
 
 public class MultiFluidStackSchema implements ICommentable, IValidatable, IMultiFluidStacks
 {

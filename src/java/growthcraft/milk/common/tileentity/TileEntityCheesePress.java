@@ -23,30 +23,28 @@
  */
 package growthcraft.milk.common.tileentity;
 
-import java.io.IOException;
-
 import growthcraft.api.core.item.ItemTest;
-import growthcraft.api.milk.cheesepress.ICheesePressRecipe;
 import growthcraft.api.milk.MilkRegistry;
+import growthcraft.api.milk.cheesepress.ICheesePressRecipe;
 import growthcraft.core.common.inventory.GrcInternalInventory;
+import growthcraft.core.common.tileentity.GrcTileInventoryBase;
 import growthcraft.core.common.tileentity.device.DeviceInventorySlot;
 import growthcraft.core.common.tileentity.event.TileEventHandler;
 import growthcraft.core.common.tileentity.feature.IItemHandler;
 import growthcraft.core.common.tileentity.feature.ITileProgressiveDevice;
-import growthcraft.core.common.tileentity.GrcTileInventoryBase;
 import growthcraft.core.util.ItemUtils;
-import growthcraft.milk.common.item.ItemBlockHangingCurds;
 import growthcraft.milk.GrowthCraftMilk;
-
+import growthcraft.milk.common.item.ItemBlockHangingCurds;
 import io.netty.buffer.ByteBuf;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.inventory.IInventory;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.io.IOException;
 
 public class TileEntityCheesePress extends GrcTileInventoryBase implements IItemHandler, ITileProgressiveDevice
 {

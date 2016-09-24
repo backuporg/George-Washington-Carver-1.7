@@ -23,16 +23,15 @@
  */
 package growthcraft.milk.eventhandler;
 
-import java.util.Random;
-
 import growthcraft.api.core.util.RandomUtils;
 import growthcraft.core.util.ItemUtils;
 import growthcraft.milk.GrowthCraftMilk;
-
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+import java.util.Random;
 
 // I feel sorry for the baby cows, but cheese is required!
 public class EventHandlerOnBabyCowDeath

@@ -23,11 +23,11 @@
  */
 package growthcraft.core.common.inventory;
 
-import javax.annotation.Nonnull;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
+
+import javax.annotation.Nonnull;
 
 public class InventorySlice implements IInventory
 {

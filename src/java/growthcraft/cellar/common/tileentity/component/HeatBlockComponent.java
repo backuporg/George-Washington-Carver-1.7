@@ -26,11 +26,10 @@ package growthcraft.cellar.common.tileentity.component;
 import growthcraft.api.cellar.CellarRegistry;
 import growthcraft.api.cellar.heatsource.IHeatSourceBlock;
 import growthcraft.core.util.BlockCheck;
-
 import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.World;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.world.World;
 
 /**
  * Component for handling heat source blocks for a tile entity

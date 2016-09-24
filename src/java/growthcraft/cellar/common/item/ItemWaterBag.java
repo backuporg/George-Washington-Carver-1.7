@@ -23,42 +23,38 @@
  */
 package growthcraft.cellar.common.item;
 
-import java.util.List;
-
-import growthcraft.api.cellar.booze.BoozeEntry;
 import growthcraft.api.cellar.CellarRegistry;
+import growthcraft.api.cellar.booze.BoozeEntry;
 import growthcraft.api.core.fluids.FluidTest;
 import growthcraft.api.core.fluids.FluidUtils;
 import growthcraft.api.core.i18n.GrcI18n;
-import growthcraft.cellar.event.EventWaterBag;
 import growthcraft.cellar.GrowthCraftCellar;
+import growthcraft.cellar.event.EventWaterBag;
 import growthcraft.cellar.util.BoozeUtils;
 import growthcraft.core.common.item.GrcItemBase;
 import growthcraft.core.integration.AppleCore;
 import growthcraft.core.lib.GrcCoreState;
 import growthcraft.core.util.UnitFormatter;
-
-import squeek.applecore.api.food.IEdible;
-import squeek.applecore.api.food.FoodValues;
-
-import net.minecraftforge.fml.common.Optional;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
-
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumChatFormatting;
-
-import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidContainerItem;
+import net.minecraftforge.fml.common.Optional;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import squeek.applecore.api.food.FoodValues;
+import squeek.applecore.api.food.IEdible;
+
+import java.util.List;
 
 @Optional.Interface(iface="squeek.applecore.api.food.IEdible", modid=AppleCore.MOD_ID)
 public class ItemWaterBag extends GrcItemBase implements IFluidContainerItem, IEdible
@@ -399,11 +395,11 @@ public class ItemWaterBag extends GrcItemBase implements IFluidContainerItem, IE
 
 	private boolean tryFillByBlock(ItemStack stack, World world, EntityPlayer player)
 	{
-		final MovingObjectPosition pos = this.getMovingObjectPositionFromPlayer(world, player, true);
+		final RayTraceResult pos = this.getMovingObjectPositionFromPlayer(world, player, true);
 
 		if (pos != null)
 		{
-			if (pos.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK)
+			if (pos.typeOfHit == RayTraceResult.MovingObjectType.BLOCK)
 			{
 				final int i = pos.blockX;
 				final int j = pos.blockY;
@@ -482,9 +478,9 @@ public class ItemWaterBag extends GrcItemBase implements IFluidContainerItem, IE
 			}
 			else
 			{
-				list.add(EnumChatFormatting.GRAY +
+				list.add(TextFormatting.GRAY +
 					GrcI18n.translate("grc.tooltip.detailed_information",
-						EnumChatFormatting.WHITE + GrcCoreState.detailedKey + EnumChatFormatting.GRAY));
+						TextFormatting.WHITE + GrcCoreState.detailedKey + TextFormatting.GRAY));
 			}
 		}
 	}

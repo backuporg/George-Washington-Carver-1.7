@@ -1,25 +1,22 @@
 package growthcraft.rice.common.block;
 
-import java.util.Random;
-
-import javax.annotation.Nonnull;
-
 import growthcraft.api.core.util.BlockFlags;
 import growthcraft.core.common.block.BlockPaddyBase;
 import growthcraft.rice.GrowthCraftRice;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
-
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nonnull;
+import java.util.Random;
 
 public class BlockPaddy extends BlockPaddyBase
 {
@@ -38,7 +35,7 @@ public class BlockPaddy extends BlockPaddyBase
 	}
 
 	@Override
-	public void fillWithRain(World world, int x, int y, int z)
+	public void fillWithRain(World world, BlockPos pos)
 	{
 		if (world.rand.nextInt(20) == 0)
 		{
@@ -68,13 +65,13 @@ public class BlockPaddy extends BlockPaddyBase
 	}
 
 	@Override
-	public int getMaxPaddyMeta(IBlockAccess world, int x, int y, int z)
+	public int getMaxPaddyMeta(IBlockAccess world, BlockPos pos)
 	{
 		return paddyFieldMax;
 	}
 
 	@Override
-	public boolean isBelowFillingFluid(IBlockAccess world, int x, int y, int z)
+	public boolean isBelowFillingFluid(IBlockAccess world, BlockPos pos)
 	{
 		return world.getBlockState(x, y + 1, z).getMaterial() == Material.WATER;
 	}
@@ -84,7 +81,7 @@ public class BlockPaddy extends BlockPaddyBase
 	 ************/
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Item getItem(World world, int x, int y, int z)
+	public Item getItem(World world, BlockPos pos)
 	{
 		return Item.getItemFromBlock(Blocks.DIRT);
 	}

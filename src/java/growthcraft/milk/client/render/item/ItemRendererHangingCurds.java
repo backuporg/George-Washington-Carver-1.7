@@ -28,11 +28,9 @@ import growthcraft.milk.client.model.ModelHangingCurds;
 import growthcraft.milk.client.resource.GrcMilkResources;
 import growthcraft.milk.common.item.EnumCheeseType;
 import growthcraft.milk.common.item.ItemBlockHangingCurds;
-
-import org.lwjgl.opengl.GL11;
-
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import org.lwjgl.opengl.GL11;
 
 public class ItemRendererHangingCurds extends GrcItemRenderer
 {

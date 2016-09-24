@@ -23,12 +23,12 @@
  */
 package growthcraft.api.cellar.yeast.user;
 
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nonnull;
-
 import growthcraft.api.core.schema.ICommentable;
 import growthcraft.api.core.schema.ItemKeySchema;
+
+import javax.annotation.Nonnull;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserYeastEntry implements ICommentable
 {

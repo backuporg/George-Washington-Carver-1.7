@@ -23,12 +23,12 @@
  */
 package growthcraft.core.common;
 
-import javax.annotation.Nonnull;
-
 import growthcraft.api.core.log.ILoggable;
 import growthcraft.api.core.log.ILogger;
 import growthcraft.api.core.log.NullLogger;
 import growthcraft.api.core.module.IModule;
+
+import javax.annotation.Nonnull;
 
 public class GrcModuleBase implements IModule, ILoggable
 {

@@ -23,12 +23,11 @@
  */
 package growthcraft.api.core.util;
 
+import growthcraft.api.core.item.ItemKey;
+import net.minecraft.block.Block;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
-import growthcraft.api.core.item.ItemKey;
-
-import net.minecraft.block.Block;
 
 /**
  * As the name implies, this class is used in place of a List for Block keys

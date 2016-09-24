@@ -23,17 +23,8 @@
  */
 package growthcraft.core.integration.forestry.recipes;
 
+import forestry.api.recipes.*;
 import growthcraft.api.core.util.ObjectUtils;
-
-import forestry.api.recipes.ICarpenterManager;
-import forestry.api.recipes.ICentrifugeManager;
-import forestry.api.recipes.IFabricatorManager;
-import forestry.api.recipes.IFermenterManager;
-import forestry.api.recipes.IMoistenerManager;
-import forestry.api.recipes.ISqueezerManager;
-import forestry.api.recipes.IStillManager;
-import forestry.api.recipes.RecipeManagers;
-
 import net.minecraftforge.fml.common.Optional;
 
 public class RecipeManagersShims

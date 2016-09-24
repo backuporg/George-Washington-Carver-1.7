@@ -1,21 +1,21 @@
 package growthcraft.rice.common.village;
 
-import java.util.List;
-import java.util.Random;
-import java.util.HashMap;
-
+import growthcraft.core.util.SchemaToVillage;
 import growthcraft.core.util.SchemaToVillage.BlockEntry;
 import growthcraft.core.util.SchemaToVillage.IBlockEntries;
-import growthcraft.core.util.SchemaToVillage;
 import growthcraft.rice.GrowthCraftRice;
-
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
 import net.minecraft.world.gen.structure.StructureVillagePieces;
 import net.minecraft.world.gen.structure.StructureVillagePieces.Start;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Random;
 
 public class ComponentVillageRiceField extends StructureVillagePieces.Village implements SchemaToVillage.IVillage
 {
@@ -90,7 +90,7 @@ public class ComponentVillageRiceField extends StructureVillagePieces.Village im
 	}
 
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	public static ComponentVillageRiceField buildComponent(Start startPiece, List list, Random random, int x, int y, int z, int coordBaseMode, int par7)
+	public static ComponentVillageRiceField buildComponent(Start startPiece, List list, Random random, BlockPos pos, int coordBaseMode, int par7)
 	{
 		final StructureBoundingBox structureboundingbox = StructureBoundingBox.getComponentToAddBoundingBox(x, y, z, 0, 0, 0, 11, 5, 12, coordBaseMode);
 		if (canVillageGoDeeper(structureboundingbox))
@@ -103,7 +103,7 @@ public class ComponentVillageRiceField extends StructureVillagePieces.Village im
 		return null;
 	}
 
-	public void placeBlockAtCurrentPositionPub(World world, Block block, int meta, int x, int y, int z, StructureBoundingBox box)
+	public void placeBlockAtCurrentPositionPub(World world, Block block, int meta, BlockPos pos, StructureBoundingBox box)
 	{
 		placeBlockAtCurrentPosition(world, block, meta, x, y, z, box);
 	}
@@ -147,7 +147,7 @@ public class ComponentVillageRiceField extends StructureVillagePieces.Village im
 			for (int col = 0; col < 11; ++col)
 			{
 				this.clearCurrentPositionBlocksUpwards(world, col, 4, row, box);
-				this.func_151554_b(world, Blocks.DIRT, 0, col, -1, row, box);
+				this.replaceAirAndLiquidDownwards(world, Blocks.DIRT, 0, col, -1, row, box);
 			}
 		}
 

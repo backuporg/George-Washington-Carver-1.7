@@ -23,15 +23,14 @@
  */
 package growthcraft.api.cellar.booze;
 
-import java.util.Collection;
-import javax.annotation.Nullable;
-import javax.annotation.Nonnull;
-
 import growthcraft.api.core.fluids.FluidTag;
 import growthcraft.api.core.log.ILoggable;
-
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.Collection;
 
 public interface IBoozeRegistry extends ILoggable
 {

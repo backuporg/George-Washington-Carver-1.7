@@ -28,7 +28,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
 public class ItemNetherLilyPad extends ItemBlock
@@ -43,7 +43,7 @@ public class ItemNetherLilyPad extends ItemBlock
 
 	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer player)
 	{
-		final MovingObjectPosition pos = this.getMovingObjectPositionFromPlayer(world, player, true);
+		final RayTraceResult pos = this.getMovingObjectPositionFromPlayer(world, player, true);
 
 		if (pos == null)
 		{
@@ -51,7 +51,7 @@ public class ItemNetherLilyPad extends ItemBlock
 		}
 		else
 		{
-			if (pos.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK)
+			if (pos.typeOfHit == RayTraceResult.MovingObjectType.BLOCK)
 			{
 				final int x = pos.blockX;
 				final int y = pos.blockY;

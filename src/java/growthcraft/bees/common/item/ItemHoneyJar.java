@@ -2,11 +2,9 @@ package growthcraft.bees.common.item;
 
 import growthcraft.bees.GrowthCraftBees;
 import growthcraft.core.common.item.GrcItemFoodBase;
-
+import net.minecraft.init.Items;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import net.minecraft.init.Items;
 
 public class ItemHoneyJar extends GrcItemFoodBase
 {

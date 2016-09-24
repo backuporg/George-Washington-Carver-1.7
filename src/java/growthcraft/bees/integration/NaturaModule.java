@@ -23,15 +23,14 @@
  */
 package growthcraft.bees.integration;
 
+import growthcraft.bees.GrowthCraftBees;
 import growthcraft.bees.common.block.BlockBeeBoxNatura;
 import growthcraft.bees.common.item.ItemBlockBeeBox;
-import growthcraft.bees.GrowthCraftBees;
-import growthcraft.core.integration.natura.NaturaPlatform;
-import growthcraft.core.integration.natura.EnumNaturaWoodType;
 import growthcraft.core.integration.ModIntegrationBase;
-
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import growthcraft.core.integration.natura.EnumNaturaWoodType;
+import growthcraft.core.integration.natura.NaturaPlatform;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class NaturaModule extends ModIntegrationBase
 {

@@ -23,24 +23,20 @@
  */
 package growthcraft.core.common.block;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import javax.annotation.Nonnull;
-
 import growthcraft.api.core.nbt.INBTItemSerializable;
 import growthcraft.api.core.util.BlockFlags;
+import growthcraft.core.GrowthCraftCore;
+import growthcraft.core.Utils;
 import growthcraft.core.common.inventory.InventoryProcessor;
 import growthcraft.core.common.item.IItemTileBlock;
 import growthcraft.core.common.tileentity.feature.ICustomDisplayName;
 import growthcraft.core.common.tileentity.feature.IItemHandler;
-import growthcraft.core.GrowthCraftCore;
 import growthcraft.core.util.ItemUtils;
-import growthcraft.core.Utils;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.PropertyDirection;
+import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
@@ -51,16 +47,19 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.stats.StatList;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidHandler;
-import net.minecraft.block.properties.PropertyInteger;
-import net.minecraft.block.properties.PropertyDirection;
+
+import javax.annotation.Nonnull;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 /**
  * Base class for machines and the like
@@ -162,7 +161,7 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 	@Override
 	public boolean rotateBlock(World world, BlockPos pos, EnumFacing side, IBlockState state)
 	{
-		if (isRotatable(world, pos.getX(), pos.getY(), pos.getZ(), side))
+		if (isRotatable(world, pos, side))
 		{
 			doRotateBlock(world, pos, side, state);
 			world.markBlockForUpdate(pos);
@@ -202,17 +201,17 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 	public boolean wrenchBlock(World world, BlockPos pos, IBlockState state, EntityPlayer player, ItemStack wrench)
 	{
 		if (player == null) return false;
-		if (!ItemUtils.canWrench(wrench, player, pos.getX(), pos.getY(), pos.getZ())) return false;
+		if (!ItemUtils.canWrench(wrench, player, pos) return false;
 		if (!player.isSneaking()) return false;
 		if (!world.isRemote)
 		{
 			fellBlockFromWrench(world, pos, state);
-			ItemUtils.wrenchUsed(wrench, player, pos.getX(), pos.getY(), pos.getZ());
+			ItemUtils.wrenchUsed(wrench, player, pos);
 		}
 		return true;
 	}
 
-	//public boolean tryWrenchItem(EntityPlayer player, World world, BlockPos pos, IBlockState state)
+	//public boolean tryWrenchItem(EntityPlayer player, World world, BlockPos pos,, IBlockState state)
 	//{
 	//	if (player == null) return false;
 	//	final ItemStack is = player.inventory.getCurrentItem();
@@ -229,7 +228,7 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 		else if (l == 2) facing = EnumFacing.NORTH;
 		else if (l == 3) facing = EnumFacing.EAST;
 
-		if (isRotatable(world, pos.getX(), pos.getY(), pos.getZ(), EnumFacing.UP))
+		if (isRotatable(world, pos, EnumFacing.UP))
 		{
 			world.setBlockState(pos, state.withProperty(ROTATION, facing.ordinal()));
 		}
@@ -247,7 +246,7 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 		}
 	}
 
-	protected NBTTagCompound getTileTagCompound(World world, int x, int y, int z, ItemStack stack)
+	protected NBTTagCompound getTileTagCompound(World world, BlockPos pos, ItemStack stack)
 	{
 		final Item item = stack.getItem();
 		if (item instanceof IItemTileBlock)
@@ -262,7 +261,7 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 		return null;
 	}
 
-	protected void setTileTagCompound(World world, int x, int y, int z, ItemStack stack, NBTTagCompound tag)
+	protected void setTileTagCompound(World world, BlockPos pos, ItemStack stack, NBTTagCompound tag)
 	{
 		final Item item = stack.getItem();
 		if (item instanceof IItemTileBlock)
@@ -288,7 +287,7 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 			final TileEntity te = getTileEntity(world, pos);
 			if (te instanceof INBTItemSerializable)
 			{
-				final NBTTagCompound tag = getTileTagCompound(world, pos.getX(), pos.getY(), pos.getZ(), stack);
+				final NBTTagCompound tag = getTileTagCompound(world, pos, stack);
 				if (tag != null)
 				{
 					((INBTItemSerializable)te).readFromNBTForItem(tag);
@@ -406,7 +405,7 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 			final NBTTagCompound tag = new NBTTagCompound();
 			((INBTItemSerializable)te).writeToNBTForItem(tag);
 			final ItemStack stack = new ItemStack(this, 1, metadata);
-			setTileTagCompound(world, pos.getX(), pos.getY(), pos.getZ(), stack, tag);
+			setTileTagCompound(world, pos, stack, tag);
 			ret.add(stack);
 		}
 		else
@@ -431,7 +430,7 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 
 	protected boolean playerFillTank(World world, BlockPos pos, IFluidHandler fh, ItemStack is, EntityPlayer player)
 	{
-		return Utils.playerFillTank(world, pos.getX(), pos.getY(), pos.getZ(), fh, is, player);
+		return Utils.playerFillTank(world, pos, fh, is, player);
 	}
 
 	protected boolean playerDrainTank(World world, BlockPos pos, IFluidHandler fh, ItemStack is, EntityPlayer player)

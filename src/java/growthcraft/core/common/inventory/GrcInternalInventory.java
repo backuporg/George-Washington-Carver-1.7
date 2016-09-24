@@ -27,12 +27,11 @@ import growthcraft.api.core.nbt.INBTSerializableContext;
 import growthcraft.api.core.nbt.NBTHelper;
 import growthcraft.api.core.nbt.NBTType;
 import growthcraft.core.util.ItemUtils;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 
 public class GrcInternalInventory implements IInventory, INBTSerializableContext
 {

@@ -1,23 +1,23 @@
 package growthcraft.bamboo.common.village;
 
-import java.util.List;
-import java.util.Random;
-import java.util.HashMap;
-
-import growthcraft.bamboo.common.world.WorldGenBamboo;
 import growthcraft.bamboo.GrowthCraftBamboo;
+import growthcraft.bamboo.common.world.WorldGenBamboo;
+import growthcraft.core.util.SchemaToVillage;
 import growthcraft.core.util.SchemaToVillage.BlockEntry;
 import growthcraft.core.util.SchemaToVillage.IBlockEntries;
-import growthcraft.core.util.SchemaToVillage;
-
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
 import net.minecraft.world.gen.structure.StructureVillagePieces;
 import net.minecraft.world.gen.structure.StructureVillagePieces.Start;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Random;
 
 public class ComponentVillageBambooYard extends StructureVillagePieces.Village implements SchemaToVillage.IVillage
 {
@@ -96,7 +96,7 @@ public class ComponentVillageBambooYard extends StructureVillagePieces.Village i
 	}
 
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	public static ComponentVillageBambooYard buildComponent(Start startPiece, List list, Random random, int x, int y, int z, int coordBaseMode, int par7)
+	public static ComponentVillageBambooYard buildComponent(Start startPiece, List list, Random random, BlockPos pos, int coordBaseMode, int par7)
 	{
 		// the height of the structure is 15 blocks, since the maximum height of bamboo is 12~14 blocks (+1 for the water layer)
 		final StructureBoundingBox structureboundingbox = StructureBoundingBox.getComponentToAddBoundingBox(x, y, z, 0, 0, 0, 11, 16, 12, coordBaseMode);
@@ -108,7 +108,7 @@ public class ComponentVillageBambooYard extends StructureVillagePieces.Village i
 		return null;
 	}
 
-	public void placeBlockAtCurrentPositionPub(World world, Block block, int meta, int x, int y, int z, StructureBoundingBox box)
+	public void placeBlockAtCurrentPositionPub(World world, Block block, int meta, BlockPos pos, StructureBoundingBox box)
 	{
 		placeBlockAtCurrentPosition(world, block, meta, x, y, z, box);
 	}
@@ -174,7 +174,7 @@ public class ComponentVillageBambooYard extends StructureVillagePieces.Village i
 			for (int col = 0; col < 11; ++col)
 			{
 				this.clearCurrentPositionBlocksUpwards(world, col, 16, row, box);
-				this.func_151554_b(world, Blocks.DIRT, 0, col, -1, row, box);
+				this.replaceAirAndLiquidDownwards(world, Blocks.DIRT, 0, col, -1, row, box);
 			}
 		}
 

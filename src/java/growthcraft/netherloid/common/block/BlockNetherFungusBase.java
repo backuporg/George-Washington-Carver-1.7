@@ -23,20 +23,20 @@
  */
 package growthcraft.netherloid.common.block;
 
-import java.util.Random;
-
-import growthcraft.core.util.BlockCheck;
 import growthcraft.api.core.util.BlockFlags;
-
+import growthcraft.core.util.BlockCheck;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
-import net.minecraft.util.EnumFacing;
+
+import java.util.Random;
 
 public abstract class BlockNetherFungusBase extends BlockBush implements IPlantable, IGrowable
 {
@@ -52,12 +52,12 @@ public abstract class BlockNetherFungusBase extends BlockBush implements IPlanta
 	}
 
 	@Override
-	public boolean canBlockStay(World world, int x, int y, int z)
+	public boolean canBlockStay(World world, BlockPos pos)
 	{
 		return BlockCheck.canSustainPlant(world, x, y - 1, z, EnumFacing.UP, this);
 	}
 
-	protected void growFungus(World world, int x, int y, int z)
+	protected void growFungus(World world, BlockPos pos)
 	{
 		if (world.isAirBlock(x, y, z) && canBlockStay(world, x, y, z))
 		{
@@ -65,7 +65,7 @@ public abstract class BlockNetherFungusBase extends BlockBush implements IPlanta
 		}
 	}
 
-	public boolean canFungusSpread(World world, int x, int y, int z)
+	public boolean canFungusSpread(World world, BlockPos pos)
 	{
 		for (BlockCheck.BlockDirection EnumFacing : BlockCheck.DIR8)
 		{
@@ -79,30 +79,30 @@ public abstract class BlockNetherFungusBase extends BlockBush implements IPlanta
 
 	/* Can this accept bonemeal? */
 	@Override
-	public boolean func_149851_a(World world, int x, int y, int z, boolean isClient)
+	public boolean func_149851_a(World world, BlockPos pos, boolean isClient)
 	{
 		return canFungusSpread(world, x, y, z);
 	}
 
 	/* SideOnly(Side.SERVER) Can this apply bonemeal effect? */
 	@Override
-	public boolean func_149852_a(World world, Random random, int x, int y, int z)
+	public boolean func_149852_a(World world, Random random, BlockPos pos)
 	{
 		return true;
 	}
 
 	/* Apply bonemeal effect */
 	@Override
-	public void func_149853_b(World world, Random random, int x, int y, int z)
+	public void func_149853_b(World world, Random random, BlockPos pos)
 	{
 		final BlockCheck.BlockDirection EnumFacing = BlockCheck.randomDirection8(random);
 		growFungus(world, x + EnumFacing.offsetX, y, z + EnumFacing.offsetZ);
 	}
 
-	protected abstract float getSpreadRate(World world, int x, int y, int z);
+	protected abstract float getSpreadRate(World world, BlockPos pos);
 
 	@Override
-	public void updateTick(World world, int x, int y, int z, Random random)
+	public void updateTick(World world, BlockPos pos, Random random)
 	{
 		if (!this.canBlockStay(world, x, y, z))
 		{
@@ -122,17 +122,17 @@ public abstract class BlockNetherFungusBase extends BlockBush implements IPlanta
 		return false;
 	}
 
-	public EnumPlantType getPlantType(IBlockAccess world, int x, int y, int z)
+	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos)
 	{
 		return EnumPlantType.Nether;
 	}
 
-	public Block getPlant(IBlockAccess world, int x, int y, int z)
+	public Block getPlant(IBlockAccess world, BlockPos pos)
 	{
 		return this;
 	}
 
-	public int getPlantMetadata(IBlockAccess world, int x, int y, int z)
+	public int getPlantMetadata(IBlockAccess world, BlockPos pos)
 	{
 		return 0;
 	}

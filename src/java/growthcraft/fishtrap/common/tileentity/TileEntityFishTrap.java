@@ -30,10 +30,9 @@ import growthcraft.api.fishtrap.FishTrapRegistry;
 import growthcraft.core.common.inventory.GrcInternalInventory;
 import growthcraft.core.common.inventory.InventoryProcessor;
 import growthcraft.core.common.inventory.InventorySlice;
-import growthcraft.core.common.tileentity.feature.IInteractionObject;
 import growthcraft.core.common.tileentity.GrcTileInventoryBase;
+import growthcraft.core.common.tileentity.feature.IInteractionObject;
 import growthcraft.fishtrap.common.inventory.ContainerFishTrap;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;

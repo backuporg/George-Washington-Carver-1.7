@@ -23,9 +23,9 @@
  */
 package growthcraft.api.core.fluids;
 
-import javax.annotation.Nonnull;
-
 import growthcraft.api.core.i18n.GrcI18n;
+
+import javax.annotation.Nonnull;
 
 public class FluidTag
 {

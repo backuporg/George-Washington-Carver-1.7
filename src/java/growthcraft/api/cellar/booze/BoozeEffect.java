@@ -23,24 +23,22 @@
  */
 package growthcraft.api.cellar.booze;
 
-import java.util.List;
-import java.util.Random;
-import javax.annotation.Nonnull;
-
 import growthcraft.api.cellar.booze.effect.EffectTipsy;
 import growthcraft.api.core.CoreRegistry;
 import growthcraft.api.core.effect.AbstractEffect;
 import growthcraft.api.core.effect.EffectAddPotionEffect;
 import growthcraft.api.core.effect.EffectList;
 import growthcraft.api.core.effect.IEffect;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraft.init.MobEffects;
+
+import javax.annotation.Nonnull;
+import java.util.List;
+import java.util.Random;
 
 public class BoozeEffect extends AbstractEffect
 {

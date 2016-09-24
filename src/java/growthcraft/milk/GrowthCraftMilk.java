@@ -29,31 +29,20 @@ import growthcraft.api.core.module.ModuleContainer;
 import growthcraft.api.milk.MilkRegistry;
 import growthcraft.milk.client.handler.GrcMilkHandleTextureStitch;
 import growthcraft.milk.common.CommonProxy;
-import growthcraft.milk.common.tileentity.TileEntityButterChurn;
-import growthcraft.milk.common.tileentity.TileEntityCheeseBlock;
-import growthcraft.milk.common.tileentity.TileEntityCheesePress;
-import growthcraft.milk.common.tileentity.TileEntityCheeseVat;
-import growthcraft.milk.common.tileentity.TileEntityHangingCurds;
-import growthcraft.milk.common.tileentity.TileEntityPancheon;
+import growthcraft.milk.common.tileentity.*;
 import growthcraft.milk.creativetab.GrcMilkCreativeTabs;
 import growthcraft.milk.eventhandler.EventHandlerOnBabyCowDeath;
-import growthcraft.milk.init.GrcMilkBlocks;
-import growthcraft.milk.init.GrcMilkEffects;
-import growthcraft.milk.init.GrcMilkFluids;
-import growthcraft.milk.init.GrcMilkItems;
-import growthcraft.milk.init.GrcMilkRecipes;
-import growthcraft.milk.init.GrcMilkUserApis;
-
+import growthcraft.milk.init.*;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.EventBus;
-import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.Mod.Instance;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraftforge.common.MinecraftForge;
 
 @Mod(
 	modid = GrowthCraftMilk.MOD_ID,

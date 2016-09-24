@@ -23,24 +23,22 @@
  */
 package growthcraft.core.integration;
 
-import java.util.Collection;
-import java.util.List;
-
-import growthcraft.api.core.fluids.FluidTest;
-import growthcraft.api.core.item.ItemTest;
-import growthcraft.core.integration.forestry.ForestryFluids;
-import growthcraft.core.integration.forestry.ForestryPlatform;
-import growthcraft.core.integration.forestry.recipes.RecipeManagersShims;
-
 import forestry.api.core.ForestryAPI;
 import forestry.api.core.IGameMode;
 import forestry.api.farming.Farmables;
 import forestry.api.farming.IFarmable;
 import forestry.api.storage.BackpackManager;
-
-import net.minecraftforge.fml.common.Optional;
+import growthcraft.api.core.fluids.FluidTest;
+import growthcraft.api.core.item.ItemTest;
+import growthcraft.core.integration.forestry.ForestryFluids;
+import growthcraft.core.integration.forestry.ForestryPlatform;
+import growthcraft.core.integration.forestry.recipes.RecipeManagersShims;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fml.common.Optional;
+
+import java.util.Collection;
+import java.util.List;
 
 /**
  * Helper class for integrating Forestry with Growthcraft, simply extend

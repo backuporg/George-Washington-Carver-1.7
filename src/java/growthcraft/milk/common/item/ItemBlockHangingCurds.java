@@ -23,20 +23,19 @@
  */
 package growthcraft.milk.common.item;
 
-import java.util.List;
-
 import growthcraft.api.core.i18n.GrcI18n;
 import growthcraft.api.core.nbt.NBTHelper;
 import growthcraft.core.common.item.IItemTileBlock;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.List;
 
 public class ItemBlockHangingCurds extends ItemBlock implements IItemTileBlock
 {

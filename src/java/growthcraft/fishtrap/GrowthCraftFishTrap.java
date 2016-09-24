@@ -7,28 +7,25 @@ import growthcraft.api.fishtrap.FishTrapEntry;
 import growthcraft.api.fishtrap.user.UserBaitConfig;
 import growthcraft.api.fishtrap.user.UserCatchGroupConfig;
 import growthcraft.api.fishtrap.user.UserFishTrapConfig;
-import growthcraft.core.common.definition.BlockDefinition;
 import growthcraft.core.GrcGuiProvider;
-import growthcraft.fishtrap.common.block.BlockFishTrap;
+import growthcraft.core.common.definition.BlockDefinition;
 import growthcraft.fishtrap.common.CommonProxy;
+import growthcraft.fishtrap.common.block.BlockFishTrap;
 import growthcraft.fishtrap.common.tileentity.TileEntityFishTrap;
 import growthcraft.fishtrap.creativetab.CreativeTabsGrowthcraftFishtrap;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.Mod.Instance;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemFishFood;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.Mod.Instance;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
 @Mod(

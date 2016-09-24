@@ -23,27 +23,25 @@
  */
 package growthcraft.bees.integration;
 
-import java.util.ArrayList;
 import com.google.common.collect.ImmutableMap;
-
 import growthcraft.api.bees.BeesFluidTag;
 import growthcraft.api.cellar.booze.BoozeTag;
 import growthcraft.api.core.CoreRegistry;
+import growthcraft.bees.GrowthCraftBees;
 import growthcraft.bees.common.block.BlockBeeBox;
 import growthcraft.bees.common.block.BlockBeeBoxForestry;
 import growthcraft.bees.common.block.EnumBeeBoxForestry;
 import growthcraft.bees.common.item.ItemBlockBeeBox;
-import growthcraft.bees.GrowthCraftBees;
 import growthcraft.core.common.definition.BlockTypeDefinition;
+import growthcraft.core.integration.ForestryModuleBase;
 import growthcraft.core.integration.forestry.ForestryFluids;
 import growthcraft.core.integration.forestry.ForestryItems;
-import growthcraft.core.integration.ForestryModuleBase;
-
-import net.minecraftforge.fml.common.registry.GameRegistry;
-
-import net.minecraftforge.fml.common.Optional;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.Optional;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+
+import java.util.ArrayList;
 
 public class ForestryModule extends ForestryModuleBase
 {

@@ -24,7 +24,6 @@
 package growthcraft.api.milk.pancheon;
 
 import growthcraft.api.core.fluids.FluidFormatString;
-
 import net.minecraftforge.fluids.FluidStack;
 
 public class PancheonRecipe implements IPancheonRecipe

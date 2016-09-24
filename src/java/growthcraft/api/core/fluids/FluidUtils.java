@@ -1,27 +1,15 @@
 package growthcraft.api.core.fluids;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
-import net.minecraftforge.fluids.BlockFluidBase;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.capability.*;
-import net.minecraftforge.fluids.FluidContainerRegistry;
-import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.IFluidHandler;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.FluidTank;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+import net.minecraftforge.fluids.*;
 import net.minecraftforge.fluids.FluidContainerRegistry.FluidContainerData;
-import net.minecraft.block.state.IBlockState;
+
+import java.util.*;
 
 public class FluidUtils
 {

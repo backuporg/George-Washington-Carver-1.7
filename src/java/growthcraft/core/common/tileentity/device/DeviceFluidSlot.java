@@ -101,7 +101,7 @@ public class DeviceFluidSlot
 	 *
 	 * @return true, the slot has reached its maximum capacity, false otherwise.
 	 */
-	public boolean isFull()
+	public boolean containedBlock()
 	{
 		return tanks.isFluidTankFull(index);
 	}

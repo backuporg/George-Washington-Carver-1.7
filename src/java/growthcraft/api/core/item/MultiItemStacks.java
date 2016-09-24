@@ -23,14 +23,13 @@
  */
 package growthcraft.api.core.item;
 
-import java.util.Arrays;
-import java.util.List;
+import growthcraft.api.core.definition.IMultiItemStacks;
+import net.minecraft.item.ItemStack;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
-import growthcraft.api.core.definition.IMultiItemStacks;
-
-import net.minecraft.item.ItemStack;
+import java.util.Arrays;
+import java.util.List;
 
 public class MultiItemStacks implements IMultiItemStacks
 {

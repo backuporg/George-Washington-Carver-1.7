@@ -23,17 +23,18 @@
  */
 package growthcraft.netherloid.common.world;
 
-import java.util.Random;
-
 import growthcraft.netherloid.netherloid;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSapling;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
-import net.minecraft.util.EnumFacing;
+
+import java.util.Random;
 
 public class WorldGeneratorMaliceTree extends WorldGenerator
 {
@@ -48,7 +49,7 @@ public class WorldGeneratorMaliceTree extends WorldGenerator
 		super(doblocknotify);
 	}
 
-	public boolean generate(World world, Random random, int x, int y, int z)
+	public boolean generate(World world, Random random, BlockPos pos)
 	{
 		final int l = random.nextInt(3) + this.minTreeHeight;
 		boolean flag = true;
@@ -175,12 +176,12 @@ public class WorldGeneratorMaliceTree extends WorldGenerator
 			block == Blocks.VINE;
 	}
 
-	protected boolean isReplaceable(World world, int x, int y, int z)
+	protected boolean isReplaceable(World world, BlockPos pos, IBlockState state)
 	{
-		final Block block = world.getBlockState(x, y, z);
-		return block.isAir(world, x, y, z) ||
-			block.isLeaves(world, x, y, z) ||
-			block.isWood(world, x, y, z) ||
+		final Block block = world.getBlockState(block);
+		return block.isAir(state, world, pos) ||
+			block.isLeaves(state, world, pos) ||
+			block.isWood(world, pos) ||
 			func_150523_a(block);
 	}
 }

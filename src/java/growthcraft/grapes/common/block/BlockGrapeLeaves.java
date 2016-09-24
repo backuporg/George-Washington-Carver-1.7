@@ -1,30 +1,31 @@
 package growthcraft.grapes.common.block;
 
-import java.util.Random;
-
-import growthcraft.core.common.block.IBlockRope;
-import growthcraft.core.GrowthCraftCore;
-import growthcraft.core.util.BlockCheck;
 import growthcraft.api.core.util.BlockFlags;
-import growthcraft.grapes.client.renderer.RenderGrapeLeaves;
+import growthcraft.core.GrowthCraftCore;
+import growthcraft.core.common.block.IBlockRope;
+import growthcraft.core.util.BlockCheck;
 import growthcraft.grapes.GrowthCraftGrapes;
+import growthcraft.grapes.client.renderer.RenderGrapeLeaves;
 import growthcraft.grapes.util.GrapeBlockCheck;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockLeaves;
+import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.material.Material;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
-
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.ColorizerFoliage;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraft.util.EnumFacing;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
-public abstract class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
+import java.util.List;
+import java.util.Random;
+
+public class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 {
 	@SideOnly(Side.CLIENT)
 	private IIcon[] icons;
@@ -45,12 +46,12 @@ public abstract class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 		setCreativeTab(null);
 	}
 
-	private boolean isTrunk(World world, int x, int y, int z)
+	private boolean isTrunk(World world, BlockPos pos)
 	{
 		return GrapeBlockCheck.isGrapeVineTrunk(world.getBlockState(x, y, z));
 	}
 
-	public boolean isSupportedByTrunk(World world, int x, int y, int z)
+	public boolean isSupportedByTrunk(World world, BlockPos pos)
 	{
 		return isTrunk(world, x, y - 1, z);
 	}
@@ -64,7 +65,7 @@ public abstract class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 	 * @param z - z coord
 	 * @return true if the block can grow here, false otherwise
 	 */
-	public boolean canGrowOutwardsOnRope(World world, int x, int y, int z)
+	public boolean canGrowOutwardsOnRope(World world, BlockPos pos)
 	{
 		if (BlockCheck.isRope(world.getBlockState(x + 1, y, z))) return true;
 		if (BlockCheck.isRope(world.getBlockState(x - 1, y, z))) return true;
@@ -73,7 +74,7 @@ public abstract class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 		return false;
 	}
 
-	public boolean canGrowOutwards(World world, int x, int y, int z)
+	public boolean canGrowOutwards(World world, BlockPos pos)
 	{
 		final boolean leavesTotheSouth = world.getBlockState(x, y, z + 1) == this;
 		final boolean leavesToTheNorth = world.getBlockState(x, y, z - 1) == this;
@@ -101,7 +102,7 @@ public abstract class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 	 * @param z - z coord
 	 * @return true if the block can grow here, false otherwise
 	 */
-	public boolean canGrowHere(World world, int x, int y, int z)
+	public boolean canGrowHere(World world, BlockPos pos)
 	{
 		if (BlockCheck.isRope(world.getBlockState(x, y, z)))
 		{
@@ -110,12 +111,12 @@ public abstract class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 		return false;
 	}
 
-	private void setGrapeBlock(World world, int x, int y, int z)
+	private void setGrapeBlock(World world, BlockPos pos)
 	{
 		world.setBlockState(x, y, z, GrowthCraftGrapes.blocks.grapeBlock.getBlockState(), 0, BlockFlags.UPDATE_AND_SYNC);
 	}
 
-	public boolean growGrapeBlock(World world, int x, int y, int z)
+	public boolean growGrapeBlock(World world, BlockPos pos)
 	{
 		if (world.isAirBlock(x, y - 1, z))
 		{
@@ -128,7 +129,7 @@ public abstract class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 		return false;
 	}
 
-	private void grow(World world, int x, int y, int z, Random random)
+	private void grow(World world, BlockPos pos, Random random)
 	{
 		if (world.isAirBlock(x, y - 1, z) && (random.nextInt(this.grapeSpawnRate) == 0))
 		{
@@ -153,7 +154,7 @@ public abstract class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 	 * TICK
 	 ************/
 	@Override
-	public void updateTick(World world, int x, int y, int z, Random random)
+	public void updateTick(World world, BlockPos pos, Random random)
 	{
 		if (!this.canBlockStay(world, x, y, z))
 		{
@@ -167,7 +168,7 @@ public abstract class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World world, int x, int y, int z, Random random)
+	public void randomDisplayTick(World world, BlockPos pos, Random random)
 	{
 		if (world.canLightningStrikeAt(x, y + 1, z) && !World.doesBlockHaveSolidTopSurface(world, x, y - 1, z) && random.nextInt(15) == 1)
 		{
@@ -182,7 +183,7 @@ public abstract class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 	 * CONDITIONS
 	 ************/
 	@Override
-	public boolean canBlockStay(World world, int x, int y, int z)
+	public boolean canBlockStay(World world, BlockPos pos)
 	{
 		if (this.isSupportedByTrunk(world, x, y, z))
 		{
@@ -215,25 +216,25 @@ public abstract class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 	 ************/
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Item getItem(World world, int x, int y, int z)
+	public Item getItem(World world, BlockPos pos)
 	{
 		return GrowthCraftGrapes.items.grapeSeeds.getItem();
 	}
 
 	@Override
-	public boolean isLeaves(IBlockAccess world, int x, int y, int z)
+	public boolean isLeaves(IBlockAccess world, BlockPos pos)
 	{
 		return true;
 	}
 
 	@Override
-	public boolean canSilkHarvest(World world, EntityPlayer player, int x, int y, int z, int metadata)
+	public boolean canSilkHarvest(World world, EntityPlayer player, BlockPos pos, int metadata)
 	{
 		return false;
 	}
 
 	@Override
-	public boolean canConnectRopeTo(IBlockAccess world, int x, int y, int z)
+	public boolean canConnectRopeTo(IBlockAccess world, BlockPos pos)
 	{
 		if (world.getBlockState(x, y, z) instanceof IBlockRope)
 		{
@@ -255,6 +256,11 @@ public abstract class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 	public int quantityDropped(Random random)
 	{
 		return 1;
+	}
+
+	@Override
+	public BlockPlanks.EnumType getWoodType(int meta) {
+		return null;
 	}
 
 	/************
@@ -308,7 +314,7 @@ public abstract class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side)
+	public boolean shouldSideBeRendered(IBlockAccess world, BlockPos pos, int side)
 	{
 		return true;
 	}
@@ -334,7 +340,7 @@ public abstract class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public int colorMultiplier(IBlockAccess world, int x, int y, int z)
+	public int colorMultiplier(IBlockAccess world, BlockPos pos)
 	{
 		final int meta = world.getBlockState(x, y, z);
 
@@ -346,7 +352,7 @@ public abstract class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 		{
 			for (int i2 = -1; i2 <= 1; ++i2)
 			{
-				final int j2 = world.getBiomeGenForCoords(x + i2, z + l1).getBiomeFoliageColor(x + i2, y, z + l1);
+				final int j2 = world.getBiome(x + i2, z + l1).getBiomeFoliageColor(x + i2, y, z + l1);
 				r += (j2 & 16711680) >> 16;
 				g += (j2 & 65280) >> 8;
 				b += j2 & 255;
@@ -354,5 +360,10 @@ public abstract class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 		}
 
 		return (r / 9 & 255) << 16 | (g / 9 & 255) << 8 | b / 9 & 255;
+	}
+
+	@Override
+	public List<ItemStack> onSheared(ItemStack item, IBlockAccess world, BlockPos pos, int fortune) {
+		return null;
 	}
 }

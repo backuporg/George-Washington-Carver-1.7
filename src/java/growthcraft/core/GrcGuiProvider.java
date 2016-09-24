@@ -23,19 +23,18 @@
  */
 package growthcraft.core;
 
-import java.lang.reflect.Constructor;
-import java.util.HashMap;
-import java.util.Map;
-import javax.annotation.Nonnull;
-
 import growthcraft.api.core.log.ILogger;
 import growthcraft.core.common.tileentity.feature.IInteractionObject;
-
-import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.network.IGuiHandler;
+
+import javax.annotation.Nonnull;
+import java.lang.reflect.Constructor;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Cross Ported from YATM
@@ -132,7 +131,7 @@ public class GrcGuiProvider implements IGuiHandler
 	}
 
 	@Override
-	public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z)
+	public Object getServerGuiElement(int id, EntityPlayer player, World world, BlockPos pos)
 	{
 		final TileEntity te = world.getTileEntity(x, y, z);
 		if (te instanceof IInteractionObject)
@@ -149,7 +148,7 @@ public class GrcGuiProvider implements IGuiHandler
 
 	@Override
 	@SuppressWarnings({"rawtypes"})
-	public Object getClientGuiElement(int id, EntityPlayer player, World world, int x, int y, int z)
+	public Object getClientGuiElement(int id, EntityPlayer player, World world, BlockPos pos)
 	{
 		final TileEntity te = world.getTileEntity(x, y, z);
 		if (te instanceof IInteractionObject)

@@ -23,19 +23,16 @@
  */
 package growthcraft.cellar.common.item;
 
-import java.util.List;
-
 import growthcraft.cellar.GrowthCraftCellar;
 import growthcraft.core.common.item.GrcItemBase;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-
 import net.minecraft.util.math.MathHelper;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.List;
 
 public class ItemYeast extends GrcItemBase
 {

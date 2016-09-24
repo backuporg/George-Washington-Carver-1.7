@@ -23,14 +23,13 @@
  */
 package growthcraft.cellar.common.tileentity.component;
 
-import javax.annotation.Nonnull;
-import io.netty.buffer.ByteBuf;
-
 import growthcraft.api.core.nbt.INBTSerializableContext;
 import growthcraft.api.core.stream.IStreamable;
-
+import io.netty.buffer.ByteBuf;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+
+import javax.annotation.Nonnull;
 
 public class TileHeatingComponent implements INBTSerializableContext, IStreamable
 {

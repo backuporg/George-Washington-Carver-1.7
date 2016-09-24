@@ -23,14 +23,15 @@
  */
 package growthcraft.api.cellar.heatsource;
 
-import java.util.HashMap;
-import javax.annotation.Nonnull;
-
+import growthcraft.api.core.item.ItemKey;
 import growthcraft.api.core.log.ILogger;
 import growthcraft.api.core.log.NullLogger;
-import growthcraft.api.core.item.ItemKey;
-
 import net.minecraft.block.Block;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+
+import javax.annotation.Nonnull;
+import java.util.HashMap;
 
 public class HeatSourceRegistry implements IHeatSourceRegistry
 {
@@ -71,7 +72,12 @@ public class HeatSourceRegistry implements IHeatSourceRegistry
 	@Override
 	public void addHeatSource(@Nonnull Block block, int meta, float heat)
 	{
-		addHeatSource(block, meta, new GenericHeatSourceBlock(block, heat));
+		addHeatSource(block, meta, new GenericHeatSourceBlock(block, heat) {
+			@Override
+			public float getHeat(World world, BlockPos pos) {
+				return 0;
+			}
+		});
 	}
 
 	@Override

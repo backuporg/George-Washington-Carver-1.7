@@ -1,16 +1,15 @@
 package growthcraft.bees.common.world;
 
-import java.util.Random;
-
 import growthcraft.bees.GrowthCraftBees;
 import growthcraft.core.Utils;
-
-import net.minecraftforge.fml.common.IWorldGenerator;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
+import net.minecraftforge.fml.common.IWorldGenerator;
+
+import java.util.Random;
 
 public class WorldGeneratorBees implements IWorldGenerator
 {
@@ -37,14 +36,14 @@ public class WorldGeneratorBees implements IWorldGenerator
 			boolean flag = true;
 			if (GrowthCraftBees.getConfig().useBiomeDict)
 			{
-				final Biome biome = world.getBiomeGenForCoords(i, k);
+				final Biome biome = world.getBiome(i, k);
 				flag = (BiomeDictionary.isBiomeOfType(biome, Type.FOREST) ||
 						BiomeDictionary.isBiomeOfType(biome, Type.PLAINS))
 						&& !BiomeDictionary.isBiomeOfType(biome, Type.SNOWY);
 			}
 			else
 			{
-				flag = Utils.isIDInList(world.getBiomeGenForCoords(i, k).biomeID, GrowthCraftBees.getConfig().beeBiomesList);
+				flag = Utils.isIDInList(world.getBiome(i, k).biomeID, GrowthCraftBees.getConfig().beeBiomesList);
 			}
 
 			if (flag)

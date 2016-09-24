@@ -29,7 +29,6 @@ import growthcraft.core.common.inventory.InventoryProcessor;
 import growthcraft.core.common.tileentity.event.TileEventHandler;
 import growthcraft.core.common.tileentity.feature.ICustomDisplayName;
 import growthcraft.core.util.ItemUtils;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;

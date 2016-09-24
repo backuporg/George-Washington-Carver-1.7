@@ -23,12 +23,11 @@
  */
 package growthcraft.cellar.eventhandler;
 
-import growthcraft.api.cellar.booze.BoozeTag;
 import growthcraft.api.cellar.CellarRegistry;
+import growthcraft.api.cellar.booze.BoozeTag;
 import growthcraft.api.core.CoreRegistry;
 import growthcraft.cellar.event.EventBarrelDrained;
 import growthcraft.cellar.stats.CellarAchievement;
-
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class EventHandlerBarrelDrainedCellar

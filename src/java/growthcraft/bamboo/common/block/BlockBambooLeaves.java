@@ -1,29 +1,27 @@
 package growthcraft.bamboo.common.block;
 
-import java.util.ArrayList;
-import java.util.Random;
-
 import growthcraft.api.core.util.BlockFlags;
 import growthcraft.bamboo.GrowthCraftBamboo;
-
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.util.math.BlockPos;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
+import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.material.Material;
-
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.ColorizerFoliage;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
-public abstract class BlockBambooLeaves extends BlockLeaves implements IShearable
+import java.util.ArrayList;
+import java.util.Random;
+
+public class BlockBambooLeaves extends BlockLeaves implements IShearable
 {
 	@SideOnly(Side.CLIENT)
 	private IIcon[] icons;
@@ -152,11 +150,11 @@ public abstract class BlockBambooLeaves extends BlockLeaves implements IShearabl
 
 				if (l1 >= 0)
 				{
-					world.setBlockState(x, y, z, meta & -9, BlockFlags.SUPRESS_RENDER);
+					world.setBlockState(pos, meta & -9, BlockFlags.SUPRESS_RENDER);
 				}
 				else
 				{
-					this.removeLeaves(world, x, y, z);
+					this.removeLeaves(world, pos);
 				}
 			}
 		}
@@ -209,13 +207,13 @@ public abstract class BlockBambooLeaves extends BlockLeaves implements IShearabl
 	 * STUFF
 	 ************/
 	@Override
-	public void beginLeavesDecay(World world, int x, int y, int z)
+	public void beginLeavesDecay(World world, BlockPos pos)
 	{
 		world.setBlockState(x, y, z, world.getBlockState(x, y, z) | 8, BlockFlags.SUPRESS_RENDER);
 	}
 
 	@Override
-	public boolean isLeaves(IBlockAccess world, int x, int y, int z)
+	public boolean isLeaves(IBlockAccess world, BlockPos pos)
 	{
 		return true;
 	}
@@ -240,6 +238,11 @@ public abstract class BlockBambooLeaves extends BlockLeaves implements IShearabl
 	public int quantityDropped(Random par1Random)
 	{
 		return 0;
+	}
+
+	@Override
+	public BlockPlanks.EnumType getWoodType(int meta) {
+		return null;
 	}
 
 	/************
@@ -273,7 +276,7 @@ public abstract class BlockBambooLeaves extends BlockLeaves implements IShearabl
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side)
+	public boolean shouldSideBeRendered(IBlockAccess world, BlockPos pos, int side)
 	{
 		return true;
 	}
@@ -296,9 +299,9 @@ public abstract class BlockBambooLeaves extends BlockLeaves implements IShearabl
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public int colorMultiplier(IBlockAccess world, int x, int y, int z)
+	public int colorMultiplier(IBlockAccess world, BlockPos pos, IBlockState state)
 	{
-		final int meta = world.getBlockState(x, y, z);
+		final int meta = world.getBlockState(pos);
 		int r = 0;
 		int g = 0;
 		int b = 0;
@@ -307,7 +310,7 @@ public abstract class BlockBambooLeaves extends BlockLeaves implements IShearabl
 		{
 			for (int z1 = -1; z1 <= 1; ++z1)
 			{
-				final int j2 = world.getBiomeGenForCoords(x + z1, z + x1).getBiomeFoliageColor(x + z1, y, z + x1);
+				final int j2 = world.getBiome(x + z1, z + x1).getBiomeFoliageColor(x + z1, y, z + x1);
 				r += (j2 & 16711680) >> 16;
 				g += (j2 & 65280) >> 8;
 				b += j2 & 255;
@@ -321,13 +324,13 @@ public abstract class BlockBambooLeaves extends BlockLeaves implements IShearabl
 	 * SHEARS
 	 ************/
 	@Override
-	public boolean isShearable(ItemStack item, IBlockAccess world, int x, int y, int z)
+	public boolean isShearable(ItemStack item, IBlockAccess world, BlockPos pos)
 	{
 		return true;
 	}
 
 	@Override
-	public ArrayList<ItemStack> onSheared(ItemStack item, IBlockAccess world, int x, int y, int z, int fortune)
+	public ArrayList<ItemStack> onSheared(ItemStack item, IBlockAccess world, BlockPos pos, int fortune)
 	{
 		final ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
 		ret.add(new ItemStack(Blocks.LEAVES, 1, world.getBlockState(x, y, z) & 3));

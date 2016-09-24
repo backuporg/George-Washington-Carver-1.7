@@ -5,11 +5,6 @@ import growthcraft.api.core.definition.IMultiItemStacks;
 import growthcraft.api.core.fluids.FluidUtils;
 import growthcraft.api.core.item.MultiItemStacks;
 import growthcraft.api.core.item.OreItemStacks;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-
 import net.minecraft.block.Block;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
@@ -18,6 +13,10 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
 public abstract class ShapedMultiRecipe implements IRecipe
 {

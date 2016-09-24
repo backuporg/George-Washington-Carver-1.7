@@ -1,22 +1,20 @@
 package growthcraft.core.common.block;
 
-import java.util.List;
-import java.util.Random;
-
 import growthcraft.core.GrowthCraftCore;
 import growthcraft.core.client.renderer.RenderRope;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.util.math.AxisAlignedBB;
-
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.List;
+import java.util.Random;
 
 public class BlockRope extends GrcBlockBase implements IBlockRope
 {
@@ -36,12 +34,12 @@ public class BlockRope extends GrcBlockBase implements IBlockRope
 	 * TRIGGERS
 	 ************/
 	@Override
-	public void onNeighborBlockChange(World world, int x, int y, int z, Block block)
+	public void onNeighborBlockChange(World world, BlockPos pos, Block block)
 	{
 		this.checkBlockCoordValid(world, x, y, z);
 	}
 
-	protected final void checkBlockCoordValid(World world, int x, int y, int z)
+	protected final void checkBlockCoordValid(World world, BlockPos pos)
 	{
 		if (!this.canBlockStay(world, x, y, z))
 		{
@@ -54,7 +52,7 @@ public class BlockRope extends GrcBlockBase implements IBlockRope
 	 * CONDITIONS
 	 ************/
 	@Override
-	public boolean canPlaceBlockAt(World world, int x, int y, int z)
+	public boolean canPlaceBlockAt(World world, BlockPos pos)
 	{
 		if (this.canConnectRopeTo(world, x, y, z - 1)) return true;
 		if (this.canConnectRopeTo(world, x, y, z + 1)) return true;
@@ -66,7 +64,7 @@ public class BlockRope extends GrcBlockBase implements IBlockRope
 	}
 
 	@Override
-	public boolean canBlockStay(World world, int x, int y, int z)
+	public boolean canBlockStay(World world, BlockPos pos)
 	{
 		return this.canPlaceBlockAt(world, x, y, z);
 	}
@@ -76,13 +74,13 @@ public class BlockRope extends GrcBlockBase implements IBlockRope
 	 ************/
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Item getItem(World world, int x, int y, int z)
+	public Item getItem(World world, BlockPos pos)
 	{
 		return GrowthCraftCore.items.rope.getItem();
 	}
 
 	@Override
-	public boolean canConnectRopeTo(IBlockAccess world, int x, int y, int z)
+	public boolean canConnectRopeTo(IBlockAccess world, BlockPos pos)
 	{
 		return world.getBlockState(x, y, z) instanceof IBlockRope;
 	}
@@ -151,7 +149,7 @@ public class BlockRope extends GrcBlockBase implements IBlockRope
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int par5)
+	public boolean shouldSideBeRendered(IBlockAccess world, BlockPos pos, int par5)
 	{
 		return true;
 	}
@@ -161,7 +159,7 @@ public class BlockRope extends GrcBlockBase implements IBlockRope
 	 ************/
 	@Override
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB aabb, List list, Entity entity)
+	public void getCollisionBoundingBox(World world, BlockPos pos, AxisAlignedBB aabb, List list, Entity entity)
 	{
 		final boolean flag = this.canConnectRopeTo(world, x, y, z - 1);
 		final boolean flag1 = this.canConnectRopeTo(world, x, y, z + 1);
@@ -188,8 +186,8 @@ public class BlockRope extends GrcBlockBase implements IBlockRope
 
 		if (flag || flag1)
 		{
-			this.setBlockBounds(f, f4, f2, f1, f5, f3);
-			super.addCollisionBoxesToList(world, x, y, z, aabb, list, entity);
+			this.getBoundingBox(f, f4, f2, f1, f5, f3);
+			super.getCollisionBoundingBox(world, x, y, z, aabb, list, entity);
 		}
 
 		f2 = 0.4375F;
@@ -207,8 +205,8 @@ public class BlockRope extends GrcBlockBase implements IBlockRope
 
 		if (flag2 || flag3)
 		{
-			this.setBlockBounds(f, f4, f2, f1, f5, f3);
-			super.addCollisionBoxesToList(world, x, y, z, aabb, list, entity);
+			this.getBoundingBox(f, f4, f2, f1, f5, f3);
+			super.getCollisionBoundingBox(world, x, y, z, aabb, list, entity);
 		}
 
 		f = 0.4375F;
@@ -226,15 +224,15 @@ public class BlockRope extends GrcBlockBase implements IBlockRope
 
 		if (flag4 || flag5)
 		{
-			this.setBlockBounds(f, f4, f2, f1, f5, f3);
-			super.addCollisionBoxesToList(world, x, y, z, aabb, list, entity);
+			this.getBoundingBox(f, f4, f2, f1, f5, f3);
+			super.getCollisionBoundingBox(world, x, y, z, aabb, list, entity);
 		}
 
 		this.setBlockBoundsBasedOnState(world, x, y, z);
 	}
 
 	@Override
-	public void setBlockBoundsBasedOnState(IBlockAccess world, int x, int y, int z)
+	public void setBlockBoundsBasedOnState(IBlockAccess world, BlockPos pos)
 	{
 		final boolean flag = this.canConnectRopeTo(world, x, y, z - 1);
 		final boolean flag1 = this.canConnectRopeTo(world, x, y, z + 1);
@@ -279,7 +277,7 @@ public class BlockRope extends GrcBlockBase implements IBlockRope
 			f5 = 1.0F;
 		}
 
-		this.setBlockBounds(f, f4, f2, f1, f5, f3);
+		this.getBoundingBox(f, f4, f2, f1, f5, f3);
 	}
 
 }

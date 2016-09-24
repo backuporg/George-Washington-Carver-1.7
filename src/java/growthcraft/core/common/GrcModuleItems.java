@@ -23,13 +23,12 @@
  */
 package growthcraft.core.common;
 
-import java.util.LinkedList;
-import java.util.List;
-
 import growthcraft.core.common.definition.ItemDefinition;
 import growthcraft.core.common.definition.ItemTypeDefinition;
-
 import net.minecraft.item.Item;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class GrcModuleItems extends GrcModuleBase
 {

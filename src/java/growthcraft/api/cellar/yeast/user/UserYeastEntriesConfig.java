@@ -23,16 +23,15 @@
  */
 package growthcraft.api.cellar.yeast.user;
 
-import java.io.BufferedReader;
-import java.util.ArrayList;
-
 import growthcraft.api.cellar.CellarRegistry;
 import growthcraft.api.core.schema.ItemKeySchema;
-import growthcraft.api.core.util.BiomeUtils;
 import growthcraft.api.core.user.AbstractUserJSONConfig;
-
+import growthcraft.api.core.util.BiomeUtils;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.BiomeDictionary;
+
+import java.io.BufferedReader;
+import java.util.ArrayList;
 
 /**
  * This allows users to define new yeast entries and map them to a biome

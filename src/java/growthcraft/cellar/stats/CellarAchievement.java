@@ -2,7 +2,6 @@ package growthcraft.cellar.stats;
 
 import growthcraft.api.core.stats.IAchievement;
 import growthcraft.cellar.GrowthCraftCellar;
-
 import net.minecraft.entity.player.EntityPlayer;
 
 public enum CellarAchievement implements IAchievement

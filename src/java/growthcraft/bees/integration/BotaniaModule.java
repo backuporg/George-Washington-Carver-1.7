@@ -23,15 +23,14 @@
  */
 package growthcraft.bees.integration;
 
+import growthcraft.bees.GrowthCraftBees;
 import growthcraft.bees.common.block.BlockBeeBoxBotania;
 import growthcraft.bees.common.item.ItemBlockBeeBox;
-import growthcraft.bees.GrowthCraftBees;
+import growthcraft.core.integration.ModIntegrationBase;
 import growthcraft.core.integration.botania.BotaniaPlatform;
 import growthcraft.core.integration.botania.EnumBotaniaWoodType;
-import growthcraft.core.integration.ModIntegrationBase;
-
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class BotaniaModule extends ModIntegrationBase
 {

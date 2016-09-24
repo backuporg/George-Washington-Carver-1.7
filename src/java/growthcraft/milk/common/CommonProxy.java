@@ -24,9 +24,8 @@
 package growthcraft.milk.common;
 
 import growthcraft.core.common.GrcModuleProxyBase;
-import growthcraft.milk.common.world.WorldGeneratorThistle;
 import growthcraft.milk.GrowthCraftMilk;
-
+import growthcraft.milk.common.world.WorldGeneratorThistle;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 

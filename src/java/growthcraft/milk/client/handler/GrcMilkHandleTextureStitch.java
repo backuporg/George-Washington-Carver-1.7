@@ -26,11 +26,10 @@ package growthcraft.milk.client.handler;
 import growthcraft.core.GrowthCraftCore;
 import growthcraft.core.util.FluidFactory;
 import growthcraft.milk.GrowthCraftMilk;
-
+import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.client.event.TextureStitchEvent;
 
 
 public class GrcMilkHandleTextureStitch

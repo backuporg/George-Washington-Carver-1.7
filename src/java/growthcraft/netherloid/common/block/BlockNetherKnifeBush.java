@@ -25,10 +25,10 @@ package growthcraft.netherloid.common.block;
 
 import growthcraft.netherloid.netherloid;
 import growthcraft.netherloid.util.DamageSources;
-
 import net.minecraft.block.BlockBush;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class BlockNetherKnifeBush extends BlockBush
@@ -42,7 +42,7 @@ public class BlockNetherKnifeBush extends BlockBush
 	}
 
 	@Override
-	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
+	public void onEntityCollidedWithBlock(World world, BlockPos pos, Entity entity)
 	{
 		if (world.isRemote) return;
 		if (entity instanceof EntityLivingBase)

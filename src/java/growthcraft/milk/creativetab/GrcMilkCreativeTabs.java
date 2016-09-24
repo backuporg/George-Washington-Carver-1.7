@@ -24,11 +24,10 @@
 package growthcraft.milk.creativetab;
 
 import growthcraft.milk.GrowthCraftMilk;
-
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraft.item.Item;
-import net.minecraft.creativetab.CreativeTabs;
 
 public class GrcMilkCreativeTabs extends CreativeTabs
 {

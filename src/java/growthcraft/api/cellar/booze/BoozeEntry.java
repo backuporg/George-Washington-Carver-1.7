@@ -23,13 +23,12 @@
  */
 package growthcraft.api.cellar.booze;
 
-import java.util.Collection;
-import javax.annotation.Nonnull;
-
-import growthcraft.api.core.fluids.FluidTag;
 import growthcraft.api.core.CoreRegistry;
-
+import growthcraft.api.core.fluids.FluidTag;
 import net.minecraftforge.fluids.Fluid;
+
+import javax.annotation.Nonnull;
+import java.util.Collection;
 
 public class BoozeEntry
 {

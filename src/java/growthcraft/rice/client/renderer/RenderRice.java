@@ -1,14 +1,13 @@
 package growthcraft.rice.client.renderer;
 
 import growthcraft.rice.common.block.BlockRice;
-
-import net.minecraftforge.fml.client.registry.ISimpleBlockRenderingHandler;
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.EntityRenderer;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.world.IBlockAccess;
+import net.minecraftforge.fml.client.registry.ISimpleBlockRenderingHandler;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 public class RenderRice implements ISimpleBlockRenderingHandler
 {
@@ -18,7 +17,7 @@ public class RenderRice implements ISimpleBlockRenderingHandler
 	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer) {}
 
 	@Override
-	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer)
+	public boolean renderWorldBlock(IBlockAccess world, BlockPos pos, Block block, int modelId, RenderBlocks renderer)
 	{
 		if (modelId == id)
 		{
@@ -39,7 +38,7 @@ public class RenderRice implements ISimpleBlockRenderingHandler
 		return true;
 	}
 
-	private void renderSquareRice(Block block, int x, int y, int z, IBlockAccess world, RenderBlocks renderer)
+	private void renderSquareRice(Block block, BlockPos pos, IBlockAccess world, RenderBlocks renderer)
 	{
 		final Tessellator tessellator = Tessellator.instance;
 		tessellator.setBrightness(block.getMixedBrightnessForBlock(world, x, y, z));
@@ -47,7 +46,7 @@ public class RenderRice implements ISimpleBlockRenderingHandler
 		renderer.renderBlockCropsImpl(block, world.getBlockState(x, y, z), (double)x, (double)((float)y - 0.125F), (double)z);
 	}
 
-	private void renderCrossedRice(Block block, int x, int y, int z, IBlockAccess world, RenderBlocks renderer)
+	private void renderCrossedRice(Block block, BlockPos pos, IBlockAccess world, RenderBlocks renderer)
 	{
 		final Tessellator tessellator = Tessellator.instance;
 		tessellator.setBrightness(block.getMixedBrightnessForBlock(world, x, y, z));

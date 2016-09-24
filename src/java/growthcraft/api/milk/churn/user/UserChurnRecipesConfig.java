@@ -23,16 +23,15 @@
  */
 package growthcraft.api.milk.churn.user;
 
-import java.io.BufferedReader;
-
 import growthcraft.api.core.schema.FluidStackSchema;
 import growthcraft.api.core.schema.ItemKeySchema;
 import growthcraft.api.core.user.AbstractUserJSONConfig;
-import growthcraft.api.milk.churn.IChurnRecipe;
 import growthcraft.api.milk.MilkRegistry;
-
+import growthcraft.api.milk.churn.IChurnRecipe;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
+
+import java.io.BufferedReader;
 
 /**
  * This allows users to define new brewing recipes.

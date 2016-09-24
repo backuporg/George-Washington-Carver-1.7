@@ -23,18 +23,11 @@
  */
 package growthcraft.netherloid.init;
 
-import growthcraft.core.common.definition.ItemDefinition;
 import growthcraft.core.common.GrcModuleBase;
-import growthcraft.netherloid.common.item.ItemEctoplasm;
-import growthcraft.netherloid.common.item.ItemNetherGhastPowder;
-import growthcraft.netherloid.common.item.ItemNetherMaliceFruit;
-import growthcraft.netherloid.common.item.ItemNetherMuertecap;
-import growthcraft.netherloid.common.item.ItemNetherPepper;
-import growthcraft.netherloid.common.item.ItemNetherRashSpores;
-import growthcraft.netherloid.common.item.ItemNetherSquashSeeds;
-
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import growthcraft.core.common.definition.ItemDefinition;
+import growthcraft.netherloid.common.item.*;
 import net.minecraft.init.Items;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class netherloidItems extends GrcModuleBase

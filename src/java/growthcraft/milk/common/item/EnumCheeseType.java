@@ -23,21 +23,19 @@
  */
 package growthcraft.milk.common.item;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import growthcraft.api.core.definition.IFluidStackFactory;
 import growthcraft.api.core.definition.IItemStackFactory;
 import growthcraft.api.core.definition.IMultiItemStacks;
 import growthcraft.api.core.item.ItemTest;
 import growthcraft.milk.GrowthCraftMilk;
-
 import io.netty.buffer.ByteBuf;
-
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.FluidStack;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public enum EnumCheeseType implements IItemStackFactory, IFluidStackFactory
 {

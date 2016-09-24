@@ -23,14 +23,14 @@
  */
 package growthcraft.bees.init;
 
-import java.util.List;
-
 import growthcraft.bees.common.block.BlockBeeBox;
 import growthcraft.bees.common.block.BlockBeeHive;
 import growthcraft.bees.common.item.ItemBlockBeeBox;
+import growthcraft.core.common.GrcModuleBlocks;
 import growthcraft.core.common.definition.BlockDefinition;
 import growthcraft.core.common.definition.BlockTypeDefinition;
-import growthcraft.core.common.GrcModuleBlocks;
+
+import java.util.List;
 
 public class GrcBeesBlocks extends GrcModuleBlocks
 {

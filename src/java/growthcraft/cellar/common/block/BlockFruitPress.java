@@ -1,25 +1,23 @@
 package growthcraft.cellar.common.block;
 
-import java.util.Random;
-
+import growthcraft.api.core.util.BlockFlags;
+import growthcraft.cellar.GrowthCraftCellar;
 import growthcraft.cellar.client.render.RenderFruitPress;
 import growthcraft.cellar.common.tileentity.TileEntityFruitPress;
-import growthcraft.cellar.GrowthCraftCellar;
-import growthcraft.api.core.util.BlockFlags;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraft.util.EnumFacing;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.Random;
 
 public class BlockFruitPress extends BlockCellarContainer
 {
@@ -42,27 +40,27 @@ public class BlockFruitPress extends BlockCellarContainer
 	}
 
 	@Override
-	public boolean isRotatable(IBlockAccess world, int x, int y, int z, EnumFacing side)
+	public boolean isRotatable(IBlockAccess world, BlockPos pos, EnumFacing side)
 	{
 		return true;
 	}
 
 	@Override
-	public void doRotateBlock(World world, int x, int y, int z, EnumFacing side)
+	public void doRotateBlock(World world, BlockPos pos, EnumFacing side)
 	{
 		world.setBlockState(x, y, z, world.getBlockState(x, y, z) ^ 1, BlockFlags.SYNC);
 		world.setBlockState(x, y + 1, z, world.getBlockState(x, y + 1, z) ^ 1, BlockFlags.SYNC);
 	}
 
 	@Override
-	public void onBlockAdded(World world, int x, int y, int z)
+	public void onBlockAdded(World world, BlockPos pos)
 	{
 		super.onBlockAdded(world, x, y, z);
 		this.setDefaultDirection(world, x, y, z);
 		world.setBlockState(x, y + 1, z, getPresserBlock(), world.getBlockState(x, y, z), 2);
 	}
 
-	private void setDefaultDirection(World world, int x, int y, int z)
+	private void setDefaultDirection(World world, BlockPos pos)
 	{
 		if (!world.isRemote)
 		{
@@ -72,22 +70,22 @@ public class BlockFruitPress extends BlockCellarContainer
 			final Block block3 = world.getBlockState(x + 1, y, z);
 			byte meta = 3;
 
-			if (block.func_149730_j() && !block1.func_149730_j())
+			if (block.isFullBlock() && !block1.isFullBlock())
 			{
 				meta = 3;
 			}
 
-			if (block1.func_149730_j() && !block.func_149730_j())
+			if (block1.isFullBlock() && !block.isFullBlock())
 			{
 				meta = 2;
 			}
 
-			if (block2.func_149730_j() && !block3.func_149730_j())
+			if (block2.isFullBlock() && !block3.isFullBlock())
 			{
 				meta = 5;
 			}
 
-			if (block3.func_149730_j() && !block2.func_149730_j())
+			if (block3.isFullBlock() && !block2.isFullBlock())
 			{
 				meta = 4;
 			}
@@ -97,7 +95,7 @@ public class BlockFruitPress extends BlockCellarContainer
 	}
 
 	@Override
-	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack stack)
+	public void onBlockPlacedBy(World world, BlockPos pos, EntityLivingBase entity, ItemStack stack)
 	{
 		super.onBlockPlacedBy(world, x, y, z, entity, stack);
 		final int a = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
@@ -115,7 +113,7 @@ public class BlockFruitPress extends BlockCellarContainer
 	}
 
 	@Override
-	public void onBlockHarvested(World world, int x, int y, int z, int m, EntityPlayer player)
+	public void onBlockHarvested(World world, BlockPos pos, int m, EntityPlayer player)
 	{
 		if (player.capabilities.isCreativeMode && (m & 8) != 0 && presserIsAbove(world, x, y, z))
 		{
@@ -125,7 +123,7 @@ public class BlockFruitPress extends BlockCellarContainer
 	}
 
 	@Override
-	public void onNeighborBlockChange(World world, int x, int y, int z, Block block)
+	public void onNeighborBlockChange(World world, BlockPos pos, Block block)
 	{
 		if (!this.canBlockStay(world, x, y, z))
 		{
@@ -137,7 +135,7 @@ public class BlockFruitPress extends BlockCellarContainer
 	 * CONDITIONS
 	 ************/
 	@Override
-	public boolean isSideSolid(IBlockAccess world, int x, int y, int z, EnumFacing side)
+	public boolean isSideSolid(IBlockAccess world, BlockPos pos, EnumFacing side)
 	{
 		final int meta = world.getBlockState(x, y, z);
 
@@ -164,19 +162,19 @@ public class BlockFruitPress extends BlockCellarContainer
 	 * @param z - z coord
 	 * @return true if the BlockFruitPresser is above this block, false otherwise
 	 */
-	public boolean presserIsAbove(World world, int x, int y, int z)
+	public boolean presserIsAbove(World world, BlockPos pos)
 	{
 		return getPresserBlock() == world.getBlockState(x, y + 1, z);
 	}
 
 	@Override
-	public boolean canBlockStay(World world, int x, int y, int z)
+	public boolean canBlockStay(World world, BlockPos pos)
 	{
 		return presserIsAbove(world, x, y, z);
 	}
 
 	@Override
-	public boolean canPlaceBlockAt(World world, int x, int y, int z)
+	public boolean canPlaceBlockAt(World world, BlockPos pos)
 	{
 		if (y >= 255) return false;
 
@@ -252,7 +250,7 @@ public class BlockFruitPress extends BlockCellarContainer
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side)
+	public boolean shouldSideBeRendered(IBlockAccess world, BlockPos pos, int side)
 	{
 		return true;
 	}
@@ -267,7 +265,7 @@ public class BlockFruitPress extends BlockCellarContainer
 	}
 
 	@Override
-	public int getComparatorInputOverride(World world, int x, int y, int z, int par5)
+	public int getComparatorInputOverride(World world, BlockPos pos, int par5)
 	{
 		final TileEntityFruitPress te = getTileEntity(world, x, y, z);
 		if (te != null)

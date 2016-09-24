@@ -26,15 +26,13 @@ package growthcraft.milk.client.render.item;
 import growthcraft.core.client.render.item.GrcItemRenderer;
 import growthcraft.milk.client.model.ModelCheeseBlock;
 import growthcraft.milk.client.resource.GrcMilkResources;
-import growthcraft.milk.common.item.EnumCheeseType;
 import growthcraft.milk.common.item.EnumCheeseStage;
+import growthcraft.milk.common.item.EnumCheeseType;
 import growthcraft.milk.common.item.ItemBlockCheeseBlock;
-
-import org.lwjgl.opengl.GL11;
-
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import org.lwjgl.opengl.GL11;
 
 public class ItemRendererCheeseBlock extends GrcItemRenderer
 {

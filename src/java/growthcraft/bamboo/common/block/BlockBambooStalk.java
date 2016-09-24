@@ -1,33 +1,30 @@
 package growthcraft.bamboo.common.block;
 
-import java.util.List;
-import java.util.Random;
-
-import growthcraft.bamboo.client.renderer.RenderBamboo;
 import growthcraft.bamboo.GrowthCraftBamboo;
+import growthcraft.bamboo.client.renderer.RenderBamboo;
 import growthcraft.core.common.block.GrcBlockBase;
 import growthcraft.core.util.BlockCheck;
 import growthcraft.core.util.RenderUtils;
-
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.util.math.BlockPos;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDoor;
 import net.minecraft.block.material.Material;
-
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
-
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.ColorizerFoliage;
 import net.minecraft.world.ColorizerGrass;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraft.util.EnumFacing;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.List;
+import java.util.Random;
 
 public class BlockBambooStalk extends GrcBlockBase
 {
@@ -71,7 +68,7 @@ public class BlockBambooStalk extends GrcBlockBase
 			int y1 = pos.getY();
 			int z1 = pos.getZ();
 
-			if (isBambooOnGround(world, pos.getX(), pos.getY(), pos.getZ()))
+			if (isBambooOnGround(world, pos))
 			{
 				if (rand.nextInt(this.growth) == 0)
 				{
@@ -85,7 +82,7 @@ public class BlockBambooStalk extends GrcBlockBase
 						{
 							for (y1 = pos.getY() - 1; y1 <= pos.getY() + 1; ++y1)
 							{
-								final boolean flag1 = world.getBlockState(pos) == this && isBambooOnGround(world, x1, y1, z1);
+								final boolean flag1 = world.getBlockState(pos) == this && isBambooOnGround(world, pos);
 								final boolean flag2 = world.getBlockState(pos) == bambooShoot;
 								if (flag1 || flag2)
 								{
@@ -105,7 +102,7 @@ public class BlockBambooStalk extends GrcBlockBase
 
 					for (int loop = 0; loop < 4; ++loop)
 					{
-						if (world.isAirBlock(pos) && bambooShoot.canBlockStay(world, x1, y1, z1))
+						if (world.isAirBlock(pos) && bambooShoot.canBlockStay(world, pos))
 						{
 							x = x1;
 							y = y1;
@@ -117,9 +114,9 @@ public class BlockBambooStalk extends GrcBlockBase
 						z1 = pos.getZ() + rand.nextInt(3) - 1;
 					}
 
-					if (world.isAirBlock(pos) && bambooShoot.canBlockStay(world, x1, y1, z1));
+					if (world.isAirBlock(pos) && bambooShoot.canBlockStay(world, pos));
 					{
-						world.setBlockState(pos, IBlockState state);
+						world.setBlockState(pos);
 					}
 				}
 
@@ -131,36 +128,36 @@ public class BlockBambooStalk extends GrcBlockBase
 	 * TRIGGERS
 	 ************/
 	@Override
-	public void onNeighborBlockChange(World world, int x, int y, int z, Block s)
+	public void onNeighborBlockChange(World world, BlockPos pos, Block s)
 	{
 		boolean flag = false;
 
-		if (world.getBlockState(x, y - 1, z) != this)
+		if (world.getBlockState(pos) != this)
 		{
-			if (!isBambooOnGround(world, x, y, z))
+			if (!isBambooOnGround(world, pos))
 			{
 				flag = true;
 			}
 		}
 
-		if (flag && world.getBlockState(x, y, z) == 0)
+		if (flag && world.getBlockState(pos) == 0)
 		{
-			this.dropBlockAsItem(world, x, y, z, world.getBlockState(x, y, z), 0);
-			world.setBlockToAir(x, y, z);
+			this.dropBlockAsItem(world, pos, world.getBlockState(pos), 0);
+			world.setBlockToAir(pos);
 		}
 
-		super.onNeighborBlockChange(world, x, y, z, s);
+		super.onNeighborBlockChange(world, pos, s);
 	}
 
 	@Override
-	public void breakBlock(World world, BlockPos pos, Block par5, int par6)
+	public void breakBlock(World world, BlockPos pos, IBlockState state, Block par5, int par6)
 	{
 		if (world.getBlockState(pos) == 0)
 		{
 			final byte b0 = 4;
 			final int j1 = b0 + 1;
 
-			if (world.checkChunksExist(x - j1, y - j1, z - j1, x + j1, y + j1, z + j1))
+			if (world.isBlockLoaded(pos))
 			{
 				for (int x1 = -b0; x1 <= b0; ++x1)
 				{
@@ -171,7 +168,7 @@ public class BlockBambooStalk extends GrcBlockBase
 							final Block block = world.getBlockState(pos);
 							if (block != null)
 							{
-								block.beginLeavesDecay(world, x + x1, y + y1, z + z1);
+								block.beginLeavesDecay(state, world, pos);
 							}
 						}
 					}
@@ -182,56 +179,56 @@ public class BlockBambooStalk extends GrcBlockBase
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Item getItem(World world, int x, int y, int z)
+	public Item getItem(World world, BlockPos pos)
 	{
 		return GrowthCraftBamboo.items.bamboo.getItem();
 	}
 
 	@Override
-	public boolean canSustainLeaves(IBlockAccess world, int x, int y, int z)
+	public boolean canSustainLeaves(IBlockAccess world, BlockPos pos)
 	{
-		return world.getBlockState(x, y, z) == 0 ? true : false;
+		return world.getBlockState(pos) == 0 ? true : false;
 	}
 
 	@Override
-	public boolean isWood(IBlockAccess world, int x, int y, int z)
+	public boolean isWood(IBlockAccess world, BlockPos pos)
 	{
 		return true;
 	}
 
 	@Override
-	public boolean canBeReplacedByLeaves(IBlockAccess world, int x, int y, int z)
+	public boolean canBeReplacedByLeaves(IBlockAccess world, BlockPos pos)
 	{
 		return false;
 	}
 
-	public boolean isBambooOnGround(World world, int x, int y, int z)
+	public boolean isBambooOnGround(World world, BlockPos pos)
 	{
-		if (!BlockCheck.canSustainPlant(world, x, y - 1, z, EnumFacing.UP, GrowthCraftBamboo.blocks.bambooShoot.getBlockState())) return false;
-		return this == world.getBlockState(x, y, z);
+		if (!BlockCheck.canSustainPlant(world, pos, pos, pos, EnumFacing.UP, GrowthCraftBamboo.blocks.bambooShoot.getBlockState())) return false;
+		return this == world.getBlockState(pos);
 	}
 
 	@Override
-	public boolean canSilkHarvest(World world, EntityPlayer player, int x, int y, int z, int metadata)
+	public boolean canSilkHarvest(World world, EntityPlayer player, BlockPos pos, int metadata)
 	{
 		return false;
 	}
 
-	private boolean canFence(IBlockAccess world, int x, int y, int z)
+	private boolean canFence(IBlockAccess world, BlockPos pos)
 	{
-		return world.getBlockState(x, y, z) == GrowthCraftBamboo.blocks.bambooFence.getBlockState() ||
-			world.getBlockState(x, y, z) == Blocks.OAK_FENCE_GATE ||
-			world.getBlockState(x, y, z) == GrowthCraftBamboo.blocks.bambooFenceGate.getBlockState();
+		return world.getBlockState(pos) == GrowthCraftBamboo.blocks.bambooFence.getBlockState() ||
+			world.getBlockState(pos) == Blocks.OAK_FENCE_GATE ||
+			world.getBlockState(pos) == GrowthCraftBamboo.blocks.bambooFenceGate.getBlockState();
 	}
 
-	private boolean canWall(IBlockAccess world, int x, int y, int z)
+	private boolean canWall(IBlockAccess world, BlockPos pos)
 	{
-		return world.getBlockState(x, y, z) == GrowthCraftBamboo.blocks.bambooWall.getBlockState();
+		return world.getBlockState(pos) == GrowthCraftBamboo.blocks.bambooWall.getBlockState();
 	}
 
-	private boolean canDoor(IBlockAccess world, int x, int y, int z)
+	private boolean canDoor(IBlockAccess world, BlockPos pos)
 	{
-		return world.getBlockState(x, y, z) instanceof BlockDoor;
+		return world.getBlockState(pos) instanceof BlockDoor;
 	}
 
 	@Override
@@ -286,7 +283,7 @@ public class BlockBambooStalk extends GrcBlockBase
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int s)
+	public boolean shouldSideBeRendered(IBlockAccess world, BlockPos pos, int s)
 	{
 		return true;
 	}
@@ -309,9 +306,9 @@ public class BlockBambooStalk extends GrcBlockBase
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public int colorMultiplier(IBlockAccess world, int x, int y, int z)
+	public int colorMultiplier(IBlockAccess world, BlockPos pos)
 	{
-		if (world.getBlockState(x, y, z) == 0)
+		if (world.getBlockState(pos) == 0)
 		{
 			int r = 0;
 			int g = 0;
@@ -321,7 +318,7 @@ public class BlockBambooStalk extends GrcBlockBase
 			{
 				for (int i2 = -1; i2 <= 1; ++i2)
 				{
-					final int color = world.getBiomeGenForCoords(x + i2, z + l1).getBiomeFoliageColor(x + i2, y, z + l1);
+					final int color = world.getBiome(x + i2, z + l1).getBiomeFoliageColor(x + i2, y, z + l1);
 					r += (color & 16711680) >> 16;
 					g += (color & 65280) >> 8;
 					b += color & 255;
@@ -337,7 +334,7 @@ public class BlockBambooStalk extends GrcBlockBase
 	}
 
 	@Override
-	public void setBlockBoundsBasedOnState(IBlockAccess world, int x, int y, int z)
+	public void setBlockBoundsBasedOnState(IBlockAccess world, BlockPos pos)
 	{
 		float x1 = 0.25F;
 		float x2 = 0.75F;
@@ -367,20 +364,20 @@ public class BlockBambooStalk extends GrcBlockBase
 			}
 		}
 
-		this.setBlockBounds(x1, 0.0F, z1, x2, 1.0F, z2);
+		this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
 	}
 
 	@Override
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB axis, List list, Entity entity)
+	public void getCollisionBoundingBox(World world, BlockPos pos, AxisAlignedBB axis, List list, Entity entity)
 	{
 		final float x1 = 0.25F;
 		final float x2 = 0.75F;
 		final float z1 = 0.25F;
 		final float z2 = 0.75F;
 
-		this.setBlockBounds(x1, 0.0F, z1, x2, 1.0F, z2);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
+		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 
 		if (world.getBlockState(x, y, z) != 0)
 		{
@@ -441,7 +438,7 @@ public class BlockBambooStalk extends GrcBlockBase
 	}
 
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	private void renderFence(World world, AxisAlignedBB axis, List list, Entity entity, int x, int y, int z, RenderUtils.Face m)
+	private void renderFence(World world, AxisAlignedBB axis, List list, Entity entity, BlockPos pos, RenderUtils.Face m)
 	{
 		float x1 = x;
 		float x2 = x + 1.0F;
@@ -480,8 +477,8 @@ public class BlockBambooStalk extends GrcBlockBase
 			x2 = 1.0F;
 		}
 
-		this.setBlockBounds(x1, y1, z1, x2, y2, z2);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(x1, y1, z1, x2, y2, z2);
+		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 
 		y1 = 0.375F;
 		y2 = 0.5625F;
@@ -515,12 +512,12 @@ public class BlockBambooStalk extends GrcBlockBase
 			x2 = 1.0F;
 		}
 
-		this.setBlockBounds(x1, y1, z1, x2, y2, z2);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(x1, y1, z1, x2, y2, z2);
+		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 	}
 
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	private void renderWall(World world, AxisAlignedBB axis, List list, Entity entity, int x, int y, int z, RenderUtils.Face m)
+	private void renderWall(World world, AxisAlignedBB axis, List list, Entity entity, BlockPos pos, RenderUtils.Face m)
 	{
 		float x1 = x;
 		float x2 = x + 1.0F;
@@ -559,12 +556,12 @@ public class BlockBambooStalk extends GrcBlockBase
 			x2 = 1.0F;
 		}
 
-		this.setBlockBounds(x1, 0.0F, z1, x2, 1.0F, z2);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
+		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 	}
 
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	private void renderDoor(World world, AxisAlignedBB axis, List list, Entity entity, int x, int y, int z, RenderUtils.Face m)
+	private void renderDoor(World world, AxisAlignedBB axis, List list, Entity entity, BlockPos pos, RenderUtils.Face m)
 	{
 		float x1 = x;
 		float x2 = x + 1.0F;
@@ -592,8 +589,8 @@ public class BlockBambooStalk extends GrcBlockBase
 				z1 = 0.0F;
 				z2 = 0.25F;
 
-				this.setBlockBounds(x1, y1, z1, x2, y2, z2);
-				super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+				this.getBoundingBox(x1, y1, z1, x2, y2, z2);
+				super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 			}
 
 			if (tm == 2)
@@ -603,8 +600,8 @@ public class BlockBambooStalk extends GrcBlockBase
 				z1 = 0.0F;
 				z2 = 0.25F;
 
-				this.setBlockBounds(x1, y1, z1, x2, y2, z2);
-				super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+				this.getBoundingBox(x1, y1, z1, x2, y2, z2);
+				super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 			}
 		}
 		else if (m == RenderUtils.Face.ZPOS)
@@ -623,8 +620,8 @@ public class BlockBambooStalk extends GrcBlockBase
 				z1 = 0.75F;
 				z2 = 1.0F;
 
-				this.setBlockBounds(x1, y1, z1, x2, y2, z2);
-				super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+				this.getBoundingBox(x1, y1, z1, x2, y2, z2);
+				super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 			}
 
 			if (tm == 2)
@@ -634,8 +631,8 @@ public class BlockBambooStalk extends GrcBlockBase
 				z1 = 0.75F;
 				z2 = 1.0F;
 
-				this.setBlockBounds(x1, y1, z1, x2, y2, z2);
-				super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+				this.getBoundingBox(x1, y1, z1, x2, y2, z2);
+				super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 			}
 		}
 		else if (m == RenderUtils.Face.XNEG)
@@ -654,8 +651,8 @@ public class BlockBambooStalk extends GrcBlockBase
 				z1 = 0.0F;
 				z2 = 0.375F;
 
-				this.setBlockBounds(x1, y1, z1, x2, y2, z2);
-				super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+				this.getBoundingBox(x1, y1, z1, x2, y2, z2);
+				super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 			}
 
 			if (tm == 3)
@@ -666,8 +663,8 @@ public class BlockBambooStalk extends GrcBlockBase
 				z1 = 0.625F;
 				z2 = 1.0F;
 
-				this.setBlockBounds(x1, y1, z1, x2, y2, z2);
-				super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+				this.getBoundingBox(x1, y1, z1, x2, y2, z2);
+				super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 			}
 		}
 		else if (m == RenderUtils.Face.XPOS)
@@ -685,8 +682,8 @@ public class BlockBambooStalk extends GrcBlockBase
 				z1 = 0.0F;
 				z2 = 0.375F;
 
-				this.setBlockBounds(x1, y1, z1, x2, y2, z2);
-				super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+				this.getBoundingBox(x1, y1, z1, x2, y2, z2);
+				super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 			}
 
 			if (tm == 3)
@@ -696,8 +693,8 @@ public class BlockBambooStalk extends GrcBlockBase
 				z1 = 0.625F;
 				z2 = 1.0F;
 
-				this.setBlockBounds(x1, y1, z1, x2, y2, z2);
-				super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+				this.getBoundingBox(x1, y1, z1, x2, y2, z2);
+				super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 			}
 		}
 	}

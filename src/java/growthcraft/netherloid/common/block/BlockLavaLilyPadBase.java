@@ -23,10 +23,7 @@
  */
 package growthcraft.netherloid.common.block;
 
-import java.util.List;
-
 import growthcraft.api.core.util.RenderType;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.SoundType;
@@ -35,7 +32,10 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityBoat;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+
+import java.util.List;
 
 public class BlockLavaLilyPadBase extends BlockBush
 {
@@ -46,7 +46,7 @@ public class BlockLavaLilyPadBase extends BlockBush
 		setSoundType(SoundType.PLANT);
 		final float var1 = 0.5F;
 		final float var2 = 0.015625F;
-		setBlockBounds(0.5F - var1, 0.0F, 0.5F - var1, 0.5F + var1, var2, 0.5F + var1);
+		getBoundingBox(0.5F - var1, 0.0F, 0.5F - var1, 0.5F + var1, var2, 0.5F + var1);
 	}
 
 	@Override
@@ -60,21 +60,21 @@ public class BlockLavaLilyPadBase extends BlockBush
 		return Blocks.LAVA == block;
 	}
 
-	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB bb, List list, Entity entity)
+	public void getCollisionBoundingBox(World world, BlockPos pos, AxisAlignedBB bb, List list, Entity entity)
 	{
 		if (entity == null || !(entity instanceof EntityBoat))
 		{
-			super.addCollisionBoxesToList(world, x, y, z, bb, list, entity);
+			super.getCollisionBoundingBox(world, x, y, z, bb, list, entity);
 		}
 	}
 
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, BlockPos pos)
 	{
 		return AxisAlignedBB.getBoundingBox((double)x + getBlockBoundsMinX(), (double)y + getBlockBoundsMinY(), (double)z + getBlockBoundsMinZ(),
 			(double)x + getBlockBoundsMaxX(), (double)y + getBlockBoundsMaxY(), (double)z + getBlockBoundsMaxZ());
 	}
 
-	public boolean canBlockStay(World world, int x, int y, int z)
+	public boolean canBlockStay(World world, BlockPos pos)
 	{
 		return y >= 0 && y < 256 ? world.getBlockState(x, y - 1, z).getMaterial() == Material.LAVA && world.getBlockState(x, y - 1, z) == 0 : false;
 	}

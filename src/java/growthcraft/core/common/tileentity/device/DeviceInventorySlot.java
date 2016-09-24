@@ -26,7 +26,6 @@ package growthcraft.core.common.tileentity.device;
 import growthcraft.api.core.definition.IMultiItemStacks;
 import growthcraft.core.common.inventory.InventoryProcessor;
 import growthcraft.core.util.ItemUtils;
-
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 
@@ -125,7 +124,7 @@ public class DeviceInventorySlot
 	 *
 	 * @return true, the slot is full, false otherwise
 	 */
-	public boolean isFull()
+	public boolean containedBlock()
 	{
 		return getAvailableCapacity() <= 0;
 	}

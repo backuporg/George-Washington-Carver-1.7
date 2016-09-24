@@ -1,42 +1,16 @@
 package growthcraft.bees.common.village;
 
-import java.util.Random;
-import java.util.List;
-
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-
 import growthcraft.bees.GrowthCraftBees;
-import growthcraft.bees.*;
-import growthcraft.*;
-import growthcraft.bees.init.GrcBeesItems;
 import growthcraft.bees.util.BeesItemList;
-
-import net.minecraftforge.fml.common.registry.VillagerRegistry.IVillageCreationHandler;
 import net.minecraft.entity.passive.EntityVillager;
-import net.minecraft.entity.passive.EntityVillager.ITradeList;
-import net.minecraft.entity.passive.EntityVillager.PriceInfo;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.village.MerchantRecipe;
-import net.minecraft.village.MerchantRecipeList;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.registry.RegistryBuilder;
 import net.minecraft.world.gen.structure.StructureVillagePieces.PieceWeight;
 import net.minecraft.world.gen.structure.StructureVillagePieces.Start;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
-import net.minecraftforge.fml.common.registry.FMLControlledNamespacedRegistry;
-import net.minecraftforge.fml.common.registry.PersistentRegistryManager;
-import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerCareer;
 import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerProfession;
-import net.minecraft.entity.passive.EntityVillager.EmeraldForItems;
-import net.minecraft.entity.passive.EntityVillager.ListItemForEmeralds;
-import net.minecraft.entity.passive.EntityVillager.PriceInfo;
-import net.minecraft.entity.passive.EntityVillager.*;
 
-import java.util.Map;
+import java.util.List;
+import java.util.Random;
 
 public class VillageHandlerBeesApiarist {
 

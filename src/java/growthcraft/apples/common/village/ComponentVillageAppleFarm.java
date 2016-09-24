@@ -1,16 +1,12 @@
 package growthcraft.apples.common.village;
 
-import java.util.List;
-import java.util.Random;
-import java.util.HashMap;
-
 import growthcraft.apples.common.world.WorldGenAppleTree;
+import growthcraft.core.util.SchemaToVillage;
 import growthcraft.core.util.SchemaToVillage.BlockEntry;
 import growthcraft.core.util.SchemaToVillage.IBlockEntries;
-import growthcraft.core.util.SchemaToVillage;
-
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
@@ -19,6 +15,10 @@ import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
 import net.minecraft.world.gen.structure.StructureVillagePieces;
 import net.minecraft.world.gen.structure.StructureVillagePieces.Start;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Random;
 
 public class ComponentVillageAppleFarm extends StructureVillagePieces.Village implements SchemaToVillage.IVillage
 {
@@ -76,9 +76,9 @@ public class ComponentVillageAppleFarm extends StructureVillagePieces.Village im
 	}
 
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	public static ComponentVillageAppleFarm buildComponent(Start startPiece, List list, Random random, int x, int y, int z, int coordBaseMode, int par7)
+	public static ComponentVillageAppleFarm buildComponent(Start startPiece, List list, Random random, BlockPos pos, int coordBaseMode, int par7, EnumFacing face)
 	{
-		final StructureBoundingBox structureboundingbox = StructureBoundingBox.getComponentToAddBoundingBox(x, y, z, 0, 0, 0, 11, 11, 11, coordBaseMode);
+		final StructureBoundingBox structureboundingbox = StructureBoundingBox.getComponentToAddBoundingBox(pos.getX(), pos.getY(), pos.getZ(), 0, 0, 0, 11, 11, 11, face);
 		if (canVillageGoDeeper(structureboundingbox))
 		{
 			if (StructureComponent.findIntersecting(list, structureboundingbox) == null)
@@ -148,9 +148,14 @@ public class ComponentVillageAppleFarm extends StructureVillagePieces.Village im
 			for (int col = 0; col < 11; ++col)
 			{
 				clearCurrentPositionBlocksUpwards(world, col, 7, row, box);
-				func_151554_b(world, Blocks.DIRT, 0, col, -1, row, box);
+				replaceAirAndLiquidDownwards(world, Blocks.DIRT, 0, col, -1, row, box);
 			}
 		}
 		return true;
+	}
+
+	@Override
+	public void placeBlockAtCurrentPositionPub(World world, Block block, int meta, BlockPos pos, StructureBoundingBox box) {
+
 	}
 }

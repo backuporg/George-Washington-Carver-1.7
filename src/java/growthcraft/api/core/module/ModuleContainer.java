@@ -23,17 +23,16 @@
  */
 package growthcraft.api.core.module;
 
+import growthcraft.api.core.freeze.FrozenObjectError;
+import growthcraft.api.core.freeze.IFreezable;
+import growthcraft.api.core.log.ILoggable;
+import growthcraft.api.core.log.ILogger;
+import growthcraft.api.core.log.NullLogger;
+
+import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
-import javax.annotation.Nonnull;
-
-import growthcraft.api.core.freeze.FrozenObjectError;
-import growthcraft.api.core.freeze.IFreezable;
-import growthcraft.api.core.log.ILogger;
-import growthcraft.api.core.log.ILoggable;
-import growthcraft.api.core.log.NullLogger;
 
 // Container class storing sub modules
 public class ModuleContainer implements IModule, IFreezable, ILoggable, Iterable<IModule>

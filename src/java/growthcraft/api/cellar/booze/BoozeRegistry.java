@@ -1,18 +1,17 @@
 package growthcraft.api.cellar.booze;
 
+import growthcraft.api.core.fluids.FluidTag;
+import growthcraft.api.core.fluids.FluidUtils;
+import growthcraft.api.core.log.ILogger;
+import growthcraft.api.core.log.NullLogger;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidStack;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-import growthcraft.api.core.log.ILogger;
-import growthcraft.api.core.log.NullLogger;
-import growthcraft.api.core.fluids.FluidTag;
-import growthcraft.api.core.fluids.FluidUtils;
-
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidStack;
 
 public class BoozeRegistry implements IBoozeRegistry
 {

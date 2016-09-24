@@ -23,34 +23,31 @@
  */
 package growthcraft.milk.common.block;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import growthcraft.api.core.util.BBox;
 import growthcraft.core.common.block.GrcBlockContainer;
+import growthcraft.core.util.ItemUtils;
+import growthcraft.milk.GrowthCraftMilk;
 import growthcraft.milk.client.render.RenderCheeseBlock;
-import growthcraft.milk.common.item.EnumCheeseType;
 import growthcraft.milk.common.item.EnumCheeseStage;
+import growthcraft.milk.common.item.EnumCheeseType;
 import growthcraft.milk.common.item.ItemBlockCheeseBlock;
 import growthcraft.milk.common.tileentity.TileEntityCheeseBlock;
-import growthcraft.milk.GrowthCraftMilk;
-import growthcraft.core.util.ItemUtils;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-
-import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class BlockCheeseBlock extends GrcBlockContainer
 {
@@ -66,23 +63,23 @@ public class BlockCheeseBlock extends GrcBlockContainer
 		setCreativeTab(GrowthCraftMilk.creativeTab);
 		setTileEntityType(TileEntityCheeseBlock.class);
 		final BBox bb = BBox.newCube(4f, 0f, 4f, 8f, 8f, 8f).scale(1f / 16f);
-		setBlockBounds(bb.x0(), bb.y0(), bb.z0(), bb.x1(), bb.y1(), bb.z1());
+		getBoundingBox(bb.x0(), bb.y0(), bb.z0(), bb.x1(), bb.y1(), bb.z1());
 	}
 
 	@Override
-	protected boolean shouldRestoreBlockState(World world, int x, int y, int z, ItemStack stack)
+	protected boolean shouldRestoreBlockState(World world, BlockPos pos, ItemStack stack)
 	{
 		return true;
 	}
 
 	@Override
-	protected boolean shouldDropTileStack(World world, int x, int y, int z, int metadata, int fortune)
+	protected boolean shouldDropTileStack(World world, BlockPos pos, int metadata, int fortune)
 	{
 		return false;
 	}
 
 	@Override
-	protected ItemStack createHarvestedBlockItemStack(World world, EntityPlayer player, int x, int y, int z, int meta)
+	protected ItemStack createHarvestedBlockItemStack(World world, EntityPlayer player, BlockPos pos, int meta)
 	{
 		final TileEntityCheeseBlock te = getTileEntity(world, x, y, z);
 		if (te != null)
@@ -93,7 +90,7 @@ public class BlockCheeseBlock extends GrcBlockContainer
 	}
 
 	@Override
-	protected void getTileItemStackDrops(List<ItemStack> ret, World world, int x, int y, int z, int metadata, int fortune)
+	protected void getTileItemStackDrops(List<ItemStack> ret, World world, BlockPos pos, int metadata, int fortune)
 	{
 		final TileEntityCheeseBlock te = getTileEntity(world, x, y, z);
 		if (te != null)
@@ -107,13 +104,13 @@ public class BlockCheeseBlock extends GrcBlockContainer
 	}
 
 	@Override
-	protected boolean shouldScatterInventoryOnBreak(World world, int x, int y, int z)
+	protected boolean shouldScatterInventoryOnBreak(World world, BlockPos pos)
 	{
 		return true;
 	}
 
 	@Override
-	protected void scatterInventory(World world, int x, int y, int z, Block block)
+	protected void scatterInventory(World world, BlockPos pos, Block block)
 	{
 		final TileEntityCheeseBlock te = getTileEntity(world, x, y, z);
 		if (te != null)
@@ -128,7 +125,7 @@ public class BlockCheeseBlock extends GrcBlockContainer
 	}
 
 	@Override
-	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z, EntityPlayer player)
+	public ItemStack getPickBlock(RayTraceResult target, World world, BlockPos pos, EntityPlayer player)
 	{
 		final TileEntityCheeseBlock teCheeseBlock = getTileEntity(world, x, y, z);
 		if (teCheeseBlock != null)
@@ -139,7 +136,7 @@ public class BlockCheeseBlock extends GrcBlockContainer
 	}
 
 	@Override
-	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune)
+	public ArrayList<ItemStack> getDrops(World world, BlockPos pos, int metadata, int fortune)
 	{
 		final ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
 		final TileEntityCheeseBlock te = getTileEntity(world, x, y, z);
@@ -191,7 +188,7 @@ public class BlockCheeseBlock extends GrcBlockContainer
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side)
+	public boolean shouldSideBeRendered(IBlockAccess world, BlockPos pos, int side)
 	{
 		return true;
 	}
@@ -237,7 +234,7 @@ public class BlockCheeseBlock extends GrcBlockContainer
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(IBlockAccess world, int x, int y, int z, int side)
+	public IIcon getIcon(IBlockAccess world, BlockPos pos, int side)
 	{
 		final TileEntityCheeseBlock te = getTileEntity(world, x, y, z);
 		final int meta = world.getBlockState(x, y, z);

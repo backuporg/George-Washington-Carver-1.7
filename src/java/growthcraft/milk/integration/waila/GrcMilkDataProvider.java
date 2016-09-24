@@ -23,8 +23,6 @@
  */
 package growthcraft.milk.integration.waila;
 
-import java.util.List;
-
 import growthcraft.api.core.i18n.GrcI18n;
 import growthcraft.api.core.nbt.NBTHelper;
 import growthcraft.milk.common.tileentity.TileEntityButterChurn;
@@ -33,19 +31,18 @@ import growthcraft.milk.common.tileentity.TileEntityCheesePress;
 import growthcraft.milk.common.tileentity.TileEntityHangingCurds;
 import growthcraft.milk.util.TagFormatterButterChurn;
 import growthcraft.milk.util.TagFormatterCheesePress;
-
-import net.minecraftforge.fml.common.Optional;
-
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
-
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.Optional;
+
+import java.util.List;
 
 public class GrcMilkDataProvider implements IWailaDataProvider
 {
@@ -90,14 +87,14 @@ public class GrcMilkDataProvider implements IWailaDataProvider
 		{
 			if (nbt.getBoolean("is_aged"))
 			{
-				tooltip.add(EnumChatFormatting.GRAY + GrcI18n.translate("grcmilk.cheese.slices.prefix") +
-					EnumChatFormatting.WHITE + GrcI18n.translate("grcmilk.cheese.slices.value.format", nbt.getInteger("slices"), nbt.getInteger("slices_max")));
+				tooltip.add(TextFormatting.GRAY + GrcI18n.translate("grcmilk.cheese.slices.prefix") +
+					TextFormatting.WHITE + GrcI18n.translate("grcmilk.cheese.slices.value.format", nbt.getInteger("slices"), nbt.getInteger("slices_max")));
 			}
 			else
 			{
 				final float ageProgress = nbt.getFloat("age_progress");
-				final String result = EnumChatFormatting.GRAY + GrcI18n.translate("grcmilk.cheese.aging.prefix") +
-					EnumChatFormatting.WHITE + GrcI18n.translate("grcmilk.cheese.aging.progress.format", (int)(ageProgress * 100));
+				final String result = TextFormatting.GRAY + GrcI18n.translate("grcmilk.cheese.aging.prefix") +
+					TextFormatting.WHITE + GrcI18n.translate("grcmilk.cheese.aging.progress.format", (int)(ageProgress * 100));
 				tooltip.add(result);
 			}
 		}
@@ -106,8 +103,8 @@ public class GrcMilkDataProvider implements IWailaDataProvider
 			final float progress = nbt.getFloat("progress");
 			if (progress < 1f)
 			{
-				final String result = EnumChatFormatting.GRAY + GrcI18n.translate("grcmilk.hanging_curds.drying.prefix") +
-					EnumChatFormatting.WHITE + GrcI18n.translate("grcmilk.hanging_curds.drying.progress.format", (int)(progress * 100));
+				final String result = TextFormatting.GRAY + GrcI18n.translate("grcmilk.hanging_curds.drying.prefix") +
+					TextFormatting.WHITE + GrcI18n.translate("grcmilk.hanging_curds.drying.progress.format", (int)(progress * 100));
 				tooltip.add(result);
 			}
 			if (nbt.hasKey("dried"))
@@ -142,7 +139,7 @@ public class GrcMilkDataProvider implements IWailaDataProvider
 
 	@Override
 	@Optional.Method(modid="Waila")
-	public NBTTagCompound getNBTData(EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, int x, int y, int z)
+	public NBTTagCompound getNBTData(EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, BlockPos pos)
 	{
 		if (te instanceof TileEntityButterChurn) getButterChurnData((TileEntityButterChurn)te, tag);
 		if (te instanceof TileEntityCheesePress) getCheesePressData((TileEntityCheesePress)te, tag);

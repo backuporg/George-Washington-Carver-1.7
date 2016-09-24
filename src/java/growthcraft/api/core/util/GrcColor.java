@@ -23,9 +23,9 @@
  */
 package growthcraft.api.core.util;
 
-import javax.annotation.Nonnull;
-
 import net.minecraft.util.math.MathHelper;
+
+import javax.annotation.Nonnull;
 
 public class GrcColor
 {

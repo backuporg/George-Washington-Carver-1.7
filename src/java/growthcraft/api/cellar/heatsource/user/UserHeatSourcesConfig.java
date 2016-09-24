@@ -23,15 +23,14 @@
  */
 package growthcraft.api.cellar.heatsource.user;
 
+import growthcraft.api.cellar.CellarRegistry;
+import growthcraft.api.core.item.ItemKey;
+import growthcraft.api.core.user.AbstractUserJSONConfig;
+import net.minecraft.block.Block;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+
 import java.io.BufferedReader;
 import java.util.Map;
-
-import growthcraft.api.core.item.ItemKey;
-import growthcraft.api.cellar.CellarRegistry;
-import growthcraft.api.core.user.AbstractUserJSONConfig;
-
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraft.block.Block;
 
 /**
  * Provides users with the ability to set blocks as heat sources for Growthcraft

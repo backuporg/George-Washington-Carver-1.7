@@ -1,13 +1,12 @@
 package growthcraft.bamboo.event;
 
-import java.util.Random;
-
 import growthcraft.bamboo.GrowthCraftBamboo;
-
-import net.minecraftforge.fml.common.eventhandler.Event.Result;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.BonemealEvent;
+import net.minecraftforge.fml.common.eventhandler.Event.Result;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+import java.util.Random;
 
 public class BonemealEventBamboo
 {
@@ -61,12 +60,12 @@ public class BonemealEventBamboo
 		}
 	}
 
-	private boolean isBambooOnGround(World world, int x, int y, int z)
+	private boolean isBambooOnGround(World world, BlockPos pos)
 	{
 		return GrowthCraftBamboo.blocks.bambooStalk.getBlockState().isBambooOnGround(world, x, y, z);
 	}
 
-	private int countNearbyValidSoil(World world, int x, int y, int z, int b)
+	private int countNearbyValidSoil(World world, BlockPos pos, int b)
 	{
 		int count = 0;
 		int x1 = x;

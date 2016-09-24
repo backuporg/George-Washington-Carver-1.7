@@ -29,9 +29,8 @@ import growthcraft.bees.common.item.ItemBlockBeeBox;
 import growthcraft.core.integration.AM2.AM2Platform;
 import growthcraft.core.integration.AM2.EnumAM2WoodType;
 import growthcraft.core.integration.ModIntegrationBase;
-
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class AM2Module extends ModIntegrationBase
 {

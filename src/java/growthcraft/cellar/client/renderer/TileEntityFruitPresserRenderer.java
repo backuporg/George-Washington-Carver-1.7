@@ -1,13 +1,12 @@
 package growthcraft.cellar.client.renderer;
 
-import growthcraft.cellar.common.tileentity.TileEntityFruitPresser;
 import growthcraft.cellar.client.resource.GrcCellarResources;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import growthcraft.cellar.common.tileentity.TileEntityFruitPresser;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)

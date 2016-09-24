@@ -23,8 +23,8 @@
  */
 package growthcraft.api.cellar.common;
 
-import net.minecraft.item.ItemStack;
 import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 
 public class Residue
 {

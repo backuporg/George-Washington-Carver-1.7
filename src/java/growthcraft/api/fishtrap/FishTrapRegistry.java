@@ -1,22 +1,14 @@
 package growthcraft.api.fishtrap;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-import java.util.Set;
-import javax.annotation.Nonnull;
-
+import growthcraft.api.core.log.ILoggable;
 import growthcraft.api.core.log.ILogger;
 import growthcraft.api.core.log.NullLogger;
-import growthcraft.api.core.log.ILoggable;
-
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.WeightedRandom;
 import net.minecraft.world.World;
+
+import javax.annotation.Nonnull;
+import java.util.*;
 
 public class FishTrapRegistry implements ILoggable
 {

@@ -25,7 +25,6 @@ package growthcraft.milk.common.item;
 
 import growthcraft.api.core.definition.IItemStackFactory;
 import growthcraft.milk.GrowthCraftMilk;
-
 import net.minecraft.item.ItemStack;
 
 public enum EnumButter implements IItemStackFactory

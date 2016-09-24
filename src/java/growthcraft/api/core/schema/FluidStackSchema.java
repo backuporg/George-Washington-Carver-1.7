@@ -23,14 +23,13 @@
  */
 package growthcraft.api.core.schema;
 
-import javax.annotation.Nonnull;
-
 import growthcraft.api.core.definition.IFluidStackFactory;
 import growthcraft.api.core.util.StringUtils;
-
 import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
+
+import javax.annotation.Nonnull;
 
 public class FluidStackSchema implements IFluidStackFactory, IValidatable, ICommentable
 {

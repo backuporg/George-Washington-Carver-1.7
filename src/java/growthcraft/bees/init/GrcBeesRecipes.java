@@ -32,22 +32,21 @@ import growthcraft.api.core.fluids.TaggedFluidStacks;
 import growthcraft.api.core.item.OreItemStacks;
 import growthcraft.api.core.item.recipes.ShapelessMultiRecipe;
 import growthcraft.api.core.util.TickUtils;
-import growthcraft.bees.common.item.EnumBeesWax;
 import growthcraft.bees.GrowthCraftBees;
+import growthcraft.bees.common.item.EnumBeesWax;
 import growthcraft.cellar.GrowthCraftCellar;
 import growthcraft.cellar.util.BoozeUtils;
-import growthcraft.core.common.GrcModuleBase;
 import growthcraft.core.GrowthCraftCore;
-
+import growthcraft.core.common.GrcModuleBase;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.oredict.ShapelessOreRecipe;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraft.init.MobEffects;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 public class GrcBeesRecipes extends GrcModuleBase
 {

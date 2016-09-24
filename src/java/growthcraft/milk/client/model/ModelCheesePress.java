@@ -1,7 +1,6 @@
 package growthcraft.milk.client.model;
 
 import growthcraft.api.core.util.Easing;
-
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;

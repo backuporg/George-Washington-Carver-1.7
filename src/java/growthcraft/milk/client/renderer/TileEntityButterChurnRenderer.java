@@ -26,12 +26,11 @@ package growthcraft.milk.client.renderer;
 import growthcraft.milk.client.model.ModelButterChurn;
 import growthcraft.milk.client.resource.GrcMilkResources;
 import growthcraft.milk.common.tileentity.TileEntityButterChurn;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)

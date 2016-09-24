@@ -2,14 +2,13 @@ package growthcraft.grapes.client.renderer;
 
 import growthcraft.core.util.RenderUtils;
 import growthcraft.grapes.common.block.BlockGrapeVine1;
-
-import net.minecraftforge.fml.client.registry.ISimpleBlockRenderingHandler;
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.world.ColorizerFoliage;
 import net.minecraft.world.IBlockAccess;
+import net.minecraftforge.fml.client.registry.ISimpleBlockRenderingHandler;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import org.lwjgl.opengl.GL11;
 
 public class RenderGrapeVine1 implements ISimpleBlockRenderingHandler
@@ -40,7 +39,7 @@ public class RenderGrapeVine1 implements ISimpleBlockRenderingHandler
 	}
 
 	@Override
-	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer)
+	public boolean renderWorldBlock(IBlockAccess world, BlockPos pos, Block block, int modelId, RenderBlocks renderer)
 	{
 		if (modelId == id)
 		{
@@ -69,7 +68,7 @@ public class RenderGrapeVine1 implements ISimpleBlockRenderingHandler
 				{
 					for (int i2 = -1; i2 <= 1; ++i2)
 					{
-						final int j2 = world.getBiomeGenForCoords(x + i2, z + l1).getBiomeFoliageColor(x + i2, y, z + l1);
+						final int j2 = world.getBiome(x + i2, z + l1).getBiomeFoliageColor(x + i2, y, z + l1);
 						r += (j2 & 16711680) >> 16;
 						g += (j2 & 65280) >> 8;
 						b += j2 & 255;

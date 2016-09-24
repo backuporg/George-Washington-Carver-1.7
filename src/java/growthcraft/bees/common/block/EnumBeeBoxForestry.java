@@ -23,10 +23,10 @@
  */
 package growthcraft.bees.common.block;
 
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public enum EnumBeeBoxForestry
 {

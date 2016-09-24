@@ -1,7 +1,6 @@
 package growthcraft.cellar.network;
 
 import growthcraft.cellar.common.tileentity.TileEntityCellarDevice;
-
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,7 +13,7 @@ public class PacketClearTankButtonWByte extends AbstractPacketButton
 
 	public PacketClearTankButtonWByte(){}
 
-	public PacketClearTankButtonWByte(int x, int y, int z, byte byt)
+	public PacketClearTankButtonWByte(BlockPos pos, byte byt)
 	{
 		super(x, y, z);
 		this.b = byt;

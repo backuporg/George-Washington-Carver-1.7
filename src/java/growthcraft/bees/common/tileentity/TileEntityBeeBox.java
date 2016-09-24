@@ -3,16 +3,15 @@ package growthcraft.bees.common.tileentity;
 import growthcraft.api.bees.BeesRegistry;
 import growthcraft.api.core.item.EnumDye;
 import growthcraft.api.core.util.AuxFX;
+import growthcraft.bees.GrowthCraftBees;
 import growthcraft.bees.common.inventory.ContainerBeeBox;
 import growthcraft.bees.common.tileentity.device.DeviceBeeBox;
-import growthcraft.bees.GrowthCraftBees;
 import growthcraft.core.common.inventory.GrcInternalInventory;
+import growthcraft.core.common.tileentity.GrcTileInventoryBase;
 import growthcraft.core.common.tileentity.event.TileEventHandler;
 import growthcraft.core.common.tileentity.feature.IInteractionObject;
 import growthcraft.core.common.tileentity.feature.IItemHandler;
-import growthcraft.core.common.tileentity.GrcTileInventoryBase;
 import growthcraft.core.util.ItemUtils;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Items;

@@ -23,21 +23,15 @@
  */
 package growthcraft.milk.client.resource;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import growthcraft.milk.client.model.ModelButterChurn;
-import growthcraft.milk.client.model.ModelCheeseBlock;
-import growthcraft.milk.client.model.ModelCheesePress;
-import growthcraft.milk.client.model.ModelCheeseVat;
-import growthcraft.milk.client.model.ModelHangingCurds;
-import growthcraft.milk.client.model.ModelPancheon;
-import growthcraft.milk.common.item.EnumCheeseType;
+import growthcraft.milk.client.model.*;
 import growthcraft.milk.common.item.EnumCheeseStage;
-
+import growthcraft.milk.common.item.EnumCheeseType;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraft.util.ResourceLocation;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @SideOnly(Side.CLIENT)
 public class GrcMilkResources

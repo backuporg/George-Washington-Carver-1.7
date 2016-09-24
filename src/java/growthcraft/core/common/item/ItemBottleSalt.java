@@ -24,7 +24,6 @@
 package growthcraft.core.common.item;
 
 import growthcraft.core.GrowthCraftCore;
-
 import net.minecraft.init.Items;
 
 public class ItemBottleSalt extends GrcItemBase

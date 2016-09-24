@@ -23,15 +23,14 @@
  */
 package growthcraft.api.core.fluids;
 
-import java.util.List;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import growthcraft.api.core.CoreRegistry;
 import growthcraft.api.core.definition.IMultiFluidStacks;
-
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.List;
 
 public class FluidTest
 {

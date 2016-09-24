@@ -23,22 +23,21 @@
  */
 package growthcraft.core.common.item;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import growthcraft.api.core.effect.IEffect;
 import growthcraft.api.core.i18n.GrcI18n;
 import growthcraft.core.lib.GrcCoreState;
 import growthcraft.core.util.ItemUtils;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.EnumAction;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GrcItemFoodBase extends ItemFood
 {

@@ -31,7 +31,6 @@ import growthcraft.core.common.tileentity.device.DeviceFluidSlot;
 import growthcraft.core.common.tileentity.device.DeviceInventorySlot;
 import growthcraft.core.common.tileentity.device.DeviceProgressive;
 import growthcraft.core.util.ItemUtils;
-
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.FluidStack;
@@ -75,7 +74,7 @@ public class FruitPress extends DeviceProgressive
 		final int m = getPresserMetadata();
 		if (m < 2) return false;
 
-		if (fluidSlot.isFull()) return false;
+		if (fluidSlot.containedBlock()) return false;
 
 		final PressingRecipe result = CellarRegistry.instance().pressing().getPressingRecipe(primarySlotItem);
 		if (result == null) return false;

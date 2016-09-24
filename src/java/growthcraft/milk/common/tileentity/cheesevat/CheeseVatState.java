@@ -23,10 +23,10 @@
  */
 package growthcraft.milk.common.tileentity.cheesevat;
 
-import java.util.Locale;
-
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
+
+import java.util.Locale;
 
 public enum CheeseVatState
 {

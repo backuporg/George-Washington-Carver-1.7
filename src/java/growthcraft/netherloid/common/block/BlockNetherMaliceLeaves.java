@@ -23,26 +23,24 @@
  */
 package growthcraft.netherloid.common.block;
 
-import java.util.ArrayList;
-import java.util.Random;
-
-import growthcraft.netherloid.netherloid;
 import growthcraft.core.common.block.Materials;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import growthcraft.netherloid.netherloid;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.IGrowable;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 public abstract class BlockNetherMaliceLeaves extends BlockLeaves implements IShearable, IGrowable
 {
@@ -70,7 +68,7 @@ public abstract class BlockNetherMaliceLeaves extends BlockLeaves implements ISh
 		setCreativeTab(netherloid.tab);
 	}
 
-	public void growFruit(World world, Random random, int x, int y, int z)
+	public void growFruit(World world, Random random, BlockPos pos)
 	{
 		if (world.isAirBlock(x, y - 1, z))
 		{
@@ -80,21 +78,21 @@ public abstract class BlockNetherMaliceLeaves extends BlockLeaves implements ISh
 
 	/* Bonemeal? Client side */
 	@Override
-	public boolean func_149851_a(World world, int x, int y, int z, boolean isClient)
+	public boolean func_149851_a(World world, BlockPos pos, boolean isClient)
 	{
 		return world.isAirBlock(x, y - 1, z) && (world.getBlockState(x, y, z) & 3) == 0;
 	}
 
 	/* SideOnly(Side.SERVER) Can this apply bonemeal effect? */
 	@Override
-	public boolean func_149852_a(World world, Random random, int x, int y, int z)
+	public boolean func_149852_a(World world, Random random, BlockPos pos)
 	{
 		return true;
 	}
 
 	/* Apply bonemeal effect */
 	@Override
-	public void func_149853_b(World world, Random random, int x, int y, int z)
+	public void func_149853_b(World world, Random random, BlockPos pos)
 	{
 		growFruit(world, random, x, y, z);
 	}
@@ -103,7 +101,7 @@ public abstract class BlockNetherMaliceLeaves extends BlockLeaves implements ISh
 	 * TICK
 	 ************/
 	@Override
-	public void updateTick(World world, int x, int y, int z, Random random)
+	public void updateTick(World world, BlockPos pos, Random random)
 	{
 		if (!world.isRemote)
 		{
@@ -225,7 +223,7 @@ public abstract class BlockNetherMaliceLeaves extends BlockLeaves implements ISh
 		}
 	}
 
-	private void removeLeaves(World world, int x, int y, int z)
+	private void removeLeaves(World world, BlockPos pos)
 	{
 		this.dropBlockAsItem(world, x, y, z, world.getBlockState(x, y, z), 0);
 		world.setBlockToAir(x, y, z);
@@ -233,7 +231,7 @@ public abstract class BlockNetherMaliceLeaves extends BlockLeaves implements ISh
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World world, int x, int y, int z, Random random)
+	public void randomDisplayTick(World world, BlockPos pos, Random random)
 	{
 		super.randomDisplayTick(world, x, y, z, random);
 		if (world.canLightningStrikeAt(x, y + 1, z) && !World.doesBlockHaveSolidTopSurface(world, x, y - 1, z) && random.nextInt(15) == 1)
@@ -249,7 +247,7 @@ public abstract class BlockNetherMaliceLeaves extends BlockLeaves implements ISh
 	 * TRIGGERS
 	 ************/
 	@Override
-	public void breakBlock(World world, int x, int y, int z, Block block, int par6)
+	public void breakBlock(World world, BlockPos pos, Block block, int par6)
 	{
 		final byte b0 = 1;
 		final int i1 = b0 + 1;
@@ -274,7 +272,7 @@ public abstract class BlockNetherMaliceLeaves extends BlockLeaves implements ISh
 	}
 
 	@Override
-	public void harvestBlock(World world, EntityPlayer player, int x, int y, int z, int par6)
+	public void harvestBlock(World world, EntityPlayer player, BlockPos pos, int par6)
 	{
 		super.harvestBlock(world, player, x, y, z, par6);
 	}
@@ -283,19 +281,19 @@ public abstract class BlockNetherMaliceLeaves extends BlockLeaves implements ISh
 	 * STUFF
 	 ************/
 	@Override
-	public void beginLeavesDecay(World world, int x, int y, int z)
+	public void beginLeavesDecay(World world, BlockPos pos)
 	{
 		world.setBlockState(x, y, z, world.getBlockState(x, y, z) | LeavesStage.DECAY_MASK, 4);
 	}
 
 	@Override
-	public boolean isLeaves(IBlockAccess world, int x, int y, int z)
+	public boolean isLeaves(IBlockAccess world, BlockPos pos)
 	{
 		return true;
 	}
 
 	@Override
-	public boolean canSilkHarvest(World world, EntityPlayer player, int x, int y, int z, int metadata)
+	public boolean canSilkHarvest(World world, EntityPlayer player, BlockPos pos, int metadata)
 	{
 		return false;
 	}
@@ -316,7 +314,7 @@ public abstract class BlockNetherMaliceLeaves extends BlockLeaves implements ISh
 	}
 
 	@Override
-	public void dropBlockAsItemWithChance(World world, int x, int y, int z, int meta, float par6, int fortune)
+	public void dropBlockAsItemWithChance(World world, BlockPos pos, int meta, float par6, int fortune)
 	{
 		if (!world.isRemote)
 		{
@@ -370,7 +368,7 @@ public abstract class BlockNetherMaliceLeaves extends BlockLeaves implements ISh
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side)
+	public boolean shouldSideBeRendered(IBlockAccess world, BlockPos pos, int side)
 	{
 		return true;
 	}
@@ -394,7 +392,7 @@ public abstract class BlockNetherMaliceLeaves extends BlockLeaves implements ISh
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public int colorMultiplier(IBlockAccess world, int x, int y, int z)
+	public int colorMultiplier(IBlockAccess world, BlockPos pos)
 	{
 		return 0xFFFFFF;
 	}
@@ -403,13 +401,13 @@ public abstract class BlockNetherMaliceLeaves extends BlockLeaves implements ISh
 	 * SHEARS
 	 ************/
 	@Override
-	public boolean isShearable(ItemStack item, IBlockAccess world, int x, int y, int z)
+	public boolean isShearable(ItemStack item, IBlockAccess world, BlockPos pos)
 	{
 		return true;
 	}
 
 	@Override
-	public ArrayList<ItemStack> onSheared(ItemStack item, IBlockAccess world, int x, int y, int z, int fortune)
+	public ArrayList<ItemStack> onSheared(ItemStack item, IBlockAccess world, BlockPos pos, int fortune)
 	{
 		final ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
 		ret.add(new ItemStack(Blocks.LEAVES, 1, world.getBlockState(x, y, z) & 3));

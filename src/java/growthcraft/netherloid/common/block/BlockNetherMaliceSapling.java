@@ -23,25 +23,24 @@
  */
 package growthcraft.netherloid.common.block;
 
-import java.util.Random;
-
 import growthcraft.api.core.util.BlockFlags;
 import growthcraft.netherloid.common.world.WorldGeneratorMaliceTree;
 import growthcraft.netherloid.netherloid;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
-
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
-
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.event.terraingen.TerrainGen;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
-public abstract class BlockNetherMaliceSapling extends BlockBush implements IGrowable
+import java.util.Random;
+
+public class BlockNetherMaliceSapling extends BlockBush implements IGrowable
 {
 	@SideOnly(Side.CLIENT)
 	private IIcon icon;
@@ -57,13 +56,13 @@ public abstract class BlockNetherMaliceSapling extends BlockBush implements IGro
 		setTickRandomly(true);
 		setCreativeTab(netherloid.tab);
 		final float f = 0.4F;
-		setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 2.0F, 0.5F + f);
+		getBoundingBox(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 2.0F, 0.5F + f);
 	}
 
 	/************
 	 * MAIN
 	 ************/
-	public void updateTick(World world, int x, int y, int z, Random random)
+	public void updateTick(World world, BlockPos pos, Random random)
 	{
 		if (!world.isRemote)
 		{
@@ -76,7 +75,7 @@ public abstract class BlockNetherMaliceSapling extends BlockBush implements IGro
 		}
 	}
 
-	public void markOrGrowMarked(World world, int x, int y, int z, Random random)
+	public void markOrGrowMarked(World world, BlockPos pos, Random random)
 	{
 		final int meta = world.getBlockState(x, y, z);
 
@@ -90,7 +89,7 @@ public abstract class BlockNetherMaliceSapling extends BlockBush implements IGro
 		}
 	}
 
-	public void growTree(World world, int x, int y, int z, Random random)
+	public void growTree(World world, BlockPos pos, Random random)
 	{
 		if (!TerrainGen.saplingGrowTree(world, random, x, y, z)) return;
 
@@ -107,21 +106,21 @@ public abstract class BlockNetherMaliceSapling extends BlockBush implements IGro
 
 	/* Both side */
 	@Override
-	public boolean func_149851_a(World world, int x, int y, int z, boolean isClient)
+	public boolean func_149851_a(World world, BlockPos pos, boolean isClient)
 	{
 		return (world.getBlockState(x, y, z) & 8) == 0;
 	}
 
 	/* SideOnly(Side.SERVER) Can this apply bonemeal effect? */
 	@Override
-	public boolean func_149852_a(World world, Random random, int x, int y, int z)
+	public boolean func_149852_a(World world, Random random, BlockPos pos)
 	{
 		return true;
 	}
 
 	/* Apply bonemeal effect */
 	@Override
-	public void func_149853_b(World world, Random random, int x, int y, int z)
+	public void func_149853_b(World world, Random random, BlockPos pos)
 	{
 		if (random.nextFloat() < 0.45D)
 		{
@@ -144,5 +143,20 @@ public abstract class BlockNetherMaliceSapling extends BlockBush implements IGro
 	public IIcon getIcon(int side, int meta)
 	{
 		return this.icon;
+	}
+
+	@Override
+	public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {
+		return false;
+	}
+
+	@Override
+	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+		return false;
+	}
+
+	@Override
+	public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+
 	}
 }

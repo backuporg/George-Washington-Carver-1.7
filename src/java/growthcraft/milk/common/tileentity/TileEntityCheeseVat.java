@@ -23,14 +23,6 @@
  */
 package growthcraft.milk.common.tileentity;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-
-import io.netty.buffer.ByteBuf;
-
 import growthcraft.api.core.definition.IMultiFluidStacks;
 import growthcraft.api.core.definition.IMultiItemStacks;
 import growthcraft.api.core.fluids.FluidTest;
@@ -38,38 +30,44 @@ import growthcraft.api.core.fluids.FluidUtils;
 import growthcraft.api.core.item.ItemTest;
 import growthcraft.api.core.nbt.NBTTagStringList;
 import growthcraft.api.core.stream.StreamUtils;
-import growthcraft.api.milk.cheesevat.ICheeseVatRecipe;
 import growthcraft.api.milk.MilkFluidTags;
 import growthcraft.api.milk.MilkRegistry;
+import growthcraft.api.milk.cheesevat.ICheeseVatRecipe;
 import growthcraft.cellar.common.tileentity.component.TileHeatingComponent;
 import growthcraft.core.common.inventory.AccesibleSlots;
 import growthcraft.core.common.inventory.GrcInternalInventory;
 import growthcraft.core.common.inventory.InventoryProcessor;
+import growthcraft.core.common.tileentity.GrcTileDeviceBase;
 import growthcraft.core.common.tileentity.device.DeviceFluidSlot;
 import growthcraft.core.common.tileentity.event.TileEventHandler;
 import growthcraft.core.common.tileentity.feature.IItemHandler;
 import growthcraft.core.common.tileentity.feature.ITileHeatedDevice;
 import growthcraft.core.common.tileentity.feature.ITileNamedFluidTanks;
 import growthcraft.core.common.tileentity.feature.ITileProgressiveDevice;
-import growthcraft.core.common.tileentity.GrcTileDeviceBase;
 import growthcraft.core.util.ItemUtils;
+import growthcraft.milk.GrowthCraftMilk;
 import growthcraft.milk.common.item.EnumCheeseType;
 import growthcraft.milk.common.tileentity.cheesevat.CheeseVatState;
 import growthcraft.milk.event.EventCheeseVat.EventCheeseVatMadeCheeseFluid;
 import growthcraft.milk.event.EventCheeseVat.EventCheeseVatMadeCurds;
-import growthcraft.milk.GrowthCraftMilk;
-
+import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
+
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 public class TileEntityCheeseVat extends GrcTileDeviceBase implements IItemHandler, ITileHeatedDevice, ITileNamedFluidTanks, ITileProgressiveDevice
 {
@@ -265,7 +263,7 @@ public class TileEntityCheeseVat extends GrcTileDeviceBase implements IItemHandl
 			GrowthCraftMilk.getLogger().debug("Primary Fluid is NOT milk.");
 			return false;
 		}
-		if (!primaryFluidSlot.isFull())
+		if (!primaryFluidSlot.containedBlock())
 		{
 			GrowthCraftMilk.getLogger().debug("Primary Fluid Tank is NOT full.");
 			return false;
@@ -277,7 +275,7 @@ public class TileEntityCheeseVat extends GrcTileDeviceBase implements IItemHandl
 			GrowthCraftMilk.getLogger().debug("Rennet contains NON rennet fluid.");
 			return false;
 		}
-		if (!rennetFluidSlot.isFull())
+		if (!rennetFluidSlot.containedBlock())
 		{
 			GrowthCraftMilk.getLogger().debug("Rennet Fluid Tank is NOT full.");
 			return false;
@@ -297,7 +295,7 @@ public class TileEntityCheeseVat extends GrcTileDeviceBase implements IItemHandl
 	private boolean activateWheyTransition(boolean checkOnly)
 	{
 		final FluidStack milkStack = primaryFluidSlot.get();
-		if (FluidTest.hasTags(milkStack, MilkFluidTags.WHEY) && primaryFluidSlot.isFull())
+		if (FluidTest.hasTags(milkStack, MilkFluidTags.WHEY) && primaryFluidSlot.containedBlock())
 		{
 			if (!checkOnly)
 			{

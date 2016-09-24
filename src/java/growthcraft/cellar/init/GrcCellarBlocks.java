@@ -23,14 +23,10 @@
  */
 package growthcraft.cellar.init;
 
-import growthcraft.cellar.common.block.BlockBrewKettle;
-import growthcraft.cellar.common.block.BlockCultureJar;
-import growthcraft.cellar.common.block.BlockFermentBarrel;
-import growthcraft.cellar.common.block.BlockFruitPress;
-import growthcraft.cellar.common.block.BlockFruitPresser;
+import growthcraft.cellar.common.block.*;
 import growthcraft.cellar.common.itemblock.ItemBlockFermentBarrel;
-import growthcraft.core.common.definition.BlockDefinition;
 import growthcraft.core.common.GrcModuleBlocks;
+import growthcraft.core.common.definition.BlockDefinition;
 import growthcraft.core.integration.NEI;
 
 public class GrcCellarBlocks extends GrcModuleBlocks

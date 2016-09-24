@@ -23,20 +23,18 @@
  */
 package growthcraft.core.integration.mfr;
 
+import growthcraft.core.integration.MFRModuleBase;
+import net.minecraft.block.Block;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.common.Optional;
+import powercrystals.minefactoryreloaded.api.HarvestType;
+import powercrystals.minefactoryreloaded.api.IFactoryHarvestable;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-
-import growthcraft.core.integration.MFRModuleBase;
-
-import powercrystals.minefactoryreloaded.api.HarvestType;
-import powercrystals.minefactoryreloaded.api.IFactoryHarvestable;
-
-import net.minecraftforge.fml.common.Optional;
-import net.minecraft.block.Block;
-import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
 
 @Optional.Interface(iface="powercrystals.minefactoryreloaded.api.IFactoryHarvestable", modid=MFRModuleBase.MOD_ID)
 public abstract class AbstractFactoryHarvestable<TBlock extends Block> implements IFactoryHarvestable
@@ -77,13 +75,13 @@ public abstract class AbstractFactoryHarvestable<TBlock extends Block> implement
 	}
 
 	@Override
-	public boolean canBeHarvested(World world, Map<String, Boolean> harvesterSettings, int x, int y, int z)
+	public boolean canBeHarvested(World world, Map<String, Boolean> harvesterSettings, BlockPos pos)
 	{
 		return true;
 	}
 
 	@Override
-	public List<ItemStack> getDrops(World world, Random rand, Map<String, Boolean> harvesterSettings, int x, int y, int z)
+	public List<ItemStack> getDrops(World world, Random rand, Map<String, Boolean> harvesterSettings, BlockPos pos)
 	{
 		if (plantBlock != null)
 			return plantBlock.getDrops(world, x, y, z, world.getBlockState(x, y, z), 0);
@@ -91,12 +89,12 @@ public abstract class AbstractFactoryHarvestable<TBlock extends Block> implement
 	}
 
 	@Override
-	public void preHarvest(World world, int x, int y, int z)
+	public void preHarvest(World world, BlockPos pos)
 	{
 	}
 
 	@Override
-	public void postHarvest(World world, int x, int y, int z)
+	public void postHarvest(World world, BlockPos pos)
 	{
 		if (plantBlock != null) world.notifyBlocksOfNeighborChange(x, y, z, plantBlock);
 	}

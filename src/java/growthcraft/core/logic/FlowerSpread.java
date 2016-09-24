@@ -23,14 +23,13 @@
  */
 package growthcraft.core.logic;
 
-import java.util.Random;
-import javax.annotation.Nonnull;
-
 import growthcraft.api.core.util.BlockFlags;
 import growthcraft.api.core.util.CuboidI;
-
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
+
+import javax.annotation.Nonnull;
+import java.util.Random;
 
 public class FlowerSpread
 {
@@ -41,7 +40,7 @@ public class FlowerSpread
 		this.spreadCube = spread;
 	}
 
-	private boolean canSpreadTo(Block block, World world, int x, int y, int z)
+	private boolean canSpreadTo(Block block, World world, BlockPos pos)
 	{
 		if (block instanceof ISpreadablePlant)
 		{
@@ -53,7 +52,7 @@ public class FlowerSpread
 		}
 	}
 
-	public boolean run(Block block, int meta, World world, int x, int y, int z, Random random)
+	public boolean run(Block block, int meta, World world, BlockPos pos, Random random)
 	{
 		final int fx = x + random.nextInt(spreadCube.w) + spreadCube.x;
 		final int fz = z + random.nextInt(spreadCube.l) + spreadCube.z;

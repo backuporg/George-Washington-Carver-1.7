@@ -1,29 +1,30 @@
 package growthcraft.grapes.common.block;
 
-import java.util.Random;
-
 import growthcraft.api.core.util.BlockFlags;
 import growthcraft.core.common.block.GrcBlockBase;
 import growthcraft.core.common.block.ICropDataProvider;
 import growthcraft.core.integration.AppleCore;
 import growthcraft.core.util.BlockCheck;
 import growthcraft.grapes.util.GrapeBlockCheck;
-
-import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
-import net.minecraft.util.EnumFacing;
+import net.minecraftforge.fml.common.eventhandler.Event;
 
-public abstract class BlockGrapeVineBase extends GrcBlockBase implements IPlantable, ICropDataProvider, IGrowable
+import java.util.Random;
+
+public class BlockGrapeVineBase extends GrcBlockBase implements IPlantable, ICropDataProvider, IGrowable
 {
 	private ItemStack itemDrop;
 	private float growthRateMultiplier;
@@ -72,7 +73,7 @@ public abstract class BlockGrapeVineBase extends GrcBlockBase implements IPlanta
 		return 1;
 	}
 
-	public float getGrowthProgress(IBlockAccess world, int x, int y, int z, int meta)
+	public float getGrowthProgress(IBlockAccess world, BlockPos pos, int meta)
 	{
 		return (float)meta / (float)getGrowthMax();
 	}
@@ -82,13 +83,13 @@ public abstract class BlockGrapeVineBase extends GrcBlockBase implements IPlanta
 		return GrapeBlockCheck.isGrapeVine(block);
 	}
 
-	public void incrementGrowth(World world, int x, int y, int z, int meta)
+	public void incrementGrowth(World world, BlockPos pos, int meta)
 	{
 		world.setBlockState(x, y, z, meta + 1, BlockFlags.SYNC);
 		AppleCore.announceGrowthTick(this, world, x, y, z, meta);
 	}
 
-	protected float getGrowthRate(World world, int x, int y, int z)
+	protected float getGrowthRate(World world, BlockPos pos)
 	{
 		final Block l = world.getBlockState(x, y, z - 1);
 		final Block i1 = world.getBlockState(x, y, z + 1);
@@ -138,13 +139,13 @@ public abstract class BlockGrapeVineBase extends GrcBlockBase implements IPlanta
 	}
 
 	@Override
-	public boolean canBlockStay(World world, int x, int y, int z)
+	public boolean canBlockStay(World world, BlockPos pos)
 	{
 		return BlockCheck.canSustainPlant(world, x, y - 1, z, EnumFacing.UP, this);
 	}
 
 	@Override
-	public void onNeighborBlockChange(World world, int x, int y, int z, Block par5)
+	public void onNeighborBlockChange(World world, BlockPos pos, Block par5)
 	{
 		if (!this.canBlockStay(world, x, y, z))
 		{
@@ -154,7 +155,7 @@ public abstract class BlockGrapeVineBase extends GrcBlockBase implements IPlanta
 	}
 
 	@Override
-	public boolean canSilkHarvest(World world, EntityPlayer player, int x, int y, int z, int metadata)
+	public boolean canSilkHarvest(World world, EntityPlayer player, BlockPos pos, int metadata)
 	{
 		return false;
 	}
@@ -175,19 +176,19 @@ public abstract class BlockGrapeVineBase extends GrcBlockBase implements IPlanta
 	 * IPLANTABLE
 	 ************/
 	@Override
-	public EnumPlantType getPlantType(IBlockAccess world, int x, int y, int z)
+	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos)
 	{
 		return EnumPlantType.Crop;
 	}
 
 	@Override
-	public Block getPlant(IBlockAccess world, int x, int y, int z)
+	public IBlockState getPlant(IBlockAccess world, BlockPos pos)
 	{
 		return this;
 	}
 
 	@Override
-	public int getPlantMetadata(IBlockAccess world, int x, int y, int z)
+	public int getPlantMetadata(IBlockAccess world, BlockPos pos)
 	{
 		return world.getBlockState(x, y, z);
 	}
@@ -201,7 +202,7 @@ public abstract class BlockGrapeVineBase extends GrcBlockBase implements IPlanta
 	 * @param z - z coord
 	 * @param meta - block metadata
 	 */
-	protected abstract void doGrowth(World world, int x, int y, int z, int meta);
+	protected abstract void doGrowth(World world, BlockPos pos, int meta);
 
 	/**
 	 * Are the conditions right for this plant to grow?
@@ -212,10 +213,10 @@ public abstract class BlockGrapeVineBase extends GrcBlockBase implements IPlanta
 	 * @param z - z coord
 	 * @return true, it can grow, false otherwise
 	 */
-	protected abstract boolean canUpdateGrowth(World world, int x, int y, int z);
+	protected abstract boolean canUpdateGrowth(World world, BlockPos pos);
 
 	@Override
-	public void updateTick(World world, int x, int y, int z, Random random)
+	public void updateTick(World world, BlockPos pos, Random random)
 	{
 		super.updateTick(world, x, y, z, random);
 		if (canUpdateGrowth(world, x, y, z))
@@ -237,25 +238,40 @@ public abstract class BlockGrapeVineBase extends GrcBlockBase implements IPlanta
 
 	/* Can this accept bonemeal? */
 	@Override
-	public boolean func_149851_a(World world, int x, int y, int z, boolean isClient)
+	public boolean func_149851_a(World world, BlockPos pos, boolean isClient)
 	{
 		return canUpdateGrowth(world, x, y, z);
 	}
 
 	/* SideOnly(Side.SERVER) Can this apply bonemeal effect? */
 	@Override
-	public boolean func_149852_a(World world, Random random, int x, int y, int z)
+	public boolean func_149852_a(World world, Random random, BlockPos pos)
 	{
 		return true;
 	}
 
 	/* Apply bonemeal effect */
 	@Override
-	public void func_149853_b(World world, Random random, int x, int y, int z)
+	public void func_149853_b(World world, Random random, BlockPos pos)
 	{
 		if (random.nextFloat() < 0.5D)
 		{
 			doGrowth(world, x, y, z, world.getBlockState(x, y, z));
 		}
+	}
+
+	@Override
+	public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {
+		return false;
+	}
+
+	@Override
+	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+		return false;
+	}
+
+	@Override
+	public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+
 	}
 }

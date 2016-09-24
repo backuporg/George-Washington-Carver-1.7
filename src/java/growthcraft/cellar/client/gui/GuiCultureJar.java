@@ -23,25 +23,23 @@
  */
 package growthcraft.cellar.client.gui;
 
-import java.util.List;
-
-import org.lwjgl.opengl.GL11;
-
 import growthcraft.api.core.i18n.GrcI18n;
+import growthcraft.cellar.GrowthCraftCellar;
 import growthcraft.cellar.client.gui.widget.GuiButtonDiscard;
 import growthcraft.cellar.client.resource.GrcCellarResources;
 import growthcraft.cellar.common.inventory.ContainerCultureJar;
 import growthcraft.cellar.common.tileentity.TileEntityCultureJar;
-import growthcraft.cellar.GrowthCraftCellar;
 import growthcraft.cellar.network.PacketClearTankButton;
 import growthcraft.core.client.gui.widget.WidgetDeviceProgressIcon;
 import growthcraft.core.client.gui.widget.WidgetFluidTank;
 import growthcraft.core.client.gui.widget.WidgetHeatIcon;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.GL11;
+
+import java.util.List;
 
 @SideOnly(Side.CLIENT)
 public class GuiCultureJar extends GuiCellar<ContainerCultureJar, TileEntityCultureJar>

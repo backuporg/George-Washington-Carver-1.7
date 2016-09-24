@@ -1,12 +1,11 @@
 package growthcraft.bees.common.world;
 
-import java.util.Random;
-
 import growthcraft.bees.GrowthCraftBees;
 import growthcraft.bees.common.block.BlockBeeHive;
-
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
+
+import java.util.Random;
 
 public class WorldGenBeeHive extends WorldGenerator
 {
@@ -14,7 +13,7 @@ public class WorldGenBeeHive extends WorldGenerator
 	private final int density = GrowthCraftBees.getConfig().beeWorldGenDensity;
 
 	@Override
-	public boolean generate(World world, Random random, int x, int y, int z)
+	public boolean generate(World world, Random random, BlockPos pos)
 	{
 		for (int loop = 0; loop < this.density; ++loop)
 		{

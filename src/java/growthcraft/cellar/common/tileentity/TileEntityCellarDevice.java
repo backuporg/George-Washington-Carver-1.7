@@ -24,10 +24,9 @@
 package growthcraft.cellar.common.tileentity;
 
 import growthcraft.api.core.fluids.FluidUtils;
+import growthcraft.core.common.tileentity.GrcTileDeviceBase;
 import growthcraft.core.common.tileentity.feature.IGuiNetworkSync;
 import growthcraft.core.common.tileentity.feature.IInteractionObject;
-import growthcraft.core.common.tileentity.GrcTileDeviceBase;
-
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 import net.minecraftforge.fluids.FluidStack;

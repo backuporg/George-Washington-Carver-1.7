@@ -23,9 +23,9 @@
  */
 package growthcraft.api.core.effect;
 
-import javax.annotation.Nonnull;
-
 import net.minecraft.potion.Potion;
+
+import javax.annotation.Nonnull;
 
 public class EffectUtils
 {

@@ -23,19 +23,18 @@
  */
 package growthcraft.cellar.util;
 
-import java.util.List;
-
+import growthcraft.api.cellar.CellarRegistry;
 import growthcraft.api.cellar.booze.BoozeEffect;
 import growthcraft.api.cellar.booze.BoozeTag;
-import growthcraft.api.cellar.CellarRegistry;
 import growthcraft.api.core.CoreRegistry;
 import growthcraft.api.core.description.Describer;
 import growthcraft.core.util.UnitFormatter;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
+
+import java.util.List;
 
 public class BoozeUtils
 {

@@ -1,14 +1,13 @@
 package growthcraft.bamboo.common.world;
 
-import java.util.Random;
-
 import growthcraft.api.core.util.BiomeUtils;
 import growthcraft.bamboo.GrowthCraftBamboo;
-
-import net.minecraftforge.fml.common.IWorldGenerator;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.IChunkProvider;
+import net.minecraftforge.fml.common.IWorldGenerator;
+
+import java.util.Random;
 
 public class WorldGeneratorBamboo implements IWorldGenerator
 {
@@ -31,7 +30,7 @@ public class WorldGeneratorBamboo implements IWorldGenerator
 			final int j = random.nextInt(128);
 			final int k = chunkZ * 16 + random.nextInt(16) + 8;
 
-			final Biome biome = world.getBiomeGenForCoords(i, k);
+			final Biome biome = world.getBiome(i, k);
 			if (GrowthCraftBamboo.getConfig().useBiomeDict)
 			{
 				if (!BiomeUtils.testBiomeTypeTagsTable(biome, GrowthCraftBamboo.getConfig().bambooBiomesTypeList)) return;

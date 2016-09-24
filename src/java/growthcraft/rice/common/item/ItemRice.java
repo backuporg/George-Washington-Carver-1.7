@@ -1,17 +1,16 @@
 package growthcraft.rice.common.item;
 
-import growthcraft.core.common.item.GrcItemBase;
 import growthcraft.core.GrowthCraftCore;
+import growthcraft.core.common.item.GrcItemBase;
 import growthcraft.rice.GrowthCraftRice;
 import growthcraft.rice.util.RiceBlockCheck;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemRice extends GrcItemBase
 {
@@ -26,7 +25,7 @@ public class ItemRice extends GrcItemBase
 	 * MAIN
 	 ************/
 	@Override
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int EnumFacing, float par8, float par9, float par10)
+	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, int EnumFacing, float par8, float par9, float par10)
 	{
 		if (EnumFacing != 1)
 		{

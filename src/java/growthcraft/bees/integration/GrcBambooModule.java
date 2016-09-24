@@ -24,10 +24,9 @@
 package growthcraft.bees.integration;
 
 import growthcraft.bees.GrowthCraftBees;
-import growthcraft.core.integration.ModIntegrationBase;
 import growthcraft.bees.common.block.BlockBeeBoxBamboo;
 import growthcraft.bees.common.item.ItemBlockBeeBox;
-
+import growthcraft.core.integration.ModIntegrationBase;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 

@@ -23,21 +23,21 @@
  */
 package growthcraft.milk.common.block;
 
-import java.util.List;
-import java.util.Random;
-
 import growthcraft.core.common.block.GrcBlockContainer;
+import growthcraft.milk.GrowthCraftMilk;
 import growthcraft.milk.client.render.RenderCheeseVat;
 import growthcraft.milk.common.tileentity.TileEntityCheeseVat;
-import growthcraft.milk.GrowthCraftMilk;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.List;
+import java.util.Random;
 
 public class BlockCheeseVat extends GrcBlockContainer
 {
@@ -55,7 +55,7 @@ public class BlockCheeseVat extends GrcBlockContainer
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World world, int x, int y, int z, Random random)
+	public void randomDisplayTick(World world, BlockPos pos, Random random)
 	{
 		if (random.nextInt(12) == 0)
 		{
@@ -80,28 +80,28 @@ public class BlockCheeseVat extends GrcBlockContainer
 	@Override
 	public void setBlockBoundsForItemRender()
 	{
-		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+		this.getBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 	}
 
 	@Override
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB axis, List list, Entity entity)
+	public void getCollisionBoundingBox(World world, BlockPos pos, AxisAlignedBB axis, List list, Entity entity)
 	{
 		final float unit = 1f / 16f;
-		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, unit, 1.0F);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, unit, 1.0F);
+		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 
-		this.setBlockBounds(0.0F, 0.0F, 0.0F, unit, 1.0F, 1.0F);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(0.0F, 0.0F, 0.0F, unit, 1.0F, 1.0F);
+		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 
-		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, unit);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, unit);
+		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 
-		this.setBlockBounds(1.0F - unit, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(1.0F - unit, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 
-		this.setBlockBounds(0.0F, 0.0F, 1.0F - unit, 1.0F, 1.0F, 1.0F);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(0.0F, 0.0F, 1.0F - unit, 1.0F, 1.0F, 1.0F);
+		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 
 		this.setBlockBoundsForItemRender();
 	}
@@ -126,7 +126,7 @@ public class BlockCheeseVat extends GrcBlockContainer
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side)
+	public boolean shouldSideBeRendered(IBlockAccess world, BlockPos pos, int side)
 	{
 		return true;
 	}
@@ -138,7 +138,7 @@ public class BlockCheeseVat extends GrcBlockContainer
 	}
 
 	@Override
-	public int getComparatorInputOverride(World world, int x, int y, int z, int par5)
+	public int getComparatorInputOverride(World world, BlockPos pos, int par5)
 	{
 		final TileEntityCheeseVat te = getTileEntity(world, x, y, z);
 		if (te != null)

@@ -3,23 +3,20 @@ package growthcraft.core.client.renderer;
 import growthcraft.core.client.ClientProxy;
 import growthcraft.core.common.block.BlockPaddyBase;
 import growthcraft.core.util.RenderUtils;
-
-import net.minecraftforge.fml.client.registry.ISimpleBlockRenderingHandler;
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.EntityRenderer;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
-
 import net.minecraft.world.IBlockAccess;
-
+import net.minecraftforge.fml.client.registry.ISimpleBlockRenderingHandler;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import org.lwjgl.opengl.GL11;
 
 public class RenderPaddy implements ISimpleBlockRenderingHandler
 {
 	public static final int id = RenderingRegistry.getNextAvailableRenderId();
 
-	private int mixedBrightness(IBlockAccess world, int x, int y, int z)
+	private int mixedBrightness(IBlockAccess world, BlockPos pos)
 	{
 		final int l = world.getLightBrightnessForSkyBlocks(x, y, z, 0);
 		final int i1 = world.getLightBrightnessForSkyBlocks(x, y + 1, z, 0);
@@ -107,7 +104,7 @@ public class RenderPaddy implements ISimpleBlockRenderingHandler
 	}
 
 	@Override
-	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer)
+	public boolean renderWorldBlock(IBlockAccess world, BlockPos pos, Block block, int modelId, RenderBlocks renderer)
 	{
 		if (modelId == id)
 		{
@@ -252,7 +249,7 @@ public class RenderPaddy implements ISimpleBlockRenderingHandler
 		return true;
 	}
 
-	private int colorMultiplier(IBlockAccess world, int x, int y, int z)
+	private int colorMultiplier(IBlockAccess world, BlockPos pos)
 	{
 		int l = 0;
 		int i1 = 0;
@@ -262,7 +259,7 @@ public class RenderPaddy implements ISimpleBlockRenderingHandler
 		{
 			for (int l1 = -1; l1 <= 1; ++l1)
 			{
-				final int i2 = world.getBiomeGenForCoords(x + l1, z + k1).getWaterColorMultiplier();
+				final int i2 = world.getBiome(x + l1, z + k1).getWaterColorMultiplier();
 				l += (i2 & 16711680) >> 16;
 				i1 += (i2 & 65280) >> 8;
 				j1 += i2 & 255;

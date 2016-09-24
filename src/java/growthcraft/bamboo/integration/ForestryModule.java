@@ -24,11 +24,10 @@
 package growthcraft.bamboo.integration;
 
 import growthcraft.bamboo.GrowthCraftBamboo;
-import growthcraft.core.integration.forestry.ForestryFluids;
 import growthcraft.core.integration.ForestryModuleBase;
-
-import net.minecraftforge.fml.common.Optional;
+import growthcraft.core.integration.forestry.ForestryFluids;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.Optional;
 
 public class ForestryModule extends ForestryModuleBase
 {

@@ -23,15 +23,14 @@
  */
 package growthcraft.bees.integration;
 
+import growthcraft.bees.GrowthCraftBees;
 import growthcraft.bees.common.block.BlockBeeBoxTotemic;
 import growthcraft.bees.common.item.ItemBlockBeeBox;
-import growthcraft.bees.GrowthCraftBees;
-import growthcraft.core.integration.totemic.TotemicPlatform;
-import growthcraft.core.integration.totemic.EnumTotemicWoodType;
 import growthcraft.core.integration.ModIntegrationBase;
-
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import growthcraft.core.integration.totemic.EnumTotemicWoodType;
+import growthcraft.core.integration.totemic.TotemicPlatform;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class TotemicModule extends ModIntegrationBase
 {

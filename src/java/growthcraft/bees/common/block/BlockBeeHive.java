@@ -1,28 +1,27 @@
 package growthcraft.bees.common.block;
 
-import java.util.List;
-import java.util.Random;
-
 import growthcraft.api.core.util.BlockFlags;
-import growthcraft.bees.client.renderer.RenderBeeHive;
 import growthcraft.bees.GrowthCraftBees;
+import growthcraft.bees.client.renderer.RenderBeeHive;
 import growthcraft.core.common.block.GrcBlockBase;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
-
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.List;
+import java.util.Random;
 
 public class BlockBeeHive extends GrcBlockBase
 {
@@ -43,7 +42,7 @@ public class BlockBeeHive extends GrcBlockBase
 	 ************/
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World world, int x, int y, int z, Random random)
+	public void randomDisplayTick(World world, BlockPos pos, Random random)
 	{
 		if (random.nextInt(24) == 0)
 		{
@@ -56,13 +55,13 @@ public class BlockBeeHive extends GrcBlockBase
 	 * TRIGGERS
 	 ************/
 	@Override
-	public void onBlockAdded(World world, int x, int y, int z)
+	public void onBlockAdded(World world, BlockPos pos, IBlockState state)
 	{
-		super.onBlockAdded(world, x, y, z);
-		this.setDefaultDirection(world, x, y, z);
+		super.onBlockAdded(world, pos, state);
+		this.setDefaultDirection(world, pos);
 	}
 
-	private void setDefaultDirection(World world, int x, int y, int z)
+	private void setDefaultDirection(World world, BlockPos pos)
 	{
 		if (!world.isRemote)
 		{
@@ -72,22 +71,22 @@ public class BlockBeeHive extends GrcBlockBase
 			final Block xpos = world.getBlockState(x + 1, y, z);
 			byte b0 = 3;
 
-			if (zneg.func_149730_j() && !zpos.func_149730_j())
+			if (zneg.isFullBlock() && !zpos.isFullBlock())
 			{
 				b0 = 3;
 			}
 
-			if (zpos.func_149730_j() && !zneg.func_149730_j())
+			if (zpos.isFullBlock() && !zneg.isFullBlock())
 			{
 				b0 = 2;
 			}
 
-			if (xneg.func_149730_j() && !xpos.func_149730_j())
+			if (xneg.isFullBlock() && !xpos.isFullBlock())
 			{
 				b0 = 5;
 			}
 
-			if (xpos.func_149730_j() && !xneg.func_149730_j())
+			if (xpos.isFullBlock() && !xneg.isFullBlock())
 			{
 				b0 = 4;
 			}
@@ -97,7 +96,7 @@ public class BlockBeeHive extends GrcBlockBase
 	}
 
 	@Override
-	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack stack)
+	public void onBlockPlacedBy(World world, BlockPos pos, EntityLivingBase entity, ItemStack stack)
 	{
 		super.onBlockPlacedBy(world, x, y, z, entity, stack);
 		final int face = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
@@ -126,12 +125,12 @@ public class BlockBeeHive extends GrcBlockBase
 	/************
 	 * CONDITIONS
 	 ************/
-	public boolean canPlaceBlockAt(World world, int x, int y, int z)
+	public boolean canPlaceBlockAt(World world, BlockPos pos)
 	{
 		return super.canPlaceBlockAt(world, x, y, z) && canBlockStay(world, x, y, z);
 	}
 
-	public void onNeighborBlockChange(World world, int x, int y, int z, Block par5)
+	public void onNeighborBlockChange(World world, BlockPos pos, Block par5)
 	{
 		super.onNeighborBlockChange(world, x, y, z, par5);
 		if (!this.canBlockStay(world, x, y, z))
@@ -141,7 +140,7 @@ public class BlockBeeHive extends GrcBlockBase
 		}
 	}
 
-	public boolean canBlockStay(World world, int x, int y, int z)
+	public boolean canBlockStay(World world, BlockPos pos)
 	{
 		if (world.isAirBlock(x, y + 1, z))
 		{
@@ -154,7 +153,7 @@ public class BlockBeeHive extends GrcBlockBase
 	 * STUFF
 	 ************/
 	@Override
-	public boolean canSilkHarvest(World world, EntityPlayer player, int x, int y, int z, int metadata)
+	public boolean canSilkHarvest(World world, EntityPlayer player, BlockPos pos, int metadata)
 	{
 		return true;
 	}
@@ -175,7 +174,7 @@ public class BlockBeeHive extends GrcBlockBase
 	}
 
 	@Override
-	public void dropBlockAsItemWithChance(World world, int x, int y, int z, int par5, float par6, int par7)
+	public void dropBlockAsItemWithChance(World world, BlockPos pos, int par5, float par6, int par7)
 	{
 		super.dropBlockAsItemWithChance(world, x, y, z, par5, par6, 0);
 		if (!world.isRemote)
@@ -241,7 +240,7 @@ public class BlockBeeHive extends GrcBlockBase
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side)
+	public boolean shouldSideBeRendered(IBlockAccess world, BlockPos pos, int side)
 	{
 		return true;
 	}
@@ -253,22 +252,22 @@ public class BlockBeeHive extends GrcBlockBase
 	public void setBlockBoundsForItemRender()
 	{
 		final float f = 0.0625F;
-		this.setBlockBounds(2*f, 0.0F, 2*f, 14*f, 1.0F, 14*f);
+		this.getBoundingBox(2*f, 0.0F, 2*f, 14*f, 1.0F, 14*f);
 	}
 
 	@Override
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB axis, List list, Entity entity)
+	public void getCollisionBoundingBox(World world, BlockPos pos, AxisAlignedBB axis, List list, Entity entity)
 	{
 		final float f = 0.0625F;
-		this.setBlockBounds(4*f, 0.0F, 4*f, 12*f, 14*f, 12*f);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
-		this.setBlockBounds(3*f, 1*f, 3*f, 13*f, 13*f, 13*f);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
-		this.setBlockBounds(2*f, 4*f, 2*f, 14*f, 10*f, 14*f);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
-		this.setBlockBounds(7*f, 14*f, 7*f, 9*f, 1.0F, 9*f);
-		super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(4*f, 0.0F, 4*f, 12*f, 14*f, 12*f);
+		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(3*f, 1*f, 3*f, 13*f, 13*f, 13*f);
+		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(2*f, 4*f, 2*f, 14*f, 10*f, 14*f);
+		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(7*f, 14*f, 7*f, 9*f, 1.0F, 9*f);
+		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 		this.setBlockBoundsForItemRender();
 	}
 }

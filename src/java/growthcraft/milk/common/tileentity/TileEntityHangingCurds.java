@@ -23,29 +23,23 @@
  */
 package growthcraft.milk.common.tileentity;
 
-import java.io.IOException;
-
 import growthcraft.api.core.nbt.INBTItemSerializable;
-import growthcraft.api.core.util.FXHelper;
-import growthcraft.api.core.util.Pair;
-import growthcraft.api.core.util.PulseStepper;
-import growthcraft.api.core.util.SpatialRandom;
-import growthcraft.api.core.util.TickUtils;
-import growthcraft.core.common.tileentity.event.TileEventHandler;
+import growthcraft.api.core.util.*;
 import growthcraft.core.common.tileentity.GrcTileBase;
+import growthcraft.core.common.tileentity.event.TileEventHandler;
+import growthcraft.milk.GrowthCraftMilk;
 import growthcraft.milk.common.item.ItemBlockHangingCurds;
 import growthcraft.milk.common.struct.CheeseCurd;
-import growthcraft.milk.GrowthCraftMilk;
-
 import io.netty.buffer.ByteBuf;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.io.IOException;
 
 public class TileEntityHangingCurds extends GrcTileBase implements INBTItemSerializable
 {

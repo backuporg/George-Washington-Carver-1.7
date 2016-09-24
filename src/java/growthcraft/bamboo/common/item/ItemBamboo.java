@@ -2,16 +2,15 @@ package growthcraft.bamboo.common.item;
 
 import growthcraft.bamboo.GrowthCraftBamboo;
 import growthcraft.core.common.item.GrcItemBase;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemBamboo extends GrcItemBase
 {
@@ -26,7 +25,7 @@ public class ItemBamboo extends GrcItemBase
 	 * MAIN
 	 ************/
 	@Override
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int EnumFacing, float par8, float par9, float par10)
+	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, int EnumFacing, float par8, float par9, float par10)
 	{
 		final Block block1 = world.getBlockState(x, y, z);
 

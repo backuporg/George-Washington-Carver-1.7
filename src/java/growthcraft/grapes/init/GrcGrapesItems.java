@@ -23,10 +23,10 @@
  */
 package growthcraft.grapes.init;
 
-import growthcraft.core.common.definition.ItemDefinition;
 import growthcraft.core.common.GrcModuleItems;
-import growthcraft.grapes.common.item.ItemGrapes;
+import growthcraft.core.common.definition.ItemDefinition;
 import growthcraft.grapes.common.item.ItemGrapeSeeds;
+import growthcraft.grapes.common.item.ItemGrapes;
 
 public class GrcGrapesItems extends GrcModuleItems
 {

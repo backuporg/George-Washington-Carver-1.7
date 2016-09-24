@@ -1,17 +1,16 @@
 package growthcraft.milk.common.world;
 
-import java.util.Random;
-
 import growthcraft.api.core.util.BiomeUtils;
 import growthcraft.milk.GrowthCraftMilk;
-
-import net.minecraftforge.fml.common.IWorldGenerator;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenerator;
-import net.minecraft.world.World;
+import net.minecraftforge.fml.common.IWorldGenerator;
+
+import java.util.Random;
 
 /**
  * Created by Firedingo on 25/02/2016.
@@ -20,13 +19,13 @@ public class WorldGeneratorThistle implements IWorldGenerator
 {
 	private WorldGenerator thistle;
 
-	private boolean canPlaceOnBlock(World world, int x, int y, int z, Block block)
+	private boolean canPlaceOnBlock(World world, BlockPos pos, Block block)
 	{
 		return Blocks.DIRT.equals(block) ||
 			Blocks.GRASS.equals(block);
 	}
 
-	private boolean canReplaceBlock(World world, int x, int y, int z, Block block)
+	private boolean canReplaceBlock(World world, BlockPos pos, Block block)
 	{
 		return block.isAir(world, x, y, z) ||
 			block.isLeaves(world, x, y, z) ||
@@ -76,7 +75,7 @@ public class WorldGeneratorThistle implements IWorldGenerator
 	{
 		if (world.provider.dimensionId == 0)
 		{
-			final Biome biome = world.getBiomeGenForCoords(chunkX, chunkZ);
+			final Biome biome = world.getBiome(chunkX, chunkZ);
 			if (GrowthCraftMilk.getConfig().thistleUseBiomeDict)
 			{
 				if (!BiomeUtils.testBiomeTypeTagsTable(biome, GrowthCraftMilk.getConfig().thistleBiomesTypeList)) return;

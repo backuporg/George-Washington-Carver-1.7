@@ -23,15 +23,14 @@
  */
 package growthcraft.api.cellar.culturing.user;
 
-import java.io.BufferedReader;
-
 import growthcraft.api.cellar.CellarRegistry;
 import growthcraft.api.core.schema.FluidStackSchema;
 import growthcraft.api.core.schema.ItemKeySchema;
 import growthcraft.api.core.user.AbstractUserJSONConfig;
-
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
+
+import java.io.BufferedReader;
 
 /**
  * This allows users to define new culturing recipes.

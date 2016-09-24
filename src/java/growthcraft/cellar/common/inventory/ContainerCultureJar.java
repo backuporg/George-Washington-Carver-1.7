@@ -1,8 +1,7 @@
 package growthcraft.cellar.common.inventory;
 
-import growthcraft.cellar.common.tileentity.TileEntityCultureJar;
 import growthcraft.cellar.common.inventory.slot.SlotInputYeast;
-
+import growthcraft.cellar.common.tileentity.TileEntityCultureJar;
 import net.minecraft.entity.player.InventoryPlayer;
 
 public class ContainerCultureJar extends CellarContainer

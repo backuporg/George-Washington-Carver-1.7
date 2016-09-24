@@ -23,23 +23,20 @@
  */
 package growthcraft.api.core.schema;
 
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nonnull;
-
 import growthcraft.api.core.definition.IItemStackFactory;
 import growthcraft.api.core.definition.IItemStackListProvider;
 import growthcraft.api.core.definition.IMultiItemStacks;
 import growthcraft.api.core.item.ItemKey;
 import growthcraft.api.core.item.MultiItemStacks;
 import growthcraft.api.core.util.StringUtils;
-
-import net.minecraft.util.registry.RegistryNamespacedDefaultedByKey;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+
+import javax.annotation.Nonnull;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ItemStackSchema implements IItemStackFactory, IItemStackListProvider, IValidatable, ICommentable
 {

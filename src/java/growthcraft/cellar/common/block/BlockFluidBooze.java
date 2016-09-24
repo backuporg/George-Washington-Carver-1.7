@@ -26,7 +26,6 @@ package growthcraft.cellar.common.block;
 import growthcraft.cellar.GrowthCraftCellar;
 import growthcraft.core.common.block.GrcBlockFluid;
 import growthcraft.core.common.block.Materials;
-
 import net.minecraft.block.material.Material;
 import net.minecraftforge.fluids.Fluid;
 

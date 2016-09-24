@@ -26,8 +26,8 @@ package growthcraft.cellar.init;
 import growthcraft.cellar.common.item.ItemChievDummy;
 import growthcraft.cellar.common.item.ItemWaterBag;
 import growthcraft.cellar.common.item.ItemYeast;
-import growthcraft.core.common.definition.ItemDefinition;
 import growthcraft.core.common.GrcModuleItems;
+import growthcraft.core.common.definition.ItemDefinition;
 
 public class GrcCellarItems extends GrcModuleItems
 {

@@ -23,55 +23,53 @@
  */
 package growthcraft.milk.init;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import growthcraft.api.cellar.booze.Booze;
 import growthcraft.api.cellar.booze.BoozeTag;
 import growthcraft.api.cellar.common.Residue;
 import growthcraft.api.cellar.util.ICellarBoozeBuilder;
 import growthcraft.api.core.CoreRegistry;
+import growthcraft.api.core.GrcFluid;
 import growthcraft.api.core.effect.EffectExtinguish;
 import growthcraft.api.core.effect.EffectList;
 import growthcraft.api.core.effect.EffectUtils;
 import growthcraft.api.core.effect.IEffect;
 import growthcraft.api.core.fluids.TaggedFluidStacks;
-import growthcraft.api.core.GrcFluid;
 import growthcraft.api.core.item.OreItemStacks;
 import growthcraft.api.core.util.StringUtils;
 import growthcraft.api.core.util.TickUtils;
 import growthcraft.api.milk.MilkFluidTags;
 import growthcraft.api.milk.MilkRegistry;
+import growthcraft.cellar.GrowthCraftCellar;
 import growthcraft.cellar.common.definition.BlockBoozeDefinition;
 import growthcraft.cellar.common.definition.ItemBucketBoozeDefinition;
 import growthcraft.cellar.common.item.EnumYeast;
 import growthcraft.cellar.common.item.ItemBoozeBottle;
-import growthcraft.cellar.GrowthCraftCellar;
 import growthcraft.cellar.util.BoozeRegistryHelper;
 import growthcraft.cellar.util.BoozeUtils;
+import growthcraft.core.common.GrcModuleBase;
 import growthcraft.core.common.definition.ItemDefinition;
 import growthcraft.core.common.definition.ItemTypeDefinition;
-import growthcraft.core.common.GrcModuleBase;
 import growthcraft.core.common.item.ItemFoodBottleFluid;
 import growthcraft.core.eventhandler.EventHandlerBucketFill;
 import growthcraft.core.integration.forestry.ForestryFluids;
 import growthcraft.core.util.FluidFactory;
-import growthcraft.milk.common.effect.EffectMilk;
-import growthcraft.milk.common.effect.EffectEvilBoozeMilk;
-import growthcraft.milk.common.item.EnumCheeseType;
 import growthcraft.milk.GrowthCraftMilk;
-
+import growthcraft.milk.common.effect.EffectEvilBoozeMilk;
+import growthcraft.milk.common.effect.EffectMilk;
+import growthcraft.milk.common.item.EnumCheeseType;
 import net.minecraft.init.Items;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
-import net.minecraft.init.MobEffects;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class GrcMilkFluids extends GrcModuleBase
 {

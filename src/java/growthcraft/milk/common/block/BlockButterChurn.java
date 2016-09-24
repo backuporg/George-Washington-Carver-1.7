@@ -23,18 +23,18 @@
  */
 package growthcraft.milk.common.block;
 
-import growthcraft.core.common.block.GrcBlockContainer;
 import growthcraft.api.core.util.BBox;
+import growthcraft.core.common.block.GrcBlockContainer;
+import growthcraft.milk.GrowthCraftMilk;
 import growthcraft.milk.client.render.RenderButterChurn;
 import growthcraft.milk.common.tileentity.TileEntityButterChurn;
-import growthcraft.milk.GrowthCraftMilk;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockButterChurn extends GrcBlockContainer
 {
@@ -48,11 +48,11 @@ public class BlockButterChurn extends GrcBlockContainer
 		setCreativeTab(GrowthCraftMilk.creativeTab);
 		setTileEntityType(TileEntityButterChurn.class);
 		final BBox bb = BBox.newCube(4f, 0f, 4f, 8f, 16f, 8f).scale(1f / 16f);
-		setBlockBounds(bb.x0(), bb.y0(), bb.z0(), bb.x1(), bb.y1(), bb.z1());
+		getBoundingBox(bb.x0(), bb.y0(), bb.z0(), bb.x1(), bb.y1(), bb.z1());
 		setBlockTextureName("grcmilk:butter_churn");
 	}
 
-	private boolean tryChurning(World world, int x, int y, int z, EntityPlayer player)
+	private boolean tryChurning(World world, BlockPos pos, EntityPlayer player)
 	{
 		final TileEntityButterChurn butterChurn = getTileEntity(world, x, y, z);
 		if (butterChurn != null)
@@ -71,12 +71,12 @@ public class BlockButterChurn extends GrcBlockContainer
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int meta, float par7, float par8, float par9)
+	public boolean onBlockActivated(World world, BlockPos pos, EntityPlayer player, int meta, float par7, float par8, float par9)
 	{
-		if (super.onBlockActivated(world, x, y, z, player, meta, par7, par8, par9)) return true;
+		if (super.onBlockActivated(world, pos, player, meta, par7, par8, par9)) return true;
 		if (!player.isSneaking())
 		{
-			if (tryChurning(world, x, y, z, player)) return true;
+			if (tryChurning(world, pos, player)) return true;
 		}
 		return false;
 	}
@@ -101,7 +101,7 @@ public class BlockButterChurn extends GrcBlockContainer
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side)
+	public boolean shouldSideBeRendered(IBlockAccess world, BlockPos pos, int side)
 	{
 		return true;
 	}

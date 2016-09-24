@@ -25,8 +25,8 @@ package growthcraft.cellar.common.tileentity.device;
 
 import growthcraft.api.cellar.CellarRegistry;
 import growthcraft.api.cellar.culturing.ICultureRecipe;
-import growthcraft.cellar.common.tileentity.component.TileHeatingComponent;
 import growthcraft.cellar.common.tileentity.TileEntityCellarDevice;
+import growthcraft.cellar.common.tileentity.component.TileHeatingComponent;
 import growthcraft.core.common.tileentity.device.DeviceFluidSlot;
 import growthcraft.core.common.tileentity.device.DeviceInventorySlot;
 import growthcraft.core.common.tileentity.device.DeviceProgressive;

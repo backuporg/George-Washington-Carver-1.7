@@ -23,9 +23,6 @@
  */
 package growthcraft.api.cellar.fermenting.user;
 
-import java.io.BufferedReader;
-import javax.annotation.Nonnull;
-
 import growthcraft.api.cellar.CellarRegistry;
 import growthcraft.api.core.definition.IMultiFluidStacks;
 import growthcraft.api.core.definition.IMultiItemStacks;
@@ -34,8 +31,10 @@ import growthcraft.api.core.schema.ItemKeySchema;
 import growthcraft.api.core.schema.MultiFluidStackSchema;
 import growthcraft.api.core.user.AbstractUserJSONConfig;
 import growthcraft.api.core.util.MultiStacksUtil;
-
 import net.minecraftforge.fluids.FluidStack;
+
+import javax.annotation.Nonnull;
+import java.io.BufferedReader;
 
 public class UserFermentingRecipesConfig extends AbstractUserJSONConfig
 {

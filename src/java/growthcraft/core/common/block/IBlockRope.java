@@ -1,5 +1,6 @@
 package growthcraft.core.common.block;
 
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
 public interface IBlockRope
@@ -13,12 +14,12 @@ public interface IBlockRope
 	 *
 	 * <pre>
 	 * {@code
-	 *	 public boolean canConnectRopeTo(IBlockAccess world, int x, int y, int z)
+	 *	 public boolean canConnectRopeTo(IBlockAccess world, BlockPos pos)
 	 *	 {
 	 *	 	 return world.getBlockState(x, y, z) instanceof IBlockRope;
 	 *	 }
 	 * }
 	 * </pre>
 	 */
-	public boolean canConnectRopeTo(IBlockAccess world, int x, int y, int z);
+	public boolean canConnectRopeTo(IBlockAccess world, BlockPos pos);
 }

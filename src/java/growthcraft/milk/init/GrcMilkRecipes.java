@@ -23,30 +23,29 @@
  */
 package growthcraft.milk.init;
 
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nonnull;
-
 import growthcraft.api.core.fluids.TaggedFluidStacks;
 import growthcraft.api.core.item.CommonItemStackComparator;
 import growthcraft.api.core.item.IItemStackComparator;
 import growthcraft.api.core.item.OreItemStacks;
-import growthcraft.api.milk.cheesepress.ICheesePressRecipe;
 import growthcraft.api.milk.MilkRegistry;
+import growthcraft.api.milk.cheesepress.ICheesePressRecipe;
 import growthcraft.api.milk.util.CheeseVatRecipeBuilder;
 import growthcraft.cellar.GrowthCraftCellar;
 import growthcraft.core.common.GrcModuleBase;
 import growthcraft.core.common.item.crafting.ShapelessItemComparableRecipe;
+import growthcraft.milk.GrowthCraftMilk;
 import growthcraft.milk.common.item.EnumCheeseType;
 import growthcraft.milk.common.item.ItemBlockHangingCurds;
-import growthcraft.milk.GrowthCraftMilk;
-
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
+
+import javax.annotation.Nonnull;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GrcMilkRecipes extends GrcModuleBase
 {

@@ -3,14 +3,14 @@ package growthcraft.core.common.item;
 import growthcraft.api.core.item.ItemKey;
 import growthcraft.api.core.util.BlockFlags;
 import growthcraft.core.GrowthCraftCore;
-import growthcraft.core.registry.FenceRopeRegistry.FenceRopeEntry;
 import growthcraft.core.registry.FenceRopeRegistry;
-
+import growthcraft.core.registry.FenceRopeRegistry.FenceRopeEntry;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class ItemRope extends GrcItemBase
@@ -27,7 +27,7 @@ public class ItemRope extends GrcItemBase
 	 * MAIN
 	 ************/
 	@Override
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int EnumFacing, float par8, float par9, float par10)
+	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, int EnumFacing, float par8, float par9, float par10)
 	{
 		final Block block = world.getBlockState(x, y, z);
 		final int blockMeta = world.getBlockState(x, y, z);

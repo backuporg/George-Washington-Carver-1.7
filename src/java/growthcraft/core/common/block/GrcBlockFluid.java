@@ -23,20 +23,18 @@
  */
 package growthcraft.core.common.block;
 
-import java.util.Random;
-
 import growthcraft.api.core.util.FXHelper;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.material.Material;
-
-
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.Random;
 
 public class GrcBlockFluid extends BlockFluidClassic
 {
@@ -95,14 +93,14 @@ public class GrcBlockFluid extends BlockFluidClassic
 	}
 
 	@Override
-	public boolean canDisplace(IBlockAccess world, int x, int y, int z)
+	public boolean canDisplace(IBlockAccess world, BlockPos pos)
 	{
 		if (world.getBlockState(x, y, z).getMaterial().isLiquid()) return false;
 		return super.canDisplace(world, x, y, z);
 	}
 
 	@Override
-	public boolean displaceIfPossible(World world, int x, int y, int z)
+	public boolean displaceIfPossible(World world, BlockPos pos)
 	{
 		if (world.getBlockState(x, y, z).getMaterial().isLiquid()) return false;
 		return super.displaceIfPossible(world, x, y, z);
@@ -110,14 +108,14 @@ public class GrcBlockFluid extends BlockFluidClassic
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public int colorMultiplier(IBlockAccess world, int x, int y, int z)
+	public int colorMultiplier(IBlockAccess world, BlockPos pos)
 	{
 		return color;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World world, int x, int y, int z, Random rand)
+	public void randomDisplayTick(World world, BlockPos pos, Random rand)
 	{
 		super.randomDisplayTick(world, x, y, z, rand);
 

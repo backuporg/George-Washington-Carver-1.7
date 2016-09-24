@@ -1,23 +1,19 @@
 package growthcraft.bamboo.common.item;
 
-import java.util.List;
-
-import growthcraft.bamboo.common.entity.EntityBambooRaft;
 import growthcraft.bamboo.GrowthCraftBamboo;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-
+import growthcraft.bamboo.common.entity.EntityBambooRaft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemBoat;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.util.Vec3;
+import net.minecraft.util.math.*;
+import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.List;
 
 public class ItemBambooRaft extends ItemBoat
 {
@@ -42,7 +38,7 @@ public class ItemBambooRaft extends ItemBoat
 		final double d0 = player.prevPosX + (player.posX - player.prevPosX) * (double)f;
 		final double d1 = player.prevPosY + (player.posY - player.prevPosY) * (double)f + 1.62D - (double)player.yOffset;
 		final double d2 = player.prevPosZ + (player.posZ - player.prevPosZ) * (double)f;
-		final Vec3 vec3 = Vec3.createVectorHelper(d0, d1, d2);
+		final Vec3i vec3 = Vec3i.createVectorHelper(d0, d1, d2);
 		final float f3 = MathHelper.cos(-f2 * 0.017453292F - (float)Math.PI);
 		final float f4 = MathHelper.sin(-f2 * 0.017453292F - (float)Math.PI);
 		final float f5 = -MathHelper.cos(-f1 * 0.017453292F);
@@ -50,8 +46,8 @@ public class ItemBambooRaft extends ItemBoat
 		final float f7 = f4 * f5;
 		final float f8 = f3 * f5;
 		final double d3 = 5.0D;
-		final Vec3 vec31 = vec3.addVector((double)f7 * d3, (double)f6 * d3, (double)f8 * d3);
-		final MovingObjectPosition movingobjectposition = world.rayTraceBlocks(vec3, vec31, true);
+		final Vec3i vec31 = vec3.addVector((double)f7 * d3, (double)f6 * d3, (double)f8 * d3);
+		final RayTraceResult movingobjectposition = world.rayTraceBlocks(vec3, vec31, true);
 
 		if (movingobjectposition == null)
 		{
@@ -59,7 +55,7 @@ public class ItemBambooRaft extends ItemBoat
 		}
 		else
 		{
-			final Vec3 vec32 = player.getLook(f);
+			final Vec3d vec32 = player.getLook(f);
 			boolean flag = false;
 			final float f9 = 1.0F;
 			final List list = world.getEntitiesWithinAABBExcludingEntity(player, player.boundingBox.addCoord(vec32.xCoord * d3, vec32.yCoord * d3, vec32.zCoord * d3).expand((double)f9, (double)f9, (double)f9));
@@ -87,7 +83,7 @@ public class ItemBambooRaft extends ItemBoat
 			}
 			else
 			{
-				if (movingobjectposition.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK)
+				if (movingobjectposition.typeOfHit == RayTraceResult.MovingObjectType.BLOCK)
 				{
 					i = movingobjectposition.blockX;
 					int j = movingobjectposition.blockY;

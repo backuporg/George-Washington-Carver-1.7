@@ -15,18 +15,16 @@
  */
 package growthcraft.core.integration.forestry;
 
+import forestry.api.farming.ICrop;
+import forestry.api.farming.IFarmable;
 import growthcraft.api.core.util.BlockFlags;
 import growthcraft.api.core.util.Point3;
 import growthcraft.core.util.ItemUtils;
-
-import forestry.api.farming.ICrop;
-import forestry.api.farming.IFarmable;
-
-import net.minecraftforge.fml.common.Optional;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.Optional;
 
 /**
  * This was taken from Forestry
@@ -49,14 +47,14 @@ public class FarmableBasicGrowthCraft implements IFarmable
 
 	@Override
 	@Optional.Method(modid="ForestryAPI|farming")
-	public boolean isSaplingAt(World world, int x, int y, int z)
+	public boolean isSaplingAt(World world, BlockPos pos)
 	{
 		return world.getBlockState(x, y, z) == block;
 	}
 
 	@Override
 	@Optional.Method(modid="ForestryAPI|farming")
-	public ICrop getCropAt(World world, int x, int y, int z)
+	public ICrop getCropAt(World world, BlockPos pos)
 	{
 		if (world.getBlockState(x, y, z) != block) return null;
 		if (world.getBlockState(x, y, z) != matureMeta) return null;
@@ -72,7 +70,7 @@ public class FarmableBasicGrowthCraft implements IFarmable
 
 	@Override
 	@Optional.Method(modid="ForestryAPI|farming")
-	public boolean plantSaplingAt(EntityPlayer player, ItemStack germling, World world, int x, int y, int z)
+	public boolean plantSaplingAt(EntityPlayer player, ItemStack germling, World world, BlockPos pos)
 	{
 		return world.setBlockState(x, y, z, block, 0, BlockFlags.SYNC);
 	}

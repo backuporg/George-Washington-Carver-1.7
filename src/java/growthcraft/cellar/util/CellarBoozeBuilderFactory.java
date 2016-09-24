@@ -23,11 +23,10 @@
  */
 package growthcraft.cellar.util;
 
-import javax.annotation.Nonnull;
-
 import growthcraft.api.cellar.util.ICellarBoozeBuilder;
-
 import net.minecraftforge.fluids.Fluid;
+
+import javax.annotation.Nonnull;
 
 public class CellarBoozeBuilderFactory
 {

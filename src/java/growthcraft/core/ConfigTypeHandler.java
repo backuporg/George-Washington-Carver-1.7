@@ -23,13 +23,12 @@
  */
 package growthcraft.core;
 
+import growthcraft.api.core.util.TagParser;
+import net.minecraftforge.common.config.Configuration;
+
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
-
-import growthcraft.api.core.util.TagParser;
-
-import net.minecraftforge.common.config.Configuration;
 
 public abstract class ConfigTypeHandler
 {

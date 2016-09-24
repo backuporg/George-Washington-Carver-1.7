@@ -23,15 +23,13 @@
  */
 package growthcraft.netherloid.common.block;
 
-import growthcraft.netherloid.netherloid;
 import growthcraft.core.common.block.Materials;
-
+import growthcraft.netherloid.netherloid;
+import net.minecraft.block.Block;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraft.block.Block;
-
-
-import net.minecraft.world.IBlockAccess;
 
 public class BlockNetherMaliceLog extends Block
 {
@@ -49,7 +47,7 @@ public class BlockNetherMaliceLog extends Block
 	}
 
 	@Override
-	public boolean canSustainLeaves(IBlockAccess world, int x, int y, int z)
+	public boolean canSustainLeaves(IBlockAccess world, BlockPos pos)
 	{
 		return true;
 	}

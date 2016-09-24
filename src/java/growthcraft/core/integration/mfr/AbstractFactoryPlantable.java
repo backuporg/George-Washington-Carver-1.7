@@ -23,13 +23,12 @@
  */
 package growthcraft.core.integration.mfr;
 
-import powercrystals.minefactoryreloaded.api.ReplacementBlock;
-import powercrystals.minefactoryreloaded.api.IFactoryPlantable;
-
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import powercrystals.minefactoryreloaded.api.IFactoryPlantable;
+import powercrystals.minefactoryreloaded.api.ReplacementBlock;
 
 public abstract class AbstractFactoryPlantable<T extends Block> implements IFactoryPlantable
 {
@@ -57,24 +56,24 @@ public abstract class AbstractFactoryPlantable<T extends Block> implements IFact
 	}
 
 	@Override
-	public ReplacementBlock getPlantedBlock(World world, int x, int y, int z, ItemStack stack)
+	public ReplacementBlock getPlantedBlock(World world, BlockPos pos, ItemStack stack)
 	{
 		return replacementBlock;
 	}
 
 	@Override
-	public boolean canBePlantedHere(World world, int x, int y, int z, ItemStack stack)
+	public boolean canBePlantedHere(World world, BlockPos pos, ItemStack stack)
 	{
 		return plantBlock.canPlaceBlockAt(world, x, y, z);
 	}
 
 	@Override
-	public void prePlant(World world, int x, int y, int z, ItemStack stack)
+	public void prePlant(World world, BlockPos pos, ItemStack stack)
 	{
 	}
 
 	@Override
-	public void postPlant(World world, int x, int y, int z, ItemStack stack)
+	public void postPlant(World world, BlockPos pos, ItemStack stack)
 	{
 	}
 }

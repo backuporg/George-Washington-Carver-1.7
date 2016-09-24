@@ -1,14 +1,13 @@
 package growthcraft.cellar.util;
 
-import java.util.List;
-
 import growthcraft.api.core.i18n.GrcI18n;
 import growthcraft.api.core.util.ConstID;
 import growthcraft.api.core.util.ITagFormatter;
 import growthcraft.core.util.TagFormatterItem;
-
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.text.TextFormatting;
+
+import java.util.List;
 
 public class TagFormatterFermentBarrel implements ITagFormatter
 {
@@ -17,7 +16,7 @@ public class TagFormatterFermentBarrel implements ITagFormatter
 	private void addModifierLine(List<String> list, NBTTagCompound tag)
 	{
 		final NBTTagCompound modifierItem = tag.getCompoundTag("item_modifier");
-		list.add(EnumChatFormatting.GRAY +
+		list.add(TextFormatting.GRAY +
 			GrcI18n.translate(
 				"grc.cellar.ferment_barrel.itemslot.modifier",
 				TagFormatterItem.INSTANCE.formatItem(modifierItem)

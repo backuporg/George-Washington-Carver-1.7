@@ -24,12 +24,10 @@
 package growthcraft.milk.common.struct;
 
 import growthcraft.api.core.stream.IStreamable;
+import growthcraft.milk.GrowthCraftMilk;
 import growthcraft.milk.common.item.EnumCheeseStage;
 import growthcraft.milk.common.item.EnumCheeseType;
-import growthcraft.milk.GrowthCraftMilk;
-
 import io.netty.buffer.ByteBuf;
-
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.MathHelper;

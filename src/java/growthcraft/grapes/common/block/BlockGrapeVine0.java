@@ -3,22 +3,20 @@ package growthcraft.grapes.common.block;
 import growthcraft.api.core.util.BlockFlags;
 import growthcraft.api.core.util.RenderType;
 import growthcraft.grapes.GrowthCraftGrapes;
-
 import net.minecraft.block.SoundType;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-
 import net.minecraft.item.Item;
 import net.minecraft.util.math.AxisAlignedBB;
-
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * This is the Grape Vine sapling block
  */
-public abstract class BlockGrapeVine0 extends BlockGrapeVineBase
+public class BlockGrapeVine0 extends BlockGrapeVineBase
 {
 	@SideOnly(Side.CLIENT)
 	private IIcon[] icons;
@@ -38,13 +36,13 @@ public abstract class BlockGrapeVine0 extends BlockGrapeVineBase
 	 * TICK
 	 ************/
 	@Override
-	protected boolean canUpdateGrowth(World world, int x, int y, int z)
+	protected boolean canUpdateGrowth(World world, BlockPos pos)
 	{
 		return world.getBlockLightValue(x, y + 1, z) >= 9;
 	}
 
 	@Override
-	protected void doGrowth(World world, int x, int y, int z, int meta)
+	protected void doGrowth(World world, BlockPos pos, int meta)
 	{
 		if (meta == 0)
 		{
@@ -61,7 +59,7 @@ public abstract class BlockGrapeVine0 extends BlockGrapeVineBase
 	 ************/
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Item getItem(World world, int x, int y, int z)
+	public Item getItem(World world, BlockPos pos)
 	{
 		return GrowthCraftGrapes.items.grapeSeeds.getItem();
 	}
@@ -99,24 +97,24 @@ public abstract class BlockGrapeVine0 extends BlockGrapeVineBase
 	 * BOXES
 	 ************/
 	@Override
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, BlockPos pos)
 	{
 		return null;
 	}
 
 	@Override
-	public void setBlockBoundsBasedOnState(IBlockAccess world, int x, int y, int z)
+	public void setBlockBoundsBasedOnState(IBlockAccess world, BlockPos pos)
 	{
-		final int meta = world.getBlockState(x, y, z);
+		final int meta = world.getBlockState(pos);
 		final float f = 0.0625F;
 
 		if (meta == 0)
 		{
-			this.setBlockBounds(6*f, 0.0F, 6*f, 10*f, 5*f, 10*f);
+			this.getBoundingBox(6*f, 0.0F, 6*f, 10*f, 5*f, 10*f);
 		}
 		else
 		{
-			this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+			this.getBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 		}
 	}
 }

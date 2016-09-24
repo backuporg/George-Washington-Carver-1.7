@@ -1,7 +1,6 @@
 package growthcraft.cellar.network;
 
 import growthcraft.cellar.common.tileentity.TileEntityBrewKettle;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -10,7 +9,7 @@ public class PacketSwitchTankButton extends AbstractPacketButton
 {
 	public PacketSwitchTankButton() {}
 
-	public PacketSwitchTankButton(int x, int y, int z)
+	public PacketSwitchTankButton(BlockPos pos)
 	{
 		super(x, y, z);
 	}

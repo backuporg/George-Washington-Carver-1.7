@@ -27,7 +27,6 @@ import growthcraft.grapes.client.renderer.RenderGrape;
 import growthcraft.grapes.client.renderer.RenderGrapeLeaves;
 import growthcraft.grapes.client.renderer.RenderGrapeVine1;
 import growthcraft.grapes.common.CommonProxy;
-
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 public class ClientProxy extends CommonProxy

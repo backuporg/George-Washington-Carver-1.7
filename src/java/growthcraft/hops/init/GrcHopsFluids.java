@@ -31,24 +31,22 @@ import growthcraft.api.core.effect.EffectWeightedRandomList;
 import growthcraft.api.core.effect.SimplePotionEffectFactory;
 import growthcraft.api.core.item.OreItemStacks;
 import growthcraft.api.core.util.TickUtils;
+import growthcraft.cellar.GrowthCraftCellar;
 import growthcraft.cellar.common.definition.BlockBoozeDefinition;
 import growthcraft.cellar.common.definition.ItemBucketBoozeDefinition;
 import growthcraft.cellar.common.item.ItemBoozeBottle;
-import growthcraft.cellar.GrowthCraftCellar;
 import growthcraft.cellar.util.BoozeRegistryHelper;
 import growthcraft.cellar.util.BoozeUtils;
-import growthcraft.core.common.definition.ItemDefinition;
-import growthcraft.core.common.GrcModuleBase;
 import growthcraft.core.GrowthCraftCore;
+import growthcraft.core.common.GrcModuleBase;
+import growthcraft.core.common.definition.ItemDefinition;
 import growthcraft.hops.GrowthCraftHops;
-
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraft.init.MobEffects;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class GrcHopsFluids extends GrcModuleBase
 {

@@ -24,13 +24,11 @@
 package growthcraft.core.init;
 
 import growthcraft.api.core.item.EnumDye;
-import growthcraft.core.common.GrcModuleBase;
 import growthcraft.core.GrowthCraftCore;
-
-import net.minecraftforge.fml.common.registry.GameRegistry;
-
+import growthcraft.core.common.GrcModuleBase;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
 public class GrcCoreRecipes extends GrcModuleBase

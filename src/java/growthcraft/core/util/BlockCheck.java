@@ -23,17 +23,16 @@
  */
 package growthcraft.core.util;
 
-import java.util.Random;
-
-import growthcraft.core.common.block.IBlockRope;
 import growthcraft.core.GrowthCraftCore;
-
+import growthcraft.core.common.block.IBlockRope;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.world.World;
-import net.minecraft.world.IBlockAccess;
-import net.minecraftforge.common.IPlantable;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
+import net.minecraftforge.common.IPlantable;
+
+import java.util.Random;
 
 public class BlockCheck
 {
@@ -77,7 +76,7 @@ public class BlockCheck
 		public final int offsetZ;
 		public final int flag;
 
-		private BlockDirection(int x, int y, int z)
+		private BlockDirection(BlockPos pos)
 		{
 			offsetX = x;
 			offsetY = y;
@@ -173,7 +172,7 @@ public class BlockCheck
 	 * @param z  - z coord
 	 * @return true if the block is a Rope, false otherwise
 	 */
-	public static boolean isRope(IBlockAccess world, int x, int y, int z)
+	public static boolean isRope(IBlockAccess world, BlockPos pos)
 	{
 		final Block block = world.getBlockState(x, y, z);
 		// TODO: IBlockRope is used for any block which can grow on Ropes,
@@ -196,7 +195,7 @@ public class BlockCheck
 	 * @param plant  - the plant in question
 	 * @return true if the block can be planted, false otherwise
 	 */
-	public static boolean canSustainPlantOn(IBlockAccess world, int x, int y, int z, EnumFacing EnumFacing, IPlantable plant, Block soil)
+	public static boolean canSustainPlantOn(IBlockAccess world, BlockPos pos, EnumFacing EnumFacing, IPlantable plant, Block soil)
 	{
 		return soil != null && soil.canSustainPlant(world, x, y, z, EnumFacing, plant);
 	}
@@ -213,7 +212,7 @@ public class BlockCheck
 	 * @param plant  - the plant in question
 	 * @return true if the block can be planted, false otherwise
 	 */
-	public static boolean canSustainPlant(IBlockAccess world, int x, int y, int z, EnumFacing EnumFacing, IPlantable plant)
+	public static boolean canSustainPlant(IBlockAccess world, BlockPos pos, EnumFacing EnumFacing, IPlantable plant)
 	{
 		final Block soil = world.getBlockState(x, y, z);
 		return canSustainPlantOn(world, x, y, z, EnumFacing, plant, soil);
@@ -230,7 +229,7 @@ public class BlockCheck
 	 * @param plant  - the plant in question
 	 * @return block if it can be planted upon, else null
 	 */
-	public static Block getFarmableBlock(IBlockAccess world, int x, int y, int z, EnumFacing EnumFacing, IPlantable plant)
+	public static Block getFarmableBlock(IBlockAccess world, BlockPos pos, EnumFacing EnumFacing, IPlantable plant)
 	{
 		final Block soil = world.getBlockState(x, y, z);
 		if (canSustainPlantOn(world, x, y, z, EnumFacing, plant, soil))
@@ -247,7 +246,7 @@ public class BlockCheck
 	 * @param z  - z coord
 	 * @param EnumFacing  - direction the block will be placed against
 	 */
-	public static boolean isBlockPlacableOnSide(World world, int x, int y, int z, EnumFacing EnumFacing)
+	public static boolean isBlockPlacableOnSide(World world, BlockPos pos, EnumFacing EnumFacing)
 	{
 		if (world.isAirBlock(x, y, z)) return false;
 		final Block b = world.getBlockState(x, y, z);

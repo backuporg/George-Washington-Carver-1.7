@@ -23,14 +23,13 @@
  */
 package growthcraft.api.cellar.pressing;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import growthcraft.api.cellar.common.Residue;
 import growthcraft.api.core.log.ILoggable;
-
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public interface IPressingRegistry extends ILoggable
 {

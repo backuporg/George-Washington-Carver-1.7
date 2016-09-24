@@ -23,23 +23,22 @@
  */
 package growthcraft.core.util;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-
 import growthcraft.api.core.util.StringUtils;
 import growthcraft.core.GrowthCraftCore;
-
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 /**
  * If you really, REALLY need to dump the block registry, then this is your thing.

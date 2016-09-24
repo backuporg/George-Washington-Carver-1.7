@@ -1,29 +1,27 @@
 package growthcraft.cellar.client.gui;
 
-import java.util.List;
-import java.util.Collection;
-
-import org.lwjgl.opengl.GL11;
-
 import growthcraft.api.cellar.booze.BoozeTag;
 import growthcraft.api.core.CoreRegistry;
 import growthcraft.api.core.fluids.FluidTag;
 import growthcraft.api.core.i18n.GrcI18n;
+import growthcraft.cellar.GrowthCraftCellar;
 import growthcraft.cellar.client.gui.widget.GuiButtonDiscard;
 import growthcraft.cellar.client.resource.GrcCellarResources;
 import growthcraft.cellar.common.inventory.ContainerFermentBarrel;
 import growthcraft.cellar.common.tileentity.TileEntityFermentBarrel;
-import growthcraft.cellar.GrowthCraftCellar;
 import growthcraft.cellar.network.PacketClearTankButton;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.GL11;
+
+import java.util.Collection;
+import java.util.List;
 
 @SideOnly(Side.CLIENT)
 public class GuiFermentBarrel extends GuiCellar<ContainerFermentBarrel, TileEntityFermentBarrel>
@@ -142,9 +140,9 @@ public class GuiFermentBarrel extends GuiCellar<ContainerFermentBarrel, TileEnti
 		{
 			case "progress_indicator":
 				tooltip.add(GrcI18n.translate("gui.grc.progress.format",
-					EnumChatFormatting.GRAY + GrcI18n.translate("gui.grccellar.ferment_barrel.progress_name"),
-					"" + EnumChatFormatting.WHITE + tileEntity.getTime(),
-					"" + EnumChatFormatting.GRAY + tileEntity.getTimeMax()));
+					TextFormatting.GRAY + GrcI18n.translate("gui.grccellar.ferment_barrel.progress_name"),
+					"" + TextFormatting.WHITE + tileEntity.getTime(),
+					"" + TextFormatting.GRAY + tileEntity.getTimeMax()));
 				break;
 			case "fluidtank.primary":
 				if (tileEntity.isFluidTankFilled(0))

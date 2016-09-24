@@ -25,15 +25,14 @@ package growthcraft.core.util;
 
 import growthcraft.api.core.util.NumUtils;
 import growthcraft.api.core.util.ObjectUtils;
+import growthcraft.core.GrowthCraftCore;
 import growthcraft.core.common.definition.FluidDefinition;
 import growthcraft.core.common.definition.GrcBlockFluidDefinition;
 import growthcraft.core.common.definition.ItemTypeDefinition;
-import growthcraft.core.common.item.ItemBucketFluid;
 import growthcraft.core.common.item.ItemBottleFluid;
+import growthcraft.core.common.item.ItemBucketFluid;
 import growthcraft.core.common.item.ItemFoodBottleFluid;
 import growthcraft.core.eventhandler.EventHandlerBucketFill;
-import growthcraft.core.GrowthCraftCore;
-
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;

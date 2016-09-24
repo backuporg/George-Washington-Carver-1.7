@@ -1,26 +1,26 @@
 package growthcraft.core.common.block;
 
-import java.util.List;
-import java.util.Random;
-
-import growthcraft.core.util.ItemUtils;
 import growthcraft.api.core.util.BlockFlags;
 import growthcraft.core.client.ClientProxy;
 import growthcraft.core.client.renderer.RenderPaddy;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import growthcraft.core.util.ItemUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraft.util.EnumFacing;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.List;
+import java.util.Random;
 
 public abstract class BlockPaddyBase extends GrcBlockBase implements IPaddy
 {
@@ -31,12 +31,12 @@ public abstract class BlockPaddyBase extends GrcBlockBase implements IPaddy
 	}
 
 	@Override
-	public boolean isFilledWithFluid(IBlockAccess world, int x, int y, int z, int meta)
+	public boolean isFilledWithFluid(IBlockAccess world, BlockPos pos, int meta)
 	{
 		return meta >= getMaxPaddyMeta(world, x, y, z);
 	}
 
-	public void drainPaddy(World world, int x, int y, int z)
+	public void drainPaddy(World world, BlockPos pos)
 	{
 		final int meta = world.getBlockState(x, y, z);
 		if (meta > 0)
@@ -45,7 +45,7 @@ public abstract class BlockPaddyBase extends GrcBlockBase implements IPaddy
 		}
 	}
 
-	public void fillPaddy(World world, int x, int y, int z)
+	public void fillPaddy(World world, BlockPos pos)
 	{
 		world.setBlockState(x, y, z, getMaxPaddyMeta(world, x, y, z), BlockFlags.UPDATE_AND_SYNC);
 	}
@@ -55,7 +55,7 @@ public abstract class BlockPaddyBase extends GrcBlockBase implements IPaddy
 	 ************/
 
 	@Override
-	public void updateTick(World world, int x, int y, int z, Random random)
+	public void updateTick(World world, BlockPos pos, Random random)
 	{
 		if (isBelowFillingFluid(world, x, y, z) && world.canLightningStrikeAt(x, y + 1, z))
 		{
@@ -67,7 +67,7 @@ public abstract class BlockPaddyBase extends GrcBlockBase implements IPaddy
 	 * TRIGGERS
 	 ************/
 	@Override
-	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int meta, float par7, float par8, float par9)
+	public boolean onBlockActivated(World world, BlockPos pos, EntityPlayer player, int meta, float par7, float par8, float par9)
 	{
 		if (world.isRemote)
 		{
@@ -118,7 +118,7 @@ public abstract class BlockPaddyBase extends GrcBlockBase implements IPaddy
 	}
 
 	@Override
-	public void onFallenUpon(World world, int x, int y, int z, Entity entity, float par6)
+	public void onFallenUpon(World world, BlockPos pos, Entity entity, float par6)
 	{
 		if (!world.isRemote && world.rand.nextFloat() < par6 - 0.5F)
 		{
@@ -137,7 +137,7 @@ public abstract class BlockPaddyBase extends GrcBlockBase implements IPaddy
 	}
 
 	@Override
-	public void onNeighborBlockChange(World world, int x, int y, int z, Block par5)
+	public void onNeighborBlockChange(World world, BlockPos pos, Block par5)
 	{
 		super.onNeighborBlockChange(world, x, y, z, par5);
 		if (isBelowFillingFluid(world, x, y, z))
@@ -153,7 +153,7 @@ public abstract class BlockPaddyBase extends GrcBlockBase implements IPaddy
 	}
 
 	@Override
-	public boolean canSilkHarvest(World world, EntityPlayer player, int x, int y, int z, int metadata)
+	public boolean canSilkHarvest(World world, EntityPlayer player, BlockPos pos, int metadata)
 	{
 		return false;
 	}
@@ -200,17 +200,17 @@ public abstract class BlockPaddyBase extends GrcBlockBase implements IPaddy
 	@Override
 	public void setBlockBoundsForItemRender()
 	{
-		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+		this.getBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 	}
 
 	@Override
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void addCollisionBoxesToList(World world, int i, int j, int k, AxisAlignedBB axis, List list, Entity entity)
+	public void getCollisionBoundingBox(World world, int i, int j, int k, AxisAlignedBB axis, List list, Entity entity)
 	{
 		final int meta = world.getBlockState(i, j, k);
 
-		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.875F, 1.0F);
-		super.addCollisionBoxesToList(world, i, j, k, axis, list, entity);
+		this.getBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 0.875F, 1.0F);
+		super.getCollisionBoundingBox(world, i, j, k, axis, list, entity);
 
 		final float thick = 0.125F;
 		final float j1 = 0.875F;
@@ -232,8 +232,8 @@ public abstract class BlockPaddyBase extends GrcBlockBase implements IPaddy
 			k1 = 0.0F + thick;
 			k2 = 1.0F - thick;
 
-			this.setBlockBounds(i1, j1, k1, i2, j2, k2);
-			super.addCollisionBoxesToList(world, i, j, k, axis, list, entity);
+			this.getBoundingBox(i1, j1, k1, i2, j2, k2);
+			super.getCollisionBoundingBox(world, i, j, k, axis, list, entity);
 		}
 
 		if (!boolXNeg)
@@ -243,8 +243,8 @@ public abstract class BlockPaddyBase extends GrcBlockBase implements IPaddy
 			k1 = 0.0F + thick;
 			k2 = 1.0F - thick;
 
-			this.setBlockBounds(i1, j1, k1, i2, j2, k2);
-			super.addCollisionBoxesToList(world, i, j, k, axis, list, entity);
+			this.getBoundingBox(i1, j1, k1, i2, j2, k2);
+			super.getCollisionBoundingBox(world, i, j, k, axis, list, entity);
 		}
 
 		if (!boolYPos)
@@ -254,8 +254,8 @@ public abstract class BlockPaddyBase extends GrcBlockBase implements IPaddy
 			k1 = 1.0F - thick;
 			k2 = 1.0F;
 
-			this.setBlockBounds(i1, j1, k1, i2, j2, k2);
-			super.addCollisionBoxesToList(world, i, j, k, axis, list, entity);
+			this.getBoundingBox(i1, j1, k1, i2, j2, k2);
+			super.getCollisionBoundingBox(world, i, j, k, axis, list, entity);
 		}
 
 		if (!boolYNeg)
@@ -265,33 +265,33 @@ public abstract class BlockPaddyBase extends GrcBlockBase implements IPaddy
 			k1 = 0.0F;
 			k2 = 0.0F + thick;
 
-			this.setBlockBounds(i1, j1, k1, i2, j2, k2);
-			super.addCollisionBoxesToList(world, i, j, k, axis, list, entity);
+			this.getBoundingBox(i1, j1, k1, i2, j2, k2);
+			super.getCollisionBoundingBox(world, i, j, k, axis, list, entity);
 		}
 
 		//corners
 		if ((!canConnectPaddyTo(world, i - 1, j, k - 1, meta)) || (!boolXNeg) || (!boolYNeg))
 		{
-			this.setBlockBounds(0.0F, j1, 0.0F, 0.0F + thick, j2, 0.0F + thick);
-			super.addCollisionBoxesToList(world, i, j, k, axis, list, entity);
+			this.getBoundingBox(0.0F, j1, 0.0F, 0.0F + thick, j2, 0.0F + thick);
+			super.getCollisionBoundingBox(world, i, j, k, axis, list, entity);
 		}
 
 		if ((!canConnectPaddyTo(world, i + 1, j, k - 1, meta)) || (!boolXPos) || (!boolYNeg))
 		{
-			this.setBlockBounds(1.0F - thick, j1, 0.0F, 1.0F, j2, 0.0F + thick);
-			super.addCollisionBoxesToList(world, i, j, k, axis, list, entity);
+			this.getBoundingBox(1.0F - thick, j1, 0.0F, 1.0F, j2, 0.0F + thick);
+			super.getCollisionBoundingBox(world, i, j, k, axis, list, entity);
 		}
 
 		if ((!canConnectPaddyTo(world, i - 1, j, k + 1, meta)) || (!boolXNeg) || (!boolYPos))
 		{
-			this.setBlockBounds(0.0F, j1, 1.0F - thick, 0.0F + thick, j2, 1.0F);
-			super.addCollisionBoxesToList(world, i, j, k, axis, list, entity);
+			this.getBoundingBox(0.0F, j1, 1.0F - thick, 0.0F + thick, j2, 1.0F);
+			super.getCollisionBoundingBox(world, i, j, k, axis, list, entity);
 		}
 
 		if ((!canConnectPaddyTo(world, i + 1, j, k + 1, meta)) || (!boolXPos) || (!boolYPos))
 		{
-			this.setBlockBounds(1.0F - thick, j1, 1.0F - thick, 1.0F, j2, 1.0F);
-			super.addCollisionBoxesToList(world, i, j, k, axis, list, entity);
+			this.getBoundingBox(1.0F - thick, j1, 1.0F - thick, 1.0F, j2, 1.0F);
+			super.getCollisionBoundingBox(world, i, j, k, axis, list, entity);
 		}
 
 		this.setBlockBoundsForItemRender();

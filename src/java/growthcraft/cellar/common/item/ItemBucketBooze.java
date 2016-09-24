@@ -1,18 +1,17 @@
 package growthcraft.cellar.common.item;
 
-import java.util.List;
-
 import growthcraft.cellar.GrowthCraftCellar;
 import growthcraft.cellar.util.BoozeUtils;
 import growthcraft.core.common.item.ItemBucketFluid;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.List;
 
 public class ItemBucketBooze extends ItemBucketFluid
 {

@@ -23,17 +23,16 @@
  */
 package growthcraft.api.cellar.fermenting;
 
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import growthcraft.api.core.log.ILogger;
 import growthcraft.api.core.log.NullLogger;
 import growthcraft.api.core.util.MultiStacksUtil;
-
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FermentingRegistry implements IFermentingRegistry
 {

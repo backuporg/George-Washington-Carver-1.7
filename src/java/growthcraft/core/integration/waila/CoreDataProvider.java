@@ -23,29 +23,26 @@
  */
 package growthcraft.core.integration.waila;
 
-import java.util.List;
-
 import growthcraft.api.core.i18n.GrcI18n;
 import growthcraft.api.core.nbt.NBTHelper;
 import growthcraft.core.common.tileentity.feature.ITileHeatedDevice;
 import growthcraft.core.common.tileentity.feature.ITileNamedFluidTanks;
 import growthcraft.core.common.tileentity.feature.ITileProgressiveDevice;
 import growthcraft.core.util.TagFormatterFluidHandler;
-
-import net.minecraftforge.fml.common.Optional;
-
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
-
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.IFluidHandler;
+import net.minecraftforge.fml.common.Optional;
+
+import java.util.List;
 
 public class CoreDataProvider implements IWailaDataProvider
 {
@@ -82,14 +79,14 @@ public class CoreDataProvider implements IWailaDataProvider
 		{
 			final boolean isHeated = tag.getBoolean("is_heated");
 			final float heat = tag.getFloat("heat_multiplier");
-			String result = EnumChatFormatting.GRAY + GrcI18n.translate("grccore.device.heated.prefix");
+			String result = TextFormatting.GRAY + GrcI18n.translate("grccore.device.heated.prefix");
 			if (isHeated)
 			{
-				result += EnumChatFormatting.WHITE + GrcI18n.translate("grccore.device.heated.multiplier.format", (int)(heat * 100));
+				result += TextFormatting.WHITE + GrcI18n.translate("grccore.device.heated.multiplier.format", (int)(heat * 100));
 			}
 			else
 			{
-				result += EnumChatFormatting.WHITE + GrcI18n.translate("grccore.device.heated.state.false");
+				result += TextFormatting.WHITE + GrcI18n.translate("grccore.device.heated.state.false");
 			}
 			tooltip.add(result);
 		}
@@ -99,8 +96,8 @@ public class CoreDataProvider implements IWailaDataProvider
 			final float prog = tag.getFloat("device_progress");
 			if (prog > 0)
 			{
-				final String result = EnumChatFormatting.GRAY + GrcI18n.translate("grccore.device.progress.prefix") +
-					EnumChatFormatting.WHITE + GrcI18n.translate("grccore.device.progress.format", (int)(prog * 100));
+				final String result = TextFormatting.GRAY + GrcI18n.translate("grccore.device.progress.prefix") +
+					TextFormatting.WHITE + GrcI18n.translate("grccore.device.progress.format", (int)(prog * 100));
 				tooltip.add(result);
 			}
 		}
@@ -116,7 +113,7 @@ public class CoreDataProvider implements IWailaDataProvider
 
 	@Override
 	@Optional.Method(modid="Waila")
-	public NBTTagCompound getNBTData(EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, int x, int y, int z)
+	public NBTTagCompound getNBTData(EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, BlockPos pos)
 	{
 		if (te instanceof IFluidHandler) NBTHelper.writeIFluidHandlerToNBT((IFluidHandler)te, tag);
 		if (te instanceof ITileNamedFluidTanks) ((ITileNamedFluidTanks)te).writeFluidTankNamesToTag(tag);

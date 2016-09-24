@@ -24,9 +24,10 @@
 package growthcraft.api.cellar.heatsource;
 
 import net.minecraft.block.Block;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class GenericHeatSourceBlock implements IHeatSourceBlock
+public abstract class GenericHeatSourceBlock implements IHeatSourceBlock
 {
 	private Block block;
 	private float heat;
@@ -38,7 +39,7 @@ public class GenericHeatSourceBlock implements IHeatSourceBlock
 	}
 
 	@Override
-	public float getHeat(World world, int x, int y, int z)
+	public float getHeat(World world, BlockPos pos)
 	{
 		return heat;
 	}

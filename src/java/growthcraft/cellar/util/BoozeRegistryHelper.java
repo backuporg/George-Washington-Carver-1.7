@@ -23,16 +23,8 @@
  */
 package growthcraft.cellar.util;
 
-import java.util.List;
-import java.util.ArrayList;
-import javax.annotation.Nullable;
-
-import growthcraft.api.cellar.booze.Booze;
-import growthcraft.api.cellar.booze.BoozeEffect;
-import growthcraft.api.cellar.booze.BoozeEntry;
-import growthcraft.api.cellar.booze.BoozeTag;
-import growthcraft.api.cellar.booze.IBoozeRegistry;
 import growthcraft.api.cellar.CellarRegistry;
+import growthcraft.api.cellar.booze.*;
 import growthcraft.api.core.CoreRegistry;
 import growthcraft.api.core.fluids.IFluidDictionary;
 import growthcraft.cellar.common.block.BlockFluidBooze;
@@ -40,17 +32,20 @@ import growthcraft.cellar.common.definition.BlockBoozeDefinition;
 import growthcraft.cellar.common.definition.ItemBucketBoozeDefinition;
 import growthcraft.cellar.common.item.ItemBlockFluidBooze;
 import growthcraft.cellar.common.item.ItemBucketBooze;
+import growthcraft.core.GrowthCraftCore;
 import growthcraft.core.common.definition.ItemDefinition;
 import growthcraft.core.eventhandler.EventHandlerBucketFill;
-import growthcraft.core.GrowthCraftCore;
 import growthcraft.core.integration.NEI;
-
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.init.Items;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+
+import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BoozeRegistryHelper
 {

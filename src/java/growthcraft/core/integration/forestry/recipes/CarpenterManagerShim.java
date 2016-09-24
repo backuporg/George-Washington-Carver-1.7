@@ -25,10 +25,8 @@ package growthcraft.core.integration.forestry.recipes;
 
 import forestry.api.recipes.ICarpenterManager;
 import forestry.api.recipes.ICarpenterRecipe;
-
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
-
 import net.minecraftforge.fml.common.Optional;
 
 @Optional.Interface(iface="forestry.api.recipes.ICarpenterManager", modid="ForestryAPI|recipes")

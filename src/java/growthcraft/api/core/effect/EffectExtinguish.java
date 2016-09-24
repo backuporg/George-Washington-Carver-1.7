@@ -23,14 +23,13 @@
  */
 package growthcraft.api.core.effect;
 
-import java.util.List;
-import java.util.Random;
-
 import growthcraft.api.core.i18n.GrcI18n;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
+
+import java.util.List;
+import java.util.Random;
 
 /**
  * Puts the entity out if they're on fire, use EffectIgnite, if you want

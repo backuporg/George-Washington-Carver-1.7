@@ -1,31 +1,32 @@
 package growthcraft.bees.common.block;
 
-import java.util.List;
-import java.util.Random;
-
+import growthcraft.bees.GrowthCraftBees;
 import growthcraft.bees.client.renderer.RenderBeeBox;
 import growthcraft.bees.common.tileentity.TileEntityBeeBox;
-import growthcraft.bees.GrowthCraftBees;
 import growthcraft.core.common.block.GrcBlockContainer;
 import growthcraft.core.integration.minecraft.EnumMinecraftWoodType;
 import growthcraft.core.util.ItemUtils;
-
 import net.minecraft.block.SoundType;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.material.Material;
-
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.block.state.IBlockState;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.List;
+import java.util.Random;
 
 
 public class BlockBeeBox extends GrcBlockContainer {
@@ -69,12 +70,12 @@ public class BlockBeeBox extends GrcBlockContainer {
 	}
 
 	@Override
-	public int getFlammability(IBlockAccess world, int x, int y, int z, EnumFacing face) {
+	public int getFlammability(IBlockAccess world, BlockPos pos, EnumFacing face) {
 		return flammability;
 	}
 
 	@Override
-	public int getFireSpreadSpeed(IBlockAccess world, int x, int y, int z, EnumFacing face) {
+	public int getFireSpreadSpeed(IBlockAccess world, BlockPos pos, EnumFacing face) {
 		return fireSpreadSpeed;
 	}
 
@@ -95,7 +96,7 @@ public class BlockBeeBox extends GrcBlockContainer {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public int randomDisplayTick(World world, BlockPos pos, Random rand) {
+	public boolean randomDisplayTick(World world, BlockPos pos, Random rand) {
 		if (rand.nextInt(24) == 0) {
 			final TileEntityBeeBox te = (TileEntityBeeBox) world.getTileEntity(pos);
 			if (te != null) {
@@ -118,8 +119,7 @@ public class BlockBeeBox extends GrcBlockContainer {
 		 * TRIGGERS
 		 ************/
 		@Override
-		public boolean onBlockActivated (World world, BlockPos pos, EntityPlayer player,int meta, float par7,
-		float par8, float par9)
+		public boolean onBlockActivated (World world, BlockPos pos, EntityPlayer player, int meta, float par7, float par8, float par9);
 		{
 			if (super.onBlockActivated(world, pos, player, meta, par7, par8, par9)) return true;
 			if (world.isRemote) {
@@ -135,7 +135,7 @@ public class BlockBeeBox extends GrcBlockContainer {
 		}
 
 		@Override
-		public void breakBlock (World world, BlockPos pos, IBlockState block,int par5)
+		public void breakBlock (World world, BlockPos pos, IBlockState state, int par5)
 		{
 			final TileEntityBeeBox te = (TileEntityBeeBox) world.getTileEntity(pos);
 
@@ -162,7 +162,7 @@ public class BlockBeeBox extends GrcBlockContainer {
 		}
 
 		@Override
-		public TileEntity createNewTileEntity (World world,int par2)
+		public TileEntity createNewTileEntity (World world, int par2)
 		{
 			return new TileEntityBeeBox();
 		}
@@ -171,7 +171,7 @@ public class BlockBeeBox extends GrcBlockContainer {
 		 * DROPS
 		 ************/
 		@Override
-		public int damageDropped ( int damage)
+		public int damageDropped (int damage)
 		{
 			return damage;
 		}
@@ -186,7 +186,7 @@ public class BlockBeeBox extends GrcBlockContainer {
 		 * TEXTURES
 		 ************/
 		@SideOnly(Side.CLIENT)
-		protected void registerBeeBoxIcons (IIconRegister reg, String basename,int offset)
+		protected void registerBeeBoxIcons (IIconRegister reg, String basename, int offset)
 		{
 			icons[offset * 4] = reg.registerIcon(getTextureName() + basename + "bottom");
 			icons[offset * 4 + 1] = reg.registerIcon(getTextureName() + basename + "top");
@@ -213,7 +213,7 @@ public class BlockBeeBox extends GrcBlockContainer {
 
 		@Override
 		@SideOnly(Side.CLIENT)
-		public IIcon getIcon (IBlockAccess world, BlockPos pos,int side);
+		public IIcon getIcon = (IBlockAccess world, BlockPos pos, int side, IBlockState state)
 		{
 			final int meta = world.getBlockState(pos);
 			final int offset = calculateIconOffset(meta);
@@ -230,9 +230,9 @@ public class BlockBeeBox extends GrcBlockContainer {
 			return icons[offset + 2];
 		}
 
-		@Override
-		@SideOnly(Side.CLIENT)
-		public IIcon getIcon ( int side, int meta)
+
+
+		public IIcon getIcon (IBlockState state, int side, int meta)
 		{
 			final int offset = calculateIconOffset(meta);
 			if (side == 0) {
@@ -252,27 +252,22 @@ public class BlockBeeBox extends GrcBlockContainer {
 		/************
 		 * RENDERS
 		 ************/
-		@Override
-		public int getRenderType ()
+		public int getRenderType (IBlockState state);
 		{
 			return RenderBeeBox.id;
 		}
 
-		@Override
 		public boolean isOpaqueCube ()
 		{
 			return false;
 		}
 
-		@Override
 		public boolean renderAsNormalBlock ()
 		{
 			return false;
 		}
 
-		@Override
-		@SideOnly(Side.CLIENT)
-		public boolean shouldSideBeRendered (IBlockAccess world, BlockPos pos,int side)
+		public boolean shouldSideBeRendered (IBlockAccess world, BlockPos pos, int side, IBlockState state, IBlockAccess source)
 		{
 			return true;
 		}
@@ -280,36 +275,34 @@ public class BlockBeeBox extends GrcBlockContainer {
 		/************
 		 * BOXES
 		 ************/
-		@Override
-		public void setBlockBoundsForItemRender ()
+		public void setBlockBoundsForItemRender(World world, BlockPos pos, IBlockState state, AxisAlignedBB axis, List list, Entity entity, IBlockAccess source)
 		{
-			setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+			getBoundingBox(state, source, pos);
 		}
 
-		@Override
-		@SuppressWarnings({"rawtypes", "unchecked"})
-		public void addCollisionBoxesToList (World world, BlockPos pos, IBlockState state, AxisAlignedBB axis, List
-		list, Entity entity)
-		{
-			final float f = 0.0625F;
-			// LEGS
-			setBlockBounds(3 * f, 0.0F, 3 * f, 5 * f, 3 * f, 5 * f);
-			super.addCollisionBoxesToList(world, pos, state, axis, list, entity);
-			setBlockBounds(11 * f, 0.0F, 3 * f, 13 * f, 3 * f, 5 * f);
-			super.addCollisionBoxesToList(world, pos, state, axis, list, entity);
-			setBlockBounds(3 * f, 0.0F, 11 * f, 5 * f, 3 * f, 13 * f);
-			super.addCollisionBoxesToList(world, pos, state, axis, list, entity);
-			setBlockBounds(11 * f, 0.0F, 11 * f, 13 * f, 3 * f, 13 * f);
-			super.addCollisionBoxesToList(world, pos, state, axis, list, entity);
-			// BODY
-			setBlockBounds(1 * f, 3 * f, 1 * f, 15 * f, 10 * f, 15 * f);
-			super.addCollisionBoxesToList(world, pos, state, axis, list, entity);
-			// ROOF
-			setBlockBounds(0.0F, 10 * f, 0.0F, 1.0F, 13 * f, 1.0F);
-			super.addCollisionBoxesToList(world, pos, state, axis, list, entity);
-			setBlockBounds(2 * f, 13 * f, 2 * f, 14 * f, 1.0F, 14 * f);
-			super.addCollisionBoxesToList(world, pos, state, axis, list, entity);
-			setBlockBoundsForItemRender();
+
+	public void getCollisionBoundingBox (World world, BlockPos pos, IBlockState state, AxisAlignedBB axis, List list, Entity entity, IBlockAccess source)
+	{
+
+		final float f = 0.0625F;
+		// LEGS
+		getBoundingBox(state, source, pos);
+		super.getCollisionBoundingBox (state, world, pos);
+		getBoundingBox(state, source, pos);
+		super.getCollisionBoundingBox(state, world, pos);
+		getBoundingBox(state, source, pos);
+		super.getCollisionBoundingBox (state, world, pos);
+		getBoundingBox(state, source, pos);
+		super.getCollisionBoundingBox (state, world, pos);
+		// BODY
+		getBoundingBox(state, source, pos);
+		super.getCollisionBoundingBox (state, world, pos);
+		// ROOF
+		getBoundingBox(state, source, pos);
+		super.getCollisionBoundingBox (state, world, pos);
+		getBoundingBox(state, source, pos);
+		super.getCollisionBoundingBox (state, world, pos);
+		setBlockBoundsForItemRender(world, pos, state, axis, list, entity, source);
 		}
 
 		/************
@@ -322,7 +315,7 @@ public class BlockBeeBox extends GrcBlockContainer {
 		}
 
 		@Override
-		public int getComparatorInputOverride (World world, BlockPos pos,int par5)
+		public int getComparatorInputOverride (World world, BlockPos pos, int par5)
 		{
 			final TileEntityBeeBox te = (TileEntityBeeBox) world.getTileEntity(pos);
 			return te.countHoney() * 15 / 27;

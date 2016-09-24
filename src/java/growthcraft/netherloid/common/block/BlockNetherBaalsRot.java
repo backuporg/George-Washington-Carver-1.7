@@ -24,13 +24,12 @@
 package growthcraft.netherloid.common.block;
 
 import growthcraft.netherloid.netherloid;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.world.World;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.init.MobEffects;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 public abstract class BlockNetherBaalsRot extends BlockNetherFungusBase
 {
@@ -41,12 +40,12 @@ public abstract class BlockNetherBaalsRot extends BlockNetherFungusBase
 		super();
 		setBlockName("grcnetherloid.netherBaalsRot");
 		setBlockTextureName("grcnetherloid:baals_rot");
-		setBlockBounds(0.125F, 0.0F, 0.125F, 0.875F, 0.8125F, 0.875F);
+		getBoundingBox(0.125F, 0.0F, 0.125F, 0.875F, 0.8125F, 0.875F);
 		setCreativeTab(netherloid.tab);
 	}
 
 	@Override
-	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
+	public void onEntityCollidedWithBlock(World world, BlockPos pos, Entity entity)
 	{
 		if (world.isRemote) return;
 		if (entity instanceof EntityLivingBase)
@@ -59,7 +58,7 @@ public abstract class BlockNetherBaalsRot extends BlockNetherFungusBase
 	}
 
 	@Override
-	protected float getSpreadRate(World world, int x, int y, int z)
+	protected float getSpreadRate(World world, BlockPos pos)
 	{
 		return baalsRotSpreadRate;
 	}
