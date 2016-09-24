@@ -20,6 +20,8 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -133,7 +135,7 @@ public class BlockBeeBox extends GrcBlockContainer {
 		}
 
 		@Override
-		public void breakBlock (World world, BlockPos pos, IBlockState block, int par5)
+		public void breakBlock (World world, BlockPos pos, IBlockState state, int par5)
 		{
 			final TileEntityBeeBox te = (TileEntityBeeBox) world.getTileEntity(pos);
 
@@ -211,7 +213,7 @@ public class BlockBeeBox extends GrcBlockContainer {
 
 		@Override
 		@SideOnly(Side.CLIENT)
-		public IIcon getIcon (IBlockAccess world, BlockPos pos, int side);
+		public IIcon getIcon = (IBlockAccess world, BlockPos pos, int side, IBlockState state)
 		{
 			final int meta = world.getBlockState(pos);
 			final int offset = calculateIconOffset(meta);
@@ -230,7 +232,7 @@ public class BlockBeeBox extends GrcBlockContainer {
 
 		@Override
 		@SideOnly(Side.CLIENT)
-		public IIcon getIcon ( int side, int meta)
+		public IIcon getIcon (IBlockState state, int side, int meta)
 		{
 			final int offset = calculateIconOffset(meta);
 			if (side == 0) {
@@ -251,7 +253,7 @@ public class BlockBeeBox extends GrcBlockContainer {
 		 * RENDERS
 		 ************/
 		@Override
-		public int getRenderType ()
+		public int getRenderType (IBlockState state);
 		{
 			return RenderBeeBox.id;
 		}
@@ -270,7 +272,7 @@ public class BlockBeeBox extends GrcBlockContainer {
 
 		@Override
 		@SideOnly(Side.CLIENT)
-		public boolean shouldSideBeRendered (IBlockAccess world, BlockPos pos, int side)
+		public boolean shouldSideBeRendered (IBlockAccess world, BlockPos pos, int side, IBlockState state, IBlockAccess source)
 		{
 			return true;
 		}
@@ -281,38 +283,41 @@ public class BlockBeeBox extends GrcBlockContainer {
 		@Override
 		public void setBlockBoundsForItemRender ()
 		{
-			getBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+			final AxisAlignedBB axis = null;
+			final IBlockState state = null;
+			final List list = null;
+			final Entity entity = null;
+			final IBlockAccess source = null;
+			getBoundingBox(state, source, pos);
 		}
 
 		@Override
 		@SuppressWarnings({"rawtypes", "unchecked"})
-		public void getCollisionBoundingBox (World world, BlockPos pos, IBlockState state, AxisAlignedBB axis, List list, Entity entity)
 		{
 			final AxisAlignedBB axis = null;
-			final BlockPos pos = null;
 			final IBlockState state = null;
 			final List list = null;
 			final Entity entity = null;
-			final World world = null;
+			final IBlockAccess source = null;
 
 			final float f = 0.0625F;
 			// LEGS
-			getBoundingBox(3 * f, 0.0F, 3 * f, 5 * f, 3 * f, 5 * f);
-			super.getCollisionBoundingBox (world, pos, state, axis, list, entity);
-			getBoundingBox(11 * f, 0.0F, 3 * f, 13 * f, 3 * f, 5 * f);
-			super.getCollisionBoundingBox(world, pos, state, axis, list, entity);
-			getBoundingBox(3 * f, 0.0F, 11 * f, 5 * f, 3 * f, 13 * f);
-			super.getCollisionBoundingBox (world, pos, state, axis, list, entity);
-			getBoundingBox(11 * f, 0.0F, 11 * f, 13 * f, 3 * f, 13 * f);
-			super.getCollisionBoundingBox (world, pos, state, axis, list, entity);
+			getBoundingBox(state, source, pos);
+			super.getCollisionBoundingBox (state, world, pos);
+			getBoundingBox(state, source, pos);
+			super.getCollisionBoundingBox(state, world, pos);
+			getBoundingBox(state, source, pos);
+			super.getCollisionBoundingBox (state, world, pos);
+			getBoundingBox(state, source, pos);
+			super.getCollisionBoundingBox (state, world, pos);
 			// BODY
-			getBoundingBox(1 * f, 3 * f, 1 * f, 15 * f, 10 * f, 15 * f);
-			super.getCollisionBoundingBox (world, pos, state, axis, list, entity);
+			getBoundingBox(state, source, pos);
+			super.getCollisionBoundingBox (state, world, pos);
 			// ROOF
-			getBoundingBox(0.0F, 10 * f, 0.0F, 1.0F, 13 * f, 1.0F);
-			super.getCollisionBoundingBox (world, pos, state, axis, list, entity);
-			getBoundingBox(2 * f, 13 * f, 2 * f, 14 * f, 1.0F, 14 * f);
-			super.getCollisionBoundingBox (world, pos, state, axis, list, entity);
+			getBoundingBox(state, source, pos);
+			super.getCollisionBoundingBox (state, world, pos);
+			getBoundingBox(state, source, pos);
+			super.getCollisionBoundingBox (state, world, pos);
 			setBlockBoundsForItemRender();
 		}
 
