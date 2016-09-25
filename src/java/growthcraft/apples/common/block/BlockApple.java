@@ -79,9 +79,9 @@ public class BlockApple extends GrcBlockBase implements IGrowable, ICropDataProv
 		return (float)meta / (float)AppleStage.MATURE;
 	}
 
-	void incrementGrowth(World world, BlockPos pos, int meta)
+	void incrementGrowth(World world, BlockPos pos, IBlockState state, int meta)
 	{
-		world.setBlockState(pos, meta + 1, BlockFlags.SYNC);
+		world.setBlockState(pos, state, BlockFlags.SYNC);
 		AppleCore.announceGrowthTick(this, world, pos, meta);
 	}
 
