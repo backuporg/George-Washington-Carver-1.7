@@ -146,7 +146,7 @@ public class GrowthCraftBees
 		MinecraftForge.EVENT_BUS.register(new GrcBeesHandleTextureStitch());
 
 		ForgeHooksClient.registerTESRItemStack(Item.getItemFromBlock(BlockBeeBox), METADATA FOR BEE HIVE, TileEntityBeeBox.class);
-		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(BlockBeeBox), METADATAFORBEEHIVE, new ModelResourceLocation("skull", "normal"));
+		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(BlockBeeBox), METADATAFORBEEHIVE, new ModelResourceLocation("GrowthCraft|Bees", "grc.beeBox.*"));
 
 		modules.preInit();
 		register();
