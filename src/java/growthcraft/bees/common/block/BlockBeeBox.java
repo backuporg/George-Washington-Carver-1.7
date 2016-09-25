@@ -24,6 +24,9 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 import java.util.List;
 import java.util.Random;
@@ -321,4 +324,3 @@ public class BlockBeeBox extends GrcBlockContainer {
 			return te.countHoney() * 15 / 27;
 		}
 	}
-}
