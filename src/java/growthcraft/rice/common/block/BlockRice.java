@@ -23,6 +23,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProvider, IGrowable
@@ -138,7 +139,7 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 	public void func_149853_b(World world, Random random, BlockPos pos, IBlockState state)
 	{
 		final IBlockState meta = world.getBlockState((BlockPos) state);
-		if (IBlockState state < RiceStage.MATURE)
+		if (meta < RiceStage.MATURE)
 		{
 			growRice(world, pos, state);
 		}
@@ -195,10 +196,10 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 
 	protected final void checkCropChange(World world, BlockPos pos)
 	{
-		if (!this.canBlockStay(world, x, y, z))
+		if (!this.canBlockStay(world, pos))
 		{
-			this.dropBlockAsItem(world, x, y, z, world.getBlockState(x, y, z), 0);
-			world.setBlockToAir(x, y, z);
+			this.dropBlockAsItem(world, pos, world.getBlockState(pos), 0);
+			world.setBlockToAir(pos);
 		}
 	}
 
@@ -208,7 +209,7 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 	@Override
 	public void onNeighborBlockChange(World world, BlockPos pos, Block par5)
 	{
-		this.checkCropChange(world, x, y, z);
+		this.checkCropChange(world, pos);
 	}
 
 	/************
@@ -258,15 +259,15 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 	}
 
 	@Override
-	public void dropBlockAsItemWithChance(World world, BlockPos pos, int par5, float par6, int par7)
+	public void dropBlockAsItemWithChance(World world, BlockPos pos, IBlockState state, int par5, float par6, int par7)
 	{
-		super.dropBlockAsItemWithChance(world, x, y, z, par5, par6, 0);
+		super.dropBlockAsItemWithChance(world, pos, state, par6, 0);
 	}
 
 	@Override
-	public ArrayList<ItemStack> getDrops(World world, BlockPos pos, int metadata, int fortune)
+	public ArrayList<ItemStack> getDrops(World world, BlockPos pos, IBlockState state, int metadata, int fortune)
 	{
-		final ArrayList<ItemStack> ret = super.getDrops(world, x, y, z, metadata, fortune);
+		final List<ItemStack> ret = super.getDrops(world, pos, state, fortune);
 
 		if (metadata >= 7)
 		{
@@ -359,7 +360,7 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 	@SideOnly(Side.CLIENT)
 	public AxisAlignedBB getSelectedBoundingBoxFromPool(World world, BlockPos pos)
 	{
-		this.setBlockBoundsBasedOnState(world, x, y, z);
-		return super.getSelectedBoundingBoxFromPool(world, x, y, z);
+		this.setBlockBoundsBasedOnState(world, pos);
+		return super.getSelectedBoundingBoxFromPool(world, pos);
 	}
 }
