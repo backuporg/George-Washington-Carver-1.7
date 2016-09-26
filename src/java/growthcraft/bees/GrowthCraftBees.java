@@ -12,6 +12,7 @@ import growthcraft.api.core.log.ILogger;
 import growthcraft.api.core.module.ModuleContainer;
 import growthcraft.bees.client.eventhandler.GrcBeesHandleTextureStitch;
 import growthcraft.bees.common.CommonProxy;
+import growthcraft.bees.common.block.BlockBeeBox;
 import growthcraft.bees.common.tileentity.TileEntityBeeBox;
 import growthcraft.bees.common.village.ComponentVillageApiarist;
 import growthcraft.bees.common.village.VillageHandlerBees;
@@ -27,10 +28,14 @@ import growthcraft.core.GrcGuiProvider;
 import growthcraft.core.common.definition.BlockDefinition;
 import growthcraft.core.integration.bop.BopPlatform;
 import growthcraft.core.util.MapGenHelper;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.client.ForgeHooksClient;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -43,6 +48,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+import net.minecraft.block.state.IBlockState;
 
 @Mod(
 	modid = GrowthCraftBees.MOD_ID,
@@ -139,7 +145,6 @@ public class GrowthCraftBees
 		tab = new CreativeTabsGrowthcraftBees("creative_tab_grcbees");
 
 		MinecraftForge.EVENT_BUS.register(new GrcBeesHandleTextureStitch());
-
 		modules.preInit();
 		register();
 	}

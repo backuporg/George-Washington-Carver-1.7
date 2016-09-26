@@ -24,6 +24,9 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 import java.util.List;
 import java.util.Random;
@@ -95,44 +98,44 @@ public class BlockBeeBox extends GrcBlockContainer {
 		if (te != null) te.updateBlockTick();
 	}
 
-	@SideOnly(Side.CLIENT)
-	public boolean randomDisplayTick(World world, BlockPos pos, Random rand) {
-		if (rand.nextInt(24) == 0) {
-			final TileEntityBeeBox te = (TileEntityBeeBox) world.getTileEntity(pos);
-			if (te != null) {
-				if (te.hasBees()) {
-					if (te.hasBees()) {
-						world.playSound(
-								(double) pos.getX() + 0.5D,
-								(double) pos.getY() + 0.5D,
-								(double) pos.getZ() + 0.5D,
-								"grcbees:buzz",
-								1.0F + rand.nextFloat(),
-								0.3F + rand.nextFloat() * 0.7F,
-								false);
-					}
-				}
-			}
-		}
+	//@SideOnly(Side.CLIENT)
+	//public boolean randomDisplayTick(World world, BlockPos pos, Random rand) {
+	//	if (rand.nextInt(24) == 0) {
+	//		final TileEntityBeeBox te = (TileEntityBeeBox) world.getTileEntity(pos);
+	//		if (te != null) {
+	//			if (te.hasBees()) {
+	//				if (te.hasBees()) {
+	//					world.playSound(
+	//							(double) pos.getX() + 0.5D,
+	//							(double) pos.getY() + 0.5D,
+	//							(double) pos.getZ() + 0.5D,
+	//							"grcbees:buzz",
+	//							1.0F + rand.nextFloat(),
+	//							0.3F + rand.nextFloat() * 0.7F,
+	//							false);
+	//				}
+	//			}
+	//		}
+	//	}
 
 		/************
 		 * TRIGGERS
 		 ************/
-		@Override
-		public boolean onBlockActivated (World world, BlockPos pos, EntityPlayer player, int meta, float par7, float par8, float par9);
-		{
-			if (super.onBlockActivated(world, pos, player, meta, par7, par8, par9)) return true;
-			if (world.isRemote) {
-				return true;
-			} else {
-				final TileEntityBeeBox te = (TileEntityBeeBox) world.getTileEntity(pos);
-				if (te != null) {
-					player.openGui(GrowthCraftBees.instance, 0, world, pos);
-					return true;
-				}
-				return false;
-			}
-		}
+	//	@Override
+	//	public boolean onBlockActivated (World world, BlockPos pos, EntityPlayer player, int meta, float par7, float par8, float par9);
+	//	{
+	//		if (super.onBlockActivated(world, pos, player, meta, par7, par8, par9)) return true;
+	//		if (world.isRemote) {
+	//			return true;
+	//		} else {
+	//			final TileEntityBeeBox te = (TileEntityBeeBox) world.getTileEntity(pos);
+	//			if (te != null) {
+	//				player.openGui(GrowthCraftBees.instance, 0, world, pos);
+	//				return true;
+	//			}
+	//			return false;
+	//		}
+	//	}
 
 		@Override
 		public void breakBlock (World world, BlockPos pos, IBlockState state, int par5)
@@ -211,24 +214,24 @@ public class BlockBeeBox extends GrcBlockContainer {
 			return MathHelper.clamp_int(meta, 0, icons.length / 4 - 1) * 4;
 		}
 
-		@Override
-		@SideOnly(Side.CLIENT)
-		public IIcon getIcon = (IBlockAccess world, BlockPos pos, int side, IBlockState state)
-		{
-			final int meta = world.getBlockState(pos);
-			final int offset = calculateIconOffset(meta);
-			if (side == 0) {
-				return icons[offset];
-			} else if (side == 1) {
-				return icons[offset + 1];
-			} else {
-				final TileEntityBeeBox te = (TileEntityBeeBox) world.getTileEntity(x, y, z);
-				if (te != null && te.isHoneyEnough(6)) {
-					return icons[offset + 3];
-				}
-			}
-			return icons[offset + 2];
-		}
+	//	@Override
+	//	@SideOnly(Side.CLIENT)
+	//	public IIcon getIcon = (IBlockAccess world, BlockPos pos, int side, IBlockState state)
+	//	{
+	//		final int meta = world.getBlockState(pos);
+	//		final int offset = calculateIconOffset(meta);
+	//		if (side == 0) {
+	//			return icons[offset];
+	//		} else if (side == 1) {
+	//			return icons[offset + 1];
+	//		} else {
+	//			final TileEntityBeeBox te = (TileEntityBeeBox) world.getTileEntity(x, y, z);
+	//			if (te != null && te.isHoneyEnough(6)) {
+	//				return icons[offset + 3];
+	//			}
+	//		}
+	//		return icons[offset + 2];
+	//	}
 
 
 
@@ -281,29 +284,29 @@ public class BlockBeeBox extends GrcBlockContainer {
 		}
 
 
-	public void getCollisionBoundingBox (World world, BlockPos pos, IBlockState state, AxisAlignedBB axis, List list, Entity entity, IBlockAccess source)
-	{
-
-		final float f = 0.0625F;
-		// LEGS
-		getBoundingBox(state, source, pos);
-		super.getCollisionBoundingBox (state, world, pos);
-		getBoundingBox(state, source, pos);
-		super.getCollisionBoundingBox(state, world, pos);
-		getBoundingBox(state, source, pos);
-		super.getCollisionBoundingBox (state, world, pos);
-		getBoundingBox(state, source, pos);
-		super.getCollisionBoundingBox (state, world, pos);
-		// BODY
-		getBoundingBox(state, source, pos);
-		super.getCollisionBoundingBox (state, world, pos);
-		// ROOF
-		getBoundingBox(state, source, pos);
-		super.getCollisionBoundingBox (state, world, pos);
-		getBoundingBox(state, source, pos);
-		super.getCollisionBoundingBox (state, world, pos);
-		setBlockBoundsForItemRender(world, pos, state, axis, list, entity, source);
-		}
+//	public void getCollisionBoundingBox (World world, BlockPos pos, IBlockState state, AxisAlignedBB axis, List list, Entity entity, IBlockAccess source)
+//	{
+//
+	//	final float f = 0.0625F;
+	//	// LEGS
+	//	getBoundingBox(state, source, pos);
+	//	super.getCollisionBoundingBox (state, world, pos);
+	//	getBoundingBox(state, source, pos);
+	//	super.getCollisionBoundingBox(state, world, pos);
+	//	getBoundingBox(state, source, pos);
+	//	super.getCollisionBoundingBox (state, world, pos);
+	//	getBoundingBox(state, source, pos);
+	//	super.getCollisionBoundingBox (state, world, pos);
+	//	// BODY
+	//	getBoundingBox(state, source, pos);
+	//	super.getCollisionBoundingBox (state, world, pos);
+	//	// ROOF
+	//	getBoundingBox(state, source, pos);
+	//	super.getCollisionBoundingBox (state, world, pos);
+	//	getBoundingBox(state, source, pos);
+	//	super.getCollisionBoundingBox (state, world, pos);
+	//	setBlockBoundsForItemRender(world, pos, state, axis, list, entity, source);
+	//	}
 
 		/************
 		 * COMPARATOR
@@ -321,4 +324,3 @@ public class BlockBeeBox extends GrcBlockContainer {
 			return te.countHoney() * 15 / 27;
 		}
 	}
-}

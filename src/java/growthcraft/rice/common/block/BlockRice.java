@@ -23,6 +23,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProvider, IGrowable
@@ -81,7 +82,7 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 		AppleCore.announceGrowthTick(this, world, pos, meta);
 	}
 
-	private void growRice(World world, BlockPos pos, int meta, IBlockState state)
+	private void growRice(World world, BlockPos pos, IBlockState state)
 	{
 		incrementGrowth(world, pos, meta, state);
 		final Block paddyBlock = world.getBlockState(x, y - 1, z);
@@ -95,25 +96,25 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 	 * TICK
 	 ************/
 	@Override
-	public void updateTick(World world, BlockPos pos, Random random)
+	public void updateTick(World world, BlockPos pos, Random random, IBlockState state)
 	{
 		this.checkCropChange(world, pos);
 
 		if (world.getBlockLightValue(x, y + 1, z) >= 9 && world.getBlockState(x, y - 1, z) > 0)
 		{
-			final Event.Result allowGrowthResult = AppleCore.validateGrowthTick(this, world, x, y, z, random);
+			final Event.Result allowGrowthResult = AppleCore.validateGrowthTick(this, world, pos, random);
 			if (allowGrowthResult == Event.Result.DENY)
 				return;
 
-			final int meta = world.getBlockState(x, y, z);
+			final int meta = world.getBlockState(pos);
 
 			if (meta < RiceStage.MATURE)
 			{
-				final float f = this.getGrowthRate(world, x, y, z);
+				final float f = this.getGrowthRate(world, pos);
 
 				if (allowGrowthResult == Event.Result.ALLOW || (random.nextInt((int)(this.growth / f) + 1) == 0))
 				{
-					growRice(world, x, y, z, meta);
+					growRice(world, pos, state);
 				}
 			}
 		}
@@ -137,10 +138,10 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 	@Override
 	public void func_149853_b(World world, Random random, BlockPos pos, IBlockState state)
 	{
-		final int meta = world.getBlockState(int);
+		final IBlockState meta = world.getBlockState((BlockPos) state);
 		if (meta < RiceStage.MATURE)
 		{
-			growRice(world, pos, meta, state);
+			growRice(world, pos, state);
 		}
 	}
 
@@ -195,10 +196,10 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 
 	protected final void checkCropChange(World world, BlockPos pos)
 	{
-		if (!this.canBlockStay(world, x, y, z))
+		if (!this.canBlockStay(world, pos))
 		{
-			this.dropBlockAsItem(world, x, y, z, world.getBlockState(x, y, z), 0);
-			world.setBlockToAir(x, y, z);
+			this.dropBlockAsItem(world, pos, world.getBlockState(pos), 0);
+			world.setBlockToAir(pos);
 		}
 	}
 
@@ -208,7 +209,7 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 	@Override
 	public void onNeighborBlockChange(World world, BlockPos pos, Block par5)
 	{
-		this.checkCropChange(world, x, y, z);
+		this.checkCropChange(world, pos);
 	}
 
 	/************
@@ -258,15 +259,15 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 	}
 
 	@Override
-	public void dropBlockAsItemWithChance(World world, BlockPos pos, int par5, float par6, int par7)
+	public void dropBlockAsItemWithChance(World world, BlockPos pos, IBlockState state, int par5, float par6, int par7)
 	{
-		super.dropBlockAsItemWithChance(world, x, y, z, par5, par6, 0);
+		super.dropBlockAsItemWithChance(world, pos, state, par6, 0);
 	}
 
 	@Override
-	public ArrayList<ItemStack> getDrops(World world, BlockPos pos, int metadata, int fortune)
+	public ArrayList<ItemStack> getDrops(World world, BlockPos pos, IBlockState state, int metadata, int fortune)
 	{
-		final ArrayList<ItemStack> ret = super.getDrops(world, x, y, z, metadata, fortune);
+		final List<ItemStack> ret = super.getDrops(world, pos, state, fortune);
 
 		if (metadata >= 7)
 		{
@@ -359,7 +360,7 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 	@SideOnly(Side.CLIENT)
 	public AxisAlignedBB getSelectedBoundingBoxFromPool(World world, BlockPos pos)
 	{
-		this.setBlockBoundsBasedOnState(world, x, y, z);
-		return super.getSelectedBoundingBoxFromPool(world, x, y, z);
+		this.setBlockBoundsBasedOnState(world, pos);
+		return super.getSelectedBoundingBoxFromPool(world, pos);
 	}
 }
