@@ -214,24 +214,24 @@ public class BlockBeeBox extends GrcBlockContainer {
 			return MathHelper.clamp_int(meta, 0, icons.length / 4 - 1) * 4;
 		}
 
-		@Override
-		@SideOnly(Side.CLIENT)
-		public IIcon getIcon = (IBlockAccess world, BlockPos pos, int side, IBlockState state)
-		{
-			final int meta = world.getBlockState(pos);
-			final int offset = calculateIconOffset(meta);
-			if (side == 0) {
-				return icons[offset];
-			} else if (side == 1) {
-				return icons[offset + 1];
-			} else {
-				final TileEntityBeeBox te = (TileEntityBeeBox) world.getTileEntity(x, y, z);
-				if (te != null && te.isHoneyEnough(6)) {
-					return icons[offset + 3];
-				}
-			}
-			return icons[offset + 2];
-		}
+	//	@Override
+	//	@SideOnly(Side.CLIENT)
+	//	public IIcon getIcon = (IBlockAccess world, BlockPos pos, int side, IBlockState state)
+	//	{
+	//		final int meta = world.getBlockState(pos);
+	//		final int offset = calculateIconOffset(meta);
+	//		if (side == 0) {
+	//			return icons[offset];
+	//		} else if (side == 1) {
+	//			return icons[offset + 1];
+	//		} else {
+	//			final TileEntityBeeBox te = (TileEntityBeeBox) world.getTileEntity(x, y, z);
+	//			if (te != null && te.isHoneyEnough(6)) {
+	//				return icons[offset + 3];
+	//			}
+	//		}
+	//		return icons[offset + 2];
+	//	}
 
 
 

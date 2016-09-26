@@ -201,7 +201,7 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 	public boolean wrenchBlock(World world, BlockPos pos, IBlockState state, EntityPlayer player, ItemStack wrench)
 	{
 		if (player == null) return false;
-		if (!ItemUtils.canWrench(wrench, player, pos) return false;
+		if (!ItemUtils.canWrench(wrench, player, pos)) return false;
 		if (!player.isSneaking()) return false;
 		if (!world.isRemote)
 		{
