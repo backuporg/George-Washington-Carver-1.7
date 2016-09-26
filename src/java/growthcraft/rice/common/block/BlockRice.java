@@ -95,25 +95,25 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 	 * TICK
 	 ************/
 	@Override
-	public void updateTick(World world, BlockPos pos, Random random)
+	public void updateTick(World world, BlockPos pos, Random random, IBlockState state)
 	{
 		this.checkCropChange(world, pos);
 
 		if (world.getBlockLightValue(x, y + 1, z) >= 9 && world.getBlockState(x, y - 1, z) > 0)
 		{
-			final Event.Result allowGrowthResult = AppleCore.validateGrowthTick(this, world, x, y, z, random);
+			final Event.Result allowGrowthResult = AppleCore.validateGrowthTick(this, world, pos, random);
 			if (allowGrowthResult == Event.Result.DENY)
 				return;
 
-			final int meta = world.getBlockState(x, y, z);
+			final int meta = world.getBlockState(pos);
 
 			if (meta < RiceStage.MATURE)
 			{
-				final float f = this.getGrowthRate(world, x, y, z);
+				final float f = this.getGrowthRate(world, pos);
 
 				if (allowGrowthResult == Event.Result.ALLOW || (random.nextInt((int)(this.growth / f) + 1) == 0))
 				{
-					growRice(world, x, y, z, meta);
+					growRice(world, pos, state);
 				}
 			}
 		}
