@@ -98,44 +98,44 @@ public class BlockBeeBox extends GrcBlockContainer {
 		if (te != null) te.updateBlockTick();
 	}
 
-	@SideOnly(Side.CLIENT)
-	public boolean randomDisplayTick(World world, BlockPos pos, Random rand) {
-		if (rand.nextInt(24) == 0) {
-			final TileEntityBeeBox te = (TileEntityBeeBox) world.getTileEntity(pos);
-			if (te != null) {
-				if (te.hasBees()) {
-					if (te.hasBees()) {
-						world.playSound(
-								(double) pos.getX() + 0.5D,
-								(double) pos.getY() + 0.5D,
-								(double) pos.getZ() + 0.5D,
-								"grcbees:buzz",
-								1.0F + rand.nextFloat(),
-								0.3F + rand.nextFloat() * 0.7F,
-								false);
-					}
-				}
-			}
-		}
+	//@SideOnly(Side.CLIENT)
+	//public boolean randomDisplayTick(World world, BlockPos pos, Random rand) {
+	//	if (rand.nextInt(24) == 0) {
+	//		final TileEntityBeeBox te = (TileEntityBeeBox) world.getTileEntity(pos);
+	//		if (te != null) {
+	//			if (te.hasBees()) {
+	//				if (te.hasBees()) {
+	//					world.playSound(
+	//							(double) pos.getX() + 0.5D,
+	//							(double) pos.getY() + 0.5D,
+	//							(double) pos.getZ() + 0.5D,
+	//							"grcbees:buzz",
+	//							1.0F + rand.nextFloat(),
+	//							0.3F + rand.nextFloat() * 0.7F,
+	//							false);
+	//				}
+	//			}
+	//		}
+	//	}
 
 		/************
 		 * TRIGGERS
 		 ************/
-		@Override
-		public boolean onBlockActivated (World world, BlockPos pos, EntityPlayer player, int meta, float par7, float par8, float par9);
-		{
-			if (super.onBlockActivated(world, pos, player, meta, par7, par8, par9)) return true;
-			if (world.isRemote) {
-				return true;
-			} else {
-				final TileEntityBeeBox te = (TileEntityBeeBox) world.getTileEntity(pos);
-				if (te != null) {
-					player.openGui(GrowthCraftBees.instance, 0, world, pos);
-					return true;
-				}
-				return false;
-			}
-		}
+	//	@Override
+	//	public boolean onBlockActivated (World world, BlockPos pos, EntityPlayer player, int meta, float par7, float par8, float par9);
+	//	{
+	//		if (super.onBlockActivated(world, pos, player, meta, par7, par8, par9)) return true;
+	//		if (world.isRemote) {
+	//			return true;
+	//		} else {
+	//			final TileEntityBeeBox te = (TileEntityBeeBox) world.getTileEntity(pos);
+	//			if (te != null) {
+	//				player.openGui(GrowthCraftBees.instance, 0, world, pos);
+	//				return true;
+	//			}
+	//			return false;
+	//		}
+	//	}
 
 		@Override
 		public void breakBlock (World world, BlockPos pos, IBlockState state, int par5)
@@ -284,29 +284,29 @@ public class BlockBeeBox extends GrcBlockContainer {
 		}
 
 
-	public void getCollisionBoundingBox (World world, BlockPos pos, IBlockState state, AxisAlignedBB axis, List list, Entity entity, IBlockAccess source)
-	{
-
-		final float f = 0.0625F;
-		// LEGS
-		getBoundingBox(state, source, pos);
-		super.getCollisionBoundingBox (state, world, pos);
-		getBoundingBox(state, source, pos);
-		super.getCollisionBoundingBox(state, world, pos);
-		getBoundingBox(state, source, pos);
-		super.getCollisionBoundingBox (state, world, pos);
-		getBoundingBox(state, source, pos);
-		super.getCollisionBoundingBox (state, world, pos);
-		// BODY
-		getBoundingBox(state, source, pos);
-		super.getCollisionBoundingBox (state, world, pos);
-		// ROOF
-		getBoundingBox(state, source, pos);
-		super.getCollisionBoundingBox (state, world, pos);
-		getBoundingBox(state, source, pos);
-		super.getCollisionBoundingBox (state, world, pos);
-		setBlockBoundsForItemRender(world, pos, state, axis, list, entity, source);
-		}
+//	public void getCollisionBoundingBox (World world, BlockPos pos, IBlockState state, AxisAlignedBB axis, List list, Entity entity, IBlockAccess source)
+//	{
+//
+	//	final float f = 0.0625F;
+	//	// LEGS
+	//	getBoundingBox(state, source, pos);
+	//	super.getCollisionBoundingBox (state, world, pos);
+	//	getBoundingBox(state, source, pos);
+	//	super.getCollisionBoundingBox(state, world, pos);
+	//	getBoundingBox(state, source, pos);
+	//	super.getCollisionBoundingBox (state, world, pos);
+	//	getBoundingBox(state, source, pos);
+	//	super.getCollisionBoundingBox (state, world, pos);
+	//	// BODY
+	//	getBoundingBox(state, source, pos);
+	//	super.getCollisionBoundingBox (state, world, pos);
+	//	// ROOF
+	//	getBoundingBox(state, source, pos);
+	//	super.getCollisionBoundingBox (state, world, pos);
+	//	getBoundingBox(state, source, pos);
+	//	super.getCollisionBoundingBox (state, world, pos);
+	//	setBlockBoundsForItemRender(world, pos, state, axis, list, entity, source);
+	//	}
 
 		/************
 		 * COMPARATOR
