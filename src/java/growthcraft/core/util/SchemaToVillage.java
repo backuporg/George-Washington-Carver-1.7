@@ -99,7 +99,7 @@ public class SchemaToVillage
 		}
 	}
 
-	public static void drawSchema(IVillage village, World world, BlockPos pos Random random, StructureBoundingBox box, String[][] schema, Map<Character, IBlockEntries> map, int offx, int offy, int offz)
+	public static void drawSchema(IVillage village, World world, BlockPos pos, Random random, StructureBoundingBox box, String[][] schema, Map<Character, IBlockEntries> map, int offx, int offy, int offz)
 	{
 		// loop by schema layer
 		for (int y = 0; y < schema.length; ++y)

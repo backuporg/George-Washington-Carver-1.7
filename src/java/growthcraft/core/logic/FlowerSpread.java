@@ -26,6 +26,7 @@ package growthcraft.core.logic;
 import growthcraft.api.core.util.BlockFlags;
 import growthcraft.api.core.util.CuboidI;
 import net.minecraft.block.Block;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
@@ -44,11 +45,11 @@ public class FlowerSpread
 	{
 		if (block instanceof ISpreadablePlant)
 		{
-			return ((ISpreadablePlant)block).canSpreadTo(world, x, y, z);
+			return ((ISpreadablePlant)block).canSpreadTo(world, pos);
 		}
 		else
 		{
-			return world.isAirBlock(x, y, z) && block.canBlockStay(world, x, y, z);
+			return world.isAirBlock(pos) && block.canBlockStay(world, pos);
 		}
 	}
 
