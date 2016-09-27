@@ -6,6 +6,7 @@ import net.minecraft.block.BlockDoor;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fml.client.registry.ISimpleBlockRenderingHandler;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
@@ -78,7 +79,7 @@ public class RenderBambooWall implements ISimpleBlockRenderingHandler
 			double z1 = 0.375D;
 			double z2 = 0.625D;
 			renderer.setRenderBounds(x1, y1, z1, x2, y2, z2);
-			renderer.renderStandardBlock(block, x, y, z);
+			renderer.renderStandardBlock(block, pos);
 
 			final BlockBambooWall blk = (BlockBambooWall) block;
 
@@ -108,7 +109,7 @@ public class RenderBambooWall implements ISimpleBlockRenderingHandler
 				z2 = 0.625D;
 
 				renderer.setRenderBounds(x1, y1, z1, x2, y2, z2);
-				renderer.renderStandardBlock(block, x, y, z);
+				renderer.renderStandardBlock(block, pos);
 			}
 			else if (idXneg instanceof BlockDoor)
 			{
@@ -127,7 +128,7 @@ public class RenderBambooWall implements ISimpleBlockRenderingHandler
 					z2 = 0.625D;
 
 					renderer.setRenderBounds(x1, y1, z1, x2, y2, z2);
-					renderer.renderStandardBlock(block, x, y, z);
+					renderer.renderStandardBlock(block, pos);
 
 					if (tm == 1)
 					{
@@ -138,7 +139,7 @@ public class RenderBambooWall implements ISimpleBlockRenderingHandler
 						z2 = 0.375D;
 
 						renderer.setRenderBounds(x1, y1, z1, x2, y2, z2);
-						renderer.renderStandardBlock(block, x, y, z);
+						renderer.renderStandardBlock(block, pos);
 					}
 
 					if (tm == 3)
@@ -150,7 +151,7 @@ public class RenderBambooWall implements ISimpleBlockRenderingHandler
 						z2 = 1.0D;
 
 						renderer.setRenderBounds(x1, y1, z1, x2, y2, z2);
-						renderer.renderStandardBlock(block, x, y, z);
+						renderer.renderStandardBlock(block, pos);
 					}
 				}
 			}
@@ -164,7 +165,7 @@ public class RenderBambooWall implements ISimpleBlockRenderingHandler
 				z2 = 0.625D;
 
 				renderer.setRenderBounds(x1, y1, z1, x2, y2, z2);
-				renderer.renderStandardBlock(block, x, y, z);
+				renderer.renderStandardBlock(block, pos);
 			}
 			else if (idXpos instanceof BlockDoor)
 			{
@@ -183,7 +184,7 @@ public class RenderBambooWall implements ISimpleBlockRenderingHandler
 					z2 = 0.625D;
 
 					renderer.setRenderBounds(x1, y1, z1, x2, y2, z2);
-					renderer.renderStandardBlock(block, x, y, z);
+					renderer.renderStandardBlock(block, pos);
 
 					if (tm == 1)
 					{
@@ -193,7 +194,7 @@ public class RenderBambooWall implements ISimpleBlockRenderingHandler
 						z2 = 0.375D;
 
 						renderer.setRenderBounds(x1, y1, z1, x2, y2, z2);
-						renderer.renderStandardBlock(block, x, y, z);
+						renderer.renderStandardBlock(block, pos);
 					}
 
 					if (tm == 3)
@@ -204,7 +205,7 @@ public class RenderBambooWall implements ISimpleBlockRenderingHandler
 						z2 = 1.0D;
 
 						renderer.setRenderBounds(x1, y1, z1, x2, y2, z2);
-						renderer.renderStandardBlock(block, x, y, z);
+						renderer.renderStandardBlock(block, pos);
 					}
 				}
 			}
@@ -218,7 +219,7 @@ public class RenderBambooWall implements ISimpleBlockRenderingHandler
 				z2 = 0.375D;
 
 				renderer.setRenderBounds(x1, y1, z1, x2, y2, z2);
-				renderer.renderStandardBlock(block, x, y, z);
+				renderer.renderStandardBlock(block, pos);
 			}
 			else if (idZneg instanceof BlockDoor)
 			{
@@ -237,7 +238,7 @@ public class RenderBambooWall implements ISimpleBlockRenderingHandler
 					z2 = 0.375D;
 
 					renderer.setRenderBounds(x1, y1, z1, x2, y2, z2);
-					renderer.renderStandardBlock(block, x, y, z);
+					renderer.renderStandardBlock(block, pos);
 
 					if (tm == 0)
 					{
@@ -247,7 +248,7 @@ public class RenderBambooWall implements ISimpleBlockRenderingHandler
 						z2 = 0.25D;
 
 						renderer.setRenderBounds(x1, y1, z1, x2, y2, z2);
-						renderer.renderStandardBlock(block, x, y, z);
+						renderer.renderStandardBlock(block, pos);
 					}
 
 					if (tm == 2)
@@ -258,7 +259,7 @@ public class RenderBambooWall implements ISimpleBlockRenderingHandler
 						z2 = 0.25D;
 
 						renderer.setRenderBounds(x1, y1, z1, x2, y2, z2);
-						renderer.renderStandardBlock(block, x, y, z);
+						renderer.renderStandardBlock(block, pos);
 					}
 				}
 			}
@@ -272,7 +273,7 @@ public class RenderBambooWall implements ISimpleBlockRenderingHandler
 				z2 = 1.0D;
 
 				renderer.setRenderBounds(x1, y1, z1, x2, y2, z2);
-				renderer.renderStandardBlock(block, x, y, z);
+				renderer.renderStandardBlock(block, pos);
 			}
 			else if (idZpos instanceof BlockDoor)
 			{
@@ -291,7 +292,7 @@ public class RenderBambooWall implements ISimpleBlockRenderingHandler
 					z2 = 1.0D;
 
 					renderer.setRenderBounds(x1, y1, z1, x2, y2, z2);
-					renderer.renderStandardBlock(block, x, y, z);
+					renderer.renderStandardBlock(block, pos);
 
 					if (tm == 0)
 					{
@@ -301,7 +302,7 @@ public class RenderBambooWall implements ISimpleBlockRenderingHandler
 						z2 = 1.0D;
 
 						renderer.setRenderBounds(x1, y1, z1, x2, y2, z2);
-						renderer.renderStandardBlock(block, x, y, z);
+						renderer.renderStandardBlock(block, pos);
 					}
 
 					if (tm == 2)
@@ -312,12 +313,12 @@ public class RenderBambooWall implements ISimpleBlockRenderingHandler
 						z2 = 1.0D;
 
 						renderer.setRenderBounds(x1, y1, z1, x2, y2, z2);
-						renderer.renderStandardBlock(block, x, y, z);
+						renderer.renderStandardBlock(block, pos);
 					}
 				}
 			}
 
-			blk.setBlockBoundsBasedOnState(world, x, y, z);
+			blk.setBlockBoundsBasedOnState(world, pos);
 		}
 		return true;
 	}
