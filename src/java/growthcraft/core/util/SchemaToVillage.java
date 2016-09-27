@@ -136,7 +136,7 @@ public class SchemaToVillage
 		}
 	}
 
-	public static void drawSchema(IVillage village, World world, BlockPos pos Random random, StructureBoundingBox box, String[][] schema, Map<Character, IBlockEntries> map)
+	public static void drawSchema(IVillage village, World world, BlockPos pos, Random random, StructureBoundingBox box, String[][] schema, Map<Character, IBlockEntries> map)
 	{
 		drawSchema(village, world, pos, box, schema, map, 0, 0, 0);
 	}
