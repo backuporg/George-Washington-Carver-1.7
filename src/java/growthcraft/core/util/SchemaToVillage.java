@@ -24,6 +24,7 @@
 package growthcraft.core.util;
 
 import net.minecraft.block.Block;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 
@@ -98,7 +99,7 @@ public class SchemaToVillage
 		}
 	}
 
-	public static void drawSchema(IVillage village, World world, Random random, StructureBoundingBox box, String[][] schema, Map<Character, IBlockEntries> map, int offx, int offy, int offz)
+	public static void drawSchema(IVillage village, World world, BlockPos pos Random random, StructureBoundingBox box, String[][] schema, Map<Character, IBlockEntries> map, int offx, int offy, int offz)
 	{
 		// loop by schema layer
 		for (int y = 0; y < schema.length; ++y)
@@ -128,15 +129,15 @@ public class SchemaToVillage
 					}
 					// null blocks are not placed
 					if (block != null) {
-						village.placeBlockAtCurrentPositionPub(world, block, meta, offx + x, offy + y, offz + z, box);
+						village.placeBlockAtCurrentPositionPub(world, block, meta, pos, box);
 					}
 				}
 			}
 		}
 	}
 
-	public static void drawSchema(IVillage village, World world, Random random, StructureBoundingBox box, String[][] schema, Map<Character, IBlockEntries> map)
+	public static void drawSchema(IVillage village, World world, BlockPos pos Random random, StructureBoundingBox box, String[][] schema, Map<Character, IBlockEntries> map)
 	{
-		drawSchema(village, world, random, box, schema, map, 0, 0, 0);
+		drawSchema(village, world, pos, box, schema, map, 0, 0, 0);
 	}
 }
