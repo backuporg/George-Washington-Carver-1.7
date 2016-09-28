@@ -35,7 +35,7 @@ import growthcraft.cellar.common.item.ItemBucketBooze;
 import growthcraft.core.GrowthCraftCore;
 import growthcraft.core.common.definition.ItemDefinition;
 import growthcraft.core.eventhandler.EventHandlerBucketFill;
-import growthcraft.core.integration.NEI;
+
 import net.minecraft.init.Items;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidContainerRegistry;

@@ -6,7 +6,7 @@ import growthcraft.api.core.module.ModuleContainer;
 import growthcraft.cellar.GrowthCraftCellar;
 import growthcraft.core.GrowthCraftCore;
 import growthcraft.core.eventhandler.PlayerInteractEventPaddy;
-import growthcraft.core.integration.NEI;
+
 import growthcraft.core.util.MapGenHelper;
 import growthcraft.rice.common.CommonProxy;
 import growthcraft.rice.common.village.ComponentVillageRiceField;
