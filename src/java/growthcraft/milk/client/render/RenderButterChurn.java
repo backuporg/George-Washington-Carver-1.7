@@ -27,9 +27,9 @@ import growthcraft.milk.client.model.ModelButterChurn;
 import growthcraft.milk.client.resource.GrcMilkResources;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.RenderBlocks;
+
 import net.minecraft.world.IBlockAccess;
-import net.minecraftforge.fml.client.registry.ISimpleBlockRenderingHandler;
+
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import org.lwjgl.opengl.GL11;
 

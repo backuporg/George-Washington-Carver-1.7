@@ -13,7 +13,7 @@ import growthcraft.apples.init.GrcApplesItems;
 import growthcraft.apples.init.GrcApplesRecipes;
 import growthcraft.cellar.GrowthCraftCellar;
 import growthcraft.core.GrowthCraftCore;
-import growthcraft.core.integration.NEI;
+
 import growthcraft.core.util.MapGenHelper;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;

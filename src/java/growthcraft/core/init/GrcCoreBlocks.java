@@ -31,7 +31,7 @@ import growthcraft.core.common.block.BlockSaltBlock;
 import growthcraft.core.common.definition.BlockDefinition;
 import growthcraft.core.common.item.ItemBlockFenceRope;
 import growthcraft.core.common.item.ItemBlockNaturaFenceRope;
-import growthcraft.core.integration.NEI;
+
 import growthcraft.core.integration.minecraft.EnumMinecraftWoodType;
 import growthcraft.core.registry.FenceRopeRegistry;
 import net.minecraft.block.Block;

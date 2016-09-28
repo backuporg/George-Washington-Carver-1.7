@@ -29,7 +29,7 @@ import growthcraft.core.common.GrcModuleBlocks;
 import growthcraft.core.common.block.BlockFenceRope;
 import growthcraft.core.common.definition.BlockDefinition;
 import growthcraft.core.common.definition.BlockTypeDefinition;
-import growthcraft.core.integration.NEI;
+
 import growthcraft.core.registry.FenceRopeRegistry;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.init.Blocks;

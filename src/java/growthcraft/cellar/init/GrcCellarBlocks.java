@@ -27,7 +27,7 @@ import growthcraft.cellar.common.block.*;
 import growthcraft.cellar.common.itemblock.ItemBlockFermentBarrel;
 import growthcraft.core.common.GrcModuleBlocks;
 import growthcraft.core.common.definition.BlockDefinition;
-import growthcraft.core.integration.NEI;
+
 
 public class GrcCellarBlocks extends GrcModuleBlocks
 {

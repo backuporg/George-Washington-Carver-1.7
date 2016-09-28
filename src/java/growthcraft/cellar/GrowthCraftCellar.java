@@ -30,7 +30,7 @@ import growthcraft.cellar.stats.GrcCellarAchievements;
 import growthcraft.cellar.util.CellarBoozeBuilderFactory;
 import growthcraft.cellar.util.GrcCellarUserApis;
 import growthcraft.core.GrcGuiProvider;
-import growthcraft.core.integration.NEI;
+
 import growthcraft.core.util.MapGenHelper;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;

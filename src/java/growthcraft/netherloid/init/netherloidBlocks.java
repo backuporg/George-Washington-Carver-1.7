@@ -26,7 +26,7 @@ package growthcraft.netherloid.init;
 import growthcraft.core.common.GrcModuleBase;
 import growthcraft.core.common.definition.BlockDefinition;
 import growthcraft.core.eventhandler.PlayerInteractEventPaddy;
-import growthcraft.core.integration.NEI;
+
 import growthcraft.netherloid.common.block.*;
 import growthcraft.netherloid.common.item.ItemNetherLilyPad;
 import net.minecraft.init.Blocks;

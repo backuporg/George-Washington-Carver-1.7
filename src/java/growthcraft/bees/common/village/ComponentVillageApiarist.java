@@ -8,6 +8,7 @@ import growthcraft.core.util.SchemaToVillage.MultiBlockEntries;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.WeightedRandomChestContent;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
@@ -218,7 +219,7 @@ public class ComponentVillageApiarist extends StructureVillagePieces.Village imp
 
 	public void placeBlockAtCurrentPositionPub(World world, Block block, int meta, BlockPos pos, StructureBoundingBox box)
 	{
-		placeBlockAtCurrentPosition(world, block, meta, x, y, z, box);
+		placeBlockAtCurrentPosition(world, block, meta, pos, box);
 	}
 
 	public boolean addComponentParts(World world, Random random, StructureBoundingBox box)

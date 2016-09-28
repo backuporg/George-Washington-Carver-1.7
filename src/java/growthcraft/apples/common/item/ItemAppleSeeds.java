@@ -4,10 +4,12 @@ import growthcraft.apples.GrowthCraftApples;
 import growthcraft.core.GrowthCraftCore;
 import growthcraft.core.common.item.GrcItemBase;
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
@@ -31,10 +33,10 @@ public abstract class ItemAppleSeeds extends GrcItemBase implements IPlantable
 	 * MAIN
 	 ************/
 	@Override
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, int EnumFacing, float par8, float par9, float par10)
+	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, int EnumFacing, float par8, float par9, float par10, IBlockState state)
 	{
-		final Block block = world.getBlockState(x, y, z);
-		if (block == Blocks.SNOW_LAYER && (world.getBlockState(x, y, z) & 7) < 1)
+		final Block block = world.getBlockState(pos);
+		if (block == Blocks.SNOW_LAYER && (world.getBlockState(pos) & 7) < 1)
 		{
 			EnumFacing = 1;
 		}
@@ -72,7 +74,7 @@ public abstract class ItemAppleSeeds extends GrcItemBase implements IPlantable
 		}
 
 
-		if (!player.canPlayerEdit(x, y, z, EnumFacing, stack))
+		if (!player.canPlayerEdit(pos, EnumFacing, stack))
 		{
 			return false;
 		}
@@ -82,16 +84,16 @@ public abstract class ItemAppleSeeds extends GrcItemBase implements IPlantable
 		}
 		else
 		{
-			if (world.canPlaceEntityOnSide(cropBlock, x, y, z, false, EnumFacing, (Entity)null, stack))
+			if (world.canPlaceEntityOnSide(cropBlock, pos, false, EnumFacing, (Entity)null, stack))
 			{
-				final int meta = cropBlock.onBlockPlaced(world, x, y, z, EnumFacing, par8, par9, par10, 0);
+				final int meta = cropBlock.onBlockPlaced(world, pos, EnumFacing, par8, par9, par10, 0);
 
-				if (world.setBlockState(x, y, z, cropBlock, meta, 3))
+				if (world.setBlockState(pos, cropBlock, meta, 3))
 				{
-					if (world.getBlockState(x, y, z) == cropBlock)
+					if (world.getBlockState(pos) == cropBlock)
 					{
-						cropBlock.onBlockPlacedBy(world, x, y, z, player, stack);
-						cropBlock.onPostBlockPlaced(world, x, y, z, meta);
+						cropBlock.onBlockPlacedBy(world, pos, player, stack);
+						cropBlock.onPostBlockPlaced(world, pos, meta);
 					}
 
 					world.playSoundEffect((double)((float)x + 0.5F), (double)((float)y + 0.5F), (double)((float)z + 0.5F), cropBlock.stepSound.func_150496_b(), (cropBlock.stepSound.getVolume() + 1.0F) / 2.0F, cropBlock.stepSound.getPitch() * 0.8F);
