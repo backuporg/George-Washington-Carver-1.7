@@ -3,10 +3,10 @@ package growthcraft.rice.client.renderer;
 import growthcraft.rice.common.block.BlockRice;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.EntityRenderer;
-import net.minecraft.client.renderer.RenderBlocks;
+
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.world.IBlockAccess;
-import net.minecraftforge.fml.client.registry.ISimpleBlockRenderingHandler;
+
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 public class RenderRice implements ISimpleBlockRenderingHandler

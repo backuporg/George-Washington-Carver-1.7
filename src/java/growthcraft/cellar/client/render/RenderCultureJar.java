@@ -6,11 +6,11 @@ import growthcraft.cellar.client.model.ModelCultureJar;
 import growthcraft.cellar.common.block.BlockCultureJar;
 import growthcraft.cellar.common.tileentity.TileEntityCultureJar;
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.RenderBlocks;
+
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fml.client.registry.ISimpleBlockRenderingHandler;
+
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 public class RenderCultureJar implements ISimpleBlockRenderingHandler
