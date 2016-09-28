@@ -4,6 +4,7 @@ import growthcraft.bees.GrowthCraftBees;
 import growthcraft.core.Utils;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.chunk.IChunkGenerator;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
@@ -51,5 +52,10 @@ public class WorldGeneratorBees implements IWorldGenerator
 				new WorldGenBeeHive().generate(world, random, i, j, k);
 			}
 		}
+	}
+
+	@Override
+	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
+
 	}
 }

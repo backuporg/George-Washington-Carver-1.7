@@ -108,7 +108,7 @@ public class BlockApple extends GrcBlockBase implements IGrowable, ICropDataProv
 	@Override
 	public void func_149853_b(World world, Random random, BlockPos pos)
 	{
-		incrementGrowth(world, pos, world.getBlockState(x, y, z));
+		incrementGrowth(world, pos, world.getBlockState(pos));
 	}
 
 	/************

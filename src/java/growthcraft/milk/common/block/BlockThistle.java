@@ -33,6 +33,7 @@ import growthcraft.milk.GrowthCraftMilk;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -74,9 +75,9 @@ public abstract class BlockThistle extends BlockBush implements ISpreadablePlant
 	}
 
 	@Override
-	public boolean canSpreadTo(World world, BlockPos pos)
+	public boolean canSpreadTo(World world, BlockPos pos, IBlockState state)
 	{
-		if (world.isAirBlock(pos) && canBlockStay(world, pos))
+		if (world.isAirBlock(pos) && canBlockStay(world, pos, state))
 		{
 			return true;
 		}
@@ -85,19 +86,19 @@ public abstract class BlockThistle extends BlockBush implements ISpreadablePlant
 
 	private void runSpread(World world, BlockPos pos, Random random)
 	{
-		spreadLogic.run(this, 0, world, x, y, z, random);
+		spreadLogic.run(this, 0, world, pos, random);
 	}
 
 	private void incrementGrowth(World world, BlockPos pos, int meta)
 	{
 		world.setBlockState(pos, meta + 1, BlockFlags.SYNC);
-		AppleCore.announceGrowthTick(this, world, pos);
+		AppleCore.announceGrowthTick(this, world, pos, meta);
 	}
 
 	@Override
-	public void updateTick(World world, BlockPos pos, Random random)
+	public void updateTick(World world, BlockPos pos, Random random, IBlockState state)
 	{
-		super.updateTick(world, pos, random);
+		super.updateTick(world, pos, state, random);
 		if (!world.isRemote)
 		{
 			final int meta = world.getBlockState(pos);
