@@ -3,6 +3,7 @@ package growthcraft.bees.common.inventory;
 import growthcraft.bees.common.tileentity.TileEntityBeeBox;
 import growthcraft.core.common.inventory.GrcContainer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.util.math.BlockPos;
 
 public class ContainerBeeBox extends GrcContainer
 {
@@ -17,7 +18,7 @@ public class ContainerBeeBox extends GrcContainer
 
 	private TileEntityBeeBox teBeeBox;
 
-	public ContainerBeeBox(InventoryPlayer player, TileEntityBeeBox beeBox)
+	public ContainerBeeBox(InventoryPlayer player, TileEntityBeeBox beeBox, BlockPos pos)
 	{
 		super(beeBox);
 		// Slot Indices:
@@ -27,7 +28,7 @@ public class ContainerBeeBox extends GrcContainer
 		// 55 - 63 (64) player.inv.hotbar
 
 		this.teBeeBox = beeBox;
-		addSlotToContainer(new SlotBee(this, teBeeBox, SlotId.BEE, 80, 18));
+		addSlotToContainer(new SlotBee(this, teBeeBox, pos, SlotId.BEE, 80, 18));
 
 		for (int i = 0; i < 3; ++i)
 		{

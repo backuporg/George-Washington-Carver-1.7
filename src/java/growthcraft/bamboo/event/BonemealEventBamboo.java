@@ -1,6 +1,7 @@
 package growthcraft.bamboo.event;
 
 import growthcraft.bamboo.GrowthCraftBamboo;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.BonemealEvent;
 import net.minecraftforge.fml.common.eventhandler.Event.Result;

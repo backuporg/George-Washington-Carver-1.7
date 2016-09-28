@@ -44,10 +44,10 @@ public abstract class BlockCellarContainer extends GrcBlockContainer
 
 	protected boolean openGui(EntityPlayer player, World world, BlockPos pos)
 	{
-		final TileEntity te = getTileEntity(world, x, y, z);
+		final TileEntity te = getTileEntity(world, pos);
 		if (te instanceof IInteractionObject)
 		{
-			player.openGui(GrowthCraftCellar.instance, 0, world, x, y, z);
+			player.openGui(GrowthCraftCellar.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
 			return true;
 		}
 		return false;
@@ -56,7 +56,7 @@ public abstract class BlockCellarContainer extends GrcBlockContainer
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, EntityPlayer player, int meta, float par7, float par8, float par9)
 	{
-		if (super.onBlockActivated(world, x, y, z, player, meta, par7, par8, par9)) return true;
-		return !player.isSneaking() && openGui(player, world, x, y, z);
+		if (super.onBlockActivated(world, pos, player, meta, par7, par8, par9)) return true;
+		return !player.isSneaking() && openGui(player, world, pos);
 	}
 }

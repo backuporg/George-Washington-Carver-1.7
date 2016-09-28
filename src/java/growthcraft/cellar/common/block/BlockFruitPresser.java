@@ -72,7 +72,7 @@ public class BlockFruitPresser extends BlockCellarContainer implements IWrenchab
 	@Override
 	public boolean rotateBlock(World world, BlockPos pos, EnumFacing side)
 	{
-		if (isRotatable(world, x, y, z, side))
+		if (isRotatable(world, pos, side))
 		{
 			final Block below = world.getBlockState(x, y - 1, z);
 			return below.rotateBlock(world, x, y - 1, z, side);
