@@ -59,7 +59,7 @@ public class BlockFermentBarrel extends BlockCellarContainer
 	@Override
 	protected boolean playerDrainTank(World world, BlockPos pos, IFluidHandler tank, ItemStack held, EntityPlayer player)
 	{
-		final FluidStack available = Utils.playerDrainTank(world, x, y, z, tank, held, player);
+		final FluidStack available = Utils.playerDrainTank(world, pos, tank, held, player);
 		if (available != null && available.amount > 0)
 		{
 			GrowthCraftCellar.CELLAR_BUS.post(new EventBarrelDrained(player, world, x, y, z, available));
