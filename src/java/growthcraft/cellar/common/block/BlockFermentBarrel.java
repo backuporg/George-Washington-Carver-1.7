@@ -9,6 +9,7 @@ import growthcraft.core.Utils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockPistonBase;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -102,18 +103,18 @@ public class BlockFermentBarrel extends BlockCellarContainer
 	}
 
 	@Override
-	public void onBlockAdded(World world, BlockPos pos)
+	public void onBlockAdded(World world, BlockPos pos, IBlockState state)
 	{
-		super.onBlockAdded(world, x, y, z);
-		setDefaultDirection(world, x, y, z);
+		super.onBlockAdded(world, pos, state);
+		setDefaultDirection(world, pos);
 	}
 
 	@Override
-	public void onBlockPlacedBy(World world, BlockPos pos, EntityLivingBase entity, ItemStack stack)
+	public void onBlockPlacedBy(World world, BlockPos pos, EntityLivingBase entity, ItemStack stack, IBlockState state)
 	{
-		super.onBlockPlacedBy(world, x, y, z, entity, stack);
-		final int meta = BlockPistonBase.determineOrientation(world, x, y, z, entity);
-		world.setBlockState(x, y, z, meta, BlockFlags.UPDATE_AND_SYNC);
+		super.onBlockPlacedBy(world, pos, entity, stack);
+		final int meta = BlockPistonBase.determineOrientation(world, pos, entity);
+		world.setBlockState(pos, state, BlockFlags.UPDATE_AND_SYNC);
 	}
 
 	@Override
@@ -190,7 +191,7 @@ public class BlockFermentBarrel extends BlockCellarContainer
 	@Override
 	public int getComparatorInputOverride(World world, BlockPos pos, int par5)
 	{
-		final TileEntityFermentBarrel te = getTileEntity(world, x, y, z);
+		final TileEntityFermentBarrel te = getTileEntity(world, pos);
 		if (te != null)
 		{
 			return te.getDeviceProgressScaled(15);

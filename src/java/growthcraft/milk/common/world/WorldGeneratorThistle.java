@@ -3,7 +3,9 @@ package growthcraft.milk.common.world;
 import growthcraft.api.core.util.BiomeUtils;
 import growthcraft.milk.GrowthCraftMilk;
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.IChunkProvider;
@@ -25,14 +27,14 @@ public class WorldGeneratorThistle implements IWorldGenerator
 			Blocks.GRASS.equals(block);
 	}
 
-	private boolean canReplaceBlock(World world, BlockPos pos, Block block)
+	private boolean canReplaceBlock(World world, BlockPos pos, Block block, IBlockState state)
 	{
-		return block.isAir(world, x, y, z) ||
-			block.isLeaves(world, x, y, z) ||
+		return block.isAir(state, world, pos) ||
+			block.isLeaves(state, world, pos) ||
 			Blocks.VINE == block;
 	}
 
-	private void genRandThistle(WorldGenerator generator, World world, Random rand, int chunk_x, int chunk_z, int maxToSpawn, int minHeight, int maxHeight)
+	private void genRandThistle(WorldGenerator generator, World world, Random rand, BlockPos pos, IBlockState state, int chunk_x, int chunk_z, int maxToSpawn, int minHeight, int maxHeight)
 	{
 		final int genChance = GrowthCraftMilk.getConfig().thistleGenChance;
 		for (int i = 0; i < maxToSpawn; ++i)
@@ -49,7 +51,7 @@ public class WorldGeneratorThistle implements IWorldGenerator
 			{
 				// If you can't replace the block now, it means you probably
 				// hit the floor
-				if (!canReplaceBlock(world, x, y, z, world.getBlockState(x, y, z)))
+				if (!canReplaceBlock(world, x, y, z, world.getBlockState(pos)))
 				{
 					// move back up and break loop
 					y += 1;
@@ -65,7 +67,7 @@ public class WorldGeneratorThistle implements IWorldGenerator
 			final Block block = world.getBlockState(x, y - 1, z);
 			if (canPlaceOnBlock(world, x, y - 1, z, block))
 			{
-				world.setBlockState(x, y, z, GrowthCraftMilk.blocks.thistle.getBlockState());
+				world.setBlockState(pos, state, GrowthCraftMilk.blocks.thistle.getBlockState());
 			}
 		}
 	}
@@ -82,7 +84,7 @@ public class WorldGeneratorThistle implements IWorldGenerator
 			}
 			else
 			{
-				final String biomeId = "" + biome.biomeID;
+				final String biomeId = "" + biome.BiomeID;
 				if (!BiomeUtils.testBiomeIdTags(biomeId, GrowthCraftMilk.getConfig().thistleBiomesIdList)) return;
 			}
 			genRandThistle(thistle, world, random, chunkX, chunkZ, GrowthCraftMilk.getConfig().thistleGenAmount, 64, 255);

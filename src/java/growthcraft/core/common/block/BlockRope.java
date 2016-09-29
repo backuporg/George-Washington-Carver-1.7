@@ -36,15 +36,15 @@ public class BlockRope extends GrcBlockBase implements IBlockRope
 	@Override
 	public void onNeighborBlockChange(World world, BlockPos pos, Block block)
 	{
-		this.checkBlockCoordValid(world, x, y, z);
+		this.checkBlockCoordValid(world, pos);
 	}
 
 	protected final void checkBlockCoordValid(World world, BlockPos pos)
 	{
-		if (!this.canBlockStay(world, x, y, z))
+		if (!this.canBlockStay(world, pos))
 		{
-			this.dropBlockAsItem(world, x, y, z, world.getBlockState(x, y, z), 0);
-			world.setBlockToAir(x, y, z);
+			this.dropBlockAsItem(world, pos, world.getBlockState(pos), 0);
+			world.setBlockToAir(pos);
 		}
 	}
 
@@ -66,7 +66,7 @@ public class BlockRope extends GrcBlockBase implements IBlockRope
 	@Override
 	public boolean canBlockStay(World world, BlockPos pos)
 	{
-		return this.canPlaceBlockAt(world, x, y, z);
+		return this.canPlaceBlockAt(world, pos);
 	}
 
 	/************
@@ -82,7 +82,7 @@ public class BlockRope extends GrcBlockBase implements IBlockRope
 	@Override
 	public boolean canConnectRopeTo(IBlockAccess world, BlockPos pos)
 	{
-		return world.getBlockState(x, y, z) instanceof IBlockRope;
+		return world.getBlockState(pos) instanceof IBlockRope;
 	}
 
 	/************
@@ -187,7 +187,7 @@ public class BlockRope extends GrcBlockBase implements IBlockRope
 		if (flag || flag1)
 		{
 			this.getBoundingBox(f, f4, f2, f1, f5, f3);
-			super.getCollisionBoundingBox(world, x, y, z, aabb, list, entity);
+			super.getCollisionBoundingBox(world, pos, aabb, list, entity);
 		}
 
 		f2 = 0.4375F;
@@ -206,7 +206,7 @@ public class BlockRope extends GrcBlockBase implements IBlockRope
 		if (flag2 || flag3)
 		{
 			this.getBoundingBox(f, f4, f2, f1, f5, f3);
-			super.getCollisionBoundingBox(world, x, y, z, aabb, list, entity);
+			super.getCollisionBoundingBox(world, pos, aabb, list, entity);
 		}
 
 		f = 0.4375F;

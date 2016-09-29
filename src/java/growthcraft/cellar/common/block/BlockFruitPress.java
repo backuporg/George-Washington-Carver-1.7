@@ -6,6 +6,7 @@ import growthcraft.cellar.client.render.RenderFruitPress;
 import growthcraft.cellar.common.tileentity.TileEntityFruitPress;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -48,16 +49,16 @@ public class BlockFruitPress extends BlockCellarContainer
 	@Override
 	public void doRotateBlock(World world, BlockPos pos, EnumFacing side)
 	{
-		world.setBlockState(x, y, z, world.getBlockState(x, y, z) ^ 1, BlockFlags.SYNC);
+		world.setBlockState(pos, world.getBlockState(pos) ^ 1, BlockFlags.SYNC);
 		world.setBlockState(x, y + 1, z, world.getBlockState(x, y + 1, z) ^ 1, BlockFlags.SYNC);
 	}
 
 	@Override
-	public void onBlockAdded(World world, BlockPos pos)
+	public void onBlockAdded(World world, BlockPos pos, IBlockState state)
 	{
-		super.onBlockAdded(world, x, y, z);
-		this.setDefaultDirection(world, x, y, z);
-		world.setBlockState(x, y + 1, z, getPresserBlock(), world.getBlockState(x, y, z), 2);
+		super.onBlockAdded(world, pos, state);
+		this.setDefaultDirection(world, pos);
+		world.setBlockState(x, y + 1, z, getPresserBlock(), world.getBlockState(pos), 2);
 	}
 
 	private void setDefaultDirection(World world, BlockPos pos)
