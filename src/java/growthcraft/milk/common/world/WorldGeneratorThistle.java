@@ -34,7 +34,7 @@ public class WorldGeneratorThistle implements IWorldGenerator
 			Blocks.VINE == block;
 	}
 
-	private void genRandThistle(WorldGenerator generator, World world, Random rand, BlockPos pos, IBlockState state, int chunk_x, int chunk_z, int maxToSpawn, int minHeight, int maxHeight)
+	private void genRandThistle(WorldGenerator generator, World world, Random rand, Block block, BlockPos pos, IBlockState state, int chunk_x, int chunk_z, int maxToSpawn, int minHeight, int maxHeight)
 	{
 		final int genChance = GrowthCraftMilk.getConfig().thistleGenChance;
 		for (int i = 0; i < maxToSpawn; ++i)
@@ -51,7 +51,7 @@ public class WorldGeneratorThistle implements IWorldGenerator
 			{
 				// If you can't replace the block now, it means you probably
 				// hit the floor
-				if (!canReplaceBlock(world, x, y, z, world.getBlockState(pos)))
+				if (!canReplaceBlock(world, pos, block, state, world.getBlockState(pos)))
 				{
 					// move back up and break loop
 					y += 1;
