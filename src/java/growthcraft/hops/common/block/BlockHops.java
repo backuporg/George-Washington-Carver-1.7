@@ -365,7 +365,7 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 	 ************/
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
+
 	{
 		icons = new IIcon[7];
 

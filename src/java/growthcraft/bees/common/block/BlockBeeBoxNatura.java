@@ -65,7 +65,7 @@ public class BlockBeeBoxNatura extends BlockBeeBox
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
+
 	{
 		this.icons = new IIcon[4 * EnumNaturaWoodType.VALUES.length];
 		for (EnumNaturaWoodType type : EnumNaturaWoodType.VALUES)

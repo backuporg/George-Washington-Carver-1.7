@@ -196,7 +196,7 @@ public class BlockNetherPaddy extends BlockPaddyBase
 	 ************/
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
+
 	{
 		icons = new IIcon[3];
 

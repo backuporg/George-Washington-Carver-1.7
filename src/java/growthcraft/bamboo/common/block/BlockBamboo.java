@@ -24,7 +24,7 @@ public class BlockBamboo extends GrcBlockBase
 	 ************/
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
+
 	{
 		this.blockIcon = reg.registerIcon("grcbamboo:block");
 	}

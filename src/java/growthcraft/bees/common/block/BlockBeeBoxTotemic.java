@@ -65,7 +65,7 @@ public class BlockBeeBoxTotemic extends BlockBeeBox
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
+
 	{
 		this.icons = new IIcon[4 * EnumTotemicWoodType.VALUES.length];
 		for (EnumTotemicWoodType type : EnumTotemicWoodType.VALUES)

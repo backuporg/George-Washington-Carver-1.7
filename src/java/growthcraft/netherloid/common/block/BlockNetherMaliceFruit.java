@@ -219,7 +219,7 @@ public abstract class BlockNetherMaliceFruit extends Block implements IGrowable,
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
+
 	{
 		icons = new IIcon[MaliceFruitStage.COUNT];
 

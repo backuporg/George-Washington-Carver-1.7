@@ -245,7 +245,7 @@ public class BlockBambooStalk extends GrcBlockBase
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
+
 	{
 		tex = new IIcon[5];
 

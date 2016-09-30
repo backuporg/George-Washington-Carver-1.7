@@ -208,20 +208,7 @@ public class BlockApple extends GrcBlockBase implements IGrowable, ICropDataProv
 	{
 		super.dropBlockAsItemWithChance(world, pos, state, par6, 0);
 	}
-
-	/************
-	 * TEXTURES
-	 ************/
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
-	{
-		tex = new IIcon[3];
-
-		tex[0] = reg.registerIcon("grcapples:apples_1");
-		tex[1] = reg.registerIcon("grcapples:apples_2");
-		tex[2] = reg.registerIcon("grcapples:apples_3");
-	}
+	
 
 	@Override
 	@SideOnly(Side.CLIENT)

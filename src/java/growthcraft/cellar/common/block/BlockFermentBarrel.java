@@ -119,7 +119,7 @@ public class BlockFermentBarrel extends BlockCellarContainer
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
+
 	{
 		this.icons = new IIcon[4];
 		final String basename = getTextureName();

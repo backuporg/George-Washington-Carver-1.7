@@ -56,7 +56,7 @@ public class BlockBeeBoxNether extends BlockBeeBox
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
+
 	{
 		this.icons = new IIcon[4];
 		registerBeeBoxIcons(reg, "/grcnether/malice/", 0);

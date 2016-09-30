@@ -54,7 +54,7 @@ public class BlockNetherMaliceLog extends Block
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
+
 	{
 		icons = new IIcon[2];
 		icons[0] = reg.registerIcon(getTextureName() + "_top");

@@ -214,7 +214,7 @@ public class BlockNetherSquashStem extends BlockBush implements ICropDataProvide
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
+
 	{
 		this.blockIcon = reg.registerIcon(this.getTextureName() + "_disconnected");
 		this.stemConnectedIcon = reg.registerIcon(this.getTextureName() + "_connected");

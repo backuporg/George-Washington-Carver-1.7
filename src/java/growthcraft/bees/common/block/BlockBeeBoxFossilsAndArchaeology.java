@@ -65,7 +65,7 @@ public class BlockBeeBoxFossilsAndArchaeology extends BlockBeeBox
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
+
 	{
 		this.icons = new IIcon[4 * EnumFAWoodType.VALUES.length];
 		for (EnumFAWoodType type : EnumFAWoodType.VALUES)

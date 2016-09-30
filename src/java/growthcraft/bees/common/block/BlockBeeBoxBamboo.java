@@ -56,7 +56,7 @@ public class BlockBeeBoxBamboo extends BlockBeeBox
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
+
 	{
 		icons = new IIcon[4];
 		registerBeeBoxIcons(reg, "/grcbamboo/", 0);

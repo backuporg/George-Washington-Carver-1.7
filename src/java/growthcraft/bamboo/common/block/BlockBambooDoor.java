@@ -49,7 +49,7 @@ public class BlockBambooDoor extends BlockDoor
 	 ************/
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
+
 	{
 		this.tex = new IIcon[doorIconNames.length * 2];
 

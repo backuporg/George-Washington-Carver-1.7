@@ -195,7 +195,7 @@ public class BlockFruitPress extends BlockCellarContainer
 	 ************/
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
+
 	{
 		this.icons = new IIcon[6];
 

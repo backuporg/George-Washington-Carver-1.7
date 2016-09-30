@@ -350,7 +350,7 @@ public class BlockAppleLeaves extends BlockLeaves implements IShearable, IGrowab
 	 ************/
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
+
 	{
 		this.icons = new IIcon[2];
 

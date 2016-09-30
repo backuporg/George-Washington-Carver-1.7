@@ -218,7 +218,7 @@ public class BlockFruitPresser extends BlockCellarContainer implements IWrenchab
 	 ************/
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
+
 	{
 		icons = new IIcon[4];
 

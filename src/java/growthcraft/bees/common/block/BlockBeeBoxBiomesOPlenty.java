@@ -65,7 +65,7 @@ public class BlockBeeBoxBiomesOPlenty extends BlockBeeBox
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
+
 	{
 		this.icons = new IIcon[4 * EnumBopWoodType.VALUES.length];
 		for (EnumBopWoodType type : EnumBopWoodType.VALUES)

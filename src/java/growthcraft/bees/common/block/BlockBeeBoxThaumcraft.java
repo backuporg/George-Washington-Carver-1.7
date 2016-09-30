@@ -61,7 +61,7 @@ public class BlockBeeBoxThaumcraft extends BlockBeeBox
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
+
 	{
 		this.icons = new IIcon[2 * 4];
 		registerBeeBoxIcons(reg, "/thaumcraft/greatwood/", EnumBeeBoxThaumcraft.GREATWOOD.meta);
