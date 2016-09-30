@@ -18,14 +18,4 @@ public class BlockBamboo extends GrcBlockBase
 		setCreativeTab(GrowthCraftBamboo.creativeTab);
 		setBlockName("grc.bambooBlock");
 	}
-
-	/************
-	 * TEXTURES
-	 ************/
-	@Override
-	@SideOnly(Side.CLIENT)
-
-	{
-		this.blockIcon = reg.registerIcon("grcbamboo:block");
-	}
 }
