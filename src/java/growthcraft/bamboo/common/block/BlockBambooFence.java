@@ -74,18 +74,6 @@ public class BlockBambooFence extends BlockFence
 		return false;
 	}
 
-	@SideOnly(Side.CLIENT)
-	public IIcon getIconByIndex(int index)
-	{
-		return icons[index];
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
-	{
-		return side == 1 ? icons[0] : ( side == 0 ? icons[0] : icons[1]);
-	}
 
 	/************
 	 * RENDERS

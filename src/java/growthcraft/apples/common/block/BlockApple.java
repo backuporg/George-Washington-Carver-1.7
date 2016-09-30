@@ -208,7 +208,7 @@ public class BlockApple extends GrcBlockBase implements IGrowable, ICropDataProv
 	{
 		super.dropBlockAsItemWithChance(world, pos, state, par6, 0);
 	}
-	
+
 
 	@Override
 	@SideOnly(Side.CLIENT)
