@@ -12,6 +12,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.ColorizerFoliage;
 import net.minecraft.world.IBlockAccess;
@@ -68,7 +69,7 @@ public class BlockAppleLeaves extends BlockLeaves implements IShearable, IGrowab
 	@Override
 	public boolean func_149851_a(World world, BlockPos pos, boolean isClient)
 	{
-		return world.isAirBlock(x, y - 1, z) && (world.getBlockState(x, y, z) & 3) == 0;
+		return world.isAirBlock(x, y - 1, z) && (world.getBlockState(pos) & 3) == 0;
 	}
 
 	/* SideOnly(Side.SERVER) Can this apply bonemeal effect? */
@@ -82,7 +83,7 @@ public class BlockAppleLeaves extends BlockLeaves implements IShearable, IGrowab
 	@Override
 	public void func_149853_b(World world, Random random, BlockPos pos)
 	{
-		growApple(world, random, x, y, z);
+		growApple(world, random, pos);
 	}
 
 	private void growApple(World world, Random random, BlockPos pos)
@@ -95,8 +96,8 @@ public class BlockAppleLeaves extends BlockLeaves implements IShearable, IGrowab
 
 	private void removeLeaves(World world, BlockPos pos)
 	{
-		this.dropBlockAsItem(world, x, y, z, world.getBlockState(x, y, z), 0);
-		world.setBlockToAir(x, y, z);
+		this.dropBlockAsItem(world, pos, world.getBlockState(pos), 0);
+		world.setBlockToAir(pos);
 	}
 
 	/************
@@ -107,14 +108,14 @@ public class BlockAppleLeaves extends BlockLeaves implements IShearable, IGrowab
 	{
 		if (!world.isRemote)
 		{
-			final int meta = world.getBlockState(x, y, z);
+			final int meta = world.getBlockState(pos);
 
 			if ((meta & 4) == 0)
 			{
 				// Spawn Apple
 				if (world.rand.nextInt(this.growth) == 0)
 				{
-					growApple(world, random, x, y, z);
+					growApple(world, random, pos);
 				}
 			}
 
@@ -227,9 +228,9 @@ public class BlockAppleLeaves extends BlockLeaves implements IShearable, IGrowab
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World world, BlockPos pos, Random random)
+	public void randomDisplayTick(World world, BlockPos pos, Random random, IBlockState state)
 	{
-		super.randomDisplayTick(world, x, y, z, random);
+		super.randomDisplayTick(state, world, pos, random);
 		if (world.canLightningStrikeAt(x, y + 1, z) && !World.doesBlockHaveSolidTopSurface(world, x, y - 1, z) && random.nextInt(15) == 1)
 		{
 			final double d0 = (double)((float)x + random.nextFloat());
@@ -268,9 +269,9 @@ public class BlockAppleLeaves extends BlockLeaves implements IShearable, IGrowab
 	}
 
 	@Override
-	public void harvestBlock(World world, EntityPlayer player, BlockPos pos, int par6)
+	public void harvestBlock(World world, EntityPlayer player, BlockPos pos, int par6, ItemStack stack, IBlockState state, TileEntity entity)
 	{
-		super.harvestBlock(world, player, x, y, z, par6);
+		super.harvestBlock(world, player, pos, state, entity, stack);
 	}
 
 	/************
@@ -286,7 +287,7 @@ public class BlockAppleLeaves extends BlockLeaves implements IShearable, IGrowab
 	@Override
 	public void beginLeavesDecay(World world, BlockPos pos)
 	{
-		world.setBlockState(x, y, z, world.getBlockState(x, y, z) | LeavesStage.DECAY_MASK, BlockFlags.SUPRESS_RENDER);
+		world.setBlockState(pos, world.getBlockState(pos) | LeavesStage.DECAY_MASK, BlockFlags.SUPRESS_RENDER);
 	}
 
 	@Override
@@ -345,25 +346,6 @@ public class BlockAppleLeaves extends BlockLeaves implements IShearable, IGrowab
 		}
 	}
 
-	/************
-	 * TEXTURES
-	 ************/
-	@Override
-	@SideOnly(Side.CLIENT)
-
-	{
-		this.icons = new IIcon[2];
-
-		icons[0] = reg.registerIcon("leaves_oak");
-		icons[1] = reg.registerIcon("leaves_oak_opaque");
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
-	{
-		return icons[isOpaqueCube() ? 1 : 0];
-	}
 
 	/************
 	 * RENDERS
@@ -437,7 +419,7 @@ public class BlockAppleLeaves extends BlockLeaves implements IShearable, IGrowab
 	public ArrayList<ItemStack> onSheared(ItemStack item, IBlockAccess world, BlockPos pos, int fortune)
 	{
 		final ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
-		ret.add(new ItemStack(Blocks.LEAVES, 1, world.getBlockState(x, y, z) & 3));
+		ret.add(new ItemStack(Blocks.LEAVES, 1, world.getBlockState(pos) & 3));
 		return ret;
 	}
 }
