@@ -133,7 +133,7 @@ public class BlockNetherMaliceSapling extends BlockBush implements IGrowable
 	 ************/
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
+
 	{
 		icon = reg.registerIcon("grcnetherloid:malicesapling");
 	}

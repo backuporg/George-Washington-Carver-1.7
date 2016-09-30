@@ -14,7 +14,7 @@ import java.util.List;
 public class ItemGrapes extends GrcItemFoodBase
 {
 	@SideOnly(Side.CLIENT)
-	private IIcon[] icons;
+
 
 	public ItemGrapes()
 	{

@@ -17,7 +17,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class BlockBambooFence extends BlockFence
 {
 	@SideOnly(Side.CLIENT)
-	private IIcon[] icons;
+
 
 	public BlockBambooFence()
 	{
@@ -68,38 +68,12 @@ public class BlockBambooFence extends BlockFence
 		{
 			if (block != null && block.getMaterial().isOpaque() && block.renderAsNormalBlock())
 			{
-				return block.getMaterial() != Material.gourd;
+				return block.getMaterial() != Material.GOURD;
 			}
 		}
 		return false;
 	}
 
-	/************
-	 * TEXTURES
-	 ************/
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
-	{
-		this.icons = new IIcon[3];
-
-		icons[0] = reg.registerIcon("grcbamboo:fence_top");
-		icons[1] = reg.registerIcon("grcbamboo:fence");
-		icons[2] = reg.registerIcon("grcbamboo:block");
-	}
-
-	@SideOnly(Side.CLIENT)
-	public IIcon getIconByIndex(int index)
-	{
-		return icons[index];
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
-	{
-		return side == 1 ? icons[0] : ( side == 0 ? icons[0] : icons[1]);
-	}
 
 	/************
 	 * RENDERS

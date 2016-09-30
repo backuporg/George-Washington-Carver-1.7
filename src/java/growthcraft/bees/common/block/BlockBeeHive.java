@@ -26,7 +26,7 @@ import java.util.Random;
 public class BlockBeeHive extends GrcBlockBase
 {
 	@SideOnly(Side.CLIENT)
-	private IIcon[] icons;
+
 
 	public BlockBeeHive()
 	{
@@ -96,29 +96,29 @@ public class BlockBeeHive extends GrcBlockBase
 	}
 
 	@Override
-	public void onBlockPlacedBy(World world, BlockPos pos, EntityLivingBase entity, ItemStack stack)
+	public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase entity, ItemStack stack)
 	{
-		super.onBlockPlacedBy(world, x, y, z, entity, stack);
+		super.onBlockPlacedBy(world, pos, state, entity, stack);
 		final int face = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
 
 		if (face == 0)
 		{
-			world.setBlockState(x, y, z, 2, BlockFlags.SYNC);
+			world.setBlockState(pos, state, BlockFlags.SYNC);
 		}
 
 		if (face == 1)
 		{
-			world.setBlockState(x, y, z, 5, BlockFlags.SYNC);
+			world.setBlockState(pos, state, BlockFlags.SYNC);
 		}
 
 		if (face == 2)
 		{
-			world.setBlockState(x, y, z, 3, BlockFlags.SYNC);
+			world.setBlockState(pos, state, BlockFlags.SYNC);
 		}
 
 		if (face == 3)
 		{
-			world.setBlockState(x, y, z, 4, BlockFlags.SYNC);
+			world.setBlockState(pos, state, BlockFlags.SYNC);
 		}
 	}
 
@@ -127,16 +127,16 @@ public class BlockBeeHive extends GrcBlockBase
 	 ************/
 	public boolean canPlaceBlockAt(World world, BlockPos pos)
 	{
-		return super.canPlaceBlockAt(world, x, y, z) && canBlockStay(world, x, y, z);
+		return super.canPlaceBlockAt(world, pos) && canBlockStay(world, pos);
 	}
 
 	public void onNeighborBlockChange(World world, BlockPos pos, Block par5)
 	{
-		super.onNeighborBlockChange(world, x, y, z, par5);
-		if (!this.canBlockStay(world, x, y, z))
+		super.onNeighborBlockChange(world, pos, par5);
+		if (!this.canBlockStay(world, pos))
 		{
-			dropBlockAsItem(world, x, y, z, world.getBlockState(x, y, z), 0);
-			world.setBlockToAir(x, y, z);
+			dropBlockAsItem(world, pos, world.getBlockState(pos), 0);
+			world.setBlockToAir(pos);
 		}
 	}
 
@@ -174,9 +174,9 @@ public class BlockBeeHive extends GrcBlockBase
 	}
 
 	@Override
-	public void dropBlockAsItemWithChance(World world, BlockPos pos, int par5, float par6, int par7)
+	public void dropBlockAsItemWithChance(World world, BlockPos pos, IBlockState state, int par5, float par6, int par7)
 	{
-		super.dropBlockAsItemWithChance(world, x, y, z, par5, par6, 0);
+		super.dropBlockAsItemWithChance(world, pos, state, par5, par6, 0);
 		if (!world.isRemote)
 		{
 			final int max = world.rand.nextInt(8);
@@ -186,11 +186,11 @@ public class BlockBeeHive extends GrcBlockBase
 				{
 					if (world.rand.nextInt(2) == 0)
 					{
-						dropBlockAsItem(world, x, y, z, GrowthCraftBees.items.honeyCombEmpty.asStack());
+						dropBlockAsItem(world, pos, GrowthCraftBees.items.honeyCombEmpty.asStack());
 					}
 					else
 					{
-						dropBlockAsItem(world, x, y, z, GrowthCraftBees.items.honeyCombFilled.asStack());
+						dropBlockAsItem(world, pos, GrowthCraftBees.items.honeyCombFilled.asStack());
 					}
 				}
 			}
@@ -202,7 +202,7 @@ public class BlockBeeHive extends GrcBlockBase
 	 ************/
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
+
 	{
 		this.icons = new IIcon[2];
 
@@ -261,13 +261,13 @@ public class BlockBeeHive extends GrcBlockBase
 	{
 		final float f = 0.0625F;
 		this.getBoundingBox(4*f, 0.0F, 4*f, 12*f, 14*f, 12*f);
-		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
+		super.getCollisionBoundingBox(world, pos, axis, list, entity);
 		this.getBoundingBox(3*f, 1*f, 3*f, 13*f, 13*f, 13*f);
-		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
+		super.getCollisionBoundingBox(world, pos, axis, list, entity);
 		this.getBoundingBox(2*f, 4*f, 2*f, 14*f, 10*f, 14*f);
-		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
+		super.getCollisionBoundingBox(world, pos, axis, list, entity);
 		this.getBoundingBox(7*f, 14*f, 7*f, 9*f, 1.0F, 9*f);
-		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
+		super.getCollisionBoundingBox(world, pos, axis, list, entity);
 		this.setBlockBoundsForItemRender();
 	}
 }

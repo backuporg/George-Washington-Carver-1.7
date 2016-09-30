@@ -86,7 +86,7 @@ public class BlockNetherPaddy extends BlockPaddyBase
 		super.randomDisplayTick(world, x, y, z, random);
 		if (filledPaddy)
 		{
-			if (world.getBlockState(x, y + 1, z).getMaterial() == Material.air && !world.getBlockState(x, y + 1, z).isOpaqueCube())
+			if (world.getBlockState(x, y + 1, z).getMaterial() == Material.AIR && !world.getBlockState(x, y + 1, z).isOpaqueCube())
 			{
 				if (random.nextInt(100) == 0)
 				{
@@ -196,7 +196,7 @@ public class BlockNetherPaddy extends BlockPaddyBase
 	 ************/
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
+
 	{
 		icons = new IIcon[3];
 

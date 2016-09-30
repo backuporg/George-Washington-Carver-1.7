@@ -194,7 +194,7 @@ public class BlockNetherPepper extends BlockBush implements ICropDataProvider, I
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
+
 	{
 		this.icons = new IIcon[PepperStages.COUNT];
 

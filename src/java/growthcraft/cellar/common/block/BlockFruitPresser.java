@@ -24,7 +24,7 @@ import java.util.Random;
 public class BlockFruitPresser extends BlockCellarContainer implements IWrenchable, IRotatableBlock
 {
 	@SideOnly(Side.CLIENT)
-	private IIcon[] icons;
+
 
 	public BlockFruitPresser()
 	{
@@ -72,7 +72,7 @@ public class BlockFruitPresser extends BlockCellarContainer implements IWrenchab
 	@Override
 	public boolean rotateBlock(World world, BlockPos pos, EnumFacing side)
 	{
-		if (isRotatable(world, x, y, z, side))
+		if (isRotatable(world, pos, side))
 		{
 			final Block below = world.getBlockState(x, y - 1, z);
 			return below.rotateBlock(world, x, y - 1, z, side);
@@ -218,7 +218,7 @@ public class BlockFruitPresser extends BlockCellarContainer implements IWrenchab
 	 ************/
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
+
 	{
 		icons = new IIcon[4];
 

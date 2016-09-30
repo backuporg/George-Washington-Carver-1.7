@@ -142,7 +142,7 @@ public abstract class WorldGenAppleTree extends WorldGenerator
 
 	protected boolean func_150523_a(Block block)
 	{
-		return block.getMaterial() == Material.air ||
+		return block.getMaterial() == Material.AIR ||
 			block.getMaterial() == Material.LEAVES ||
 			block == Blocks.GRASS ||
 			block == Blocks.DIRT ||

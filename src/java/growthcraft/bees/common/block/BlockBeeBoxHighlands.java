@@ -65,7 +65,7 @@ public class BlockBeeBoxHighlands extends BlockBeeBox
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
+
 	{
 		this.icons = new IIcon[4 * EnumHIGHLANDSWoodType.VALUES.length];
 		for (EnumHIGHLANDSWoodType type : EnumHIGHLANDSWoodType.VALUES)

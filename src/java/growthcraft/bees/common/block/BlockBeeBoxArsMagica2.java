@@ -65,7 +65,7 @@ public class BlockBeeBoxArsMagica2 extends BlockBeeBox
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
+
 	{
 		this.icons = new IIcon[4 * EnumAM2WoodType.VALUES.length];
 		for (EnumAM2WoodType type : EnumAM2WoodType.VALUES)

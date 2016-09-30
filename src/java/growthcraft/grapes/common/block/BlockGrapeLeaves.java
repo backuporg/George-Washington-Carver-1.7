@@ -10,6 +10,7 @@ import growthcraft.grapes.util.GrapeBlockCheck;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -28,7 +29,7 @@ import java.util.Random;
 public class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 {
 	@SideOnly(Side.CLIENT)
-	private IIcon[] icons;
+
 
 	private final int grapeLeavesGrowthRate = GrowthCraftGrapes.getConfig().grapeLeavesGrowthRate;
 	private final int grapeSpawnRate = GrowthCraftGrapes.getConfig().grapeSpawnRate;
@@ -46,9 +47,9 @@ public class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 		setCreativeTab(null);
 	}
 
-	private boolean isTrunk(World world, BlockPos pos)
+	private boolean isTrunk(World world, BlockPos pos, IBlockState state)
 	{
-		return GrapeBlockCheck.isGrapeVineTrunk(world.getBlockState(x, y, z));
+		return GrapeBlockCheck.isGrapeVineTrunk(world.getBlockState());
 	}
 
 	public boolean isSupportedByTrunk(World world, BlockPos pos)
@@ -268,7 +269,7 @@ public class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 	 ************/
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
+
 	{
 		this.icons = new IIcon[4];
 

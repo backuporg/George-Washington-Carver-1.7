@@ -3,6 +3,7 @@ package growthcraft.cellar.common.inventory.slot;
 import growthcraft.core.common.inventory.slot.SlotInput;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
 
 public class SlotInputFermenting extends SlotInput
 {

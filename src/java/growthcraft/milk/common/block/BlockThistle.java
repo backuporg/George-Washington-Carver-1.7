@@ -60,7 +60,7 @@ public abstract class BlockThistle extends BlockBush implements ISpreadablePlant
 	private FlowerSpread spreadLogic;
 
 	@SideOnly(Side.CLIENT)
-	private IIcon[] icons;
+
 
 	public BlockThistle()
 	{
@@ -194,7 +194,7 @@ public abstract class BlockThistle extends BlockBush implements ISpreadablePlant
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
+
 	{
 		this.icons = new IIcon[4];
 

@@ -24,7 +24,7 @@ import java.util.Random;
 public class BlockFenceRope extends GrcBlockBase implements IBlockRope
 {
 	@SideOnly(Side.CLIENT)
-	private IIcon[] icons;
+
 
 	private BlockKey fenceBlockKey;
 
@@ -214,7 +214,7 @@ public class BlockFenceRope extends GrcBlockBase implements IBlockRope
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
+
 	{
 		this.icons = new IIcon[2];
 

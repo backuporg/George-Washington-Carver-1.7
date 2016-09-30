@@ -17,7 +17,7 @@ import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public abstract class ItemAppleSeeds extends GrcItemBase implements IPlantable
+public class ItemAppleSeeds extends GrcItemBase implements IPlantable
 {
 	private Block cropBlock;
 

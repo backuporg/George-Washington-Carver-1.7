@@ -57,7 +57,7 @@ public class BlockNetherSquash extends BlockDirectional
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
+
 	{
 		icons = new IIcon[3];
 

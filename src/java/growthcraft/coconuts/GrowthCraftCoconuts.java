@@ -1,6 +1,7 @@
 package growthcraft.coconuts;
 
-import growthcraft.coconuts.creativetab.CreativeTabsGrowthcraftCoconuts;
+import growthcraft.coconuts.creativetab.*;
+import growthcraft.core.creativetab.CreativeTabsGrowthcraftCoconuts;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;

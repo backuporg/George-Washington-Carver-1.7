@@ -23,7 +23,7 @@ public class BlockGrapeVine1 extends BlockGrapeVineBase
 	public boolean graphicFlag;
 
 	@SideOnly(Side.CLIENT)
-	private IIcon[] icons;
+
 
 	public BlockGrapeVine1()
 	{
@@ -103,7 +103,7 @@ public class BlockGrapeVine1 extends BlockGrapeVineBase
 	 ************/
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
+
 	{
 		this.icons = new IIcon[3];
 

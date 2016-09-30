@@ -52,7 +52,7 @@ public abstract class BlockNetherMaliceLeaves extends BlockLeaves implements ISh
 	}
 
 	@SideOnly(Side.CLIENT)
-	private IIcon[] icons;
+
 
 	private int[] adjacentTreeBlocks;
 	private final int growth = netherloid.getConfig().maliceLeavesGrowthRate;
@@ -342,7 +342,7 @@ public abstract class BlockNetherMaliceLeaves extends BlockLeaves implements ISh
 	 ************/
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
+
 	{
 		icons = new IIcon[2];
 

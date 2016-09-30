@@ -57,7 +57,7 @@ public abstract class BlockNetherMaliceFruit extends Block implements IGrowable,
 	}
 
 	@SideOnly(Side.CLIENT)
-	private IIcon[] icons;
+
 
 	private final int growth = netherloid.getConfig().maliceFruitGrowthRate;
 	private final boolean dropRipeMaliceFruit = netherloid.getConfig().dropRipeMaliceFruit;
@@ -219,7 +219,7 @@ public abstract class BlockNetherMaliceFruit extends Block implements IGrowable,
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
+
 	{
 		icons = new IIcon[MaliceFruitStage.COUNT];
 

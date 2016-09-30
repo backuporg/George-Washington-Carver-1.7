@@ -4,6 +4,7 @@ import growthcraft.api.bees.BeesRegistry;
 import growthcraft.core.common.inventory.slot.SlotInput;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
 
 public class SlotHoneyComb extends SlotInput
 {
@@ -11,7 +12,7 @@ public class SlotHoneyComb extends SlotInput
 
 	public SlotHoneyComb(ContainerBeeBox cont, IInventory inv, BlockPos pos)
 	{
-		super(inv, x, y, z);
+		super(inv, pos.getX(), pos.getY(), pos.getZ());
 		this.container = cont;
 	}
 

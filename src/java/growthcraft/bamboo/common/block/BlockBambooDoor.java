@@ -44,29 +44,6 @@ public class BlockBambooDoor extends BlockDoor
 		return (meta & 8) != 0 ? null : GrowthCraftBamboo.items.bambooDoorItem.getItem();
 	}
 
-	/************
-	 * TEXTURES
-	 ************/
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
-	{
-		this.tex = new IIcon[doorIconNames.length * 2];
-
-		for (int i = 0; i < doorIconNames.length; ++i)
-		{
-			this.tex[i] = reg.registerIcon(doorIconNames[i]);
-			this.tex[i + doorIconNames.length] = new IconFlipped(this.tex[i], true, false);
-		}
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int par1, int par2)
-	{
-		return this.tex[0];
-	}
-
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(IBlockAccess world, BlockPos pos, IBlockState state, int side)

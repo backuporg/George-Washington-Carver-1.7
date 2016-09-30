@@ -55,7 +55,7 @@ import java.util.Random;
 public abstract class BlockFishTrap extends GrcBlockContainer
 {
 	@SideOnly(Side.CLIENT)
-	private IIcon[] icons;
+
 
 	private final float chance = GrowthCraftFishTrap.getConfig().fishTrapCatchRate;
 	private Random rand = new Random();
@@ -227,7 +227,7 @@ public abstract class BlockFishTrap extends GrcBlockContainer
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
+
 	{
 		this.icons = new IIcon[1];
 

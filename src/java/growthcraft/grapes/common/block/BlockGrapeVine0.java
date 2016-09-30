@@ -19,7 +19,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class BlockGrapeVine0 extends BlockGrapeVineBase
 {
 	@SideOnly(Side.CLIENT)
-	private IIcon[] icons;
+
 
 	public BlockGrapeVine0()
 	{
@@ -69,7 +69,7 @@ public class BlockGrapeVine0 extends BlockGrapeVineBase
 	 ************/
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
+
 	{
 		this.icons = new IIcon[2];
 

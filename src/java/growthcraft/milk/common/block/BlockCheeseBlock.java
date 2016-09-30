@@ -196,7 +196,7 @@ public class BlockCheeseBlock extends GrcBlockContainer
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
+
 	{
 		this.iconMap = new HashMap<EnumCheeseType, Map<EnumCheeseStage, IIcon[]>>();
 		for (EnumCheeseType type : EnumCheeseType.VALUES)

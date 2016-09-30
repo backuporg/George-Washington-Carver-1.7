@@ -31,7 +31,7 @@ public class BlockBambooFenceGate extends BlockFenceGate
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
+
 	{
 	}
 }

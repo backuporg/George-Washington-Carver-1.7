@@ -65,7 +65,7 @@ public class BlockBeeBoxExtraBiomesXL extends BlockBeeBox
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
+
 	{
 		this.icons = new IIcon[4 * EnumEBXLWoodType.VALUES.length];
 		for (EnumEBXLWoodType type : EnumEBXLWoodType.VALUES)

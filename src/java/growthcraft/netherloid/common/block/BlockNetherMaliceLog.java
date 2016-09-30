@@ -34,7 +34,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class BlockNetherMaliceLog extends Block
 {
 	@SideOnly(Side.CLIENT)
-	private IIcon[] icons;
+
 
 	public BlockNetherMaliceLog()
 	{
@@ -54,7 +54,7 @@ public class BlockNetherMaliceLog extends Block
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
+
 	{
 		icons = new IIcon[2];
 		icons[0] = reg.registerIcon(getTextureName() + "_top");

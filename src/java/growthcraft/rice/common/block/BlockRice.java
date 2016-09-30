@@ -51,7 +51,7 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 	}
 
 	@SideOnly(Side.CLIENT)
-	private IIcon[] icons;
+
 
 	private final float growth = GrowthCraftRice.getConfig().riceGrowthRate;
 
@@ -288,7 +288,7 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 	 ************/
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
+
 	{
 		icons = new IIcon[5];
 
