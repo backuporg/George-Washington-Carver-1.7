@@ -37,7 +37,7 @@ import java.util.List;
 public class ItemButter extends GrcItemFoodBase
 {
 	@SideOnly(Side.CLIENT)
-	private IIcon[] icons;
+
 
 	public ItemButter()
 	{

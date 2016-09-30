@@ -52,7 +52,7 @@ public abstract class BlockNetherMaliceLeaves extends BlockLeaves implements ISh
 	}
 
 	@SideOnly(Side.CLIENT)
-	private IIcon[] icons;
+
 
 	private int[] adjacentTreeBlocks;
 	private final int growth = netherloid.getConfig().maliceLeavesGrowthRate;

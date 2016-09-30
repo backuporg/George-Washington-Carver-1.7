@@ -23,7 +23,7 @@ import java.util.Random;
 public class BlockFruitPress extends BlockCellarContainer
 {
 	@SideOnly(Side.CLIENT)
-	private IIcon[] icons;
+
 
 	public BlockFruitPress()
 	{

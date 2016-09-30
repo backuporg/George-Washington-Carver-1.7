@@ -50,7 +50,7 @@ public class ItemCrowbar extends GrcItemBase implements IToolWrench
 	private final Set<Class<? extends Block>> shiftRotations = new HashSet<Class<? extends Block>>();
 
 	@SideOnly(Side.CLIENT)
-	private IIcon[] icons;
+
 
 	public ItemCrowbar()
 	{
@@ -77,12 +77,12 @@ public class ItemCrowbar extends GrcItemBase implements IToolWrench
 	}
 
 	@Override
-	public boolean onItemUseFirst(ItemStack stack, EntityPlayer player, World world, BlockPos pos, int side, float hitX, float hitY, float hitZ)
+	public boolean onItemUseFirst(ItemStack stack, EntityPlayer player, World world, BlockPos pos, Block block1, int side, float hitX, float hitY, float hitZ)
 	{
-		final Block block = world.getBlockState(x, y, z);
+		final Block block = world.getBlockState(block1);
 		if (block == null) return false;
 		if (player.isSneaking() != isShiftRotation(block.getClass())) return false;
-		if (block.rotateBlock(world, x, y, z, EnumFacing.getOrientation(side)))
+		if (block.rotateBlock(world, pos, EnumFacing.getOrientation(side)))
 		{
 			player.swingItem();
 			return !world.isRemote;

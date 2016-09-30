@@ -24,7 +24,7 @@ import java.util.Random;
 public class BlockBambooLeaves extends BlockLeaves implements IShearable
 {
 	@SideOnly(Side.CLIENT)
-	private IIcon[] icons;
+
 
 	private int[] adjacentTreeBlocks;
 

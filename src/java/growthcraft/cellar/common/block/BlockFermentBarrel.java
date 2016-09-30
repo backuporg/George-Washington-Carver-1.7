@@ -25,7 +25,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class BlockFermentBarrel extends BlockCellarContainer
 {
 	@SideOnly(Side.CLIENT)
-	private IIcon[] icons;
+
 
 	public BlockFermentBarrel()
 	{

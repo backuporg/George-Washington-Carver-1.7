@@ -49,7 +49,7 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 	public static Boolean graphicFlag;
 
 	@SideOnly(Side.CLIENT)
-	private IIcon[] icons;
+
 
 	private final float hopVineGrowthRate = GrowthCraftHops.getConfig().hopVineGrowthRate;
 	private final float hopVineFlowerSpawnRate = GrowthCraftHops.getConfig().hopVineFlowerSpawnRate;

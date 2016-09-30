@@ -22,7 +22,7 @@ import java.util.Random;
 public class BlockBambooScaffold extends GrcBlockBase
 {
 	@SideOnly(Side.CLIENT)
-	private IIcon[] icons;
+
 
 	public BlockBambooScaffold()
 	{

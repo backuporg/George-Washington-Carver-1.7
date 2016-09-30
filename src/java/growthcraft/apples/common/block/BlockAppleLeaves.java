@@ -48,7 +48,7 @@ public class BlockAppleLeaves extends BlockLeaves implements IShearable, IGrowab
 	}
 
 	@SideOnly(Side.CLIENT)
-	private IIcon[] icons;
+
 
 	private final int growth = GrowthCraftApples.getConfig().appleLeavesGrowthRate;
 	private int[] adjacentTreeBlocks;

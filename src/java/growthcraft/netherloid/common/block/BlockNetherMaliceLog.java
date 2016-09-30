@@ -34,7 +34,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class BlockNetherMaliceLog extends Block
 {
 	@SideOnly(Side.CLIENT)
-	private IIcon[] icons;
+
 
 	public BlockNetherMaliceLog()
 	{

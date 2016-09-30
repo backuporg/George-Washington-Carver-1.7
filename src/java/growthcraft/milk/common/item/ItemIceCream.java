@@ -37,7 +37,7 @@ import java.util.List;
 public class ItemIceCream extends GrcItemFoodBase
 {
 	@SideOnly(Side.CLIENT)
-	private IIcon[] icons;
+
 
 	public ItemIceCream()
 	{

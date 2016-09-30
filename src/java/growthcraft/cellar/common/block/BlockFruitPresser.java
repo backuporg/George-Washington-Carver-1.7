@@ -24,7 +24,7 @@ import java.util.Random;
 public class BlockFruitPresser extends BlockCellarContainer implements IWrenchable, IRotatableBlock
 {
 	@SideOnly(Side.CLIENT)
-	private IIcon[] icons;
+
 
 	public BlockFruitPresser()
 	{

@@ -23,7 +23,7 @@ public class BlockGrapeVine1 extends BlockGrapeVineBase
 	public boolean graphicFlag;
 
 	@SideOnly(Side.CLIENT)
-	private IIcon[] icons;
+
 
 	public BlockGrapeVine1()
 	{

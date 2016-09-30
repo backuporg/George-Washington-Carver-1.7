@@ -29,7 +29,7 @@ import java.util.Random;
 public class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 {
 	@SideOnly(Side.CLIENT)
-	private IIcon[] icons;
+
 
 	private final int grapeLeavesGrowthRate = GrowthCraftGrapes.getConfig().grapeLeavesGrowthRate;
 	private final int grapeSpawnRate = GrowthCraftGrapes.getConfig().grapeSpawnRate;

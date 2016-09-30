@@ -17,7 +17,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class BlockBambooFence extends BlockFence
 {
 	@SideOnly(Side.CLIENT)
-	private IIcon[] icons;
+
 
 	public BlockBambooFence()
 	{

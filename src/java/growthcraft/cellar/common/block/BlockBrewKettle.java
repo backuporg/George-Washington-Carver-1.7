@@ -28,7 +28,7 @@ import java.util.Random;
 public class BlockBrewKettle extends BlockCellarContainer
 {
 	@SideOnly(Side.CLIENT)
-	private IIcon[] icons;
+
 
 	private final BBox kettleContentsBB = BBox.newCube(2, 4, 2, 12, 10, 12).scale(1f / 16f);
 	private final boolean dropItemsInBrewKettle = GrowthCraftCellar.getConfig().dropItemsInBrewKettle;

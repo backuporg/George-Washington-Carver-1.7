@@ -26,7 +26,7 @@ import java.util.Random;
 public class BlockBeeHive extends GrcBlockBase
 {
 	@SideOnly(Side.CLIENT)
-	private IIcon[] icons;
+
 
 	public BlockBeeHive()
 	{

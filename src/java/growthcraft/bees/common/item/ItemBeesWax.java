@@ -37,7 +37,7 @@ import java.util.List;
 public class ItemBeesWax extends GrcItemBase
 {
 	@SideOnly(Side.CLIENT)
-	private IIcon[] icons;
+
 
 	public ItemBeesWax()
 	{

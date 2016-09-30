@@ -19,7 +19,7 @@ import java.util.Random;
 public class BlockRope extends GrcBlockBase implements IBlockRope
 {
 	@SideOnly(Side.CLIENT)
-	private IIcon[] icons;
+
 
 	public BlockRope()
 	{
