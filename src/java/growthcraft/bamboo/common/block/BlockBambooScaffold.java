@@ -115,14 +115,14 @@ public class BlockBambooScaffold extends GrcBlockBase
 	@Override
 	public boolean canPlaceBlockAt(World world, BlockPos pos)
 	{
-		return canBlockStay(world, x, y, z);
+		return canBlockStay(world, pos);
 	}
 
 	@Override
 	public boolean canBlockStay(World world, BlockPos pos)
 	{
 		if (world.getBlockState(x, y -1 , z).isSideSolid(world, x, y - 1, z, EnumFacing.UP)) return true;
-		if (checkSides(world, x, y, z)) return true;
+		if (checkSides(world, pos)) return true;
 
 		return false;
 	}
@@ -162,26 +162,6 @@ public class BlockBambooScaffold extends GrcBlockBase
 	/************
 	 * TEXTURES
 	 ************/
-	@Override
-	@SideOnly(Side.CLIENT)
-
-	{
-		this.icons = new IIcon[2];
-
-		icons[0] = reg.registerIcon("grcbamboo:block");
-		icons[1] = reg.registerIcon("grcbamboo:scaffold");
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
-	{
-		if (side == 1)
-		{
-			return icons[0];
-		}
-		return icons[1];
-	}
 
 	/************
 	 * RENDER

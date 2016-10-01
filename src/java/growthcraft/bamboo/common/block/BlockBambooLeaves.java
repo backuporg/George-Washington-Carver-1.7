@@ -209,7 +209,7 @@ public class BlockBambooLeaves extends BlockLeaves implements IShearable
 	@Override
 	public void beginLeavesDecay(World world, BlockPos pos)
 	{
-		world.setBlockState(x, y, z, world.getBlockState(x, y, z) | 8, BlockFlags.SUPRESS_RENDER);
+		world.setBlockState(pos, world.getBlockState(pos) | 8, BlockFlags.SUPRESS_RENDER);
 	}
 
 	@Override
@@ -248,22 +248,6 @@ public class BlockBambooLeaves extends BlockLeaves implements IShearable
 	/************
 	 * TEXTURES
 	 ************/
-	@Override
-	@SideOnly(Side.CLIENT)
-
-	{
-		this.icons = new IIcon[2];
-
-		icons[0] = reg.registerIcon("grcbamboo:leaves");
-		icons[1] = reg.registerIcon("grcbamboo:leaves_opaque");
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
-	{
-		return icons[isOpaqueCube() ? 1 : 0];
-	}
 
 	/************
 	 * RENDERS
@@ -333,7 +317,7 @@ public class BlockBambooLeaves extends BlockLeaves implements IShearable
 	public ArrayList<ItemStack> onSheared(ItemStack item, IBlockAccess world, BlockPos pos, int fortune)
 	{
 		final ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
-		ret.add(new ItemStack(Blocks.LEAVES, 1, world.getBlockState(x, y, z) & 3));
+		ret.add(new ItemStack(Blocks.LEAVES, 1, world.getBlockState(pos) & 3));
 		return ret;
 	}
 }
