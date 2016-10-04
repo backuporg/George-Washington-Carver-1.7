@@ -239,252 +239,250 @@ public class BlockBambooWall extends GrcBlockBase
 
 	@Override
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void getCollisionBoundingBox(World world, BlockPos pos, AxisAlignedBB axis, List list, Entity entity)
-	{
-		int tm;
+	//public void getCollisionBoundingBox(World world, BlockPos pos, AxisAlignedBB axis, List list, Entity entity)
+	//{
+	//	int tm;
+//
+	//	final Block idXneg = world.getBlockState(x - 1, y, z);
+	//	final Block idXpos = world.getBlockState(x + 1, y, z);
+	//	final Block idZneg = world.getBlockState(x, y, z - 1);
+	//	final Block idZpos = world.getBlockState(x, y, z + 1);
+//
+	//	int metaXneg = world.getBlockState(x - 1, y, z);
+	//	int metaXpos = world.getBlockState(x + 1, y, z);
+	//	int metaZneg = world.getBlockState(x, y, z - 1);
+	//	int metaZpos = world.getBlockState(x, y, z + 1);
+//
+	//	final boolean flagXneg = this.canConnectWallTo(world, x - 1, y, z) || (idXneg instanceof BlockStairs && (metaXneg & 3) == 0);
+	//	final boolean flagXpos = this.canConnectWallTo(world, x + 1, y, z) || (idXpos instanceof BlockStairs && (metaXpos & 3) == 1);
+	//	final boolean flagZneg = this.canConnectWallTo(world, x, y, z - 1) || (idZneg instanceof BlockStairs && (metaZneg & 3) == 2);
+	//	final boolean flagZpos = this.canConnectWallTo(world, x, y, z + 1) || (idZpos instanceof BlockStairs && (metaZpos & 3) == 3);
+//
+	//	float x1 = 0.375F;
+	//	float x2 = 0.625F;
+	//	float z1 = 0.375F;
+	//	float z2 = 0.625F;
 
-		final Block idXneg = world.getBlockState(x - 1, y, z);
-		final Block idXpos = world.getBlockState(x + 1, y, z);
-		final Block idZneg = world.getBlockState(x, y, z - 1);
-		final Block idZpos = world.getBlockState(x, y, z + 1);
+	//	this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
+	//	super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 
-		int metaXneg = world.getBlockState(x - 1, y, z);
-		int metaXpos = world.getBlockState(x + 1, y, z);
-		int metaZneg = world.getBlockState(x, y, z - 1);
-		int metaZpos = world.getBlockState(x, y, z + 1);
+	//	//XNEG
+		//if (flagXneg)
+		//{
+		//	x1 = 0.0F;
+		//	x2 = 0.375F;
+		//	z1 = 0.375F;
+		//	z2 = 0.625F;
 
-		final boolean flagXneg = this.canConnectWallTo(world, x - 1, y, z) || (idXneg instanceof BlockStairs && (metaXneg & 3) == 0);
-		final boolean flagXpos = this.canConnectWallTo(world, x + 1, y, z) || (idXpos instanceof BlockStairs && (metaXpos & 3) == 1);
-		final boolean flagZneg = this.canConnectWallTo(world, x, y, z - 1) || (idZneg instanceof BlockStairs && (metaZneg & 3) == 2);
-		final boolean flagZpos = this.canConnectWallTo(world, x, y, z + 1) || (idZpos instanceof BlockStairs && (metaZpos & 3) == 3);
+		//	this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
+		//	super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
+		//}
+		//else if (idXneg instanceof BlockDoor)
+		//{
+			//if ((metaXneg & 8) > 7)
+		//	{
+			//	metaXneg = world.getBlockState(x - 1, y - 1, z);
+			//}
 
-		float x1 = 0.375F;
-		float x2 = 0.625F;
-		float z1 = 0.375F;
-		float z2 = 0.625F;
+			//tm = metaXneg & 3;
 
-		this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
-		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
+			//if (tm == 1 || tm == 3)
+			//{
+			//	x1 = 0.0F;
+			//	x2 = 0.375F;
+			//	z1 = 0.375F;
+			//	z2 = 0.625F;
 
-		//XNEG
-		if (flagXneg)
-		{
-			x1 = 0.0F;
-			x2 = 0.375F;
-			z1 = 0.375F;
-			z2 = 0.625F;
+			//	this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
+			//	super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 
-			this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
-			super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
-		}
-		else if (idXneg instanceof BlockDoor)
-		{
-			if ((metaXneg & 8) > 7)
-			{
-				metaXneg = world.getBlockState(x - 1, y - 1, z);
-			}
+			//	if (tm == 1)
+			//	{
 
-			tm = metaXneg & 3;
+				//	x1 = 0.0F;
+				//	x2 = 0.25F;
+				//	z1 = 0.0F;
+				//	z2 = 0.375F;
 
-			if (tm == 1 || tm == 3)
-			{
-				x1 = 0.0F;
-				x2 = 0.375F;
-				z1 = 0.375F;
-				z2 = 0.625F;
+				//	this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
+				//	super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
+				//}
 
-				this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
-				super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
+				//if (tm == 3)
+				//{
 
-				if (tm == 1)
-				{
+					//x1 = 0.0F;
+					//x2 = 0.25F;
+					//z1 = 0.625F;
+					//z2 = 1.0F;
 
-					x1 = 0.0F;
-					x2 = 0.25F;
-					z1 = 0.0F;
-					z2 = 0.375F;
-
-					this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
-					super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
-				}
-
-				if (tm == 3)
-				{
-
-					x1 = 0.0F;
-					x2 = 0.25F;
-					z1 = 0.625F;
-					z2 = 1.0F;
-
-					this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
-					super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
-				}
-			}
-		}
+					//this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
+					//super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
+				//}
+			//}
+		//}
 
 		//XPOS
-		if (flagXpos)
-		{
-			x1 = 0.625F;
-			x2 = 1.0F;
-			z1 = 0.375F;
-			z2 = 0.625F;
+		//if (flagXpos)
+		//{
+			//x1 = 0.625F;
+			//x2 = 1.0F;
+			//z1 = 0.375F;
+			//z2 = 0.625F;
 
-			this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
-			super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
-		}
-		else if (idXpos instanceof BlockDoor)
-		{
-			if ((metaXpos & 8) > 7)
-			{
-				metaXpos = world.getBlockState(x + 1, y - 1, z);
-			}
+			//this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
+			//super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
+		//}
+		//else if (idXpos instanceof BlockDoor)
+		//{
+			//if ((metaXpos & 8) > 7)
+			//{
+			//	metaXpos = world.getBlockState(x + 1, y - 1, z);
+			//}
 
-			tm = metaXpos & 3;
+			//tm = metaXpos & 3;
 
-			if (tm == 1 || tm == 3)
-			{
-				x1 = 0.625F;
-				x2 = 1.0F;
-				z1 = 0.375F;
-				z2 = 0.625F;
+			//if (tm == 1 || tm == 3)
+			//{
+				//x1 = 0.625F;
+				//x2 = 1.0F;
+				//z1 = 0.375F;
+				//z2 = 0.625F;
 
-				this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
-				super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
+				//this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
+				//super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 
-				if (tm == 1)
-				{
-					x1 = 0.75F;
-					x2 = 1.0F;
-					z1 = 0.0F;
-					z2 = 0.375F;
+				//if (tm == 1)
+				//{
+				//	x1 = 0.75F;
+				//	x2 = 1.0F;
+				//	z1 = 0.0F;
+				//	z2 = 0.375F;
 
-					this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
-					super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
-				}
+				//	this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
+				//	super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
+				//}
 
-				if (tm == 3)
-				{
-					x1 = 0.75F;
-					x2 = 1.0F;
-					z1 = 0.625F;
-					z2 = 1.0F;
+				//if (tm == 3)
+				//{
+				//	x1 = 0.75F;
+				//	x2 = 1.0F;
+				//	z1 = 0.625F;
+				//	z2 = 1.0F;
 
-					this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
-					super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
-				}
-			}
-		}
+				//	this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
+				//	super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
+				//}
+			//}
+		//}
 
 		//ZNEG
-		if (flagZneg)
-		{
+		//if (flagZneg)
+		//{
+//
+		//	x1 = 0.375F;
+		//	x2 = 0.625F;
+		//	z1 = 0.0F;
+		//	z2 = 0.375F;
 
-			x1 = 0.375F;
-			x2 = 0.625F;
-			z1 = 0.0F;
-			z2 = 0.375F;
+		//	this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
+		//	super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
+		//}
+		//else if (idZneg instanceof BlockDoor)
+		//{
+		//	if ((metaZneg & 8) > 7)
+		//	{
+		//		metaZneg = world.getBlockState(x, y - 1, z - 1);
+		//	}
 
-			this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
-			super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
-		}
-		else if (idZneg instanceof BlockDoor)
-		{
-			if ((metaZneg & 8) > 7)
-			{
-				metaZneg = world.getBlockState(x, y - 1, z - 1);
-			}
+		//	tm = metaZneg & 3;
 
-			tm = metaZneg & 3;
+		//	if (tm == 0 || tm == 2)
+		//	{
+			//	x1 = 0.375F;
+			//	x2 = 0.625F;
+			//	z1 = 0.0F;
+			//	z2 = 0.375F;
 
-			if (tm == 0 || tm == 2)
-			{
-				x1 = 0.375F;
-				x2 = 0.625F;
-				z1 = 0.0F;
-				z2 = 0.375F;
+			//	this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
+			//	super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
 
-				this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
-				super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
+				//if (tm == 0)
+				//{
+				//	x1 = 0.0F;
+				//	x2 = 0.375F;
+				//	z1 = 0.0F;
+				//	z2 = 0.25F;
+//
+				//	this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
+				//	super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
+				//}
 
-				if (tm == 0)
-				{
-					x1 = 0.0F;
-					x2 = 0.375F;
-					z1 = 0.0F;
-					z2 = 0.25F;
-
-					this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
-					super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
-				}
-
-				if (tm == 2)
-				{
-					x1 = 0.625F;
-					x2 = 1.0F;
-					z1 = 0.0F;
-					z2 = 0.25F;
-
-					this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
-					super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
-				}
-			}
-		}
+				//if (tm == 2)
+				//{
+				//	x1 = 0.625F;
+				//	x2 = 1.0F;
+				//	z1 = 0.0F;
+				//	z2 = 0.25F;
+//
+				//	this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
+				//	super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
+			//	}
+			//}
+		//}
 
 		//ZPOS
-		if (flagZpos)
-		{
-			x1 = 0.375F;
-			x2 = 0.625F;
-			z1 = 0.625F;
-			z2 = 1.0F;
-
-			this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
-			super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
-		}
-		else if (idZpos instanceof BlockDoor)
-		{
-			if ((metaZpos & 8) > 7)
-			{
-				metaZpos = world.getBlockState(x, y - 1, z + 1);
-			}
-
-			tm = metaZpos & 3;
-
-			if (tm == 0 || tm == 2)
-			{
-				x1 = 0.375F;
-				x2 = 0.625F;
-				z1 = 0.625F;
-				z2 = 1.0F;
-
-				this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
-				super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
-
-				if (tm == 0)
-				{
-					x1 = 0.0F;
-					x2 = 0.375F;
-					z1 = 0.75F;
-					z2 = 1.0F;
-
-					this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
-					super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
-				}
-
-				if (tm == 2)
-				{
-					x1 = 0.625F;
-					x2 = 1.0F;
-					z1 = 0.75F;
-					z2 = 1.0F;
-
-					this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
-					super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
-				}
-			}
-		}
-
-		this.setBlockBoundsBasedOnState(world, x, y, z);
+//		if (flagZpos)
+//		{
+//			x1 = 0.375F;
+//			x2 = 0.625F;
+//			z1 = 0.625F;
+//			z2 = 1.0F;
+//
+//			this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
+//			super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
+//		}
+//		else if (idZpos instanceof BlockDoor)
+//
+//	{
+//		if ((metaZpos & 8) > 7) {
+//			metaZpos = world.getBlockState(x, y - 1, z + 1);
+//		}
+//
+//		tm = metaZpos & 3;
+//
+//		if (tm == 0 || tm == 2) {
+//			x1 = 0.375F;
+//			x2 = 0.625F;
+//			z1 = 0.625F;
+//			z2 = 1.0F;
+//
+//			this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
+//			super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
+//
+//			if (tm == 0) {
+//				x1 = 0.0F;
+//				x2 = 0.375F;
+//				z1 = 0.75F;
+//				z2 = 1.0F;
+//
+//				this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
+//				super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
+//		}
+//
+//			if (tm == 2) {
+//				x1 = 0.625F;
+//				x2 = 1.0F;
+//				z1 = 0.75F;
+//				z2 = 1.0F;
+//
+//				this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
+//				super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
+//			}
+//		}
+//		}
+//
+//		this.setBlockBoundsBasedOnState(world, x, y, z);
+//	}
+//}
 	}
-}
