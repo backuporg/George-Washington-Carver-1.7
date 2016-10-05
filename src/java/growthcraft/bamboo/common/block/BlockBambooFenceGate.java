@@ -18,20 +18,4 @@ public class BlockBambooFenceGate extends BlockFenceGate
 		setBlockName("grc.bambooFenceGate");
 		setCreativeTab(GrowthCraftBamboo.creativeTab);
 	}
-
-	/************
-	 * TEXTURES
-	 ************/
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int _meta)
-	{
-		return GrowthCraftBamboo.blocks.bambooBlock.getBlockState().getBlockTextureFromSide(side);
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-
-	{
-	}
 }

@@ -243,44 +243,44 @@ public class BlockBambooStalk extends GrcBlockBase
 		return 1;
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
+	//@Override
+	//@SideOnly(Side.CLIENT)
+//
+	//{
+	//	tex = new IIcon[5];
 
-	{
-		tex = new IIcon[5];
+	//	tex[0] = reg.registerIcon("grcbamboo:plant_top");
+	//	tex[1] = reg.registerIcon("grcbamboo:plant_nocolor");
+	//	tex[2] = reg.registerIcon("grcbamboo:plant_color");
+	//	tex[3] = reg.registerIcon("grcbamboo:block");
+	//	tex[4] = reg.registerIcon("grcbamboo:fence");
+	//}
 
-		tex[0] = reg.registerIcon("grcbamboo:plant_top");
-		tex[1] = reg.registerIcon("grcbamboo:plant_nocolor");
-		tex[2] = reg.registerIcon("grcbamboo:plant_color");
-		tex[3] = reg.registerIcon("grcbamboo:block");
-		tex[4] = reg.registerIcon("grcbamboo:fence");
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//public IIcon getIcon(int side, int meta)
+	//{
+	//	return side == 1 ? tex[0] : ( side == 0 ? tex[0] : (meta == 0 ? tex[1] : tex[2]));
+	//}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
-	{
-		return side == 1 ? tex[0] : ( side == 0 ? tex[0] : (meta == 0 ? tex[1] : tex[2]));
-	}
-
-	@Override
-	public int getRenderType()
+	//@Override
+	//public int getRenderType()
 	{
 		return RenderBamboo.id;
 	}
 
-	@Override
-	public boolean isOpaqueCube()
-	{
-		return false;
-	}
+	//@Override
+	//public boolean isOpaqueCube()
+	//{
+	//	return false;
+	//}
 
-	@Override
-	public boolean renderAsNormalBlock()
-	{
-		return false;
-	}
-
+	//@Override
+	//public boolean renderAsNormalBlock()
+	//{
+		//return false;
+	//}
+//
 	@Override
 	@SideOnly(Side.CLIENT)
 	public boolean shouldSideBeRendered(IBlockAccess world, BlockPos pos, int s)

@@ -54,11 +54,11 @@ public class BlockBeeBoxNether extends BlockBeeBox
 		list.add(new ItemStack(block, 1, 0));
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
+	//@Override
+	//@SideOnly(Side.CLIENT)
 
-	{
-		this.icons = new IIcon[4];
-		registerBeeBoxIcons(reg, "/grcnether/malice/", 0);
-	}
+	//{
+	//	this.icons = new IIcon[4];
+	//	registerBeeBoxIcons(reg, "/grcnether/malice/", 0);
+	//}
 }

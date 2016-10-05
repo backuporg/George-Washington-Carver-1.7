@@ -63,14 +63,14 @@ public class BlockBeeBoxHighlands extends BlockBeeBox
 		}
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
+//	@Override
+//	@SideOnly(Side.CLIENT)
 
-	{
-		this.icons = new IIcon[4 * EnumHIGHLANDSWoodType.VALUES.length];
-		for (EnumHIGHLANDSWoodType type : EnumHIGHLANDSWoodType.VALUES)
-		{
-			registerBeeBoxIcons(reg, String.format("/highlands/%s/", type.name), type.meta);
-		}
-	}
+//	{
+//		this.icons = new IIcon[4 * EnumHIGHLANDSWoodType.VALUES.length];
+//		for (EnumHIGHLANDSWoodType type : EnumHIGHLANDSWoodType.VALUES)
+//		{
+///			registerBeeBoxIcons(reg, String.format("/highlands/%s/", type.name), type.meta);
+//		}
+//	}
 }

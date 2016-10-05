@@ -59,12 +59,12 @@ public class BlockBeeBoxThaumcraft extends BlockBeeBox
 		list.add(new ItemStack(block, 1, EnumBeeBoxThaumcraft.SILVERWOOD.meta));
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
+//	@Override
+//	@SideOnly(Side.CLIENT)
 
-	{
-		this.icons = new IIcon[2 * 4];
-		registerBeeBoxIcons(reg, "/thaumcraft/greatwood/", EnumBeeBoxThaumcraft.GREATWOOD.meta);
-		registerBeeBoxIcons(reg, "/thaumcraft/silverwood/", EnumBeeBoxThaumcraft.SILVERWOOD.meta);
-	}
+	//{
+//		this.icons = new IIcon[2 * 4];
+//		registerBeeBoxIcons(reg, "/thaumcraft/greatwood/", EnumBeeBoxThaumcraft.GREATWOOD.meta);
+//		registerBeeBoxIcons(reg, "/thaumcraft/silverwood/", EnumBeeBoxThaumcraft.SILVERWOOD.meta);
+//	}
 }

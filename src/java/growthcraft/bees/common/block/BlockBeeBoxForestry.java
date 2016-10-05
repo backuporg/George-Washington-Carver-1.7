@@ -89,14 +89,14 @@ public class BlockBeeBoxForestry extends BlockBeeBox
 		}
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
+	//@Override
+	//@SideOnly(Side.CLIENT)
 
-	{
-		this.icons = new IIcon[4 * beeboxTypes.length];
-		for (EnumBeeBoxForestry type : beeboxTypes)
-		{
-			registerBeeBoxIcons(reg, String.format("/forestry/%s/", type.name), type.col);
-		}
-	}
+	//{
+	//	this.icons = new IIcon[4 * beeboxTypes.length];
+	//	for (EnumBeeBoxForestry type : beeboxTypes)
+	//	{
+	//		registerBeeBoxIcons(reg, String.format("/forestry/%s/", type.name), type.col);
+	//	}
+	//}
 }
