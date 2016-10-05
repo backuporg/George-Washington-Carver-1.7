@@ -63,14 +63,14 @@ public class BlockBeeBoxTotemic extends BlockBeeBox
 		}
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
+	//@Override
+	//@SideOnly(Side.CLIENT)
 
-	{
-		this.icons = new IIcon[4 * EnumTotemicWoodType.VALUES.length];
-		for (EnumTotemicWoodType type : EnumTotemicWoodType.VALUES)
-		{
-			registerBeeBoxIcons(reg, String.format("/totemic/%s/", type.name), type.meta);
-		}
-	}
+	//{
+	//	this.icons = new IIcon[4 * EnumTotemicWoodType.VALUES.length];
+	//	for (EnumTotemicWoodType type : EnumTotemicWoodType.VALUES)
+	//	{
+	//		registerBeeBoxIcons(reg, String.format("/totemic/%s/", type.name), type.meta);
+	//	}
+//	}
 }

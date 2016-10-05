@@ -63,14 +63,14 @@ public class BlockBeeBoxBiomesOPlenty extends BlockBeeBox
 		}
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-
-	{
-		this.icons = new IIcon[4 * EnumBopWoodType.VALUES.length];
-		for (EnumBopWoodType type : EnumBopWoodType.VALUES)
-		{
-			registerBeeBoxIcons(reg, String.format("/biomesoplenty/%s/", type.name), type.meta);
-		}
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+//
+	//{
+	//	this.icons = new IIcon[4 * EnumBopWoodType.VALUES.length];
+	//	for (EnumBopWoodType type : EnumBopWoodType.VALUES)
+	//	{
+	//		registerBeeBoxIcons(reg, String.format("/biomesoplenty/%s/", type.name), type.meta);
+	//	}
+	//}
 }

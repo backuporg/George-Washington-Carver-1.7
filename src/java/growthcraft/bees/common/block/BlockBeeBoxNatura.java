@@ -63,14 +63,14 @@ public class BlockBeeBoxNatura extends BlockBeeBox
 		}
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
+//	@Override
+//	@SideOnly(Side.CLIENT)
 
-	{
-		this.icons = new IIcon[4 * EnumNaturaWoodType.VALUES.length];
-		for (EnumNaturaWoodType type : EnumNaturaWoodType.VALUES)
-		{
-			registerBeeBoxIcons(reg, String.format("/natura/%s/", type.name), type.meta);
-		}
-	}
+	//{
+	////	this.icons = new IIcon[4 * EnumNaturaWoodType.VALUES.length];
+//		for (EnumNaturaWoodType type : EnumNaturaWoodType.VALUES)
+//		{
+//			registerBeeBoxIcons(reg, String.format("/natura/%s/", type.name), type.meta);
+//		}
+//	}
 }

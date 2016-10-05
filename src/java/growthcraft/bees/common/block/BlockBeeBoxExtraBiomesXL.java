@@ -63,14 +63,14 @@ public class BlockBeeBoxExtraBiomesXL extends BlockBeeBox
 		}
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
+	//@Override
+	//@SideOnly(Side.CLIENT)
 
-	{
-		this.icons = new IIcon[4 * EnumEBXLWoodType.VALUES.length];
-		for (EnumEBXLWoodType type : EnumEBXLWoodType.VALUES)
-		{
-			registerBeeBoxIcons(reg, String.format("/extrabiomesxl/%s/", type.name), type.meta);
-		}
-	}
+	//{
+	//	this.icons = new IIcon[4 * EnumEBXLWoodType.VALUES.length];
+	//	for (EnumEBXLWoodType type : EnumEBXLWoodType.VALUES)
+	//	{
+	//		registerBeeBoxIcons(reg, String.format("/extrabiomesxl/%s/", type.name), type.meta);
+	//	}
+	//}
 }

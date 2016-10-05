@@ -63,14 +63,14 @@ public class BlockBeeBoxArsMagica2 extends BlockBeeBox
 		}
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-
-	{
-		this.icons = new IIcon[4 * EnumAM2WoodType.VALUES.length];
-		for (EnumAM2WoodType type : EnumAM2WoodType.VALUES)
-		{
-			registerBeeBoxIcons(reg, String.format("/AM2/%s/", type.name), type.meta);
-		}
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+//
+	//{
+	//	this.icons = new IIcon[4 * EnumAM2WoodType.VALUES.length];
+	//	for (EnumAM2WoodType type : EnumAM2WoodType.VALUES)
+	//	{
+	//		registerBeeBoxIcons(reg, String.format("/AM2/%s/", type.name), type.meta);
+	//	}
+	//}
 }

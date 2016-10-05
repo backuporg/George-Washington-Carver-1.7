@@ -63,14 +63,14 @@ public class BlockBeeBoxFossilsAndArchaeology extends BlockBeeBox
 		}
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
+//	@Override
+//	@SideOnly(Side.CLIENT)
 
-	{
-		this.icons = new IIcon[4 * EnumFAWoodType.VALUES.length];
-		for (EnumFAWoodType type : EnumFAWoodType.VALUES)
-		{
-			registerBeeBoxIcons(reg, String.format("/FA/%s/", type.name), type.meta);
-		}
-	}
+//	{
+//		this.icons = new IIcon[4 * EnumFAWoodType.VALUES.length];
+//		for (EnumFAWoodType type : EnumFAWoodType.VALUES)
+//		{
+//			registerBeeBoxIcons(reg, String.format("/FA/%s/", type.name), type.meta);
+//		}
+//	}
 }

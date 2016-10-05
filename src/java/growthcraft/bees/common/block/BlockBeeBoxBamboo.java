@@ -54,11 +54,11 @@ public class BlockBeeBoxBamboo extends BlockBeeBox
 		list.add(new ItemStack(block, 1, 0));
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
+	//@Override
+	//@SideOnly(Side.CLIENT)
 
-	{
-		icons = new IIcon[4];
-		registerBeeBoxIcons(reg, "/grcbamboo/", 0);
-	}
+	//{
+	//	icons = new IIcon[4];
+	//	registerBeeBoxIcons(reg, "/grcbamboo/", 0);
+	//}
 }
