@@ -203,20 +203,6 @@ public class BlockBeeHive extends GrcBlockBase
 	@Override
 	@SideOnly(Side.CLIENT)
 
-	{
-		this.icons = new IIcon[2];
-
-		icons[0] = reg.registerIcon("grcbees:beehive_front");
-		icons[1] = reg.registerIcon("grcbees:beehive_sides");
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
-	{
-		return side != meta ? this.icons[1] : this.icons[0];
-	}
-
 	/************
 	 * RENDERS
 	 ************/
@@ -248,26 +234,26 @@ public class BlockBeeHive extends GrcBlockBase
 	/************
 	 * BOXES
 	 ************/
-	@Override
-	public void setBlockBoundsForItemRender()
-	{
-		final float f = 0.0625F;
-		this.getBoundingBox(2*f, 0.0F, 2*f, 14*f, 1.0F, 14*f);
-	}
+	//@Override
+	//public void setBlockBoundsForItemRender()
+	//{
+	//	final float f = 0.0625F;
+	//	this.getBoundingBox(2*f, 0.0F, 2*f, 14*f, 1.0F, 14*f);
+	//}
 
 	@Override
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void getCollisionBoundingBox(World world, BlockPos pos, AxisAlignedBB axis, List list, Entity entity)
-	{
-		final float f = 0.0625F;
-		this.getBoundingBox(4*f, 0.0F, 4*f, 12*f, 14*f, 12*f);
-		super.getCollisionBoundingBox(world, pos, axis, list, entity);
-		this.getBoundingBox(3*f, 1*f, 3*f, 13*f, 13*f, 13*f);
-		super.getCollisionBoundingBox(world, pos, axis, list, entity);
-		this.getBoundingBox(2*f, 4*f, 2*f, 14*f, 10*f, 14*f);
-		super.getCollisionBoundingBox(world, pos, axis, list, entity);
-		this.getBoundingBox(7*f, 14*f, 7*f, 9*f, 1.0F, 9*f);
-		super.getCollisionBoundingBox(world, pos, axis, list, entity);
-		this.setBlockBoundsForItemRender();
+	//public void getCollisionBoundingBox(World world, BlockPos pos, AxisAlignedBB axis, List list, Entity entity)
+	//{
+	//	final float f = 0.0625F;
+	//	this.getBoundingBox(4*f, 0.0F, 4*f, 12*f, 14*f, 12*f);
+	//	super.getCollisionBoundingBox(world, pos, axis, list, entity);
+	//	this.getBoundingBox(3*f, 1*f, 3*f, 13*f, 13*f, 13*f);
+	//	super.getCollisionBoundingBox(world, pos, axis, list, entity);
+	//	this.getBoundingBox(2*f, 4*f, 2*f, 14*f, 10*f, 14*f);
+	//	super.getCollisionBoundingBox(world, pos, axis, list, entity);
+	//	this.getBoundingBox(7*f, 14*f, 7*f, 9*f, 1.0F, 9*f);
+	//	super.getCollisionBoundingBox(world, pos, axis, list, entity);
+	//	this.setBlockBoundsForItemRender();
 	}
 }

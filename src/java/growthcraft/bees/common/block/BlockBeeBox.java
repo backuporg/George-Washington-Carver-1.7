@@ -284,29 +284,37 @@ public class BlockBeeBox extends GrcBlockContainer {
 		}
 
 
-//	public void getCollisionBoundingBox (World world, BlockPos pos, IBlockState state, AxisAlignedBB axis, List list, Entity entity, IBlockAccess source)
+//	@Override
+//	@SuppressWarnings({"rawtypes", "unchecked"})
+//	public void getCollisionBoundingBox (World world, BlockPos pos, IBlockState state, AxisAlignedBB axis, List list, Entity entity)
 //	{
+//		final AxisAlignedBB axis = null;
+//		final BlockPos pos = null;
+//		final IBlockState state = null;
+//		final List list = null;
+//		final Entity entity = null;
+//		final World world = null;
 //
-	//	final float f = 0.0625F;
-	//	// LEGS
-	//	getBoundingBox(state, source, pos);
-	//	super.getCollisionBoundingBox (state, world, pos);
-	//	getBoundingBox(state, source, pos);
-	//	super.getCollisionBoundingBox(state, world, pos);
-	//	getBoundingBox(state, source, pos);
-	//	super.getCollisionBoundingBox (state, world, pos);
-	//	getBoundingBox(state, source, pos);
-	//	super.getCollisionBoundingBox (state, world, pos);
-	//	// BODY
-	//	getBoundingBox(state, source, pos);
-	//	super.getCollisionBoundingBox (state, world, pos);
-	//	// ROOF
-	//	getBoundingBox(state, source, pos);
-	//	super.getCollisionBoundingBox (state, world, pos);
-	//	getBoundingBox(state, source, pos);
-	//	super.getCollisionBoundingBox (state, world, pos);
-	//	setBlockBoundsForItemRender(world, pos, state, axis, list, entity, source);
-	//	}
+//		final float f = 0.0625F;
+//		// LEGS
+//		getBoundingBox(3 * f, 0.0F, 3 * f, 5 * f, 3 * f, 5 * f);
+//		super.getCollisionBoundingBox (world, pos, state, axis, list, entity);
+//		getBoundingBox(11 * f, 0.0F, 3 * f, 13 * f, 3 * f, 5 * f);
+//		super.getCollisionBoundingBox(world, pos, state, axis, list, entity);
+//		getBoundingBox(3 * f, 0.0F, 11 * f, 5 * f, 3 * f, 13 * f);
+//		super.getCollisionBoundingBox (world, pos, state, axis, list, entity);
+//		getBoundingBox(11 * f, 0.0F, 11 * f, 13 * f, 3 * f, 13 * f);
+//		super.getCollisionBoundingBox (world, pos, state, axis, list, entity);
+//		// BODY
+//		getBoundingBox(1 * f, 3 * f, 1 * f, 15 * f, 10 * f, 15 * f);
+//		super.getCollisionBoundingBox (world, pos, state, axis, list, entity);
+//		// ROOF
+//		getBoundingBox(0.0F, 10 * f, 0.0F, 1.0F, 13 * f, 1.0F);
+//		super.getCollisionBoundingBox (world, pos, state, axis, list, entity);
+//		getBoundingBox(2 * f, 13 * f, 2 * f, 14 * f, 1.0F, 14 * f);
+//		super.getCollisionBoundingBox (world, pos, state, axis, list, entity);
+//		setBlockBoundsForItemRender();
+//	}
 
 		/************
 		 * COMPARATOR
