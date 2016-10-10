@@ -51,13 +51,13 @@ public class BlockBrewKettle extends BlockCellarContainer
 	{
 		if (fillsWithRain)
 		{
-			final TileEntityBrewKettle te = getTileEntity(world, x, y, z);
+			final TileEntityBrewKettle te = getTileEntity(world, pos);
 			if (te != null)
 			{
 				te.fill(EnumFacing.UP, new FluidStack(FluidRegistry.WATER, rainFillPerUnit), true);
 			}
 		}
-		super.fillWithRain(world, x, y, z);
+		super.fillWithRain(world, pos);
 	}
 
 	@Override
@@ -65,7 +65,7 @@ public class BlockBrewKettle extends BlockCellarContainer
 	{
 		if (!world.isRemote)
 		{
-			final TileEntityBrewKettle te = getTileEntity(world, x, y, z);
+			final TileEntityBrewKettle te = getTileEntity(world, pos);
 			if (te != null)
 			{
 				if (dropItemsInBrewKettle)
@@ -112,41 +112,6 @@ public class BlockBrewKettle extends BlockCellarContainer
 		return 1;
 	}
 
-	/************
-	 * TEXTURES
-	 ************/
-	@Override
-	@SideOnly(Side.CLIENT)
-
-	{
-		this.icons = new IIcon[4];
-
-		icons[0] = reg.registerIcon("grccellar:brewkettle_0");
-		icons[1] = reg.registerIcon("grccellar:brewkettle_1");
-		icons[2] = reg.registerIcon("grccellar:brewkettle_2");
-		icons[3] = reg.registerIcon("grccellar:brewkettle_3");
-	}
-
-	@SideOnly(Side.CLIENT)
-	public IIcon getIconByIndex(int index)
-	{
-		return icons[index];
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
-	{
-		if (side == 1)
-		{
-			return icons[3];
-		}
-		else if (side == 0)
-		{
-			return icons[0];
-		}
-		return icons[2];
-	}
 
 	/************
 	 * RENDERS
