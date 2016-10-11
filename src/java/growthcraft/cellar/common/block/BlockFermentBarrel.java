@@ -62,13 +62,13 @@ public class BlockFermentBarrel extends BlockCellarContainer
 		final FluidStack available = Utils.playerDrainTank(world, pos, tank, held, player);
 		if (available != null && available.amount > 0)
 		{
-			GrowthCraftCellar.CELLAR_BUS.post(new EventBarrelDrained(player, world, x, y, z, available));
+			GrowthCraftCellar.CELLAR_BUS.post(new EventBarrelDrained(player, world, pos, available));
 			return true;
 		}
 		return false;
 	}
 
-	private void setDefaultDirection(World world, BlockPos pos)
+	private void setDefaultDirection(World world, BlockPos pos, IBlockState state)
 	{
 		if (!world.isRemote)
 		{
@@ -98,7 +98,7 @@ public class BlockFermentBarrel extends BlockCellarContainer
 				meta = 4;
 			}
 
-			world.setBlockState(x, y, z, meta, BlockFlags.UPDATE_AND_SYNC);
+			world.setBlockState(pos, state, BlockFlags.UPDATE_AND_SYNC);
 		}
 	}
 
@@ -106,7 +106,7 @@ public class BlockFermentBarrel extends BlockCellarContainer
 	public void onBlockAdded(World world, BlockPos pos, IBlockState state)
 	{
 		super.onBlockAdded(world, pos, state);
-		setDefaultDirection(world, pos);
+		setDefaultDirection(world, pos, state);
 	}
 
 	@Override
@@ -117,42 +117,42 @@ public class BlockFermentBarrel extends BlockCellarContainer
 		world.setBlockState(pos, state, BlockFlags.UPDATE_AND_SYNC);
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-
-	{
-		this.icons = new IIcon[4];
-		final String basename = getTextureName();
-		icons[0] = reg.registerIcon(String.format("%s/minecraft/oak/side", basename));
-		icons[1] = reg.registerIcon(String.format("%s/minecraft/oak/side_alt", basename));
-		icons[2] = reg.registerIcon(String.format("%s/minecraft/oak/top", basename));
-		icons[3] = reg.registerIcon(String.format("%s/minecraft/oak/bottom", basename));
-	}
-
-	@SideOnly(Side.CLIENT)
-	public IIcon getIconByIndex(int index)
+	//@Override
+	//@SideOnly(Side.CLIENT)
+//
+	//{
+//		this.icons = new IIcon[4];
+//		final String basename = getTextureName();
+//		icons[0] = reg.registerIcon(String.format("%s/minecraft/oak/side", basename));
+//		icons[1] = reg.registerIcon(String.format("%s/minecraft/oak/side_alt", basename));
+//		icons[2] = reg.registerIcon(String.format("%s/minecraft/oak/top", basename));
+//		icons[3] = reg.registerIcon(String.format("%s/minecraft/oak/bottom", basename));
+//	}
+//
+//	@SideOnly(Side.CLIENT)
+//	public IIcon getIconByIndex(int index)
 	{
 		return icons[index];
 	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
-	{
-		if (meta == 0 || meta == 1)
-		{
-			return side == 0 || side == 1 ? icons[1] : icons[0];
-		}
-		else if (meta == 2 || meta == 3)
-		{
-			return side == 2 || side == 3 ? icons[1] : icons[0];
-		}
-		else if (meta == 4 || meta == 5)
-		{
-			return side == 4 || side == 5 ? icons[1] : icons[0];
-		}
-		return icons[0];
-	}
+//
+//	@Override
+//	@SideOnly(Side.CLIENT)
+//	public IIcon getIcon(int side, int meta)
+//	{
+//		if (meta == 0 || meta == 1)
+//		{
+//			return side == 0 || side == 1 ? icons[1] : icons[0];
+//		}
+//		else if (meta == 2 || meta == 3)
+//		{
+//			return side == 2 || side == 3 ? icons[1] : icons[0];
+//		}
+//		else if (meta == 4 || meta == 5)
+//		{
+//			return side == 4 || side == 5 ? icons[1] : icons[0];
+//		}
+//		return icons[0];
+//	}
 
 	@Override
 	public int getRenderType()
@@ -197,5 +197,10 @@ public class BlockFermentBarrel extends BlockCellarContainer
 			return te.getDeviceProgressScaled(15);
 		}
 		return 0;
+	}
+
+	@Override
+	public boolean wrenchBlock(World world, BlockPos pos, EntityPlayer player, ItemStack wrench) {
+		return false;
 	}
 }

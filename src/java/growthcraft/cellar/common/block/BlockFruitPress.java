@@ -98,7 +98,7 @@ public class BlockFruitPress extends BlockCellarContainer
 	@Override
 	public void onBlockPlacedBy(World world, BlockPos pos, EntityLivingBase entity, ItemStack stack)
 	{
-		super.onBlockPlacedBy(world, x, y, z, entity, stack);
+		super.onBlockPlacedBy(world, pos, entity, stack);
 		final int a = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
 
 		if (a == 0 || a == 2)
@@ -118,7 +118,7 @@ public class BlockFruitPress extends BlockCellarContainer
 	{
 		if (player.capabilities.isCreativeMode && (m & 8) != 0 && presserIsAbove(world, x, y, z))
 		{
-			world.func_147480_a(x, y + 1, z, true);
+			world.destroyBlock(x, y + 1, z, true);
 			world.getTileEntity(x, y + 1, z).invalidate();
 		}
 	}
@@ -126,9 +126,9 @@ public class BlockFruitPress extends BlockCellarContainer
 	@Override
 	public void onNeighborBlockChange(World world, BlockPos pos, Block block)
 	{
-		if (!this.canBlockStay(world, x, y, z))
+		if (!this.canBlockStay(world, pos))
 		{
-			world.func_147480_a(x, y, z, true);
+			world.destroyBlock(pos, true);
 		}
 	}
 
