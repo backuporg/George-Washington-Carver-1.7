@@ -209,9 +209,9 @@ public class BlockFruitPress extends BlockCellarContainer
 
 	//@SideOnly(Side.CLIENT)
 	//public IIcon getIconByIndex(int index)
-	{
-		return icons[index];
-	}
+	//{
+	//	return icons[index];
+	//}
 
 	//@Override
 	//@SideOnly(Side.CLIENT)
