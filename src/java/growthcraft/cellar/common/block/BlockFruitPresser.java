@@ -132,21 +132,21 @@ public class BlockFruitPresser extends BlockCellarContainer implements IWrenchab
 	@Override
 	public void onNeighborBlockChange(World world, BlockPos pos, Block block)
 	{
-		if (!this.canBlockStay(world, x, y, z))
+		if (!this.canBlockStay(world, pos))
 		{
-			world.destroyBlock(x, y, z, true);
+			world.destroyBlock(pos, true);
 		}
 
 		if (!world.isRemote)
 		{
-			this.updatePressState(world, x, y, z);
+			this.updatePressState(world, pos);
 		}
 	}
 
 	private void updatePressState(World world, BlockPos pos)
 	{
-		final int     meta = world.getBlockState(x, y, z);
-		final boolean flag = world.isBlockIndirectlyGettingPowered(x, y, z);
+		final int     meta = world.getBlockState(pos);
+		final boolean flag = world.isBlockIndirectlyGettingPowered(pos);
 
 		if (flag && (meta == 0 || meta == 1))
 		{
@@ -174,7 +174,7 @@ public class BlockFruitPresser extends BlockCellarContainer implements IWrenchab
 	@Override
 	public boolean isSideSolid(IBlockAccess world, BlockPos pos, EnumFacing side)
 	{
-		final int meta = world.getBlockState(x, y, z);
+		final int meta = world.getBlockState(pos);
 
 		if (meta == 0 || meta == 2)
 		{
@@ -185,7 +185,7 @@ public class BlockFruitPresser extends BlockCellarContainer implements IWrenchab
 			return side == EnumFacing.NORTH || side == EnumFacing.SOUTH;
 		}
 
-		return isNormalCube(world, x, y, z);
+		return isNormalCube(world, pos);
 	}
 
 	/************
@@ -216,30 +216,30 @@ public class BlockFruitPresser extends BlockCellarContainer implements IWrenchab
 	/************
 	 * TEXTURES
 	 ************/
-	@Override
-	@SideOnly(Side.CLIENT)
+	//@Override
+	//@SideOnly(Side.CLIENT)
+//
+	//{
+	//	icons = new IIcon[4];
+//
+	//	icons[0] = reg.registerIcon("grccellar:fruitpresser_0");
+	//	icons[1] = reg.registerIcon("grccellar:fruitpresser_1");
+	//	icons[2] = reg.registerIcon("grccellar:fruitpresser_2");
+	//	icons[3] = reg.registerIcon("planks_oak");
+	//}
 
-	{
-		icons = new IIcon[4];
+	//@SideOnly(Side.CLIENT)
+	//public IIcon getIconByIndex(int index)
+	//{
+	//	return icons[index];
+	//}
 
-		icons[0] = reg.registerIcon("grccellar:fruitpresser_0");
-		icons[1] = reg.registerIcon("grccellar:fruitpresser_1");
-		icons[2] = reg.registerIcon("grccellar:fruitpresser_2");
-		icons[3] = reg.registerIcon("planks_oak");
-	}
-
-	@SideOnly(Side.CLIENT)
-	public IIcon getIconByIndex(int index)
-	{
-		return icons[index];
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
-	{
-		return side == 0 ? icons[0] : (side == 1 ? icons[1] : icons[2]);
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//public IIcon getIcon(int side, int meta)
+	//{
+	//	return side == 0 ? icons[0] : (side == 1 ? icons[1] : icons[2]);
+	//}
 
 	/************
 	 * RENDERS

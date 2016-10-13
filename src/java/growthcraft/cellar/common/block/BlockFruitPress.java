@@ -61,7 +61,7 @@ public class BlockFruitPress extends BlockCellarContainer
 		world.setBlockState(x, y + 1, z, getPresserBlock(), world.getBlockState(pos), 2);
 	}
 
-	private void setDefaultDirection(World world, BlockPos pos)
+	private void setDefaultDirection(World world, BlockPos pos, IBlockState state)
 	{
 		if (!world.isRemote)
 		{
@@ -91,7 +91,7 @@ public class BlockFruitPress extends BlockCellarContainer
 				meta = 4;
 			}
 
-			world.setBlockState(x, y, z, meta, BlockFlags.UPDATE_AND_SYNC);
+			world.setBlockState(pos, state, BlockFlags.UPDATE_AND_SYNC);
 		}
 	}
 
@@ -138,7 +138,7 @@ public class BlockFruitPress extends BlockCellarContainer
 	@Override
 	public boolean isSideSolid(IBlockAccess world, BlockPos pos, EnumFacing side)
 	{
-		final int meta = world.getBlockState(x, y, z);
+		final int meta = world.getBlockState(pos);
 
 		if (meta == 0)
 		{
@@ -149,7 +149,7 @@ public class BlockFruitPress extends BlockCellarContainer
 			return side == EnumFacing.NORTH || side == EnumFacing.SOUTH;
 		}
 
-		return isNormalCube(world, x, y, z);
+		return isNormalCube(world, pos);
 	}
 
 	/************
@@ -177,7 +177,7 @@ public class BlockFruitPress extends BlockCellarContainer
 	@Override
 	public boolean canPlaceBlockAt(World world, BlockPos pos)
 	{
-		if (y >= 255) return false;
+		if (pos.getY() >= 255) return false;
 
 		return World.doesBlockHaveSolidTopSurface(world, x, y - 1, z) &&
 			super.canPlaceBlockAt(world, pos) &&
