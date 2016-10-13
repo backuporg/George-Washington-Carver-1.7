@@ -213,7 +213,7 @@ public class BlockBambooWall extends GrcBlockBase
 	//	{
 	//		if ((metaXpos & 8) > 7)
 	//		{
-				metaXpos = world.getBlockState(x + 1, y - 1, z);
+	//			metaXpos = world.getBlockState(x + 1, y - 1, z);
 	//		}
 //
 	//		tm = metaXpos & 3;

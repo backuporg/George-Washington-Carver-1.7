@@ -98,7 +98,7 @@ public class BlockFruitPress extends BlockCellarContainer
 	@Override
 	public void onBlockPlacedBy(World world, BlockPos pos, EntityLivingBase entity, ItemStack stack)
 	{
-		super.onBlockPlacedBy(world, x, y, z, entity, stack);
+		super.onBlockPlacedBy(world, pos, entity, stack);
 		final int a = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
 
 		if (a == 0 || a == 2)
@@ -118,7 +118,7 @@ public class BlockFruitPress extends BlockCellarContainer
 	{
 		if (player.capabilities.isCreativeMode && (m & 8) != 0 && presserIsAbove(world, x, y, z))
 		{
-			world.func_147480_a(x, y + 1, z, true);
+			world.destroyBlock(x, y + 1, z, true);
 			world.getTileEntity(x, y + 1, z).invalidate();
 		}
 	}
@@ -126,9 +126,9 @@ public class BlockFruitPress extends BlockCellarContainer
 	@Override
 	public void onNeighborBlockChange(World world, BlockPos pos, Block block)
 	{
-		if (!this.canBlockStay(world, x, y, z))
+		if (!this.canBlockStay(world, pos))
 		{
-			world.func_147480_a(x, y, z, true);
+			world.destroyBlock(pos, true);
 		}
 	}
 
@@ -171,7 +171,7 @@ public class BlockFruitPress extends BlockCellarContainer
 	@Override
 	public boolean canBlockStay(World world, BlockPos pos)
 	{
-		return presserIsAbove(world, x, y, z);
+		return presserIsAbove(world, pos);
 	}
 
 	@Override
@@ -180,7 +180,7 @@ public class BlockFruitPress extends BlockCellarContainer
 		if (y >= 255) return false;
 
 		return World.doesBlockHaveSolidTopSurface(world, x, y - 1, z) &&
-			super.canPlaceBlockAt(world, x, y, z) &&
+			super.canPlaceBlockAt(world, pos) &&
 			super.canPlaceBlockAt(world, x, y + 1, z);
 	}
 
@@ -193,40 +193,40 @@ public class BlockFruitPress extends BlockCellarContainer
 	/************
 	 * TEXTURES
 	 ************/
-	@Override
-	@SideOnly(Side.CLIENT)
+	//@Override
+	//@SideOnly(Side.CLIENT)
 
-	{
-		this.icons = new IIcon[6];
+	//{
+	//	this.icons = new IIcon[6];
+//
+	//	icons[0] = reg.registerIcon("grccellar:fruit_press_wood_bottom");
+	//	icons[1] = reg.registerIcon("grccellar:fruit_press_wood_top");
+	//	icons[2] = reg.registerIcon("grccellar:fruit_press_wood_side");
+	//	icons[3] = reg.registerIcon("grccellar:fruit_press_metal_bottom");
+	//	icons[4] = reg.registerIcon("grccellar:fruit_press_metal_top");
+	//	icons[5] = reg.registerIcon("grccellar:fruit_press_metal_side");
+	//}
 
-		icons[0] = reg.registerIcon("grccellar:fruit_press_wood_bottom");
-		icons[1] = reg.registerIcon("grccellar:fruit_press_wood_top");
-		icons[2] = reg.registerIcon("grccellar:fruit_press_wood_side");
-		icons[3] = reg.registerIcon("grccellar:fruit_press_metal_bottom");
-		icons[4] = reg.registerIcon("grccellar:fruit_press_metal_top");
-		icons[5] = reg.registerIcon("grccellar:fruit_press_metal_side");
-	}
+	//@SideOnly(Side.CLIENT)
+	//public IIcon getIconByIndex(int index)
+	//{
+	//	return icons[index];
+	//}
 
-	@SideOnly(Side.CLIENT)
-	public IIcon getIconByIndex(int index)
-	{
-		return icons[index];
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
-	{
-		if (side == 0)
-		{
-			return icons[0];
-		}
-		else if (side == 1)
-		{
-			return icons[1];
-		}
-		return icons[2];
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//public IIcon getIcon(int side, int meta)
+	//{
+	//	if (side == 0)
+	//	{
+	//		return icons[0];
+	//	}
+	//	else if (side == 1)
+	//	{
+	//		return icons[1];
+	//	}
+	//	return icons[2];
+	//}
 
 	/************
 	 * RENDERS
@@ -268,7 +268,7 @@ public class BlockFruitPress extends BlockCellarContainer
 	@Override
 	public int getComparatorInputOverride(World world, BlockPos pos, int par5)
 	{
-		final TileEntityFruitPress te = getTileEntity(world, x, y, z);
+		final TileEntityFruitPress te = getTileEntity(world, pos);
 		if (te != null)
 		{
 			return te.getFluidAmountScaled(15, 0);

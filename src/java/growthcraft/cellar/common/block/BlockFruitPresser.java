@@ -134,7 +134,7 @@ public class BlockFruitPresser extends BlockCellarContainer implements IWrenchab
 	{
 		if (!this.canBlockStay(world, x, y, z))
 		{
-			world.func_147480_a(x, y, z, true);
+			world.destroyBlock(x, y, z, true);
 		}
 
 		if (!world.isRemote)
