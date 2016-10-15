@@ -108,8 +108,8 @@ public class BlockPaddy extends BlockPaddyBase
 	/************
 	 * TEXTURES
 	 ************/
-	@Override
-	@SideOnly(Side.CLIENT)
+	//@Override
+	//@SideOnly(Side.CLIENT)
 
 	//{
 	//	icons = new IIcon[3];
