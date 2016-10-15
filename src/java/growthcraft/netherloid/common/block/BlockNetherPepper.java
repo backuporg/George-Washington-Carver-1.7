@@ -192,26 +192,26 @@ public class BlockNetherPepper extends BlockBush implements ICropDataProvider, I
 		return RenderType.CROPS;
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
+	//@Override
+	//@SideOnly(Side.CLIENT)
 
-	{
-		this.icons = new IIcon[PepperStages.COUNT];
+	//{
+	//	this.icons = new IIcon[PepperStages.COUNT];
+//
+	//	for (int stage = 0; stage < icons.length; ++stage)
+	//	{
+	//		icons[stage] = reg.registerIcon(getTextureName() + "_stage_" + stage);
+	//	}
+	//}
 
-		for (int stage = 0; stage < icons.length; ++stage)
-		{
-			icons[stage] = reg.registerIcon(getTextureName() + "_stage_" + stage);
-		}
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
-	{
-		if (meta >= PepperStages.SEEDLING && meta <= PepperStages.FRUIT)
-		{
-			return icons[meta];
-		}
-		return icons[PepperStages.FRUIT];
-	}
+//	@Override
+	//@SideOnly(Side.CLIENT)
+	///public IIcon getIcon(int side, int meta)
+	//{
+	//	if (meta >= PepperStages.SEEDLING && meta <= PepperStages.FRUIT)
+	//	{
+	//		return icons[meta];
+	//	}
+	//	return icons[PepperStages.FRUIT];
+	//}
 }

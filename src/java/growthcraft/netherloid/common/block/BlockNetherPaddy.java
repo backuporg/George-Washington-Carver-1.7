@@ -29,6 +29,7 @@ import growthcraft.netherloid.netherloid;
 import growthcraft.netherloid.util.NetherBlockCheck;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -135,34 +136,34 @@ public class BlockNetherPaddy extends BlockPaddyBase
 	}
 
 	@Override
-	public void drainPaddy(World world, BlockPos pos)
+	public void drainPaddy(World world, BlockPos pos, IBlockState state)
 	{
-		final int meta = world.getBlockState(x, y, z);
+		final int meta = world.getBlockState(pos);
 		if (meta > 1)
 		{
-			world.setBlockState(x, y, z, meta - 1, BlockFlags.SYNC);
+			world.setBlockState(pos, state, meta - 1, BlockFlags.SYNC);
 		}
 		else
 		{
 			final Block targetBlock = netherloid.blocks.netherPaddyField.getBlockState();
 			if (this != targetBlock)
 			{
-				world.setBlockState(x, y, z, targetBlock, 0, BlockFlags.SYNC);
+				world.setBlockState(pos, targetBlock, 0, BlockFlags.SYNC);
 			}
 		}
 	}
 
 	@Override
-	public void fillPaddy(World world, BlockPos pos)
+	public void fillPaddy(World world, BlockPos pos, IBlockState state)
 	{
 		final Block targetBlock = netherloid.blocks.netherPaddyFieldFilled.getBlockState();
 		if (this != targetBlock)
 		{
-			world.setBlockState(x, y, z, targetBlock, getMaxPaddyMeta(world, x, y, z), BlockFlags.SYNC);
+			world.setBlockState(pos, targetBlock, getMaxPaddyMeta(world, pos), BlockFlags.SYNC);
 		}
 		else
 		{
-			world.setBlockState(x, y, z, getMaxPaddyMeta(world, x, y, z), BlockFlags.SYNC);
+			world.setBlockState(pos, getMaxPaddyMeta(world, pos), BlockFlags.SYNC);
 		}
 	}
 
