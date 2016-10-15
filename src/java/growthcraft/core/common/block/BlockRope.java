@@ -92,26 +92,26 @@ public class BlockRope extends GrcBlockBase implements IBlockRope {
 	/************
 	 * TEXTURES
 	 ************/
-	@Override
-	@SideOnly(Side.CLIENT)
+	//@Override
+	//@SideOnly(Side.CLIENT)
+//
+	//{
+	//	this.icons = new IIcon[2];
+//
+	//	icons[0] = reg.registerIcon("grccore:rope_1");
+	//	icons[1] = reg.registerIcon("grccore:rope");
+	//}
 
-	{
-		this.icons = new IIcon[2];
-
-		icons[0] = reg.registerIcon("grccore:rope_1");
-		icons[1] = reg.registerIcon("grccore:rope");
-	}
-
-	@SideOnly(Side.CLIENT)
-	public IIcon getIconByIndex(int index) {
+	//@SideOnly(Side.CLIENT)
+	//public IIcon getIconByIndex(int index) {
 		return icons[index];
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta) {
-		return this.icons[1];
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//public IIcon getIcon(int side, int meta) {
+	//	return this.icons[1];
+	//}
 
 	/************
 	 * RENDER
