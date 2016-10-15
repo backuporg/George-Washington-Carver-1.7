@@ -62,26 +62,26 @@ public class BlockNetherMaliceSapling extends BlockBush implements IGrowable
 	/************
 	 * MAIN
 	 ************/
-	public void updateTick(World world, BlockPos pos, Random random)
+	public void updateTick(World world, BlockPos pos, Random random, IBlockState state)
 	{
 		if (!world.isRemote)
 		{
-			super.updateTick(world, x, y, z, random);
+			super.updateTick(world, pos, state, random);
 
 			if (world.getBlockLightValue(x, y + 1, z) >= 9 && random.nextInt(this.growth) == 0)
 			{
-				this.markOrGrowMarked(world, x, y, z, random);
+				this.markOrGrowMarked(world, pos, random);
 			}
 		}
 	}
 
-	public void markOrGrowMarked(World world, BlockPos pos, Random random)
+	public void markOrGrowMarked(World world, BlockPos pos, Random random, IBlockState state)
 	{
-		final int meta = world.getBlockState(x, y, z);
+		final int meta = world.getBlockState(pos);
 
 		if ((meta & 8) == 0)
 		{
-			world.setBlockState(x, y, z, meta | 8, 4);
+			world.setBlockState(pos, state, meta | 8, 4);
 		}
 		else
 		{
@@ -91,16 +91,16 @@ public class BlockNetherMaliceSapling extends BlockBush implements IGrowable
 
 	public void growTree(World world, BlockPos pos, Random random)
 	{
-		if (!TerrainGen.saplingGrowTree(world, random, x, y, z)) return;
+		if (!TerrainGen.saplingGrowTree(world, random, pos)) return;
 
-		final int meta = world.getBlockState(x, y, z) & 3;
+		final int meta = world.getBlockState(pos) & 3;
 		final WorldGenerator generator = new WorldGeneratorMaliceTree(true);
 
-		world.setBlockState(x, y, z, Blocks.AIR, 0, BlockFlags.ALL);
+		world.setBlockState(pos, Blocks.AIR, 0, BlockFlags.ALL);
 
-		if (!generator.generate(world, random, x, y, z))
+		if (!generator.generate(world, random, pos))
 		{
-			world.setBlockState(x, y, z, this, meta, BlockFlags.ALL);
+			world.setBlockState(pos, this, meta, BlockFlags.ALL);
 		}
 	}
 
@@ -108,7 +108,7 @@ public class BlockNetherMaliceSapling extends BlockBush implements IGrowable
 	@Override
 	public boolean func_149851_a(World world, BlockPos pos, boolean isClient)
 	{
-		return (world.getBlockState(x, y, z) & 8) == 0;
+		return (world.getBlockState(pos) & 8) == 0;
 	}
 
 	/* SideOnly(Side.SERVER) Can this apply bonemeal effect? */
@@ -124,26 +124,26 @@ public class BlockNetherMaliceSapling extends BlockBush implements IGrowable
 	{
 		if (random.nextFloat() < 0.45D)
 		{
-			growTree(world, x, y, z, random);
+			growTree(world, pos, random);
 		}
 	}
 
 	/************
 	 * TEXTURES
 	 ************/
-	@Override
-	@SideOnly(Side.CLIENT)
+	//@Override
+	//@SideOnly(Side.CLIENT)
 
-	{
-		icon = reg.registerIcon("grcnetherloid:malicesapling");
-	}
+	//{
+	//	icon = reg.registerIcon("grcnetherloid:malicesapling");
+	//}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
-	{
-		return this.icon;
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	///public IIcon getIcon(int side, int meta)
+	//{
+	//	return this.icon;
+	//}
 
 	@Override
 	public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {
