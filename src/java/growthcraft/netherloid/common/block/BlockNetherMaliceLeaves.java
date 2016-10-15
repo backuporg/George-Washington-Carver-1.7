@@ -233,9 +233,9 @@ public abstract class BlockNetherMaliceLeaves extends BlockLeaves implements ISh
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World world, BlockPos pos, Random random)
+	public void randomDisplayTick(World world, BlockPos pos, Random random, IBlockState stateIn)
 	{
-		super.randomDisplayTick(world, x, y, z, random);
+		super.randomDisplayTick(stateIn, world, pos, random);
 		if (world.canLightningStrikeAt(x, y + 1, z) && !World.doesBlockHaveSolidTopSurface(world, x, y - 1, z) && random.nextInt(15) == 1)
 		{
 			final double d0 = (double)((float)x + random.nextFloat());
@@ -274,9 +274,9 @@ public abstract class BlockNetherMaliceLeaves extends BlockLeaves implements ISh
 	}
 
 	@Override
-	public void harvestBlock(World world, EntityPlayer player, BlockPos pos, int par6, TileEntity entity, IBlockState state)
+	public void harvestBlock(World world, EntityPlayer player, BlockPos pos, int par6, TileEntity entity, IBlockState state, ItemStack stack)
 	{
-		super.harvestBlock(world, player, pos, entity, par6);
+		super.harvestBlock(world, player, pos, state, entity, stack);
 	}
 
 	/************
