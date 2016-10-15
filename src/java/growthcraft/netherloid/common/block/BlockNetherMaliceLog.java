@@ -46,20 +46,20 @@ public class BlockNetherMaliceLog extends Block
 		setCreativeTab(netherloid.tab);
 	}
 
-	@Override
-	public boolean canSustainLeaves(IBlockAccess world, BlockPos pos)
+	//@Override
+	//public boolean canSustainLeaves(IBlockAccess world, BlockPos pos)
 	{
 		return true;
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
+	//@Override
+	//@SideOnly(Side.CLIENT)
 
-	{
-		icons = new IIcon[2];
-		icons[0] = reg.registerIcon(getTextureName() + "_top");
-		icons[1] = reg.registerIcon(getTextureName());
-	}
+	//{
+	//	icons = new IIcon[2];
+	//	icons[0] = reg.registerIcon(getTextureName() + "_top");
+	//	icons[1] = reg.registerIcon(getTextureName());
+	//}
 
 	@Override
 	@SideOnly(Side.CLIENT)
