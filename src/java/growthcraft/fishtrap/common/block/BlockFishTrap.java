@@ -104,7 +104,7 @@ public abstract class BlockFishTrap extends GrcBlockContainer
 		}
 		else
 		{
-			isInWaterBiome = Utils.isIDInList(world.getBiome(pos).biomeID, GrowthCraftFishTrap.getConfig().biomesList);
+			isInWaterBiome = Utils.isIDInList(world.getBiome(pos).biomeID(), GrowthCraftFishTrap.getConfig().biomesList);
 		}
 
 		if (isInWaterBiome)
@@ -225,21 +225,21 @@ public abstract class BlockFishTrap extends GrcBlockContainer
 		}
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
+	//@Override
+	//@SideOnly(Side.CLIENT)
 
-	{
-		this.icons = new IIcon[1];
+	//{
+	//	this.icons = new IIcon[1];
+//
+	//	icons[0] = reg.registerIcon("grcfishtrap:fishtrap");
+	//}
 
-		icons[0] = reg.registerIcon("grcfishtrap:fishtrap");
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
-	{
-		return icons[0];
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//public IIcon getIcon(int side, int meta)
+	//{
+	//	return icons[0];
+	//}
 
 	@Override
 	public boolean isOpaqueCube()
