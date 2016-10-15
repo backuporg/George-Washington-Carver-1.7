@@ -241,8 +241,8 @@ public class BlockBeeHive extends GrcBlockBase
 	//	this.getBoundingBox(2*f, 0.0F, 2*f, 14*f, 1.0F, 14*f);
 	//}
 
-	@Override
-	@SuppressWarnings({"rawtypes", "unchecked"})
+	//@Override
+	//@SuppressWarnings({"rawtypes", "unchecked"})
 	//public void getCollisionBoundingBox(World world, BlockPos pos, AxisAlignedBB axis, List list, Entity entity)
 	//{
 	//	final float f = 0.0625F;
@@ -255,4 +255,4 @@ public class BlockBeeHive extends GrcBlockBase
 	//	this.getBoundingBox(7*f, 14*f, 7*f, 9*f, 1.0F, 9*f);
 	//	super.getCollisionBoundingBox(world, pos, axis, list, entity);
 	//	this.setBlockBoundsForItemRender();
-	}
+}
