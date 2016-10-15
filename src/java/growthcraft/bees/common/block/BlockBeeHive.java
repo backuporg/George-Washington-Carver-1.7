@@ -256,4 +256,3 @@ public class BlockBeeHive extends GrcBlockBase
 	//	super.getCollisionBoundingBox(world, pos, axis, list, entity);
 	//	this.setBlockBoundsForItemRender();
 	}
-}
