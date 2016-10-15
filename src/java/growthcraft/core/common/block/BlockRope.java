@@ -245,5 +245,3 @@ public class BlockRope extends GrcBlockBase implements IBlockRope {
 //
 			//this.getBoundingBox(f, f4, f2, f1, f5, f3);
 		}
-	}
-}

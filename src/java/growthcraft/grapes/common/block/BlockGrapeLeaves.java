@@ -237,7 +237,7 @@ public class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 	@Override
 	public boolean canConnectRopeTo(IBlockAccess world, BlockPos pos)
 	{
-		if (world.getBlockState(x, y, z) instanceof IBlockRope)
+		if (world.getBlockState(pos) instanceof IBlockRope)
 		{
 			return true;
 		}
@@ -267,30 +267,30 @@ public class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 	/************
 	 * TEXTURES
 	 ************/
-	@Override
-	@SideOnly(Side.CLIENT)
+	//@Override
+	//@SideOnly(Side.CLIENT)
 
-	{
-		this.icons = new IIcon[4];
+	//{
+	//	this.icons = new IIcon[4];
+//
+	//	icons[0] = reg.registerIcon("grcgrapes:leaves");
+	//	icons[1] = reg.registerIcon("grcgrapes:leaves_opaque");
+	//	icons[2] = reg.registerIcon("grccore:rope_1");
+	//	icons[3] = reg.registerIcon("grcgrapes:leaves_half");
+	//}
 
-		icons[0] = reg.registerIcon("grcgrapes:leaves");
-		icons[1] = reg.registerIcon("grcgrapes:leaves_opaque");
-		icons[2] = reg.registerIcon("grccore:rope_1");
-		icons[3] = reg.registerIcon("grcgrapes:leaves_half");
-	}
+	//@SideOnly(Side.CLIENT)
+	//public IIcon getIconByIndex(int index)
+	//{
+	//	return icons[index];
+	//}
 
-	@SideOnly(Side.CLIENT)
-	public IIcon getIconByIndex(int index)
-	{
-		return icons[index];
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
-	{
-		return icons[isOpaqueCube() ? 1 : 0];
-	}
+	//@Override
+	///@SideOnly(Side.CLIENT)
+	//public IIcon getIcon(int side, int meta)
+	//{
+	//	return icons[isOpaqueCube() ? 1 : 0];
+	//}
 
 	/************
 	 * RENDERS
@@ -301,11 +301,11 @@ public class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 		return RenderGrapeLeaves.id;
 	}
 
-	@Override
-	public boolean isOpaqueCube()
-	{
-		return Blocks.LEAVES.isOpaqueCube();
-	}
+	//@Override
+	//public boolean isOpaqueCube()
+	//{
+	//	return Blocks.LEAVES.isOpaqueCube();
+	//}
 
 	@Override
 	public boolean renderAsNormalBlock()
@@ -343,7 +343,7 @@ public class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 	@SideOnly(Side.CLIENT)
 	public int colorMultiplier(IBlockAccess world, BlockPos pos)
 	{
-		final int meta = world.getBlockState(x, y, z);
+		final IBlockState meta = world.getBlockState(pos);
 
 		int r = 0;
 		int g = 0;
