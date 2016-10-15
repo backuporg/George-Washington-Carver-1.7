@@ -87,10 +87,10 @@ public class BlockNetherPepper extends BlockBush implements ICropDataProvider, I
 		setBlockName("grcnetherloid.netherPepper");
 	}
 
-	private void incrementGrowth(World world, BlockPos pos, int meta)
+	private void incrementGrowth(World world, BlockPos pos, int meta, IBlockState state)
 	{
-		world.setBlockState(x, y, z, meta + 1, BlockFlags.SYNC);
-		AppleCore.announceGrowthTick(this, world, x, y, z, meta);
+		world.setBlockState(pos, state, meta + 1, BlockFlags.SYNC);
+		AppleCore.announceGrowthTick(this, world, pos, meta);
 	}
 
 	public boolean isFullyGrown(World world, BlockPos pos)
@@ -114,16 +114,16 @@ public class BlockNetherPepper extends BlockBush implements ICropDataProvider, I
 	@Override
 	public boolean func_149852_a(World world, Random random, BlockPos pos)
 	{
-		return canGrow(world, x, y, z);
+		return canGrow(world, pos);
 	}
 
 	public boolean onUseBonemeal(World world, BlockPos pos)
 	{
-		if (canGrow(world, x, y, z))
+		if (canGrow(world, pos))
 		{
 			if (!world.isRemote)
 			{
-				incrementGrowth(world, x, y, z, world.getBlockState(x, y, z));
+				incrementGrowth(world, pos, world.getBlockState(pos));
 			}
 			return true;
 		}
@@ -133,7 +133,7 @@ public class BlockNetherPepper extends BlockBush implements ICropDataProvider, I
 	/* IGrowable: Apply bonemeal effect */
 	public void func_149853_b(World world, Random random, BlockPos pos)
 	{
-		onUseBonemeal(world, x, y, z);
+		onUseBonemeal(world, pos);
 	}
 
 	@Override
@@ -148,19 +148,19 @@ public class BlockNetherPepper extends BlockBush implements ICropDataProvider, I
 	}
 
 	@Override
-	public void updateTick(World world, BlockPos pos, Random random)
+	public void updateTick(World world, BlockPos pos, Random random, int meta)
 	{
-		final Event.Result result = AppleCore.validateGrowthTick(this, world, x, y, z, random);
+		final Event.Result result = AppleCore.validateGrowthTick(this, world, pos, random);
 		if (Event.Result.DENY == result) return;
 
-		if (canGrow(world, x, y, z))
+		if (canGrow(world, pos))
 		{
 			if (Event.Result.ALLOW == result || random.nextInt(10) == 0)
 			{
-				incrementGrowth(world, x, y, z, world.getBlockState(x, y, z));
+				incrementGrowth(world, pos, meta, world.getBlockState(pos));
 			}
 		}
-		super.updateTick(world, x, y, z, random);
+		super.updateTick(world, pos, random);
 	}
 
 	@Override
