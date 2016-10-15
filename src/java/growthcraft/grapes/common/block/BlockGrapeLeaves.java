@@ -157,13 +157,13 @@ public class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 	@Override
 	public void updateTick(World world, BlockPos pos, Random random)
 	{
-		if (!this.canBlockStay(world, x, y, z))
+		if (!this.canBlockStay(world, pos))
 		{
-			world.setBlockState(x, y, z, GrowthCraftCore.blocks.ropeBlock.getBlockState());
+			world.setBlockState(pos, (IBlockState) GrowthCraftCore.blocks.ropeBlock.getBlockState());
 		}
 		else
 		{
-			grow(world, x, y, z, random);
+			grow(world, pos, random);
 		}
 	}
 
@@ -186,7 +186,7 @@ public class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 	@Override
 	public boolean canBlockStay(World world, BlockPos pos)
 	{
-		if (this.isSupportedByTrunk(world, x, y, z))
+		if (this.isSupportedByTrunk(world, pos))
 		{
 			return true;
 		}
@@ -196,13 +196,13 @@ public class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 			{
 				for (int i = 1; i <= grapeVineSupportedLength; ++i)
 				{
-					final int bx = x + EnumFacing.offsetX * i;
-					final int bz = z + EnumFacing.offsetZ * i;
-					if (world.getBlockState(bx, y, bz) != this)
+					final int bx = pos.getX() + EnumFacing.offsetX * i;
+					final int bz = pos.getZ() + EnumFacing.offsetZ * i;
+					if (world.getBlockState(pos) != this)
 					{
 						break;
 					}
-					else if (isSupportedByTrunk(world, bx, y, bz))
+					else if (isSupportedByTrunk(world, pos))
 					{
 						return true;
 					}
