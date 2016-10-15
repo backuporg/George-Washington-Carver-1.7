@@ -31,6 +31,7 @@ import growthcraft.netherloid.netherloid;
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -79,17 +80,17 @@ public abstract class BlockNetherMaliceFruit extends Block implements IGrowable,
 		return (float)meta / (float)MaliceFruitStage.MATURE;
 	}
 
-	void incrementGrowth(World world, BlockPos pos, int meta)
+	void incrementGrowth(World world, BlockPos pos, int meta, IBlockState state)
 	{
-		world.setBlockState(x, y, z, meta + 1, BlockFlags.SYNC);
-		AppleCore.announceGrowthTick(this, world, x, y, z, meta);
+		world.setBlockState(pos, state, meta + 1, BlockFlags.SYNC);
+		AppleCore.announceGrowthTick(this, world, pos, meta);
 	}
 
 	/* Can this accept bonemeal? */
 	@Override
 	public boolean func_149851_a(World world, BlockPos pos, boolean isClient)
 	{
-		return world.getBlockState(x, y, z) < MaliceFruitStage.MATURE;
+		return world.getBlockState(pos) < MaliceFruitStage.MATURE;
 	}
 
 	/* SideOnly(Side.SERVER) Can this apply bonemeal effect? */
@@ -103,7 +104,7 @@ public abstract class BlockNetherMaliceFruit extends Block implements IGrowable,
 	@Override
 	public void func_149853_b(World world, Random random, BlockPos pos)
 	{
-		incrementGrowth(world, x, y, z, world.getBlockState(x, y, z));
+		incrementGrowth(world, pos, world.getBlockState(pos));
 	}
 
 	/**
@@ -115,35 +116,35 @@ public abstract class BlockNetherMaliceFruit extends Block implements IGrowable,
 	 */
 	public void fellBlockAsItem(World world, BlockPos pos)
 	{
-		this.dropBlockAsItem(world, x, y, z, world.getBlockState(x, y, z), 0);
-		world.setBlockToAir(x, y, z);
+		this.dropBlockAsItem(world, pos, world.getBlockState(pos), 0);
+		world.setBlockToAir(pos);
 	}
 
 	@Override
-	public void updateTick(World world, BlockPos pos, Random random)
+	public void updateTick(World world, BlockPos pos, Random random, IBlockState state)
 	{
-		if (!this.canBlockStay(world, x, y, z))
+		if (!this.canBlockStay(world, pos))
 		{
-			this.dropBlockAsItem(world, x, y, z, world.getBlockState(x, y, z), 0);
-			world.setBlockState(x, y, z, Blocks.AIR, 0, BlockFlags.SYNC);
+			this.dropBlockAsItem(world, pos, world.getBlockState(pos), 0);
+			world.setBlockState(pos, Blocks.AIR, 0, BlockFlags.SYNC);
 		}
 		else
 		{
-			final Event.Result allowGrowthResult = AppleCore.validateGrowthTick(this, world, x, y, z, random);
+			final Event.Result allowGrowthResult = AppleCore.validateGrowthTick(this, world, pos, random);
 			if (allowGrowthResult == Event.Result.DENY)
 				return;
 
 			final boolean continueGrowth = random.nextInt(this.growth) == 0;
 			if (allowGrowthResult == Event.Result.ALLOW || continueGrowth)
 			{
-				final int meta = world.getBlockState(x, y, z);
+				final int meta = world.getBlockState(pos);
 				if (meta < MaliceFruitStage.MATURE)
 				{
-					incrementGrowth(world, x, y, z, meta);
+					incrementGrowth(world, pos, meta, state);
 				}
 				else if (dropRipeMaliceFruit && world.rand.nextInt(this.dropChance) == 0)
 				{
-					fellBlockAsItem(world, x, y, z);
+					fellBlockAsItem(world, pos);
 				}
 			}
 		}
@@ -152,11 +153,11 @@ public abstract class BlockNetherMaliceFruit extends Block implements IGrowable,
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, EntityPlayer player, int EnumFacing, float par7, float par8, float par9)
 	{
-		if (world.getBlockState(x, y, z) >= MaliceFruitStage.MATURE)
+		if (world.getBlockState(pos) >= MaliceFruitStage.MATURE)
 		{
 			if (!world.isRemote)
 			{
-				fellBlockAsItem(world, x, y, z);
+				fellBlockAsItem(world, pos);
 			}
 			return true;
 		}
@@ -166,9 +167,9 @@ public abstract class BlockNetherMaliceFruit extends Block implements IGrowable,
 	@Override
 	public void onNeighborBlockChange(World world, BlockPos pos, Block block)
 	{
-		if (!this.canBlockStay(world, x, y, z))
+		if (!this.canBlockStay(world, pos))
 		{
-			fellBlockAsItem(world, x, y, z);
+			fellBlockAsItem(world, pos);
 		}
 	}
 
@@ -217,57 +218,56 @@ public abstract class BlockNetherMaliceFruit extends Block implements IGrowable,
 		return false;
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
+	//@Override
+	//@SideOnly(Side.CLIENT)
 
-	{
-		icons = new IIcon[MaliceFruitStage.COUNT];
+	//{
+	//	icons = new IIcon[MaliceFruitStage.COUNT];
+//
+	//	for (int i = 0; i < icons.length; ++i )
+	//	{
+	//		icons[i] = reg.registerIcon("grcnetherloid:malice_fruit_" + i);
+	//	}
+	//}
 
-		for (int i = 0; i < icons.length; ++i )
-		{
-			icons[i] = reg.registerIcon("grcnetherloid:malice_fruit_" + i);
-		}
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//public IIcon getIcon(int side, int meta)
 	{
 		return this.icons[meta];
 	}
 
-	@Override
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, BlockPos pos)
-	{
-		this.setBlockBoundsBasedOnState(world, x, y, z);
-		return super.getCollisionBoundingBoxFromPool(world, x, y, z);
-	}
+	//@Override
+	//public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, BlockPos pos)
+	//{
+	//	this.setBlockBoundsBasedOnState(world, x, y, z);
+	//	return super.getCollisionBoundingBoxFromPool(world, x, y, z);
+	//}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public AxisAlignedBB getSelectedBoundingBoxFromPool(World world, BlockPos pos)
-	{
-		this.setBlockBoundsBasedOnState(world, x, y, z);
-		return super.getSelectedBoundingBoxFromPool(world, x, y, z);
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//public AxisAlignedBB getSelectedBoundingBoxFromPool(World world, BlockPos pos)
+	//{
+	//	this.setBlockBoundsBasedOnState(world, x, y, z);
+	//	return super.getSelectedBoundingBoxFromPool(world, x, y, z);
+	//}
 
-	@Override
-	public void setBlockBoundsBasedOnState(IBlockAccess world, BlockPos pos)
-	{
-		final int meta = world.getBlockState(x, y, z);
-		final float f = 0.0625F;
-
-		if (meta == MaliceFruitStage.YOUNG)
-		{
-			this.getBoundingBox(6*f, 11*f, 6*f, 10*f, 15*f, 10*f);
-		}
-		else if (meta == MaliceFruitStage.MID)
-		{
-			this.getBoundingBox((float)(5.5*f), 10*f, (float)(5.5*f), (float)(10.5*f), 15*f, (float)(10.5*f));
-		}
-		else
-		{
-			this.getBoundingBox(5*f, 9*f, 5*f, 11*f, 15*f, 11*f);
-		}
+	//@Override
+	//public void setBlockBoundsBasedOnState(IBlockAccess world, BlockPos pos)
+	//{
+	//	final int meta = world.getBlockState(x, y, z);
+	//	final float f = 0.0625F;
+//
+	//	if (meta == MaliceFruitStage.YOUNG)
+	//	{
+	//		this.getBoundingBox(6*f, 11*f, 6*f, 10*f, 15*f, 10*f);
+	//	}
+	//	else if (meta == MaliceFruitStage.MID)
+	//	{
+	//		this.getBoundingBox((float)(5.5*f), 10*f, (float)(5.5*f), (float)(10.5*f), 15*f, (float)(10.5*f));
+	//	}
+	//	else
+	//	{
+	//		this.getBoundingBox(5*f, 9*f, 5*f, 11*f, 15*f, 11*f);
+	//	}
 	}
-}
