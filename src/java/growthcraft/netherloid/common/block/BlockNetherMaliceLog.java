@@ -61,14 +61,13 @@ public class BlockNetherMaliceLog extends Block
 	//	icons[1] = reg.registerIcon(getTextureName());
 	//}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
-	{
-		if (side == 0 || side == 1)
-		{
-			return icons[0];
-		}
-		return icons[1];
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//public IIcon getIcon(int side, int meta)
+	//{
+	//	if (side == 0 || side == 1)
+	//	{
+	//		return icons[0];
+	//	}
+	//	return icons[1];
 	}
-}
