@@ -237,8 +237,8 @@ public class BlockBambooWall extends GrcBlockBase
 		//this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
 	//}
 
-	@Override
-	@SuppressWarnings({"rawtypes", "unchecked"})
+	//@Override
+	//@SuppressWarnings({"rawtypes", "unchecked"})
 	//public void getCollisionBoundingBox(World world, BlockPos pos, AxisAlignedBB axis, List list, Entity entity)
 	//{
 	//	int tm;
@@ -485,4 +485,4 @@ public class BlockBambooWall extends GrcBlockBase
 //		this.setBlockBoundsBasedOnState(world, x, y, z);
 //	}
 //}
-	}
+}
