@@ -104,8 +104,8 @@ public class BlockRope extends GrcBlockBase implements IBlockRope {
 
 	//@SideOnly(Side.CLIENT)
 	//public IIcon getIconByIndex(int index) {
-		return icons[index];
-	}
+	//	return icons[index];
+	//}
 
 	//@Override
 	//@SideOnly(Side.CLIENT)
@@ -116,26 +116,26 @@ public class BlockRope extends GrcBlockBase implements IBlockRope {
 	/************
 	 * RENDER
 	 ************/
-	@Override
-	public int getRenderType() {
-		return RenderRope.id;
-	}
+	//@Override
+	//public int getRenderType() {
+	//	return RenderRope.id;
+	//}
 
-	@Override
-	public boolean renderAsNormalBlock() {
-		return false;
-	}
+	//@Override
+	//public boolean renderAsNormalBlock() {
+	//	return false;
+	//}
 
-	@Override
-	public boolean isOpaqueCube() {
-		return false;
-	}
+	//@Override
+	//public boolean isOpaqueCube() {
+	//	return false;
+	//}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess world, BlockPos pos, int par5) {
-		return true;
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//public boolean shouldSideBeRendered(IBlockAccess world, BlockPos pos, int par5) {
+	//	return true;
+	//}
 
 	/************
 	 * BOXES
