@@ -157,5 +157,4 @@ public class BlockGrapeVine1 extends BlockGrapeVineBase {
 		//{
 		//	this.getBoundingBox(6*f, 0.0F, 6*f, 10*f, 1.0F, 10*f);
 		//}
-	}
 }
