@@ -171,15 +171,15 @@ public class BlockNetherPepper extends BlockBush implements ICropDataProvider, I
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, EntityPlayer player, int side, float par7, float par8, float par9)
+	public boolean onBlockActivated(World world, BlockPos pos, EntityPlayer player, int side, float par7, float par8, float par9, IBlockState state)
 	{
-		if (isFullyGrown(world, x, y, z))
+		if (isFullyGrown(world, pos))
 		{
 			if (!world.isRemote)
 			{
-				world.setBlockState(x, y, z, PepperStages.FULL, BlockFlags.SYNC);
+				world.setBlockState(pos, state, PepperStages.FULL, BlockFlags.SYNC);
 				final int count = minPepperPicked + world.rand.nextInt(maxPepperPicked - minPepperPicked);
-				dropBlockAsItem(world, x, y, z, netherloid.items.netherPepper.asStack(count));
+				dropBlockAsItem(world, pos, state, netherloid.items.netherPepper.asStack(count));
 			}
 			return true;
 		}
