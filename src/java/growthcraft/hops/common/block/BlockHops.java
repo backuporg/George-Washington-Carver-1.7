@@ -575,8 +575,7 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 		return this;
 	}
 
-	@Override
-	public int getPlantMetadata(IBlockAccess world, BlockPos pos)
+	public IBlockState getPlantMetadata(IBlockAccess world, BlockPos pos)
 	{
 		return world.getBlockState(pos);
 	}
