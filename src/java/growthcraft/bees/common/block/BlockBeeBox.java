@@ -171,26 +171,26 @@ public class BlockBeeBox extends GrcBlockContainer
 		return 1;
 	}
 
-	@SideOnly(Side.CLIENT)
-	protected void registerBeeBoxIcons(IIconRegister reg, String basename, int offset)
-	{
-		icons[offset * 4] = reg.registerIcon(getTextureName() + basename + "bottom");
-		icons[offset * 4 + 1] = reg.registerIcon(getTextureName() + basename + "top");
-		icons[offset * 4 + 2] = reg.registerIcon(getTextureName() + basename + "side");
-		icons[offset * 4 + 3] = reg.registerIcon(getTextureName() + basename + "side_honey");
-	}
+	//@SideOnly(Side.CLIENT)
+	//protected void registerBeeBoxIcons(IIconRegister reg, String basename, int offset)
+	//{
+	//	icons[offset * 4] = reg.registerIcon(getTextureName() + basename + "bottom");
+	//	icons[offset * 4 + 1] = reg.registerIcon(getTextureName() + basename + "top");
+	//	icons[offset * 4 + 2] = reg.registerIcon(getTextureName() + basename + "side");
+	//	icons[offset * 4 + 3] = reg.registerIcon(getTextureName() + basename + "side_honey");
+	//}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg)
-	{
-		this.icons = new IIcon[6 * 4];
-
-		for (EnumMinecraftWoodType woodType : EnumMinecraftWoodType.VALUES)
-		{
-			registerBeeBoxIcons(reg, String.format("/minecraft/%s/", woodType.name), woodType.meta);
-		}
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//public void registerBlockIcons(IIconRegister reg)
+	//{
+	//	this.icons = new IIcon[6 * 4];
+//
+	//	for (EnumMinecraftWoodType woodType : EnumMinecraftWoodType.VALUES)
+	//	{
+	//		registerBeeBoxIcons(reg, String.format("/minecraft/%s/", woodType.name), woodType.meta);
+	//	}
+	//}
 
 	@SideOnly(Side.CLIENT)
 	protected int calculateIconOffset(int meta)
