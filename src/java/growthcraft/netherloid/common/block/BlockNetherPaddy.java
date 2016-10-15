@@ -82,9 +82,9 @@ public class BlockNetherPaddy extends BlockPaddyBase
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World world, BlockPos pos, Random random)
+	public void randomDisplayTick(World world, BlockPos pos, Random random, IBlockState state)
 	{
-		super.randomDisplayTick(world, x, y, z, random);
+		super.randomDisplayTick(state, world, pos, random);
 		if (filledPaddy)
 		{
 			if (world.getBlockState(x, y + 1, z).getMaterial() == Material.AIR && !world.getBlockState(x, y + 1, z).isOpaqueCube())
@@ -195,34 +195,34 @@ public class BlockNetherPaddy extends BlockPaddyBase
 	/************
 	 * TEXTURES
 	 ************/
-	@Override
-	@SideOnly(Side.CLIENT)
+	//@Override
+	//@SideOnly(Side.CLIENT)
 
-	{
-		icons = new IIcon[3];
+	//{
+	//	icons = new IIcon[3];
+//
+	//	icons[0] = reg.registerIcon("soul_sand");
+	//	icons[1] = reg.registerIcon("grcnetherloid:soul_sand_paddy_dry");
+	//	icons[2] = reg.registerIcon("grcnetherloid:soul_sand_paddy_wet");
+	//}
 
-		icons[0] = reg.registerIcon("soul_sand");
-		icons[1] = reg.registerIcon("grcnetherloid:soul_sand_paddy_dry");
-		icons[2] = reg.registerIcon("grcnetherloid:soul_sand_paddy_wet");
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
-	{
-		if (side == 1)
-		{
-			if (meta == 0)
-			{
-				return icons[1];
-			}
-			else
-			{
-				return icons[2];
-			}
-		}
-		return icons[0];
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//public IIcon getIcon(int side, int meta)
+	//{
+	//	if (side == 1)
+	//	{
+	//		if (meta == 0)
+	//		{
+	//			return icons[1];
+	//		}
+	//		else
+	//		{
+	///			return icons[2];
+	//		}
+	//	}
+	//	return icons[0];
+	//}
 
 	public boolean canConnectPaddyTo(IBlockAccess world, int i, int j, int k, int m)
 	{
