@@ -162,7 +162,7 @@ public abstract class BlockFishTrap extends GrcBlockContainer
 		}
 		else
 		{
-			flag = Utils.isIDInList(world.getBiome(pos).biomeID, GrowthCraftFishTrap.getConfig().biomesList);
+			flag = Utils.isIDInList(world.getBiome(pos).biomeID(), GrowthCraftFishTrap.getConfig().biomesList);
 		}
 
 		if (flag)
