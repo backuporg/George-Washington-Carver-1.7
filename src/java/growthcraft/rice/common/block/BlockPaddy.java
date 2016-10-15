@@ -21,7 +21,6 @@ import java.util.Random;
 public class BlockPaddy extends BlockPaddyBase
 {
 	@SideOnly(Side.CLIENT)
-	protected IIcon[] icons;
 
 	private final int paddyFieldMax = GrowthCraftRice.getConfig().paddyFieldMax;
 
@@ -39,10 +38,10 @@ public class BlockPaddy extends BlockPaddyBase
 	{
 		if (world.rand.nextInt(20) == 0)
 		{
-			final int meta = world.getBlockState(x, y, z);
+			final int meta = world.getBlockState(pos);
 			if (meta < paddyFieldMax)
 			{
-				world.setBlockState(x, y, z, meta + 1, BlockFlags.UPDATE_AND_SYNC);
+				world.setBlockState(pos, meta + 1, BlockFlags.UPDATE_AND_SYNC);
 			}
 		}
 	}
@@ -68,6 +67,11 @@ public class BlockPaddy extends BlockPaddyBase
 	public int getMaxPaddyMeta(IBlockAccess world, BlockPos pos)
 	{
 		return paddyFieldMax;
+	}
+
+	@Override
+	public boolean canConnectPaddyTo(IBlockAccess world, BlockPos pos, int meta) {
+		return false;
 	}
 
 	@Override
