@@ -192,26 +192,26 @@ public abstract class BlockThistle extends BlockBush implements ISpreadablePlant
 		}
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
+	//@Override
+	//@SideOnly(Side.CLIENT)
 
-	{
-		this.icons = new IIcon[4];
+	//{
+	//	this.icons = new IIcon[4];
+//
+	//	icons[0] = reg.registerIcon("grcmilk:thistle/stage1");
+	//	icons[1] = reg.registerIcon("grcmilk:thistle/stage2");
+	//	icons[2] = reg.registerIcon("grcmilk:thistle/stage3");
+	//	icons[3] = reg.registerIcon("grcmilk:thistle/stage4");
+	//}
 
-		icons[0] = reg.registerIcon("grcmilk:thistle/stage1");
-		icons[1] = reg.registerIcon("grcmilk:thistle/stage2");
-		icons[2] = reg.registerIcon("grcmilk:thistle/stage3");
-		icons[3] = reg.registerIcon("grcmilk:thistle/stage4");
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
-	{
-		if (meta < 0 || meta >= icons.length)
-		{
-			return icons[3];
-		}
-		return this.icons[meta];
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//public IIcon getIcon(int side, int meta)
+	//{
+	//	if (meta < 0 || meta >= icons.length)
+	//	{
+	//		return icons[3];
+	//	}
+	//	return this.icons[meta];
+	//}
 }
