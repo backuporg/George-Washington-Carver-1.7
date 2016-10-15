@@ -107,29 +107,29 @@ public class BlockPaddy extends BlockPaddyBase
 	@Override
 	@SideOnly(Side.CLIENT)
 
-	{
-		icons = new IIcon[3];
+	//{
+	//	icons = new IIcon[3];
+//
+	//	icons[0] = reg.registerIcon("dirt");
+	//	icons[1] = reg.registerIcon("farmland_dry");
+	//	icons[2] = reg.registerIcon("farmland_wet");
+	//}
 
-		icons[0] = reg.registerIcon("dirt");
-		icons[1] = reg.registerIcon("farmland_dry");
-		icons[2] = reg.registerIcon("farmland_wet");
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
-	{
-		if (side == 1)
-		{
-			if (meta == 0)
-			{
-				return icons[1];
-			}
-			else
-			{
-				return icons[2];
-			}
-		}
-		return icons[0];
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//public IIcon getIcon(int side, int meta)
+	//{
+	//	if (side == 1)
+	//	{
+	//		if (meta == 0)
+	//		{
+	//			return icons[1];
+	//		}
+	//		else
+	//		{
+	//			return icons[2];
+	//		}
+	//	}
+	//	return icons[0];
+	//}
 }
