@@ -34,7 +34,6 @@ import java.util.Random;
 public class BlockBeeBox extends GrcBlockContainer
 {
 	@SideOnly(Side.CLIENT)
-	protected IIcon[] icons;
 
 	// bonus
 	private int flammability;
