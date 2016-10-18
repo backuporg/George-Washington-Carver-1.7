@@ -23,12 +23,12 @@
  */
 package growthcraft.bees.common.block;
 
-import growthcraft.core.integration.HIGHLANDS.EnumHIGHLANDSWoodType;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import growthcraft.core.integration.highlands.*;
 
 import java.util.List;
 
@@ -39,7 +39,7 @@ public class BlockBeeBoxHighlands extends BlockBeeBox
 	{
 		super();
 		setHardness(2f);
-		setBlockName("grc.beeBox.Highlands");
+		setUnlocalizedName("grc.beeBox.Highlands");
 	}
 
 	@Override

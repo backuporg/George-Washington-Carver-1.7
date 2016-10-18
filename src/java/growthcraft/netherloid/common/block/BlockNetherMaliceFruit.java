@@ -71,7 +71,7 @@ public abstract class BlockNetherMaliceFruit extends Block implements IGrowable,
 		setHardness(0.2F);
 		setResistance(5.0F);
 		setStepSound(soundTypeWood);
-		setBlockName("grcnetherloid.netherMaliceFruit");
+		setUnlocalizedName("grcnetherloid.netherMaliceFruit");
 		setCreativeTab(null);
 	}
 

@@ -28,7 +28,7 @@ public class BlockGrapeVine0 extends BlockGrapeVineBase
 		setTickRandomly(true);
 		setHardness(0.0F);
 		setSoundType(SoundType.PLANT);
-		setBlockName("grc.grapeVine0");
+		setUnlocalizedName("grc.grapeVine0");
 		setCreativeTab(null);
 	}
 

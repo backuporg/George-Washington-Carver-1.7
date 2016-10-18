@@ -66,7 +66,7 @@ public abstract class BlockNetherMaliceLeaves extends BlockLeaves implements ISh
 		setHardness(0.2F);
 		setLightOpacity(1);
 		setStepSound(soundTypeGrass);
-		setBlockName("grcnetherloid.netherMaliceLeaves");
+		setUnlocalizedName("grcnetherloid.netherMaliceLeaves");
 		setCreativeTab(netherloid.tab);
 	}
 

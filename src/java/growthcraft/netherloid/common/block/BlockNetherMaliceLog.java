@@ -40,7 +40,7 @@ public class BlockNetherMaliceLog extends Block
 	{
 		super(Materials.fireproofWood);
 		setHardness(2.0F);
-		setBlockName("grcnetherloid.netherMaliceLog");
+		setUnlocalizedName("grcnetherloid.netherMaliceLog");
 		setBlockTextureName("grcnetherloid:log_malice");
 		setHarvestLevel("axe", 0);
 		setCreativeTab(netherloid.tab);

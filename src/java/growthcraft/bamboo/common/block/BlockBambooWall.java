@@ -29,7 +29,7 @@ public class BlockBambooWall extends GrcBlockBase
 		setStepSound(soundTypeWood);
 		setResistance(5.0F / 3.0F);
 		setHardness(2.0F);
-		setBlockName("grc.bambooWall");
+		setUnlocalizedName("grc.bambooWall");
 		setCreativeTab(GrowthCraftBamboo.creativeTab);
 	}
 

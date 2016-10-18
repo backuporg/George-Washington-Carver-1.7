@@ -33,7 +33,7 @@ public class BlockFruitPresser extends BlockCellarContainer implements IWrenchab
 		setTileEntityType(TileEntityFruitPresser.class);
 		setHardness(0.5F);
 		setStepSound(soundTypePiston);
-		setBlockName("grc.fruitPresser");
+		setUnlocalizedName("grc.fruitPresser");
 		setCreativeTab(null);
 		getBoundingBox(0.1875F, 0.0F, 0.1875F, 0.8125F, 0.9375F, 0.8125F);
 	}

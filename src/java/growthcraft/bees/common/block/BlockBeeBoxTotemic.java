@@ -39,7 +39,7 @@ public class BlockBeeBoxTotemic extends BlockBeeBox
 	{
 		super();
 		setHardness(2f);
-		setBlockName("grc.beeBox.Totemic");
+		setUnlocalizedName("grc.beeBox.Totemic");
 	}
 
 	@Override

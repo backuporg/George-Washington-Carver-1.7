@@ -40,7 +40,7 @@ public class BlockBambooStalk extends GrcBlockBase
 		setStepSound(soundTypeWood);
 		setHardness(2.0F);
 		setTickRandomly(true);
-		setBlockName("grc.bambooStalk");
+		setUnlocalizedName("grc.bambooStalk");
 		setCreativeTab(null);
 	}
 

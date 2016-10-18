@@ -43,7 +43,7 @@ public class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 		setHardness(0.2F);
 		setLightOpacity(1);
 		setStepSound(soundTypeGrass);
-		setBlockName("grc.grapeLeaves");
+		setUnlocalizedName("grc.grapeLeaves");
 		setCreativeTab(null);
 	}
 

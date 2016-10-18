@@ -46,7 +46,7 @@ public class BlockBeeBox extends GrcBlockContainer
 		setTickRandomly(true);
 		setHardness(2.5F);
 		setStepSound(soundTypeWood);
-		setBlockName("grc.BeeBox.Minecraft");
+		setUnlocalizedName("grc.BeeBox.Minecraft");
 		setCreativeTab(GrowthCraftBees.tab);
 		setTileEntityType(TileEntityBeeBox.class);
 	}
@@ -197,52 +197,52 @@ public class BlockBeeBox extends GrcBlockContainer
 		return MathHelper.clamp_int(meta, 0, icons.length / 4 - 1) * 4;
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(IBlockAccess world, int x, int y, int z, int side)
-	{
-		final int meta = world.getBlockMetadata(x, y, z);
-		final int offset = calculateIconOffset(meta);
-		if (side == 0)
-		{
-			return icons[offset];
-		}
-		else if (side == 1)
-		{
-			return icons[offset + 1];
-		}
-		else
-		{
-			final TileEntityBeeBox te = (TileEntityBeeBox)world.getTileEntity(x, y, z);
-			if (te != null && te.isHoneyEnough(6))
-			{
-				return icons[offset + 3];
-			}
-		}
-		return icons[offset + 2];
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//public IIcon getIcon(IBlockAccess world, int x, int y, int z, int side)
+	//{
+	//	final int meta = world.getBlockMetadata(x, y, z);
+	//	final int offset = calculateIconOffset(meta);
+	//	if (side == 0)
+	//	{
+	//		return icons[offset];
+	//	}
+	//	else if (side == 1)
+	//	{
+	//		return icons[offset + 1];
+	//	}
+	//	else
+	///	{
+	//		final TileEntityBeeBox te = (TileEntityBeeBox)world.getTileEntity(x, y, z);
+	//		if (te != null && te.isHoneyEnough(6))
+	//		{
+	//			return icons[offset + 3];
+	//		}
+	//	}
+	//	return icons[offset + 2];
+	//}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
-	{
-		final int offset = calculateIconOffset(meta);
-		if (side == 0)
-		{
-			return icons[offset];
-		}
-		else if (side == 1)
-		{
-			return icons[offset + 1];
-		}
-		return icons[offset + 2];
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//public IIcon getIcon(int side, int meta)
+	//{
+	//	final int offset = calculateIconOffset(meta);
+	//	if (side == 0)
+	//	{
+	//		return icons[offset];
+	//	}
+	//	else if (side == 1)
+	//	{
+	//		return icons[offset + 1];
+	//	}
+	//	return icons[offset + 2];
+	//}
 
-	@SideOnly(Side.CLIENT)
-	public IIcon[] getIcons()
-	{
-		return icons;
-	}
+	//@SideOnly(Side.CLIENT)
+	//public IIcon[] getIcons()
+	//{
+	//	return icons;
+	//}
 
 	@Override
 	public int getRenderType()
@@ -322,5 +322,10 @@ public class BlockBeeBox extends GrcBlockContainer
 			return te.countHoney() * 15 / te.getHoneyCombMax();
 		}
 		return 0;
+	}
+
+	@Override
+	public boolean wrenchBlock(World world, BlockPos pos, EntityPlayer player, ItemStack wrench) {
+		return false;
 	}
 }

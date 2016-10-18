@@ -49,7 +49,7 @@ public class BlockBeeBoxForestry extends BlockBeeBox
 		this.subIndex = index;
 		this.isFireproofFlag = fireproof;
 		setHardness(2f);
-		setBlockName(String.format("grc.BeeBox.Forestry.%d.%s", subIndex, isFireproofFlag ? "Fireproof" : "Normal"));
+		setUnlocalizedName(String.format("grc.BeeBox.Forestry.%d.%s", subIndex, isFireproofFlag ? "Fireproof" : "Normal"));
 	}
 
 	@Override

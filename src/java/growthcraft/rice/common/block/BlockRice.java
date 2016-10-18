@@ -61,7 +61,7 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 		this.setHardness(0.0F);
 		this.setTickRandomly(true);
 		this.setCreativeTab(null);
-		this.setBlockName("grc.riceBlock");
+		this.setUnlocalizedName("grc.riceBlock");
 		this.setStepSound(soundTypeGrass);
 	}
 

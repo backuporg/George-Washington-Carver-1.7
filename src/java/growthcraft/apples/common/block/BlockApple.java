@@ -64,7 +64,7 @@ public class BlockApple extends GrcBlockBase implements IGrowable, ICropDataProv
 		this.setHardness(0.2F);
 		this.setResistance(5.0F);
 		this.setStepSound(soundTypeWood);
-		this.setBlockName("grc.appleBlock");
+		this.setUnlocalizedName("grc.appleBlock");
 		this.setCreativeTab(null);
 	}
 

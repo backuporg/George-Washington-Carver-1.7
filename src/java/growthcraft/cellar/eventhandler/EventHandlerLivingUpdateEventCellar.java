@@ -12,7 +12,7 @@ public class EventHandlerLivingUpdateEventCellar
 	@SubscribeEvent
 	public void onEntityUpdate(LivingUpdateEvent event)
 	{
-		final EntityLivingBase ent = event.entityLiving;
+		final EntityLivingBase ent = event.getEntityLiving();
 
 		if (ent.isPotionActive(GrowthCraftCellar.potionTipsy))
 		{

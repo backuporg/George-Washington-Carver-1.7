@@ -23,7 +23,7 @@ public abstract class BlockBambooSlab extends BlockSlab
 		setStepSound(soundTypeWood);
 		setResistance(5.0F);
 		setHardness(2.0F);
-		setBlockName("grc.bambooSlab");
+		setUnlocalizedName("grc.bambooSlab");
 		setCreativeTab(GrowthCraftBamboo.creativeTab);
 	}
 

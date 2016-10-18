@@ -10,6 +10,6 @@ public class BlockBambooStairs extends BlockStairs
 		super(GrowthCraftBamboo.blocks.bambooBlock.getBlockState(), 0);
 		this.useNeighborBrightness = true;
 		setCreativeTab(GrowthCraftBamboo.creativeTab);
-		setBlockName("grc.bambooStairs");
+		setUnlocalizedName("grc.bambooStairs");
 	}
 }

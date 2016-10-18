@@ -46,7 +46,7 @@ public class GrcBlockFluid extends BlockFluidClassic
 	public GrcBlockFluid(Fluid fluid, Material material)
 	{
 		super(fluid, material);
-		setBlockName(fluid.getUnlocalizedName());
+		setUnlocalizedName(fluid.getUnlocalizedName());
 	}
 
 	public GrcBlockFluid refreshSettings()

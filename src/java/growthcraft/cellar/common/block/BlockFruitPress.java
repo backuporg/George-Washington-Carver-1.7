@@ -31,7 +31,7 @@ public class BlockFruitPress extends BlockCellarContainer
 		setTileEntityType(TileEntityFruitPress.class);
 		setHardness(2.0F);
 		setStepSound(soundTypeWood);
-		setBlockName("grc.fruitPress");
+		setUnlocalizedName("grc.fruitPress");
 		setCreativeTab(GrowthCraftCellar.tab);
 	}
 

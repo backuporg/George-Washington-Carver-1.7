@@ -118,7 +118,7 @@ public class FluidFactory
 		{
 			if (block != null)
 			{
-				block.getBlockState().setBlockName(prefix + ".BlockFluid" + basename);
+				block.getBlockState().setUnlocalizedName(prefix + ".BlockFluid" + basename);
 				block.register(prefix + ".BlockFluid" + basename);
 			}
 			if (bottle != null)

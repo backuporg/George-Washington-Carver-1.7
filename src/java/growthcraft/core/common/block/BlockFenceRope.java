@@ -33,7 +33,7 @@ public class BlockFenceRope extends GrcBlockBase implements IBlockRope
 		super(srcKey.getBlockState().getMaterial());
 		this.fenceBlockKey = srcKey;
 		setStepSound(soundTypeWood);
-		setBlockName(name);
+		setUnlocalizedName(name);
 		setCreativeTab(null);
 	}
 

@@ -5,6 +5,7 @@ import growthcraft.bees.common.tileentity.TileEntityBeeBox;
 import growthcraft.core.client.gui.GrcGuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -14,9 +15,9 @@ public class GuiBeeBox extends GrcGuiContainer<ContainerBeeBox, TileEntityBeeBox
 	private static final ResourceLocation res = new ResourceLocation("grcbees" , "textures/guis/beebox_gui.png");
 	private TileEntityBeeBox te;
 
-	public GuiBeeBox(InventoryPlayer inv, TileEntityBeeBox beeBox)
+	public GuiBeeBox(InventoryPlayer inv, TileEntityBeeBox beeBox, BlockPos pos)
 	{
-		super(res, new ContainerBeeBox(inv, beeBox), beeBox);
+		super(res, new ContainerBeeBox(inv, beeBox, pos), beeBox);
 		this.te = beeBox;
 		this.xSize = 176;
 		this.ySize = 200;

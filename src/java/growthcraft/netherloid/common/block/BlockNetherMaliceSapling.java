@@ -52,7 +52,7 @@ public class BlockNetherMaliceSapling extends BlockBush implements IGrowable
 		super(Material.PLANTS);
 		setHardness(0.0F);
 		setStepSound(soundTypeGrass);
-		setBlockName("grcnetherloid.netherMaliceSapling");
+		setUnlocalizedName("grcnetherloid.netherMaliceSapling");
 		setTickRandomly(true);
 		setCreativeTab(netherloid.tab);
 		final float f = 0.4F;
