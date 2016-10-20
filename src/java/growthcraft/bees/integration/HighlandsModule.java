@@ -26,8 +26,8 @@ package growthcraft.bees.integration;
 import growthcraft.bees.common.block.BlockBeeBoxHighlands;
 import growthcraft.bees.common.item.ItemBlockBeeBox;
 import growthcraft.bees.GrowthCraftBees;
-import growthcraft.core.integration.HIGHLANDS.HIGHLANDSPlatform;
-import growthcraft.core.integration.HIGHLANDS.EnumHIGHLANDSWoodType;
+import growthcraft.core.integration.highlands.HIGHLANDSPlatform;
+import growthcraft.core.integration.highlands.EnumHIGHLANDSWoodType;
 import growthcraft.core.integration.ModIntegrationBase;
 
 import cpw.mods.fml.common.registry.GameRegistry;
