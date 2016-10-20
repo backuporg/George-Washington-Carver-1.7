@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package growthcraft.core.integration.HIGHLANDS;
+package growthcraft.core.integration.highlands;
 
 import cpw.mods.fml.common.Loader;
 
