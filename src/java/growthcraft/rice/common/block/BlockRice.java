@@ -300,7 +300,7 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 
 	//@Override
 	//@SideOnly(Side.CLIENT)
-//	public IIcon getIcon(int side, int meta)
+//
 	//{
 	//	if (meta < 0 || meta > 7)
 	//	{

@@ -215,7 +215,7 @@ public class BlockFruitPress extends BlockCellarContainer
 
 	//@Override
 	//@SideOnly(Side.CLIENT)
-	//public IIcon getIcon(int side, int meta)
+	//
 	//{
 	//	if (side == 0)
 	//	{

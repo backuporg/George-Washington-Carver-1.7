@@ -109,7 +109,7 @@ public class BlockRope extends GrcBlockBase implements IBlockRope {
 
 	//@Override
 	//@SideOnly(Side.CLIENT)
-	//public IIcon getIcon(int side, int meta) {
+	// {
 	//	return this.icons[1];
 	//}
 

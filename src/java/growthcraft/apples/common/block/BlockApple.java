@@ -51,7 +51,7 @@ public class BlockApple extends GrcBlockBase implements IGrowable, ICropDataProv
 	}
 
 	@SideOnly(Side.CLIENT)
-	private IIcon[] tex;
+
 
 	private final int growth = GrowthCraftApples.getConfig().appleGrowthRate;
 	private final boolean dropRipeApples = GrowthCraftApples.getConfig().dropRipeApples;
@@ -212,9 +212,9 @@ public class BlockApple extends GrcBlockBase implements IGrowable, ICropDataProv
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
+
 	{
-		return this.tex[meta];
+
 	}
 
 	/************

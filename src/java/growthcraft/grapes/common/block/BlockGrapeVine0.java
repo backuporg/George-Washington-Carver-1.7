@@ -79,7 +79,7 @@ public class BlockGrapeVine0 extends BlockGrapeVineBase
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	//public IIcon getIcon(int side, int meta)
+	//
 	//{
 	//	return this.icons[MathHelper.clamp_int(meta, 0, 1)];
 	//}

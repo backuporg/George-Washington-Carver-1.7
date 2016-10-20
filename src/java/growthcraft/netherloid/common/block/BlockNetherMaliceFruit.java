@@ -232,7 +232,7 @@ public abstract class BlockNetherMaliceFruit extends Block implements IGrowable,
 
 	//@Override
 	//@SideOnly(Side.CLIENT)
-	//public IIcon getIcon(int side, int meta)
+	//
 	{
 		return this.icons[meta];
 	}

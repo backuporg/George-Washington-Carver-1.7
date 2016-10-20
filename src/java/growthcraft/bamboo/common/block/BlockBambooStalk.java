@@ -258,7 +258,7 @@ public class BlockBambooStalk extends GrcBlockBase
 
 	//@Override
 	//@SideOnly(Side.CLIENT)
-	//public IIcon getIcon(int side, int meta)
+	//
 	//{
 	//	return side == 1 ? tex[0] : ( side == 0 ? tex[0] : (meta == 0 ? tex[1] : tex[2]));
 	//}

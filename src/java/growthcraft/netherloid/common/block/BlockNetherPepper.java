@@ -206,7 +206,7 @@ public class BlockNetherPepper extends BlockBush implements ICropDataProvider, I
 
 //	@Override
 	//@SideOnly(Side.CLIENT)
-	///public IIcon getIcon(int side, int meta)
+	///
 	//{
 	//	if (meta >= PepperStages.SEEDLING && meta <= PepperStages.FRUIT)
 	//	{

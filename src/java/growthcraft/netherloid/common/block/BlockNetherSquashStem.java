@@ -222,7 +222,7 @@ public class BlockNetherSquashStem extends BlockBush implements ICropDataProvide
 
 	//@Override
 	//@SideOnly(Side.CLIENT)
-	//public IIcon getIcon(int side, int meta)
+	//
 	//{
 	//	if ((meta & 8) != 0)
 	//	{

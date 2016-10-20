@@ -287,7 +287,7 @@ public class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 
 	//@Override
 	///@SideOnly(Side.CLIENT)
-	//public IIcon getIcon(int side, int meta)
+	//
 	//{
 	//	return icons[isOpaqueCube() ? 1 : 0];
 	//}

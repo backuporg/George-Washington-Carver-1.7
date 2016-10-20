@@ -67,7 +67,7 @@ public class BlockNetherSquash extends BlockDirectional
 
 //	@Override
 	//@SideOnly(Side.CLIENT)
-	//public IIcon getIcon(int side, int meta)
+	//
 	//{
 	//	if (side == 1)
 	//	{

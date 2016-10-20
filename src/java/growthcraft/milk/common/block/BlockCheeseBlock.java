@@ -252,7 +252,7 @@ public class BlockCheeseBlock extends GrcBlockContainer
 
 	//@Override
 	//@SideOnly(Side.CLIENT)
-	//public IIcon getIcon(int side, int meta)
+	//
 	//{
 	//	final EnumCheeseType type = EnumCheeseType.getSafeById(meta);
 	//	return getIconByTypeAndStage(side, type, type.stages.get(0));

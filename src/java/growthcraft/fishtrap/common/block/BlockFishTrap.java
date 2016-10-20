@@ -236,7 +236,7 @@ public abstract class BlockFishTrap extends GrcBlockContainer
 
 	//@Override
 	//@SideOnly(Side.CLIENT)
-	//public IIcon getIcon(int side, int meta)
+	//
 	//{
 	//	return icons[0];
 	//}

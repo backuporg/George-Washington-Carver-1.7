@@ -137,7 +137,7 @@ public class BlockFermentBarrel extends BlockCellarContainer
 //
 //	@Override
 //	@SideOnly(Side.CLIENT)
-//	public IIcon getIcon(int side, int meta)
+//
 //	{
 //		if (meta == 0 || meta == 1)
 //		{

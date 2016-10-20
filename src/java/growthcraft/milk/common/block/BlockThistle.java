@@ -206,7 +206,7 @@ public abstract class BlockThistle extends BlockBush implements ISpreadablePlant
 
 	//@Override
 	//@SideOnly(Side.CLIENT)
-	//public IIcon getIcon(int side, int meta)
+	//
 	//{
 	//	if (meta < 0 || meta >= icons.length)
 	//	{

@@ -101,7 +101,7 @@ public class BlockGrapeVine1 extends BlockGrapeVineBase {
 
 	//@Override
 	//@SideOnly(Side.CLIENT)
-	//public IIcon getIcon(int side, int meta)
+	//
 	//{
 	//	return icons[0];
 	//}

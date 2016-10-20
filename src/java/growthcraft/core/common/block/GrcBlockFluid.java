@@ -78,7 +78,7 @@ public class GrcBlockFluid extends BlockFluidClassic
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
+
 	{
 		return side != 0 && side != 1 ? this.icons[1] : this.icons[0];
 	}

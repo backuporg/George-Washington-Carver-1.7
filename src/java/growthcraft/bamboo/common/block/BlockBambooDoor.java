@@ -19,7 +19,7 @@ public class BlockBambooDoor extends BlockDoor
 	private static final String[] doorIconNames = new String[] {"grcbamboo:door_lower", "grcbamboo:door_upper"};
 
 	@SideOnly(Side.CLIENT)
-	private IIcon[] tex;
+
 
 	public BlockBambooDoor()
 	{

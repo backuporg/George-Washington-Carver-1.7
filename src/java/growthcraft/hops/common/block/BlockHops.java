@@ -382,7 +382,7 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 
 	//@Override
 	//@SideOnly(Side.CLIENT)
-	//public IIcon getIcon(int side, int meta)
+	//
 	//{
 		//if (meta != 0)
 		//{

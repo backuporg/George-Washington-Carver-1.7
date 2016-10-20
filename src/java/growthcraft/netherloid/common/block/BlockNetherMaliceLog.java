@@ -63,7 +63,7 @@ public class BlockNetherMaliceLog extends Block
 
 	//@Override
 	//@SideOnly(Side.CLIENT)
-	//public IIcon getIcon(int side, int meta)
+	//
 	//{
 	//	if (side == 0 || side == 1)
 	//	{

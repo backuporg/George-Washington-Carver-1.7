@@ -224,7 +224,7 @@ public class BlockBeeBox extends GrcBlockContainer
 
 	//@Override
 	//@SideOnly(Side.CLIENT)
-	//public IIcon getIcon(int side, int meta)
+	//
 	//{
 	//	final int offset = calculateIconOffset(meta);
 	//	if (side == 0)

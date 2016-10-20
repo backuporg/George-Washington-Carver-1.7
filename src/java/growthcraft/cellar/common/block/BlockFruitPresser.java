@@ -236,7 +236,7 @@ public class BlockFruitPresser extends BlockCellarContainer implements IWrenchab
 
 	//@Override
 	//@SideOnly(Side.CLIENT)
-	//public IIcon getIcon(int side, int meta)
+	//
 	//{
 	//	return side == 0 ? icons[0] : (side == 1 ? icons[1] : icons[2]);
 	//}

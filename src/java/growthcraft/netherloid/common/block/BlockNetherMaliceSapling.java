@@ -140,7 +140,7 @@ public class BlockNetherMaliceSapling extends BlockBush implements IGrowable
 
 	//@Override
 	//@SideOnly(Side.CLIENT)
-	///public IIcon getIcon(int side, int meta)
+	///
 	//{
 	//	return this.icon;
 	//}

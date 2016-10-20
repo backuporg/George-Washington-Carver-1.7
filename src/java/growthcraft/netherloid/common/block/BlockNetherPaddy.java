@@ -208,7 +208,7 @@ public class BlockNetherPaddy extends BlockPaddyBase
 
 	//@Override
 	//@SideOnly(Side.CLIENT)
-	//public IIcon getIcon(int side, int meta)
+	//
 	//{
 	//	if (side == 1)
 	//	{

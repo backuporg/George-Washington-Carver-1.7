@@ -79,7 +79,7 @@ public abstract class BlockBambooSlab extends BlockSlab
 	 ************/
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
+
 	{
 		return GrowthCraftBamboo.blocks.bambooBlock.getBlockState().getIcon(side, meta);
 	}

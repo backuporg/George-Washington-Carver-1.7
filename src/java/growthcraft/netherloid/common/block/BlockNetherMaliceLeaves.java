@@ -354,7 +354,7 @@ public abstract class BlockNetherMaliceLeaves extends BlockLeaves implements ISh
 
 	//@Override
 	//@SideOnly(Side.CLIENT)
-	//public IIcon getIcon(int side, int meta)
+	//
 	//{
 	//	return this.icons[this.isOpaqueCube() ? 1 : 0];
 	//}
