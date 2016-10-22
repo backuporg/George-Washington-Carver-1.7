@@ -32,6 +32,7 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.ForgeHooksClient;
@@ -194,7 +195,12 @@ public class GrowthCraftBees
 		GameRegistry.addRecipe(new ShapelessMultiRecipe(
 				items.honeyJar.asStack(),
 				new TaggedFluidStacks(1000, BeesFluidTag.HONEY.getName()),
-				Items.FLOWER_POT));
+				Items.FLOWER_POT) {
+			@Override
+			public ItemStack[] getRemainingItems(InventoryCrafting inv) {
+				return new ItemStack[0];
+			}
+		});
 	}
 
 	private void initVillageHandlers()
