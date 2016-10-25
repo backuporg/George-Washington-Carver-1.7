@@ -113,9 +113,9 @@ public class BlockRope extends GrcBlockBase implements IBlockRope {
 	//	return this.icons[1];
 	//}
 
-	/************
-	 * RENDER
-	 ************/
+	///************
+	// * RENDER
+	// ************/
 	//@Override
 	//public int getRenderType() {
 	//	return RenderRope.id;
@@ -137,9 +137,9 @@ public class BlockRope extends GrcBlockBase implements IBlockRope {
 	//	return true;
 	//}
 
-	/************
-	 * BOXES
-	 ************/
+	//************
+	// * BOXES
+	// ************/
 	//@Override
 	//@SuppressWarnings({"rawtypes", "unchecked"})
 	//public void getCollisionBoundingBox(World world, BlockPos pos, AxisAlignedBB aabb, List list, Entity entity) {
