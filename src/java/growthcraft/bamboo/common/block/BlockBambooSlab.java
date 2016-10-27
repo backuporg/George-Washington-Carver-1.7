@@ -77,10 +77,10 @@ public abstract class BlockBambooSlab extends BlockSlab
 	/************
 	 * TEXTURES
 	 ************/
-	@Override
-	@SideOnly(Side.CLIENT)
-
-	{
+	//@Override
+	//@SideOnly(Side.CLIENT)
+//
+	//{
 		return GrowthCraftBamboo.blocks.bambooBlock.getBlockState().getIcon(side, meta);
-	}
+	//}
 }

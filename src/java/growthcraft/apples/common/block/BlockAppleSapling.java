@@ -41,7 +41,7 @@ public class BlockAppleSapling extends BlockBush implements IGrowable
 		{
 			super.updateTick(world, x, y, z, random);
 
-			if (world.getBlockLightValue(x, y + 1, z) >= 9 && random.nextInt(this.growth) == 0)
+			if (world.getLight(x, y + 1, z) >= 9 && random.nextInt(this.growth) == 0)
 			{
 				this.markOrGrowMarked(world, x, y, z, random);
 			}

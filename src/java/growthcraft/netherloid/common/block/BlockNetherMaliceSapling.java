@@ -68,7 +68,7 @@ public class BlockNetherMaliceSapling extends BlockBush implements IGrowable
 		{
 			super.updateTick(world, pos, state, random);
 
-			if (world.getBlockLightValue(x, y + 1, z) >= 9 && random.nextInt(this.growth) == 0)
+			if (world.getLight(x, y + 1, z) >= 9 && random.nextInt(this.growth) == 0)
 			{
 				this.markOrGrowMarked(world, pos, random);
 			}

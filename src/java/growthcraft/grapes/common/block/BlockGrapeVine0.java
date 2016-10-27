@@ -38,7 +38,7 @@ public class BlockGrapeVine0 extends BlockGrapeVineBase
 	@Override
 	protected boolean canUpdateGrowth(World world, BlockPos pos)
 	{
-		return world.getBlockLightValue(x, y + 1, z) >= 9;
+		return world.getLight(x, y + 1, z) >= 9;
 	}
 
 	@Override

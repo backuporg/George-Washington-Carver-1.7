@@ -100,13 +100,13 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 	{
 		this.checkCropChange(world, pos);
 
-		if (world.getBlockLightValue(x, y + 1, z) >= 9 && world.getBlockState(x, y - 1, z) > 0)
+		if (world.getLight(x, y + 1, z) >= 9 && world.getBlockState(x, y - 1, z) > 0)
 		{
 			final Event.Result allowGrowthResult = AppleCore.validateGrowthTick(this, world, pos, random);
 			if (allowGrowthResult == Event.Result.DENY)
 				return;
 
-			final int meta = world.getBlockState(pos);
+			final int meta = world.getBlockState(meta);
 
 			if (meta < RiceStage.MATURE)
 			{
@@ -114,7 +114,7 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 
 				if (allowGrowthResult == Event.Result.ALLOW || (random.nextInt((int)(this.growth / f) + 1) == 0))
 				{
-					growRice(world, pos, state);
+					growRice(world, pos, state, meta);
 				}
 			}
 		}
@@ -228,8 +228,8 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 	@Override
 	public boolean canBlockStay(World world, BlockPos pos)
 	{
-		return (world.getFullBlockLightValue(x, y, z) >= 8 ||
-			world.canBlockSeeTheSky(x, y, z)) &&
+		return (world.getLight(pos) >= 8 ||
+			world.canSeeSky(pos)) &&
 			this.canThisPlantGrowOnThisBlockID(world.getBlockState(x, y - 1, z));
 	}
 
