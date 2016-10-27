@@ -81,6 +81,6 @@ public abstract class BlockBambooSlab extends BlockSlab
 	//@SideOnly(Side.CLIENT)
 //
 	//{
-		return GrowthCraftBamboo.blocks.bambooBlock.getBlockState().getIcon(side, meta);
+	//	return GrowthCraftBamboo.blocks.bambooBlock.getBlockState().getIcon(side, meta);
 	//}
 }
