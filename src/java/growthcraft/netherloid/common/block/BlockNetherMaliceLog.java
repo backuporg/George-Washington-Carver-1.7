@@ -40,35 +40,34 @@ public class BlockNetherMaliceLog extends Block
 	{
 		super(Materials.fireproofWood);
 		setHardness(2.0F);
-		setBlockName("grcnetherloid.netherMaliceLog");
+		setUnlocalizedName("grcnetherloid.netherMaliceLog");
 		setBlockTextureName("grcnetherloid:log_malice");
 		setHarvestLevel("axe", 0);
 		setCreativeTab(netherloid.tab);
 	}
 
-	@Override
-	public boolean canSustainLeaves(IBlockAccess world, BlockPos pos)
+	//@Override
+	//public boolean canSustainLeaves(IBlockAccess world, BlockPos pos)
 	{
 		return true;
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
+	//@Override
+	//@SideOnly(Side.CLIENT)
 
-	{
-		icons = new IIcon[2];
-		icons[0] = reg.registerIcon(getTextureName() + "_top");
-		icons[1] = reg.registerIcon(getTextureName());
-	}
+	//{
+	//	icons = new IIcon[2];
+	//	icons[0] = reg.registerIcon(getTextureName() + "_top");
+	//	icons[1] = reg.registerIcon(getTextureName());
+	//}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
-	{
-		if (side == 0 || side == 1)
-		{
-			return icons[0];
-		}
-		return icons[1];
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//
+	//{
+	//	if (side == 0 || side == 1)
+	//	{
+	//		return icons[0];
+	//	}
+	//	return icons[1];
 	}
-}

@@ -33,7 +33,7 @@ public class BlockBeeHive extends GrcBlockBase
 		super(Material.PLANTS);
 		this.setHardness(0.6F);
 		this.setStepSound(soundTypeGrass);
-		this.setBlockName("grc.beeHive");
+		this.setUnlocalizedName("grc.beeHive");
 		this.setCreativeTab(GrowthCraftBees.tab);
 	}
 
@@ -61,7 +61,7 @@ public class BlockBeeHive extends GrcBlockBase
 		this.setDefaultDirection(world, pos);
 	}
 
-	private void setDefaultDirection(World world, BlockPos pos)
+	private void setDefaultDirection(World world, BlockPos pos, IBlockState state)
 	{
 		if (!world.isRemote)
 		{
@@ -91,7 +91,7 @@ public class BlockBeeHive extends GrcBlockBase
 				b0 = 4;
 			}
 
-			world.setBlockState(x, y, z, b0, BlockFlags.SYNC);
+			world.setBlockState(pos, state, BlockFlags.SYNC);
 		}
 	}
 
@@ -174,9 +174,9 @@ public class BlockBeeHive extends GrcBlockBase
 	}
 
 	@Override
-	public void dropBlockAsItemWithChance(World world, BlockPos pos, IBlockState state, int par5, float par6, int par7)
+	public void dropBlockAsItemWithChance(World world, BlockPos pos, IBlockState state, int par5, float par6, int par7, int fortune)
 	{
-		super.dropBlockAsItemWithChance(world, pos, state, par5, par6, 0);
+		super.dropBlockAsItemWithChance(world, pos, state, par5, fortune);
 		if (!world.isRemote)
 		{
 			final int max = world.rand.nextInt(8);
@@ -186,11 +186,11 @@ public class BlockBeeHive extends GrcBlockBase
 				{
 					if (world.rand.nextInt(2) == 0)
 					{
-						dropBlockAsItem(world, pos, GrowthCraftBees.items.honeyCombEmpty.asStack());
+						dropBlockAsItem(world, pos, GrowthCraftBees.items.honeyCombEmpty.asStack(), fortune);
 					}
 					else
 					{
-						dropBlockAsItem(world, pos, GrowthCraftBees.items.honeyCombFilled.asStack());
+						dropBlockAsItem(world, pos, GrowthCraftBees.items.honeyCombFilled.asStack(), fortune);
 					}
 				}
 			}
@@ -241,8 +241,8 @@ public class BlockBeeHive extends GrcBlockBase
 	//	this.getBoundingBox(2*f, 0.0F, 2*f, 14*f, 1.0F, 14*f);
 	//}
 
-	@Override
-	@SuppressWarnings({"rawtypes", "unchecked"})
+	//@Override
+	//@SuppressWarnings({"rawtypes", "unchecked"})
 	//public void getCollisionBoundingBox(World world, BlockPos pos, AxisAlignedBB axis, List list, Entity entity)
 	//{
 	//	final float f = 0.0625F;
@@ -255,5 +255,4 @@ public class BlockBeeHive extends GrcBlockBase
 	//	this.getBoundingBox(7*f, 14*f, 7*f, 9*f, 1.0F, 9*f);
 	//	super.getCollisionBoundingBox(world, pos, axis, list, entity);
 	//	this.setBlockBoundsForItemRender();
-	}
 }

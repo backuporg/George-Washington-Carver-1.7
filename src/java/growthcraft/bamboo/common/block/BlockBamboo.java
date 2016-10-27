@@ -16,6 +16,6 @@ public class BlockBamboo extends GrcBlockBase
 		setResistance(5.0F);
 		setHardness(2.0F);
 		setCreativeTab(GrowthCraftBamboo.creativeTab);
-		setBlockName("grc.bambooBlock");
+		setUnlocalizedName("grc.bambooBlock");
 	}
 }

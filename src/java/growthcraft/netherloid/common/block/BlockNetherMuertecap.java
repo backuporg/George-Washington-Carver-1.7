@@ -24,6 +24,7 @@
 package growthcraft.netherloid.common.block;
 
 import growthcraft.netherloid.netherloid;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -32,14 +33,14 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
-public abstract class BlockNetherMuertecap extends BlockNetherFungusBase
+public class BlockNetherMuertecap extends BlockNetherFungusBase
 {
 	private final float muertecapSpreadRate = netherloid.getConfig().muertecapSpreadRate;
 
 	public BlockNetherMuertecap()
 	{
 		super();
-		setBlockName("grcnetherloid.netherMuertecap");
+		setUnlocalizedName("grcnetherloid.netherMuertecap");
 		setBlockTextureName("grcnetherloid:muertecap");
 		getBoundingBox(0.375F, 0.0F, 0.375F, 0.625F, 0.375F, 0.625F);
 		setCreativeTab(netherloid.tab);
@@ -68,5 +69,20 @@ public abstract class BlockNetherMuertecap extends BlockNetherFungusBase
 	public int quantityDropped(Random random)
 	{
 		return 1;
+	}
+
+	@Override
+	public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {
+		return false;
+	}
+
+	@Override
+	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+		return false;
+	}
+
+	@Override
+	public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+
 	}
 }

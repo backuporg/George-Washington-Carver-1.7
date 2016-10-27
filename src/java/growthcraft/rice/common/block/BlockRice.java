@@ -61,7 +61,7 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 		this.setHardness(0.0F);
 		this.setTickRandomly(true);
 		this.setCreativeTab(null);
-		this.setBlockName("grc.riceBlock");
+		this.setUnlocalizedName("grc.riceBlock");
 		this.setStepSound(soundTypeGrass);
 	}
 
@@ -82,7 +82,7 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 		AppleCore.announceGrowthTick(this, world, pos, meta);
 	}
 
-	private void growRice(World world, BlockPos pos, IBlockState state)
+	private void growRice(World world, BlockPos pos, IBlockState state, int meta)
 	{
 		incrementGrowth(world, pos, meta, state);
 		final Block paddyBlock = world.getBlockState(x, y - 1, z);
@@ -100,13 +100,13 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 	{
 		this.checkCropChange(world, pos);
 
-		if (world.getBlockLightValue(x, y + 1, z) >= 9 && world.getBlockState(x, y - 1, z) > 0)
+		if (world.getLight(x, y + 1, z) >= 9 && world.getBlockState(x, y - 1, z) > 0)
 		{
 			final Event.Result allowGrowthResult = AppleCore.validateGrowthTick(this, world, pos, random);
 			if (allowGrowthResult == Event.Result.DENY)
 				return;
 
-			final int meta = world.getBlockState(pos);
+			final int meta = world.getBlockState(meta);
 
 			if (meta < RiceStage.MATURE)
 			{
@@ -114,7 +114,7 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 
 				if (allowGrowthResult == Event.Result.ALLOW || (random.nextInt((int)(this.growth / f) + 1) == 0))
 				{
-					growRice(world, pos, state);
+					growRice(world, pos, state, meta);
 				}
 			}
 		}
@@ -228,8 +228,8 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 	@Override
 	public boolean canBlockStay(World world, BlockPos pos)
 	{
-		return (world.getFullBlockLightValue(x, y, z) >= 8 ||
-			world.canBlockSeeTheSky(x, y, z)) &&
+		return (world.getLight(pos) >= 8 ||
+			world.canSeeSky(pos)) &&
 			this.canThisPlantGrowOnThisBlockID(world.getBlockState(x, y - 1, z));
 	}
 
@@ -286,39 +286,39 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 	/************
 	 * TEXTURE
 	 ************/
-	@Override
-	@SideOnly(Side.CLIENT)
+	//@Override
+	//@SideOnly(Side.CLIENT)
 
-	{
-		icons = new IIcon[5];
+	//{
+	//	icons = new IIcon[5];
+//
+	//	for (int i = 0; i < icons.length; ++i)
+	//	{
+	//		icons[i] = reg.registerIcon("grcrice:rice_" + i);
+	//	}
+	//}
 
-		for (int i = 0; i < icons.length; ++i)
-		{
-			icons[i] = reg.registerIcon("grcrice:rice_" + i);
-		}
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
-	{
-		if (meta < 0 || meta > 7)
-		{
-			meta = 7;
-		}
-
-		int i = 0;
-		switch (meta)
-		{
-			case 0: case 1: i = 0; break;
-			case 2: case 3: i = 1; break;
-			case 4: case 5: i = 2; break;
-			case 6: case 7: i = 3; break;
-			default: i = 2;
-		}
-
-		return icons[i];
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+//
+	//{
+	//	if (meta < 0 || meta > 7)
+	//	{
+	//		meta = 7;
+	//	}
+//
+	//	int i = 0;
+	//	switch (meta)
+	//	{
+	//		case 0: case 1: i = 0; break;
+	//		case 2: case 3: i = 1; break;
+	//		case 4: case 5: i = 2; break;
+	//		case 6: case 7: i = 3; break;
+	//		default: i = 2;
+	//	}
+///
+	//	return icons[i];
+	//}
 
 	/************
 	 * RENDERS
@@ -344,23 +344,23 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 	/************
 	 * BOXES
 	 ************/
-	@Override
-	public void setBlockBoundsBasedOnState(IBlockAccess world, BlockPos pos)
-	{
-		this.getBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 0.25F, 1.0F);
-	}
+	//@Override
+	//public void setBlockBoundsBasedOnState(IBlockAccess world, BlockPos pos)
+	//{
+	//	this.getBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 0.25F, 1.0F);
+	//}
 
-	@Override
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, BlockPos pos)
+	//@Override
+	//public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, BlockPos pos)
 	{
 		return null;
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public AxisAlignedBB getSelectedBoundingBoxFromPool(World world, BlockPos pos)
-	{
-		this.setBlockBoundsBasedOnState(world, pos);
-		return super.getSelectedBoundingBoxFromPool(world, pos);
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//public AxisAlignedBB getSelectedBoundingBoxFromPool(World world, BlockPos pos)
+	//{
+	//	this.setBlockBoundsBasedOnState(world, pos);
+	//	return super.getSelectedBoundingBoxFromPool(world, pos);
+	//}
 }

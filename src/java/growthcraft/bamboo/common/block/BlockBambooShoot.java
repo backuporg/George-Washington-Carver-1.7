@@ -40,7 +40,7 @@ public class BlockBambooShoot extends BlockBush implements ICropDataProvider, IG
 		setBlockTextureName("grcbamboo:shoot");
 		final float f = 0.4F;
 		getBoundingBox(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 2.0F, 0.5F + f);
-		setBlockName("grc.bambooShoot");
+		setUnlocalizedName("grc.bambooShoot");
 		setCreativeTab(null);
 	}
 
@@ -53,15 +53,15 @@ public class BlockBambooShoot extends BlockBush implements ICropDataProvider, IG
 	 * TICK
 	 ************/
 	@Override
-	public void updateTick(World world, BlockPos pos, Random rand)
+	public void updateTick(World world, BlockPos pos, Random rand, IBlockState state)
 	{
 		if (!world.isRemote)
 		{
-			super.updateTick(world, x, y, z, rand);
+			super.updateTick(world, pos, state, rand);
 
-			if (world.getBlockLightValue(x, y + 1, z) >= 9 && rand.nextInt(this.growth) == 0)
+			if (world.getLight(x, y + 1, z) >= 9 && rand.nextInt(this.growth) == 0)
 			{
-				this.markOrGrowMarked(world, x, y, z, rand);
+				this.markOrGrowMarked(world, pos, rand);
 			}
 		}
 	}
@@ -72,16 +72,16 @@ public class BlockBambooShoot extends BlockBush implements ICropDataProvider, IG
 	@Override
 	public void onNeighborBlockChange(World world, BlockPos pos, Block par5)
 	{
-		super.onNeighborBlockChange(world, x, y, z, par5);
-		checkShootChange(world, x, y, z);
+		super.onNeighborBlockChange(world, pos, par5);
+		checkShootChange(world, pos);
 	}
 
 	protected final void checkShootChange(World world, BlockPos pos)
 	{
-		if (!canBlockStay(world, x, y, z))
+		if (!canBlockStay(world, pos))
 		{
-			dropBlockAsItem(world, x, y, z, world.getBlockState(x, y, z), 0);
-			world.setBlockToAir(x, y, z);
+			dropBlockAsItem(world, pos, world.getBlockState(pos), 0);
+			world.setBlockToAir(pos);
 		}
 	}
 
@@ -92,13 +92,13 @@ public class BlockBambooShoot extends BlockBush implements ICropDataProvider, IG
 	@Override
 	public boolean canPlaceBlockAt(World world, BlockPos pos)
 	{
-		return super.canPlaceBlockAt(world, x, y, z) && canBlockStay(world, x, y, z);
+		return super.canPlaceBlockAt(world, pos) && canBlockStay(world, pos);
 	}
 
 	@Override
 	public boolean canBlockStay(World world, BlockPos pos)
 	{
-		return (world.getFullBlockLightValue(x, y, z) >= 8 || world.canBlockSeeTheSky(x, y, z)) &&
+		return (world.getLight(pos) >= 8 || world.canSeeSky(pos)) &&
 			BlockCheck.canSustainPlant(world, x, y - 1, z, EnumFacing.UP, this);
 	}
 
@@ -112,32 +112,32 @@ public class BlockBambooShoot extends BlockBush implements ICropDataProvider, IG
 		return GrowthCraftBamboo.items.bambooShootFood.getItem();
 	}
 
-	public void growBamboo(World world, BlockPos pos, Random rand)
+	public void growBamboo(World world, BlockPos pos, Random rand, IBlockState state)
 	{
-		if (!TerrainGen.saplingGrowTree(world, rand, x, y, z)) return;
+		if (!TerrainGen.saplingGrowTree(world, rand, pos)) return;
 
-		final int meta = world.getBlockState(x, y, z) & 3;
+		final int meta = world.getBlockState(pos) & 3;
 		final WorldGenerator generator = new WorldGenBamboo(true);
 
-		world.setBlockToAir(x, y, z);
+		world.setBlockToAir(pos);
 
-		if (!generator.generate(world, rand, x, y, z))
+		if (!generator.generate(world, rand, pos))
 		{
-			world.setBlockState(x, y, z, this, meta, BlockFlags.ALL);
+			world.setBlockState(pos, this, meta, BlockFlags.ALL);
 		}
 	}
 
-	public void markOrGrowMarked(World world, BlockPos pos, Random random)
+	public void markOrGrowMarked(World world, BlockPos pos, Random random, IBlockState state)
 	{
-		final int meta = world.getBlockState(x, y, z);
+		final int meta = world.getBlockState(state);
 
 		if ((meta & 8) == 0)
 		{
-			world.setBlockState(x, y, z, meta | 8, BlockFlags.SUPRESS_RENDER);
+			world.setBlockState(pos, state, meta | 8, BlockFlags.SUPRESS_RENDER);
 		}
 		else
 		{
-			this.growBamboo(world, x, y, z, random);
+			this.growBamboo(world, pos, random, state);
 		}
 	}
 
@@ -157,11 +157,11 @@ public class BlockBambooShoot extends BlockBush implements ICropDataProvider, IG
 
 	/* Apply bonemeal effect */
 	@Override
-	public void func_149853_b(World world, Random random, BlockPos pos)
+	public void func_149853_b(World world, Random random, BlockPos pos, IBlockState state)
 	{
 		if (random.nextFloat() < 0.45D)
 		{
-			markOrGrowMarked(world, x, y, z, random);
+			markOrGrowMarked(world, pos, random, state);
 		}
 	}
 

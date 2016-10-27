@@ -29,6 +29,7 @@ import growthcraft.netherloid.netherloid;
 import growthcraft.netherloid.util.NetherBlockCheck;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -55,7 +56,7 @@ public class BlockNetherPaddy extends BlockPaddyBase
 	{
 		super(Material.SAND);
 		setHardness(0.5F);
-		setBlockName("grcnetherloid.netherPaddyField");
+		setUnlocalizedName("grcnetherloid.netherPaddyField");
 		setCreativeTab(netherloid.tab);
 		this.filledPaddy = filled;
 		if (filledPaddy)
@@ -81,9 +82,9 @@ public class BlockNetherPaddy extends BlockPaddyBase
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World world, BlockPos pos, Random random)
+	public void randomDisplayTick(World world, BlockPos pos, Random random, IBlockState state)
 	{
-		super.randomDisplayTick(world, x, y, z, random);
+		super.randomDisplayTick(state, world, pos, random);
 		if (filledPaddy)
 		{
 			if (world.getBlockState(x, y + 1, z).getMaterial() == Material.AIR && !world.getBlockState(x, y + 1, z).isOpaqueCube())
@@ -135,34 +136,34 @@ public class BlockNetherPaddy extends BlockPaddyBase
 	}
 
 	@Override
-	public void drainPaddy(World world, BlockPos pos)
+	public void drainPaddy(World world, BlockPos pos, IBlockState state)
 	{
-		final int meta = world.getBlockState(x, y, z);
+		final int meta = world.getBlockState(pos);
 		if (meta > 1)
 		{
-			world.setBlockState(x, y, z, meta - 1, BlockFlags.SYNC);
+			world.setBlockState(pos, state, meta - 1, BlockFlags.SYNC);
 		}
 		else
 		{
 			final Block targetBlock = netherloid.blocks.netherPaddyField.getBlockState();
 			if (this != targetBlock)
 			{
-				world.setBlockState(x, y, z, targetBlock, 0, BlockFlags.SYNC);
+				world.setBlockState(pos, targetBlock, 0, BlockFlags.SYNC);
 			}
 		}
 	}
 
 	@Override
-	public void fillPaddy(World world, BlockPos pos)
+	public void fillPaddy(World world, BlockPos pos, IBlockState state)
 	{
 		final Block targetBlock = netherloid.blocks.netherPaddyFieldFilled.getBlockState();
 		if (this != targetBlock)
 		{
-			world.setBlockState(x, y, z, targetBlock, getMaxPaddyMeta(world, x, y, z), BlockFlags.SYNC);
+			world.setBlockState(pos, targetBlock, getMaxPaddyMeta(world, pos), BlockFlags.SYNC);
 		}
 		else
 		{
-			world.setBlockState(x, y, z, getMaxPaddyMeta(world, x, y, z), BlockFlags.SYNC);
+			world.setBlockState(pos, getMaxPaddyMeta(world, pos), BlockFlags.SYNC);
 		}
 	}
 
@@ -194,34 +195,34 @@ public class BlockNetherPaddy extends BlockPaddyBase
 	/************
 	 * TEXTURES
 	 ************/
-	@Override
-	@SideOnly(Side.CLIENT)
+	//@Override
+	//@SideOnly(Side.CLIENT)
 
-	{
-		icons = new IIcon[3];
+	//{
+	//	icons = new IIcon[3];
+//
+	//	icons[0] = reg.registerIcon("soul_sand");
+	//	icons[1] = reg.registerIcon("grcnetherloid:soul_sand_paddy_dry");
+	//	icons[2] = reg.registerIcon("grcnetherloid:soul_sand_paddy_wet");
+	//}
 
-		icons[0] = reg.registerIcon("soul_sand");
-		icons[1] = reg.registerIcon("grcnetherloid:soul_sand_paddy_dry");
-		icons[2] = reg.registerIcon("grcnetherloid:soul_sand_paddy_wet");
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
-	{
-		if (side == 1)
-		{
-			if (meta == 0)
-			{
-				return icons[1];
-			}
-			else
-			{
-				return icons[2];
-			}
-		}
-		return icons[0];
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//
+	//{
+	//	if (side == 1)
+	//	{
+	//		if (meta == 0)
+	//		{
+	//			return icons[1];
+	//		}
+	//		else
+	//		{
+	///			return icons[2];
+	//		}
+	//	}
+	//	return icons[0];
+	//}
 
 	public boolean canConnectPaddyTo(IBlockAccess world, int i, int j, int k, int m)
 	{

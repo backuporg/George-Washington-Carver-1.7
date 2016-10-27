@@ -28,10 +28,12 @@ import growthcraft.netherloid.netherloid;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.IGrowable;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -64,7 +66,7 @@ public abstract class BlockNetherMaliceLeaves extends BlockLeaves implements ISh
 		setHardness(0.2F);
 		setLightOpacity(1);
 		setStepSound(soundTypeGrass);
-		setBlockName("grcnetherloid.netherMaliceLeaves");
+		setUnlocalizedName("grcnetherloid.netherMaliceLeaves");
 		setCreativeTab(netherloid.tab);
 	}
 
@@ -112,7 +114,7 @@ public abstract class BlockNetherMaliceLeaves extends BlockLeaves implements ISh
 				// Spawn Fruit
 				if (world.rand.nextInt(this.growth) == 0)
 				{
-					growFruit(world, random, x, y, z);
+					growFruit(world, random, pos);
 				}
 			}
 
@@ -231,9 +233,9 @@ public abstract class BlockNetherMaliceLeaves extends BlockLeaves implements ISh
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World world, BlockPos pos, Random random)
+	public void randomDisplayTick(World world, BlockPos pos, Random random, IBlockState stateIn)
 	{
-		super.randomDisplayTick(world, x, y, z, random);
+		super.randomDisplayTick(stateIn, world, pos, random);
 		if (world.canLightningStrikeAt(x, y + 1, z) && !World.doesBlockHaveSolidTopSurface(world, x, y - 1, z) && random.nextInt(15) == 1)
 		{
 			final double d0 = (double)((float)x + random.nextFloat());
@@ -272,9 +274,9 @@ public abstract class BlockNetherMaliceLeaves extends BlockLeaves implements ISh
 	}
 
 	@Override
-	public void harvestBlock(World world, EntityPlayer player, BlockPos pos, int par6)
+	public void harvestBlock(World world, EntityPlayer player, BlockPos pos, int par6, TileEntity entity, IBlockState state, ItemStack stack)
 	{
-		super.harvestBlock(world, player, x, y, z, par6);
+		super.harvestBlock(world, player, pos, state, entity, stack);
 	}
 
 	/************
@@ -283,7 +285,7 @@ public abstract class BlockNetherMaliceLeaves extends BlockLeaves implements ISh
 	@Override
 	public void beginLeavesDecay(World world, BlockPos pos)
 	{
-		world.setBlockState(x, y, z, world.getBlockState(x, y, z) | LeavesStage.DECAY_MASK, 4);
+		world.setBlockState(pos, world.getBlockState(pos) | LeavesStage.DECAY_MASK, 4);
 	}
 
 	@Override
@@ -314,7 +316,7 @@ public abstract class BlockNetherMaliceLeaves extends BlockLeaves implements ISh
 	}
 
 	@Override
-	public void dropBlockAsItemWithChance(World world, BlockPos pos, int meta, float par6, int fortune)
+	public void dropBlockAsItemWithChance(World world, BlockPos pos, int meta, float par6, int fortune, IBlockState state)
 	{
 		if (!world.isRemote)
 		{
@@ -332,7 +334,7 @@ public abstract class BlockNetherMaliceLeaves extends BlockLeaves implements ISh
 
 			if (world.rand.nextInt(random) == 0)
 			{
-				this.dropBlockAsItem(world, x, y, z, new ItemStack(this.getItemDropped(meta, world.rand, fortune), 1, 0));
+				this.dropBlockAsItem(world, pos, state, new ItemStack(this.getItemDropped(meta, world.rand, fortune), 1, 0));
 			}
 		}
 	}
@@ -340,22 +342,22 @@ public abstract class BlockNetherMaliceLeaves extends BlockLeaves implements ISh
 	/************
 	 * TEXTURES
 	 ************/
-	@Override
-	@SideOnly(Side.CLIENT)
+	//@Override
+	//@SideOnly(Side.CLIENT)
 
-	{
-		icons = new IIcon[2];
+	//{
+	//	icons = new IIcon[2];
+//
+	//	icons[0] = reg.registerIcon("grcnetherloid:leaves_malice");
+	//	icons[1] = reg.registerIcon("grcnetherloid:leaves_malice_opaque");
+	//}
 
-		icons[0] = reg.registerIcon("grcnetherloid:leaves_malice");
-		icons[1] = reg.registerIcon("grcnetherloid:leaves_malice_opaque");
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
-	{
-		return this.icons[this.isOpaqueCube() ? 1 : 0];
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//
+	//{
+	//	return this.icons[this.isOpaqueCube() ? 1 : 0];
+	//}
 
 	/************
 	 * RENDERS
@@ -410,7 +412,7 @@ public abstract class BlockNetherMaliceLeaves extends BlockLeaves implements ISh
 	public ArrayList<ItemStack> onSheared(ItemStack item, IBlockAccess world, BlockPos pos, int fortune)
 	{
 		final ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
-		ret.add(new ItemStack(Blocks.LEAVES, 1, world.getBlockState(x, y, z) & 3));
+		ret.add(new ItemStack(Blocks.LEAVES, 1, world.getBlockState(pos) & 3));
 		return ret;
 	}
 }

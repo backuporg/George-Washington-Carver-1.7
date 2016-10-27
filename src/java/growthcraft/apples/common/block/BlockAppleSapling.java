@@ -24,7 +24,7 @@ public class BlockAppleSapling extends BlockBush implements IGrowable
 		super(Material.PLANTS);
 		setHardness(0.0F);
 		setStepSound(soundTypeGrass);
-		setBlockName("grc.appleSapling");
+		setUnlocalizedName("grc.appleSapling");
 		setTickRandomly(true);
 		setCreativeTab(GrowthCraftCore.creativeTab);
 		setBlockTextureName("grcapples:apple_sapling");
@@ -41,7 +41,7 @@ public class BlockAppleSapling extends BlockBush implements IGrowable
 		{
 			super.updateTick(world, x, y, z, random);
 
-			if (world.getBlockLightValue(x, y + 1, z) >= 9 && random.nextInt(this.growth) == 0)
+			if (world.getLight(x, y + 1, z) >= 9 && random.nextInt(this.growth) == 0)
 			{
 				this.markOrGrowMarked(world, x, y, z, random);
 			}

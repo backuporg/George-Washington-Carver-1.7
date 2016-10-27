@@ -43,7 +43,7 @@ public class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 		setHardness(0.2F);
 		setLightOpacity(1);
 		setStepSound(soundTypeGrass);
-		setBlockName("grc.grapeLeaves");
+		setUnlocalizedName("grc.grapeLeaves");
 		setCreativeTab(null);
 	}
 
@@ -157,13 +157,13 @@ public class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 	@Override
 	public void updateTick(World world, BlockPos pos, Random random)
 	{
-		if (!this.canBlockStay(world, x, y, z))
+		if (!this.canBlockStay(world, pos))
 		{
-			world.setBlockState(x, y, z, GrowthCraftCore.blocks.ropeBlock.getBlockState());
+			world.setBlockState(pos, (IBlockState) GrowthCraftCore.blocks.ropeBlock.getBlockState());
 		}
 		else
 		{
-			grow(world, x, y, z, random);
+			grow(world, pos, random);
 		}
 	}
 
@@ -186,7 +186,7 @@ public class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 	@Override
 	public boolean canBlockStay(World world, BlockPos pos)
 	{
-		if (this.isSupportedByTrunk(world, x, y, z))
+		if (this.isSupportedByTrunk(world, pos))
 		{
 			return true;
 		}
@@ -196,13 +196,13 @@ public class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 			{
 				for (int i = 1; i <= grapeVineSupportedLength; ++i)
 				{
-					final int bx = x + EnumFacing.offsetX * i;
-					final int bz = z + EnumFacing.offsetZ * i;
-					if (world.getBlockState(bx, y, bz) != this)
+					final int bx = pos.getX() + EnumFacing.offsetX * i;
+					final int bz = pos.getZ() + EnumFacing.offsetZ * i;
+					if (world.getBlockState(pos) != this)
 					{
 						break;
 					}
-					else if (isSupportedByTrunk(world, bx, y, bz))
+					else if (isSupportedByTrunk(world, pos))
 					{
 						return true;
 					}
@@ -237,7 +237,7 @@ public class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 	@Override
 	public boolean canConnectRopeTo(IBlockAccess world, BlockPos pos)
 	{
-		if (world.getBlockState(x, y, z) instanceof IBlockRope)
+		if (world.getBlockState(pos) instanceof IBlockRope)
 		{
 			return true;
 		}
@@ -267,30 +267,30 @@ public class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 	/************
 	 * TEXTURES
 	 ************/
-	@Override
-	@SideOnly(Side.CLIENT)
+	//@Override
+	//@SideOnly(Side.CLIENT)
 
-	{
-		this.icons = new IIcon[4];
+	//{
+	//	this.icons = new IIcon[4];
+//
+	//	icons[0] = reg.registerIcon("grcgrapes:leaves");
+	//	icons[1] = reg.registerIcon("grcgrapes:leaves_opaque");
+	//	icons[2] = reg.registerIcon("grccore:rope_1");
+	//	icons[3] = reg.registerIcon("grcgrapes:leaves_half");
+	//}
 
-		icons[0] = reg.registerIcon("grcgrapes:leaves");
-		icons[1] = reg.registerIcon("grcgrapes:leaves_opaque");
-		icons[2] = reg.registerIcon("grccore:rope_1");
-		icons[3] = reg.registerIcon("grcgrapes:leaves_half");
-	}
+	//@SideOnly(Side.CLIENT)
+	//public IIcon getIconByIndex(int index)
+	//{
+	//	return icons[index];
+	//}
 
-	@SideOnly(Side.CLIENT)
-	public IIcon getIconByIndex(int index)
-	{
-		return icons[index];
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
-	{
-		return icons[isOpaqueCube() ? 1 : 0];
-	}
+	//@Override
+	///@SideOnly(Side.CLIENT)
+	//
+	//{
+	//	return icons[isOpaqueCube() ? 1 : 0];
+	//}
 
 	/************
 	 * RENDERS
@@ -301,11 +301,11 @@ public class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 		return RenderGrapeLeaves.id;
 	}
 
-	@Override
-	public boolean isOpaqueCube()
-	{
-		return Blocks.LEAVES.isOpaqueCube();
-	}
+	//@Override
+	//public boolean isOpaqueCube()
+	//{
+	//	return Blocks.LEAVES.isOpaqueCube();
+	//}
 
 	@Override
 	public boolean renderAsNormalBlock()
@@ -343,7 +343,7 @@ public class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 	@SideOnly(Side.CLIENT)
 	public int colorMultiplier(IBlockAccess world, BlockPos pos)
 	{
-		final int meta = world.getBlockState(x, y, z);
+		final IBlockState meta = world.getBlockState(pos);
 
 		int r = 0;
 		int g = 0;

@@ -128,9 +128,9 @@ public class BlockNetherSquashStem extends BlockBush implements ICropDataProvide
 	{
 		if (meta < StemStage.MATURE)
 		{
-			incrementGrowth(world, x, y, z, meta);
+			incrementGrowth(world, pos, meta);
 		}
-		else if (canGrowFruit(world, x, y, z))
+		else if (canGrowFruit(world, pos))
 		{
 			world.setBlockState(x, y - 1, z, fruitBlock, world.rand.nextInt(4), BlockFlags.SYNC);
 		}
@@ -139,14 +139,14 @@ public class BlockNetherSquashStem extends BlockBush implements ICropDataProvide
 	@Override
 	public void updateTick(World world, BlockPos pos, Random random)
 	{
-		final Event.Result allowGrowthResult = AppleCore.validateGrowthTick(this, world, x, y, z, random);
+		final Event.Result allowGrowthResult = AppleCore.validateGrowthTick(this, world, pos, random);
 		if (allowGrowthResult == Event.Result.DENY)
 			return;
 
 		if (allowGrowthResult == Event.Result.ALLOW || random.nextInt(10) == 0)
 		{
 			final int meta = world.getBlockState(x, y, z);
-			growStem(world, x, y, z, meta);
+			growStem(world, pos, meta);
 		}
 	}
 
@@ -154,7 +154,7 @@ public class BlockNetherSquashStem extends BlockBush implements ICropDataProvide
 	@Override
 	public boolean func_149851_a(World world, BlockPos pos, boolean isClient)
 	{
-		return world.getBlockState(x, y, z) < StemStage.MATURE || canGrowFruit(world, x, y, z);
+		return world.getBlockState(x, y, z) < StemStage.MATURE || canGrowFruit(world, pos);
 	}
 
 	/* SideOnly(Side.SERVER) Can this apply bonemeal effect? */
@@ -168,13 +168,13 @@ public class BlockNetherSquashStem extends BlockBush implements ICropDataProvide
 	@Override
 	public void func_149853_b(World world, Random random, BlockPos pos)
 	{
-		growStem(world, x, y, z, world.getBlockState(x, y, z));
+		growStem(world, pos, world.getBlockState(pos));
 	}
 
 	@Override
-	public void dropBlockAsItemWithChance(World world, BlockPos pos, int meta, float f, int weight)
+	public void dropBlockAsItemWithChance(World world, BlockPos pos, int meta, float f, int weight, IBlockState state, int fortune)
 	{
-		super.dropBlockAsItemWithChance(world, x, y, z, meta, f, weight);
+		super.dropBlockAsItemWithChance(world, pos, state, meta, fortune);
 		if (!world.isRemote)
 		{
 			final ItemStack item = netherloid.items.netherSquashSeeds.asStack();
@@ -212,22 +212,22 @@ public class BlockNetherSquashStem extends BlockBush implements ICropDataProvide
 		return RenderType.BUSH;
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
+	//@Override
+	//@SideOnly(Side.CLIENT)
 
-	{
-		this.blockIcon = reg.registerIcon(this.getTextureName() + "_disconnected");
-		this.stemConnectedIcon = reg.registerIcon(this.getTextureName() + "_connected");
-	}
+	//{
+	//	this.blockIcon = reg.registerIcon(this.getTextureName() + "_disconnected");
+	//	this.stemConnectedIcon = reg.registerIcon(this.getTextureName() + "_connected");
+	//}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
-	{
-		if ((meta & 8) != 0)
-		{
-			return stemConnectedIcon;
-		}
-		return blockIcon;
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//
+	//{
+	//	if ((meta & 8) != 0)
+	//	{
+	//		return stemConnectedIcon;
+	//	}
+	//	return blockIcon;
+	//}
 }

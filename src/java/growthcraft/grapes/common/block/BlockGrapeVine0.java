@@ -28,7 +28,7 @@ public class BlockGrapeVine0 extends BlockGrapeVineBase
 		setTickRandomly(true);
 		setHardness(0.0F);
 		setSoundType(SoundType.PLANT);
-		setBlockName("grc.grapeVine0");
+		setUnlocalizedName("grc.grapeVine0");
 		setCreativeTab(null);
 	}
 
@@ -38,7 +38,7 @@ public class BlockGrapeVine0 extends BlockGrapeVineBase
 	@Override
 	protected boolean canUpdateGrowth(World world, BlockPos pos)
 	{
-		return world.getBlockLightValue(x, y + 1, z) >= 9;
+		return world.getLight(x, y + 1, z) >= 9;
 	}
 
 	@Override
@@ -46,11 +46,11 @@ public class BlockGrapeVine0 extends BlockGrapeVineBase
 	{
 		if (meta == 0)
 		{
-			incrementGrowth(world, x, y, z, meta);
+			incrementGrowth(world, pos, meta);
 		}
 		else
 		{
-			world.setBlockState(x, y, z, GrowthCraftGrapes.blocks.grapeVine1.getBlockState(), 0, BlockFlags.UPDATE_AND_SYNC);
+			world.setBlockState(pos, GrowthCraftGrapes.blocks.grapeVine1.getBlockState(), 0, BlockFlags.UPDATE_AND_SYNC);
 		}
 	}
 
@@ -70,19 +70,19 @@ public class BlockGrapeVine0 extends BlockGrapeVineBase
 	@Override
 	@SideOnly(Side.CLIENT)
 
-	{
-		this.icons = new IIcon[2];
-
-		icons[0] = reg.registerIcon("grcgrapes:vine_0");
-		icons[1] = reg.registerIcon("grcgrapes:vine_1");
-	}
+	//{
+	//	this.icons = new IIcon[2];
+//
+	//	icons[0] = reg.registerIcon("grcgrapes:vine_0");
+	//	icons[1] = reg.registerIcon("grcgrapes:vine_1");
+	//}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
-	{
-		return this.icons[MathHelper.clamp_int(meta, 0, 1)];
-	}
+	//
+	//{
+	//	return this.icons[MathHelper.clamp_int(meta, 0, 1)];
+	//}
 
 	/************
 	 * RENDER

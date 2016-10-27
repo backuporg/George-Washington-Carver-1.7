@@ -13,13 +13,10 @@ import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.ColorizerFoliage;
 import net.minecraft.world.IBlockAccess;
@@ -31,7 +28,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPlantable, ICropDataProvider, IGrowable
@@ -60,7 +56,7 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 		this.setTickRandomly(true);
 		this.setHardness(0.0F);
 		this.setStepSound(soundTypeGrass);
-		this.setBlockName("grc.hopVine");
+		this.setUnlocalizedName("grc.hopVine");
 		this.setCreativeTab(null);
 	}
 
@@ -313,7 +309,7 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 	@SideOnly(Side.CLIENT)
 	public Item getItem(World world, BlockPos pos)
 	{
-		final int meta = world.getBlockState(x, y, z);
+		final int meta = world.getBlockState(pos);
 		return meta < HopsStage.FRUIT ? GrowthCraftHops.items.hopSeeds.getItem() : GrowthCraftHops.items.hops.getItem();
 	}
 
@@ -326,7 +322,7 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 	@Override
 	public boolean canConnectRopeTo(IBlockAccess world, BlockPos pos)
 	{
-		if (world.getBlockState(x, y, z) instanceof IBlockRope)
+		if (world.getBlockState(pos) instanceof IBlockRope)
 		{
 			return true;
 		}
@@ -353,7 +349,7 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 	{
 		final ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
 		ret.add(GrowthCraftCore.items.rope.asStack());
-		if (world.getBlockState(x, y, z) >= HopsStage.BIG)
+		if (world.getBlockState(pos) >= HopsStage.BIG)
 		{
 			ret.add(GrowthCraftHops.items.hops.asStack(1 + world.rand.nextInt(8)));
 		}
@@ -363,45 +359,45 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 	/************
 	 * TEXTURES
 	 ************/
-	@Override
-	@SideOnly(Side.CLIENT)
+	//@Override
+	//@SideOnly(Side.CLIENT)
 
-	{
-		icons = new IIcon[7];
+	//{
+	//	icons = new IIcon[7];
+//
+	//	icons[0] = reg.registerIcon("grchops:leaves");
+	//	icons[1] = reg.registerIcon("grchops:leaves_opaque");
+	//	icons[2] = reg.registerIcon("grchops:bine");
+	//	icons[3] = reg.registerIcon("grchops:leaves_hops");
+	//	icons[4] = reg.registerIcon("grccore:rope_1");
+	//	icons[5] = reg.registerIcon("grchops:leaves_x");
+	//	icons[6] = reg.registerIcon("grchops:leaves_opaque_x");
+	//}
 
-		icons[0] = reg.registerIcon("grchops:leaves");
-		icons[1] = reg.registerIcon("grchops:leaves_opaque");
-		icons[2] = reg.registerIcon("grchops:bine");
-		icons[3] = reg.registerIcon("grchops:leaves_hops");
-		icons[4] = reg.registerIcon("grccore:rope_1");
-		icons[5] = reg.registerIcon("grchops:leaves_x");
-		icons[6] = reg.registerIcon("grchops:leaves_opaque_x");
-	}
+	//@SideOnly(Side.CLIENT)
+	//public IIcon getIconByIndex(int index)
+	//{
+	//	return icons[index];
+	//}
 
-	@SideOnly(Side.CLIENT)
-	public IIcon getIconByIndex(int index)
-	{
-		return icons[index];
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
-	{
-		if (meta != 0)
-		{
-			graphicFlag = !Blocks.LEAVES.isOpaqueCube();
-			if (meta >= HopsStage.FRUIT)
-			{
-				return graphicFlag ? icons[5] : icons[6];
-			}
-			else
-			{
-				return graphicFlag ? icons[0] : icons[1];
-			}
-		}
-		return this.icons[2];
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//
+	//{
+		//if (meta != 0)
+		//{
+		//	graphicFlag = !Blocks.LEAVES.isOpaqueCube();
+		//	if (meta >= HopsStage.FRUIT)
+		//	{
+		//		return graphicFlag ? icons[5] : icons[6];
+		//	}
+		//	else
+		//	{
+		//		return graphicFlag ? icons[0] : icons[1];
+		//	}
+		//}
+		//return this.icons[2];
+	//}
 
 	/************
 	 * RENDER
@@ -443,126 +439,126 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 		return ColorizerFoliage.getFoliageColorBasic();
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public int colorMultiplier(IBlockAccess world, BlockPos pos)
-	{
-		final int meta = world.getBlockState(x, y, z);
-
-		int r = 0;
-		int g = 0;
-		int b = 0;
-
-		for (int l1 = -1; l1 <= 1; ++l1)
-		{
-			for (int i2 = -1; i2 <= 1; ++i2)
-			{
-				final int j2 = world.getBiome(x + i2, z + l1).getBiomeFoliageColor(x + i2, y, z + l1);
-				r += (j2 & 16711680) >> 16;
-				g += (j2 & 65280) >> 8;
-				b += j2 & 255;
-			}
-		}
-
-		return (r / 9 & 255) << 16 | (g / 9 & 255) << 8 | b / 9 & 255;
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//public int colorMultiplier(IBlockAccess world, BlockPos pos)
+	//{
+	//	final int meta = world.getBlockState(pos);
+//
+	//	int r = 0;
+	//	int g = 0;
+	//	int b = 0;
+//
+	//	for (int l1 = -1; l1 <= 1; ++l1)
+	//	{
+	//		for (int i2 = -1; i2 <= 1; ++i2)
+	//		{
+	//			final int j2 = world.getBiome(x + i2, z + l1).getBiomeFoliageColor(x + i2, y, z + l1);
+	//			r += (j2 & 16711680) >> 16;
+	//			g += (j2 & 65280) >> 8;
+	//			b += j2 & 255;
+	//		}
+	//	}
+//
+	//	return (r / 9 & 255) << 16 | (g / 9 & 255) << 8 | b / 9 & 255;
+	//}
 
 	/************
 	 * BOXES
 	 ************/
-	@Override
-	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void getCollisionBoundingBox(World world, BlockPos pos, AxisAlignedBB aabb, List list, Entity entity)
-	{
-		final boolean flag = this.canConnectRopeTo(world, x, y, z - 1);
-		final boolean flag1 = this.canConnectRopeTo(world, x, y, z + 1);
-		final boolean flag2 = this.canConnectRopeTo(world, x - 1, y, z);
-		final boolean flag3 = this.canConnectRopeTo(world, x + 1, y, z);
-		final boolean flag4 = this.canConnectRopeTo(world, x, y - 1, z);
-		final boolean flag5 = this.canConnectRopeTo(world, x, y + 1, z);
-		float f = 0.4375F;
-		float f1 = 0.5625F;
-		float f2 = 0.4375F;
-		float f3 = 0.5625F;
-		float f4 = 0.4375F;
-		float f5 = 0.5625F;
+//	@Override
+	//@SuppressWarnings({"rawtypes", "unchecked"})
+//	public void getCollisionBoundingBox(World world, BlockPos pos, AxisAlignedBB aabb, List list, Entity entity)
+	//{
+	//	final boolean flag = this.canConnectRopeTo(world, x, y, z - 1);
+//		final boolean flag1 = this.canConnectRopeTo(world, x, y, z + 1);
+	//	final boolean flag2 = this.canConnectRopeTo(world, x - 1, y, z);
+	//	final boolean flag3 = this.canConnectRopeTo(world, x + 1, y, z);
+	//	final boolean flag4 = this.canConnectRopeTo(world, x, y - 1, z);
+//		final boolean flag5 = this.canConnectRopeTo(world, x, y + 1, z);
+//		float f = 0.4375F;
+	//	float f1 = 0.5625F;
+	//	float f2 = 0.4375F;
+	//	float f3 = 0.5625F;
+	//	float f4 = 0.4375F;
+	//	float f5 = 0.5625F;
+//
+	//	if (flag)
+	//	{
+	//		f2 = 0.0F;
+	//	}
+//
+	//	if (flag1)
+	//	{
+	//		f3 = 1.0F;
+	//	}
+//
+	//	if (flag || flag1)
+	//	{
+	//		this.getBoundingBox(f, f4, f2, f1, f5, f3);
+	//		super.getCollisionBoundingBox(world, x, y, z, aabb, list, entity);
+	//	}
+//
+	//	f2 = 0.4375F;
+	//	f3 = 0.5625F;
+//
+	//	if (flag2)
+	//	{
+	//		f = 0.0F;
+	//	}
+//
+	//	if (flag3)
+	//	{
+	//		f1 = 1.0F;
+	//	}
+//
+	//	if (flag2 || flag3)
+	//	{
+	//		this.getBoundingBox(f, f4, f2, f1, f5, f3);
+	//		super.getCollisionBoundingBox(world, x, y, z, aabb, list, entity);
+	//	}
+///
+	//	f = 0.4375F;
+	//	f1 = 0.5625F;
+//
+	//	if (flag4)
+	//	{
+	//		f4 = 0.0F;
+		//}
+//
+		///if (flag5)
+		///{
+		//	f5 = 1.0F;
+		//}
+//
+	//	if (flag4 || flag5)
+	//	{
+	//		this.getBoundingBox(f, f4, f2, f1, f5, f3);
+	//		super.getCollisionBoundingBox(world, x, y, z, aabb, list, entity);
+	//	}
+//
+	//	this.setBlockBoundsBasedOnState(world, x, y, z);
+	//}
 
-		if (flag)
-		{
-			f2 = 0.0F;
-		}
-
-		if (flag1)
-		{
-			f3 = 1.0F;
-		}
-
-		if (flag || flag1)
-		{
-			this.getBoundingBox(f, f4, f2, f1, f5, f3);
-			super.getCollisionBoundingBox(world, x, y, z, aabb, list, entity);
-		}
-
-		f2 = 0.4375F;
-		f3 = 0.5625F;
-
-		if (flag2)
-		{
-			f = 0.0F;
-		}
-
-		if (flag3)
-		{
-			f1 = 1.0F;
-		}
-
-		if (flag2 || flag3)
-		{
-			this.getBoundingBox(f, f4, f2, f1, f5, f3);
-			super.getCollisionBoundingBox(world, x, y, z, aabb, list, entity);
-		}
-
-		f = 0.4375F;
-		f1 = 0.5625F;
-
-		if (flag4)
-		{
-			f4 = 0.0F;
-		}
-
-		if (flag5)
-		{
-			f5 = 1.0F;
-		}
-
-		if (flag4 || flag5)
-		{
-			this.getBoundingBox(f, f4, f2, f1, f5, f3);
-			super.getCollisionBoundingBox(world, x, y, z, aabb, list, entity);
-		}
-
-		this.setBlockBoundsBasedOnState(world, x, y, z);
-	}
-
-	@Override
-	public void setBlockBoundsBasedOnState(IBlockAccess world, BlockPos pos)
-	{
-		final int meta = world.getBlockState(x, y, z);
-		final float f = 0.0625F;
-
-		switch (meta)
-		{
-			case 0:
-				this.getBoundingBox(6*f, 0.0F, 6*f, 10*f, 5*f, 10*f);
-				break;
-			case 1:
-				this.getBoundingBox(4*f, 0.0F, 4*f, 12*f, 8*f, 12*f);
-				break;
-			default:
-				this.getBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
-				break;
-		}
-	}
+	//@Override
+///	public void setBlockBoundsBasedOnState(IBlockAccess world, BlockPos pos)
+	//{
+	//	final int meta = world.getBlockState(x, y, z);
+	//	final float f = 0.0625F;
+//
+	//	switch (meta)
+	//	{
+	//		case 0:
+	//			this.getBoundingBox(6*f, 0.0F, 6*f, 10*f, 5*f, 10*f);
+	//			break;
+	//		case 1:
+	//			this.getBoundingBox(4*f, 0.0F, 4*f, 12*f, 8*f, 12*f);
+	//			break;
+	//		default:
+	//			this.getBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+	//			break;
+	//	}
+	//}
 
 	/************
 	 * IPLANTABLE
@@ -574,14 +570,13 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 	}
 
 	@Override
-	public Block getPlant(IBlockAccess world, BlockPos pos)
+	public IBlockState getPlant(IBlockAccess world, BlockPos pos)
 	{
 		return this;
 	}
 
-	@Override
-	public int getPlantMetadata(IBlockAccess world, BlockPos pos)
+	public IBlockState getPlantMetadata(IBlockAccess world, BlockPos pos)
 	{
-		return world.getBlockState(x, y, z);
+		return world.getBlockState(pos);
 	}
 }

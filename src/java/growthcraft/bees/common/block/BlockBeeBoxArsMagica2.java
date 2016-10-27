@@ -39,7 +39,7 @@ public class BlockBeeBoxArsMagica2 extends BlockBeeBox
 	{
 		super();
 		setHardness(2f);
-		setBlockName("grc.beeBox.ArsMagica2");
+		setUnlocalizedName("grc.beeBox.ArsMagica2");
 	}
 
 	@Override

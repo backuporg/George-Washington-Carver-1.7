@@ -3,6 +3,7 @@ package growthcraft.cellar.network;
 import growthcraft.cellar.common.tileentity.TileEntityCellarDevice;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class PacketClearTankButton extends AbstractPacketButton
@@ -11,7 +12,7 @@ public class PacketClearTankButton extends AbstractPacketButton
 
 	public PacketClearTankButton(BlockPos pos)
 	{
-		super(x, y, z);
+		super(pos);
 	}
 
 	@Override
@@ -21,10 +22,10 @@ public class PacketClearTankButton extends AbstractPacketButton
 	}
 
 	@Override
-	public void handleServerSide(EntityPlayer player)
+	public void handleServerSide(EntityPlayer player, BlockPos pos)
 	{
 		final World world = player.worldObj;
-		final TileEntity te = world.getTileEntity(xCoord, yCoord, zCoord);
+		final TileEntity te = world.getTileEntity(pos);
 
 		if (te instanceof TileEntityCellarDevice)
 		{

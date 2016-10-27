@@ -39,7 +39,7 @@ public class BlockBeeBoxNatura extends BlockBeeBox
 	{
 		super();
 		setHardness(2f);
-		setBlockName("grc.BeeBox.Natura");
+		setUnlocalizedName("grc.BeeBox.Natura");
 	}
 
 	@Override

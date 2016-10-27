@@ -26,6 +26,7 @@ package growthcraft.bees.common.block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -48,7 +49,7 @@ public class BlockBeeBoxForestry extends BlockBeeBox
 		this.subIndex = index;
 		this.isFireproofFlag = fireproof;
 		setHardness(2f);
-		setBlockName(String.format("grc.BeeBox.Forestry.%d.%s", subIndex, isFireproofFlag ? "Fireproof" : "Normal"));
+		setUnlocalizedName(String.format("grc.BeeBox.Forestry.%d.%s", subIndex, isFireproofFlag ? "Fireproof" : "Normal"));
 	}
 
 	@Override
@@ -70,7 +71,7 @@ public class BlockBeeBoxForestry extends BlockBeeBox
 	@Override
 	public float getBlockHardness(World world, BlockPos pos)
 	{
-		return getBeeBoxType(world, x, y, z).getHardness();
+		return getBeeBoxType(world, pos).getHardness();
 	}
 
 	public boolean isFireproof()

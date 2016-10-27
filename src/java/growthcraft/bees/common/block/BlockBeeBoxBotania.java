@@ -39,7 +39,7 @@ public class BlockBeeBoxBotania extends BlockBeeBox
 	{
 		super();
 		setHardness(2f);
-		setBlockName("grc.BeeBox.Botania");
+		setUnlocalizedName("grc.BeeBox.Botania");
 	}
 
 	@Override

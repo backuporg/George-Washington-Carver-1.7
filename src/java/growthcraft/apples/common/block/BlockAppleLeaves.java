@@ -61,7 +61,7 @@ public class BlockAppleLeaves extends BlockLeaves implements IShearable, IGrowab
 		this.setHardness(0.2F);
 		this.setLightOpacity(1);
 		this.setStepSound(soundTypeGrass);
-		this.setBlockName("grc.appleLeaves");
+		this.setUnlocalizedName("grc.appleLeaves");
 		this.setCreativeTab(GrowthCraftApples.creativeTab);
 	}
 

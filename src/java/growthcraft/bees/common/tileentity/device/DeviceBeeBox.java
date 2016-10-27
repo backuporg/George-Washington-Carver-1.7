@@ -91,7 +91,7 @@ public class DeviceBeeBox extends DeviceBase
 	{
 		if (getWorld().canLightningStrikeAt(parent.xCoord, parent.yCoord + 1, parent.zCoord))
 			return false;
-		return getWorld().getBlockLightValue(parent.xCoord, parent.yCoord + 1, parent.zCoord) >= 7;
+		return getWorld().getLight(parent.xCoord, parent.yCoord + 1, parent.zCoord) >= 7;
 	}
 
 	/**

@@ -23,7 +23,7 @@ public abstract class BlockBambooSlab extends BlockSlab
 		setStepSound(soundTypeWood);
 		setResistance(5.0F);
 		setHardness(2.0F);
-		setBlockName("grc.bambooSlab");
+		setUnlocalizedName("grc.bambooSlab");
 		setCreativeTab(GrowthCraftBamboo.creativeTab);
 	}
 
@@ -77,10 +77,10 @@ public abstract class BlockBambooSlab extends BlockSlab
 	/************
 	 * TEXTURES
 	 ************/
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
-	{
-		return GrowthCraftBamboo.blocks.bambooBlock.getBlockState().getIcon(side, meta);
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+//
+	//{
+	//	return GrowthCraftBamboo.blocks.bambooBlock.getBlockState().getIcon(side, meta);
+	//}
 }

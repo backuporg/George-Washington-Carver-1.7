@@ -51,7 +51,7 @@ public class BlockApple extends GrcBlockBase implements IGrowable, ICropDataProv
 	}
 
 	@SideOnly(Side.CLIENT)
-	private IIcon[] tex;
+
 
 	private final int growth = GrowthCraftApples.getConfig().appleGrowthRate;
 	private final boolean dropRipeApples = GrowthCraftApples.getConfig().dropRipeApples;
@@ -64,7 +64,7 @@ public class BlockApple extends GrcBlockBase implements IGrowable, ICropDataProv
 		this.setHardness(0.2F);
 		this.setResistance(5.0F);
 		this.setStepSound(soundTypeWood);
-		this.setBlockName("grc.appleBlock");
+		this.setUnlocalizedName("grc.appleBlock");
 		this.setCreativeTab(null);
 	}
 
@@ -209,13 +209,6 @@ public class BlockApple extends GrcBlockBase implements IGrowable, ICropDataProv
 		super.dropBlockAsItemWithChance(world, pos, state, par6, 0);
 	}
 
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
-	{
-		return this.tex[meta];
-	}
 
 	/************
 	 * RENDER

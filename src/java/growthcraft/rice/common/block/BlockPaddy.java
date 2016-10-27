@@ -21,7 +21,6 @@ import java.util.Random;
 public class BlockPaddy extends BlockPaddyBase
 {
 	@SideOnly(Side.CLIENT)
-	protected IIcon[] icons;
 
 	private final int paddyFieldMax = GrowthCraftRice.getConfig().paddyFieldMax;
 
@@ -30,7 +29,7 @@ public class BlockPaddy extends BlockPaddyBase
 		super(Material.GROUND);
 		this.setHardness(0.5F);
 		this.setStepSound(soundTypeGravel);
-		this.setBlockName("grc.paddyField");
+		this.setUnlocalizedName("grc.paddyField");
 		this.setCreativeTab(null);
 	}
 
@@ -39,10 +38,10 @@ public class BlockPaddy extends BlockPaddyBase
 	{
 		if (world.rand.nextInt(20) == 0)
 		{
-			final int meta = world.getBlockState(x, y, z);
+			final int meta = world.getBlockState(pos);
 			if (meta < paddyFieldMax)
 			{
-				world.setBlockState(x, y, z, meta + 1, BlockFlags.UPDATE_AND_SYNC);
+				world.setBlockState(pos, meta + 1, BlockFlags.UPDATE_AND_SYNC);
 			}
 		}
 	}
@@ -68,6 +67,11 @@ public class BlockPaddy extends BlockPaddyBase
 	public int getMaxPaddyMeta(IBlockAccess world, BlockPos pos)
 	{
 		return paddyFieldMax;
+	}
+
+	@Override
+	public boolean canConnectPaddyTo(IBlockAccess world, BlockPos pos, int meta) {
+		return false;
 	}
 
 	@Override
@@ -104,32 +108,32 @@ public class BlockPaddy extends BlockPaddyBase
 	/************
 	 * TEXTURES
 	 ************/
-	@Override
-	@SideOnly(Side.CLIENT)
+	//@Override
+	//@SideOnly(Side.CLIENT)
 
-	{
-		icons = new IIcon[3];
+	//{
+	//	icons = new IIcon[3];
+//
+	//	icons[0] = reg.registerIcon("dirt");
+	//	icons[1] = reg.registerIcon("farmland_dry");
+	//	icons[2] = reg.registerIcon("farmland_wet");
+	//}
 
-		icons[0] = reg.registerIcon("dirt");
-		icons[1] = reg.registerIcon("farmland_dry");
-		icons[2] = reg.registerIcon("farmland_wet");
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
-	{
-		if (side == 1)
-		{
-			if (meta == 0)
-			{
-				return icons[1];
-			}
-			else
-			{
-				return icons[2];
-			}
-		}
-		return icons[0];
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//
+	//{
+	//	if (side == 1)
+	//	{
+	//		if (meta == 0)
+	//		{
+	//			return icons[1];
+	//		}
+	//		else
+	//		{
+	//			return icons[2];
+	//		}
+	//	}
+	//	return icons[0];
+	//}
 }

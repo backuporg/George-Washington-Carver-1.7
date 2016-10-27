@@ -69,23 +69,23 @@ public class ItemBeesWax extends GrcItemBase
 		return super.getUnlocalizedName(stack);
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister reg)
-	{
-		this.icons = new IIcon[EnumBeesWax.VALUES.size()];
-		for (EnumBeesWax beesWax : EnumBeesWax.VALUES)
-		{
-			icons[beesWax.meta] = reg.registerIcon(getIconString() + "/" + beesWax.basename);
-		}
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//public void registerIcons(IIconRegister reg)
+	//{
+	//	this.icons = new IIcon[EnumBeesWax.VALUES.size()];
+	//	for (EnumBeesWax beesWax : EnumBeesWax.VALUES)
+	//	{
+	//		icons[beesWax.meta] = reg.registerIcon(getIconString() + "/" + beesWax.basename);
+	//	}
+	//}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIconFromDamage(int meta)
-	{
-		return icons[MathHelper.clamp_int(meta, 0, icons.length - 1)];
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//public IIcon getIconFromDamage(int meta)
+	//{
+	///	return icons[MathHelper.clamp_int(meta, 0, icons.length - 1)];
+	//}
 
 	@Override
 	@SideOnly(Side.CLIENT)

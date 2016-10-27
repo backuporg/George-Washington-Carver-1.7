@@ -104,7 +104,7 @@ public class GrcContainer extends Container
 				merged |= mergeWithSlot(subSlot, stack);
 			}
 		}
-		return mergeItemStack(stack, start, end + 1, false);
+		return merged;
 	}
 
 	public boolean mergeWithPlayer(ItemStack stack)
@@ -178,10 +178,7 @@ public class GrcContainer extends Container
 			{
 				s.putStack((ItemStack)null);
 			}
-			else
-			{
-				s.onSlotChanged();
-			}
+			s.onSlotChanged();
 
 			if (stack.stackSize == itemstack.stackSize)
 			{

@@ -39,7 +39,7 @@ public class BlockBeeBoxFossilsAndArchaeology extends BlockBeeBox
 	{
 		super();
 		setHardness(2f);
-		setBlockName("grc.beeBox.FossilsAndArchaeology");
+		setUnlocalizedName("grc.beeBox.FossilsAndArchaeology");
 	}
 
 	@Override

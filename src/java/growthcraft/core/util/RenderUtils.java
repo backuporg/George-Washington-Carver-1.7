@@ -4,6 +4,8 @@ import net.minecraft.block.Block;
 
 import net.minecraft.client.renderer.Tessellator;
 import org.lwjgl.opengl.GL11;
+import net.minecraft.client.renderer.*;
+import net.minecraft.client.resources.I18n;
 
 
 public class RenderUtils
@@ -51,7 +53,7 @@ public class RenderUtils
 		GL11.glPopMatrix();
 	}
 
-	public static void drawCubeFace(Face face, Block block, RenderBlocks renderer, Tessellator tes, IIcon icon, double i, double j, double k)
+	public static void drawCubeFace(Face face, Block block, Tessellator tes, double i, double j, double k)
 	{
 		final float f = 0.0F;
 		switch (face)
@@ -111,14 +113,14 @@ public class RenderUtils
 		}
 	}
 
-	public static void drawFace(Face face, Block block, RenderBlocks renderer, Tessellator tessellator, IIcon icon, double i, double j, double k)
+	public static void drawFace(Face face, Block block, Tessellator tessellator, double i, double j, double k)
 	{
 		tessellator.startDrawingQuads();
 		drawCubeFace(face, block, renderer, tessellator, icon, i, j, k);
 		tessellator.draw();
 	}
 
-	public static void renderInventoryBlockOverride(Block block, RenderBlocks renderer, IIcon[] icon, Tessellator tessellator)
+	public static void renderInventoryBlockOverride(Block block, Tessellator tessellator)
 	{
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
 		tessellator.startDrawingQuads();
@@ -132,7 +134,7 @@ public class RenderUtils
 		GL11.glTranslatef(0.5F, 0.5F, 0.5F);
 	}
 
-	public static void renderInventoryBlockFaces(Block block, int meta, RenderBlocks renderer, Tessellator tessellator)
+	public static void renderInventoryBlockFaces(Block block, int meta, Tessellator tessellator)
 	{
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
 		tessellator.startDrawingQuads();
@@ -146,12 +148,12 @@ public class RenderUtils
 		GL11.glTranslatef(0.5F, 0.5F, 0.5F);
 	}
 
-	public static void renderInventoryBlock(Block block, int meta, RenderBlocks renderer, Tessellator tessellator)
+	public static void renderInventoryBlock(Block block, int meta, Tessellator tessellator)
 	{
-		renderInventoryBlockFaces(block, meta, renderer, tessellator);
+		renderInventoryBlockFaces(block, meta, renderBlocks, tessellator);
 	}
 
-	public static void drawInventoryBlock_icon(Block block, RenderBlocks renderer, IIcon icon, Tessellator tessellator)
+	public static void drawInventoryBlock_icon(Block block, Tessellator tessellator)
 	{
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
 		tessellator.startDrawingQuads();

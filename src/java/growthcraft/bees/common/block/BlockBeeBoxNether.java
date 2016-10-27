@@ -37,7 +37,7 @@ public class BlockBeeBoxNether extends BlockBeeBox
 	public BlockBeeBoxNether()
 	{
 		super();
-		this.setBlockName("grc.BeeBox.Nether");
+		this.setUnlocalizedName("grc.BeeBox.Nether");
 	}
 
 	@Override

@@ -33,7 +33,7 @@ public class BlockFenceRope extends GrcBlockBase implements IBlockRope
 		super(srcKey.getBlockState().getMaterial());
 		this.fenceBlockKey = srcKey;
 		setStepSound(soundTypeWood);
-		setBlockName(name);
+		setUnlocalizedName(name);
 		setCreativeTab(null);
 	}
 
@@ -116,128 +116,121 @@ public class BlockFenceRope extends GrcBlockBase implements IBlockRope
 		return ret;
 	}
 
-	@Override
-	public void setBlockBoundsBasedOnState(IBlockAccess world, BlockPos pos)
-	{
-		final boolean flag = this.canConnectRopeTo(world, x, y, z - 1);
-		final boolean flag1 = this.canConnectRopeTo(world, x, y, z + 1);
-		final boolean flag2 = this.canConnectRopeTo(world, x - 1, y, z);
-		final boolean flag3 = this.canConnectRopeTo(world, x + 1, y, z);
-		float f = 0.375F;
-		float f1 = 0.625F;
-		float f2 = 0.375F;
-		float f3 = 0.625F;
+	//@Override
+	//public void setBlockBoundsBasedOnState(IBlockAccess world, BlockPos pos)
+	//{
+	//	final boolean flag = this.canConnectRopeTo(world, x, y, z - 1);
+	//	final boolean flag1 = this.canConnectRopeTo(world, x, y, z + 1);
+	//	final boolean flag2 = this.canConnectRopeTo(world, x - 1, y, z);
+	//	final boolean flag3 = this.canConnectRopeTo(world, x + 1, y, z);
+	//	float f = 0.375F;
+	//	float f1 = 0.625F;
+	//	float f2 = 0.375F;
+	//	float f3 = 0.625F;
+///
+	//	if (flag)
+	//	{
+	//		f2 = 0.0F;
+	//	}
+//
+	//	if (flag1)
+	//	{
+	//		f3 = 1.0F;
+	//	}
+//
+	//	if (flag2)
+	//	{
+	//		f = 0.0F;
+	//	}
+//
+	//	if (flag3)
+	//	{
+	//		f1 = 1.0F;
+	//	}
+//
+	//	this.getBoundingBox(f, 0.0F, f2, f1, 1.0F, f3);
+	//}
 
-		if (flag)
-		{
-			f2 = 0.0F;
-		}
+	//@Override
+	//@SuppressWarnings({"rawtypes", "unchecked"})
+	//public void getCollisionBoundingBox(World world, BlockPos pos, AxisAlignedBB aabb, List list, Entity entity)
+	//{
+	//	final boolean flag = this.canConnectRopeTo(world, x, y, z - 1);
+	//	final boolean flag1 = this.canConnectRopeTo(world, x, y, z + 1);
+	//	final boolean flag2 = this.canConnectRopeTo(world, x - 1, y, z);
+	//	final boolean flag3 = this.canConnectRopeTo(world, x + 1, y, z);
+	//	float f = 0.375F;
+	//	float f1 = 0.625F;
+	//	float f2 = 0.375F;
+	//	float f3 = 0.625F;
+//
+	//	if (flag)
+	//	{
+	//		f2 = 0.0F;
+	//	}
+//
+	//	if (flag1)
+		//{
+	//		f3 = 1.0F;
+	//	}
+//
+	//	if (flag || flag1)
+	//	{
+	//		this.getBoundingBox(f, 0.4375F, f2, f1, 0.5625F, f3);
+	//		super.getCollisionBoundingBox(world, x, y, z, aabb, list, entity);
+	//	}
+//
+	//	f2 = 0.375F;
+	//	f3 = 0.625F;
+//
+	//	if (flag2)
+	//	{
+	//		f = 0.0F;
+	//	}
+//
+	//	if (flag3)
+	//	{
+	//		f1 = 1.0F;
+	//	}
+//
+	//	if (flag2 || flag3 || !flag && !flag1)
+	//	{
+	//		this.getBoundingBox(f, 0.4375F, f2, f1, 0.5625F, f3);
+	//		super.getCollisionBoundingBox(world, x, y, z, aabb, list, entity);
+	//	}
+//
+	//	if (flag)
+	//	{
+	//		f2 = 0.0F;
+	//	}
+//
+	//	if (flag1)
+	//	{
+	//		f3 = 1.0F;
+	//	}
+//
+	//	this.setBlockBoundsBasedOnState(world, pos);
+	//}
+//
+	//@Override
+	//@SideOnly(Side.CLIENT)
+//
+	//{
+	//	this.icons = new IIcon[2];
+//
+	//	icons[0] = reg.registerIcon("grccore:rope_0");
+	//	icons[1] = reg.registerIcon("grccore:rope_1");
+	//}
 
-		if (flag1)
-		{
-			f3 = 1.0F;
-		}
-
-		if (flag2)
-		{
-			f = 0.0F;
-		}
-
-		if (flag3)
-		{
-			f1 = 1.0F;
-		}
-
-		this.getBoundingBox(f, 0.0F, f2, f1, 1.0F, f3);
-	}
-
-	@Override
-	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void getCollisionBoundingBox(World world, BlockPos pos, AxisAlignedBB aabb, List list, Entity entity)
-	{
-		final boolean flag = this.canConnectRopeTo(world, x, y, z - 1);
-		final boolean flag1 = this.canConnectRopeTo(world, x, y, z + 1);
-		final boolean flag2 = this.canConnectRopeTo(world, x - 1, y, z);
-		final boolean flag3 = this.canConnectRopeTo(world, x + 1, y, z);
-		float f = 0.375F;
-		float f1 = 0.625F;
-		float f2 = 0.375F;
-		float f3 = 0.625F;
-
-		if (flag)
-		{
-			f2 = 0.0F;
-		}
-
-		if (flag1)
-		{
-			f3 = 1.0F;
-		}
-
-		if (flag || flag1)
-		{
-			this.getBoundingBox(f, 0.4375F, f2, f1, 0.5625F, f3);
-			super.getCollisionBoundingBox(world, x, y, z, aabb, list, entity);
-		}
-
-		f2 = 0.375F;
-		f3 = 0.625F;
-
-		if (flag2)
-		{
-			f = 0.0F;
-		}
-
-		if (flag3)
-		{
-			f1 = 1.0F;
-		}
-
-		if (flag2 || flag3 || !flag && !flag1)
-		{
-			this.getBoundingBox(f, 0.4375F, f2, f1, 0.5625F, f3);
-			super.getCollisionBoundingBox(world, x, y, z, aabb, list, entity);
-		}
-
-		if (flag)
-		{
-			f2 = 0.0F;
-		}
-
-		if (flag1)
-		{
-			f3 = 1.0F;
-		}
-
-		this.setBlockBoundsBasedOnState(world, pos);
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-
-	{
-		this.icons = new IIcon[2];
-
-		icons[0] = reg.registerIcon("grccore:rope_0");
-		icons[1] = reg.registerIcon("grccore:rope_1");
-	}
-
-	@SideOnly(Side.CLIENT)
-	public IIcon getIconByIndex(int index)
-	{
-		if (index == 0)
-		{
-			return getFenceBlock().getIcon(0, 0);
-		}
-		return icons[index - 1];
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
-	{
-		return getFenceBlock().getIcon(side, meta);
-	}
+	//@SideOnly(Side.CLIENT)
+	//public IIcon getIconByIndex(int index)
+	//{
+	//	if (index == 0)
+	//	{
+	//		return getFenceBlock().getIcon(0, 0);
+	//	}
+	//	return icons[index - 1];
+	//}
 
 	@Override
 	@SideOnly(Side.CLIENT)

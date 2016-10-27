@@ -25,6 +25,7 @@ package growthcraft.core.common.block;
 
 import growthcraft.api.core.util.FXHelper;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
@@ -46,7 +47,7 @@ public class GrcBlockFluid extends BlockFluidClassic
 	public GrcBlockFluid(Fluid fluid, Material material)
 	{
 		super(fluid, material);
-		setBlockName(fluid.getUnlocalizedName());
+		setUnlocalizedName(fluid.getUnlocalizedName());
 	}
 
 	public GrcBlockFluid refreshSettings()
@@ -76,34 +77,34 @@ public class GrcBlockFluid extends BlockFluidClassic
 		return this.color;
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
-	{
-		return side != 0 && side != 1 ? this.icons[1] : this.icons[0];
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister iconRegister)
-	{
-		this.icons = new IIcon[2];
-		this.icons[0] = iconRegister.registerIcon(getTextureName() + "_still");
-		this.icons[1] = iconRegister.registerIcon(getTextureName() + "_flow");
-	}
+	//{
+	//	return side != 0 && side != 1 ? this.icons[1] : this.icons[0];
+	//}
+
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//public void registerBlockIcons(IIconRegister iconRegister)
+	//{
+	//	this.icons = new IIcon[2];
+	//	this.icons[0] = iconRegister.registerIcon(getTextureName() + "_still");
+	//	this.icons[1] = iconRegister.registerIcon(getTextureName() + "_flow");
+	//}
 
 	@Override
 	public boolean canDisplace(IBlockAccess world, BlockPos pos)
 	{
-		if (world.getBlockState(x, y, z).getMaterial().isLiquid()) return false;
-		return super.canDisplace(world, x, y, z);
+		if (world.getBlockState(pos).getMaterial().isLiquid()) return false;
+		return super.canDisplace(world, pos);
 	}
 
 	@Override
 	public boolean displaceIfPossible(World world, BlockPos pos)
 	{
-		if (world.getBlockState(x, y, z).getMaterial().isLiquid()) return false;
-		return super.displaceIfPossible(world, x, y, z);
+		if (world.getBlockState(pos).getMaterial().isLiquid()) return false;
+		return super.displaceIfPossible(world, pos);
 	}
 
 	@Override
@@ -115,9 +116,9 @@ public class GrcBlockFluid extends BlockFluidClassic
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World world, BlockPos pos, Random rand)
+	public void randomDisplayTick(World world, BlockPos pos, Random rand, IBlockState state)
 	{
-		super.randomDisplayTick(world, x, y, z, rand);
+		super.randomDisplayTick(state, world, pos, rand);
 
 		if (rand.nextInt(10) == 0 &&
 			World.doesBlockHaveSolidTopSurface(world, x, y - 1, z) &&
