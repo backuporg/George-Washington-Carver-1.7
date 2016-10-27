@@ -5,6 +5,7 @@ import growthcraft.core.common.item.GrcItemBase;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -24,7 +25,7 @@ public class ItemBambooDoor extends GrcItemBase
 	/************
 	 * MAIN
 	 ************/
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, int side, float par8, float par9, float par10)
+	public boolean onItemUse(ItemStack stack, EnumFacing face, EntityPlayer player, World world, BlockPos pos, int side, float par8, float par9, float par10)
 	{
 		if (side != 1)
 		{
@@ -35,16 +36,16 @@ public class ItemBambooDoor extends GrcItemBase
 			++y;
 			final Block block = GrowthCraftBamboo.blocks.bambooDoor.getBlockState();
 
-			if (player.canPlayerEdit(x, y, z, side, stack) && player.canPlayerEdit(x, y + 1, z, side, stack))
+			if (player.canPlayerEdit(pos, face, stack) && player.canPlayerEdit(x, y + 1, z, side, stack))
 			{
-				if (!block.canPlaceBlockAt(world, x, y, z))
+				if (!block.canPlaceBlockAt(world, pos))
 				{
 					return false;
 				}
 				else
 				{
 					final int i1 = MathHelper.floor_double((double)((player.rotationYaw + 180.0F) * 4.0F / 360.0F) - 0.5D) & 3;
-					placeDoorBlock(world, x, y, z, i1, block);
+					placeDoorBlock(world, pos, i1, block);
 					--stack.stackSize;
 					return true;
 				}
@@ -105,10 +106,10 @@ public class ItemBambooDoor extends GrcItemBase
 	/************
 	 * TEXTURES
 	 ************/
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister reg)
-	{
-		this.itemIcon = reg.registerIcon("grcbamboo:door");
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//public void registerIcons(IIconRegister reg)
+	//{
+	//	this.itemIcon = reg.registerIcon("grcbamboo:door");
+	//}
 }

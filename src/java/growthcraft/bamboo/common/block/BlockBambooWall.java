@@ -19,8 +19,6 @@ import java.util.List;
 
 public class BlockBambooWall extends GrcBlockBase
 {
-	@SideOnly(Side.CLIENT)
-	public static IIcon[] tex;
 
 	public BlockBambooWall()
 	{
