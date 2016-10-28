@@ -42,10 +42,10 @@ public class ItemBucketFluid extends GrcItemBucketBase implements IFluidItem
 	// Used to override the fluid color
 	private int color = -1;
 
-	@SideOnly(Side.CLIENT)
-	private IIcon bucket;
-	@SideOnly(Side.CLIENT)
-	private IIcon contents;
+	//@SideOnly(Side.CLIENT)
+	//private IIcon bucket;
+	//@SideOnly(Side.CLIENT)
+	//private IIcon contents;
 
 	public ItemBucketFluid(Block block, Fluid flu, CreativeTabs creativeTab)
 	{
@@ -79,20 +79,20 @@ public class ItemBucketFluid extends GrcItemBucketBase implements IFluidItem
 		return UnitFormatter.fluidBucketName(getFluid(stack));
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister reg)
-	{
-		this.bucket = reg.registerIcon("bucket_empty");
-		this.contents = reg.registerIcon("grccore:bucket_contents");
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//public void registerIcons(IIconRegister reg)
+	//{
+	//	this.bucket = reg.registerIcon("bucket_empty");
+	//	this.contents = reg.registerIcon("grccore:bucket_contents");
+	//}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIconFromDamageForRenderPass(int par1, int pass)
-	{
-		return pass == 1 ? this.contents : this.bucket;
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//public IIcon getIconFromDamageForRenderPass(int par1, int pass)
+	//{
+	//	return pass == 1 ? this.contents : this.bucket;
+	//}
 
 	@Override
 	@SideOnly(Side.CLIENT)
