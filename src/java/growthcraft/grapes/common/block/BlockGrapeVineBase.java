@@ -24,7 +24,7 @@ import net.minecraftforge.fml.common.eventhandler.Event;
 
 import java.util.Random;
 
-public class BlockGrapeVineBase extends GrcBlockBase implements IPlantable, ICropDataProvider, IGrowable
+public abstract class BlockGrapeVineBase extends GrcBlockBase implements IPlantable, ICropDataProvider, IGrowable
 {
 	private ItemStack itemDrop;
 	private float growthRateMultiplier;
@@ -83,10 +83,10 @@ public class BlockGrapeVineBase extends GrcBlockBase implements IPlantable, ICro
 		return GrapeBlockCheck.isGrapeVine(block);
 	}
 
-	public void incrementGrowth(World world, BlockPos pos, int meta)
+	public void incrementGrowth(World world, BlockPos pos, int meta, IBlockState state)
 	{
-		world.setBlockState(x, y, z, meta + 1, BlockFlags.SYNC);
-		AppleCore.announceGrowthTick(this, world, x, y, z, meta);
+		world.setBlockState(pos, state, meta + 1, BlockFlags.SYNC);
+		AppleCore.announceGrowthTick(this, world, pos, meta);
 	}
 
 	protected float getGrowthRate(World world, BlockPos pos)
@@ -145,12 +145,12 @@ public class BlockGrapeVineBase extends GrcBlockBase implements IPlantable, ICro
 	}
 
 	@Override
-	public void onNeighborBlockChange(World world, BlockPos pos, Block par5)
+	public void onNeighborChange(World world, BlockPos pos, Block par5)
 	{
-		if (!this.canBlockStay(world, x, y, z))
+		if (!this.canBlockStay(world, pos))
 		{
-			this.dropBlockAsItem(world, x, y, z, world.getBlockState(x, y, z), 0);
-			world.setBlockToAir(x, y, z);
+			this.dropBlockAsItem(world, pos, world.getBlockState(pos), 0);
+			world.setBlockToAir(pos);
 		}
 	}
 
@@ -216,22 +216,22 @@ public class BlockGrapeVineBase extends GrcBlockBase implements IPlantable, ICro
 	protected abstract boolean canUpdateGrowth(World world, BlockPos pos);
 
 	@Override
-	public void updateTick(World world, BlockPos pos, Random random)
+	public void updateTick(World world, BlockPos pos, Random random, IBlockState state)
 	{
-		super.updateTick(world, x, y, z, random);
-		if (canUpdateGrowth(world, x, y, z))
+		super.updateTick(world, pos, state, random);
+		if (canUpdateGrowth(world, pos))
 		{
-			final Event.Result allowGrowthResult = AppleCore.validateGrowthTick(this, world, x, y, z, random);
+			final Event.Result allowGrowthResult = AppleCore.validateGrowthTick(this, world, pos, random);
 			if (Event.Result.DENY == allowGrowthResult)
 				return;
 
 			final int meta = world.getBlockState(x, y, z);
-			final float f = this.getGrowthRate(world, x, y, z);
+			final float f = this.getGrowthRate(world, pos);
 
 			final boolean continueGrowth = random.nextInt((int)(getGrowthRateMultiplier() / f) + 1) == 0;
 			if (Event.Result.ALLOW == allowGrowthResult || continueGrowth)
 			{
-				doGrowth(world, x, y, z, meta);
+				doGrowth(world, pos, meta);
 			}
 		}
 	}
@@ -256,7 +256,7 @@ public class BlockGrapeVineBase extends GrcBlockBase implements IPlantable, ICro
 	{
 		if (random.nextFloat() < 0.5D)
 		{
-			doGrowth(world, x, y, z, world.getBlockState(x, y, z));
+			doGrowth(world, pos, world.getBlockState(x, y, z));
 		}
 	}
 

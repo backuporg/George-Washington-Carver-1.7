@@ -30,6 +30,7 @@ import growthcraft.milk.client.render.RenderCheesePress;
 import growthcraft.milk.common.tileentity.TileEntityCheesePress;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
@@ -109,17 +110,17 @@ public class BlockCheesePress extends GrcBlockContainer
 	}
 
 	@Override
-	public void onBlockPlacedBy(World world, BlockPos pos, EntityLivingBase entity, ItemStack stack)
+	public void onBlockPlacedBy(World world, BlockPos pos, EntityLivingBase entity, ItemStack stack, IBlockState state)
 	{
 		super.onBlockPlacedBy(world, pos, entity, stack);
 		final int a = MathHelper.floor_double((entity.rotationYaw * 4.0D / 360.0D) + 0.5D) & 3;
 		if (a == 0 || a == 2)
 		{
-			world.setBlockState(x, y, z, 0, BlockFlags.SYNC);
+			world.setBlockState(pos, state, 0, BlockFlags.SYNC);
 		}
 		else if (a == 1 || a == 3)
 		{
-			world.setBlockState(x, y, z, 1, BlockFlags.SYNC);
+			world.setBlockState(pos, state, 1, BlockFlags.SYNC);
 		}
 	}
 
@@ -148,7 +149,7 @@ public class BlockCheesePress extends GrcBlockContainer
 	private void updatePressState(World world, BlockPos pos)
 	{
 		final boolean isPowered = world.isBlockIndirectlyGettingPowered(x, y, z);
-		final TileEntityCheesePress cheesePress = getTileEntity(world, x, y, z);
+		final TileEntityCheesePress cheesePress = getTileEntity(world, pos);
 		if (cheesePress != null)
 		{
 			if (cheesePress.toggle(isPowered))
@@ -159,14 +160,14 @@ public class BlockCheesePress extends GrcBlockContainer
 	}
 
 	@Override
-	public void onNeighborBlockChange(World world, BlockPos pos, Block block)
+	public void onNeighborChange(World world, BlockPos pos, Block block, IBlockState state, )
 	{
-		super.onNeighborBlockChange(world, x, y, z, block);
+		super.onNeighborChange(world, pos, pos);
 		if (!world.isRemote)
 		{
 			if (GrowthCraftMilk.getConfig().cheesePressRedstoneOperated)
 			{
-				this.updatePressState(world, x, y, z);
+				this.updatePressState(world, pos);
 			}
 		}
 	}
@@ -205,7 +206,7 @@ public class BlockCheesePress extends GrcBlockContainer
 	@Override
 	public int getComparatorInputOverride(World world, BlockPos pos, int par5)
 	{
-		final TileEntityCheesePress te = getTileEntity(world, x, y, z);
+		final TileEntityCheesePress te = getTileEntity(world, pos);
 		if (te != null)
 		{
 			return Container.calcRedstoneFromInventory(te);

@@ -165,7 +165,7 @@ public abstract class BlockNetherMaliceFruit extends Block implements IGrowable,
 	}
 
 	@Override
-	public void onNeighborBlockChange(World world, BlockPos pos, Block block)
+	public void onNeighborChange(World world, BlockPos pos, Block block)
 	{
 		if (!this.canBlockStay(world, pos))
 		{

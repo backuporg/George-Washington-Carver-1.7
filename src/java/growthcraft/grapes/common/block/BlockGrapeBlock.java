@@ -61,7 +61,7 @@ public class BlockGrapeBlock extends GrcBlockBase
 	}
 
 	@Override
-	public void onNeighborBlockChange(World world, BlockPos pos, Block par5)
+	public void onNeighborChange(World world, BlockPos pos, Block par5)
 	{
 		if (!this.canBlockStay(world, pos))
 		{

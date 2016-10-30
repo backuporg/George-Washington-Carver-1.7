@@ -124,7 +124,7 @@ public class BlockFruitPress extends BlockCellarContainer
 	}
 
 	@Override
-	public void onNeighborBlockChange(World world, BlockPos pos, Block block)
+	public void onNeighborChange(World world, BlockPos pos, Block block)
 	{
 		if (!this.canBlockStay(world, pos))
 		{

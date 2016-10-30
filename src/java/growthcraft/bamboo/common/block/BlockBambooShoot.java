@@ -70,9 +70,9 @@ public class BlockBambooShoot extends BlockBush implements ICropDataProvider, IG
 	 * EVENTS
 	 ************/
 	@Override
-	public void onNeighborBlockChange(World world, BlockPos pos, Block par5)
+	public void onNeighborChange(World world, BlockPos pos, Block par5)
 	{
-		super.onNeighborBlockChange(world, pos, par5);
+		super.onNeighborChange(world, pos, par5);
 		checkShootChange(world, pos);
 	}
 

@@ -160,7 +160,7 @@ public class BlockApple extends GrcBlockBase implements IGrowable, ICropDataProv
 	}
 
 	@Override
-	public void onNeighborBlockChange(World world, BlockPos pos, Block block)
+	public void onNeighborChange(World world, BlockPos pos, Block block)
 	{
 		if (!this.canBlockStay(world, pos))
 		{

@@ -29,7 +29,7 @@ import java.util.Random;
 public class BlockBambooStalk extends GrcBlockBase
 {
 	@SideOnly(Side.CLIENT)
-	public static IIcon[] tex;
+	//public static IIcon[] tex;
 
 	//constants
 	private final int growth = GrowthCraftBamboo.getConfig().bambooStalkGrowthRate;
@@ -128,7 +128,7 @@ public class BlockBambooStalk extends GrcBlockBase
 	 * TRIGGERS
 	 ************/
 	@Override
-	public void onNeighborBlockChange(World world, BlockPos pos, Block s)
+	public void onNeighborChange(World world, BlockPos pos, Block s)
 	{
 		boolean flag = false;
 
@@ -146,7 +146,7 @@ public class BlockBambooStalk extends GrcBlockBase
 			world.setBlockToAir(pos);
 		}
 
-		super.onNeighborBlockChange(world, pos, s);
+		super.onNeighborChange(world, pos, s);
 	}
 
 	@Override

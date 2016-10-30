@@ -32,7 +32,7 @@ public class BlockRope extends GrcBlockBase implements IBlockRope {
 	 * TRIGGERS
 	 ************/
 	@Override
-	public void onNeighborBlockChange(World world, BlockPos pos, Block block) {
+	public void onNeighborChange(World world, BlockPos pos, Block block) {
 		this.checkBlockCoordValid(world, pos);
 	}
 

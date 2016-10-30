@@ -40,7 +40,7 @@ public class BlockBambooScaffold extends GrcBlockBase
 	@Override
 	public void updateTick(World world, BlockPos pos, Random random)
 	{
-		this.onNeighborBlockChange(world, x, y, z, null);
+		this.onNeighborChange(world, x, y, z, null);
 	}
 
 	/************
@@ -79,7 +79,7 @@ public class BlockBambooScaffold extends GrcBlockBase
 	}
 
 	@Override
-	public void onNeighborBlockChange(World world, BlockPos pos, Block par5)
+	public void onNeighborChange(World world, BlockPos pos, Block par5)
 	{
 		if (!this.canBlockStay(world, x, y, z))
 		{
