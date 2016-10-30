@@ -128,7 +128,7 @@ public class BlockBambooStalk extends GrcBlockBase
 	 * TRIGGERS
 	 ************/
 	@Override
-	public void onNeighborChange(World world, BlockPos pos, Block s)
+	public void onNeighborChange(World world, BlockPos pos, Block block, IBlockState state)
 	{
 		boolean flag = false;
 
@@ -146,7 +146,7 @@ public class BlockBambooStalk extends GrcBlockBase
 			world.setBlockToAir(pos);
 		}
 
-		super.onNeighborChange(world, pos, s);
+		super.onNeighborChange(world, pos, pos);
 	}
 
 	@Override
