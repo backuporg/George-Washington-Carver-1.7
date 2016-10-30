@@ -132,7 +132,7 @@ public class BlockCheesePress extends GrcBlockContainer
 		{
 			if (!player.isSneaking())
 			{
-				final TileEntityCheesePress cheesePress = getTileEntity(world, x, y, z);
+				final TileEntityCheesePress cheesePress = getTileEntity(world, pos);
 				if (cheesePress != null)
 				{
 					if (cheesePress.toggle())
@@ -160,7 +160,7 @@ public class BlockCheesePress extends GrcBlockContainer
 	}
 
 	@Override
-	public void onNeighborChange(World world, BlockPos pos, Block block, IBlockState state, )
+	public void onNeighborChange(World world, BlockPos pos, Block block, IBlockState state)
 	{
 		super.onNeighborChange(world, pos, pos);
 		if (!world.isRemote)
