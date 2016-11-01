@@ -6,6 +6,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidContainerRegistry;
@@ -209,6 +210,6 @@ public class Utils
 
 	public static FluidStack playerDrainTank(World world, BlockPos pos, IFluidHandler tank, ItemStack held, EntityPlayer player)
 	{
-		return playerDrainTank(world, x, y, z, tank, held, player, false, 0, 0);
+		return playerDrainTank(world, pos, tank, held, player, false, 0, 0);
 	}
 }
