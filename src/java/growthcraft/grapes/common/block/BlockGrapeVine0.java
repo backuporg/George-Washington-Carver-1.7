@@ -4,6 +4,7 @@ import growthcraft.api.core.util.BlockFlags;
 import growthcraft.api.core.util.RenderType;
 import growthcraft.grapes.GrowthCraftGrapes;
 import net.minecraft.block.SoundType;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -103,18 +104,18 @@ public class BlockGrapeVine0 extends BlockGrapeVineBase
 	}
 
 	@Override
-	public void setBlockBoundsBasedOnState(IBlockAccess world, BlockPos pos)
+	public void setBlockBoundsBasedOnState(IBlockAccess world, BlockPos pos, IBlockState state)
 	{
 		final int meta = world.getBlockState(pos);
 		final float f = 0.0625F;
 
 		if (meta == 0)
 		{
-			this.getBoundingBox(6*f, 0.0F, 6*f, 10*f, 5*f, 10*f);
+			this.getBoundingBox(state, world, pos);
 		}
 		else
 		{
-			this.getBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+			this.getBoundingBox(state, world, pos);
 		}
 	}
 }

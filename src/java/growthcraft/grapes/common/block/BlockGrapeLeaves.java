@@ -107,7 +107,7 @@ public class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 	{
 		if (BlockCheck.isRope(world.getBlockState(x, y, z)))
 		{
-			return canGrowOutwards(world, x, y, z);
+			return canGrowOutwards(world, pos);
 		}
 		return false;
 	}
@@ -139,7 +139,7 @@ public class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 
 		if (world.rand.nextInt(this.grapeLeavesGrowthRate) == 0)
 		{
-			if (canGrowOutwards(world, x, y, z))
+			if (canGrowOutwards(world, pos))
 			{
 				final EnumFacing EnumFacing = BlockCheck.DIR4[random.nextInt(4)];
 
