@@ -21,10 +21,10 @@ public class ItemHoneyJar extends GrcItemFoodBase
 		super();
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister reg)
-	{
-		this.itemIcon = reg.registerIcon("grcbees:honeyjar");
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//public void registerIcons(IIconRegister reg)
+	//{
+	//	this.itemIcon = reg.registerIcon("grcbees:honeyjar");
+	//}
 }

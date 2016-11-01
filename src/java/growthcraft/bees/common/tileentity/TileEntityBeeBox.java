@@ -20,9 +20,38 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
+
+import javax.annotation.Nullable;
 
 public class TileEntityBeeBox extends GrcTileInventoryBase implements IItemHandler, IInteractionObject
 {
+	@Override
+	public int[] getSlotsForFace(EnumFacing side) {
+		return new int[0];
+	}
+
+	@Override
+	public boolean canInsertItem(int index, ItemStack itemStackIn, EnumFacing direction) {
+		return false;
+	}
+
+	@Override
+	public boolean canExtractItem(int index, ItemStack stack, EnumFacing direction) {
+		return false;
+	}
+
+	@Override
+	public String getName() {
+		return null;
+	}
+
+	@Override
+	public boolean hasCustomName() {
+		return false;
+	}
+
 	public static enum HoneyCombExpect
 	{
 		ANY,
@@ -42,9 +71,9 @@ public class TileEntityBeeBox extends GrcTileInventoryBase implements IItemHandl
 	}
 
 	@Override
-	public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn)
+	public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn, BlockPos pos)
 	{
-		return new ContainerBeeBox(playerInventory, this);
+		return new ContainerBeeBox(playerInventory, this, pos);
 	}
 
 	@Override
@@ -308,6 +337,22 @@ public class TileEntityBeeBox extends GrcTileInventoryBase implements IItemHandl
 		beeBox.writeToNBT(nbt, "bee_box");
 	}
 
+	@Nullable
+	@Override
+	public ItemStack removeStackFromSlot(int index) {
+		return null;
+	}
+
+	@Override
+	public void openInventory(EntityPlayer player) {
+
+	}
+
+	@Override
+	public void closeInventory(EntityPlayer player) {
+
+	}
+
 	/************
 	 * HOPPER
 	 ************/
@@ -322,6 +367,26 @@ public class TileEntityBeeBox extends GrcTileInventoryBase implements IItemHandl
 		{
 			return BeesRegistry.instance().isItemHoneyComb(stack);
 		}
+	}
+
+	@Override
+	public int getField(int id) {
+		return 0;
+	}
+
+	@Override
+	public void setField(int id, int value) {
+
+	}
+
+	@Override
+	public int getFieldCount() {
+		return 0;
+	}
+
+	@Override
+	public void clear() {
+
 	}
 
 	@Override
