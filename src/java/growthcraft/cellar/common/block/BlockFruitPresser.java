@@ -8,6 +8,7 @@ import growthcraft.core.common.block.IRotatableBlock;
 import growthcraft.core.common.block.IWrenchable;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -26,7 +27,7 @@ public class BlockFruitPresser extends BlockCellarContainer implements IWrenchab
 	@SideOnly(Side.CLIENT)
 
 
-	public BlockFruitPresser()
+	public BlockFruitPresser(IBlockState state, IBlockAccess source, BlockPos pos)
 	{
 		super(Material.PISTON);
 		this.isBlockContainer = true;
@@ -35,7 +36,7 @@ public class BlockFruitPresser extends BlockCellarContainer implements IWrenchab
 		setStepSound(soundTypePiston);
 		setUnlocalizedName("grc.fruitPresser");
 		setCreativeTab(null);
-		getBoundingBox(0.1875F, 0.0F, 0.1875F, 0.8125F, 0.9375F, 0.8125F);
+		getBoundingBox(state, source, pos);
 	}
 
 	public String getPressStateName(int meta)
@@ -105,32 +106,32 @@ public class BlockFruitPresser extends BlockCellarContainer implements IWrenchab
 	}
 
 	@Override
-	public void onBlockAdded(World world, BlockPos pos)
+	public void onBlockAdded(World world, BlockPos pos, IBlockState oldState, IBlockState newState, int flags, IBlockState state)
 	{
-		super.onBlockAdded(world, x, y, z);
+		super.onBlockAdded(world, pos, state);
+		final int m = world.getBlockState(x,  y - 1, z);
+		world.setBlockState(pos, state, BlockFlags.UPDATE_AND_SYNC);
+
+		if (!world.isRemote)
+		{
+			this.updatePressState(world, pos, oldState, newState, flags);
+		}
+	}
+
+	@Override
+	public void onBlockPlacedBy(World world, BlockPos pos, EntityLivingBase entity, ItemStack stack, IBlockState oldState, IBlockState newState, int flags)
+	{
 		final int m = world.getBlockState(x,  y - 1, z);
 		world.setBlockState(x, y, z, m, BlockFlags.UPDATE_AND_SYNC);
 
 		if (!world.isRemote)
 		{
-			this.updatePressState(world, x, y, z);
+			this.updatePressState(world, pos, oldState, newState, flags);
 		}
 	}
 
 	@Override
-	public void onBlockPlacedBy(World world, BlockPos pos, EntityLivingBase entity, ItemStack stack)
-	{
-		final int m = world.getBlockState(x,  y - 1, z);
-		world.setBlockState(x, y, z, m, BlockFlags.UPDATE_AND_SYNC);
-
-		if (!world.isRemote)
-		{
-			this.updatePressState(world, x, y, z);
-		}
-	}
-
-	@Override
-	public void onNeighborChange(World world, BlockPos pos, Block block)
+	public void onNeighborChange(World world, BlockPos pos, Block block, IBlockState oldState, IBlockState newState, int flags)
 	{
 		if (!this.canBlockStay(world, pos))
 		{
@@ -139,11 +140,11 @@ public class BlockFruitPresser extends BlockCellarContainer implements IWrenchab
 
 		if (!world.isRemote)
 		{
-			this.updatePressState(world, pos);
+			this.updatePressState(world, pos, oldState, newState, flags);
 		}
 	}
 
-	private void updatePressState(World world, BlockPos pos)
+	private void updatePressState(World world, BlockPos pos, IBlockState newState, IBlockState oldState, int flags)
 	{
 		final int     meta = world.getBlockState(pos);
 		final boolean flag = world.isBlockIndirectlyGettingPowered(pos);
@@ -159,7 +160,7 @@ public class BlockFruitPresser extends BlockCellarContainer implements IWrenchab
 			world.playSoundEffect((double)x + 0.5D, (double)y + 0.5D, (double)z + 0.5D, "tile.piston.in", 0.5F, world.rand.nextFloat() * 0.15F + 0.6F);
 		}
 
-		world.markBlockForUpdate(x, y, z);
+		world.notifyBlockUpdate(pos, oldState, newState, flags);
 	}
 
 	/************
@@ -174,7 +175,7 @@ public class BlockFruitPresser extends BlockCellarContainer implements IWrenchab
 	@Override
 	public boolean isSideSolid(IBlockAccess world, BlockPos pos, EnumFacing side)
 	{
-		final int meta = world.getBlockState(pos);
+		final int meta = world.getBlockState();
 
 		if (meta == 0 || meta == 2)
 		{

@@ -65,6 +65,11 @@ public class TileEntityBeeBox extends GrcTileInventoryBase implements IItemHandl
 	private DeviceBeeBox beeBox = new DeviceBeeBox(this);
 
 	@Override
+	public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn) {
+		return null;
+	}
+
+	@Override
 	public String getGuiID()
 	{
 		return "grcbees:bee_box";

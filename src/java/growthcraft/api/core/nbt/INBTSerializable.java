@@ -33,7 +33,7 @@ public interface INBTSerializable
 	void readFromNBT(NBTTagCompound data);
 
 	/**
-	 * @param data - tag compound to write to
-	 */
-	void writeToNBT(NBTTagCompound data);
+     * @param data - tag compound to write to
+     */
+	NBTTagCompound writeToNBT(NBTTagCompound data);
 }
