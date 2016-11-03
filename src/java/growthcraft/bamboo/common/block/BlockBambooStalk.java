@@ -61,7 +61,7 @@ public class BlockBambooStalk extends GrcBlockBase
 	}
 
 	@Override
-	public void updateTick(World world, BlockPos pos, Random rand, IBlockState state)
+	public void updateTick(World world, BlockPos pos, Random rand, IBlockState state, EnumFacing face, IPlantable plant)
 	{
 		if (world.getBlockState(pos) == 0)
 		{
@@ -69,7 +69,7 @@ public class BlockBambooStalk extends GrcBlockBase
 			int y1 = pos.getY();
 			int z1 = pos.getZ();
 
-			if (isBambooOnGround(world, pos))
+			if (isBambooOnGround(world, pos, face, plant))
 			{
 				if (rand.nextInt(this.growth) == 0)
 				{
@@ -129,13 +129,13 @@ public class BlockBambooStalk extends GrcBlockBase
 	 * TRIGGERS
 	 ************/
 	@Override
-	public void onNeighborChange(World world, BlockPos pos, Block block, IBlockState state)
+	public void onNeighborChange(World world, BlockPos pos, Block block, IBlockState state, EnumFacing face, IPlantable plant)
 	{
 		boolean flag = false;
 
 		if (world.getBlockState(pos) != this)
 		{
-			if (!isBambooOnGround(world, pos))
+			if (!isBambooOnGround(world, pos, face, plant))
 			{
 				flag = true;
 			}
