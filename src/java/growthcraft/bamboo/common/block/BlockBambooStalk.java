@@ -342,7 +342,7 @@ public class BlockBambooStalk extends GrcBlockBase
 		float z1 = 0.25F;
 		float z2 = 0.75F;
 
-		if (world.getBlockState(x, y, z) != 0)
+		if (world.getBlockState(pos) != 0)
 		{
 			if (this.canFence(world, x, y, z - 1) || this.canWall(world, x, y, z - 1) || this.canDoor(world, x, y, z - 1))
 			{
