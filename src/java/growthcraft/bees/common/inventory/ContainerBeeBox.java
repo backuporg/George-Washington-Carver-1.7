@@ -28,7 +28,7 @@ public class ContainerBeeBox extends GrcContainer
 		// 55 - 63 (64) player.inv.hotbar
 
 		this.teBeeBox = beeBox;
-		addSlotToContainer(new SlotBee(this, teBeeBox, pos, SlotId.BEE, 80, 18));
+		addSlotToContainer(new SlotBee(this, teBeeBox, pos, SlotId.BEE));
 
 		for (int i = 0; i < 3; ++i)
 		{
@@ -38,9 +38,7 @@ public class ContainerBeeBox extends GrcContainer
 					new SlotHoneyComb(
 						this,
 						teBeeBox,
-						j + i * 9 + SlotId.HONEY_COMB_START,
-						8 + j * 18,
-						50 + i * 18
+						pos
 					)
 				);
 			}
