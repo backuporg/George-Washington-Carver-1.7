@@ -32,7 +32,7 @@ public class BlockFermentBarrel extends BlockCellarContainer
 		super(Material.WOOD);
 		setTileEntityType(TileEntityFermentBarrel.class);
 		setHardness(2.5F);
-		setStepSound(soundTypeWood);
+		//setStepSound(soundTypeWood);
 		setUnlocalizedName("grc.fermentBarrel");
 		setBlockTextureName("grccellar:ferment_barrel");
 		setCreativeTab(GrowthCraftCellar.tab);

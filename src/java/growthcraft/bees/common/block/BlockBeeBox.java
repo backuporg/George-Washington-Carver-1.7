@@ -45,7 +45,7 @@ public class BlockBeeBox extends GrcBlockContainer
 		setBlockTextureName("grcbees:beebox");
 		setTickRandomly(true);
 		setHardness(2.5F);
-		setStepSound(soundTypeWood);
+		//setStepSound(soundTypeWood);
 		setUnlocalizedName("grc.BeeBox.Minecraft");
 		setCreativeTab(GrowthCraftBees.tab);
 		setTileEntityType(TileEntityBeeBox.class);

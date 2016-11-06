@@ -42,7 +42,7 @@ public class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 		setTickRandomly(true);
 		setHardness(0.2F);
 		setLightOpacity(1);
-		setStepSound(soundTypeGrass);
+		//setStepSound(soundTypeGrass);
 		setUnlocalizedName("grc.grapeLeaves");
 		setCreativeTab(null);
 	}
@@ -280,7 +280,7 @@ public class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 	//}
 
 	//@SideOnly(Side.CLIENT)
-	//public IIcon getIconByIndex(int index)
+	////public IIcon getIconByIndex(int index)
 	//{
 	//	return icons[index];
 	//}

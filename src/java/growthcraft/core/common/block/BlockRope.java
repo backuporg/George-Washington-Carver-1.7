@@ -23,7 +23,7 @@ public class BlockRope extends GrcBlockBase implements IBlockRope {
 	public BlockRope() {
 		super(Material.CLOTH);
 		this.setHardness(0.5F);
-		//this.setStepSound(soundWoodFootstep);
+		////setStepSound(soundWoodFootstep);
 		this.setUnlocalizedName("grc.ropeBlock");
 		this.setCreativeTab(null);
 	}

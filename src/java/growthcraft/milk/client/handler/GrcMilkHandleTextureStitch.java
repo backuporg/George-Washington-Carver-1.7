@@ -36,29 +36,29 @@ public class GrcMilkHandleTextureStitch
 {
 	// Fluid Icons
 	@SideOnly(Side.CLIENT)
-	public IIcon iconFluidButterMilkStill;
+	//public IIcon iconFluidButterMilkStill;
 	@SideOnly(Side.CLIENT)
-	public IIcon iconFluidButterMilkFlow;
+	//public IIcon iconFluidButterMilkFlow;
 	@SideOnly(Side.CLIENT)
-	public IIcon iconFluidCreamStill;
+	//public IIcon iconFluidCreamStill;
 	@SideOnly(Side.CLIENT)
-	public IIcon iconFluidCreamFlow;
+	//public IIcon iconFluidCreamFlow;
 	@SideOnly(Side.CLIENT)
-	public IIcon iconFluidMilkStill;
+	//public IIcon iconFluidMilkStill;
 	@SideOnly(Side.CLIENT)
-	public IIcon iconFluidMilkFlow;
+	//public IIcon iconFluidMilkFlow;
 	@SideOnly(Side.CLIENT)
-	public IIcon iconFluidRennetStill;
+	//public IIcon iconFluidRennetStill;
 	@SideOnly(Side.CLIENT)
-	public IIcon iconFluidRennetFlow;
+	//public IIcon iconFluidRennetFlow;
 	@SideOnly(Side.CLIENT)
-	public IIcon iconFluidSkimMilkStill;
+	//public IIcon iconFluidSkimMilkStill;
 	@SideOnly(Side.CLIENT)
-	public IIcon iconFluidSkimMilkFlow;
+	//public IIcon iconFluidSkimMilkFlow;
 	@SideOnly(Side.CLIENT)
-	public IIcon iconFluidWheyStill;
+	//public IIcon iconFluidWheyStill;
 	@SideOnly(Side.CLIENT)
-	public IIcon iconFluidWheyFlow;
+	//public IIcon iconFluidWheyFlow;
 
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)

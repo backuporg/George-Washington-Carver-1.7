@@ -32,7 +32,7 @@ public class BlockBeeHive extends GrcBlockBase
 	{
 		super(Material.PLANTS);
 		this.setHardness(0.6F);
-		this.setStepSound(soundTypeGrass);
+		//setStepSound(soundTypeGrass);
 		this.setUnlocalizedName("grc.beeHive");
 		this.setCreativeTab(GrowthCraftBees.tab);
 	}

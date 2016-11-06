@@ -65,7 +65,7 @@ public abstract class BlockFishTrap extends GrcBlockContainer
 		super(Material.WOOD);
 		setTickRandomly(true);
 		setHardness(0.4F);
-		setStepSound(soundTypeWood);
+		//setStepSound(soundTypeWood);
 		setUnlocalizedName("grc.fishTrap");
 		setTileEntityType(TileEntityFishTrap.class);
 		setCreativeTab(GrowthCraftFishTrap.creativeTab);

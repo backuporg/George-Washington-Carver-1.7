@@ -24,7 +24,7 @@ public class BlockBambooWall extends GrcBlockBase
 	{
 		super(Material.WOOD);
 		this.useNeighborBrightness = true;
-		setStepSound(soundTypeWood);
+		//setStepSound(soundTypeWood);
 		setResistance(5.0F / 3.0F);
 		setHardness(2.0F);
 		setUnlocalizedName("grc.bambooWall");
