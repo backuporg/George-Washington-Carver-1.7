@@ -78,7 +78,7 @@ public class ItemBottleFluid extends GrcItemBase implements IFluidItem
 
 	//@Override
 	//@SideOnly(Side.CLIENT)
-	////public IIcon getIconFromDamageForRenderPass(int _damage, int pass)
+	//public IIcon getIconFromDamageForRenderPass(int _damage, int pass)
 	//{
 	//	return pass == 0 ? this.contents : this.bottle;
 	//}

@@ -375,7 +375,7 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 	//}
 
 	//@SideOnly(Side.CLIENT)
-	////public IIcon getIconByIndex(int index)
+	//public IIcon getIconByIndex(int index)
 	//{
 	//	return icons[index];
 	//}

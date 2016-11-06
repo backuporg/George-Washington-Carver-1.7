@@ -236,7 +236,7 @@ public class BlockCheeseBlock extends GrcBlockContainer
 
 	//@Override
 	//@SideOnly(Side.CLIENT)
-	////public IIcon getIcon(IBlockAccess world, BlockPos pos, int side)
+	//public IIcon getIcon(IBlockAccess world, BlockPos pos, int side)
 	//{
 	//	final TileEntityCheeseBlock te = getTileEntity(world, x, y, z);
 	//	final int meta = world.getBlockState(x, y, z);

@@ -107,7 +107,7 @@ public class BlockGrapeVine1 extends BlockGrapeVineBase {
 	//}
 
 	//@SideOnly(Side.CLIENT)
-	////public IIcon getLeafTexture()
+	//public IIcon getLeafTexture()
 	//{
 	//	graphicFlag = Blocks.LEAVES.isOpaqueCube();
 	//	return !this.graphicFlag ? icons[1] : icons[2];

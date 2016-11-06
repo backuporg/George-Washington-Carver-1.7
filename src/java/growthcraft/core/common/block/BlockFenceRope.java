@@ -223,7 +223,7 @@ public class BlockFenceRope extends GrcBlockBase implements IBlockRope
 	//}
 
 	//@SideOnly(Side.CLIENT)
-	////public IIcon getIconByIndex(int index)
+	//public IIcon getIconByIndex(int index)
 	//{
 	//	if (index == 0)
 	//	{

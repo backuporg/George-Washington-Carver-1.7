@@ -208,7 +208,7 @@ public class BlockFruitPress extends BlockCellarContainer
 	//}
 
 	//@SideOnly(Side.CLIENT)
-	////public IIcon getIconByIndex(int index)
+	//public IIcon getIconByIndex(int index)
 	//{
 	//	return icons[index];
 	//}
