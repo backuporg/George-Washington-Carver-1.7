@@ -199,7 +199,7 @@ public class BlockBeeBox extends GrcBlockContainer
 
 	//@Override
 	//@SideOnly(Side.CLIENT)
-	//public IIcon getIcon(IBlockAccess world, int x, int y, int z, int side)
+	////public IIcon getIcon(IBlockAccess world, int x, int y, int z, int side)
 	//{
 	//	final int meta = world.getBlockMetadata(x, y, z);
 	//	final int offset = calculateIconOffset(meta);
@@ -239,7 +239,7 @@ public class BlockBeeBox extends GrcBlockContainer
 	//}
 
 	//@SideOnly(Side.CLIENT)
-	//public IIcon[] getIcons()
+	////public IIcon[] getIcons()
 	//{
 	//	return icons;
 	//}

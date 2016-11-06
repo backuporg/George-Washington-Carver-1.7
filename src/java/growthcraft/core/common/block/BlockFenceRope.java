@@ -223,7 +223,7 @@ public class BlockFenceRope extends GrcBlockBase implements IBlockRope
 	//}
 
 	//@SideOnly(Side.CLIENT)
-	//public IIcon getIconByIndex(int index)
+	////public IIcon getIconByIndex(int index)
 	//{
 	//	if (index == 0)
 	//	{
@@ -234,7 +234,7 @@ public class BlockFenceRope extends GrcBlockBase implements IBlockRope
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(IBlockAccess world, BlockPos pos, int side)
+	//public IIcon getIcon(IBlockAccess world, BlockPos pos, int side)
 	{
 		return getFenceBlock().getIcon(world, pos, side);
 	}

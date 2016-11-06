@@ -30,7 +30,7 @@ public class ItemChievDummy extends GrcItemBase
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon getIconFromDamage(int meta)
+	//public IIcon getIconFromDamage(int meta)
 	{
 		return this.icon[meta];
 	}

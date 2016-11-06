@@ -37,9 +37,9 @@ public class GrcBeesHandleTextureStitch
 {
 	// Fluid Icons
 	@SideOnly(Side.CLIENT)
-	public IIcon iconFluidHoneyStill;
+	//public IIcon iconFluidHoneyStill;
 	@SideOnly(Side.CLIENT)
-	public IIcon iconFluidHoneyFlow;
+	//public IIcon iconFluidHoneyFlow;
 
 	@SideOnly(Side.CLIENT)
 	private void loadShimmerWoodInterpolatedIcons(TextureStitchEvent.Pre event)

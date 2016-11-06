@@ -166,7 +166,7 @@ public class ItemBoozeBottle extends GrcItemFoodBase implements IFluidItem
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon getIconFromDamageForRenderPass(int par1, int pass)
+	//public IIcon getIconFromDamageForRenderPass(int par1, int pass)
 	{
 		return pass == 0 ? this.contents : this.bottle;
 	}

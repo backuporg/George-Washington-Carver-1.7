@@ -138,7 +138,7 @@ public class ItemWaterBag extends GrcItemBase implements IFluidContainerItem, IE
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon getIconFromDamage(int meta)
+	//public IIcon getIconFromDamage(int meta)
 	{
 		return this.icons[meta];
 	}

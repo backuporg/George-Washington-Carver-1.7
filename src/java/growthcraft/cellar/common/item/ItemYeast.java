@@ -79,7 +79,7 @@ public class ItemYeast extends GrcItemBase
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon getIconFromDamage(int meta)
+	//public IIcon getIconFromDamage(int meta)
 	{
 		return icons[MathHelper.clamp_int(meta, 0, icons.length - 1)];
 	}

@@ -230,7 +230,7 @@ public class BlockFruitPresser extends BlockCellarContainer implements IWrenchab
 	//}
 
 	//@SideOnly(Side.CLIENT)
-	//public IIcon getIconByIndex(int index)
+	////public IIcon getIconByIndex(int index)
 	//{
 	//	return icons[index];
 	//}
