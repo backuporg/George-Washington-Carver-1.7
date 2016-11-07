@@ -191,11 +191,11 @@ public class BlockBeeBox extends GrcBlockContainer
 	//	}
 	//}
 
-	@SideOnly(Side.CLIENT)
-	protected int calculateIconOffset(int meta)
-	{
-		return MathHelper.clamp_int(meta, 0, icons.length / 4 - 1) * 4;
-	}
+	//@SideOnly(Side.CLIENT)
+	//protected int calculateIconOffset(int meta)
+	//{
+	//	return MathHelper.clamp_int(meta, 0, icons.length / 4 - 1) * 4;
+	//}
 
 	//@Override
 	//@SideOnly(Side.CLIENT)
