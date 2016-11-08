@@ -20,6 +20,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
+import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.event.terraingen.TerrainGen;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -96,10 +97,10 @@ public class BlockBambooShoot extends BlockBush implements ICropDataProvider, IG
 	}
 
 	@Override
-	public boolean canBlockStay(World world, BlockPos pos)
+	public boolean canBlockStay(World world, BlockPos pos, BlockPos BlockPos, IPlantable plant, EnumFacing face)
 	{
 		return (world.getLight(pos) >= 8 || world.canSeeSky(pos)) &&
-			BlockCheck.canSustainPlant(world, x, y - 1, z, EnumFacing.UP, this);
+			BlockCheck.canSustainPlant(world, pos, face, plant);
 	}
 
 	/************
