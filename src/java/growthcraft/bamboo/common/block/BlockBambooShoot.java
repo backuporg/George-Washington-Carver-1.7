@@ -59,9 +59,9 @@ public class BlockBambooShoot extends BlockBush implements ICropDataProvider, IG
 		{
 			super.updateTick(world, pos, state, rand);
 
-			if (world.getLight(x, y + 1, z) >= 9 && rand.nextInt(this.growth) == 0)
+			if (world.getLight(pos) >= 9 && rand.nextInt(this.growth) == 0)
 			{
-				this.markOrGrowMarked(world, pos, rand);
+				this.markOrGrowMarked(world, pos, rand, state);
 			}
 		}
 	}
@@ -72,7 +72,7 @@ public class BlockBambooShoot extends BlockBush implements ICropDataProvider, IG
 	@Override
 	public void onNeighborChange(World world, BlockPos pos, Block par5)
 	{
-		super.onNeighborChange(world, pos, par5);
+		super.onNeighborChange(world, pos, pos);
 		checkShootChange(world, pos);
 	}
 

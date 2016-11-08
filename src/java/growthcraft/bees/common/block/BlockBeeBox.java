@@ -110,17 +110,24 @@ public class BlockBeeBox extends GrcBlockContainer
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World world, BlockPos pos, Random random)
+	public void randomDisplayTick(World world, BlockPos pos, IBlockState state, Random rand)
 	{
-		if (random.nextInt(24) == 0)
+		super.randomDisplayTick(state, world, pos, rand);
+		if (rand.nextInt(24) == 0)
 		{
 			final TileEntityBeeBox te = (TileEntityBeeBox)world.getTileEntity(pos);
 			if (te != null)
 			{
 				if (te.hasBees())
 				{
-					world.playSound((double)((float)x + 0.5F), (double)((float)y + 0.5F), (double)((float)z + 0.5F),
-						"grcbees:buzz", 1.0F + random.nextFloat(), random.nextFloat() * 0.7F + 0.3F, false);
+					world.playSound(
+							(double)pos.getX() + 0.5D,
+							(double)pos.getY() + 0.5D,
+							(double)pos.getZ() + 0.5D,
+							"grcbees:buzz",
+							1.0F + rand.nextFloat(),
+							0.3F + rand.nextFloat() * 0.7F,
+							false);
 				}
 			}
 		}
