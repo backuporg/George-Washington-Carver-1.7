@@ -46,12 +46,12 @@ public class BlockBambooWall extends GrcBlockBase
 
 		final IBlockState block = world.getBlockState(pos);
 
-		if (this == block ||
-			GrowthCraftBamboo.blocks.bambooStalk.getBlockState() == block ||
-			Blocks.GLASS_PANE == block ||
-			block instanceof BlockFenceGate ||
-			block instanceof BlockFence ||
-			block.renderAsNormalBlock()) return true;
+		//if (this == block ||
+		//	GrowthCraftBamboo.blocks.bambooStalk.getBlockState() == block ||
+		//	Blocks.GLASS_PANE == block ||
+		//	block instanceof BlockFenceGate ||
+		//	block instanceof BlockFence ||
+		//	block.renderAsNormalBlock()) return true;
 
 		return false;
 	}

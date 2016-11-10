@@ -380,7 +380,7 @@ public class BlockBambooStalk extends GrcBlockBase
 		this.getBoundingBox(x1, 0.0F, z1, x2, 1.0F, z2);
 		super.getCollisionBoundingBox(state, world, pos);
 
-		if (world.getBlockState(x, y, z) != 0)
+		if (world.getBlockState(pos) != 0)
 		{
 			if (this.canFence(world, x, y, z - 1))
 			{
@@ -562,7 +562,7 @@ public class BlockBambooStalk extends GrcBlockBase
 	}
 
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	private void renderDoor(World world, AxisAlignedBB axis, List list, Entity entity, BlockPos pos, RenderUtils.Face m, IBlockState state)
+	private void renderDoor(World world, AxisAlignedBB axis, List list, Entity entity, BlockPos pos, RenderUtils.Face m, IBlockState state, IBlockAccess source)
 	{
 		float x1 = x;
 		float x2 = x + 1.0F;
@@ -621,7 +621,7 @@ public class BlockBambooStalk extends GrcBlockBase
 				z1 = 0.75F;
 				z2 = 1.0F;
 
-				this.getBoundingBox(x1, y1, z1, x2, y2, z2);
+				this.getBoundingBox(state, source, pos);
 				super.getCollisionBoundingBox(state, world, pos);
 			}
 
@@ -632,7 +632,7 @@ public class BlockBambooStalk extends GrcBlockBase
 				z1 = 0.75F;
 				z2 = 1.0F;
 
-				this.getBoundingBox(x1, y1, z1, x2, y2, z2);
+				this.getBoundingBox(state, source, pos);
 				super.getCollisionBoundingBox(state, world, pos);
 			}
 		}
@@ -652,7 +652,7 @@ public class BlockBambooStalk extends GrcBlockBase
 				z1 = 0.0F;
 				z2 = 0.375F;
 
-				this.getBoundingBox(x1, y1, z1, x2, y2, z2);
+				this.getBoundingBox(state, source, pos);
 				super.getCollisionBoundingBox(state, world, pos);
 			}
 
@@ -664,7 +664,7 @@ public class BlockBambooStalk extends GrcBlockBase
 				z1 = 0.625F;
 				z2 = 1.0F;
 
-				this.getBoundingBox(x1, y1, z1, x2, y2, z2);
+				this.getBoundingBox(state, source, pos);
 				super.getCollisionBoundingBox(state, world, pos);
 			}
 		}
@@ -683,7 +683,7 @@ public class BlockBambooStalk extends GrcBlockBase
 				z1 = 0.0F;
 				z2 = 0.375F;
 
-				this.getBoundingBox(x1, y1, z1, x2, y2, z2);
+				this.getBoundingBox(state, source, pos);
 				super.getCollisionBoundingBox(state, world, pos);
 			}
 
@@ -694,7 +694,7 @@ public class BlockBambooStalk extends GrcBlockBase
 				z1 = 0.625F;
 				z2 = 1.0F;
 
-				this.getBoundingBox(x1, y1, z1, x2, y2, z2);
+				this.getBoundingBox(state, source, pos);
 				super.getCollisionBoundingBox(state, world, pos);
 			}
 		}
