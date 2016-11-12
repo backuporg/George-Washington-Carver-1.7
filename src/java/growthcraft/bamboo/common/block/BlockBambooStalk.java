@@ -439,7 +439,7 @@ public class BlockBambooStalk extends GrcBlockBase
 	}
 
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	private void renderFence(World world, AxisAlignedBB axis, List list, Entity entity, BlockPos pos, RenderUtils.Face m, IBlockState state)
+	private void renderFence(World world, AxisAlignedBB axis, List list, Entity entity, BlockPos pos, RenderUtils.Face m, IBlockState state, IBlockAccess source)
 	{
 		float x1 = x;
 		float x2 = x + 1.0F;
@@ -478,7 +478,7 @@ public class BlockBambooStalk extends GrcBlockBase
 			x2 = 1.0F;
 		}
 
-		this.getBoundingBox(x1, y1, z1, x2, y2, z2);
+		this.getBoundingBox(state, source, pos);
 		super.getCollisionBoundingBox(state, world, pos);
 
 		y1 = 0.375F;
@@ -513,7 +513,7 @@ public class BlockBambooStalk extends GrcBlockBase
 			x2 = 1.0F;
 		}
 
-		this.getBoundingBox(x1, y1, z1, x2, y2, z2);
+		this.getBoundingBox(state, source, pos);
 		super.getCollisionBoundingBox(state, world, pos);
 	}
 
