@@ -1,5 +1,6 @@
 package growthcraft.bees.common.world;
 
+import growthcraft.api.core.util.BlockFlags;
 import growthcraft.bees.GrowthCraftBees;
 import growthcraft.bees.common.block.BlockBeeHive;
 import net.minecraft.util.math.BlockPos;
@@ -18,15 +19,16 @@ public class WorldGenBeeHive extends WorldGenerator
 	{
 		for (int loop = 0; loop < this.density; ++loop)
 		{
-			final int i = x + random.nextInt(8) - random.nextInt(8);
-			final int j = y + random.nextInt(4) - random.nextInt(4);
-			final int k = z + random.nextInt(8) - random.nextInt(8);
+			final BlockPos lPos = pos.add(
+					random.nextInt(8) - random.nextInt(8),
+					random.nextInt(4) - random.nextInt(4),
+					random.nextInt(8) - random.nextInt(8));
 
 			final BlockBeeHive beeHive = (BlockBeeHive)GrowthCraftBees.blocks.beeHive.getBlockState();
-			if (world.isAirBlock(i, j, k) && beeHive.canBlockStay(world, i, j, k))
+			if (world.isAirBlock(pos) && beeHive.canBlockStay(world, pos))
 			{
 				//				System.out.println(x + " " + y + " " + z);
-				world.setBlockState(i, j, k, beeHive, new Random().nextInt(4) + 2, 2);
+				world.setBlockState(lPos, beeHive.getDefaultState(), BlockFlags.UPDATE_AND_SYNC);
 			}
 		}
 		return true;

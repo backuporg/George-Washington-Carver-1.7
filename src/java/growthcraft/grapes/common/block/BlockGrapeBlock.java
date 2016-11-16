@@ -6,6 +6,7 @@ import growthcraft.grapes.GrowthCraftGrapes;
 import growthcraft.grapes.client.renderer.RenderGrape;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -29,7 +30,7 @@ public class BlockGrapeBlock extends GrcBlockBase
 		super(Material.PLANTS);
 		setBlockTextureName("grcgrapes:grape");
 		setHardness(0.0F);
-		setStepSound(soundTypeGrass);
+		//setStepSound(soundTypeGrass);
 		setUnlocalizedName("grc.grapeBlock");
 		getBoundingBox(0.1875F, 0.5F, 0.1875F, 0.8125F, 1.0F, 0.8125F);
 		setCreativeTab(null);
@@ -61,7 +62,7 @@ public class BlockGrapeBlock extends GrcBlockBase
 	}
 
 	@Override
-	public void onNeighborBlockChange(World world, BlockPos pos, Block par5)
+	public void onNeighborChange(World world, BlockPos pos, Block par5)
 	{
 		if (!this.canBlockStay(world, pos))
 		{
@@ -110,10 +111,10 @@ public class BlockGrapeBlock extends GrcBlockBase
 	}
 
 	@Override
-	public ArrayList<ItemStack> getDrops(World world, BlockPos pos, int metadata, int fortune)
+	public ArrayList<ItemStack> getDrops(World world, BlockPos pos, int metadata, int fortune, IBlockState state)
 	{
 		final ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
-		final int count = quantityDropped(metadata, fortune, world.rand);
+		final int count = quantityDropped(state, fortune, world.rand);
 		for(int i = 0; i < count; ++i)
 		{
 			final Item item = getItemDropped(metadata, world.rand, fortune);

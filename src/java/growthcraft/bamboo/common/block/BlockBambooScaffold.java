@@ -27,7 +27,7 @@ public class BlockBambooScaffold extends GrcBlockBase
 	public BlockBambooScaffold()
 	{
 		super(Material.WOOD);
-		setStepSound(soundTypeWood);
+		//setStepSound(soundTypeWood);
 		setResistance(0.2F);
 		setHardness(0.5F);
 		setUnlocalizedName("grc.bambooScaffold");
@@ -40,7 +40,7 @@ public class BlockBambooScaffold extends GrcBlockBase
 	@Override
 	public void updateTick(World world, BlockPos pos, Random random)
 	{
-		this.onNeighborBlockChange(world, x, y, z, null);
+		this.onNeighborChange(world, x, y, z, null);
 	}
 
 	/************
@@ -79,12 +79,12 @@ public class BlockBambooScaffold extends GrcBlockBase
 	}
 
 	@Override
-	public void onNeighborBlockChange(World world, BlockPos pos, Block par5)
+	public void onNeighborChange(World world, BlockPos pos, Block par5)
 	{
-		if (!this.canBlockStay(world, x, y, z))
+		if (!this.canBlockStay(world, pos))
 		{
-			this.dropBlockAsItem(world, x, y, z, world.getBlockState(x, y, z), 0);
-			world.setBlockToAir(x, y, z);
+			this.dropBlockAsItem(world, pos, world.getBlockState(pos), 0);
+			world.setBlockToAir(pos);
 		}
 	}
 

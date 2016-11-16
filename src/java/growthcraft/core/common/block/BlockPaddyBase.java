@@ -137,9 +137,9 @@ public abstract class BlockPaddyBase extends GrcBlockBase implements IPaddy
 	}
 
 	@Override
-	public void onNeighborBlockChange(World world, BlockPos pos, Block par5)
+	public void onNeighborChange(World world, BlockPos pos, Block par5)
 	{
-		super.onNeighborBlockChange(world, x, y, z, par5);
+		super.onNeighborChange(world, x, y, z, par5);
 		if (isBelowFillingFluid(world, x, y, z))
 		{
 			fillPaddy(world, x, y, z);

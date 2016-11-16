@@ -37,9 +37,9 @@ public class GrcBeesHandleTextureStitch
 {
 	// Fluid Icons
 	@SideOnly(Side.CLIENT)
-	public IIcon iconFluidHoneyStill;
+	//public IIcon iconFluidHoneyStill;
 	@SideOnly(Side.CLIENT)
-	public IIcon iconFluidHoneyFlow;
+	//public IIcon iconFluidHoneyFlow;
 
 	@SideOnly(Side.CLIENT)
 	private void loadShimmerWoodInterpolatedIcons(TextureStitchEvent.Pre event)
@@ -48,16 +48,16 @@ public class GrcBeesHandleTextureStitch
 		{
 			final int offset = EnumBotaniaWoodType.SHIMMER_WOOD.meta;
 			final String[] sides = { "bottom", "top", "side", "side_honey" };
-			final IIcon[] icons = GrowthCraftBees.blocks.beeBoxBotania.getBlockState().getIcons();
+			//final IIcon[] icons = GrowthCraftBees.blocks.beeBoxBotania.getBlockState().getIcons();
 			int i = 0;
 			for (String side : sides)
 			{
 				final String name = String.format("grcbees:beebox/botania/shimmer_wood/%s", side);
 				final TextureAtlasSprite icon = new InterpolatedIcon(name);
-				if (event.map.setTextureEntry(name, icon))
-				{
-					icons[offset * 4 + i] = icon;
-				}
+				//if (event.map.setTextureEntry(name, icon))
+				//{
+				//	icons[offset * 4 + i] = icon;
+				//}
 				i++;
 			}
 		}
@@ -67,25 +67,25 @@ public class GrcBeesHandleTextureStitch
 	@SideOnly(Side.CLIENT)
 	public void onTextureStitchPre(TextureStitchEvent.Pre event)
 	{
-		if (event.map.getTextureType() == 0)
-		{
-			this.iconFluidHoneyStill = event.map.registerIcon("grcbees:fluids/honey_still");
-			this.iconFluidHoneyFlow = event.map.registerIcon("grcbees:fluids/honey_flow");
-			loadShimmerWoodInterpolatedIcons(event);
+		//if (event.map.getTextureType() == 0)
+		//{
+		//	this.iconFluidHoneyStill = event.map.registerIcon("grcbees:fluids/honey_still");
+		//	this.iconFluidHoneyFlow = event.map.registerIcon("grcbees:fluids/honey_flow");
+		//	loadShimmerWoodInterpolatedIcons(event);
 		}
-	}
+	//}
 
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public void onTextureStitchPost(TextureStitchEvent.Post event)
 	{
-		if (event.map.getTextureType() == 0)
+		//if (event.map.getTextureType() == 0)
 		{
-			if (GrowthCraftBees.fluids.honey != null) GrowthCraftBees.fluids.honey.getFluid().setIcons(iconFluidHoneyStill, iconFluidHoneyFlow);
+			//if (GrowthCraftBees.fluids.honey != null) GrowthCraftBees.fluids.honey.getFluid().setIcons(iconFluidHoneyStill, iconFluidHoneyFlow);
 			for (int i = 0; i < GrowthCraftBees.fluids.honeyMeadBooze.length; ++i)
-			{
-				GrowthCraftBees.fluids.honeyMeadBooze[i].setIcons(GrowthCraftCore.liquidSmoothTexture);
-			}
+			//{
+			//	GrowthCraftBees.fluids.honeyMeadBooze[i].setIcons(GrowthCraftCore.liquidSmoothTexture);
+			//}
 		}
 	}
 }

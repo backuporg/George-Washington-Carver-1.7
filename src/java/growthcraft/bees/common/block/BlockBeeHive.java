@@ -32,7 +32,7 @@ public class BlockBeeHive extends GrcBlockBase
 	{
 		super(Material.PLANTS);
 		this.setHardness(0.6F);
-		this.setStepSound(soundTypeGrass);
+		//setStepSound(soundTypeGrass);
 		this.setUnlocalizedName("grc.beeHive");
 		this.setCreativeTab(GrowthCraftBees.tab);
 	}
@@ -130,9 +130,9 @@ public class BlockBeeHive extends GrcBlockBase
 		return super.canPlaceBlockAt(world, pos) && canBlockStay(world, pos);
 	}
 
-	public void onNeighborBlockChange(World world, BlockPos pos, Block par5)
+	public void onNeighborChange(World world, BlockPos pos, Block par5)
 	{
-		super.onNeighborBlockChange(world, pos, par5);
+		super.onNeighborChange(world, pos, par5);
 		if (!this.canBlockStay(world, pos))
 		{
 			dropBlockAsItem(world, pos, world.getBlockState(pos), 0);

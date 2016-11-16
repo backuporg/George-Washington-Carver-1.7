@@ -32,7 +32,7 @@ public class BlockBambooLeaves extends BlockLeaves implements IShearable
 	{
 		super(Material.LEAVES, false);
 		setLightOpacity(1);
-		setStepSound(soundTypeGrass);
+		//setStepSound(soundTypeGrass);
 		setHardness(0.2F);
 		setTickRandomly(true);
 		setUnlocalizedName("grc.bambooLeaves");

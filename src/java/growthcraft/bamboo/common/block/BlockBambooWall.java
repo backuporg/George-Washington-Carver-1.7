@@ -19,14 +19,12 @@ import java.util.List;
 
 public class BlockBambooWall extends GrcBlockBase
 {
-	@SideOnly(Side.CLIENT)
-	public static IIcon[] tex;
 
 	public BlockBambooWall()
 	{
 		super(Material.WOOD);
 		this.useNeighborBrightness = true;
-		setStepSound(soundTypeWood);
+		//setStepSound(soundTypeWood);
 		setResistance(5.0F / 3.0F);
 		setHardness(2.0F);
 		setUnlocalizedName("grc.bambooWall");
@@ -48,12 +46,12 @@ public class BlockBambooWall extends GrcBlockBase
 
 		final IBlockState block = world.getBlockState(pos);
 
-		if (this == block ||
-			GrowthCraftBamboo.blocks.bambooStalk.getBlockState() == block ||
-			Blocks.GLASS_PANE == block ||
-			block instanceof BlockFenceGate ||
-			block instanceof BlockFence ||
-			block.renderAsNormalBlock()) return true;
+		//if (this == block ||
+		//	GrowthCraftBamboo.blocks.bambooStalk.getBlockState() == block ||
+		//	Blocks.GLASS_PANE == block ||
+		//	block instanceof BlockFenceGate ||
+		//	block instanceof BlockFence ||
+		//	block.renderAsNormalBlock()) return true;
 
 		return false;
 	}

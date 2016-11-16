@@ -55,7 +55,7 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 		super(Material.PLANTS);
 		this.setTickRandomly(true);
 		this.setHardness(0.0F);
-		this.setStepSound(soundTypeGrass);
+		//setStepSound(soundTypeGrass);
 		this.setUnlocalizedName("grc.hopVine");
 		this.setCreativeTab(null);
 	}

@@ -30,7 +30,7 @@ public class BlockGrapeVine1 extends BlockGrapeVineBase {
 		setTickRandomly(true);
 		setHardness(2.0F);
 		setResistance(5.0F);
-		setStepSound(soundTypeWood);
+		//setStepSound(soundTypeWood);
 		setUnlocalizedName("grc.grapeVine1");
 		setCreativeTab(null);
 	}

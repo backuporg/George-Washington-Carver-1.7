@@ -26,6 +26,7 @@ package growthcraft.core.logic;
 import growthcraft.api.core.util.BlockFlags;
 import growthcraft.api.core.util.CuboidI;
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -41,7 +42,7 @@ public class FlowerSpread
 		this.spreadCube = spread;
 	}
 
-	private boolean canSpreadTo(Block block, World world, BlockPos pos)
+	private boolean canSpreadTo(Block block, World world, World worldIn, BlockPos pos)
 	{
 		if (block instanceof ISpreadablePlant)
 		{
@@ -49,20 +50,21 @@ public class FlowerSpread
 		}
 		else
 		{
-			return world.isAirBlock(pos) && block.canBlockStay(world, pos);
+			return world.isAirBlock(pos);
 		}
 	}
 
-	public boolean run(Block block, int meta, World world, BlockPos pos, Random random)
+	public boolean run(Block block, int meta, World world, BlockPos pos, Random random, IBlockState state, World worldIn)
 	{
-		final int fx = x + random.nextInt(spreadCube.w) + spreadCube.x;
-		final int fz = z + random.nextInt(spreadCube.l) + spreadCube.z;
+		final int fx = pos.getX() + random.nextInt(spreadCube.w) + spreadCube.x;
+		final int fz = pos.getZ() + random.nextInt(spreadCube.l) + spreadCube.z;
 		for (int i = spreadCube.y; i <= spreadCube.y2(); ++i)
 		{
-			final int fy = y + i;
-			if (canSpreadTo(block, world, fx, fy, fz))
+			final int fy = pos.getY() + i;
+			final BlockPos fpos = new BlockPos(fx, fy, fz);
+			if (canSpreadTo(block, world, worldIn, fpos))
 			{
-				world.setBlockState(fx, fy, fz, block, meta, BlockFlags.UPDATE_AND_SYNC);
+				world.setBlockState(pos, state);
 				return true;
 			}
 		}

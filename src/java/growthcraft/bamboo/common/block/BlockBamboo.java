@@ -12,7 +12,7 @@ public class BlockBamboo extends GrcBlockBase
 	public BlockBamboo()
 	{
 		super(Material.WOOD);
-		setStepSound(soundTypeWood);
+		//setStepSound(soundTypeWood);
 		setResistance(5.0F);
 		setHardness(2.0F);
 		setCreativeTab(GrowthCraftBamboo.creativeTab);

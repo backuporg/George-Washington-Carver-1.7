@@ -70,7 +70,7 @@ public abstract class BlockNetherMaliceFruit extends Block implements IGrowable,
 		setTickRandomly(true);
 		setHardness(0.2F);
 		setResistance(5.0F);
-		setStepSound(soundTypeWood);
+		//setStepSound(soundTypeWood);
 		setUnlocalizedName("grcnetherloid.netherMaliceFruit");
 		setCreativeTab(null);
 	}
@@ -165,7 +165,7 @@ public abstract class BlockNetherMaliceFruit extends Block implements IGrowable,
 	}
 
 	@Override
-	public void onNeighborBlockChange(World world, BlockPos pos, Block block)
+	public void onNeighborChange(World world, BlockPos pos, Block block)
 	{
 		if (!this.canBlockStay(world, pos))
 		{

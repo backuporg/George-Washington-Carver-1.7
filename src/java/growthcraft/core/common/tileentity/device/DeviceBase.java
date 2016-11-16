@@ -69,7 +69,7 @@ public class DeviceBase implements INBTSerializableContext, IStreamable
 
 	protected void markForUpdate()
 	{
-		getWorld().markBlockForUpdate(parent.xCoord, parent.yCoord, parent.zCoord);
+		getWorld().notifyBlockUpdate(parent.xCoord, parent.yCoord, parent.zCoord);
 	}
 
 	protected void markDirty()

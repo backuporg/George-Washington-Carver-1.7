@@ -62,7 +62,7 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 		this.setTickRandomly(true);
 		this.setCreativeTab(null);
 		this.setUnlocalizedName("grc.riceBlock");
-		this.setStepSound(soundTypeGrass);
+		//setStepSound(soundTypeGrass);
 	}
 
 	public boolean isMature(IBlockAccess world, BlockPos pos)
@@ -207,7 +207,7 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 	 * TRIGGERS
 	 ************/
 	@Override
-	public void onNeighborBlockChange(World world, BlockPos pos, Block par5)
+	public void onNeighborChange(World world, BlockPos pos, Block par5)
 	{
 		this.checkCropChange(world, pos);
 	}

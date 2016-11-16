@@ -28,6 +28,7 @@ import growthcraft.core.common.tileentity.feature.IInteractionObject;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 
@@ -41,6 +42,16 @@ import java.util.Map;
  */
 public class GrcGuiProvider implements IGuiHandler
 {
+	@Override
+	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
+		return null;
+	}
+
+	@Override
+	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
+		return null;
+	}
+
 	public static class InvalidGuiElement extends IllegalStateException
 	{
 		public static final long serialVersionUID = 1L;
@@ -133,7 +144,7 @@ public class GrcGuiProvider implements IGuiHandler
 	@Override
 	public Object getServerGuiElement(int id, EntityPlayer player, World world, BlockPos pos)
 	{
-		final TileEntity te = world.getTileEntity(x, y, z);
+		final TileEntity te = world.getTileEntity(pos);
 		if (te instanceof IInteractionObject)
 		{
 			final IInteractionObject iobj = (IInteractionObject)te;
@@ -150,7 +161,7 @@ public class GrcGuiProvider implements IGuiHandler
 	@SuppressWarnings({"rawtypes"})
 	public Object getClientGuiElement(int id, EntityPlayer player, World world, BlockPos pos)
 	{
-		final TileEntity te = world.getTileEntity(x, y, z);
+		final TileEntity te = world.getTileEntity(pos);
 		if (te instanceof IInteractionObject)
 		{
 			final IInteractionObject iobj = (IInteractionObject)te;

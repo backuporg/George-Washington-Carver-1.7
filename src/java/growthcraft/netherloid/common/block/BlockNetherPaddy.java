@@ -65,7 +65,7 @@ public class BlockNetherPaddy extends BlockPaddyBase
 		}
 		else
 		{
-			setStepSound(soundTypeSand);
+			//setStepSound(soundTypeSand);
 		}
 	}
 

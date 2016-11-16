@@ -60,7 +60,7 @@ public class BlockCheeseBlock extends GrcBlockContainer
 	{
 		super(Material.CAKE);
 		setHardness(0.5F);
-		setStepSound(soundTypeCloth);
+		//setStepSound(soundTypeCloth);
 		setUnlocalizedName("grcmilk.CheeseBlock");
 		setCreativeTab(GrowthCraftMilk.creativeTab);
 		setTileEntityType(TileEntityCheeseBlock.class);

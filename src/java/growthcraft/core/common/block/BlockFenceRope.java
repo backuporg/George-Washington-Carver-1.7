@@ -32,7 +32,7 @@ public class BlockFenceRope extends GrcBlockBase implements IBlockRope
 	{
 		super(srcKey.getBlockState().getMaterial());
 		this.fenceBlockKey = srcKey;
-		setStepSound(soundTypeWood);
+		//setStepSound(soundTypeWood);
 		setUnlocalizedName(name);
 		setCreativeTab(null);
 	}
@@ -234,7 +234,7 @@ public class BlockFenceRope extends GrcBlockBase implements IBlockRope
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(IBlockAccess world, BlockPos pos, int side)
+	//public IIcon getIcon(IBlockAccess world, BlockPos pos, int side)
 	{
 		return getFenceBlock().getIcon(world, pos, side);
 	}

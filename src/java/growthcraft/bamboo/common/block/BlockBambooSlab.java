@@ -18,9 +18,9 @@ public abstract class BlockBambooSlab extends BlockSlab
 {
 	public BlockBambooSlab(boolean par2)
 	{
-		super(par2, Material.WOOD);
+		//super(par2, Material.WOOD);
 		this.useNeighborBrightness = true;
-		setStepSound(soundTypeWood);
+		//setStepSound(soundTypeWood);
 		setResistance(5.0F);
 		setHardness(2.0F);
 		setUnlocalizedName("grc.bambooSlab");

@@ -23,7 +23,7 @@ public class BlockAppleSapling extends BlockBush implements IGrowable
 	{
 		super(Material.PLANTS);
 		setHardness(0.0F);
-		setStepSound(soundTypeGrass);
+		//setStepSound(soundTypeGrass);
 		setUnlocalizedName("grc.appleSapling");
 		setTickRandomly(true);
 		setCreativeTab(GrowthCraftCore.creativeTab);

@@ -30,11 +30,13 @@ import growthcraft.core.common.tileentity.event.TileEventHandler;
 import growthcraft.core.common.tileentity.event.TileEventHandlerMap;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
-import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
+import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.math.BlockPos;
 
 import javax.annotation.Nonnull;
 import java.util.List;
@@ -50,9 +52,9 @@ public abstract class GrcTileBase extends TileEntity implements IStreamable, INB
 {
 	protected static TileEventHandlerMap<GrcTileBase> HANDLERS = new TileEventHandlerMap<GrcTileBase>();
 
-	public void markForUpdate()
+	public void markForUpdate(BlockPos pos, IBlockState oldState, IBlockState newState, int flags)
 	{
-		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+		worldObj.notifyBlockUpdate(pos, oldState, newState, flags);
 	}
 
 	public void markDirtyAndUpdate()
@@ -103,7 +105,7 @@ public abstract class GrcTileBase extends TileEntity implements IStreamable, INB
 		// P, for payload
 		data.setByteArray("P", stream.array());
 
-		return new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, 127, data);
+		return new SPacketUpdateTileEntity(pos, 127, data);
 	}
 
 	@Override
@@ -125,7 +127,7 @@ public abstract class GrcTileBase extends TileEntity implements IStreamable, INB
 	}
 
 	@Override
-	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity packet)
+	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity packet)
 	{
 		if (packet.func_148853_f() == 127)
 		{
@@ -166,7 +168,7 @@ public abstract class GrcTileBase extends TileEntity implements IStreamable, INB
 	}
 
 	@Override
-	public final void writeToNBT(NBTTagCompound nbt)
+	public NBTTagCompound writeToNBT(NBTTagCompound nbt)
 	{
 		super.writeToNBT(nbt);
 		final List<TileEventFunction> handlers = getHandlersFor(TileEventHandler.EventType.NBT_WRITE);
@@ -177,5 +179,6 @@ public abstract class GrcTileBase extends TileEntity implements IStreamable, INB
 				func.writeToNBT(this, nbt);
 			}
 		}
+		return nbt;
 	}
 }

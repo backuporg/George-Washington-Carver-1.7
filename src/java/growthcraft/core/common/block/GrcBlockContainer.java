@@ -164,7 +164,7 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 		if (isRotatable(world, pos, side))
 		{
 			doRotateBlock(world, pos, side, state);
-			world.markBlockForUpdate(pos);
+			world.notifyBlockUpdate(pos);
 			return true;
 		}
 		return false;
@@ -469,7 +469,7 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 				}
 				if (needUpdate)
 				{
-					world.markBlockForUpdate(pos);
+					world.notifyBlockUpdate(pos);
 					return true;
 				}
 			}
@@ -503,7 +503,7 @@ public abstract class GrcBlockContainer extends GrcBlockBase implements IDroppab
 
 				if (needUpdate)
 				{
-					world.markBlockForUpdate(pos);
+					world.notifyBlockUpdate(pos);
 					return true;
 				}
 			}

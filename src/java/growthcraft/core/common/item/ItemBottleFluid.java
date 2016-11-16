@@ -38,10 +38,10 @@ public class ItemBottleFluid extends GrcItemBase implements IFluidItem
 	// Used to override the fluid color
 	private int color = -1;
 
-	@SideOnly(Side.CLIENT)
-	private IIcon bottle;
-	@SideOnly(Side.CLIENT)
-	private IIcon contents;
+	//@SideOnly(Side.CLIENT)
+	//private IIcon bottle;
+	//@SideOnly(Side.CLIENT)
+	//private IIcon contents;
 
 	public ItemBottleFluid(Fluid flu)
 	{
@@ -68,20 +68,20 @@ public class ItemBottleFluid extends GrcItemBase implements IFluidItem
 		return getFluid(stack).getColor();
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister reg)
-	{
-		this.bottle = reg.registerIcon("minecraft:potion_bottle_empty");
-		this.contents = reg.registerIcon("minecraft:potion_overlay");
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//public void registerIcons(IIconRegister reg)
+	//{
+	//	this.bottle = reg.registerIcon("minecraft:potion_bottle_empty");
+	//	this.contents = reg.registerIcon("minecraft:potion_overlay");
+	//}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIconFromDamageForRenderPass(int _damage, int pass)
-	{
-		return pass == 0 ? this.contents : this.bottle;
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//public IIcon getIconFromDamageForRenderPass(int _damage, int pass)
+	//{
+	//	return pass == 0 ? this.contents : this.bottle;
+	//}
 
 	@Override
 	@SideOnly(Side.CLIENT)
