@@ -20,23 +20,23 @@ item.grc.yeast3.name=Ethereal Yeast
 item.grc.yeast4.name=Origin Yeast
 
 # Water Bags
-item.grc.waterBag0.name=Water Bag (White)
-item.grc.waterBag1.name=Water Bag (Orange)
-item.grc.waterBag2.name=Water Bag (Magenta)
-item.grc.waterBag3.name=Water Bag (Light Blue)
-item.grc.waterBag4.name=Water Bag (Yellow)
-item.grc.waterBag5.name=Water Bag (Lime)
-item.grc.waterBag6.name=Water Bag (Pink)
-item.grc.waterBag7.name=Water Bag (Gray)
-item.grc.waterBag8.name=Water Bag (Light Gray)
-item.grc.waterBag9.name=Water Bag (Cyan)
-item.grc.waterBag10.name=Water Bag (Purple)
-item.grc.waterBag11.name=Water Bag (Blue)
-item.grc.waterBag12.name=Water Bag (Brown)
-item.grc.waterBag13.name=Water Bag (Green)
-item.grc.waterBag14.name=Water Bag (Red)
-item.grc.waterBag15.name=Water Bag (Black)
-item.grc.waterBag16.name=Water Bag
+item.grc.waterBag0.name=Waterskin (White)
+item.grc.waterBag1.name=Waterskin (Orange)
+item.grc.waterBag2.name=Waterskin (Magenta)
+item.grc.waterBag3.name=Waterskin (Light Blue)
+item.grc.waterBag4.name=Waterskin (Yellow)
+item.grc.waterBag5.name=Waterskin (Lime)
+item.grc.waterBag6.name=Waterskin (Pink)
+item.grc.waterBag7.name=Waterskin (Gray)
+item.grc.waterBag8.name=Waterskin (Light Gray)
+item.grc.waterBag9.name=Waterskin (Cyan)
+item.grc.waterBag10.name=Waterskin (Purple)
+item.grc.waterBag11.name=Waterskin (Blue)
+item.grc.waterBag12.name=Waterskin (Brown)
+item.grc.waterBag13.name=Waterskin (Green)
+item.grc.waterBag14.name=Waterskin (Red)
+item.grc.waterBag15.name=Waterskin (Black)
+item.grc.waterBag16.name=Waterskin
 
 # Containers
 container.grc.fruitPress=Mechanical Press
@@ -112,7 +112,7 @@ achievement.fermentBooze.desc=Ferment an alcoholic beverage.
 achievement.getDrunk=Is Trouble Brewing?
 achievement.getDrunk.desc=Acquire Tipsy V.
 achievement.onTheGo=On The Go
-achievement.onTheGo.desc=Craft a Water Bag
+achievement.onTheGo.desc=Craft a Waterskin
 
 # Tooltips (Number is a percentage)
 # number is a percentage
