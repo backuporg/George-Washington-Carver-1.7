@@ -38,11 +38,13 @@ import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraft.util.EnumHand;
 
 import java.util.List;
 
@@ -50,10 +52,10 @@ public class ItemBoozeBottle extends GrcItemFoodBase implements IFluidItem
 {
 	private Fluid[] boozes;
 
-	@SideOnly(Side.CLIENT)
-	private IIcon bottle;
-	@SideOnly(Side.CLIENT)
-	private IIcon contents;
+	//@SideOnly(Side.CLIENT)
+	//private IIcon bottle;
+	//@SideOnly(Side.CLIENT)
+	//private IIcon contents;
 
 	public ItemBoozeBottle(Fluid[] boozeAry)
 	{
@@ -156,20 +158,20 @@ public class ItemBoozeBottle extends GrcItemFoodBase implements IFluidItem
 		}
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister reg)
-	{
-		this.bottle = reg.registerIcon("grccellar:booze");
-		this.contents = reg.registerIcon("grccellar:booze_contents");
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//public void registerIcons(IIconRegister reg)
+	//{
+	//	this.bottle = reg.registerIcon("grccellar:booze");
+	//	this.contents = reg.registerIcon("grccellar:booze_contents");
+	//}
 
-	@Override
-	@SideOnly(Side.CLIENT)
+	//@Override
+	//@SideOnly(Side.CLIENT)
 	//public IIcon getIconFromDamageForRenderPass(int par1, int pass)
-	{
-		return pass == 0 ? this.contents : this.bottle;
-	}
+	//{
+	//	return pass == 0 ? this.contents : this.bottle;
+	//}
 
 	@Override
 	@SideOnly(Side.CLIENT)
@@ -207,14 +209,14 @@ public class ItemBoozeBottle extends GrcItemFoodBase implements IFluidItem
 	@Override
 	public EnumAction getItemUseAction(ItemStack par1ItemStack)
 	{
-		return EnumAction.drink;
+		return EnumAction.DRINK;
 	}
 
 	@Override
-	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
+	public ActionResult<ItemStack> onItemRightClick(ItemStack stack, World world, EntityPlayer player, EnumHand hand)
 	{
-		player.setItemInUse(stack, this.getMaxItemUseDuration(stack));
-		return stack;
+		player.setActiveHand(hand);
+		return ActionResult<ItemStack>;
 	}
 
 	@Override

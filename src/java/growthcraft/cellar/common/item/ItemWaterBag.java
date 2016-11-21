@@ -290,7 +290,7 @@ public class ItemWaterBag extends GrcItemBase implements IFluidContainerItem, IE
 	@Override
 	public EnumAction getItemUseAction(ItemStack stack)
 	{
-		return EnumAction.drink;
+		return EnumAction.DRINK;
 	}
 
 	@Override
@@ -436,7 +436,7 @@ public class ItemWaterBag extends GrcItemBase implements IFluidContainerItem, IE
 		if (tryFillByBlock(stack, world, player)) return stack;
 		if (hasEnoughToDrink(stack))
 		{
-			player.setItemInUse(stack, this.getMaxItemUseDuration(stack));
+			player.setActiveHand(stack, this.getMaxItemUseDuration(stack));
 		}
 
 		return stack;
