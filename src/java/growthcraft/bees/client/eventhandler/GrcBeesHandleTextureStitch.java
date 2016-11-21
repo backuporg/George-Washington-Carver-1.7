@@ -33,8 +33,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class GrcBeesHandleTextureStitch
-{
+public class GrcBeesHandleTextureStitch {
 	// Fluid Icons
 	@SideOnly(Side.CLIENT)
 	//public IIcon iconFluidHoneyStill;
@@ -42,16 +41,13 @@ public class GrcBeesHandleTextureStitch
 	//public IIcon iconFluidHoneyFlow;
 
 	@SideOnly(Side.CLIENT)
-	private void loadShimmerWoodInterpolatedIcons(TextureStitchEvent.Pre event)
-	{
-		if (GrowthCraftBees.blocks.beeBoxBotania != null)
-		{
+	private void loadShimmerWoodInterpolatedIcons(TextureStitchEvent.Pre event) {
+		if (GrowthCraftBees.blocks.beeBoxBotania != null) {
 			final int offset = EnumBotaniaWoodType.SHIMMER_WOOD.meta;
-			final String[] sides = { "bottom", "top", "side", "side_honey" };
+			final String[] sides = {"bottom", "top", "side", "side_honey"};
 			//final IIcon[] icons = GrowthCraftBees.blocks.beeBoxBotania.getBlockState().getIcons();
 			int i = 0;
-			for (String side : sides)
-			{
+			for (String side : sides) {
 				final String name = String.format("grcbees:beebox/botania/shimmer_wood/%s", side);
 				final TextureAtlasSprite icon = new InterpolatedIcon(name);
 				//if (event.map.setTextureEntry(name, icon))
@@ -63,29 +59,28 @@ public class GrcBeesHandleTextureStitch
 		}
 	}
 
-	@SubscribeEvent
-	@SideOnly(Side.CLIENT)
-	public void onTextureStitchPre(TextureStitchEvent.Pre event)
-	{
+	//@SubscribeEvent
+	//@SideOnly(Side.CLIENT)
+	//public void onTextureStitchPre(TextureStitchEvent.Pre event) {
 		//if (event.map.getTextureType() == 0)
 		//{
 		//	this.iconFluidHoneyStill = event.map.registerIcon("grcbees:fluids/honey_still");
 		//	this.iconFluidHoneyFlow = event.map.registerIcon("grcbees:fluids/honey_flow");
 		//	loadShimmerWoodInterpolatedIcons(event);
-		}
-	//}
+		//}
+		//}
 
-	@SubscribeEvent
-	@SideOnly(Side.CLIENT)
-	public void onTextureStitchPost(TextureStitchEvent.Post event)
-	{
+		//@SubscribeEvent
+		//@SideOnly(Side.CLIENT)
+		//public void onTextureStitchPost(TextureStitchEvent.Post event)
+		//{
 		//if (event.map.getTextureType() == 0)
-		{
-			//if (GrowthCraftBees.fluids.honey != null) GrowthCraftBees.fluids.honey.getFluid().setIcons(iconFluidHoneyStill, iconFluidHoneyFlow);
-			for (int i = 0; i < GrowthCraftBees.fluids.honeyMeadBooze.length; ++i)
-			//{
-			//	GrowthCraftBees.fluids.honeyMeadBooze[i].setIcons(GrowthCraftCore.liquidSmoothTexture);
-			//}
-		}
+		//{
+		//if (GrowthCraftBees.fluids.honey != null) GrowthCraftBees.fluids.honey.getFluid().setIcons(iconFluidHoneyStill, iconFluidHoneyFlow);
+		//for (int i = 0; i < GrowthCraftBees.fluids.honeyMeadBooze.length; ++i)
+		//{
+		//	GrowthCraftBees.fluids.honeyMeadBooze[i].setIcons(GrowthCraftCore.liquidSmoothTexture);
+		//}
+		//}
+		//}
 	}
-}
