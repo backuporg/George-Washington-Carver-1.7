@@ -123,7 +123,6 @@ repositories {
         name = "ilexiconn"
         url = "http://maven.ilexiconn.net"
   }
-}
 
 dependencies {
     compile "applecore:AppleCore:${minecraft_version}-${applecore_version}:api"
