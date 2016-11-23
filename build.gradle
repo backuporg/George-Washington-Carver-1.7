@@ -215,3 +215,5 @@ jar {
 }
 
 build.dependsOn sourceJar, javadocJar, deobfJar, apiJar
+
+}
