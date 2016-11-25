@@ -42,6 +42,8 @@ import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
@@ -62,8 +64,8 @@ public class ItemWaterBag extends GrcItemBase implements IFluidContainerItem, IE
 	protected int capacity;
 	protected int dosage;
 
-	@SideOnly(Side.CLIENT)
-	protected IIcon[] icons;
+	//@SideOnly(Side.CLIENT)
+	//protected IIcon[] icons;
 
 	public ItemWaterBag()
 	{
@@ -71,7 +73,7 @@ public class ItemWaterBag extends GrcItemBase implements IFluidContainerItem, IE
 		setHasSubtypes(true);
 		setMaxDamage(0);
 		setUnlocalizedName("grc.waterBag");
-		setTextureName("grccellar:water_bag");
+		//setTextureName("grccellar:water_bag");
 		setCreativeTab(GrowthCraftCellar.tab);
 		this.maxStackSize = 1;
 		this.capacity = GrowthCraftCellar.getConfig().waterBagCapacity;
@@ -101,29 +103,29 @@ public class ItemWaterBag extends GrcItemBase implements IFluidContainerItem, IE
 		return tag != null ? FluidStack.loadFluidStackFromNBT(tag) : null;
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister reg)
-	{
-		this.icons = new IIcon[17];
-		this.icons[0] = reg.registerIcon(getIconString() + "/white");
-		this.icons[1] = reg.registerIcon(getIconString() + "/orange");
-		this.icons[2] = reg.registerIcon(getIconString() + "/magenta");
-		this.icons[3] = reg.registerIcon(getIconString() + "/light_blue");
-		this.icons[4] = reg.registerIcon(getIconString() + "/yellow");
-		this.icons[5] = reg.registerIcon(getIconString() + "/lime");
-		this.icons[6] = reg.registerIcon(getIconString() + "/pink");
-		this.icons[7] = reg.registerIcon(getIconString() + "/gray");
-		this.icons[8] = reg.registerIcon(getIconString() + "/light_gray");
-		this.icons[9] = reg.registerIcon(getIconString() + "/cyan");
-		this.icons[10] = reg.registerIcon(getIconString() + "/purple");
-		this.icons[11] = reg.registerIcon(getIconString() + "/blue");
-		this.icons[12] = reg.registerIcon(getIconString() + "/brown");
-		this.icons[13] = reg.registerIcon(getIconString() + "/green");
-		this.icons[14] = reg.registerIcon(getIconString() + "/red");
-		this.icons[15] = reg.registerIcon(getIconString() + "/black");
-		this.icons[16] = reg.registerIcon(getIconString() + "/default");
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//public void registerIcons(IIconRegister reg)
+	//{
+	//	this.icons = new IIcon[17];
+	//	this.icons[0] = reg.registerIcon(getIconString() + "/white");
+	//	this.icons[1] = reg.registerIcon(getIconString() + "/orange");
+	//	this.icons[2] = reg.registerIcon(getIconString() + "/magenta");
+	//	this.icons[3] = reg.registerIcon(getIconString() + "/light_blue");
+	//	this.icons[4] = reg.registerIcon(getIconString() + "/yellow");
+	//	this.icons[5] = reg.registerIcon(getIconString() + "/lime");
+	//	this.icons[6] = reg.registerIcon(getIconString() + "/pink");
+	//	this.icons[7] = reg.registerIcon(getIconString() + "/gray");
+	//	this.icons[8] = reg.registerIcon(getIconString() + "/light_gray");
+	//	this.icons[9] = reg.registerIcon(getIconString() + "/cyan");
+	//	this.icons[10] = reg.registerIcon(getIconString() + "/purple");
+	//	this.icons[11] = reg.registerIcon(getIconString() + "/blue");
+	//	this.icons[12] = reg.registerIcon(getIconString() + "/brown");
+	//	this.icons[13] = reg.registerIcon(getIconString() + "/green");
+	//	this.icons[14] = reg.registerIcon(getIconString() + "/red");
+	//	this.icons[15] = reg.registerIcon(getIconString() + "/black");
+	//	this.icons[16] = reg.registerIcon(getIconString() + "/default");
+	//}
 
 	@Override
 	@SideOnly(Side.CLIENT)
@@ -139,9 +141,9 @@ public class ItemWaterBag extends GrcItemBase implements IFluidContainerItem, IE
 	@Override
 	@SideOnly(Side.CLIENT)
 	//public IIcon getIconFromDamage(int meta)
-	{
-		return this.icons[meta];
-	}
+	//{
+	//	return this.icons[meta];
+	///}
 
 	public int getFluidAmount(ItemStack container)
 	{
@@ -431,15 +433,12 @@ public class ItemWaterBag extends GrcItemBase implements IFluidContainerItem, IE
 	}
 
 	@Override
-	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
-	{
-		if (tryFillByBlock(stack, world, player)) return stack;
-		if (hasEnoughToDrink(stack))
-		{
-			player.setActiveHand(stack, this.getMaxItemUseDuration(stack));
+	public ActionResult<ItemStack> onItemRightClick(ItemStack stack, World world, EntityPlayer player, EnumHand hand) {
+		if (tryFillByBlock(stack, world, player)) ;
+		if (hasEnoughToDrink(stack)) {
+			player.setActiveHand(hand);
 		}
-
-		return stack;
+		return null;
 	}
 
 	@Override
