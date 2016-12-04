@@ -9,6 +9,7 @@ import growthcraft.core.integration.AppleCore;
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -25,10 +26,6 @@ import java.util.Random;
 
 public class BlockApple extends GrcBlockBase implements IGrowable, ICropDataProvider
 {
-	@Override
-	public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {
-		return false;
-	}
 
 	@Override
 	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
@@ -50,6 +47,8 @@ public class BlockApple extends GrcBlockBase implements IGrowable, ICropDataProv
 		private AppleStage() {}
 	}
 
+	public static final PropertyInteger GROWTH = PropertyInteger.create("growth", 0, 3);
+
 	@SideOnly(Side.CLIENT)
 
 
@@ -66,12 +65,6 @@ public class BlockApple extends GrcBlockBase implements IGrowable, ICropDataProv
 		//setStepSound(soundTypeWood);
 		this.setUnlocalizedName("grc.appleBlock");
 		this.setCreativeTab(null);
-	}
-
-	public boolean isMature(IBlockAccess world, BlockPos pos)
-	{
-		final int meta = world.getBlockState(pos);
-		return meta >= AppleStage.MATURE;
 	}
 
 	public float getGrowthProgress(IBlockAccess world, BlockPos pos, int meta)
@@ -92,9 +85,9 @@ public class BlockApple extends GrcBlockBase implements IGrowable, ICropDataProv
 
 	/* Can this accept bonemeal? */
 	@Override
-	public boolean func_149851_a(World world, BlockPos pos, boolean isClient)
+	public boolean canGrow(World world, BlockPos pos, IBlockState state, boolean isClient)
 	{
-		return world.getBlockState(pos) < AppleStage.MATURE;
+		return state.getValue(GROWTH) < AppleStage.MATURE;
 	}
 
 	/* SideOnly(Side.SERVER) Can this apply bonemeal effect? */
@@ -106,15 +99,15 @@ public class BlockApple extends GrcBlockBase implements IGrowable, ICropDataProv
 
 	/* Apply bonemeal effect */
 	@Override
-	public void func_149853_b(World world, Random random, BlockPos pos)
+	public void func_149853_b(World world, Random random, BlockPos pos, int meta)
 	{
-		incrementGrowth(world, pos, world.getBlockState(pos));
+		incrementGrowth(world, pos, world.getBlockState(pos), meta);
 	}
 
 	/************
 	 * TICK
 	 ************/
-	public void updateTick(World world, BlockPos pos, Random random)
+	public void updateTick(World world, BlockPos pos, Random random, IBlockState state)
 	{
 		if (!this.canBlockStay(world, pos))
 		{
@@ -129,10 +122,10 @@ public class BlockApple extends GrcBlockBase implements IGrowable, ICropDataProv
 			final boolean continueGrowth = random.nextInt(this.growth) == 0;
 			if (allowGrowthResult == Event.Result.ALLOW || continueGrowth)
 			{
-				final int meta = world.getBlockState(pos);
+				final int meta = state.getValue(GROWTH);
 				if (meta < AppleStage.MATURE)
 				{
-					incrementGrowth(world, pos, meta);
+					incrementGrowth(world, pos, state, meta);
 				}
 				else if (dropRipeApples && world.rand.nextInt(this.dropChance) == 0)
 				{
@@ -146,9 +139,9 @@ public class BlockApple extends GrcBlockBase implements IGrowable, ICropDataProv
 	 * TRIGGERS
 	 ************/
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, EntityPlayer player, int EnumFacing, float par7, float par8, float par9)
+	public boolean onBlockActivated(World world, BlockPos pos, EntityPlayer player, int EnumFacing, float par7, float par8, float par9, IBlockState state)
 	{
-		if (world.getBlockState(pos) >= AppleStage.MATURE)
+		if (state.getValue(GROWTH) >= AppleStage.MATURE)
 		{
 			if (!world.isRemote)
 			{
@@ -160,7 +153,7 @@ public class BlockApple extends GrcBlockBase implements IGrowable, ICropDataProv
 	}
 
 	@Override
-	public void onNeighborChange(World world, BlockPos pos, Block block)
+	public void onNeighborBlockChange(World world, BlockPos pos, IBlockState state, Block block)
 	{
 		if (!this.canBlockStay(world, pos))
 		{
@@ -171,11 +164,10 @@ public class BlockApple extends GrcBlockBase implements IGrowable, ICropDataProv
 	/************
 	 * CONDITIONS
 	 ************/
-	@Override
 	public boolean canBlockStay(World world, BlockPos pos)
 	{
-		return GrowthCraftApples.blocks.appleLeaves.equals(world.getBlockState(x, y + 1, z)) &&
-			(world.getBlockState(x, y + 1, z) & 3) == 0;
+		final IBlockState state = world.getBlockState(pos.up());
+		return GrowthCraftApples.blocks.appleLeaves.equals(state.getBlock());
 	}
 
 	/************
@@ -235,37 +227,29 @@ public class BlockApple extends GrcBlockBase implements IGrowable, ICropDataProv
 	 * BOXES
 	 ************/
 	@Override
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, BlockPos pos)
+	public void setBlockBoundsBasedOnState(IBlockAccess world, BlockPos pos, IBlockState state)
 	{
-		this.setBlockBoundsBasedOnState(world, pos);
-		return super.getCollisionBoundingBoxFromPool(world, pos);
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public AxisAlignedBB getSelectedBoundingBoxFromPool(World world, BlockPos pos)
-	{
-		this.setBlockBoundsBasedOnState(world, pos);
-		return super.getSelectedBoundingBoxFromPool(world, pos);
-	}
-
-	@Override
-	public void setBlockBoundsBasedOnState(IBlockAccess world, BlockPos pos)
-	{
-		final int meta = world.getBlockState(pos);
+		state = world.getBlockState(pos);
+		final int meta = state.getValue(GROWTH);
 		final float f = 0.0625F;
-
 		if (meta == AppleStage.YOUNG)
 		{
-			this.getBoundingBox(6*f, 11*f, 6*f, 10*f, 15*f, 10*f);
+			this.getBoundingBox(state, world, pos);
 		}
 		else if (meta == AppleStage.MID)
 		{
-			this.getBoundingBox((float)(5.5*f), 10*f, (float)(5.5*f), (float)(10.5*f), 15*f, (float)(10.5*f));
+			this.getBoundingBox(state, world, pos);
 		}
 		else
 		{
-			this.getBoundingBox(5*f, 9*f, 5*f, 11*f, 15*f, 11*f);
+			this.getBoundingBox(state, world, pos);
 		}
+	}
+
+	@Override
+	public AxisAlignedBB getCollisionBoundingBox(World world, BlockPos pos, IBlockState state)
+	{
+		this.setBlockBoundsBasedOnState(world, pos, state);
+		return super.getCollisionBoundingBox(state, world, pos);
 	}
 }
