@@ -34,11 +34,11 @@ public class BlockPaddy extends BlockPaddyBase
 	}
 
 	@Override
-	public void fillWithRain(World world, BlockPos pos)
+	public void fillWithRain(World world, BlockPos pos, int meta)
 	{
 		if (world.rand.nextInt(20) == 0)
 		{
-			final int meta = world.getBlockState(pos);
+			meta = world.getBlockState(meta);
 			if (meta < paddyFieldMax)
 			{
 				world.setBlockState(pos, meta + 1, BlockFlags.UPDATE_AND_SYNC);

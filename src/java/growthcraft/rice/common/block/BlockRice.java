@@ -67,7 +67,7 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 
 	public boolean isMature(IBlockAccess world, BlockPos pos)
 	{
-		final int meta = world.getBlockState(x, y, z);
+		final int meta = world.getBlockState(meta);
 		return meta >= RiceStage.MATURE;
 	}
 
@@ -117,31 +117,6 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 					growRice(world, pos, state, meta);
 				}
 			}
-		}
-	}
-
-	/* Both side */
-	@Override
-	public boolean func_149851_a(World world, BlockPos pos, boolean isClient)
-	{
-		return world.getBlockState(pos) < RiceStage.MATURE;
-	}
-
-	/* SideOnly(Side.SERVER) Can this apply bonemeal effect? */
-	@Override
-	public boolean func_149852_a(World world, Random random, BlockPos pos)
-	{
-		return true;
-	}
-
-	/* Apply bonemeal effect */
-	@Override
-	public void func_149853_b(World world, Random random, BlockPos pos, IBlockState state)
-	{
-		final IBlockState meta = world.getBlockState((BlockPos) state);
-		if (meta < RiceStage.MATURE)
-		{
-			growRice(world, pos, state);
 		}
 	}
 

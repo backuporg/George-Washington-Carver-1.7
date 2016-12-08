@@ -56,7 +56,7 @@ public class BlockAppleLeaves extends BlockLeaves implements IShearable, IGrowab
 
 	public BlockAppleLeaves()
 	{
-		super(Material.LEAVES, false);
+		//super(Material.LEAVES, false);
 		this.setTickRandomly(true);
 		this.setHardness(0.2F);
 		this.setLightOpacity(1);
@@ -65,32 +65,20 @@ public class BlockAppleLeaves extends BlockLeaves implements IShearable, IGrowab
 		this.setCreativeTab(GrowthCraftApples.creativeTab);
 	}
 
-	/* Bonemeal? Client side */
-	@Override
-	public boolean func_149851_a(World world, BlockPos pos, boolean isClient)
-	{
-		return world.isAirBlock(x, y - 1, z) && (world.getBlockState(pos) & 3) == 0;
-	}
 
-	/* SideOnly(Side.SERVER) Can this apply bonemeal effect? */
-	@Override
-	public boolean func_149852_a(World world, Random random, BlockPos pos)
-	{
-		return true;
-	}
 
 	/* Apply bonemeal effect */
 	@Override
-	public void func_149853_b(World world, Random random, BlockPos pos)
+	public void func_149853_b(World world, Random random, BlockPos pos, Block block)
 	{
-		growApple(world, random, pos);
+		growApple(world, random, pos, block);
 	}
 
-	private void growApple(World world, Random random, BlockPos pos)
+	private void growApple(World world, Random rand, BlockPos pos, Block block)
 	{
-		if (world.isAirBlock(x, y - 1, z))
+		if (world.isAirBlock(pos.down()))
 		{
-			world.setBlockState(x, y - 1, z, GrowthCraftApples.blocks.appleBlock.getBlockState());
+			world.setBlockState(pos.down(), block.getDefaultState());
 		}
 	}
 
@@ -341,7 +329,7 @@ public class BlockAppleLeaves extends BlockLeaves implements IShearable, IGrowab
 
 			if (world.rand.nextInt(random) == 0)
 			{
-				this.dropBlockAsItem(world, x, y, z, new ItemStack(this.getItemDropped(meta, world.rand, fortune), 1, 0));
+				this.dropBlockAsItem(world, pos, new ItemStack(this.getItemDropped(meta, world.rand, fortune), 1, 0));
 			}
 		}
 	}
