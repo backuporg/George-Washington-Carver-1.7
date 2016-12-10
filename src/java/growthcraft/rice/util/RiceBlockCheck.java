@@ -25,6 +25,7 @@ package growthcraft.rice.util;
 
 import growthcraft.rice.GrowthCraftRice;
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
@@ -54,8 +55,8 @@ public class RiceBlockCheck
 	 */
 	public static boolean isPaddy(IBlockAccess world, BlockPos pos)
 	{
-		final Block block = world.getBlockState(x, y, z);
-		return isPaddy(block);
+		final IBlockState block = world.getBlockState(pos);
+		return isPaddy((Block) block);
 	}
 
 	/**
@@ -70,11 +71,10 @@ public class RiceBlockCheck
 	 */
 	public static boolean isPaddyWithWater(IBlockAccess world, BlockPos pos, int amount)
 	{
-		final Block block = world.getBlockState(x, y, z);
+		final Block block = (Block) world.getBlockState(pos);
 		if (isPaddy(block))
 		{
-			final int meta = world.getBlockState(x, y, z);
-			return meta >= amount;
+			final IBlockState meta = world.getBlockState(BlockPos.fromLong(amount));
 		}
 		return false;
 	}

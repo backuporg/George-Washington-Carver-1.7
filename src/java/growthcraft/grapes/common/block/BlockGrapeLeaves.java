@@ -114,7 +114,7 @@ public class BlockGrapeLeaves extends BlockLeaves implements IBlockRope
 
 	private void setGrapeBlock(World world, BlockPos pos)
 	{
-		world.setBlockState(x, y, z, GrowthCraftGrapes.blocks.grapeBlock.getBlockState(), 0, BlockFlags.UPDATE_AND_SYNC);
+		world.setBlockState(pos, GrowthCraftGrapes.blocks.grapeBlock.getBlockState().getDefaultState(), BlockFlags.UPDATE_AND_SYNC);
 	}
 
 	public boolean growGrapeBlock(World world, BlockPos pos)

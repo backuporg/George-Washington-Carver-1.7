@@ -27,6 +27,7 @@ import growthcraft.core.GrowthCraftCore;
 import growthcraft.core.common.block.IBlockRope;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -147,7 +148,7 @@ public class BlockCheck
 	 * @param block - the block to check
 	 * @return true if the block is a rope block, false otherwise
 	 */
-	public static boolean isRopeBlock(Block block)
+	public static boolean isRopeBlock(IBlockState block)
 	{
 		return block instanceof IBlockRope;
 	}
@@ -158,7 +159,7 @@ public class BlockCheck
 	 * @param block - the block to check
 	 * @return true if the block is a Rope, false otherwise
 	 */
-	public static boolean isRope(Block block)
+	public static boolean isRope(IBlockState block)
 	{
 		return GrowthCraftCore.blocks.ropeBlock.equals(block);
 	}
