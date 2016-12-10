@@ -54,7 +54,7 @@ public class BlockCheesePress extends GrcBlockContainer
 		setUnlocalizedName("grcmilk.CheesePress");
 		setCreativeTab(GrowthCraftMilk.creativeTab);
 		setTileEntityType(TileEntityCheesePress.class);
-		setBlockTextureName("grcmilk:cheese_press");
+		//setBlockTextureName("grcmilk:cheese_press");
 	}
 
 	@Override
@@ -65,21 +65,21 @@ public class BlockCheesePress extends GrcBlockContainer
 
 	public void doRotateBlock(World world, BlockPos pos, EnumFacing side)
 	{
-		world.setBlockState(pos, world.getBlockState(pos) ^ 1, BlockFlags.SYNC);
+		//world.setBlockState(pos, world.getBlockState(pos) ^ 1, BlockFlags.SYNC);
 	}
 
 	@Override
-	public void onBlockAdded(World world, BlockPos pos)
+	public void onBlockAdded(World world, BlockPos pos, IBlockState state)
 	{
-		super.onBlockAdded(world, pos);
-		this.setDefaultDirection(world, pos);
+		super.onBlockAdded(world, pos, state);
+		//this.setDefaultDirection(world, pos);
 	}
 
-	private void setDefaultDirection(World world, BlockPos pos)
-	{
-		if (!world.isRemote)
-		{
-			final Block block = world.getBlockState(x, y, z - 1);
+	//private void setDefaultDirection(World world, BlockPos pos)
+	//{
+		//if (!world.isRemote)
+		//{
+			/*final Block block = world.getBlockState(x, y, z - 1);
 			final Block block1 = world.getBlockState(x, y, z + 1);
 			final Block block2 = world.getBlockState(x - 1, y, z);
 			final Block block3 = world.getBlockState(x + 1, y, z);
@@ -107,7 +107,7 @@ public class BlockCheesePress extends GrcBlockContainer
 
 			world.setBlockState(pos, meta, BlockFlags.UPDATE_AND_SYNC);
 		}
-	}
+	}*/
 
 	@Override
 	public void onBlockPlacedBy(World world, BlockPos pos, EntityLivingBase entity, ItemStack stack, IBlockState state)

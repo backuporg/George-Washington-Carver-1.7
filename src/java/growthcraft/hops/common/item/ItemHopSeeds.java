@@ -7,6 +7,7 @@ import growthcraft.hops.GrowthCraftHops;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -28,15 +29,15 @@ public abstract class ItemHopSeeds extends GrcItemBase implements IPlantable
 	 * MAIN
 	 ************/
 	@Override
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, int EnumFacing, float par8, float par9, float par10)
+	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumFacing face, int EnumFacing, float par8, float par9, float par10)
 	{
 		if (EnumFacing != 1)
 		{
 			return false;
 		}
-		else if (player.canPlayerEdit(x, y, z, EnumFacing, stack) && player.canPlayerEdit(x, y + 1, z, EnumFacing, stack))
+		else if (player.canPlayerEdit(pos, face, stack) && player.canPlayerEdit(x, y + 1, z, EnumFacing, stack))
 		{
-			if (BlockCheck.canSustainPlant(world, x, y, z, EnumFacing.UP, GrowthCraftHops.blocks.hopVine.getBlockState()) && BlockCheck.isRope(world, x, y + 1, z))
+			if (BlockCheck.canSustainPlant(world, pos, face, GrowthCraftHops.blocks.hopVine.getBlockState()) && BlockCheck.isRope(world, x, y + 1, z))
 			{
 				world.setBlockState(x, y + 1, z, GrowthCraftHops.blocks.hopVine.getBlockState());
 				--stack.stackSize;

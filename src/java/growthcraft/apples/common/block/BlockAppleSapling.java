@@ -35,15 +35,15 @@ public class BlockAppleSapling extends BlockBush implements IGrowable
 	/************
 	 * MAIN
 	 ************/
-	public void updateTick(World world, BlockPos pos, Random random)
+	public void updateTick(World world, BlockPos pos, Random random, IBlockState state)
 	{
 		if (!world.isRemote)
 		{
-			super.updateTick(world, x, y, z, random);
+			super.updateTick(world, pos, state, random);
 
 			if (world.getLight(x, y + 1, z) >= 9 && random.nextInt(this.growth) == 0)
 			{
-				this.markOrGrowMarked(world, x, y, z, random);
+				this.markOrGrowMarked(world, pos, random);
 			}
 		}
 	}
@@ -82,23 +82,6 @@ public class BlockAppleSapling extends BlockBush implements IGrowable
 	public boolean func_149851_a(World world, BlockPos pos, boolean isClient)
 	{
 		return (world.getBlockState(pos) & 8) == 0;
-	}
-
-	/* SideOnly(Side.SERVER) Can this apply bonemeal effect? */
-	@Override
-	public boolean func_149852_a(World world, Random random, BlockPos pos)
-	{
-		return true;
-	}
-
-	/* Apply bonemeal effect */
-	@Override
-	public void func_149853_b(World world, Random random, BlockPos pos)
-	{
-		if (random.nextFloat() < 0.45D)
-		{
-			growTree(world, pos, random);
-		}
 	}
 
 	@Override

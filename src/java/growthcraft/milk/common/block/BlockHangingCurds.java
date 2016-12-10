@@ -151,14 +151,14 @@ public class BlockHangingCurds extends GrcBlockContainer
 	}
 
 	@Override
-	public ItemStack getPickBlock(RayTraceResult target, World world, BlockPos pos, EntityPlayer player)
+	public ItemStack getPickBlock(RayTraceResult target, World world, BlockPos pos, EntityPlayer player, IBlockState state)
 	{
 		final TileEntityHangingCurds teHangingCurds = getTileEntity(world, pos);
 		if (teHangingCurds != null)
 		{
 			return teHangingCurds.asItemStack();
 		}
-		return super.getPickBlock(target, world, pos, player);
+		return super.getPickBlock(state, target, world, pos, player);
 	}
 
 	@Override
