@@ -30,9 +30,11 @@ import growthcraft.core.integration.AppleCore;
 import growthcraft.core.logic.FlowerSpread;
 import growthcraft.core.logic.ISpreadablePlant;
 import growthcraft.milk.GrowthCraftMilk;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.util.math.BlockPos;
@@ -47,15 +49,18 @@ import java.util.Random;
 
 public abstract class BlockThistle extends BlockBush implements ISpreadablePlant, IGrowable
 {
-	public static class ThistleStage
-	{
-		public static final int SEEDLING = 0;
-		public static final int BUD = 1;
-		public static final int GROWN = 2;
-		public static final int FLOWER = 3;
+    public static class ThistleStage
+    {
+        public static final int SEEDLING = 0;
+        public static final int BUD = 1;
+        public static final int GROWN = 2;
+        public static final int FLOWER = 3;
 
-		private ThistleStage() {}
-	}
+        private ThistleStage() {}
+    }
+
+    public static final PropertyInteger GROWTH = PropertyInteger.create("growth", 0, 3);
+
 
 	private FlowerSpread spreadLogic;
 
@@ -70,68 +75,72 @@ public abstract class BlockThistle extends BlockBush implements ISpreadablePlant
 		//setStepSound(soundTypeGrass);
 		setCreativeTab(GrowthCraftMilk.creativeTab);
 		final BBox bb = BBox.newCube(2f, 0f, 2f, 12f, 16f, 12f).scale(1f / 16f);
-		getBoundingBox(bb.x0(), bb.y0(), bb.z0(), bb.x1(), bb.y1(), bb.z1());
+		//getBoundingBox(bb.x0(), bb.y0(), bb.z0(), bb.x1(), bb.y1(), bb.z1());
 		this.spreadLogic = new FlowerSpread(new CuboidI(-1, -1, -1, 2, 2, 2));
 	}
 
-	@Override
-	public boolean canSpreadTo(World world, BlockPos pos, IBlockState state)
-	{
-		if (world.isAirBlock(pos) && canBlockStay(world, pos, state))
-		{
-			return true;
-		}
-		return false;
-	}
 
-	private void runSpread(World world, BlockPos pos, Random random)
-	{
-		spreadLogic.run(this, 0, world, pos, random);
-	}
 
-	private void incrementGrowth(World world, BlockPos pos, int meta)
-	{
-		world.setBlockState(pos, meta + 1, BlockFlags.SYNC);
-		AppleCore.announceGrowthTick(this, world, pos, meta);
-	}
+    @Override
+    public boolean canSpreadTo(World world, BlockPos pos)
+    {
+        //if (world.isAirBlock(pos) && canBlockStay(world, pos))
+        if (world.isAirBlock(pos))
+        {
+            return true;
+        }
+        return false;
+    }
 
-	@Override
-	public void updateTick(World world, BlockPos pos, Random random, IBlockState state)
-	{
-		super.updateTick(world, pos, state, random);
-		if (!world.isRemote)
-		{
-			final int meta = world.getBlockState(pos);
-			if (meta >= ThistleStage.FLOWER)
-			{
-				final int spreadChance = GrowthCraftMilk.getConfig().thistleSpreadChance;
-				if (spreadChance > 0)
-				{
-					if (random.nextInt(spreadChance) == 0)
-					{
-						runSpread(world, pos, random);
-					}
-				}
-			}
-			else
-			{
-				final int growthChance = GrowthCraftMilk.getConfig().thistleGrowthChance;
-				final Event.Result allowGrowthResult = AppleCore.validateGrowthTick(this, world, pos, random);
-				if (allowGrowthResult == Event.Result.DENY)
-				{
-					return;
-				}
+    private void runSpread(World world, BlockPos pos, Random random, IBlockState state, World worldIn)
+    {
+        spreadLogic.run(this, 0, world, pos, random, state, worldIn);
+    }
 
-				if (allowGrowthResult == Event.Result.ALLOW || (growthChance > 0 && random.nextInt(growthChance) == 0))
-				{
-					if (meta < ThistleStage.FLOWER)
-					{
-						incrementGrowth(world, pos, meta);
-					}
-				}
-			}
-		}
-	}
+    private void incrementGrowth(World world, BlockPos pos, IBlockState state, int meta2, Block block)
+    {
+        final int meta = (int)state.getValue(GROWTH);
+        world.setBlockState(pos, state.withProperty(GROWTH, meta + 1), BlockFlags.SYNC);
+        AppleCore.announceGrowthTick(block, world, pos, meta2);
+    }
+
+    @Override
+    public void updateTick(World world, BlockPos pos, IBlockState state, Random random, int meta2, Block block)
+    {
+        super.updateTick(world, pos, state, random);
+        if (!world.isRemote)
+        {
+            final int meta = state.getValue(GROWTH);
+            if (meta >= ThistleStage.FLOWER)
+            {
+                final int spreadChance = GrowthCraftMilk.getConfig().thistleSpreadChance;
+                if (spreadChance > 0)
+                {
+                    if (random.nextInt(spreadChance) == 0)
+                    {
+                        runSpread(world, pos, random, state, world);
+                    }
+                }
+            }
+            else
+            {
+                final int growthChance = GrowthCraftMilk.getConfig().thistleGrowthChance;
+                final Event.Result allowGrowthResult = AppleCore.validateGrowthTick(this, world, pos, state, random);
+                if (allowGrowthResult == Event.Result.DENY)
+                {
+                    return;
+                }
+
+                if (allowGrowthResult == Event.Result.ALLOW || (growthChance > 0 && random.nextInt(growthChance) == 0))
+                {
+                    if (meta < ThistleStage.FLOWER)
+                    {
+                        incrementGrowth(world, pos, state, meta2, block);
+                    }
+                }
+            }
+        }
+    }
 
 	@Override
 	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos)
@@ -144,53 +153,60 @@ public abstract class BlockThistle extends BlockBush implements ISpreadablePlant
 	 *	if you have no idea what this stuff means
 	 */
 
-	/* Can this accept bonemeal? */
-	@Override
-	public boolean func_149851_a(World world, BlockPos pos, boolean isClient)
-	{
-		return true;
-	}
 
-	/* SideOnly(Side.SERVER) Can this apply bonemeal effect? */
-	@Override
-	public boolean func_149851_a(World world, Random random, BlockPos pos)
-	{
-		return true;
-	}
+	/* IGrowable interface
+	 *	Check: http://www.minecraftforge.net/forum/index.php?topic=22571.0
+	 *	if you have no idea what this stuff means
+	 */
 
-	@Override
-	public Item getItemDropped(int meta, Random random, int fortune)
-	{
-		if (meta < ThistleStage.FLOWER)
-		{
-			if (GrowthCraftMilk.items.seedThistle != null)
-			{
-				return GrowthCraftMilk.items.seedThistle.getItem();
-			}
-			return null;
-		}
-		return super.getItemDropped(meta, random, fortune);
-	}
+    /* Can this accept bonemeal? */
+    @Override
+    public boolean canGrow(World world, BlockPos pos, IBlockState state, boolean isClient)
+    {
+        return true;
+    }
+
+    /* SideOnly(Side.SERVER) Can this apply bonemeal effect? */
+    @Override
+    public boolean canUseBonemeal(World world, Random random, BlockPos pos, IBlockState state)
+    {
+        return true;
+    }
+
+    @Override
+    public Item getItemDropped(IBlockState state, Random random, int fortune)
+    {
+        final int meta = state.getValue(GROWTH);
+        if (meta < ThistleStage.FLOWER)
+        {
+            if (GrowthCraftMilk.items.seedThistle != null)
+            {
+                return GrowthCraftMilk.items.seedThistle.getItem();
+            }
+            return null;
+        }
+        return super.getItemDropped(state, random, fortune);
+    }
 
 	/* Apply bonemeal effect */
-	@Override
-	public void func_149853_b(World world, Random random, BlockPos pos)
-	{
-		final int meta = world.getBlockState(pos);
-		if (meta < ThistleStage.FLOWER)
-		{
-			final int growthChance = GrowthCraftMilk.getConfig().thistleGrowthChance;
-			if (growthChance > 0)
-			{
-				if (random.nextInt(growthChance) != 0) return;
-			}
-			incrementGrowth(world, pos, meta);
-		}
-		else
-		{
-			runSpread(world, pos, random);
-		}
-	}
+    @Override
+    public void grow(World world, Random random, BlockPos pos, IBlockState state, int meta2, Block block)
+    {
+        final int meta = state.getValue(GROWTH);
+        if (meta < ThistleStage.FLOWER)
+        {
+            final int growthChance = GrowthCraftMilk.getConfig().thistleGrowthChance;
+            if (growthChance > 0)
+            {
+                if (random.nextInt(growthChance) != 0) return;
+            }
+            incrementGrowth(world, pos, state, meta2, block);
+        }
+        else
+        {
+            runSpread(world, pos, random, state, world);
+        }
+    }
 
 	//@Override
 	//@SideOnly(Side.CLIENT)
