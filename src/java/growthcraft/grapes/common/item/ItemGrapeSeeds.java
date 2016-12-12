@@ -4,16 +4,15 @@ import growthcraft.core.common.item.GrcItemBase;
 import growthcraft.core.util.BlockCheck;
 import growthcraft.grapes.GrowthCraftGrapes;
 import growthcraft.grapes.common.block.BlockGrapeVine0;
-import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemGrapeSeeds extends GrcItemBase implements IPlantable
 {
@@ -28,13 +27,13 @@ public class ItemGrapeSeeds extends GrcItemBase implements IPlantable
 	 * MAIN
 	 ************/
 	@Override
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, int EnumFacing, float par8, float par9, float par10)
+	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, int EnumFacing, float par8, float par9, float par10, EnumFacing face)
 	{
 		if (EnumFacing != 1)
 		{
 			return false;
 		}
-		else if (player.canPlayerEdit(pos, EnumFacing, stack) && player.canPlayerEdit(x, y + 1, z, EnumFacing, stack))
+		else if (player.canPlayerEdit(pos, face, stack) && player.canPlayerEdit(x, y + 1, z, EnumFacing, stack))
 		{
 			final BlockGrapeVine0 block = GrowthCraftGrapes.blocks.grapeVine0.getBlockState();
 			if (BlockCheck.canSustainPlant(world, pos, EnumFacing.UP, block) && world.isAirBlock(x, y + 1, z))
@@ -57,12 +56,12 @@ public class ItemGrapeSeeds extends GrcItemBase implements IPlantable
 	/************
 	 * TEXTURES
 	 ************/
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister reg)
-	{
-		this.itemIcon = reg.registerIcon("grcgrapes:grape_seeds");
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//public void registerIcons(IIconRegister reg)
+	//{
+	//	this.itemIcon = reg.registerIcon("grcgrapes:grape_seeds");
+	//}
 
 	@Override
 	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos)
@@ -71,9 +70,9 @@ public class ItemGrapeSeeds extends GrcItemBase implements IPlantable
 	}
 
 	@Override
-	public Block getPlant(IBlockAccess world, BlockPos pos)
+	public IBlockState getPlant(IBlockAccess world, BlockPos pos)
 	{
-		return GrowthCraftGrapes.blocks.grapeVine0.getBlockState();
+		return (IBlockState) GrowthCraftGrapes.blocks.grapeVine0.getBlockState();
 	}
 
 	@Override

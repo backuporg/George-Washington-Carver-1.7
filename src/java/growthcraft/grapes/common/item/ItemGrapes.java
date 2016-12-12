@@ -37,23 +37,23 @@ public class ItemGrapes extends GrcItemFoodBase
 		return super.getUnlocalizedName(stack) + "." + en.name;
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister reg)
-	{
-		this.icons = new IIcon[EnumGrapes.VALUES.length];
-		for (EnumGrapes grape : EnumGrapes.VALUES)
-		{
-			this.icons[grape.meta] = reg.registerIcon(String.format("grcgrapes:grapes/%s", grape.name));
-		}
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//public void registerIcons(IIconRegister reg)
+	//{
+	//	this.icons = new IIcon[EnumGrapes.VALUES.length];
+	//	for (EnumGrapes grape : EnumGrapes.VALUES)
+	//	{
+	//		this.icons[grape.meta] = reg.registerIcon(String.format("grcgrapes:grapes/%s", grape.name));
+	//	}
+	//}
 
-	@Override
-	@SideOnly(Side.CLIENT)
+	//@Override
+	//@SideOnly(Side.CLIENT)
 	//public IIcon getIconFromDamage(int meta)
-	{
-		return icons[MathHelper.clamp_int(meta, 0, icons.length - 1)];
-	}
+	//{
+	//	return icons[MathHelper.clamp_int(meta, 0, icons.length - 1)];
+	//}
 
 	@Override
 	@SideOnly(Side.CLIENT)
