@@ -311,7 +311,7 @@ public class BlockAppleLeaves extends BlockLeaves implements IShearable, IGrowab
 	}
 
 	@Override
-	public void dropBlockAsItemWithChance(World world, BlockPos pos, int meta, float par6, int fortune)
+	public void dropBlockAsItemWithChance(World world, BlockPos pos, int meta, float par6, int fortune, IBlockState state)
 	{
 		if (!world.isRemote)
 		{
@@ -329,7 +329,7 @@ public class BlockAppleLeaves extends BlockLeaves implements IShearable, IGrowab
 
 			if (world.rand.nextInt(random) == 0)
 			{
-				this.dropBlockAsItem(world, pos, new ItemStack(this.getItemDropped(meta, world.rand, fortune), 1, 0));
+				this.dropBlockAsItem(world, pos, state, 1);
 			}
 		}
 	}
