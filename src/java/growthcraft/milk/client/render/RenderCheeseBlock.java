@@ -29,6 +29,7 @@ import growthcraft.milk.common.tileentity.TileEntityCheeseBlock;
 import net.minecraft.block.Block;
 
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
@@ -73,7 +74,7 @@ public class RenderCheeseBlock implements ISimpleBlockRenderingHandler
 			if (block instanceof BlockCheeseBlock)
 			{
 				final BlockCheeseBlock cheeseBlock = (BlockCheeseBlock)block;
-				final TileEntityCheeseBlock te = cheeseBlock.getTileEntity(world, x, y, z);
+				final TileEntityCheeseBlock te = cheeseBlock.getTileEntity(world, pos);
 				if (te != null)
 				{
 					final int slices = te.getCheese().getSlices();

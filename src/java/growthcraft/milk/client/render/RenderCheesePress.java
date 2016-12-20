@@ -28,6 +28,7 @@ import growthcraft.milk.client.resource.GrcMilkResources;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
