@@ -36,14 +36,14 @@ import java.util.List;
 
 public class ItemYeast extends GrcItemBase
 {
-	protected IIcon[] icons;
+	//protected IIcon[] icons;
 
 	public ItemYeast()
 	{
 		super();
 		setHasSubtypes(true);
 		setMaxDamage(0);
-		setTextureName("grccellar:yeast");
+		//setTextureName("grccellar:yeast");
 		setUnlocalizedName("grc.yeast");
 		setCreativeTab(GrowthCraftCellar.tab);
 	}
@@ -65,22 +65,22 @@ public class ItemYeast extends GrcItemBase
 		}
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister reg)
-	{
-		this.icons = new IIcon[EnumYeast.length];
-		icons[EnumYeast.BAYANUS.ordinal()] = reg.registerIcon(getIconString() + "_bayanus");
-		icons[EnumYeast.BREWERS.ordinal()] = reg.registerIcon(getIconString() + "_brewers");
-		icons[EnumYeast.ETHEREAL.ordinal()] = reg.registerIcon(getIconString() + "_ethereal");
-		icons[EnumYeast.LAGER.ordinal()] = reg.registerIcon(getIconString() + "_lager");
-		icons[EnumYeast.ORIGIN.ordinal()] = reg.registerIcon(getIconString() + "_origin");
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//public void registerIcons(IIconRegister reg)
+	//{
+	//	this.icons = new IIcon[EnumYeast.length];
+	//	icons[EnumYeast.BAYANUS.ordinal()] = reg.registerIcon(getIconString() + "_bayanus");
+	//	icons[EnumYeast.BREWERS.ordinal()] = reg.registerIcon(getIconString() + "_brewers");
+	//	icons[EnumYeast.ETHEREAL.ordinal()] = reg.registerIcon(getIconString() + "_ethereal");
+	//	icons[EnumYeast.LAGER.ordinal()] = reg.registerIcon(getIconString() + "_lager");
+	//	icons[EnumYeast.ORIGIN.ordinal()] = reg.registerIcon(getIconString() + "_origin");
+	//}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	//public IIcon getIconFromDamage(int meta)
-	{
-		return icons[MathHelper.clamp_int(meta, 0, icons.length - 1)];
-	}
+	//@Override
+	///@SideOnly(Side.CLIENT)
+	////public IIcon getIconFromDamage(int meta)
+	//{
+	//	return icons[MathHelper.clamp_int(meta, 0, icons.length - 1)];
+	//}
 }
