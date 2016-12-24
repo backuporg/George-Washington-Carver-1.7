@@ -180,7 +180,7 @@ public class BlockBrewKettle extends BlockCellarContainer
 	@Override
 	public int getComparatorInputOverride(World world, BlockPos pos, int par5)
 	{
-		final TileEntityBrewKettle te = getTileEntity(world, x, y, z);
+		final TileEntityBrewKettle te = getTileEntity(world, pos);
 		if (te != null)
 		{
 			return te.getFluidAmountScaled(15, 1);

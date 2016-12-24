@@ -33,9 +33,9 @@ public class ItemAppleSeeds extends GrcItemBase implements IPlantable
 	 * MAIN
 	 ************/
 	@Override
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, int EnumFacing, float par8, float par9, float par10, IBlockState state)
+	public boolean onItemUse(ItemStack stack, EntityPlayer player, Block block, World world, BlockPos pos, int EnumFacing, float par8, float par9, float par10, IBlockState state)
 	{
-		final Block block = world.getBlockState(pos);
+		block = (Block) world.getBlockState(pos);
 		if (block == Blocks.SNOW_LAYER && (world.getBlockState(pos) & 7) < 1)
 		{
 			EnumFacing = 1;
@@ -92,7 +92,7 @@ public class ItemAppleSeeds extends GrcItemBase implements IPlantable
 				{
 					if (world.getBlockState(pos) == cropBlock)
 					{
-						cropBlock.onBlockPlacedBy(world, pos, player, stack);
+						cropBlock.onBlockPlacedBy(world, pos, state, player, stack);
 						cropBlock.onPostBlockPlaced(world, pos, meta);
 					}
 
@@ -126,10 +126,10 @@ public class ItemAppleSeeds extends GrcItemBase implements IPlantable
 	/************
 	 * TEXTURES
 	 ************/
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister reg)
-	{
-		this.itemIcon = reg.registerIcon("grcapples:apple_seed");
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//public void registerIcons(IIconRegister reg)
+	//{
+	//	this.itemIcon = reg.registerIcon("grcapples:apple_seed");
+	//}
 }

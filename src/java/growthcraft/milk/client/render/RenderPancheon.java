@@ -33,6 +33,7 @@ import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
@@ -94,7 +95,7 @@ public class RenderPancheon implements ISimpleBlockRenderingHandler
 			if (block instanceof BlockPancheon)
 			{
 				final BlockPancheon pancheonBlock = (BlockPancheon)block;
-				final TileEntityPancheon pancheonTile = pancheonBlock.getTileEntity(world, x, y, z);
+				final TileEntityPancheon pancheonTile = pancheonBlock.getTileEntity(world, pos);
 				if (pancheonTile != null)
 				{
 					double y0 = ModelPancheon.SCALE;
@@ -102,14 +103,14 @@ public class RenderPancheon implements ISimpleBlockRenderingHandler
 					if (fluid != null)
 					{
 						final float fluidHeight = fluid.amount * fluidBBox.h() / pancheonTile.getFluidTank(0).getCapacity();
-						renderFluidLayer(block, renderer, fluid.getFluid(), y0, y0 + fluidHeight, x, y, z);
+						renderFluidLayer(block, renderer, fluid.getFluid(), y0, y0 + fluidHeight, pos);
 					}
 
 					fluid = pancheonTile.getFluidStack(1);
 					if (fluid != null)
 					{
 						final float fluidHeight = fluid.amount * fluidBBox.h() / pancheonTile.getFluidTank(1).getCapacity();
-						renderFluidLayer(block, renderer, fluid.getFluid(), y0, y0 + fluidHeight, x, y, z);
+						renderFluidLayer(block, renderer, fluid.getFluid(), y0, y0 + fluidHeight, pos);
 						y0 += fluidHeight;
 					}
 
@@ -117,7 +118,7 @@ public class RenderPancheon implements ISimpleBlockRenderingHandler
 					if (fluid != null)
 					{
 						final float fluidHeight = fluid.amount * fluidBBox.h() / pancheonTile.getFluidTank(2).getCapacity();
-						renderFluidLayer(block, renderer, fluid.getFluid(), y0, y0 + fluidHeight, x, y, z);
+						renderFluidLayer(block, renderer, fluid.getFluid(), y0, y0 + fluidHeight, pos);
 					}
 				}
 			}

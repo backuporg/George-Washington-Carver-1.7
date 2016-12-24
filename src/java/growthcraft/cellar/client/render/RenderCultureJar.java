@@ -43,7 +43,7 @@ public class RenderCultureJar implements ISimpleBlockRenderingHandler
 		{
 			final Tessellator tes = Tessellator.instance;
 			final BlockCultureJar fermentJar = (BlockCultureJar)block;
-			final TileEntityCultureJar te = fermentJar.getTileEntity(world, x, y, z);
+			final TileEntityCultureJar te = fermentJar.getTileEntity(world, pos);
 			final Fluid fluid = te.getFluid(0);
 
 			if (fluid != null)

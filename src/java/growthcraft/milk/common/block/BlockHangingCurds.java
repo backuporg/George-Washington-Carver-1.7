@@ -63,15 +63,15 @@ public class BlockHangingCurds extends GrcBlockContainer
 		setTileEntityType(TileEntityHangingCurds.class);
 		final BBox bb = BBox.newCube(4f, 0f, 4f, 8f, 16f, 8f).scale(1f / 16f);
 		getBoundingBox(bb.x0(), bb.y0(), bb.z0(), bb.x1(), bb.y1(), bb.z1());
-		setBlockTextureName("grcmilk:hanging_curds");
+		//setBlockTextureName("grcmilk:hanging_curds");
 		setCreativeTab(GrowthCraftMilk.creativeTab);
 	}
 
 	@Override
-	public void onBlockPlacedBy(World world, BlockPos pos, EntityLivingBase entity, ItemStack stack)
+	public void onBlockPlacedBy(World world, BlockPos pos, EntityLivingBase entity, ItemStack stack, IBlockState state)
 	{
 		super.onBlockPlacedBy(world, pos, entity, stack);
-		world.setBlockState(pos, stack.getItemDamage(), BlockFlags.NONE);
+		world.setBlockState(pos, state, BlockFlags.NONE);
 	}
 
 	@Override
@@ -164,8 +164,8 @@ public class BlockHangingCurds extends GrcBlockContainer
 	@Override
 	public boolean canBlockStay(World world, BlockPos pos)
 	{
-		return !world.isAirBlock(x, y + 1, z) &&
-			BlockCheck.isBlockPlacableOnSide(world, x, y + 1, z, EnumFacing.DOWN);
+		return !world.isAirBlock(pos) &&
+			BlockCheck.isBlockPlacableOnSide(world, pos, EnumFacing.DOWN);
 	}
 
 	@Override

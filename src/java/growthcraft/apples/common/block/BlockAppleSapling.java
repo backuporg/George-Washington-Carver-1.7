@@ -27,7 +27,7 @@ public class BlockAppleSapling extends BlockBush implements IGrowable
 		setUnlocalizedName("grc.appleSapling");
 		setTickRandomly(true);
 		setCreativeTab(GrowthCraftCore.creativeTab);
-		setBlockTextureName("grcapples:apple_sapling");
+		//setBlockTextureName("grcapples:apple_sapling");
 		final float f = 0.4F;
 		getBoundingBox(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 2.0F, 0.5F + f);
 	}

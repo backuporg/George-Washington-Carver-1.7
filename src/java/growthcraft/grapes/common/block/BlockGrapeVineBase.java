@@ -236,30 +236,6 @@ public abstract class BlockGrapeVineBase extends GrcBlockBase implements IPlanta
 		}
 	}
 
-	/* Can this accept bonemeal? */
-	@Override
-	public boolean func_149851_a(World world, BlockPos pos, boolean isClient)
-	{
-		return canUpdateGrowth(world, x, y, z);
-	}
-
-	/* SideOnly(Side.SERVER) Can this apply bonemeal effect? */
-	@Override
-	public boolean func_149852_a(World world, Random random, BlockPos pos)
-	{
-		return true;
-	}
-
-	/* Apply bonemeal effect */
-	@Override
-	public void func_149853_b(World world, Random random, BlockPos pos)
-	{
-		if (random.nextFloat() < 0.5D)
-		{
-			doGrowth(world, pos, world.getBlockState(x, y, z));
-		}
-	}
-
 	@Override
 	public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {
 		return false;

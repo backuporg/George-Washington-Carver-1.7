@@ -57,7 +57,7 @@ StructExtApi[] apis = [
 
 minecraft {
     version = minecraft_forge_version
-    mappings = "snapshot_20160718"
+    mappings = "snapshot_20161111"
     runDir = "run"
     replace "@VERSION@", project.version
     replace "@GRC_MC_VERSION@", minecraft_version
@@ -129,7 +129,7 @@ dependencies {
     compile "applecore:AppleCore:${minecraft_version}-${applecore_version}:api"
     deobfCompile "mcp.mobius.waila:Hwyla:1.8.1-B13_1.10.2"
     compile "net.ilexiconn:llibrary:1.7.2-1.10.2:dev"
-    runtime "mezz.jei:jei_1.10.2:3.12.7.389"
+    runtime "mezz.jei:jei_1.10.2:3.12.7.392"
     testCompile "junit:junit:4.11"
     compile name: 'mp3plugin'
     compile name: 'mp3spi1.9.5'
