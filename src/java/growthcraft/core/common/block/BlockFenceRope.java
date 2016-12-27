@@ -235,9 +235,9 @@ public class BlockFenceRope extends GrcBlockBase implements IBlockRope
 	@Override
 	@SideOnly(Side.CLIENT)
 	//public IIcon getIcon(IBlockAccess world, BlockPos pos, int side)
-	{
-		return getFenceBlock().getIcon(world, pos, side);
-	}
+	//{
+	//	return getFenceBlock().getIcon(world, pos, side);
+	//}
 
 	@Override
 	public int getRenderType()
