@@ -4,6 +4,7 @@ import growthcraft.apples.GrowthCraftApples;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSapling;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
@@ -152,12 +153,12 @@ public abstract class WorldGenAppleTree extends WorldGenerator
 			block == Blocks.VINE;
 	}
 
-	protected boolean isReplaceable(World world, BlockPos pos)
+	protected boolean isReplaceable(World world, BlockPos pos, IBlockState state)
 	{
-		final Block block = world.getBlockState(x, y, z);
-		return block.isAir(world, x, y, z) ||
-			block.isLeaves(world, x, y, z) ||
-			block.isWood(world, x, y, z) ||
+		final Block block = (Block) world.getBlockState((BlockPos) state);
+		return block.isAir(state, world, pos) ||
+			block.isLeaves(state, world, pos) ||
+			block.isWood(world, pos) ||
 			func_150523_a(block);
 	}
 }

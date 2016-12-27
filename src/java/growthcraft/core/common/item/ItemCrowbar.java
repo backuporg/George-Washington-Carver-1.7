@@ -63,7 +63,7 @@ public class ItemCrowbar extends GrcItemBase implements IToolWrench
 		shiftRotations.add(BlockChest.class);
 		setHarvestLevel("wrench", 0);
 		setUnlocalizedName("grccore.crowbar");
-		setTextureName("grccore:crowbar");
+		//setTextureName("grccore:crowbar");
 		setCreativeTab(GrowthCraftCore.creativeTab);
 	}
 
@@ -105,7 +105,7 @@ public class ItemCrowbar extends GrcItemBase implements IToolWrench
 	@Override
 	public void wrenchUsed(EntityPlayer player, BlockPos pos)
 	{
-		player.swingItem();
+		player.swingArm();
 	}
 
 	public EnumDye getDye(ItemStack stack)
@@ -119,16 +119,16 @@ public class ItemCrowbar extends GrcItemBase implements IToolWrench
 		return super.getUnlocalizedName(stack) + "." + getDye(stack).name;
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister reg)
-	{
-		this.icons = new IIcon[EnumDye.VALUES.length];
-		for (EnumDye dye : EnumDye.VALUES)
-		{
-			this.icons[dye.meta] = reg.registerIcon(String.format("%s/%s", getIconString(), dye.name));
-		}
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//public void registerIcons(IIconRegister reg)
+	//{
+	//	this.icons = new IIcon[EnumDye.VALUES.length];
+	//	for (EnumDye dye : EnumDye.VALUES)
+	//	{
+	//		this.icons[dye.meta] = reg.registerIcon(String.format("%s/%s", getIconString(), dye.name));
+	//	}
+	//}
 
 	@Override
 	@SideOnly(Side.CLIENT)
@@ -141,10 +141,10 @@ public class ItemCrowbar extends GrcItemBase implements IToolWrench
 		}
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
+	//@Override
+	//@SideOnly(Side.CLIENT)
 	//public IIcon getIconFromDamage(int meta)
-	{
-		return icons[MathHelper.clamp_int(meta, 0, icons.length - 1)];
-	}
+	//{
+	//	return icons[MathHelper.clamp_int(meta, 0, icons.length - 1)];
+	//}
 }

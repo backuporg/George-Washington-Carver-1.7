@@ -8,7 +8,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemChievDummy extends GrcItemBase
 {
-	private IIcon[] icon;
+	//private IIcon[] icon;
 
 	public ItemChievDummy()
 	{
@@ -20,18 +20,18 @@ public class ItemChievDummy extends GrcItemBase
 		this.setUnlocalizedName("grc.chievItemDummy");
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister reg)
-	{
-		this.icon = new IIcon[1];
-		this.icon[0] = reg.registerIcon("grccellar:chievicon_0");
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//public void registerIcons(IIconRegister reg)
+	//{
+	//	this.icon = new IIcon[1];
+	//	this.icon[0] = reg.registerIcon("grccellar:chievicon_0");
+	//}
 
-	@Override
-	@SideOnly(Side.CLIENT)
+	//@Override
+	//@SideOnly(Side.CLIENT)
 	//public IIcon getIconFromDamage(int meta)
-	{
-		return this.icon[meta];
-	}
+	//{
+	//	return this.icon[meta];
+	//}
 }
