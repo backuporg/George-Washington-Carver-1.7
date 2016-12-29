@@ -44,7 +44,7 @@ public class ItemCheese extends GrcItemFoodBase
 		super(2, 0.3F, false);
 		setHasSubtypes(true);
 		setMaxDamage(0);
-		setTextureName("grcmilk:cheese");
+		//setTextureName("grcmilk:cheese");
 		setUnlocalizedName("grcmilk.Cheese");
 		setCreativeTab(GrowthCraftMilk.creativeTab);
 	}
@@ -60,24 +60,24 @@ public class ItemCheese extends GrcItemFoodBase
 		return super.getUnlocalizedName(stack) + "." + getCheeseType(stack).name;
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister ir)
-	{
-		this.icons = new IIcon[EnumCheeseType.VALUES.length];
-
-		for (int i = 0; i < EnumCheeseType.VALUES.length; ++i)
-		{
-			this.icons[i] = ir.registerIcon("grcmilk:cheese/" + EnumCheeseType.VALUES[i].name);
-		}
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//public void registerIcons(IIconRegister ir)
+	//{
+	//	this.icons = new IIcon[EnumCheeseType.VALUES.length];
+//
+	//	for (int i = 0; i < EnumCheeseType.VALUES.length; ++i)
+	//	{
+	//		this.icons[i] = ir.registerIcon("grcmilk:cheese/" + EnumCheeseType.VALUES[i].name);
+	//	}
+	//}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	//public IIcon getIconFromDamage(int meta)
-	{
-		return icons[MathHelper.clamp_int(meta, 0, icons.length - 1)];
-	}
+	//{
+	//	return icons[MathHelper.clamp_int(meta, 0, icons.length - 1)];
+	//}
 
 	@Override
 	@SideOnly(Side.CLIENT)

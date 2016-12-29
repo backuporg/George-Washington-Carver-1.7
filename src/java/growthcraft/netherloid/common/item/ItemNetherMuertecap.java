@@ -41,7 +41,7 @@ public abstract class ItemNetherMuertecap extends ItemFood implements IPlantable
 		super(1, 0.1F, false);
 		setAlwaysEdible();
 		setUnlocalizedName("grcnetherloid.netherMuertecapFood");
-		setTextureName("grcnetherloid:muertecap");
+		//setTextureName("grcnetherloid:muertecap");
 		setCreativeTab(netherloid.tab);
 	}
 

@@ -44,7 +44,7 @@ public class ItemBeesWax extends GrcItemBase
 		super();
 		setUnlocalizedName("grcbees.BeesWax");
 		setCreativeTab(GrowthCraftBees.tab);
-		setTextureName("grcbees:bees_wax");
+		//setTextureName("grcbees:bees_wax");
 		setHasSubtypes(true);
 		setMaxDamage(0);
 	}

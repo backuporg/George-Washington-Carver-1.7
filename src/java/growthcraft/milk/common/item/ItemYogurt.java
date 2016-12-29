@@ -45,7 +45,7 @@ public class ItemYogurt extends GrcItemFoodBase
 		setHasSubtypes(true);
 		setMaxDamage(0);
 		setUnlocalizedName("grcmilk.Yogurt");
-		setTextureName("grcmilk:yogurt/yogurt");
+		//setTextureName("grcmilk:yogurt/yogurt");
 		setCreativeTab(GrowthCraftMilk.creativeTab);
 	}
 
@@ -60,24 +60,24 @@ public class ItemYogurt extends GrcItemFoodBase
 		return super.getUnlocalizedName(stack) + "." + getEnumYogurt(stack).name;
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister ir)
-	{
-		this.icons = new IIcon[EnumYogurt.VALUES.length];
-
-		for (EnumYogurt yogurt : EnumYogurt.VALUES)
-		{
-			this.icons[yogurt.meta] = ir.registerIcon("grcmilk:yogurt/yogurt_" + yogurt.name);
-		}
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//public void registerIcons(IIconRegister ir)
+	//{
+	//	this.icons = new IIcon[EnumYogurt.VALUES.length];
+//
+	//	for (EnumYogurt yogurt : EnumYogurt.VALUES)
+	//	{
+	//		this.icons[yogurt.meta] = ir.registerIcon("grcmilk:yogurt/yogurt_" + yogurt.name);
+	//	}
+	//}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	//public IIcon getIconFromDamage(int meta)
-	{
-		return icons[MathHelper.clamp_int(meta, 0, EnumYogurt.VALUES.length - 1)];
-	}
+	//{
+	//	return icons[MathHelper.clamp_int(meta, 0, EnumYogurt.VALUES.length - 1)];
+	//}
 
 	@Override
 	@SideOnly(Side.CLIENT)

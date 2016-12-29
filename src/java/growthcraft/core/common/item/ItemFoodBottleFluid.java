@@ -85,20 +85,20 @@ public class ItemFoodBottleFluid extends GrcItemFoodBase implements IFluidItem
 		return getFluid(stack).getColor();
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister reg)
-	{
-		this.bottle = reg.registerIcon("minecraft:potion_bottle_empty");
-		this.contents = reg.registerIcon("minecraft:potion_overlay");
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//public void registerIcons(IIconRegister reg)
+	//{
+	//	this.bottle = reg.registerIcon("minecraft:potion_bottle_empty");
+	//	this.contents = reg.registerIcon("minecraft:potion_overlay");
+	//}
 
-	@Override
-	@SideOnly(Side.CLIENT)
+	//@Override
+	//@SideOnly(Side.CLIENT)
 	//public IIcon getIconFromDamageForRenderPass(int _damage, int pass)
-	{
-		return pass == 0 ? this.contents : this.bottle;
-	}
+	//{
+	//	return pass == 0 ? this.contents : this.bottle;
+	//}
 
 	@Override
 	@SideOnly(Side.CLIENT)
