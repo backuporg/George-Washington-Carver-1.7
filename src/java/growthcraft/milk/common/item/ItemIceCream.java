@@ -59,24 +59,24 @@ public class ItemIceCream extends GrcItemFoodBase
 		return super.getUnlocalizedName(stack) + "." + getEnumIceCream(stack).name;
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister ir)
-	{
-		this.icons = new IIcon[EnumIceCream.VALUES.length];
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//public void registerIcons(IIconRegister ir)
+	//{
+	//	this.icons = new IIcon[EnumIceCream.VALUES.length];
+//
+		//for (EnumIceCream iceCream : EnumIceCream.VALUES)
+		//{
+		//	this.icons[iceCream.meta] = ir.registerIcon("grcmilk:ice_cream/ice_cream_" + iceCream.name);
+		//}
+	//}
 
-		for (EnumIceCream iceCream : EnumIceCream.VALUES)
-		{
-			this.icons[iceCream.meta] = ir.registerIcon("grcmilk:ice_cream/ice_cream_" + iceCream.name);
-		}
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
+	//@Override
+	//@SideOnly(Side.CLIENT)
 	//public IIcon getIconFromDamage(int meta)
-	{
-		return icons[MathHelper.clamp_int(meta, 0, EnumIceCream.VALUES.length - 1)];
-	}
+	//{
+	//	return icons[MathHelper.clamp_int(meta, 0, EnumIceCream.VALUES.length - 1)];
+	//}
 
 	@Override
 	@SideOnly(Side.CLIENT)

@@ -44,7 +44,7 @@ public class ItemNetherSquashSeeds extends Item implements IPlantable
 		super();
 		setUnlocalizedName("grcnetherloid.netherSquashSeeds");
 		setCreativeTab(netherloid.tab);
-		setTextureName("grcnetherloid:seeds_soulsquash");
+		//setTextureName("grcnetherloid:seeds_soulsquash");
 	}
 
 	@Override

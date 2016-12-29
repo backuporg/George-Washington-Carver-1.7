@@ -41,7 +41,7 @@ public abstract class ItemSeedThistle extends GrcItemBase implements IPlantable
 		super();
 		setUnlocalizedName("grcmilk.seed_thistle");
 		setCreativeTab(GrowthCraftMilk.creativeTab);
-		setTextureName("grcmilk:seeds/seed_thistle");
+		//setTextureName("grcmilk:seeds/seed_thistle");
 	}
 
 	@Override

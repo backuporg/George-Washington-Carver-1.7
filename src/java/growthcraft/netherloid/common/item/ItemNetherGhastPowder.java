@@ -32,7 +32,7 @@ public class ItemNetherGhastPowder extends Item
 	{
 		super();
 		setUnlocalizedName("grcnetherloid.netherGhastPowder");
-		setTextureName("grcnetherloid:ghastpowder");
+		//setTextureName("grcnetherloid:ghastpowder");
 		setCreativeTab(netherloid.tab);
 	}
 }

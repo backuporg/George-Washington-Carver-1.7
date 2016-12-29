@@ -31,6 +31,7 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
@@ -42,7 +43,7 @@ public abstract class ItemNetherPepper extends Item implements IPlantable
 	{
 		super();
 		setUnlocalizedName("grcnetherloid.netherPepper");
-		setTextureName("grcnetherloid:pepper");
+		//setTextureName("grcnetherloid:pepper");
 		setCreativeTab(netherloid.tab);
 	}
 

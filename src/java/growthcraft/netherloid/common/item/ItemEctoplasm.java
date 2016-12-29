@@ -32,7 +32,7 @@ public class ItemEctoplasm extends Item
 	{
 		super();
 		setUnlocalizedName("grcnetherloid.ectoplasm");
-		setTextureName("grcnetherloid:ectoplasm");
+		//setTextureName("grcnetherloid:ectoplasm");
 		setCreativeTab(netherloid.tab);
 	}
 }

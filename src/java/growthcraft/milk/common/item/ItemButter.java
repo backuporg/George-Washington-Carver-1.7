@@ -59,24 +59,24 @@ public class ItemButter extends GrcItemFoodBase
 		return super.getUnlocalizedName(stack) + "." + getEnumButter(stack).name;
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister ir)
-	{
-		this.icons = new IIcon[EnumButter.VALUES.length];
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//public void registerIcons(IIconRegister ir)
+	//{
+	//	this.icons = new IIcon[EnumButter.VALUES.length];
+//
+	//	for (EnumButter butter : EnumButter.VALUES)
+	//	{
+	//		this.icons[butter.meta] = ir.registerIcon("grcmilk:butter/butter_" + butter.name);
+	//	}
+	//}
 
-		for (EnumButter butter : EnumButter.VALUES)
-		{
-			this.icons[butter.meta] = ir.registerIcon("grcmilk:butter/butter_" + butter.name);
-		}
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
+	//@Override
+	//@SideOnly(Side.CLIENT)
 	//public IIcon getIconFromDamage(int meta)
-	{
-		return icons[MathHelper.clamp_int(meta, 0, icons.length - 1)];
-	}
+	//{
+	//	return icons[MathHelper.clamp_int(meta, 0, icons.length - 1)];
+	//}
 
 	@Override
 	@SideOnly(Side.CLIENT)

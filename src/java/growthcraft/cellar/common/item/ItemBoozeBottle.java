@@ -33,6 +33,7 @@ import growthcraft.core.common.item.IFluidItem;
 import growthcraft.core.lib.GrcCoreState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
@@ -98,7 +99,7 @@ public class ItemBoozeBottle extends GrcItemFoodBase implements IFluidItem
 	}
 
 	@Override
-	public int func_150905_g(ItemStack stack)
+	public int getHealAmount(ItemStack stack)
 	{
 		final BoozeEntry entry = getBoozeEntry(stack);
 		if (entry != null)
@@ -109,7 +110,7 @@ public class ItemBoozeBottle extends GrcItemFoodBase implements IFluidItem
 	}
 
 	@Override
-	public float func_150906_h(ItemStack stack)
+	public float getSaturationModifier(ItemStack stack)
 	{
 		final BoozeEntry entry = getBoozeEntry(stack);
 		if (entry != null)
@@ -212,12 +213,14 @@ public class ItemBoozeBottle extends GrcItemFoodBase implements IFluidItem
 		return EnumAction.DRINK;
 	}
 
-	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack stack, World world, EntityPlayer player, EnumHand hand)
-	{
-		player.setActiveHand(hand);
-		return ActionResult<ItemStack>;
-	}
+	//Shamelessly rip code from the failed 1.8 port, attempt to figure out how to use its replacement later.
+    //@Override
+   // public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
+    //{
+    //    player.setItemInUse(stack, this.getMaxItemUseDuration(stack));
+    //    return stack;
+    //}
+
 
 	@Override
 	public String getItemStackDisplayName(ItemStack stack)

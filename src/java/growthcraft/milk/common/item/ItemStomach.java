@@ -32,7 +32,7 @@ public class ItemStomach extends GrcItemBase
 	{
 		super();
 		setUnlocalizedName("grcmilk.Stomach");
-		setTextureName("grcmilk:stomach/stomach");
+		//setTextureName("grcmilk:stomach/stomach");
 		setCreativeTab(GrowthCraftMilk.creativeTab);
 	}
 }

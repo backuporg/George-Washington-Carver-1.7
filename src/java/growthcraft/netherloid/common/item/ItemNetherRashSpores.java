@@ -32,7 +32,7 @@ public class ItemNetherRashSpores extends Item
 	{
 		super();
 		setUnlocalizedName("grcnetherloid.netherRashSpores");
-		setTextureName("grcnetherloid:netherrash_spores");
+		//setTextureName("grcnetherloid:netherrash_spores");
 		setCreativeTab(netherloid.tab);
 	}
 }
