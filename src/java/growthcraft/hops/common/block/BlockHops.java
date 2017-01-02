@@ -75,11 +75,11 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 		return (float)state.getValue(GROWTH) / (float)HopsStage.FRUIT;
 	}
 
-	protected void incrementGrowth(World world, BlockPos pos, IBlockState state, int previousMetadata)
+	protected void incrementGrowth(World world, BlockPos pos, IBlockState state, int previousMetadata, Block block)
 	{
 		final int meta = state.getValue(GROWTH);
 		world.setBlockState(pos, state.withProperty(GROWTH, meta + 1), BlockFlags.UPDATE_AND_SYNC);
-		AppleCore.announceGrowthTick(this, world, pos, previousMetadata);
+		AppleCore.announceGrowthTick(block, world, pos, previousMetadata, state);
 	}
 
 	public void spreadLeaves(World world, BlockPos pos)
@@ -97,7 +97,7 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 	 * TICK
 	 ************/
 	@Override
-	public void updateTick(World world, BlockPos pos, Random random, IBlockState state)
+	public void updateTick(World world, BlockPos pos, Random random, IBlockState state, Block block)
 	{
 		if (!this.canBlockStay(world, pos))
 		{
@@ -116,7 +116,7 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 			{
 				if (allowGrowthResult == Event.Result.ALLOW || (random.nextInt((int)(this.hopVineGrowthRate / f) + 1) == 0))
 				{
-					incrementGrowth(world, pos, state, meta);
+					incrementGrowth(world, pos, state, meta, block);
 				}
 			}
 			else if ((meta >= HopsStage.BIG) && canSpreadLeaves(world, pos))
@@ -130,7 +130,7 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 			{
 				if (allowGrowthResult == Event.Result.ALLOW || (random.nextInt((int)(this.hopVineFlowerSpawnRate / f) + 1) == 0))
 				{
-					incrementGrowth(world, pos, state, meta);
+					incrementGrowth(world, pos, state, meta, block);
 				}
 			}
 		}
@@ -153,12 +153,12 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 
 	/* Apply bonemeal effect */
 	@Override
-	public void grow(World world, Random rand, BlockPos pos, IBlockState state)
+	public void grow(World world, Random rand, BlockPos pos, IBlockState state, Block block)
 	{
 		final int meta = state.getValue(GROWTH);
 		if (meta < HopsStage.BIG)
 		{
-			incrementGrowth(world, pos, state, meta);
+			incrementGrowth(world, pos, state, meta, block);
 		}
 		else if (meta >= HopsStage.BIG && canSpreadLeaves(world, pos))
 		{
@@ -166,7 +166,7 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 		}
 		else
 		{
-			incrementGrowth(world, pos, state, meta);
+			incrementGrowth(world, pos, state, meta, block);
 		}
 	}
 
