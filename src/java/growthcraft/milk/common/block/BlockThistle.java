@@ -101,7 +101,7 @@ public abstract class BlockThistle extends BlockBush implements ISpreadablePlant
     {
         final int meta = (int)state.getValue(GROWTH);
         world.setBlockState(pos, state.withProperty(GROWTH, meta + 1), BlockFlags.SYNC);
-        AppleCore.announceGrowthTick(block, world, pos, meta2);
+        AppleCore.announceGrowthTick(block, world, pos, meta2, state);
     }
 
     @Override

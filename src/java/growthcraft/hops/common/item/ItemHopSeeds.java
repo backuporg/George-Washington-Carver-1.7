@@ -57,12 +57,12 @@ public abstract class ItemHopSeeds extends GrcItemBase implements IPlantable
 	/************
 	 * TEXTURES
 	 ************/
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister reg)
-	{
-		this.itemIcon = reg.registerIcon("grchops:hop_seeds");
-	}
+	//@Override
+	//@SideOnly(Side.CLIENT)
+	//public void registerIcons(IIconRegister reg)
+	//{
+	//	this.itemIcon = reg.registerIcon("grchops:hop_seeds");
+	//}
 
 	@Override
 	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos)
