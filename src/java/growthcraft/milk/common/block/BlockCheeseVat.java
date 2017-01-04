@@ -50,7 +50,7 @@ public class BlockCheeseVat extends GrcBlockContainer
 		setUnlocalizedName("grcmilk.CheeseVat");
 		setCreativeTab(GrowthCraftMilk.creativeTab);
 		setTileEntityType(TileEntityCheeseVat.class);
-		setBlockTextureName("grcmilk:cheese_vat");
+		//setBlockTextureName("grcmilk:cheese_vat");
 	}
 
 	@Override

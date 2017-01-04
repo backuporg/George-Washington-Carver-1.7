@@ -81,7 +81,7 @@ public class BlockNetherSquashStem extends BlockBush implements ICropDataProvide
 		this.fruitBlock = block;
 		setTickRandomly(true);
 		setCreativeTab(null);
-		setBlockTextureName("grcnetherloid:soulsquash_stem");
+		//setBlockTextureName("grcnetherloid:soulsquash_stem");
 	}
 
 	@Override

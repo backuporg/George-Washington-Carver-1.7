@@ -37,7 +37,7 @@ public abstract class BlockNetherCinderrot extends BlockNetherFungusBase
 		super();
 		setUnlocalizedName("grcnetherloid.netherCinderrot");
 		setCreativeTab(netherloid.tab);
-		setBlockTextureName("grcnetherloid:cinderrot");
+		//setBlockTextureName("grcnetherloid:cinderrot");
 		getBoundingBox(0.375F, 0.0F, 0.375F, 0.625F, 0.375F, 0.625F);
 	}
 

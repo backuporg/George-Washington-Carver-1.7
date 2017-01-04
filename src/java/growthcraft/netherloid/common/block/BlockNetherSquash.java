@@ -43,7 +43,7 @@ public class BlockNetherSquash extends BlockDirectional
 	{
 		super(Blocks.PUMPKIN.getMaterial());
 		setTickRandomly(true);
-		setBlockTextureName("grcnetherloid:soulsquash");
+		//setBlockTextureName("grcnetherloid:soulsquash");
 		setUnlocalizedName("grcnetherloid.netherSquash");
 		setCreativeTab(netherloid.tab);
 	}

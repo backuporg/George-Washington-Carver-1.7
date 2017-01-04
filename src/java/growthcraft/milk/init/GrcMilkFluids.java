@@ -98,7 +98,7 @@ public class GrcMilkFluids extends GrcModuleBase
 			final Fluid fluid = new GrcFluid(fluidName).setColor(cheese.getColor());
 			final FluidFactory.FluidDetails details = FluidFactory.instance().create(fluid, FluidFactory.FEATURE_NONE);
 			cheeses.put(cheese, details);
-			if (details.block != null) details.block.getBlockState().setColor(cheese.getColor()).setBlockTextureName("grcmilk:fluids/milk");
+			if (details.block != null) details.block.getBlockState().setColor(cheese.getColor()).//setBlockTextureName("grcmilk:fluids/milk");
 			details.setItemColor(cheese.getColor());
 			fluidToCheeseType.put(fluid, cheese);
 		}
@@ -119,7 +119,7 @@ public class GrcMilkFluids extends GrcModuleBase
 		kumisFluidBlocks[5].getBlockState().refreshColor();
 		for (BlockBoozeDefinition def : kumisFluidBlocks)
 		{
-			def.getBlockState().setBlockTextureName("grcmilk:fluids/milk");
+			def.getBlockState().//setBlockTextureName("grcmilk:fluids/milk");
 		}
 	}
 
@@ -134,7 +134,7 @@ public class GrcMilkFluids extends GrcModuleBase
 			milk.foodBottle = new ItemTypeDefinition<ItemFoodBottleFluid>(new ItemFoodBottleFluid(milk.getFluid(), 4, 0.3f, false));
 			milk.foodBottle.getItem().setEffect(milkEffect).setAlwaysEdible();
 			milk.setCreativeTab(GrowthCraftMilk.creativeTab).setItemColor(0xFFFFFF);
-			milk.block.getBlockState().setBlockTextureName("grcmilk:fluids/milk");
+			milk.block.getBlockState().//setBlockTextureName("grcmilk:fluids/milk");
 		}
 
 		this.butterMilk = FluidFactory.instance().create(new GrcFluid("grcmilk.ButterMilk"), FluidFactory.FEATURE_ALL_EDIBLE);
@@ -151,19 +151,19 @@ public class GrcMilkFluids extends GrcModuleBase
 			butterMilk.foodBottle.getItem().setEffect(list).setAlwaysEdible();
 		}
 		butterMilk.setCreativeTab(GrowthCraftMilk.creativeTab).setItemColor(0xFFFEE7);
-		butterMilk.block.getBlockState().setBlockTextureName("grcmilk:fluids/buttermilk");
+		butterMilk.block.getBlockState().//setBlockTextureName("grcmilk:fluids/buttermilk");
 
 		this.cream = FluidFactory.instance().create(new GrcFluid("grcmilk.Cream"));
 		cream.setCreativeTab(GrowthCraftMilk.creativeTab).setItemColor(0xFFFDD0);
-		cream.block.getBlockState().setBlockTextureName("grcmilk:fluids/cream");
+		cream.block.getBlockState().//setBlockTextureName("grcmilk:fluids/cream");
 
 		this.curds = FluidFactory.instance().create(new GrcFluid("grcmilk.Curds"));
 		curds.setCreativeTab(GrowthCraftMilk.creativeTab).setItemColor(0xFFFFF6);
-		curds.block.getBlockState().setBlockTextureName("grcmilk:fluids/milk");
+		curds.block.getBlockState().//setBlockTextureName("grcmilk:fluids/milk");
 
 		this.rennet = FluidFactory.instance().create(new GrcFluid("grcmilk.Rennet"));
 		rennet.setCreativeTab(GrowthCraftMilk.creativeTab).setItemColor(0x877243);
-		rennet.block.getBlockState().setBlockTextureName("grcmilk:fluids/rennet");
+		rennet.block.getBlockState().//setBlockTextureName("grcmilk:fluids/rennet");
 
 		this.skimMilk = FluidFactory.instance().create(new GrcFluid("grcmilk.SkimMilk"), FluidFactory.FEATURE_ALL_EDIBLE);
 		skimMilk.foodBottle = new ItemTypeDefinition<ItemFoodBottleFluid>(new ItemFoodBottleFluid(skimMilk.getFluid(), 2, 0.2f, false));
@@ -177,7 +177,7 @@ public class GrcMilkFluids extends GrcModuleBase
 			skimMilk.foodBottle.getItem().setEffect(list).setAlwaysEdible();
 		}
 		skimMilk.setCreativeTab(GrowthCraftMilk.creativeTab).setItemColor(0xFFFFFA);
-		skimMilk.block.getBlockState().setBlockTextureName("grcmilk:fluids/skimmilk");
+		skimMilk.block.getBlockState().//setBlockTextureName("grcmilk:fluids/skimmilk");
 
 		this.whey = FluidFactory.instance().create(new GrcFluid("grcmilk.Whey"), FluidFactory.FEATURE_ALL_EDIBLE);
 		whey.foodBottle = new ItemTypeDefinition<ItemFoodBottleFluid>(new ItemFoodBottleFluid(whey.getFluid(), 1, 0.1f, false));
@@ -191,11 +191,11 @@ public class GrcMilkFluids extends GrcModuleBase
 			whey.foodBottle.getItem().setEffect(list).setAlwaysEdible();
 		}
 		whey.setCreativeTab(GrowthCraftMilk.creativeTab).setItemColor(0x94a860);
-		whey.block.getBlockState().setBlockTextureName("grcmilk:fluids/whey");
+		whey.block.getBlockState().//setBlockTextureName("grcmilk:fluids/whey");
 
 		this.pasteurizedMilk = FluidFactory.instance().create(new GrcFluid("grcmilk.PasteurizedMilk"));
 		pasteurizedMilk.setCreativeTab(GrowthCraftMilk.creativeTab).setItemColor(0xFFFFFA);
-		pasteurizedMilk.block.getBlockState().setBlockTextureName("grcmilk:fluids/milk");
+		pasteurizedMilk.block.getBlockState().//setBlockTextureName("grcmilk:fluids/milk");
 
 		preInitCheeseFluids();
 		preInitKumisFluids();
