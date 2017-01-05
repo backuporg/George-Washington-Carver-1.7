@@ -39,7 +39,7 @@ public abstract class BlockNetherBaalsRot extends BlockNetherFungusBase
 	{
 		super();
 		setUnlocalizedName("grcnetherloid.netherBaalsRot");
-		setBlockTextureName("grcnetherloid:baals_rot");
+		//setBlockTextureName("grcnetherloid:baals_rot");
 		getBoundingBox(0.125F, 0.0F, 0.125F, 0.875F, 0.8125F, 0.875F);
 		setCreativeTab(netherloid.tab);
 	}

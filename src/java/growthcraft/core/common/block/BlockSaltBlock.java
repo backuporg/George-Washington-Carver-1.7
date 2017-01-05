@@ -39,7 +39,7 @@ public class BlockSaltBlock extends GrcBlockBase
 		setResistance(10.0F);
 		//setStepSound(soundTypeSand);
 		setUnlocalizedName("grccore.salt_block");
-		setBlockTextureName("grccore:salt_block");
+		//setBlockTextureName("grccore:salt_block");
 		setCreativeTab(GrowthCraftCore.creativeTab);
 	}
 

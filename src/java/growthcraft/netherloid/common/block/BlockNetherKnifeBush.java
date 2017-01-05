@@ -38,7 +38,7 @@ public class BlockNetherKnifeBush extends BlockBush
 		super();
 		setUnlocalizedName("grcnetherloid.netherKnifeBush");
 		setCreativeTab(netherloid.tab);
-		setBlockTextureName("grcnetherloid:knife_bush");
+		//setBlockTextureName("grcnetherloid:knife_bush");
 	}
 
 	@Override

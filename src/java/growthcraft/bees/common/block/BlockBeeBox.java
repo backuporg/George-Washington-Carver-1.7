@@ -42,7 +42,7 @@ public class BlockBeeBox extends GrcBlockContainer
 	public BlockBeeBox(Material material)
 	{
 		super(material);
-		setBlockTextureName("grcbees:beebox");
+		//setBlockTextureName("grcbees:beebox");
 		setTickRandomly(true);
 		setHardness(2.5F);
 		//setStepSound(soundTypeWood);

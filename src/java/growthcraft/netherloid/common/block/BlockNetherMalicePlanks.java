@@ -34,7 +34,7 @@ public class BlockNetherMalicePlanks extends Block
 		super(Materials.fireproofWood);
 		setHardness(2.0F);
 		setUnlocalizedName("grcnetherloid.netherMalicePlanks");
-		setBlockTextureName("grcnetherloid:planks_malice");
+		//setBlockTextureName("grcnetherloid:planks_malice");
 		setHarvestLevel("axe", 0);
 		setCreativeTab(netherloid.tab);
 	}
