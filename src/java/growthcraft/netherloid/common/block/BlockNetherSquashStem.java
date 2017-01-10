@@ -72,8 +72,8 @@ public class BlockNetherSquashStem extends BlockBush implements ICropDataProvide
 
 	private final Block fruitBlock;
 
-	@SideOnly(Side.CLIENT)
-	private IIcon stemConnectedIcon;
+	//@SideOnly(Side.CLIENT)
+	//private IIcon stemConnectedIcon;
 
 	public BlockNetherSquashStem(Block block)
 	{
@@ -137,15 +137,15 @@ public class BlockNetherSquashStem extends BlockBush implements ICropDataProvide
 	}
 
 	@Override
-	public void updateTick(World world, BlockPos pos, Random random)
+	public void updateTick(World world, BlockPos pos, Random random, Block block, IBlockState state)
 	{
-		final Event.Result allowGrowthResult = AppleCore.validateGrowthTick(this, world, pos, random);
+		final Event.Result allowGrowthResult = AppleCore.validateGrowthTick(block, world, pos, random, state);
 		if (allowGrowthResult == Event.Result.DENY)
 			return;
 
 		if (allowGrowthResult == Event.Result.ALLOW || random.nextInt(10) == 0)
 		{
-			final int meta = world.getBlockState(x, y, z);
+			final int meta = world.getBlockState(meta);
 			growStem(world, pos, meta);
 		}
 	}
