@@ -51,7 +51,7 @@ public class WorldGeneratorThistle implements IWorldGenerator
 			{
 				// If you can't replace the block now, it means you probably
 				// hit the floor
-				if (!canReplaceBlock(world, pos, block, state, world.getBlockState(pos)))
+				if (!canReplaceBlock(world, pos, block, state))
 				{
 					// move back up and break loop
 					y += 1;
@@ -64,8 +64,8 @@ public class WorldGeneratorThistle implements IWorldGenerator
 				continue;
 			}
 
-			final Block block = world.getBlockState(x, y - 1, z);
-			if (canPlaceOnBlock(world, x, y - 1, z, block))
+			final Block block = world.getBlockState(pos);
+			if (canPlaceOnBlock(world, pos, block))
 			{
 				world.setBlockState(pos, state, GrowthCraftMilk.blocks.thistle.getBlockState());
 			}
@@ -73,7 +73,7 @@ public class WorldGeneratorThistle implements IWorldGenerator
 	}
 
 	@Override
-	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
+	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider, Block block, IBlockState state, BlockPos pos)
 	{
 		if (world.provider.dimensionId == 0)
 		{
@@ -87,7 +87,7 @@ public class WorldGeneratorThistle implements IWorldGenerator
 				final String biomeId = "" + biome.BiomeID;
 				if (!BiomeUtils.testBiomeIdTags(biomeId, GrowthCraftMilk.getConfig().thistleBiomesIdList)) return;
 			}
-			genRandThistle(thistle, world, random, chunkX, chunkZ, GrowthCraftMilk.getConfig().thistleGenAmount, 64, 255);
+			genRandThistle(thistle, world, random, block, pos, state, 64, 255);
 		}
 	}
 }
