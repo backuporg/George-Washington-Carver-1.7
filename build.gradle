@@ -127,7 +127,7 @@ repositories {
 
 dependencies {
     compile "applecore:AppleCore:${minecraft_version}-${applecore_version}:api"
-    deobfCompile "mcp.mobius.waila:Hwyla:1.8.7-B21_1.10.2"
+    deobfCompile "mcp.mobius.waila:Hwyla:1.8.8-B22_1.10.2"
     compile "net.ilexiconn:llibrary:1.7.4-1.10.2:dev"
     runtime "mezz.jei:jei_1.10.2:3.14.2.403"
     testCompile "junit:junit:4.11"
