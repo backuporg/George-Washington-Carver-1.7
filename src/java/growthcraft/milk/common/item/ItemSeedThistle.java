@@ -26,15 +26,17 @@ package growthcraft.milk.common.item;
 import growthcraft.core.common.item.GrcItemBase;
 import growthcraft.milk.GrowthCraftMilk;
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 
-public abstract class ItemSeedThistle extends GrcItemBase implements IPlantable
+public class ItemSeedThistle extends GrcItemBase implements IPlantable
 {
 	public ItemSeedThistle()
 	{
@@ -63,20 +65,20 @@ public abstract class ItemSeedThistle extends GrcItemBase implements IPlantable
 	}
 
 	@Override
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, int EnumFacing, float tx, float ty, float tz)
+	public boolean onItemUse(IBlockState state, ItemStack stack, EnumFacing face, EntityPlayer player, World world, BlockPos pos, int EnumFacing, float tx, float ty, float tz)
 	{
 		if (EnumFacing == 1)
 		{
-			if (player.canPlayerEdit(x, y, z, EnumFacing, stack) && player.canPlayerEdit(x, y + 1, z, EnumFacing, stack))
+			if (player.canPlayerEdit(pos, face, stack) && player.canPlayerEdit(pos, face, stack))
 			{
-				final Block soil = world.getBlockState(x, y, z);
-				final Block plant = getPlant(world, x, y + 1, z);
+				final Block soil = (Block) world.getBlockState((BlockPos) state);
+				final Block plant = getPlant(world, pos);
 
 				if (plant instanceof IPlantable)
 				{
-					if (soil != null && !world.isAirBlock(x, y, z) && soil.canSustainPlant(world, x, y + 1, z, EnumFacing.UP, (IPlantable)plant))
+					if (soil != null && !world.isAirBlock(pos) && soil.canSustainPlant(world, x, y + 1, z, EnumFacing.UP, (IPlantable)plant))
 					{
-						world.setBlockState(x, y + 1, z, plant);
+						world.setBlockState(pos, state);
 						--stack.stackSize;
 						return true;
 					}
