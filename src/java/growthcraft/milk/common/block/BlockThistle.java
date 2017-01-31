@@ -47,7 +47,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
-public abstract class BlockThistle extends BlockBush implements ISpreadablePlant, IGrowable
+public class BlockThistle extends BlockBush implements ISpreadablePlant, IGrowable
 {
     public static class ThistleStage
     {
@@ -125,7 +125,7 @@ public abstract class BlockThistle extends BlockBush implements ISpreadablePlant
             else
             {
                 final int growthChance = GrowthCraftMilk.getConfig().thistleGrowthChance;
-                final Event.Result allowGrowthResult = AppleCore.validateGrowthTick(this, world, pos, state, random);
+                final Event.Result allowGrowthResult = AppleCore.validateGrowthTick(this, world, pos, random, state);
                 if (allowGrowthResult == Event.Result.DENY)
                 {
                     return;
@@ -171,6 +171,11 @@ public abstract class BlockThistle extends BlockBush implements ISpreadablePlant
     public boolean canUseBonemeal(World world, Random random, BlockPos pos, IBlockState state)
     {
         return true;
+    }
+
+    @Override
+    public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+
     }
 
     @Override
