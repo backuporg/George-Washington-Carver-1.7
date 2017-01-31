@@ -62,7 +62,7 @@ public class BlockThistle extends BlockBush implements ISpreadablePlant, IGrowab
     public static final PropertyInteger GROWTH = PropertyInteger.create("growth", 0, 3);
 
 
-	private FlowerSpread spreadLogic;
+	private final FlowerSpread spreadLogic;
 
 	@SideOnly(Side.CLIENT)
 
@@ -85,11 +85,7 @@ public class BlockThistle extends BlockBush implements ISpreadablePlant, IGrowab
     public boolean canSpreadTo(World world, BlockPos pos)
     {
         //if (world.isAirBlock(pos) && canBlockStay(world, pos))
-        if (world.isAirBlock(pos))
-        {
-            return true;
-        }
-        return false;
+        return world.isAirBlock(pos);
     }
 
     private void runSpread(World world, BlockPos pos, Random random, IBlockState state, World worldIn)
@@ -99,7 +95,7 @@ public class BlockThistle extends BlockBush implements ISpreadablePlant, IGrowab
 
     private void incrementGrowth(World world, BlockPos pos, IBlockState state, int meta2, Block block)
     {
-        final int meta = (int)state.getValue(GROWTH);
+        final int meta = state.getValue(GROWTH);
         world.setBlockState(pos, state.withProperty(GROWTH, meta + 1), BlockFlags.SYNC);
         AppleCore.announceGrowthTick(block, world, pos, meta2, state);
     }
