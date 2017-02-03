@@ -32,6 +32,9 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.util.text.ITextComponent;
+
+import javax.annotation.Nullable;
 
 public class GrcInternalInventory implements IInventory, INBTSerializableContext
 {
@@ -140,6 +143,21 @@ public class GrcInternalInventory implements IInventory, INBTSerializableContext
 	}
 
 	@Override
+	public int getField(int id) {
+		return 0;
+	}
+
+	@Override
+	public void setField(int id, int value) {
+
+	}
+
+	@Override
+	public int getFieldCount() {
+		return 0;
+	}
+
+	@Override
 	public void openInventory()
 	{
 	}
@@ -153,6 +171,16 @@ public class GrcInternalInventory implements IInventory, INBTSerializableContext
 	public boolean isUseableByPlayer(EntityPlayer _player)
 	{
 		return true;
+	}
+
+	@Override
+	public void openInventory(EntityPlayer player) {
+
+	}
+
+	@Override
+	public void closeInventory(EntityPlayer player) {
+
 	}
 
 	@Override
@@ -250,6 +278,27 @@ public class GrcInternalInventory implements IInventory, INBTSerializableContext
 			onSlotChanged(index);
 			return itemstack;
 		}
+		return null;
+	}
+
+	@Nullable
+	@Override
+	public ItemStack removeStackFromSlot(int index) {
+		return null;
+	}
+
+	@Override
+	public String getName() {
+		return null;
+	}
+
+	@Override
+	public boolean hasCustomName() {
+		return false;
+	}
+
+	@Override
+	public ITextComponent getDisplayName() {
 		return null;
 	}
 }
