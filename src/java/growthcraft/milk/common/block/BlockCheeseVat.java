@@ -28,6 +28,7 @@ import growthcraft.milk.GrowthCraftMilk;
 import growthcraft.milk.client.render.RenderCheeseVat;
 import growthcraft.milk.common.tileentity.TileEntityCheeseVat;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -59,7 +60,7 @@ public class BlockCheeseVat extends GrcBlockContainer
 	{
 		if (random.nextInt(12) == 0)
 		{
-			final TileEntityCheeseVat te = getTileEntity(world, x, y, z);
+			final TileEntityCheeseVat te = getTileEntity(world, pos);
 			if (te != null)
 			{
 				if (te.isWorking())
@@ -78,32 +79,32 @@ public class BlockCheeseVat extends GrcBlockContainer
 	}
 
 	@Override
-	public void setBlockBoundsForItemRender()
+	public void setBlockBoundsForItemRender(IBlockState state, IBlockAccess source, BlockPos pos)
 	{
-		this.getBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+		this.getBoundingBox(state, source, pos);
 	}
 
 	@Override
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void getCollisionBoundingBox(World world, BlockPos pos, AxisAlignedBB axis, List list, Entity entity)
+	public void getCollisionBoundingBox(World world, BlockPos pos, AxisAlignedBB axis, List list, Entity entity, IBlockState state, IBlockAccess source)
 	{
 		final float unit = 1f / 16f;
-		this.getBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, unit, 1.0F);
-		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(state, source, pos);
+		super.getCollisionBoundingBox(state, world, pos);
 
-		this.getBoundingBox(0.0F, 0.0F, 0.0F, unit, 1.0F, 1.0F);
-		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(state, source, pos);
+		super.getCollisionBoundingBox(state, world, pos);
 
-		this.getBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, unit);
-		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(state, source, pos);
+		super.getCollisionBoundingBox(state, world, pos);
 
-		this.getBoundingBox(1.0F - unit, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
-		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(state, source, pos);
+		super.getCollisionBoundingBox(state, world, pos);
 
-		this.getBoundingBox(0.0F, 0.0F, 1.0F - unit, 1.0F, 1.0F, 1.0F);
-		super.getCollisionBoundingBox(world, x, y, z, axis, list, entity);
+		this.getBoundingBox(state, source, pos);
+		super.getCollisionBoundingBox(state, world, pos);
 
-		this.setBlockBoundsForItemRender();
+		this.setBlockBoundsForItemRender(state, source, pos);
 	}
 
 	@Override
