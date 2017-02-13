@@ -27,7 +27,7 @@ public class ItemGrapeSeeds extends GrcItemBase implements IPlantable
 	 * MAIN
 	 ************/
 	@Override
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, int EnumFacing, float par8, float par9, float par10, EnumFacing face)
+	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, IBlockState state, int flags, int EnumFacing, float par8, float par9, float par10, EnumFacing face)
 	{
 		if (EnumFacing != 1)
 		{
@@ -38,7 +38,7 @@ public class ItemGrapeSeeds extends GrcItemBase implements IPlantable
 			final BlockGrapeVine0 block = GrowthCraftGrapes.blocks.grapeVine0.getBlockState();
 			if (BlockCheck.canSustainPlant(world, pos, EnumFacing.UP, block) && world.isAirBlock(x, y + 1, z))
 			{
-				world.setBlockState(x, y + 1, z, block);
+				world.setBlockState(pos, state, flags);
 				--stack.stackSize;
 				return true;
 			}
