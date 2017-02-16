@@ -76,12 +76,12 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
         return (float) meta / (float) RiceStage.MATURE;
     }
 
-    private void incrementGrowth(World world, BlockPos pos, IBlockState meta, IBlockState state) {
+    private void incrementGrowth(World world, BlockPos pos, int meta, IBlockState state) {
         world.setBlockState(pos, state, BlockFlags.SYNC);
         AppleCore.announceGrowthTick(this, world, pos, meta, state);
     }
 
-    private void growRice(World world, BlockPos pos, IBlockState state, IBlockState meta, Block block) {
+    private void growRice(World world, BlockPos pos, IBlockState state, int meta, Block block) {
         incrementGrowth(world, pos, meta, state);
         final Block paddyBlock = world.getBlockState(block);
         if (RiceBlockCheck.isPaddy(paddyBlock)) {
@@ -101,7 +101,7 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
             if (allowGrowthResult == Event.Result.DENY)
                 return;
 
-            final IBlockState meta = world.getBlockState((BlockPos) state);
+            final int meta = world.getBlockState((BlockPos) state);
 
             if (meta < RiceStage.MATURE) {
                 final float f = this.getGrowthRate(world, pos);

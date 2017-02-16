@@ -72,7 +72,7 @@ public abstract class BlockGrapeVineBase extends GrcBlockBase implements IPlanta
         return GrapeBlockCheck.isGrapeVine(block);
     }
 
-    public void incrementGrowth(World world, BlockPos pos, IBlockState meta, IBlockState state, Block block) {
+    public void incrementGrowth(World world, BlockPos pos, int meta, IBlockState state, Block block) {
         world.setBlockState(pos, state, meta + 1, BlockFlags.SYNC);
         AppleCore.announceGrowthTick(block, world, pos, meta, state);
     }
@@ -174,7 +174,7 @@ public abstract class BlockGrapeVineBase extends GrcBlockBase implements IPlanta
      * @param z     - z coord
      * @param meta  - block metadata
      */
-    protected abstract void doGrowth(World world, BlockPos pos, IBlockState meta);
+    protected abstract void doGrowth(World world, BlockPos pos, int meta);
 
     /**
      * Are the conditions right for this plant to grow?
@@ -195,7 +195,7 @@ public abstract class BlockGrapeVineBase extends GrcBlockBase implements IPlanta
             if (Event.Result.DENY == allowGrowthResult)
                 return;
 
-            final IBlockState meta = world.getBlockState((BlockPos) state);
+            final int meta = world.getBlockState((BlockPos) state);
             final float f = this.getGrowthRate(world, pos);
 
             final boolean continueGrowth = random.nextInt((int) (getGrowthRateMultiplier() / f) + 1) == 0;

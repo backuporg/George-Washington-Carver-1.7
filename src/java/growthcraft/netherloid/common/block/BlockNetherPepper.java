@@ -73,7 +73,7 @@ public class BlockNetherPepper extends BlockBush implements ICropDataProvider, I
 
     }
 
-    private void incrementGrowth(World world, BlockPos pos, IBlockState meta, IBlockState state) {
+    private void incrementGrowth(World world, BlockPos pos, int meta, IBlockState state) {
         world.setBlockState(pos, state, meta + 1, BlockFlags.SYNC);
         AppleCore.announceGrowthTick(this, world, pos, meta);
     }
@@ -123,7 +123,7 @@ public class BlockNetherPepper extends BlockBush implements ICropDataProvider, I
     }
 
     @Override
-    public void updateTick(World world, BlockPos pos, Random random, IBlockState meta) {
+    public void updateTick(World world, BlockPos pos, Random random, int meta) {
         final Event.Result result = AppleCore.validateGrowthTick(this, world, pos, random);
         if (Event.Result.DENY == result) return;
 
