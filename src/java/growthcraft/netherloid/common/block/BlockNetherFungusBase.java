@@ -28,6 +28,7 @@ import growthcraft.core.util.BlockCheck;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
@@ -109,7 +110,7 @@ public abstract class BlockNetherFungusBase extends BlockBush implements IPlanta
         return EnumPlantType.Nether;
     }
 
-    public Block getPlant(IBlockAccess world, BlockPos pos) {
+    public IBlockState getPlant(IBlockAccess world, BlockPos pos) {
         return this;
     }
 

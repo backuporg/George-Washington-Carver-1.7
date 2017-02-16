@@ -24,6 +24,7 @@
 package growthcraft.netherloid.common.block;
 
 import growthcraft.netherloid.netherloid;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.MobEffects;
@@ -31,14 +32,16 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public abstract class BlockNetherBaalsRot extends BlockNetherFungusBase {
+import java.util.Random;
+
+public class BlockNetherBaalsRot extends BlockNetherFungusBase {
     private final float baalsRotSpreadRate = netherloid.getConfig().baalsRotSpreadRate;
 
     public BlockNetherBaalsRot() {
         super();
         setUnlocalizedName("grcnetherloid.netherBaalsRot");
         //setBlockTextureName("grcnetherloid:baals_rot");
-        getBoundingBox(0.125F, 0.0F, 0.125F, 0.875F, 0.8125F, 0.875F);
+        getBoundingBox();
         setCreativeTab(netherloid.tab);
     }
 
@@ -47,7 +50,7 @@ public abstract class BlockNetherBaalsRot extends BlockNetherFungusBase {
         if (world.isRemote) return;
         if (entity instanceof EntityLivingBase) {
             if (world.rand.nextFloat() < 0.3F) {
-                ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.WITHER.id, 20 * 20));
+                ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.WITHER, 20 * 20));
             }
         }
     }
@@ -55,5 +58,20 @@ public abstract class BlockNetherBaalsRot extends BlockNetherFungusBase {
     @Override
     protected float getSpreadRate(World world, BlockPos pos) {
         return baalsRotSpreadRate;
+    }
+
+    @Override
+    public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {
+        return false;
+    }
+
+    @Override
+    public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+        return false;
+    }
+
+    @Override
+    public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+
     }
 }

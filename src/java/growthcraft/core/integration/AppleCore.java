@@ -35,11 +35,11 @@ public class AppleCore extends ModIntegrationBase {
 
     // abstract the AppleCoreAPI reference into an Optional.Method so that AppleCore is not a hard dependency
     @Optional.Method(modid = MOD_ID)
-    private static void announceGrowthTick_AC(Block block, World world, BlockPos pos, int previousMetadata, IBlockState state) {
+    private static void announceGrowthTick_AC(Block block, World world, BlockPos pos, IBlockState previousMetadata, IBlockState state) {
         AppleCoreAPI.dispatcher.announcePlantGrowth(block, world, pos, state);
     }
 
-    public static void announceGrowthTick(Block block, World world, BlockPos pos, int previousMetadata, IBlockState state) {
+    public static void announceGrowthTick(Block block, World world, BlockPos pos, IBlockState previousMetadata, IBlockState state) {
         if (appleCoreLoaded)
             announceGrowthTick_AC(block, world, pos, previousMetadata, state);
     }

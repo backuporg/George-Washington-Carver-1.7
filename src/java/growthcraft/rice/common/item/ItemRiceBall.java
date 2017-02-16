@@ -12,13 +12,4 @@ public class ItemRiceBall extends GrcItemFoodBase {
         this.setUnlocalizedName("grc.riceBall");
         this.setCreativeTab(GrowthCraftCore.creativeTab);
     }
-
-    /************
-     * TEXTURES
-     ************/
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void registerIcons(IIconRegister reg) {
-        this.itemIcon = reg.registerIcon("grcrice:rice_ball");
-    }
 }

@@ -60,7 +60,7 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
         return (float) state.getValue(GROWTH) / (float) HopsStage.FRUIT;
     }
 
-    protected void incrementGrowth(World world, BlockPos pos, IBlockState state, int previousMetadata, Block block) {
+    protected void incrementGrowth(World world, BlockPos pos, IBlockState state, IBlockState previousMetadata, Block block) {
         final int meta = state.getValue(GROWTH);
         world.setBlockState(pos, state.withProperty(GROWTH, meta + 1), BlockFlags.UPDATE_AND_SYNC);
         AppleCore.announceGrowthTick(block, world, pos, previousMetadata, state);
@@ -87,7 +87,7 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
             if (allowGrowthResult == Event.Result.DENY)
                 return;
 
-            final int meta = world.getBlockState(pos);
+            final IBlockState meta = world.getBlockState(pos);
             final float f = this.getGrowthRateLoop(world, pos);
 
             if (meta < HopsStage.BIG) {
@@ -122,7 +122,7 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
     /* Apply bonemeal effect */
     @Override
     public void grow(World world, Random rand, BlockPos pos, IBlockState state, Block block) {
-        final int meta = state.getValue(GROWTH);
+        final IBlockState meta = state.getValue(GROWTH);
         if (meta < HopsStage.BIG) {
             incrementGrowth(world, pos, state, meta, block);
         } else if (meta >= HopsStage.BIG && canSpreadLeaves(world, pos)) {

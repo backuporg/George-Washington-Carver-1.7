@@ -76,14 +76,14 @@ public class BlockThistle extends BlockBush implements ISpreadablePlant, IGrowab
         spreadLogic.run(this, 0, world, pos, random, state, worldIn);
     }
 
-    private void incrementGrowth(World world, BlockPos pos, IBlockState state, int meta2, Block block) {
+    private void incrementGrowth(World world, BlockPos pos, IBlockState state, IBlockState meta2, Block block) {
         final int meta = state.getValue(GROWTH);
         world.setBlockState(pos, state.withProperty(GROWTH, meta + 1), BlockFlags.SYNC);
         AppleCore.announceGrowthTick(block, world, pos, meta2, state);
     }
 
     @Override
-    public void updateTick(World world, BlockPos pos, IBlockState state, Random random, int meta2, Block block) {
+    public void updateTick(World world, BlockPos pos, IBlockState state, Random random, IBlockState meta2, Block block) {
         super.updateTick(world, pos, state, random);
         if (!world.isRemote) {
             final int meta = state.getValue(GROWTH);
@@ -157,7 +157,7 @@ public class BlockThistle extends BlockBush implements ISpreadablePlant, IGrowab
 
     /* Apply bonemeal effect */
     @Override
-    public void grow(World world, Random random, BlockPos pos, IBlockState state, int meta2, Block block) {
+    public void grow(World world, Random random, BlockPos pos, IBlockState state, IBlockState meta2, Block block) {
         final int meta = state.getValue(GROWTH);
         if (meta < ThistleStage.FLOWER) {
             final int growthChance = GrowthCraftMilk.getConfig().thistleGrowthChance;
