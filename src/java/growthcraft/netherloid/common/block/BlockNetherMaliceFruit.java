@@ -73,7 +73,7 @@ public abstract class BlockNetherMaliceFruit extends Block implements IGrowable,
         return (float) meta / (float) MaliceFruitStage.MATURE;
     }
 
-    void incrementGrowth(World world, BlockPos pos, IBlockState meta, IBlockState state) {
+    void incrementGrowth(World world, BlockPos pos, int meta, IBlockState state) {
         world.setBlockState(pos, state, meta + 1, BlockFlags.SYNC);
         AppleCore.announceGrowthTick(this, world, pos, meta);
     }
@@ -121,7 +121,7 @@ public abstract class BlockNetherMaliceFruit extends Block implements IGrowable,
 
             final boolean continueGrowth = random.nextInt(this.growth) == 0;
             if (allowGrowthResult == Event.Result.ALLOW || continueGrowth) {
-                final IBlockState meta = world.getBlockState(pos);
+                final int meta = world.getBlockState(pos);
                 if (meta < MaliceFruitStage.MATURE) {
                     incrementGrowth(world, pos, meta, state);
                 } else if (dropRipeMaliceFruit && world.rand.nextInt(this.dropChance) == 0) {

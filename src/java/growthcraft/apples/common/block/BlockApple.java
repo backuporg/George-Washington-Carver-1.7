@@ -24,7 +24,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
-public class BlockApple extends GrcBlockBase implements IGrowable, ICropDataProvider {
+public abstract class BlockApple extends GrcBlockBase implements IGrowable, ICropDataProvider {
 
     public static final PropertyInteger GROWTH = PropertyInteger.create("growth", 0, 3);
     @SideOnly(Side.CLIENT)
@@ -43,12 +43,6 @@ public class BlockApple extends GrcBlockBase implements IGrowable, ICropDataProv
         this.setUnlocalizedName("grc.appleBlock");
         this.setCreativeTab(null);
     }
-
-    @Override
-    public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
-        return false;
-    }
-
     @Override
     public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
 
@@ -58,9 +52,9 @@ public class BlockApple extends GrcBlockBase implements IGrowable, ICropDataProv
         return (float) meta / (float) AppleStage.MATURE;
     }
 
-    void incrementGrowth(World world, BlockPos pos, IBlockState state, IBlockState meta) {
+    void incrementGrowth(World world, BlockPos pos, IBlockState state, int meta, IBlockState previousMetadata, Block block) {
         world.setBlockState(pos, state, BlockFlags.SYNC);
-        AppleCore.announceGrowthTick(this, world, pos, meta);
+        AppleCore.announceGrowthTick(block, world, pos, previousMetadata, state);
     }
 
     /* Can this accept bonemeal? */
@@ -76,32 +70,32 @@ public class BlockApple extends GrcBlockBase implements IGrowable, ICropDataProv
 
     /* SideOnly(Side.SERVER) Can this apply bonemeal effect? */
     @Override
-    public boolean func_149852_a(World world, Random random, BlockPos pos) {
+    public boolean canUseBonemeal(World world, Random random, BlockPos pos) {
         return true;
     }
 
     /* Apply bonemeal effect */
     @Override
-    public void func_149853_b(World world, Random random, BlockPos pos, IBlockState meta) {
-        incrementGrowth(world, pos, world.getBlockState(pos), meta);
+    public void grow(World world, Random random, BlockPos pos, int meta, IBlockState previousMetadata, Block block) {
+        incrementGrowth(world, pos, world.getBlockState(pos), meta, previousMetadata, block);
     }
 
     /************
      * TICK
      ************/
-    public void updateTick(World world, BlockPos pos, Random random, IBlockState state) {
+    public void updateTick(World world, BlockPos pos, Random random, IBlockState state, Block block, IBlockState previousMetadata) {
         if (!this.canBlockStay(world, pos)) {
             fellBlockAsItem(world, pos);
         } else {
-            final Event.Result allowGrowthResult = AppleCore.validateGrowthTick(this, world, pos, random);
+            final Event.Result allowGrowthResult = AppleCore.validateGrowthTick(block, world, pos, random, state);
             if (allowGrowthResult == Event.Result.DENY)
                 return;
 
             final boolean continueGrowth = random.nextInt(this.growth) == 0;
             if (allowGrowthResult == Event.Result.ALLOW || continueGrowth) {
-                final IBlockState meta = state.getValue(GROWTH);
+                final int meta = state.getValue(GROWTH);
                 if (meta < AppleStage.MATURE) {
-                    incrementGrowth(world, pos, state, meta);
+                    incrementGrowth(world, pos, state, meta, previousMetadata, block);
                 } else if (dropRipeApples && world.rand.nextInt(this.dropChance) == 0) {
                     fellBlockAsItem(world, pos);
                 }

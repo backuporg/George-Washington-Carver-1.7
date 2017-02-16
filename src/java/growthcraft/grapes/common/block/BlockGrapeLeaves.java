@@ -292,7 +292,7 @@ public class BlockGrapeLeaves extends BlockLeaves implements IBlockRope {
     @Override
     @SideOnly(Side.CLIENT)
     public int colorMultiplier(IBlockAccess world, BlockPos pos) {
-        final IBlockState meta = world.getBlockState(pos);
+        final int meta = world.getBlockState(pos);
 
         int r = 0;
         int g = 0;

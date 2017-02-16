@@ -39,7 +39,7 @@ public class BlockGrapeVine1 extends BlockGrapeVineBase {
     }
 
     @Override
-    protected void doGrowth(World world, BlockPos pos, IBlockState meta) {
+    protected void doGrowth(World world, BlockPos pos, int meta) {
         final Block above = world.getBlockState(x, y + 1, z);
         /* Is there a rope block above this? */
         if (BlockCheck.isRope(above)) {

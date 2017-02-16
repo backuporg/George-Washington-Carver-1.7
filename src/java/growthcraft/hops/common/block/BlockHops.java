@@ -87,7 +87,7 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
             if (allowGrowthResult == Event.Result.DENY)
                 return;
 
-            final IBlockState meta = world.getBlockState(pos);
+            final int meta = world.getBlockState(pos);
             final float f = this.getGrowthRateLoop(world, pos);
 
             if (meta < HopsStage.BIG) {
@@ -122,7 +122,7 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
     /* Apply bonemeal effect */
     @Override
     public void grow(World world, Random rand, BlockPos pos, IBlockState state, Block block) {
-        final IBlockState meta = state.getValue(GROWTH);
+        final int meta = state.getValue(GROWTH);
         if (meta < HopsStage.BIG) {
             incrementGrowth(world, pos, state, meta, block);
         } else if (meta >= HopsStage.BIG && canSpreadLeaves(world, pos)) {
