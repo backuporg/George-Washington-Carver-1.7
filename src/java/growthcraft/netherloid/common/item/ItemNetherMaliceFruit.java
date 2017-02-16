@@ -31,23 +31,19 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
-public class ItemNetherMaliceFruit extends ItemFood
-{
-	public ItemNetherMaliceFruit()
-	{
-		super(2, 0.3F, false);
-		setUnlocalizedName("grcnetherloid.netherMaliceFruit");
-		//setTextureName("grcnetherloid:malice_fruit");
-		setCreativeTab(netherloid.tab);
-		setAlwaysEdible();
-	}
+public class ItemNetherMaliceFruit extends ItemFood {
+    public ItemNetherMaliceFruit() {
+        super(2, 0.3F, false);
+        setUnlocalizedName("grcnetherloid.netherMaliceFruit");
+        //setTextureName("grcnetherloid:malice_fruit");
+        setCreativeTab(netherloid.tab);
+        setAlwaysEdible();
+    }
 
-	protected void onFoodEaten(ItemStack itemstack, World world, EntityPlayer player)
-	{
-		if (!world.isRemote)
-		{
-			player.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 20 * 20, 3));
-			player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 40 * 20, 0));
-		}
-	}
+    protected void onFoodEaten(ItemStack itemstack, World world, EntityPlayer player) {
+        if (!world.isRemote) {
+            player.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 20 * 20, 3));
+            player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 40 * 20, 0));
+        }
+    }
 }

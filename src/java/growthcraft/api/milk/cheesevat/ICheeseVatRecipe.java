@@ -33,14 +33,20 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public interface ICheeseVatRecipe
-{
-	List<FluidStack> getOutputFluidStacks();
-	List<ItemStack> getOutputItemStacks();
-	List<IMultiFluidStacks> getInputFluidStacks();
-	List<IMultiItemStacks> getInputItemStacks();
-	boolean isMatchingRecipe(@Nonnull List<FluidStack> fluids, @Nonnull List<ItemStack> items);
-	boolean isFluidIngredient(@Nullable Fluid fluid);
-	boolean isFluidIngredient(@Nullable FluidStack fluidStack);
-	boolean isItemIngredient(@Nullable ItemStack itemStack);
+public interface ICheeseVatRecipe {
+    List<FluidStack> getOutputFluidStacks();
+
+    List<ItemStack> getOutputItemStacks();
+
+    List<IMultiFluidStacks> getInputFluidStacks();
+
+    List<IMultiItemStacks> getInputItemStacks();
+
+    boolean isMatchingRecipe(@Nonnull List<FluidStack> fluids, @Nonnull List<ItemStack> items);
+
+    boolean isFluidIngredient(@Nullable Fluid fluid);
+
+    boolean isFluidIngredient(@Nullable FluidStack fluidStack);
+
+    boolean isItemIngredient(@Nullable ItemStack itemStack);
 }

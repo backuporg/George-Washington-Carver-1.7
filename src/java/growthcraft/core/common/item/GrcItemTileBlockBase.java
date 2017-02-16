@@ -28,28 +28,23 @@ import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
-public class GrcItemTileBlockBase extends GrcItemBlockBase implements IItemTileBlock
-{
-	public GrcItemTileBlockBase(Block block)
-	{
-		super(block);
-	}
+public class GrcItemTileBlockBase extends GrcItemBlockBase implements IItemTileBlock {
+    public GrcItemTileBlockBase(Block block) {
+        super(block);
+    }
 
-	@Override
-	public NBTTagCompound getTileTagCompound(ItemStack stack)
-	{
-		final NBTTagCompound tag = NBTHelper.openItemStackTag(stack);
-		if (tag.hasKey("tiledata"))
-		{
-			return tag.getCompoundTag("tiledata");
-		}
-		return null;
-	}
+    @Override
+    public NBTTagCompound getTileTagCompound(ItemStack stack) {
+        final NBTTagCompound tag = NBTHelper.openItemStackTag(stack);
+        if (tag.hasKey("tiledata")) {
+            return tag.getCompoundTag("tiledata");
+        }
+        return null;
+    }
 
-	@Override
-	public void setTileTagCompound(ItemStack stack, NBTTagCompound tileTag)
-	{
-		final NBTTagCompound tag = NBTHelper.openItemStackTag(stack);
-		tag.setTag("tiledata", tileTag);
-	}
+    @Override
+    public void setTileTagCompound(ItemStack stack, NBTTagCompound tileTag) {
+        final NBTTagCompound tag = NBTHelper.openItemStackTag(stack);
+        tag.setTag("tiledata", tileTag);
+    }
 }

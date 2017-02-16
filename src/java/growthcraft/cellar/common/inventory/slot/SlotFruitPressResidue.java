@@ -5,16 +5,13 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 
-public class SlotFruitPressResidue extends GrcSlot
-{
-	public SlotFruitPressResidue(IInventory inv, BlockPos pos)
-	{
-		super(inv, x, y, z);
-	}
+public class SlotFruitPressResidue extends GrcSlot {
+    public SlotFruitPressResidue(IInventory inv, BlockPos pos) {
+        super(inv, x, y, z);
+    }
 
-	@Override
-	public boolean isItemValid(ItemStack stack)
-	{
-		return true;
-	}
+    @Override
+    public boolean isItemValid(ItemStack stack) {
+        return true;
+    }
 }

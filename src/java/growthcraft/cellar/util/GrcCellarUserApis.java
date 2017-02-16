@@ -37,102 +37,86 @@ import growthcraft.core.common.GrcModuleBase;
 
 import javax.annotation.Nonnull;
 
-public class GrcCellarUserApis extends GrcModuleBase
-{
-	private UserBrewingRecipesConfig userBrewingRecipes;
-	private UserCultureRecipesConfig userCultureRecipes;
-	private UserFermentingRecipesConfig userFermentingRecipes;
-	private UserHeatSourcesConfig userHeatSources;
-	private UserPressingRecipesConfig userPressingRecipes;
-	private UserYeastEntriesConfig userYeastEntries;
-	private ModuleContainer modules;
+public class GrcCellarUserApis extends GrcModuleBase {
+    private UserBrewingRecipesConfig userBrewingRecipes;
+    private UserCultureRecipesConfig userCultureRecipes;
+    private UserFermentingRecipesConfig userFermentingRecipes;
+    private UserHeatSourcesConfig userHeatSources;
+    private UserPressingRecipesConfig userPressingRecipes;
+    private UserYeastEntriesConfig userYeastEntries;
+    private ModuleContainer modules;
 
-	public GrcCellarUserApis()
-	{
-		this.modules = new ModuleContainer();
-		this.userBrewingRecipes = new UserBrewingRecipesConfig();
-		this.userCultureRecipes = new UserCultureRecipesConfig();
-		this.userFermentingRecipes = new UserFermentingRecipesConfig();
-		this.userHeatSources = new UserHeatSourcesConfig();
-		this.userPressingRecipes = new UserPressingRecipesConfig();
-		this.userYeastEntries = new UserYeastEntriesConfig();
-		modules.add(userBrewingRecipes);
-		modules.add(userCultureRecipes);
-		modules.add(userFermentingRecipes);
-		modules.add(userHeatSources);
-		modules.add(userPressingRecipes);
-		modules.add(userYeastEntries);
-	}
+    public GrcCellarUserApis() {
+        this.modules = new ModuleContainer();
+        this.userBrewingRecipes = new UserBrewingRecipesConfig();
+        this.userCultureRecipes = new UserCultureRecipesConfig();
+        this.userFermentingRecipes = new UserFermentingRecipesConfig();
+        this.userHeatSources = new UserHeatSourcesConfig();
+        this.userPressingRecipes = new UserPressingRecipesConfig();
+        this.userYeastEntries = new UserYeastEntriesConfig();
+        modules.add(userBrewingRecipes);
+        modules.add(userCultureRecipes);
+        modules.add(userFermentingRecipes);
+        modules.add(userHeatSources);
+        modules.add(userPressingRecipes);
+        modules.add(userYeastEntries);
+    }
 
-	@Override
-	public void setLogger(@Nonnull ILogger log)
-	{
-		super.setLogger(log);
-		modules.setLogger(log);
-	}
+    @Override
+    public void setLogger(@Nonnull ILogger log) {
+        super.setLogger(log);
+        modules.setLogger(log);
+    }
 
-	public UserBrewingRecipesConfig getUserBrewingRecipes()
-	{
-		return this.userBrewingRecipes;
-	}
+    public UserBrewingRecipesConfig getUserBrewingRecipes() {
+        return this.userBrewingRecipes;
+    }
 
-	public UserCultureRecipesConfig getUserCultureRecipes()
-	{
-		return this.userCultureRecipes;
-	}
+    public UserCultureRecipesConfig getUserCultureRecipes() {
+        return this.userCultureRecipes;
+    }
 
-	public UserFermentingRecipesConfig getUserFermentingRecipes()
-	{
-		return this.userFermentingRecipes;
-	}
+    public UserFermentingRecipesConfig getUserFermentingRecipes() {
+        return this.userFermentingRecipes;
+    }
 
-	public UserHeatSourcesConfig getUserHeatSources()
-	{
-		return this.userHeatSources;
-	}
+    public UserHeatSourcesConfig getUserHeatSources() {
+        return this.userHeatSources;
+    }
 
-	public UserPressingRecipesConfig getUserPressingRecipes()
-	{
-		return this.userPressingRecipes;
-	}
+    public UserPressingRecipesConfig getUserPressingRecipes() {
+        return this.userPressingRecipes;
+    }
 
-	public UserYeastEntriesConfig getUserYeastEntries()
-	{
-		return this.userYeastEntries;
-	}
+    public UserYeastEntriesConfig getUserYeastEntries() {
+        return this.userYeastEntries;
+    }
 
-	@Override
-	public void preInit()
-	{
-		modules.preInit();
-	}
+    @Override
+    public void preInit() {
+        modules.preInit();
+    }
 
-	@Override
-	public void register()
-	{
-		modules.register();
-	}
+    @Override
+    public void register() {
+        modules.register();
+    }
 
-	@Override
-	public void init()
-	{
-		modules.init();
-	}
+    @Override
+    public void init() {
+        modules.init();
+    }
 
-	@Override
-	public void postInit()
-	{
-		modules.postInit();
-	}
+    @Override
+    public void postInit() {
+        modules.postInit();
+    }
 
-	public void loadConfigs()
-	{
-		for (IModule module : modules)
-		{
-			if (module instanceof AbstractUserJSONConfig)
-			{
-				((AbstractUserJSONConfig)module).loadUserConfig();
-			}
-		}
-	}
+    public void loadConfigs() {
+        for (IModule module : modules) {
+            if (module instanceof AbstractUserJSONConfig) {
+                ((AbstractUserJSONConfig) module).loadUserConfig();
+            }
+        }
+    }
 }

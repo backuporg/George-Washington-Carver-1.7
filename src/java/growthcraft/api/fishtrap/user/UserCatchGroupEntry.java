@@ -25,30 +25,25 @@ package growthcraft.api.fishtrap.user;
 
 import growthcraft.api.core.schema.ICommentable;
 
-public class UserCatchGroupEntry implements ICommentable
-{
-	public String comment = "";
-	public int weight;
+public class UserCatchGroupEntry implements ICommentable {
+    public String comment = "";
+    public int weight;
 
-	public UserCatchGroupEntry()
-	{
-		this.weight = 1;
-	}
+    public UserCatchGroupEntry() {
+        this.weight = 1;
+    }
 
-	public UserCatchGroupEntry(int p_weight)
-	{
-		this.weight = p_weight;
-	}
+    public UserCatchGroupEntry(int p_weight) {
+        this.weight = p_weight;
+    }
 
-	@Override
-	public String getComment()
-	{
-		return comment;
-	}
+    @Override
+    public String getComment() {
+        return comment;
+    }
 
-	@Override
-	public void setComment(String com)
-	{
-		this.comment = com;
-	}
+    @Override
+    public void setComment(String com) {
+        this.comment = com;
+    }
 }

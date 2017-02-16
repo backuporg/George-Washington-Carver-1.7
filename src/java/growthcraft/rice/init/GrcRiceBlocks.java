@@ -29,22 +29,19 @@ import growthcraft.core.common.definition.BlockTypeDefinition;
 import growthcraft.rice.common.block.BlockPaddy;
 import growthcraft.rice.common.block.BlockRice;
 
-public class GrcRiceBlocks extends GrcModuleBlocks
-{
-	public BlockTypeDefinition<BlockRice> riceBlock;
-	public BlockDefinition paddyField;
+public class GrcRiceBlocks extends GrcModuleBlocks {
+    public BlockTypeDefinition<BlockRice> riceBlock;
+    public BlockDefinition paddyField;
 
-	@Override
-	public void preInit()
-	{
-		this.riceBlock = newTypedDefinition(new BlockRice());
-		this.paddyField = newDefinition(new BlockPaddy());
-	}
+    @Override
+    public void preInit() {
+        this.riceBlock = newTypedDefinition(new BlockRice());
+        this.paddyField = newDefinition(new BlockPaddy());
+    }
 
-	@Override
-	public void register()
-	{
-		riceBlock.register("grc.riceBlock");
-		paddyField.register("grc.paddyField");
-	}
+    @Override
+    public void register() {
+        riceBlock.register("grc.riceBlock");
+        paddyField.register("grc.paddyField");
+    }
 }

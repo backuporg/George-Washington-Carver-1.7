@@ -29,12 +29,16 @@ import javax.annotation.Nonnull;
 import java.util.Collection;
 import java.util.List;
 
-public interface IFluidTagsRegistry extends ILoggable
-{
-	void registerTag(@Nonnull FluidTag tag);
-	FluidTag createTag(@Nonnull String name);
-	Collection<String> getNames();
-	Collection<FluidTag> getTags();
-	FluidTag findTag(@Nonnull String name);
-	List<FluidTag> expandTagNames(@Nonnull List<String> tagNames);
+public interface IFluidTagsRegistry extends ILoggable {
+    void registerTag(@Nonnull FluidTag tag);
+
+    FluidTag createTag(@Nonnull String name);
+
+    Collection<String> getNames();
+
+    Collection<FluidTag> getTags();
+
+    FluidTag findTag(@Nonnull String name);
+
+    List<FluidTag> expandTagNames(@Nonnull List<String> tagNames);
 }

@@ -29,33 +29,30 @@ import growthcraft.core.common.GrcModuleBlocks;
 import growthcraft.core.common.definition.BlockDefinition;
 
 
-public class GrcCellarBlocks extends GrcModuleBlocks
-{
-	public BlockDefinition brewKettle;
-	public BlockDefinition cultureJar;
-	public BlockDefinition fermentBarrel;
-	public BlockDefinition fruitPress;
-	public BlockDefinition fruitPresser;
+public class GrcCellarBlocks extends GrcModuleBlocks {
+    public BlockDefinition brewKettle;
+    public BlockDefinition cultureJar;
+    public BlockDefinition fermentBarrel;
+    public BlockDefinition fruitPress;
+    public BlockDefinition fruitPresser;
 
-	@Override
-	public void preInit()
-	{
-		this.brewKettle    = newDefinition(new BlockBrewKettle());
-		this.cultureJar    = newDefinition(new BlockCultureJar());
-		this.fermentBarrel = newDefinition(new BlockFermentBarrel());
-		this.fruitPress    = newDefinition(new BlockFruitPress());
-		this.fruitPresser  = newDefinition(new BlockFruitPresser());
-	}
+    @Override
+    public void preInit() {
+        this.brewKettle = newDefinition(new BlockBrewKettle());
+        this.cultureJar = newDefinition(new BlockCultureJar());
+        this.fermentBarrel = newDefinition(new BlockFermentBarrel());
+        this.fruitPress = newDefinition(new BlockFruitPress());
+        this.fruitPresser = newDefinition(new BlockFruitPresser());
+    }
 
-	@Override
-	public void register()
-	{
-		fruitPress.register("grc.fruitPress");
-		fruitPresser.register("grc.fruitPresser");
-		brewKettle.register("grc.brewKettle");
-		fermentBarrel.register("grc.fermentBarrel", ItemBlockFermentBarrel.class);
-		cultureJar.register("grc.fermentJar");
+    @Override
+    public void register() {
+        fruitPress.register("grc.fruitPress");
+        fruitPresser.register("grc.fruitPresser");
+        brewKettle.register("grc.brewKettle");
+        fermentBarrel.register("grc.fermentBarrel", ItemBlockFermentBarrel.class);
+        cultureJar.register("grc.fermentJar");
 
-		NEI.hideItem(fruitPresser.asStack());
-	}
+        NEI.hideItem(fruitPresser.asStack());
+    }
 }

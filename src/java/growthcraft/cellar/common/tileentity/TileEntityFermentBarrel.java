@@ -29,397 +29,326 @@ import net.minecraftforge.fluids.FluidTank;
 
 import java.io.IOException;
 
-public class TileEntityFermentBarrel extends TileEntityCellarDevice implements ITileProgressiveDevice, INBTItemSerializable
-{
-	public static enum FermentBarrelDataID
-	{
-		TIME,
-		TIME_MAX,
-		UNKNOWN;
+public class TileEntityFermentBarrel extends TileEntityCellarDevice implements ITileProgressiveDevice, INBTItemSerializable {
+    // Constants
+    private static final int[] accessableSlotIds = new int[]{0};
+    // Other Vars.
+    protected int time;
+    private int timemax = GrowthCraftCellar.getConfig().fermentTime;
+    private boolean shouldUseCachedRecipe = GrowthCraftCellar.getConfig().fermentBarrelUseCachedRecipe;
+    private boolean recheckRecipe = true;
+    private boolean lidOn = true;
+    private IFermentationRecipe activeRecipe;
 
-		public static final FermentBarrelDataID[] VALID = new FermentBarrelDataID[]
-		{
-			TIME,
-			TIME_MAX
-		};
+    @Override
+    protected FluidTank[] createTanks() {
+        return new FluidTank[]{new CellarTank(GrowthCraftCellar.getConfig().fermentBarrelMaxCap, this)};
+    }
 
-		public static FermentBarrelDataID getByaOrdinal(int ord)
-		{
-			if (ord >= 0 && ord <= VALID.length) return VALID[ord];
-			return UNKNOWN;
-		}
-	}
+    @Override
+    public GrcInternalInventory createInventory() {
+        return new GrcInternalInventory(this, 2);
+    }
 
-	// Constants
-	private static final int[] accessableSlotIds = new int[] {0};
+    @Override
+    public String getDefaultInventoryName() {
+        return "container.grc.fermentBarrel";
+    }
 
-	// Other Vars.
-	protected int time;
-	private int timemax = GrowthCraftCellar.getConfig().fermentTime;
-	private boolean shouldUseCachedRecipe = GrowthCraftCellar.getConfig().fermentBarrelUseCachedRecipe;
-	private boolean recheckRecipe = true;
-	private boolean lidOn = true;
-	private IFermentationRecipe activeRecipe;
+    @Override
+    public String getGuiID() {
+        return "grccellar:ferment_barrel";
+    }
 
-	@Override
-	protected FluidTank[] createTanks()
-	{
-		return new FluidTank[] { new CellarTank(GrowthCraftCellar.getConfig().fermentBarrelMaxCap, this) };
-	}
+    @Override
+    public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn) {
+        return new ContainerFermentBarrel(playerInventory, this);
+    }
 
-	@Override
-	public GrcInternalInventory createInventory()
-	{
-		return new GrcInternalInventory(this, 2);
-	}
+    protected void markForRecipeRecheck() {
+        this.recheckRecipe = true;
+    }
 
-	@Override
-	public String getDefaultInventoryName()
-	{
-		return "container.grc.fermentBarrel";
-	}
+    /**
+     * @return time was reset, false otherwise
+     */
+    protected boolean resetTime() {
+        if (time != 0) {
+            this.time = 0;
+            return true;
+        }
+        return false;
+    }
 
-	@Override
-	public String getGuiID()
-	{
-		return "grccellar:ferment_barrel";
-	}
+    private IFermentationRecipe loadRecipe() {
+        return CellarRegistry.instance().fermenting().findRecipe(getFluidStack(0), getStackInSlot(0));
+    }
 
-	@Override
-	public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn)
-	{
-		return new ContainerFermentBarrel(playerInventory, this);
-	}
+    private IFermentationRecipe refreshRecipe() {
+        final IFermentationRecipe recipe = loadRecipe();
+        if (recipe != null && recipe != activeRecipe) {
+            if (activeRecipe != null) {
+                resetTime();
+            }
+            this.activeRecipe = recipe;
+            markDirty();
+        } else {
+            if (activeRecipe != null) {
+                this.activeRecipe = null;
+                resetTime();
+                markDirty();
+            }
+        }
+        return activeRecipe;
+    }
 
-	protected void markForRecipeRecheck()
-	{
-		this.recheckRecipe = true;
-	}
+    private IFermentationRecipe getWorkingRecipe() {
+        if (shouldUseCachedRecipe) {
+            if (activeRecipe == null) refreshRecipe();
+            return activeRecipe;
+        }
+        return loadRecipe();
+    }
 
-	/**
-	 * @return time was reset, false otherwise
-	 */
-	protected boolean resetTime()
-	{
-		if (time != 0)
-		{
-			this.time = 0;
-			return true;
-		}
-		return false;
-	}
+    public int getTime() {
+        return this.time;
+    }
 
-	private IFermentationRecipe loadRecipe()
-	{
-		return CellarRegistry.instance().fermenting().findRecipe(getFluidStack(0), getStackInSlot(0));
-	}
+    public int getTimeMax() {
+        // if this is the server, just return the recipe time
+        // clients will have their timemax synced from the server in the gui
+        if (!worldObj.isRemote) {
+            final IFermentationRecipe result = getWorkingRecipe();
+            if (result != null) {
+                return result.getTime();
+            }
+        }
+        return this.timemax;
+    }
 
-	private IFermentationRecipe refreshRecipe()
-	{
-		final IFermentationRecipe recipe = loadRecipe();
-		if (recipe != null && recipe != activeRecipe)
-		{
-			if (activeRecipe != null)
-			{
-				resetTime();
-			}
-			this.activeRecipe = recipe;
-			markDirty();
-		}
-		else
-		{
-			if (activeRecipe != null)
-			{
-				this.activeRecipe = null;
-				resetTime();
-				markDirty();
-			}
-		}
-		return activeRecipe;
-	}
+    private boolean canFerment() {
+        if (getStackInSlot(0) == null) return false;
+        if (isFluidTankEmpty(0)) return false;
+        return getWorkingRecipe() != null;
+    }
 
-	private IFermentationRecipe getWorkingRecipe()
-	{
-		if (shouldUseCachedRecipe)
-		{
-			if (activeRecipe == null) refreshRecipe();
-			return activeRecipe;
-		}
-		return loadRecipe();
-	}
+    public void fermentItem() {
+        final ItemStack fermentItem = getStackInSlot(0);
+        if (fermentItem != null) {
+            final IFermentationRecipe recipe = getWorkingRecipe();
+            if (recipe != null) {
+                final FluidStack outputFluidStack = recipe.getOutputFluidStack();
+                if (outputFluidStack != null) {
+                    getFluidTank(0).setFluid(FluidUtils.exchangeFluid(getFluidStack(0), outputFluidStack.getFluid()));
+                }
+                final IMultiItemStacks fermenter = recipe.getFermentingItemStack();
+                if (fermenter != null && !fermenter.isEmpty()) {
+                    decrStackSize(0, fermenter.getStackSize());
+                }
+            }
+        }
+    }
 
-	public int getTime()
-	{
-		return this.time;
-	}
+    @Override
+    public float getDeviceProgress() {
+        final int tmx = getTimeMax();
+        if (tmx > 0) {
+            return (float) time / (float) tmx;
+        }
+        return 0.0f;
+    }
 
-	public int getTimeMax()
-	{
-		// if this is the server, just return the recipe time
-		// clients will have their timemax synced from the server in the gui
-		if (!worldObj.isRemote)
-		{
-			final IFermentationRecipe result = getWorkingRecipe();
-			if (result != null)
-			{
-				return result.getTime();
-			}
-		}
-		return this.timemax;
-	}
+    @Override
+    public int getDeviceProgressScaled(int scale) {
+        final int tmx = getTimeMax();
+        if (tmx > 0) {
+            return this.time * scale / tmx;
+        }
+        return 0;
+    }
 
-	private boolean canFerment()
-	{
-		if (getStackInSlot(0) == null) return false;
-		if (isFluidTankEmpty(0)) return false;
-		return getWorkingRecipe() != null;
-	}
+    @Override
+    public void updateEntity() {
+        super.updateEntity();
+        if (!worldObj.isRemote) {
+            if (recheckRecipe) {
+                this.recheckRecipe = false;
+                refreshRecipe();
+            }
 
-	public void fermentItem()
-	{
-		final ItemStack fermentItem = getStackInSlot(0);
-		if (fermentItem != null)
-		{
-			final IFermentationRecipe recipe = getWorkingRecipe();
-			if (recipe != null)
-			{
-				final FluidStack outputFluidStack = recipe.getOutputFluidStack();
-				if (outputFluidStack != null)
-				{
-					getFluidTank(0).setFluid(FluidUtils.exchangeFluid(getFluidStack(0), outputFluidStack.getFluid()));
-				}
-				final IMultiItemStacks fermenter = recipe.getFermentingItemStack();
-				if (fermenter != null && !fermenter.isEmpty())
-				{
-					decrStackSize(0, fermenter.getStackSize());
-				}
-			}
-		}
-	}
+            if (canFerment()) {
+                this.time++;
 
-	@Override
-	public float getDeviceProgress()
-	{
-		final int tmx = getTimeMax();
-		if (tmx > 0)
-		{
-			return (float)time / (float)tmx;
-		}
-		return 0.0f;
-	}
+                if (time >= getTimeMax()) {
+                    resetTime();
+                    fermentItem();
+                    markDirty();
+                }
+            } else {
+                if (time != 0) {
+                    resetTime();
+                    markDirty();
+                }
+            }
+        }
+    }
 
-	@Override
-	public int getDeviceProgressScaled(int scale)
-	{
-		final int tmx = getTimeMax();
-		if (tmx > 0)
-		{
-			return this.time * scale / tmx;
-		}
-		return 0;
-	}
+    @Override
+    public int[] getAccessibleSlotsFromSide(int side) {
+        return accessableSlotIds;
+    }
 
-	@Override
-	public void updateEntity()
-	{
-		super.updateEntity();
-		if (!worldObj.isRemote)
-		{
-			if (recheckRecipe)
-			{
-				this.recheckRecipe = false;
-				refreshRecipe();
-			}
+    @Override
+    public boolean isItemValidForSlot(int index, ItemStack itemstack) {
+        return index == 0;
+    }
 
-			if (canFerment())
-			{
-				this.time++;
+    @Override
+    public boolean canInsertItem(int index, ItemStack stack, int side) {
+        return InventoryProcessor.instance().canInsertItem(this, stack, index);
+    }
 
-				if (time >= getTimeMax())
-				{
-					resetTime();
-					fermentItem();
-					markDirty();
-				}
-			}
-			else
-			{
-				if (time != 0)
-				{
-					resetTime();
-					markDirty();
-				}
-			}
-		}
-	}
+    @Override
+    public boolean canExtractItem(int index, ItemStack stack, int side) {
+        return InventoryProcessor.instance().canExtractItem(this, stack, index);
+    }
 
-	@Override
-	public int[] getAccessibleSlotsFromSide(int side)
-	{
-		return accessableSlotIds;
-	}
+    @Override
+    protected void readTanksFromNBT(NBTTagCompound nbt) {
+        if (nbt.hasKey("Tank")) {
+            getFluidTank(0).readFromNBT(nbt.getCompoundTag("Tank"));
+        } else {
+            super.readTanksFromNBT(nbt);
+        }
+    }
 
-	@Override
-	public boolean isItemValidForSlot(int index, ItemStack itemstack)
-	{
-		return index == 0;
-	}
+    private void readFermentTimeFromNBT(NBTTagCompound nbt) {
+        this.time = NBTHelper.getInteger(nbt, "time");
+    }
 
-	@Override
-	public boolean canInsertItem(int index, ItemStack stack, int side)
-	{
-		return InventoryProcessor.instance().canInsertItem(this, stack, index);
-	}
+    @Override
+    public void readFromNBTForItem(NBTTagCompound nbt) {
+        super.readFromNBTForItem(nbt);
+        readFermentTimeFromNBT(nbt);
+        if (nbt.hasKey("lid_on")) {
+            this.lidOn = nbt.getBoolean("lid_on");
+        }
+    }
 
-	@Override
-	public boolean canExtractItem(int index, ItemStack stack, int side)
-	{
-		return InventoryProcessor.instance().canExtractItem(this, stack, index);
-	}
+    @TileEventHandler(event = TileEventHandler.EventType.NBT_READ)
+    public void readFromNBT_FermentBarrel(NBTTagCompound nbt) {
+        readFermentTimeFromNBT(nbt);
+    }
 
-	@Override
-	protected void readTanksFromNBT(NBTTagCompound nbt)
-	{
-		if (nbt.hasKey("Tank"))
-		{
-			getFluidTank(0).readFromNBT(nbt.getCompoundTag("Tank"));
-		}
-		else
-		{
-			super.readTanksFromNBT(nbt);
-		}
-	}
+    private void writeFermentTimeToNBT(NBTTagCompound nbt) {
+        nbt.setInteger("time", time);
+    }
 
-	private void readFermentTimeFromNBT(NBTTagCompound nbt)
-	{
-		this.time = NBTHelper.getInteger(nbt, "time");
-	}
+    @Override
+    public void writeToNBTForItem(NBTTagCompound nbt) {
+        super.writeToNBTForItem(nbt);
+        writeFermentTimeToNBT(nbt);
+        nbt.setBoolean("lid_on", lidOn);
+    }
 
-	@Override
-	public void readFromNBTForItem(NBTTagCompound nbt)
-	{
-		super.readFromNBTForItem(nbt);
-		readFermentTimeFromNBT(nbt);
-		if (nbt.hasKey("lid_on"))
-		{
-			this.lidOn = nbt.getBoolean("lid_on");
-		}
-	}
+    @TileEventHandler(event = TileEventHandler.EventType.NBT_WRITE)
+    public void writeToNBT_FermentBarrel(NBTTagCompound nbt) {
+        writeFermentTimeToNBT(nbt);
+    }
 
-	@TileEventHandler(event=TileEventHandler.EventType.NBT_READ)
-	public void readFromNBT_FermentBarrel(NBTTagCompound nbt)
-	{
-		readFermentTimeFromNBT(nbt);
-	}
+    @Override
+    public void receiveGUINetworkData(int id, int v) {
+        super.receiveGUINetworkData(id, v);
+        switch (FermentBarrelDataID.getByaOrdinal(id)) {
+            case TIME:
+                this.time = v;
+                break;
+            case TIME_MAX:
+                this.timemax = v;
+                break;
+            default:
+                // should warn about invalid Data ID
+                break;
+        }
+    }
 
-	private void writeFermentTimeToNBT(NBTTagCompound nbt)
-	{
-		nbt.setInteger("time", time);
-	}
+    @Override
+    public void sendGUINetworkData(Container container, ICrafting iCrafting) {
+        super.sendGUINetworkData(container, iCrafting);
+        iCrafting.sendProgressBarUpdate(container, FermentBarrelDataID.TIME.ordinal(), time);
+        iCrafting.sendProgressBarUpdate(container, FermentBarrelDataID.TIME_MAX.ordinal(), getTimeMax());
+    }
 
-	@Override
-	public void writeToNBTForItem(NBTTagCompound nbt)
-	{
-		super.writeToNBTForItem(nbt);
-		writeFermentTimeToNBT(nbt);
-		nbt.setBoolean("lid_on", lidOn);
-	}
+    @TileEventHandler(event = TileEventHandler.EventType.NETWORK_READ)
+    public boolean readFromStream_FermentBarrel(ByteBuf stream) throws IOException {
+        this.time = stream.readInt();
+        this.timemax = stream.readInt();
+        return false;
+    }
 
-	@TileEventHandler(event=TileEventHandler.EventType.NBT_WRITE)
-	public void writeToNBT_FermentBarrel(NBTTagCompound nbt)
-	{
-		writeFermentTimeToNBT(nbt);
-	}
+    @TileEventHandler(event = TileEventHandler.EventType.NETWORK_WRITE)
+    public boolean writeToStream_FermentBarrel(ByteBuf stream) throws IOException {
+        stream.writeInt(time);
+        stream.writeInt(getTimeMax());
+        return false;
+    }
 
-	@Override
-	public void receiveGUINetworkData(int id, int v)
-	{
-		super.receiveGUINetworkData(id, v);
-		switch (FermentBarrelDataID.getByaOrdinal(id))
-		{
-			case TIME:
-				this.time = v;
-				break;
-			case TIME_MAX:
-				this.timemax = v;
-				break;
-			default:
-				// should warn about invalid Data ID
-				break;
-		}
-	}
+    @Override
+    public boolean canFill(EnumFacing from, Fluid fluid) {
+        final FluidStack fluidStack = getFluidStack(0);
+        if (fluidStack == null || fluidStack.getFluid() == null) return true;
+        return FluidTest.fluidMatches(fluidStack, fluid);
+    }
 
-	@Override
-	public void sendGUINetworkData(Container container, ICrafting iCrafting)
-	{
-		super.sendGUINetworkData(container, iCrafting);
-		iCrafting.sendProgressBarUpdate(container, FermentBarrelDataID.TIME.ordinal(), time);
-		iCrafting.sendProgressBarUpdate(container, FermentBarrelDataID.TIME_MAX.ordinal(), getTimeMax());
-	}
+    @Override
+    protected int doFill(EnumFacing from, FluidStack resource, boolean shouldFill) {
+        return fillFluidTank(0, resource, shouldFill);
+    }
 
-	@TileEventHandler(event=TileEventHandler.EventType.NETWORK_READ)
-	public boolean readFromStream_FermentBarrel(ByteBuf stream) throws IOException
-	{
-		this.time = stream.readInt();
-		this.timemax = stream.readInt();
-		return false;
-	}
+    @Override
+    public boolean canDrain(EnumFacing from, Fluid fluid) {
+        return FluidTest.fluidMatches(getFluidStack(0), fluid);
+    }
 
-	@TileEventHandler(event=TileEventHandler.EventType.NETWORK_WRITE)
-	public boolean writeToStream_FermentBarrel(ByteBuf stream) throws IOException
-	{
-		stream.writeInt(time);
-		stream.writeInt(getTimeMax());
-		return false;
-	}
+    @Override
+    protected FluidStack doDrain(EnumFacing from, int maxDrain, boolean shouldDrain) {
+        return drainFluidTank(0, maxDrain, shouldDrain);
+    }
 
-	@Override
-	public boolean canFill(EnumFacing from, Fluid fluid)
-	{
-		final FluidStack fluidStack = getFluidStack(0);
-		if (fluidStack == null || fluidStack.getFluid() == null) return true;
-		return FluidTest.fluidMatches(fluidStack, fluid);
-	}
+    @Override
+    protected FluidStack doDrain(EnumFacing from, FluidStack resource, boolean shouldDrain) {
+        if (resource == null || !resource.isFluidEqual(getFluidStack(0))) {
+            return null;
+        }
+        return doDrain(from, resource.amount, shouldDrain);
+    }
 
-	@Override
-	protected int doFill(EnumFacing from, FluidStack resource, boolean shouldFill)
-	{
-		return fillFluidTank(0, resource, shouldFill);
-	}
+    @Override
+    protected void markFluidDirty() {
+        super.markFluidDirty();
+        markForRecipeRecheck();
+    }
 
-	@Override
-	public boolean canDrain(EnumFacing from, Fluid fluid)
-	{
-		return FluidTest.fluidMatches(getFluidStack(0), fluid);
-	}
+    @Override
+    public void onInventoryChanged(IInventory inv, int index) {
+        super.onInventoryChanged(inv, index);
+        markForRecipeRecheck();
+    }
 
-	@Override
-	protected FluidStack doDrain(EnumFacing from, int maxDrain, boolean shouldDrain)
-	{
-		return drainFluidTank(0, maxDrain, shouldDrain);
-	}
+    public enum FermentBarrelDataID {
+        TIME,
+        TIME_MAX,
+        UNKNOWN;
 
-	@Override
-	protected FluidStack doDrain(EnumFacing from, FluidStack resource, boolean shouldDrain)
-	{
-		if (resource == null || !resource.isFluidEqual(getFluidStack(0)))
-		{
-			return null;
-		}
-		return doDrain(from, resource.amount, shouldDrain);
-	}
+        public static final FermentBarrelDataID[] VALID = new FermentBarrelDataID[]
+                {
+                        TIME,
+                        TIME_MAX
+                };
 
-	@Override
-	protected void markFluidDirty()
-	{
-		super.markFluidDirty();
-		markForRecipeRecheck();
-	}
-
-	@Override
-	public void onInventoryChanged(IInventory inv, int index)
-	{
-		super.onInventoryChanged(inv, index);
-		markForRecipeRecheck();
-	}
+        public static FermentBarrelDataID getByaOrdinal(int ord) {
+            if (ord >= 0 && ord <= VALID.length) return VALID[ord];
+            return UNKNOWN;
+        }
+    }
 }

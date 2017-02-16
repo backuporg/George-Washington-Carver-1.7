@@ -33,214 +33,184 @@ import growthcraft.core.common.item.IFluidItem;
 import growthcraft.core.lib.GrcCoreState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResult;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraft.util.EnumHand;
 
 import java.util.List;
 
-public class ItemBoozeBottle extends GrcItemFoodBase implements IFluidItem
-{
-	private Fluid[] boozes;
+public class ItemBoozeBottle extends GrcItemFoodBase implements IFluidItem {
+    private Fluid[] boozes;
 
-	//@SideOnly(Side.CLIENT)
-	//private IIcon bottle;
-	//@SideOnly(Side.CLIENT)
-	//private IIcon contents;
+    //@SideOnly(Side.CLIENT)
+    //private IIcon bottle;
+    //@SideOnly(Side.CLIENT)
+    //private IIcon contents;
 
-	public ItemBoozeBottle(Fluid[] boozeAry)
-	{
-		super(0, 0.0f, false);
-		this.setAlwaysEdible();
-		this.setMaxStackSize(4);
-		this.setHasSubtypes(true);
-		this.setMaxDamage(0);
-		this.setContainerItem(Items.GLASS_BOTTLE);
-		this.setCreativeTab(GrowthCraftCellar.tab);
+    public ItemBoozeBottle(Fluid[] boozeAry) {
+        super(0, 0.0f, false);
+        this.setAlwaysEdible();
+        this.setMaxStackSize(4);
+        this.setHasSubtypes(true);
+        this.setMaxDamage(0);
+        this.setContainerItem(Items.GLASS_BOTTLE);
+        this.setCreativeTab(GrowthCraftCellar.tab);
 
-		this.boozes = boozeAry;
-	}
+        this.boozes = boozeAry;
+    }
 
-	public Fluid[] getFluidArray()
-	{
-		return this.boozes;
-	}
+    public Fluid[] getFluidArray() {
+        return this.boozes;
+    }
 
-	public Fluid getFluidByIndex(int i)
-	{
-		return (i < 0 || i >= boozes.length) ? boozes[0] : boozes[i];
-	}
+    public Fluid getFluidByIndex(int i) {
+        return (i < 0 || i >= boozes.length) ? boozes[0] : boozes[i];
+    }
 
-	@Override
-	public Fluid getFluid(ItemStack stack)
-	{
-		if (stack == null) return null;
-		return getFluidByIndex(stack.getItemDamage());
-	}
+    @Override
+    public Fluid getFluid(ItemStack stack) {
+        if (stack == null) return null;
+        return getFluidByIndex(stack.getItemDamage());
+    }
 
-	public BoozeEntry getBoozeEntry(ItemStack stack)
-	{
-		final Fluid fluid = getFluid(stack);
-		if (fluid != null)
-		{
-			return CellarRegistry.instance().booze().getBoozeEntry(fluid);
-		}
-		return null;
-	}
+    public BoozeEntry getBoozeEntry(ItemStack stack) {
+        final Fluid fluid = getFluid(stack);
+        if (fluid != null) {
+            return CellarRegistry.instance().booze().getBoozeEntry(fluid);
+        }
+        return null;
+    }
 
-	@Override
-	public int getHealAmount(ItemStack stack)
-	{
-		final BoozeEntry entry = getBoozeEntry(stack);
-		if (entry != null)
-		{
-			return entry.getHealAmount();
-		}
-		return 0;
-	}
+    @Override
+    public int getHealAmount(ItemStack stack) {
+        final BoozeEntry entry = getBoozeEntry(stack);
+        if (entry != null) {
+            return entry.getHealAmount();
+        }
+        return 0;
+    }
 
-	@Override
-	public float getSaturationModifier(ItemStack stack)
-	{
-		final BoozeEntry entry = getBoozeEntry(stack);
-		if (entry != null)
-		{
-			return entry.getSaturation();
-		}
-		return 0.0f;
-	}
+    @Override
+    public float getSaturationModifier(ItemStack stack) {
+        final BoozeEntry entry = getBoozeEntry(stack);
+        if (entry != null) {
+            return entry.getSaturation();
+        }
+        return 0.0f;
+    }
 
-	public int getColor(ItemStack stack)
-	{
-		final Fluid booze = getFluid(stack);
-		if (booze != null) return booze.getColor();
-		return 0xFFFFFF;
-	}
+    public int getColor(ItemStack stack) {
+        final Fluid booze = getFluid(stack);
+        if (booze != null) return booze.getColor();
+        return 0xFFFFFF;
+    }
 
-	@Override
-	public void onUpdate(ItemStack stack, World world, Entity entity, int par4, boolean par5)
-	{
-		if (stack.getItemDamage() >= getFluidArray().length)
-		{
-			stack.setItemDamage(0);
-		}
-	}
+    @Override
+    public void onUpdate(ItemStack stack, World world, Entity entity, int par4, boolean par5) {
+        if (stack.getItemDamage() >= getFluidArray().length) {
+            stack.setItemDamage(0);
+        }
+    }
 
-	@Override
-	protected void applyIEffects(ItemStack itemStack, World world, EntityPlayer player)
-	{
-		super.applyIEffects(itemStack, world, player);
-		BoozeUtils.addEffects(getFluid(itemStack), itemStack, world, player);
-	}
+    @Override
+    protected void applyIEffects(ItemStack itemStack, World world, EntityPlayer player) {
+        super.applyIEffects(itemStack, world, player);
+        BoozeUtils.addEffects(getFluid(itemStack), itemStack, world, player);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean bool)
-	{
-		super.addInformation(stack, player, list, bool);
-		final boolean showDetailed = GrcCoreState.showDetailedInformation();
-		BoozeUtils.addBottleInformation(getFluid(stack), stack, player, list, bool, showDetailed);
-		if (!showDetailed)
-		{
-			list.add(TextFormatting.GRAY +
-					GrcI18n.translate("grc.tooltip.detailed_information",
-						TextFormatting.WHITE + GrcCoreState.detailedKey + TextFormatting.GRAY));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean bool) {
+        super.addInformation(stack, player, list, bool);
+        final boolean showDetailed = GrcCoreState.showDetailedInformation();
+        BoozeUtils.addBottleInformation(getFluid(stack), stack, player, list, bool, showDetailed);
+        if (!showDetailed) {
+            list.add(TextFormatting.GRAY +
+                    GrcI18n.translate("grc.tooltip.detailed_information",
+                            TextFormatting.WHITE + GrcCoreState.detailedKey + TextFormatting.GRAY));
+        }
+    }
 
-	//@Override
-	//@SideOnly(Side.CLIENT)
-	//public void registerIcons(IIconRegister reg)
-	//{
-	//	this.bottle = reg.registerIcon("grccellar:booze");
-	//	this.contents = reg.registerIcon("grccellar:booze_contents");
-	//}
-
-	//@Override
-	//@SideOnly(Side.CLIENT)
-	//public IIcon getIconFromDamageForRenderPass(int par1, int pass)
-	//{
-	//	return pass == 0 ? this.contents : this.bottle;
-	//}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public int getColorFromItemStack(ItemStack stack, int pass)
-	{
-		return pass == 0 ? getColor(stack) : 0xFFFFFF;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean requiresMultipleRenderPasses()
-	{
-		return true;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean hasEffect(ItemStack stack, int pass)
-	{
-		return BoozeUtils.hasEffect(getFluid(stack));
-	}
-
-	@Override
-	public String getUnlocalizedName(ItemStack stack)
-	{
-		return super.getUnlocalizedName();
-	}
-
-	@Override
-	public int getMaxItemUseDuration(ItemStack par1ItemStack)
-	{
-		return 32;
-	}
-
-	@Override
-	public EnumAction getItemUseAction(ItemStack par1ItemStack)
-	{
-		return EnumAction.DRINK;
-	}
-
-	//Shamelessly rip code from the failed 1.8 port, attempt to figure out how to use its replacement later.
     //@Override
-   // public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
+    //@SideOnly(Side.CLIENT)
+    //public void registerIcons(IIconRegister reg)
+    //{
+    //	this.bottle = reg.registerIcon("grccellar:booze");
+    //	this.contents = reg.registerIcon("grccellar:booze_contents");
+    //}
+
+    //@Override
+    //@SideOnly(Side.CLIENT)
+    //public IIcon getIconFromDamageForRenderPass(int par1, int pass)
+    //{
+    //	return pass == 0 ? this.contents : this.bottle;
+    //}
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public int getColorFromItemStack(ItemStack stack, int pass) {
+        return pass == 0 ? getColor(stack) : 0xFFFFFF;
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public boolean requiresMultipleRenderPasses() {
+        return true;
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public boolean hasEffect(ItemStack stack, int pass) {
+        return BoozeUtils.hasEffect(getFluid(stack));
+    }
+
+    @Override
+    public String getUnlocalizedName(ItemStack stack) {
+        return super.getUnlocalizedName();
+    }
+
+    @Override
+    public int getMaxItemUseDuration(ItemStack par1ItemStack) {
+        return 32;
+    }
+
+    @Override
+    public EnumAction getItemUseAction(ItemStack par1ItemStack) {
+        return EnumAction.DRINK;
+    }
+
+    //Shamelessly rip code from the failed 1.8 port, attempt to figure out how to use its replacement later.
+    //@Override
+    // public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
     //{
     //    player.setItemInUse(stack, this.getMaxItemUseDuration(stack));
     //    return stack;
     //}
 
 
-	@Override
-	public String getItemStackDisplayName(ItemStack stack)
-	{
-		final Fluid booze = getFluid(stack);
-		if (booze != null)
-		{
-			return GrcI18n.translate(booze.getUnlocalizedName());
-		}
-		return super.getItemStackDisplayName(stack);
-	}
+    @Override
+    public String getItemStackDisplayName(ItemStack stack) {
+        final Fluid booze = getFluid(stack);
+        if (booze != null) {
+            return GrcI18n.translate(booze.getUnlocalizedName());
+        }
+        return super.getItemStackDisplayName(stack);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void getSubItems(Item item, CreativeTabs tab, List list)
-	{
-		for (int i = 0; i < getFluidArray().length; i++)
-		{
-			list.add(new ItemStack(item, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    public void getSubItems(Item item, CreativeTabs tab, List list) {
+        for (int i = 0; i < getFluidArray().length; i++) {
+            list.add(new ItemStack(item, 1, i));
+        }
+    }
 }

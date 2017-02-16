@@ -29,13 +29,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.Optional;
 
-@Optional.Interface(iface="forestry.api.recipes.IFabricatorManager", modid="ForestryAPI|recipes")
-public class FabricatorManagerShim extends AbstractManagerShim<IFabricatorRecipe> implements IFabricatorManager
-{
-	@Override
-	public void addRecipe(ItemStack plan, FluidStack molten, ItemStack result, Object[] pattern) {}
+@Optional.Interface(iface = "forestry.api.recipes.IFabricatorManager", modid = "ForestryAPI|recipes")
+public class FabricatorManagerShim extends AbstractManagerShim<IFabricatorRecipe> implements IFabricatorManager {
+    @Override
+    public void addRecipe(ItemStack plan, FluidStack molten, ItemStack result, Object[] pattern) {
+    }
 
-	@Override
-	@Deprecated
-	public void addSmelting(ItemStack resource, FluidStack molten, int meltingPoint) {}
+    @Override
+    @Deprecated
+    public void addSmelting(ItemStack resource, FluidStack molten, int meltingPoint) {
+    }
 }

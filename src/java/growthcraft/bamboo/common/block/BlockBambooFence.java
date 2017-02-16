@@ -15,73 +15,62 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockBambooFence extends BlockFence
-{
-	@SideOnly(Side.CLIENT)
+public class BlockBambooFence extends BlockFence {
+    @SideOnly(Side.CLIENT)
 
 
-	public BlockBambooFence()
-	{
-		super(null, Material.WOOD);
-		this.useNeighborBrightness = true;
-		setSoundType(SoundType.WOOD);
-		setResistance(5.0F);
-		setHardness(2.0F);
-		setCreativeTab(GrowthCraftBamboo.creativeTab);
-		setUnlocalizedName("grc.bambooFence");
-	}
+    public BlockBambooFence() {
+        super(null, Material.WOOD);
+        this.useNeighborBrightness = true;
+        setSoundType(SoundType.WOOD);
+        setResistance(5.0F);
+        setHardness(2.0F);
+        setCreativeTab(GrowthCraftBamboo.creativeTab);
+        setUnlocalizedName("grc.bambooFence");
+    }
 
-	/************
-	 * STUFF
-	 ************/
-	@Override
-	public boolean getBlocksMovement(IBlockAccess world, BlockPos pos)
-	{
-		return false;
-	}
+    /************
+     * STUFF
+     ************/
+    @Override
+    public boolean getBlocksMovement(IBlockAccess world, BlockPos pos) {
+        return false;
+    }
 
-	@Override
-	public boolean canPlaceTorchOnTop(World world, BlockPos pos)
-	{
-		return true;
-	}
+    @Override
+    public boolean canPlaceTorchOnTop(World world, BlockPos pos) {
+        return true;
+    }
 
-	@Override
-	public boolean isSideSolid(IBlockAccess world, BlockPos pos, EnumFacing side)
-	{
-		return side == EnumFacing.UP;
-	}
+    @Override
+    public boolean isSideSolid(IBlockAccess world, BlockPos pos, EnumFacing side) {
+        return side == EnumFacing.UP;
+    }
 
-	@Override
-	public boolean canConnectFenceTo(IBlockAccess world, BlockPos pos, IBlockState state)
-	{
-		final Block block = (Block) world.getBlockState((BlockPos) state);
+    @Override
+    public boolean canConnectFenceTo(IBlockAccess world, BlockPos pos, IBlockState state) {
+        final Block block = (Block) world.getBlockState((BlockPos) state);
 
-		if (this == block ||
-			(block instanceof BlockFence) ||
-			(block instanceof BlockFenceGate) ||
-			GrowthCraftBamboo.blocks.bambooWall.isSameAs(block) ||
-			GrowthCraftBamboo.blocks.bambooStalk.isSameAs(block))
-		{
-			return true;
-		}
-		else
-		{
-			if (block != null && block.getMaterial().isOpaque() && block.renderAsNormalBlock())
-			{
-				return block.getMaterial() != Material.GOURD;
-			}
-		}
-		return false;
-	}
+        if (this == block ||
+                (block instanceof BlockFence) ||
+                (block instanceof BlockFenceGate) ||
+                GrowthCraftBamboo.blocks.bambooWall.isSameAs(block) ||
+                GrowthCraftBamboo.blocks.bambooStalk.isSameAs(block)) {
+            return true;
+        } else {
+            if (block != null && block.getMaterial().isOpaque() && block.renderAsNormalBlock()) {
+                return block.getMaterial() != Material.GOURD;
+            }
+        }
+        return false;
+    }
 
 
-	/************
-	 * RENDERS
-	 ************/
-	@Override
-	public int getRenderType()
-	{
-		return RenderBambooFence.id;
-	}
+    /************
+     * RENDERS
+     ************/
+    @Override
+    public int getRenderType() {
+        return RenderBambooFence.id;
+    }
 }

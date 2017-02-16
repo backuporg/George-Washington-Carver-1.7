@@ -29,28 +29,24 @@ import net.minecraft.item.ItemStack;
 
 import javax.annotation.Nonnull;
 
-public class ItemSubtypeDefinition implements IItemStackFactory
-{
-	public final int meta;
-	private final ISubItemStackFactory itemFactory;
+public class ItemSubtypeDefinition implements IItemStackFactory {
+    public final int meta;
+    private final ISubItemStackFactory itemFactory;
 
-	public ItemSubtypeDefinition(@Nonnull ISubItemStackFactory fact, int met)
-	{
-		this.itemFactory = fact;
-		this.meta = met;
-	}
+    public ItemSubtypeDefinition(@Nonnull ISubItemStackFactory fact, int met) {
+        this.itemFactory = fact;
+        this.meta = met;
+    }
 
-	@Override
-	@Nonnull
-	public ItemStack asStack(int size)
-	{
-		return itemFactory.asStack(size, meta);
-	}
+    @Override
+    @Nonnull
+    public ItemStack asStack(int size) {
+        return itemFactory.asStack(size, meta);
+    }
 
-	@Override
-	@Nonnull
-	public ItemStack asStack()
-	{
-		return asStack(1);
-	}
+    @Override
+    @Nonnull
+    public ItemStack asStack() {
+        return asStack(1);
+    }
 }

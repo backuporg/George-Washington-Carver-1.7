@@ -28,10 +28,8 @@ import growthcraft.core.common.definition.BlockTypeDefinition;
 
 import javax.annotation.Nonnull;
 
-public class BlockBoozeDefinition extends BlockTypeDefinition<BlockFluidBooze>
-{
-	public BlockBoozeDefinition(@Nonnull BlockFluidBooze booze)
-	{
-		super(booze);
-	}
+public class BlockBoozeDefinition extends BlockTypeDefinition<BlockFluidBooze> {
+    public BlockBoozeDefinition(@Nonnull BlockFluidBooze booze) {
+        super(booze);
+    }
 }

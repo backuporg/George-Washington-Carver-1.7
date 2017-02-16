@@ -29,40 +29,35 @@ import net.minecraft.util.ResourceLocation;
  * You will get frustrated having to import ResourceLocation and then remembering the domain you want the resource from.
  * NO MORE I SAY, I WANT MORE MAGIC IN MY LIFE.
  */
-public class DomainResourceLocationFactory
-{
-	private final String domain;
+public class DomainResourceLocationFactory {
+    private final String domain;
 
-	/**
-	 * @param p_domain name of the domain that will be prefixed to the resource locations created by the factory
-	 */
-	public DomainResourceLocationFactory(String p_domain)
-	{
-		this.domain = p_domain;
-	}
+    /**
+     * @param p_domain name of the domain that will be prefixed to the resource locations created by the factory
+     */
+    public DomainResourceLocationFactory(String p_domain) {
+        this.domain = p_domain;
+    }
 
-	/**
-	 * @return domain the domain this factory serves up
-	 */
-	public String getDomainName()
-	{
-		return domain;
-	}
+    /**
+     * @return domain the domain this factory serves up
+     */
+    public String getDomainName() {
+        return domain;
+    }
 
-	/**
-	 * @param str str to append to the domain
-	 * @return domained string
-	 */
-	public String join(String str)
-	{
-		return String.format("%s:%s", getDomainName(), str);
-	}
+    /**
+     * @param str str to append to the domain
+     * @return domained string
+     */
+    public String join(String str) {
+        return String.format("%s:%s", getDomainName(), str);
+    }
 
-	/**
-	 * @return resource location
-	 */
-	public ResourceLocation create(String name)
-	{
-		return new ResourceLocation(getDomainName(), name);
-	}
+    /**
+     * @return resource location
+     */
+    public ResourceLocation create(String name) {
+        return new ResourceLocation(getDomainName(), name);
+    }
 }

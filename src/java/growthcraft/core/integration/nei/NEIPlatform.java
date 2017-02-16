@@ -25,14 +25,13 @@ package growthcraft.core.integration.nei;
 
 import net.minecraftforge.fml.common.Loader;
 
-public class NEIPlatform
-{
-	public static final String MOD_ID = "NotEnoughItems";
+public class NEIPlatform {
+    public static final String MOD_ID = "NotEnoughItems";
 
-	private NEIPlatform() {};
+    private NEIPlatform() {
+    }
 
-	public static boolean isLoaded()
-	{
-		return Loader.isModLoaded(MOD_ID);
-	}
+    public static boolean isLoaded() {
+        return Loader.isModLoaded(MOD_ID);
+    }
 }

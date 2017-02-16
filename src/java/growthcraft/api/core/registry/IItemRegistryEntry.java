@@ -23,7 +23,6 @@
  */
 package growthcraft.api.core.registry;
 
-public interface IItemRegistryEntry<T>
-{
-	public boolean matches(T item);
+public interface IItemRegistryEntry<T> {
+    boolean matches(T item);
 }

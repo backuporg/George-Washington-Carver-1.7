@@ -30,30 +30,25 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 
-public class ForcedFlowerBlockEntry extends AbstractFlowerBlockEntry
-{
-	public ForcedFlowerBlockEntry(Block pBlock, int pMeta)
-	{
-		super(pBlock, pMeta);
-	}
+public class ForcedFlowerBlockEntry extends AbstractFlowerBlockEntry {
+    public ForcedFlowerBlockEntry(Block pBlock, int pMeta) {
+        super(pBlock, pMeta);
+    }
 
-	public boolean canPlaceAt(World world, BlockPos pos)
-	{
-		final IBlockState blockState = world.getBlockState(pos);
-		final Block existingBlock = blockState.getBlock();
+    public boolean canPlaceAt(World world, BlockPos pos) {
+        final IBlockState blockState = world.getBlockState(pos);
+        final Block existingBlock = blockState.getBlock();
 
-		if (existingBlock != null)
-		{
-			if (!existingBlock.isReplaceable(world, pos)) return false;
-		}
+        if (existingBlock != null) {
+            if (!existingBlock.isReplaceable(world, pos)) return false;
+        }
 
-		final IBlockState soilBlockState = world.getBlockState(pos.down());
-		final Block soilBlock = soilBlockState.getBlock();
-		if (soilBlock == null) return false;
-		if (getBlockState().getBlockState() instanceof IPlantable)
-		{
-			return soilBlock.canSustainPlant(soilBlockState, world, pos.down(), EnumFacing.UP, (IPlantable)getBlockState().getBlockState());
-		}
-		return true;
-	}
+        final IBlockState soilBlockState = world.getBlockState(pos.down());
+        final Block soilBlock = soilBlockState.getBlock();
+        if (soilBlock == null) return false;
+        if (getBlockState().getBlockState() instanceof IPlantable) {
+            return soilBlock.canSustainPlant(soilBlockState, world, pos.down(), EnumFacing.UP, (IPlantable) getBlockState().getBlockState());
+        }
+        return true;
+    }
 }

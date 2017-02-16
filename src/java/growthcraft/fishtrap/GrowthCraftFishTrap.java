@@ -29,133 +29,124 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
 @Mod(
-	modid = GrowthCraftFishTrap.MOD_ID,
-	name = GrowthCraftFishTrap.MOD_NAME,
-	version = GrowthCraftFishTrap.MOD_VERSION,
-	dependencies = "required-after:Growthcraft@@VERSION@"
+        modid = GrowthCraftFishTrap.MOD_ID,
+        name = GrowthCraftFishTrap.MOD_NAME,
+        version = GrowthCraftFishTrap.MOD_VERSION,
+        dependencies = "required-after:Growthcraft@@VERSION@"
 )
-public class GrowthCraftFishTrap
-{
-	public static final String MOD_ID = "Growthcraft|Fishtrap";
-	public static final String MOD_NAME = "Growthcraft Fishtrap";
-	public static final String MOD_VERSION = "@VERSION@";
+public class GrowthCraftFishTrap {
+    public static final String MOD_ID = "Growthcraft|Fishtrap";
+    public static final String MOD_NAME = "Growthcraft Fishtrap";
+    public static final String MOD_VERSION = "@VERSION@";
+    public static final GrcGuiProvider guiProvider = new GrcGuiProvider(new GrcLogger(MOD_ID + ":GuiProvider"));
+    @Instance(MOD_ID)
+    public static GrowthCraftFishTrap instance;
+    public static BlockDefinition fishTrap;
+    public static CreativeTabs creativeTab;
+    private final ILogger logger = new GrcLogger(MOD_ID);
+    private final GrcFishtrapConfig config = new GrcFishtrapConfig();
+    private final ModuleContainer modules = new ModuleContainer();
+    private final UserBaitConfig userBaitConfig = new UserBaitConfig();
+    private final UserCatchGroupConfig userCatchGroupConfig = new UserCatchGroupConfig();
+    private final UserFishTrapConfig userFishTrapConfig = new UserFishTrapConfig();
 
-	@Instance(MOD_ID)
-	public static GrowthCraftFishTrap instance;
-	public static BlockDefinition fishTrap;
-	public static CreativeTabs creativeTab;
-	public static final GrcGuiProvider guiProvider = new GrcGuiProvider(new GrcLogger(MOD_ID + ":GuiProvider"));
+    public static GrcFishtrapConfig getConfig() {
+        return instance.config;
+    }
 
-	private final ILogger logger = new GrcLogger(MOD_ID);
-	private final GrcFishtrapConfig config = new GrcFishtrapConfig();
-	private final ModuleContainer modules = new ModuleContainer();
-	private final UserBaitConfig userBaitConfig = new UserBaitConfig();
-	private final UserCatchGroupConfig userCatchGroupConfig = new UserCatchGroupConfig();
-	private final UserFishTrapConfig userFishTrapConfig = new UserFishTrapConfig();
+    public static ILogger getLogger() {
+        return instance.logger;
+    }
 
-	public static GrcFishtrapConfig getConfig()
-	{
-		return instance.config;
-	}
+    @EventHandler
+    public void preInit(FMLPreInitializationEvent event) {
+        config.setLogger(logger);
+        config.load(event.getModConfigurationDirectory(), "growthcraft/fishtrap.conf");
+        userBaitConfig.setConfigFile(event.getModConfigurationDirectory(), "growthcraft/fishtrap/baits.json");
+        userCatchGroupConfig.setConfigFile(event.getModConfigurationDirectory(), "growthcraft/fishtrap/catch_groups.json");
+        userFishTrapConfig.setConfigFile(event.getModConfigurationDirectory(), "growthcraft/fishtrap/entries.json");
+        modules.add(userBaitConfig);
+        modules.add(userCatchGroupConfig);
+        modules.add(userFishTrapConfig);
+        //if (config.enableThaumcraftIntegration) modules.add(new growthcraft.fishtrap.integration.ThaumcraftModule());
+        modules.add(CommonProxy.instance);
+        if (config.debugEnabled) modules.setLogger(logger);
+        modules.freeze();
+        creativeTab = new CreativeTabsGrowthcraftFishtrap("creative_tab_grcfishtrap");
+        fishTrap = new BlockDefinition(new BlockFishTrap());
+        modules.preInit();
+        register();
+    }
 
-	public static ILogger getLogger()
-	{
-		return instance.logger;
-	}
+    private void register() {
+        //====================
+        // REGISTRIES
+        //====================
+        GameRegistry.registerBlock(fishTrap.getBlockState(), "grc.fishTrap");
 
-	@EventHandler
-	public void preInit(FMLPreInitializationEvent event)
-	{
-		config.setLogger(logger);
-		config.load(event.getModConfigurationDirectory(), "growthcraft/fishtrap.conf");
-		userBaitConfig.setConfigFile(event.getModConfigurationDirectory(), "growthcraft/fishtrap/baits.json");
-		userCatchGroupConfig.setConfigFile(event.getModConfigurationDirectory(), "growthcraft/fishtrap/catch_groups.json");
-		userFishTrapConfig.setConfigFile(event.getModConfigurationDirectory(), "growthcraft/fishtrap/entries.json");
-		modules.add(userBaitConfig);
-		modules.add(userCatchGroupConfig);
-		modules.add(userFishTrapConfig);
-		//if (config.enableThaumcraftIntegration) modules.add(new growthcraft.fishtrap.integration.ThaumcraftModule());
-		modules.add(CommonProxy.instance);
-		if (config.debugEnabled) modules.setLogger(logger);
-		modules.freeze();
-		creativeTab = new CreativeTabsGrowthcraftFishtrap("creative_tab_grcfishtrap");
-		fishTrap = new BlockDefinition(new BlockFishTrap());
-		modules.preInit();
-		register();
-	}
+        GameRegistry.registerTileEntity(TileEntityFishTrap.class, "grc.tileentity.fishTrap");
 
-	private void register()
-	{
-		//====================
-		// REGISTRIES
-		//====================
-		GameRegistry.registerBlock(fishTrap.getBlockState(), "grc.fishTrap");
+        // Gives a +0.2 bonus on base and a 1.1f bonus multiplier
+        userBaitConfig.addDefault(new ItemStack(Items.rotten_flesh), 0.2f, 1.1f);
 
-		GameRegistry.registerTileEntity(TileEntityFishTrap.class, "grc.tileentity.fishTrap");
+        // Catch Groups
+        userCatchGroupConfig.addDefault("junk", 3, "Useless Stuff");
+        userCatchGroupConfig.addDefault("treasure", 5, "Fancy Stuff");
+        userCatchGroupConfig.addDefault("fish", 1, "Fishes");
+        userCatchGroupConfig.addDefault("mineral", 7, "Ingots and other metallic stuff");
+        userCatchGroupConfig.addDefault("legendary", 10, "Stuff you probably would never find on average");
 
-		// Gives a +0.2 bonus on base and a 1.1f bonus multiplier
-		userBaitConfig.addDefault(new ItemStack(Items.rotten_flesh), 0.2f, 1.1f);
+        // Will use same chances as Fishing Rods
+        // Junk
+        userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Items.LEATHER_BOOTS), 10).setDamage(0.9F));
+        userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Items.LEATHER), 10));
+        userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Items.BONE), 10));
+        userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Items.POTIONITEM), 10));
+        userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Items.STRING), 5));
+        userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Items.FISHING_ROD), 2).setDamage(0.9F));
+        userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Items.BOWL), 10));
+        userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Items.STICK), 5));
+        userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Items.DYE, 10), 1));
+        userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Items.ROTTEN_FLESH), 10));
+        // Treasure
+        userFishTrapConfig.addDefault("treasure", new FishTrapEntry(new ItemStack(Blocks.WATERLILY), 1));
+        userFishTrapConfig.addDefault("treasure", new FishTrapEntry(new ItemStack(Items.NAME_TAG), 1));
+        userFishTrapConfig.addDefault("treasure", new FishTrapEntry(new ItemStack(Items.SADDLE), 1));
+        userFishTrapConfig.addDefault("treasure", new FishTrapEntry(new ItemStack(Items.BOW), 1).setDamage(0.25F).setEnchantable());
+        userFishTrapConfig.addDefault("treasure", new FishTrapEntry(new ItemStack(Items.FISHING_ROD), 1).setDamage(0.25F).setEnchantable());
+        userFishTrapConfig.addDefault("treasure", new FishTrapEntry(new ItemStack(Items.BOOK), 1).setEnchantable());
+        // Fishes
+        userFishTrapConfig.addDefault("fish", new FishTrapEntry(new ItemStack(Items.FISH, 1, ItemFishFood.FishType.COD.func_150976_a()), 60));
+        userFishTrapConfig.addDefault("fish", new FishTrapEntry(new ItemStack(Items.FISH, 1, ItemFishFood.FishType.SALMON.func_150976_a()), 25));
+        userFishTrapConfig.addDefault("fish", new FishTrapEntry(new ItemStack(Items.FISH, 1, ItemFishFood.FishType.CLOWNFISH.func_150976_a()), 2));
+        userFishTrapConfig.addDefault("fish", new FishTrapEntry(new ItemStack(Items.FISH, 1, ItemFishFood.FishType.PUFFERFISH.func_150976_a()), 13));
+        // Minerals
+        userFishTrapConfig.addDefault("mineral", new FishTrapEntry(new ItemStack(Blocks.TRIPWIRE_HOOK), 1));
+        userFishTrapConfig.addDefault("mineral", new FishTrapEntry(new ItemStack(Items.IRON_INGOT), 10));
+        userFishTrapConfig.addDefault("mineral", new FishTrapEntry(new ItemStack(Items.GOLD_NUGGET), 5));
+        // Legendary
+        userFishTrapConfig.addDefault("legendary", new FishTrapEntry(new ItemStack(Items.GOLD_INGOT), 1));
+        userFishTrapConfig.addDefault("legendary", new FishTrapEntry(new ItemStack(Items.DIAMOND), 10));
 
-		// Catch Groups
-		userCatchGroupConfig.addDefault("junk", 3, "Useless Stuff");
-		userCatchGroupConfig.addDefault("treasure", 5, "Fancy Stuff");
-		userCatchGroupConfig.addDefault("fish", 1, "Fishes");
-		userCatchGroupConfig.addDefault("mineral", 7, "Ingots and other metallic stuff");
-		userCatchGroupConfig.addDefault("legendary", 10, "Stuff you probably would never find on average");
+        //====================
+        // CRAFTING
+        //====================
+        GameRegistry.addRecipe(new ShapedOreRecipe(fishTrap.asStack(1), "ACA", "CBC", "ACA", 'A', "plankWood", 'B', Items.LEAD, 'C', Items.STRING));
 
-		// Will use same chances as Fishing Rods
-		// Junk
-		userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Items.LEATHER_BOOTS), 10).setDamage(0.9F));
-		userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Items.LEATHER), 10));
-		userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Items.BONE), 10));
-		userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Items.POTIONITEM), 10));
-		userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Items.STRING), 5));
-		userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Items.FISHING_ROD), 2).setDamage(0.9F));
-		userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Items.BOWL), 10));
-		userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Items.STICK), 5));
-		userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Items.DYE, 10), 1));
-		userFishTrapConfig.addDefault("junk", new FishTrapEntry(new ItemStack(Items.ROTTEN_FLESH), 10));
-		// Treasure
-		userFishTrapConfig.addDefault("treasure", new FishTrapEntry(new ItemStack(Blocks.WATERLILY), 1));
-		userFishTrapConfig.addDefault("treasure", new FishTrapEntry(new ItemStack(Items.NAME_TAG), 1));
-		userFishTrapConfig.addDefault("treasure", new FishTrapEntry(new ItemStack(Items.SADDLE), 1));
-		userFishTrapConfig.addDefault("treasure", new FishTrapEntry(new ItemStack(Items.BOW), 1).setDamage(0.25F).setEnchantable());
-		userFishTrapConfig.addDefault("treasure", new FishTrapEntry(new ItemStack(Items.FISHING_ROD), 1).setDamage(0.25F).setEnchantable());
-		userFishTrapConfig.addDefault("treasure", new FishTrapEntry(new ItemStack(Items.BOOK), 1).setEnchantable());
-		// Fishes
-		userFishTrapConfig.addDefault("fish", new FishTrapEntry(new ItemStack(Items.FISH, 1, ItemFishFood.FishType.COD.func_150976_a()), 60));
-		userFishTrapConfig.addDefault("fish", new FishTrapEntry(new ItemStack(Items.FISH, 1, ItemFishFood.FishType.SALMON.func_150976_a()), 25));
-		userFishTrapConfig.addDefault("fish", new FishTrapEntry(new ItemStack(Items.FISH, 1, ItemFishFood.FishType.CLOWNFISH.func_150976_a()), 2));
-		userFishTrapConfig.addDefault("fish", new FishTrapEntry(new ItemStack(Items.FISH, 1, ItemFishFood.FishType.PUFFERFISH.func_150976_a()), 13));
-		// Minerals
-		userFishTrapConfig.addDefault("mineral", new FishTrapEntry(new ItemStack(Blocks.TRIPWIRE_HOOK), 1));
-		userFishTrapConfig.addDefault("mineral", new FishTrapEntry(new ItemStack(Items.IRON_INGOT), 10));
-		userFishTrapConfig.addDefault("mineral", new FishTrapEntry(new ItemStack(Items.GOLD_NUGGET), 5));
-		// Legendary
-		userFishTrapConfig.addDefault("legendary", new FishTrapEntry(new ItemStack(Items.GOLD_INGOT), 1));
-		userFishTrapConfig.addDefault("legendary", new FishTrapEntry(new ItemStack(Items.DIAMOND), 10));
+        modules.register();
+    }
 
-		//====================
-		// CRAFTING
-		//====================
-		GameRegistry.addRecipe(new ShapedOreRecipe(fishTrap.asStack(1), "ACA", "CBC", "ACA", 'A', "plankWood", 'B', Items.LEAD, 'C', Items.STRING));
+    @EventHandler
+    public void init(FMLInitializationEvent event) {
+        userBaitConfig.loadUserConfig();
+        userCatchGroupConfig.loadUserConfig();
+        userFishTrapConfig.loadUserConfig();
+        NetworkRegistry.INSTANCE.registerGuiHandler(this, guiProvider);
+        modules.init();
+    }
 
-		modules.register();
-	}
-
-	@EventHandler
-	public void init(FMLInitializationEvent event)
-	{
-		userBaitConfig.loadUserConfig();
-		userCatchGroupConfig.loadUserConfig();
-		userFishTrapConfig.loadUserConfig();
-		NetworkRegistry.INSTANCE.registerGuiHandler(this, guiProvider);
-		modules.init();
-	}
-
-	@EventHandler
-	public void postInit(FMLPostInitializationEvent event)
-	{
-		modules.postInit();
-	}
+    @EventHandler
+    public void postInit(FMLPostInitializationEvent event) {
+        modules.postInit();
+    }
 }

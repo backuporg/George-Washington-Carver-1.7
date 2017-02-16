@@ -27,9 +27,10 @@ import net.minecraft.block.Block;
 
 import javax.annotation.Nullable;
 
-public interface IVineEntry
-{
-	Block getBlockState();
-	int getMetadata();
-	boolean matches(@Nullable Block block, int meta);
+public interface IVineEntry {
+    Block getBlockState();
+
+    int getMetadata();
+
+    boolean matches(@Nullable Block block, int meta);
 }

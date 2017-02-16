@@ -44,119 +44,97 @@ import net.minecraftforge.fml.common.Optional;
 
 import java.util.List;
 
-public class GrcMilkDataProvider implements IWailaDataProvider
-{
-	@Override
-	@Optional.Method(modid="Waila")
-	public ItemStack getWailaStack(IWailaDataAccessor accessor, IWailaConfigHandler config)
-	{
-		final TileEntity te = accessor.getTileEntity();
-		if (te instanceof TileEntityCheeseBlock)
-		{
-			return ((TileEntityCheeseBlock)te).asItemStack();
-		}
-		if (te instanceof TileEntityHangingCurds)
-		{
-			return ((TileEntityHangingCurds)te).asItemStack();
-		}
-		return accessor.getStack();
-	}
+public class GrcMilkDataProvider implements IWailaDataProvider {
+    @Override
+    @Optional.Method(modid = "Waila")
+    public ItemStack getWailaStack(IWailaDataAccessor accessor, IWailaConfigHandler config) {
+        final TileEntity te = accessor.getTileEntity();
+        if (te instanceof TileEntityCheeseBlock) {
+            return ((TileEntityCheeseBlock) te).asItemStack();
+        }
+        if (te instanceof TileEntityHangingCurds) {
+            return ((TileEntityHangingCurds) te).asItemStack();
+        }
+        return accessor.getStack();
+    }
 
-	@Override
-	@Optional.Method(modid="Waila")
-	public List<String> getWailaHead(ItemStack itemStack, List<String> tooltip, IWailaDataAccessor accessor, IWailaConfigHandler config)
-	{
-		return tooltip;
-	}
+    @Override
+    @Optional.Method(modid = "Waila")
+    public List<String> getWailaHead(ItemStack itemStack, List<String> tooltip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+        return tooltip;
+    }
 
-	@Override
-	@Optional.Method(modid="Waila")
-	public List<String> getWailaBody(ItemStack itemStack, List<String> tooltip, IWailaDataAccessor accessor, IWailaConfigHandler config)
-	{
-		final TileEntity te = accessor.getTileEntity();
-		final NBTTagCompound nbt = accessor.getNBTData();
-		if (te instanceof TileEntityButterChurn)
-		{
-			TagFormatterButterChurn.INSTANCE.format(tooltip, nbt);
-		}
-		if (te instanceof TileEntityCheesePress)
-		{
-			TagFormatterCheesePress.INSTANCE.format(tooltip, nbt);
-		}
-		if (te instanceof TileEntityCheeseBlock)
-		{
-			if (nbt.getBoolean("is_aged"))
-			{
-				tooltip.add(TextFormatting.GRAY + GrcI18n.translate("grcmilk.cheese.slices.prefix") +
-					TextFormatting.WHITE + GrcI18n.translate("grcmilk.cheese.slices.value.format", nbt.getInteger("slices"), nbt.getInteger("slices_max")));
-			}
-			else
-			{
-				final float ageProgress = nbt.getFloat("age_progress");
-				final String result = TextFormatting.GRAY + GrcI18n.translate("grcmilk.cheese.aging.prefix") +
-					TextFormatting.WHITE + GrcI18n.translate("grcmilk.cheese.aging.progress.format", (int)(ageProgress * 100));
-				tooltip.add(result);
-			}
-		}
-		if (te instanceof TileEntityHangingCurds)
-		{
-			final float progress = nbt.getFloat("progress");
-			if (progress < 1f)
-			{
-				final String result = TextFormatting.GRAY + GrcI18n.translate("grcmilk.hanging_curds.drying.prefix") +
-					TextFormatting.WHITE + GrcI18n.translate("grcmilk.hanging_curds.drying.progress.format", (int)(progress * 100));
-				tooltip.add(result);
-			}
-			if (nbt.hasKey("dried"))
-			{
-				final boolean dried = nbt.getBoolean("dried");
-				if (dried)
-				{
-					tooltip.add(GrcI18n.translate("grcmilk.hanging_curds.dried"));
-				}
-			}
-		}
-		return tooltip;
-	}
+    @Override
+    @Optional.Method(modid = "Waila")
+    public List<String> getWailaBody(ItemStack itemStack, List<String> tooltip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+        final TileEntity te = accessor.getTileEntity();
+        final NBTTagCompound nbt = accessor.getNBTData();
+        if (te instanceof TileEntityButterChurn) {
+            TagFormatterButterChurn.INSTANCE.format(tooltip, nbt);
+        }
+        if (te instanceof TileEntityCheesePress) {
+            TagFormatterCheesePress.INSTANCE.format(tooltip, nbt);
+        }
+        if (te instanceof TileEntityCheeseBlock) {
+            if (nbt.getBoolean("is_aged")) {
+                tooltip.add(TextFormatting.GRAY + GrcI18n.translate("grcmilk.cheese.slices.prefix") +
+                        TextFormatting.WHITE + GrcI18n.translate("grcmilk.cheese.slices.value.format", nbt.getInteger("slices"), nbt.getInteger("slices_max")));
+            } else {
+                final float ageProgress = nbt.getFloat("age_progress");
+                final String result = TextFormatting.GRAY + GrcI18n.translate("grcmilk.cheese.aging.prefix") +
+                        TextFormatting.WHITE + GrcI18n.translate("grcmilk.cheese.aging.progress.format", (int) (ageProgress * 100));
+                tooltip.add(result);
+            }
+        }
+        if (te instanceof TileEntityHangingCurds) {
+            final float progress = nbt.getFloat("progress");
+            if (progress < 1f) {
+                final String result = TextFormatting.GRAY + GrcI18n.translate("grcmilk.hanging_curds.drying.prefix") +
+                        TextFormatting.WHITE + GrcI18n.translate("grcmilk.hanging_curds.drying.progress.format", (int) (progress * 100));
+                tooltip.add(result);
+            }
+            if (nbt.hasKey("dried")) {
+                final boolean dried = nbt.getBoolean("dried");
+                if (dried) {
+                    tooltip.add(GrcI18n.translate("grcmilk.hanging_curds.dried"));
+                }
+            }
+        }
+        return tooltip;
+    }
 
-	@Override
-	@Optional.Method(modid="Waila")
-	public List<String> getWailaTail(ItemStack itemStack, List<String> tooltip, IWailaDataAccessor accessor, IWailaConfigHandler config)
-	{
-		return tooltip;
-	}
+    @Override
+    @Optional.Method(modid = "Waila")
+    public List<String> getWailaTail(ItemStack itemStack, List<String> tooltip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+        return tooltip;
+    }
 
-	private void getButterChurnData(TileEntityButterChurn te, NBTTagCompound nbt)
-	{
-		nbt.setTag("item", NBTHelper.writeItemStackToNBT(te.getStackInSlot(0), new NBTTagCompound()));
-	}
+    private void getButterChurnData(TileEntityButterChurn te, NBTTagCompound nbt) {
+        nbt.setTag("item", NBTHelper.writeItemStackToNBT(te.getStackInSlot(0), new NBTTagCompound()));
+    }
 
-	private void getCheesePressData(TileEntityCheesePress te, NBTTagCompound nbt)
-	{
-		nbt.setBoolean("pressed", te.isPressed());
-		nbt.setTag("item", NBTHelper.writeItemStackToNBT(te.getStackInSlot(0), new NBTTagCompound()));
-	}
+    private void getCheesePressData(TileEntityCheesePress te, NBTTagCompound nbt) {
+        nbt.setBoolean("pressed", te.isPressed());
+        nbt.setTag("item", NBTHelper.writeItemStackToNBT(te.getStackInSlot(0), new NBTTagCompound()));
+    }
 
-	@Override
-	@Optional.Method(modid="Waila")
-	public NBTTagCompound getNBTData(EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, BlockPos pos)
-	{
-		if (te instanceof TileEntityButterChurn) getButterChurnData((TileEntityButterChurn)te, tag);
-		if (te instanceof TileEntityCheesePress) getCheesePressData((TileEntityCheesePress)te, tag);
-		if (te instanceof TileEntityCheeseBlock)
-		{
-			final TileEntityCheeseBlock cheeseBlock = (TileEntityCheeseBlock)te;
-			tag.setBoolean("is_aged", cheeseBlock.getCheese().isAged());
-			tag.setFloat("age_progress", cheeseBlock.getCheese().getAgeProgress());
-			tag.setInteger("slices", cheeseBlock.getCheese().getSlices());
-			tag.setInteger("slices_max", cheeseBlock.getCheese().getSlicesMax());
-		}
-		if (te instanceof TileEntityHangingCurds)
-		{
-			final TileEntityHangingCurds hangingCurds = (TileEntityHangingCurds)te;
-			tag.setFloat("progress", hangingCurds.getProgress());
-			tag.setBoolean("dried", hangingCurds.isDried());
-		}
-		return tag;
-	}
+    @Override
+    @Optional.Method(modid = "Waila")
+    public NBTTagCompound getNBTData(EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, BlockPos pos) {
+        if (te instanceof TileEntityButterChurn) getButterChurnData((TileEntityButterChurn) te, tag);
+        if (te instanceof TileEntityCheesePress) getCheesePressData((TileEntityCheesePress) te, tag);
+        if (te instanceof TileEntityCheeseBlock) {
+            final TileEntityCheeseBlock cheeseBlock = (TileEntityCheeseBlock) te;
+            tag.setBoolean("is_aged", cheeseBlock.getCheese().isAged());
+            tag.setFloat("age_progress", cheeseBlock.getCheese().getAgeProgress());
+            tag.setInteger("slices", cheeseBlock.getCheese().getSlices());
+            tag.setInteger("slices_max", cheeseBlock.getCheese().getSlicesMax());
+        }
+        if (te instanceof TileEntityHangingCurds) {
+            final TileEntityHangingCurds hangingCurds = (TileEntityHangingCurds) te;
+            tag.setFloat("progress", hangingCurds.getProgress());
+            tag.setBoolean("dried", hangingCurds.isDried());
+        }
+        return tag;
+    }
 }

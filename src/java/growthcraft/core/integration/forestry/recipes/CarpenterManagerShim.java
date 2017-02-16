@@ -29,15 +29,17 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.Optional;
 
-@Optional.Interface(iface="forestry.api.recipes.ICarpenterManager", modid="ForestryAPI|recipes")
-public class CarpenterManagerShim extends AbstractManagerShim<ICarpenterRecipe> implements ICarpenterManager
-{
-	@Override
-	public void addRecipe(ItemStack box, ItemStack product, Object... materials) {}
+@Optional.Interface(iface = "forestry.api.recipes.ICarpenterManager", modid = "ForestryAPI|recipes")
+public class CarpenterManagerShim extends AbstractManagerShim<ICarpenterRecipe> implements ICarpenterManager {
+    @Override
+    public void addRecipe(ItemStack box, ItemStack product, Object... materials) {
+    }
 
-	@Override
-	public void addRecipe(int packagingTime, ItemStack box, ItemStack product, Object... materials) {}
+    @Override
+    public void addRecipe(int packagingTime, ItemStack box, ItemStack product, Object... materials) {
+    }
 
-	@Override
-	public void addRecipe(int packagingTime, FluidStack liquid, ItemStack box, ItemStack product, Object... materials) {}
+    @Override
+    public void addRecipe(int packagingTime, FluidStack liquid, ItemStack box, ItemStack product, Object... materials) {
+    }
 }

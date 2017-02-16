@@ -36,73 +36,62 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockButterChurn extends GrcBlockContainer
-{
-	public BlockButterChurn()
-	{
-		super(Material.WOOD);
-		setResistance(5.0F);
-		setHardness(2.0F);
-		setUnlocalizedName("grcmilk.ButterChurn");
-		//setStepSound(soundTypeWood);
-		setCreativeTab(GrowthCraftMilk.creativeTab);
-		setTileEntityType(TileEntityButterChurn.class);
-		final BBox bb = BBox.newCube(4f, 0f, 4f, 8f, 16f, 8f).scale(1f / 16f);
-		getBoundingBox(bb.x0(), bb.y0(), bb.z0(), bb.x1(), bb.y1(), bb.z1());
-		//setBlockTextureName("grcmilk:butter_churn");
-	}
+public class BlockButterChurn extends GrcBlockContainer {
+    public BlockButterChurn() {
+        super(Material.WOOD);
+        setResistance(5.0F);
+        setHardness(2.0F);
+        setUnlocalizedName("grcmilk.ButterChurn");
+        //setStepSound(soundTypeWood);
+        setCreativeTab(GrowthCraftMilk.creativeTab);
+        setTileEntityType(TileEntityButterChurn.class);
+        final BBox bb = BBox.newCube(4f, 0f, 4f, 8f, 16f, 8f).scale(1f / 16f);
+        getBoundingBox(bb.x0(), bb.y0(), bb.z0(), bb.x1(), bb.y1(), bb.z1());
+        //setBlockTextureName("grcmilk:butter_churn");
+    }
 
-	private boolean tryChurning(World world, BlockPos pos, EntityPlayer player)
-	{
-		final TileEntityButterChurn butterChurn = getTileEntity(world, pos);
-		if (butterChurn != null)
-		{
-			switch (butterChurn.doWork())
-			{
-				case CHURN:
-				case PRODUCE:
-					return true;
-				case NONE:
-				default:
-					break;
-			}
-		}
-		return false;
-	}
+    private boolean tryChurning(World world, BlockPos pos, EntityPlayer player) {
+        final TileEntityButterChurn butterChurn = getTileEntity(world, pos);
+        if (butterChurn != null) {
+            switch (butterChurn.doWork()) {
+                case CHURN:
+                case PRODUCE:
+                    return true;
+                case NONE:
+                default:
+                    break;
+            }
+        }
+        return false;
+    }
 
-	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, EntityPlayer player, int meta, float par7, float par8, float par9)
-	{
-		if (super.onBlockActivated(world, pos, player, meta, par7, par8, par9)) return true;
-		if (!player.isSneaking())
-		{
-			if (tryChurning(world, pos, player)) return true;
-		}
-		return false;
-	}
+    @Override
+    public boolean onBlockActivated(World world, BlockPos pos, EntityPlayer player, int meta, float par7, float par8, float par9) {
+        if (super.onBlockActivated(world, pos, player, meta, par7, par8, par9)) return true;
+        if (!player.isSneaking()) {
+            if (tryChurning(world, pos, player)) return true;
+        }
+        return false;
+    }
 
-	@Override
-	public int getRenderType()
-	{
-		return RenderButterChurn.RENDER_ID;
-	}
+    @Override
+    public int getRenderType() {
+        return RenderButterChurn.RENDER_ID;
+    }
 
-	@Override
-	public boolean isOpaqueCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isOpaqueCube() {
+        return false;
+    }
 
-	@Override
-	public boolean renderAsNormalBlock()
-	{
-		return false;
-	}
+    @Override
+    public boolean renderAsNormalBlock() {
+        return false;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess world, BlockPos pos, int side)
-	{
-		return true;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public boolean shouldSideBeRendered(IBlockAccess world, BlockPos pos, int side) {
+        return true;
+    }
 }

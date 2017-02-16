@@ -44,200 +44,170 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import javax.annotation.Nonnull;
 import java.util.Random;
 
-public class BlockNetherPaddy extends BlockPaddyBase
-{
-	@SideOnly(Side.CLIENT)
-	protected IIcon[] icons;
+public class BlockNetherPaddy extends BlockPaddyBase {
+    private final int paddyFieldMax = netherloid.getConfig().paddyFieldMax;
+    private final boolean filledPaddy;
+    @SideOnly(Side.CLIENT)
+    protected IIcon[] icons;
 
-	private final int paddyFieldMax = netherloid.getConfig().paddyFieldMax;
-	private final boolean filledPaddy;
+    public BlockNetherPaddy(boolean filled) {
+        super(Material.SAND);
+        setHardness(0.5F);
+        setUnlocalizedName("grcnetherloid.netherPaddyField");
+        setCreativeTab(netherloid.tab);
+        this.filledPaddy = filled;
+        if (filledPaddy) {
+            setLightLevel(1.0F);
+        } else {
+            //setStepSound(soundTypeSand);
+        }
+    }
 
-	public BlockNetherPaddy(boolean filled)
-	{
-		super(Material.SAND);
-		setHardness(0.5F);
-		setUnlocalizedName("grcnetherloid.netherPaddyField");
-		setCreativeTab(netherloid.tab);
-		this.filledPaddy = filled;
-		if (filledPaddy)
-		{
-			setLightLevel(1.0F);
-		}
-		else
-		{
-			//setStepSound(soundTypeSand);
-		}
-	}
+    public void onEntityCollidedWithBlock(World world, BlockPos pos, Entity entity) {
+        if (world.isRemote) return;
 
-	public void onEntityCollidedWithBlock(World world, BlockPos pos, Entity entity)
-	{
-		if (world.isRemote) return;
+        entity.motionX *= 0.4D;
+        entity.motionZ *= 0.4D;
 
-		entity.motionX *= 0.4D;
-		entity.motionZ *= 0.4D;
+        // set fire to the entity if they step into a filled lava paddy
+        if (filledPaddy) entity.setFire(15);
+    }
 
-		// set fire to the entity if they step into a filled lava paddy
-		if (filledPaddy) entity.setFire(15);
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void randomDisplayTick(World world, BlockPos pos, Random random, IBlockState state) {
+        super.randomDisplayTick(state, world, pos, random);
+        if (filledPaddy) {
+            if (world.getBlockState(x, y + 1, z).getMaterial() == Material.AIR && !world.getBlockState(x, y + 1, z).isOpaqueCube()) {
+                if (random.nextInt(100) == 0) {
+                    final double px = (double) ((float) x + random.nextFloat());
+                    final double py = (double) y + getBlockBoundsMaxY();
+                    final double pz = (double) ((float) z + random.nextFloat());
+                    world.spawnParticle("lava", px, py, pz, 0.0D, 0.0D, 0.0D);
+                    world.playSound(px, py, pz, "liquid.lavapop", 0.2F + random.nextFloat() * 0.2F, 0.9F + random.nextFloat() * 0.15F, false);
+                }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World world, BlockPos pos, Random random, IBlockState state)
-	{
-		super.randomDisplayTick(state, world, pos, random);
-		if (filledPaddy)
-		{
-			if (world.getBlockState(x, y + 1, z).getMaterial() == Material.AIR && !world.getBlockState(x, y + 1, z).isOpaqueCube())
-			{
-				if (random.nextInt(100) == 0)
-				{
-					final double px = (double)((float)x + random.nextFloat());
-					final double py = (double)y + getBlockBoundsMaxY();
-					final double pz = (double)((float)z + random.nextFloat());
-					world.spawnParticle("lava", px, py, pz, 0.0D, 0.0D, 0.0D);
-					world.playSound(px, py, pz, "liquid.lavapop", 0.2F + random.nextFloat() * 0.2F, 0.9F + random.nextFloat() * 0.15F, false);
-				}
+                if (random.nextInt(200) == 0) {
+                    world.playSound((double) x, (double) y, (double) z, "liquid.lava", 0.2F + random.nextFloat() * 0.2F, 0.9F + random.nextFloat() * 0.15F, false);
+                }
+            }
+        }
+    }
 
-				if (random.nextInt(200) == 0)
-				{
-					world.playSound((double)x, (double)y, (double)z, "liquid.lava", 0.2F + random.nextFloat() * 0.2F, 0.9F + random.nextFloat() * 0.15F, false);
-				}
-			}
-		}
-	}
+    /**
+     * Returns the fluid block used to fill this paddy
+     *
+     * @return fluid block
+     */
+    @Override
+    @Nonnull
+    public Block getFluidBlock() {
+        return Blocks.LAVA;
+    }
 
-	/**
-	 * Returns the fluid block used to fill this paddy
-	 *
-	 * @return fluid block
-	 */
-	@Override
-	@Nonnull public Block getFluidBlock()
-	{
-		return Blocks.LAVA;
-	}
+    @Override
+    @Nonnull
+    public Fluid getFillingFluid() {
+        return FluidRegistry.LAVA;
+    }
 
-	@Override
-	@Nonnull public Fluid getFillingFluid()
-	{
-		return FluidRegistry.LAVA;
-	}
+    @Override
+    public int getMaxPaddyMeta(IBlockAccess world, BlockPos pos) {
+        return paddyFieldMax;
+    }
 
-	@Override
-	public int getMaxPaddyMeta(IBlockAccess world, BlockPos pos)
-	{
-		return paddyFieldMax;
-	}
+    @Override
+    public boolean isBelowFillingFluid(IBlockAccess world, BlockPos pos) {
+        return world.getBlockState(x, y + 1, z).getMaterial() == Material.LAVA;
+    }
 
-	@Override
-	public boolean isBelowFillingFluid(IBlockAccess world, BlockPos pos)
-	{
-		return world.getBlockState(x, y + 1, z).getMaterial() == Material.LAVA;
-	}
+    @Override
+    public void drainPaddy(World world, BlockPos pos, IBlockState state) {
+        final int meta = world.getBlockState(pos);
+        if (meta > 1) {
+            world.setBlockState(pos, state, meta - 1, BlockFlags.SYNC);
+        } else {
+            final Block targetBlock = netherloid.blocks.netherPaddyField.getBlockState();
+            if (this != targetBlock) {
+                world.setBlockState(pos, targetBlock, 0, BlockFlags.SYNC);
+            }
+        }
+    }
 
-	@Override
-	public void drainPaddy(World world, BlockPos pos, IBlockState state)
-	{
-		final int meta = world.getBlockState(pos);
-		if (meta > 1)
-		{
-			world.setBlockState(pos, state, meta - 1, BlockFlags.SYNC);
-		}
-		else
-		{
-			final Block targetBlock = netherloid.blocks.netherPaddyField.getBlockState();
-			if (this != targetBlock)
-			{
-				world.setBlockState(pos, targetBlock, 0, BlockFlags.SYNC);
-			}
-		}
-	}
+    @Override
+    public void fillPaddy(World world, BlockPos pos, IBlockState state) {
+        final Block targetBlock = netherloid.blocks.netherPaddyFieldFilled.getBlockState();
+        if (this != targetBlock) {
+            world.setBlockState(pos, targetBlock, getMaxPaddyMeta(world, pos), BlockFlags.SYNC);
+        } else {
+            world.setBlockState(pos, getMaxPaddyMeta(world, pos), BlockFlags.SYNC);
+        }
+    }
 
-	@Override
-	public void fillPaddy(World world, BlockPos pos, IBlockState state)
-	{
-		final Block targetBlock = netherloid.blocks.netherPaddyFieldFilled.getBlockState();
-		if (this != targetBlock)
-		{
-			world.setBlockState(pos, targetBlock, getMaxPaddyMeta(world, pos), BlockFlags.SYNC);
-		}
-		else
-		{
-			world.setBlockState(pos, getMaxPaddyMeta(world, pos), BlockFlags.SYNC);
-		}
-	}
+    /************
+     * STUFF
+     ************/
+    @Override
+    @SideOnly(Side.CLIENT)
+    public Item getItem(World world, BlockPos pos) {
+        return Item.getItemFromBlock(Blocks.SOUL_SAND);
+    }
 
-	/************
-	 * STUFF
-	 ************/
-	@Override
-	@SideOnly(Side.CLIENT)
-	public Item getItem(World world, BlockPos pos)
-	{
-		return Item.getItemFromBlock(Blocks.SOUL_SAND);
-	}
+    /************
+     * DROPS
+     ************/
+    @Override
+    public Item getItemDropped(int meta, Random random, int par3) {
+        return Item.getItemFromBlock(Blocks.SOUL_SAND);
+    }
 
-	/************
-	 * DROPS
-	 ************/
-	@Override
-	public Item getItemDropped(int meta, Random random, int par3)
-	{
-		return Item.getItemFromBlock(Blocks.SOUL_SAND);
-	}
+    @Override
+    public int quantityDropped(Random random) {
+        return 1;
+    }
 
-	@Override
-	public int quantityDropped(Random random)
-	{
-		return 1;
-	}
+    /************
+     * TEXTURES
+     ************/
+    //@Override
+    //@SideOnly(Side.CLIENT)
 
-	/************
-	 * TEXTURES
-	 ************/
-	//@Override
-	//@SideOnly(Side.CLIENT)
-
-	//{
-	//	icons = new IIcon[3];
+    //{
+    //	icons = new IIcon[3];
 //
-	//	icons[0] = reg.registerIcon("soul_sand");
-	//	icons[1] = reg.registerIcon("grcnetherloid:soul_sand_paddy_dry");
-	//	icons[2] = reg.registerIcon("grcnetherloid:soul_sand_paddy_wet");
-	//}
+    //	icons[0] = reg.registerIcon("soul_sand");
+    //	icons[1] = reg.registerIcon("grcnetherloid:soul_sand_paddy_dry");
+    //	icons[2] = reg.registerIcon("grcnetherloid:soul_sand_paddy_wet");
+    //}
 
-	//@Override
-	//@SideOnly(Side.CLIENT)
-	//
-	//{
-	//	if (side == 1)
-	//	{
-	//		if (meta == 0)
-	//		{
-	//			return icons[1];
-	//		}
-	//		else
-	//		{
-	///			return icons[2];
-	//		}
-	//	}
-	//	return icons[0];
-	//}
+    //@Override
+    //@SideOnly(Side.CLIENT)
+    //
+    //{
+    //	if (side == 1)
+    //	{
+    //		if (meta == 0)
+    //		{
+    //			return icons[1];
+    //		}
+    //		else
+    //		{
+    ///			return icons[2];
+    //		}
+    //	}
+    //	return icons[0];
+    //}
+    public boolean canConnectPaddyTo(IBlockAccess world, int i, int j, int k, int m) {
+        if (m > 0) {
+            m = 1;
+        }
 
-	public boolean canConnectPaddyTo(IBlockAccess world, int i, int j, int k, int m)
-	{
-		if (m > 0)
-		{
-			m = 1;
-		}
+        int meta = world.getBlockState(i, j, k);
 
-		int meta = world.getBlockState(i, j, k);
+        if (meta > 0) {
+            meta = 1;
+        }
 
-		if (meta > 0)
-		{
-			meta = 1;
-		}
-
-		return NetherBlockCheck.isPaddy(world.getBlockState(i, j, k)) && meta == m;
-	}
+        return NetherBlockCheck.isPaddy(world.getBlockState(i, j, k)) && meta == m;
+    }
 }

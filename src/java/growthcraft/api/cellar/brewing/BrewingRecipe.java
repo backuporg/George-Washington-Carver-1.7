@@ -34,55 +34,44 @@ import net.minecraftforge.fluids.FluidStack;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class BrewingRecipe extends ProcessingRecipe
-{
-	private IMultiItemStacks inputItemStack;
-	private FluidStack inputFluidStack;
+public class BrewingRecipe extends ProcessingRecipe {
+    private IMultiItemStacks inputItemStack;
+    private FluidStack inputFluidStack;
 
-	public BrewingRecipe(@Nonnull FluidStack pInputFluid, @Nonnull IMultiItemStacks pInputItem, @Nonnull FluidStack pOutputFluid, int pTime, @Nullable Residue pResidue)
-	{
-		super(pOutputFluid, pTime, pResidue);
-		this.inputItemStack = pInputItem;
-		this.inputFluidStack = pInputFluid;
-	}
+    public BrewingRecipe(@Nonnull FluidStack pInputFluid, @Nonnull IMultiItemStacks pInputItem, @Nonnull FluidStack pOutputFluid, int pTime, @Nullable Residue pResidue) {
+        super(pOutputFluid, pTime, pResidue);
+        this.inputItemStack = pInputItem;
+        this.inputFluidStack = pInputFluid;
+    }
 
-	public IMultiItemStacks getInputItemStack()
-	{
-		return inputItemStack;
-	}
+    public IMultiItemStacks getInputItemStack() {
+        return inputItemStack;
+    }
 
-	public FluidStack getInputFluidStack()
-	{
-		return inputFluidStack;
-	}
+    public FluidStack getInputFluidStack() {
+        return inputFluidStack;
+    }
 
-	public boolean matchesRecipe(@Nullable FluidStack fluidStack, @Nullable ItemStack itemStack)
-	{
-		if (fluidStack != null && itemStack != null)
-		{
-			if (!FluidTest.hasEnough(inputFluidStack, fluidStack)) return false;
-			if (!ItemTest.hasEnough(inputItemStack, itemStack)) return false;
-			return true;
-		}
-		return false;
-	}
+    public boolean matchesRecipe(@Nullable FluidStack fluidStack, @Nullable ItemStack itemStack) {
+        if (fluidStack != null && itemStack != null) {
+            if (!FluidTest.hasEnough(inputFluidStack, fluidStack)) return false;
+            return ItemTest.hasEnough(inputItemStack, itemStack);
+        }
+        return false;
+    }
 
-	public boolean matchesIngredient(@Nullable FluidStack fluidStack)
-	{
-		return FluidTest.fluidMatches(inputFluidStack, fluidStack);
-	}
+    public boolean matchesIngredient(@Nullable FluidStack fluidStack) {
+        return FluidTest.fluidMatches(inputFluidStack, fluidStack);
+    }
 
-	public boolean matchesIngredient(@Nullable ItemStack stack)
-	{
-		return ItemTest.itemMatches(inputItemStack, stack);
-	}
+    public boolean matchesIngredient(@Nullable ItemStack stack) {
+        return ItemTest.itemMatches(inputItemStack, stack);
+    }
 
-	public boolean isItemIngredient(@Nullable ItemStack stack)
-	{
-		if (stack != null)
-		{
-			if (inputItemStack.containsItemStack(stack)) return true;
-		}
-		return false;
-	}
+    public boolean isItemIngredient(@Nullable ItemStack stack) {
+        if (stack != null) {
+            if (inputItemStack.containsItemStack(stack)) return true;
+        }
+        return false;
+    }
 }

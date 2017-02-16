@@ -31,81 +31,66 @@ import net.minecraft.block.Block;
 
 import java.io.BufferedReader;
 
-public class UserFlowersConfig extends AbstractUserJSONConfig
-{
-	private final UserFlowersEntries defaultEntries = new UserFlowersEntries();
-	private UserFlowersEntries entries;
+public class UserFlowersConfig extends AbstractUserJSONConfig {
+    private final UserFlowersEntries defaultEntries = new UserFlowersEntries();
+    private UserFlowersEntries entries;
 
-	public UserFlowerEntry addDefault(UserFlowerEntry entry)
-	{
-		defaultEntries.data.add(entry);
-		return entry;
-	}
+    public UserFlowerEntry addDefault(UserFlowerEntry entry) {
+        defaultEntries.data.add(entry);
+        return entry;
+    }
 
-	public UserFlowerEntry addDefault(Block flower, int meta)
-	{
-		return addDefault(new UserFlowerEntry(flower, meta));
-	}
+    public UserFlowerEntry addDefault(Block flower, int meta) {
+        return addDefault(new UserFlowerEntry(flower, meta));
+    }
 
-	public UserFlowerEntry addDefault(Block flower)
-	{
-		return addDefault(flower, ItemKey.WILDCARD_VALUE);
-	}
+    public UserFlowerEntry addDefault(Block flower) {
+        return addDefault(flower, ItemKey.WILDCARD_VALUE);
+    }
 
-	@Override
-	protected String getDefault()
-	{
-		return gson.toJson(defaultEntries);
-	}
+    @Override
+    protected String getDefault() {
+        return gson.toJson(defaultEntries);
+    }
 
-	@Override
-	protected void loadFromBuffer(BufferedReader buff) throws IllegalStateException
-	{
-		this.entries = gson.fromJson(buff, UserFlowersEntries.class);
-	}
+    @Override
+    protected void loadFromBuffer(BufferedReader buff) throws IllegalStateException {
+        this.entries = gson.fromJson(buff, UserFlowersEntries.class);
+    }
 
-	private void addFlowerEntry(UserFlowerEntry entry)
-	{
-		if (entry == null)
-		{
-			logger.error("Invalid Entry");
-			return;
-		}
+    private void addFlowerEntry(UserFlowerEntry entry) {
+        if (entry == null) {
+            logger.error("Invalid Entry");
+            return;
+        }
 
-		if (entry.block == null || entry.block.isInvalid())
-		{
-			logger.error("Invalid block for entry {%s}", entry);
-			return;
-		}
+        if (entry.block == null || entry.block.isInvalid()) {
+            logger.error("Invalid block for entry {%s}", entry);
+            return;
+        }
 
-		switch (entry.entry_type)
-		{
-			case "generic":
-				BeesRegistry.instance().addFlower(entry.block.getBlockState(), entry.block.meta);
-				break;
-			case "forced":
-				BeesRegistry.instance().addFlower(new ForcedFlowerBlockEntry(entry.block.getBlockState(), entry.block.meta));
-				break;
-			default:
-				logger.error("Invalid entry_type '%s' for entry {%s}", entry.entry_type, entry);
-		}
+        switch (entry.entry_type) {
+            case "generic":
+                BeesRegistry.instance().addFlower(entry.block.getBlockState(), entry.block.meta);
+                break;
+            case "forced":
+                BeesRegistry.instance().addFlower(new ForcedFlowerBlockEntry(entry.block.getBlockState(), entry.block.meta));
+                break;
+            default:
+                logger.error("Invalid entry_type '%s' for entry {%s}", entry.entry_type, entry);
+        }
 
-	}
+    }
 
-	@Override
-	public void postInit()
-	{
-		if (entries != null)
-		{
-			if (entries.data != null)
-			{
-				logger.debug("Adding %d user flower entries.", entries.data.size());
-				for (UserFlowerEntry entry : entries.data) addFlowerEntry(entry);
-			}
-			else
-			{
-				logger.error("Config contains invalid data.");
-			}
-		}
-	}
+    @Override
+    public void postInit() {
+        if (entries != null) {
+            if (entries.data != null) {
+                logger.debug("Adding %d user flower entries.", entries.data.size());
+                for (UserFlowerEntry entry : entries.data) addFlowerEntry(entry);
+            } else {
+                logger.error("Config contains invalid data.");
+            }
+        }
+    }
 }

@@ -32,27 +32,24 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import org.lwjgl.opengl.GL11;
 
-public class ItemRendererHangingCurds extends GrcItemRenderer
-{
-	@Override
-	protected void render(ItemRenderType type, ItemStack stack, Object... data)
-	{
-		final Item item = stack.getItem();
-		if (item instanceof ItemBlockHangingCurds)
-		{
-			final ItemBlockHangingCurds hangingCurds = (ItemBlockHangingCurds)item;
-			final EnumCheeseType cheese = hangingCurds.getCheeseType(stack);
-			GL11.glPushMatrix();
-			{
-				bindTexture(GrcMilkResources.INSTANCE.textureHangingCurds);
-				GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-				GL11.glRotatef(180.0F, 1.0F, 0.0F, 0.0F);
-				GL11.glTranslatef(0.0f, -1.5f, 0.0f);
-				GrcMilkResources.INSTANCE.modelHangingCurds
-					.setCurdColor(cheese.getColor())
-					.render(null, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, ModelHangingCurds.SCALE);
-			}
-			GL11.glPopMatrix();
-		}
-	}
+public class ItemRendererHangingCurds extends GrcItemRenderer {
+    @Override
+    protected void render(ItemRenderType type, ItemStack stack, Object... data) {
+        final Item item = stack.getItem();
+        if (item instanceof ItemBlockHangingCurds) {
+            final ItemBlockHangingCurds hangingCurds = (ItemBlockHangingCurds) item;
+            final EnumCheeseType cheese = hangingCurds.getCheeseType(stack);
+            GL11.glPushMatrix();
+            {
+                bindTexture(GrcMilkResources.INSTANCE.textureHangingCurds);
+                GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+                GL11.glRotatef(180.0F, 1.0F, 0.0F, 0.0F);
+                GL11.glTranslatef(0.0f, -1.5f, 0.0f);
+                GrcMilkResources.INSTANCE.modelHangingCurds
+                        .setCurdColor(cheese.getColor())
+                        .render(null, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, ModelHangingCurds.SCALE);
+            }
+            GL11.glPopMatrix();
+        }
+    }
 }

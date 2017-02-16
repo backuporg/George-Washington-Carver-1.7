@@ -48,239 +48,229 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class GrcHopsFluids extends GrcModuleBase
-{
-	public Booze[] hopAleBooze;
-	public Booze[] lagerBooze;
-	public BlockBoozeDefinition[] hopAleFluids;
-	public BlockBoozeDefinition[] lagerFluids;
-	public ItemDefinition hopAle;
-	public ItemDefinition lager;
-	public ItemBucketBoozeDefinition[] hopAleBuckets;
-	public ItemBucketBoozeDefinition[] lagerBuckets;
+public class GrcHopsFluids extends GrcModuleBase {
+    public Booze[] hopAleBooze;
+    public Booze[] lagerBooze;
+    public BlockBoozeDefinition[] hopAleFluids;
+    public BlockBoozeDefinition[] lagerFluids;
+    public ItemDefinition hopAle;
+    public ItemDefinition lager;
+    public ItemBucketBoozeDefinition[] hopAleBuckets;
+    public ItemBucketBoozeDefinition[] lagerBuckets;
 
-	@Override
-	public void preInit()
-	{
-		this.lagerBooze = new Booze[7];
-		this.lagerFluids = new BlockBoozeDefinition[lagerBooze.length];
-		this.lagerBuckets = new ItemBucketBoozeDefinition[lagerBooze.length];
-		BoozeRegistryHelper.initializeBoozeFluids("grc.lager", lagerBooze);
-		for (Booze booze : lagerBooze)
-		{
-			booze.setColor(GrowthCraftHops.getConfig().lagerColor).setDensity(1080);
-		}
-		BoozeRegistryHelper.initializeBooze(lagerBooze, lagerFluids, lagerBuckets);
-		BoozeRegistryHelper.setBoozeFoodStats(lagerBooze, 1, -0.6f);
-		BoozeRegistryHelper.setBoozeFoodStats(lagerBooze[0], 1, 0.3f);
+    @Override
+    public void preInit() {
+        this.lagerBooze = new Booze[7];
+        this.lagerFluids = new BlockBoozeDefinition[lagerBooze.length];
+        this.lagerBuckets = new ItemBucketBoozeDefinition[lagerBooze.length];
+        BoozeRegistryHelper.initializeBoozeFluids("grc.lager", lagerBooze);
+        for (Booze booze : lagerBooze) {
+            booze.setColor(GrowthCraftHops.getConfig().lagerColor).setDensity(1080);
+        }
+        BoozeRegistryHelper.initializeBooze(lagerBooze, lagerFluids, lagerBuckets);
+        BoozeRegistryHelper.setBoozeFoodStats(lagerBooze, 1, -0.6f);
+        BoozeRegistryHelper.setBoozeFoodStats(lagerBooze[0], 1, 0.3f);
 
-		this.lager = new ItemDefinition(new ItemBoozeBottle(lagerBooze));
+        this.lager = new ItemDefinition(new ItemBoozeBottle(lagerBooze));
 
-		this.hopAleBooze = new Booze[9];
-		this.hopAleFluids = new BlockBoozeDefinition[hopAleBooze.length];
-		this.hopAleBuckets = new ItemBucketBoozeDefinition[hopAleBooze.length];
-		BoozeRegistryHelper.initializeBoozeFluids("grc.hopAle", hopAleBooze);
-		for (Booze booze : hopAleBooze)
-		{
-			booze.setColor(GrowthCraftHops.getConfig().hopAleColor).setDensity(1080);
-		}
-		BoozeRegistryHelper.initializeBooze(hopAleBooze, hopAleFluids, hopAleBuckets);
-		BoozeRegistryHelper.setBoozeFoodStats(hopAleBooze, 1, -0.6f);
-		BoozeRegistryHelper.setBoozeFoodStats(hopAleBooze[0], 1, 0.3f);
-		BoozeRegistryHelper.setBoozeFoodStats(hopAleBooze[4], 1, 0.3f);
+        this.hopAleBooze = new Booze[9];
+        this.hopAleFluids = new BlockBoozeDefinition[hopAleBooze.length];
+        this.hopAleBuckets = new ItemBucketBoozeDefinition[hopAleBooze.length];
+        BoozeRegistryHelper.initializeBoozeFluids("grc.hopAle", hopAleBooze);
+        for (Booze booze : hopAleBooze) {
+            booze.setColor(GrowthCraftHops.getConfig().hopAleColor).setDensity(1080);
+        }
+        BoozeRegistryHelper.initializeBooze(hopAleBooze, hopAleFluids, hopAleBuckets);
+        BoozeRegistryHelper.setBoozeFoodStats(hopAleBooze, 1, -0.6f);
+        BoozeRegistryHelper.setBoozeFoodStats(hopAleBooze[0], 1, 0.3f);
+        BoozeRegistryHelper.setBoozeFoodStats(hopAleBooze[4], 1, 0.3f);
 
-		this.hopAle = new ItemDefinition(new ItemBoozeBottle(hopAleBooze));
-	}
+        this.hopAle = new ItemDefinition(new ItemBoozeBottle(hopAleBooze));
+    }
 
-	private void registerLager()
-	{
-		final int fermentTime = GrowthCraftCellar.getConfig().fermentTime;
-		final FluidStack[] fs = new FluidStack[lagerBooze.length];
-		for (int i = 0; i < fs.length; ++i)
-		{
-			fs[i] = new FluidStack(lagerBooze[i], 1);
-		}
+    private void registerLager() {
+        final int fermentTime = GrowthCraftCellar.getConfig().fermentTime;
+        final FluidStack[] fs = new FluidStack[lagerBooze.length];
+        for (int i = 0; i < fs.length; ++i) {
+            fs[i] = new FluidStack(lagerBooze[i], 1);
+        }
 
-		GrowthCraftCellar.boozeBuilderFactory.create(lagerBooze[0])
-			.tags(BoozeTag.YOUNG, BoozeTag.CHILLED)
-			.brewsFrom(
-				new FluidStack(hopAleBooze[4], 40),
-				new OreItemStacks("yeastLager"),
-				TickUtils.minutes(1),
-				Residue.newDefault(0.0F));
+        GrowthCraftCellar.boozeBuilderFactory.create(lagerBooze[0])
+                .tags(BoozeTag.YOUNG, BoozeTag.CHILLED)
+                .brewsFrom(
+                        new FluidStack(hopAleBooze[4], 40),
+                        new OreItemStacks("yeastLager"),
+                        TickUtils.minutes(1),
+                        Residue.newDefault(0.0F));
 
-		GrowthCraftCellar.boozeBuilderFactory.create(lagerBooze[1])
-			.tags(BoozeTag.FERMENTED, BoozeTag.CHILLED)
-			.fermentsFrom(fs[0], new OreItemStacks("yeastLager"), fermentTime)
-			.fermentsFrom(fs[0], new ItemStack(Items.NETHER_WART), (int)(fermentTime * 0.66))
-			.getEffect()
-				.setTipsy(BoozeUtils.alcoholToTipsy(0.0419f), TickUtils.seconds(45))
-				.addPotionEntry(MobEffects.SPEED, TickUtils.seconds(90), 0)
-				.addPotionEntry(MobEffects.HASTE, TickUtils.seconds(90), 0);
+        GrowthCraftCellar.boozeBuilderFactory.create(lagerBooze[1])
+                .tags(BoozeTag.FERMENTED, BoozeTag.CHILLED)
+                .fermentsFrom(fs[0], new OreItemStacks("yeastLager"), fermentTime)
+                .fermentsFrom(fs[0], new ItemStack(Items.NETHER_WART), (int) (fermentTime * 0.66))
+                .getEffect()
+                .setTipsy(BoozeUtils.alcoholToTipsy(0.0419f), TickUtils.seconds(45))
+                .addPotionEntry(MobEffects.SPEED, TickUtils.seconds(90), 0)
+                .addPotionEntry(MobEffects.HASTE, TickUtils.seconds(90), 0);
 
-		GrowthCraftCellar.boozeBuilderFactory.create(lagerBooze[2])
-			.tags(BoozeTag.FERMENTED, BoozeTag.CHILLED, BoozeTag.POTENT)
-			.fermentsFrom(fs[1], new OreItemStacks("dustGlowstone"), fermentTime)
-			.fermentsFrom(fs[3], new OreItemStacks("dustGlowstone"), fermentTime)
-			.getEffect()
-				.setTipsy(BoozeUtils.alcoholToTipsy(0.0419f), TickUtils.seconds(45))
-				.addPotionEntry(MobEffects.SPEED, TickUtils.seconds(90), 0)
-				.addPotionEntry(MobEffects.HASTE, TickUtils.seconds(90), 0);
+        GrowthCraftCellar.boozeBuilderFactory.create(lagerBooze[2])
+                .tags(BoozeTag.FERMENTED, BoozeTag.CHILLED, BoozeTag.POTENT)
+                .fermentsFrom(fs[1], new OreItemStacks("dustGlowstone"), fermentTime)
+                .fermentsFrom(fs[3], new OreItemStacks("dustGlowstone"), fermentTime)
+                .getEffect()
+                .setTipsy(BoozeUtils.alcoholToTipsy(0.0419f), TickUtils.seconds(45))
+                .addPotionEntry(MobEffects.SPEED, TickUtils.seconds(90), 0)
+                .addPotionEntry(MobEffects.HASTE, TickUtils.seconds(90), 0);
 
-		GrowthCraftCellar.boozeBuilderFactory.create(lagerBooze[3])
-			.tags(BoozeTag.FERMENTED, BoozeTag.CHILLED, BoozeTag.EXTENDED)
-			.fermentsFrom(fs[1], new OreItemStacks("dustRedstone"), fermentTime)
-			.fermentsFrom(fs[2], new OreItemStacks("dustRedstone"), fermentTime)
-			.getEffect()
-				.setTipsy(BoozeUtils.alcoholToTipsy(0.0419f), TickUtils.seconds(45))
-				.addPotionEntry(MobEffects.SPEED, TickUtils.seconds(90), 0)
-				.addPotionEntry(MobEffects.HASTE, TickUtils.seconds(90), 0);
+        GrowthCraftCellar.boozeBuilderFactory.create(lagerBooze[3])
+                .tags(BoozeTag.FERMENTED, BoozeTag.CHILLED, BoozeTag.EXTENDED)
+                .fermentsFrom(fs[1], new OreItemStacks("dustRedstone"), fermentTime)
+                .fermentsFrom(fs[2], new OreItemStacks("dustRedstone"), fermentTime)
+                .getEffect()
+                .setTipsy(BoozeUtils.alcoholToTipsy(0.0419f), TickUtils.seconds(45))
+                .addPotionEntry(MobEffects.SPEED, TickUtils.seconds(90), 0)
+                .addPotionEntry(MobEffects.HASTE, TickUtils.seconds(90), 0);
 
-		GrowthCraftCellar.boozeBuilderFactory.create(lagerBooze[4])
-			.tags(BoozeTag.FERMENTED, BoozeTag.CHILLED, BoozeTag.HYPER_EXTENDED)
-			.fermentsFrom(fs[2], new OreItemStacks("yeastEthereal"), fermentTime)
-			.fermentsFrom(fs[3], new OreItemStacks("yeastEthereal"), fermentTime)
-			.getEffect()
-				.setTipsy(BoozeUtils.alcoholToTipsy(0.0419f), TickUtils.seconds(45))
-				.addPotionEntry(MobEffects.SPEED, TickUtils.seconds(90), 0)
-				.addPotionEntry(MobEffects.HASTE, TickUtils.seconds(90), 0);
+        GrowthCraftCellar.boozeBuilderFactory.create(lagerBooze[4])
+                .tags(BoozeTag.FERMENTED, BoozeTag.CHILLED, BoozeTag.HYPER_EXTENDED)
+                .fermentsFrom(fs[2], new OreItemStacks("yeastEthereal"), fermentTime)
+                .fermentsFrom(fs[3], new OreItemStacks("yeastEthereal"), fermentTime)
+                .getEffect()
+                .setTipsy(BoozeUtils.alcoholToTipsy(0.0419f), TickUtils.seconds(45))
+                .addPotionEntry(MobEffects.SPEED, TickUtils.seconds(90), 0)
+                .addPotionEntry(MobEffects.HASTE, TickUtils.seconds(90), 0);
 
-		GrowthCraftCellar.boozeBuilderFactory.create(lagerBooze[5])
-			.tags(BoozeTag.FERMENTED, BoozeTag.CHILLED, BoozeTag.INTOXICATED)
-			.fermentsFrom(fs[2], new OreItemStacks("yeastOrigin"), fermentTime)
-			.fermentsFrom(fs[3], new OreItemStacks("yeastOrigin"), fermentTime)
-			.getEffect()
-				.setTipsy(BoozeUtils.alcoholToTipsy(0.091f), TickUtils.seconds(45))
-				.addEffect(new EffectWeightedRandomList()
-					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.HASTE, TickUtils.minutes(3), 2)))
-					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.MINING_FATIGUE, TickUtils.minutes(3), 2))))
-				.addEffect(new EffectWeightedRandomList()
-					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.SPEED, TickUtils.minutes(3), 2)))
-					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.SLOWNESS, TickUtils.minutes(3), 2))));
+        GrowthCraftCellar.boozeBuilderFactory.create(lagerBooze[5])
+                .tags(BoozeTag.FERMENTED, BoozeTag.CHILLED, BoozeTag.INTOXICATED)
+                .fermentsFrom(fs[2], new OreItemStacks("yeastOrigin"), fermentTime)
+                .fermentsFrom(fs[3], new OreItemStacks("yeastOrigin"), fermentTime)
+                .getEffect()
+                .setTipsy(BoozeUtils.alcoholToTipsy(0.091f), TickUtils.seconds(45))
+                .addEffect(new EffectWeightedRandomList()
+                        .add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.HASTE, TickUtils.minutes(3), 2)))
+                        .add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.MINING_FATIGUE, TickUtils.minutes(3), 2))))
+                .addEffect(new EffectWeightedRandomList()
+                        .add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.SPEED, TickUtils.minutes(3), 2)))
+                        .add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.SLOWNESS, TickUtils.minutes(3), 2))));
 
-		GrowthCraftCellar.boozeBuilderFactory.create(lagerBooze[6])
-			.tags(BoozeTag.FERMENTED, BoozeTag.CHILLED, BoozeTag.POISONED)
-			.fermentsFrom(fs[0], new OreItemStacks("yeastPoison"), fermentTime)
-			.fermentsFrom(fs[1], new OreItemStacks("yeastPoison"), fermentTime)
-			.fermentsFrom(fs[2], new OreItemStacks("yeastPoison"), fermentTime)
-			.fermentsFrom(fs[3], new OreItemStacks("yeastPoison"), fermentTime)
-			.fermentsFrom(fs[4], new OreItemStacks("yeastPoison"), fermentTime)
-			.fermentsFrom(fs[5], new OreItemStacks("yeastPoison"), fermentTime)
-			.getEffect()
-				.setTipsy(BoozeUtils.alcoholToTipsy(0.0419f), TickUtils.seconds(45))
-				.createPotionEntry(MobEffects.POISON, TickUtils.seconds(90), 0).toggleDescription(!GrowthCraftCore.getConfig().hidePoisonedBooze);
-	}
+        GrowthCraftCellar.boozeBuilderFactory.create(lagerBooze[6])
+                .tags(BoozeTag.FERMENTED, BoozeTag.CHILLED, BoozeTag.POISONED)
+                .fermentsFrom(fs[0], new OreItemStacks("yeastPoison"), fermentTime)
+                .fermentsFrom(fs[1], new OreItemStacks("yeastPoison"), fermentTime)
+                .fermentsFrom(fs[2], new OreItemStacks("yeastPoison"), fermentTime)
+                .fermentsFrom(fs[3], new OreItemStacks("yeastPoison"), fermentTime)
+                .fermentsFrom(fs[4], new OreItemStacks("yeastPoison"), fermentTime)
+                .fermentsFrom(fs[5], new OreItemStacks("yeastPoison"), fermentTime)
+                .getEffect()
+                .setTipsy(BoozeUtils.alcoholToTipsy(0.0419f), TickUtils.seconds(45))
+                .createPotionEntry(MobEffects.POISON, TickUtils.seconds(90), 0).toggleDescription(!GrowthCraftCore.getConfig().hidePoisonedBooze);
+    }
 
-	private void registerHopAle()
-	{
-		final int fermentTime = GrowthCraftCellar.getConfig().fermentTime;
-		final FluidStack[] fs = new FluidStack[hopAleBooze.length];
-		for (int i = 0; i < fs.length; ++i)
-		{
-			fs[i] = new FluidStack(hopAleBooze[i], 1);
-		}
+    private void registerHopAle() {
+        final int fermentTime = GrowthCraftCellar.getConfig().fermentTime;
+        final FluidStack[] fs = new FluidStack[hopAleBooze.length];
+        for (int i = 0; i < fs.length; ++i) {
+            fs[i] = new FluidStack(hopAleBooze[i], 1);
+        }
 
-		// Unhopped
-		GrowthCraftCellar.boozeBuilderFactory.create(hopAleBooze[4])
-			.tags(BoozeTag.YOUNG)
-			.brewsFrom(
-				new FluidStack(FluidRegistry.WATER, 40),
-				new OreItemStacks("cropWheat"),
-				TickUtils.minutes(1),
-				Residue.newDefault(0.3F));
+        // Unhopped
+        GrowthCraftCellar.boozeBuilderFactory.create(hopAleBooze[4])
+                .tags(BoozeTag.YOUNG)
+                .brewsFrom(
+                        new FluidStack(FluidRegistry.WATER, 40),
+                        new OreItemStacks("cropWheat"),
+                        TickUtils.minutes(1),
+                        Residue.newDefault(0.3F));
 
-		GrowthCraftCellar.boozeBuilderFactory.create(hopAleBooze[0])
-			.tags(BoozeTag.YOUNG, BoozeTag.HOPPED)
-			.brewsFrom(
-				new FluidStack(hopAleBooze[4], 40),
-				new OreItemStacks("cropHops"),
-				TickUtils.minutes(1),
-				Residue.newDefault(0.0F));
+        GrowthCraftCellar.boozeBuilderFactory.create(hopAleBooze[0])
+                .tags(BoozeTag.YOUNG, BoozeTag.HOPPED)
+                .brewsFrom(
+                        new FluidStack(hopAleBooze[4], 40),
+                        new OreItemStacks("cropHops"),
+                        TickUtils.minutes(1),
+                        Residue.newDefault(0.0F));
 
-		GrowthCraftCellar.boozeBuilderFactory.create(hopAleBooze[1])
-			.tags(BoozeTag.FERMENTED)
-			.fermentsFrom(fs[0], new OreItemStacks("yeastBrewers"), fermentTime)
-			.fermentsFrom(fs[0], new ItemStack(Items.NETHER_WART), (int)(fermentTime * 0.66))
-			.getEffect()
-				.setTipsy(BoozeUtils.alcoholToTipsy(0.10f), TickUtils.seconds(45))
-				.addPotionEntry(MobEffects.HASTE, TickUtils.minutes(3), 0);
+        GrowthCraftCellar.boozeBuilderFactory.create(hopAleBooze[1])
+                .tags(BoozeTag.FERMENTED)
+                .fermentsFrom(fs[0], new OreItemStacks("yeastBrewers"), fermentTime)
+                .fermentsFrom(fs[0], new ItemStack(Items.NETHER_WART), (int) (fermentTime * 0.66))
+                .getEffect()
+                .setTipsy(BoozeUtils.alcoholToTipsy(0.10f), TickUtils.seconds(45))
+                .addPotionEntry(MobEffects.HASTE, TickUtils.minutes(3), 0);
 
-		// Glowstone
-		GrowthCraftCellar.boozeBuilderFactory.create(hopAleBooze[2])
-			.tags(BoozeTag.HOPPED, BoozeTag.FERMENTED, BoozeTag.POTENT)
-			.fermentsFrom(fs[1], new OreItemStacks("dustGlowstone"), fermentTime)
-			.fermentsFrom(fs[3], new OreItemStacks("dustGlowstone"), fermentTime)
-			.getEffect()
-				.setTipsy(BoozeUtils.alcoholToTipsy(0.12f), TickUtils.seconds(45))
-				.addPotionEntry(MobEffects.HASTE, TickUtils.minutes(3), 0);
+        // Glowstone
+        GrowthCraftCellar.boozeBuilderFactory.create(hopAleBooze[2])
+                .tags(BoozeTag.HOPPED, BoozeTag.FERMENTED, BoozeTag.POTENT)
+                .fermentsFrom(fs[1], new OreItemStacks("dustGlowstone"), fermentTime)
+                .fermentsFrom(fs[3], new OreItemStacks("dustGlowstone"), fermentTime)
+                .getEffect()
+                .setTipsy(BoozeUtils.alcoholToTipsy(0.12f), TickUtils.seconds(45))
+                .addPotionEntry(MobEffects.HASTE, TickUtils.minutes(3), 0);
 
-		// Redstone
-		GrowthCraftCellar.boozeBuilderFactory.create(hopAleBooze[3])
-			.tags(BoozeTag.HOPPED, BoozeTag.FERMENTED, BoozeTag.EXTENDED)
-			.fermentsFrom(fs[1], new OreItemStacks("dustRedstone"), fermentTime)
-			.fermentsFrom(fs[2], new OreItemStacks("dustRedstone"), fermentTime)
-			.getEffect()
-				.setTipsy(BoozeUtils.alcoholToTipsy(0.10f), TickUtils.seconds(45))
-				.addPotionEntry(MobEffects.HASTE, TickUtils.minutes(3), 0);
+        // Redstone
+        GrowthCraftCellar.boozeBuilderFactory.create(hopAleBooze[3])
+                .tags(BoozeTag.HOPPED, BoozeTag.FERMENTED, BoozeTag.EXTENDED)
+                .fermentsFrom(fs[1], new OreItemStacks("dustRedstone"), fermentTime)
+                .fermentsFrom(fs[2], new OreItemStacks("dustRedstone"), fermentTime)
+                .getEffect()
+                .setTipsy(BoozeUtils.alcoholToTipsy(0.10f), TickUtils.seconds(45))
+                .addPotionEntry(MobEffects.HASTE, TickUtils.minutes(3), 0);
 
-		// Ethereal Yeast
-		GrowthCraftCellar.boozeBuilderFactory.create(hopAleBooze[5])
-			.tags(BoozeTag.HOPPED, BoozeTag.FERMENTED, BoozeTag.HYPER_EXTENDED)
-			.fermentsFrom(fs[2], new OreItemStacks("yeastEthereal"), fermentTime)
-			.fermentsFrom(fs[3], new OreItemStacks("yeastEthereal"), fermentTime)
-			.getEffect()
-				.setTipsy(BoozeUtils.alcoholToTipsy(0.10f), TickUtils.seconds(45))
-				.addPotionEntry(MobEffects.HASTE, TickUtils.minutes(3), 0);
+        // Ethereal Yeast
+        GrowthCraftCellar.boozeBuilderFactory.create(hopAleBooze[5])
+                .tags(BoozeTag.HOPPED, BoozeTag.FERMENTED, BoozeTag.HYPER_EXTENDED)
+                .fermentsFrom(fs[2], new OreItemStacks("yeastEthereal"), fermentTime)
+                .fermentsFrom(fs[3], new OreItemStacks("yeastEthereal"), fermentTime)
+                .getEffect()
+                .setTipsy(BoozeUtils.alcoholToTipsy(0.10f), TickUtils.seconds(45))
+                .addPotionEntry(MobEffects.HASTE, TickUtils.minutes(3), 0);
 
-		// Lager Yeast
-		GrowthCraftCellar.boozeBuilderFactory.create(hopAleBooze[6])
-			.tags(BoozeTag.HOPPED, BoozeTag.FERMENTED, BoozeTag.CHILLED)
-			.fermentsFrom(fs[5], new OreItemStacks("yeastLager"), fermentTime)
-			.getEffect()
-				.setTipsy(BoozeUtils.alcoholToTipsy(0.071f), TickUtils.seconds(45))
-				.addPotionEntry(MobEffects.HASTE, TickUtils.minutes(10), 2);
+        // Lager Yeast
+        GrowthCraftCellar.boozeBuilderFactory.create(hopAleBooze[6])
+                .tags(BoozeTag.HOPPED, BoozeTag.FERMENTED, BoozeTag.CHILLED)
+                .fermentsFrom(fs[5], new OreItemStacks("yeastLager"), fermentTime)
+                .getEffect()
+                .setTipsy(BoozeUtils.alcoholToTipsy(0.071f), TickUtils.seconds(45))
+                .addPotionEntry(MobEffects.HASTE, TickUtils.minutes(10), 2);
 
-		// Intoxicated - Origin
-		GrowthCraftCellar.boozeBuilderFactory.create(hopAleBooze[7])
-			.tags(BoozeTag.HOPPED, BoozeTag.FERMENTED, BoozeTag.INTOXICATED)
-			.fermentsFrom(fs[2], new OreItemStacks("yeastOrigin"), fermentTime)
-			.fermentsFrom(fs[3], new OreItemStacks("yeastOrigin"), fermentTime)
-			.getEffect()
-				.setTipsy(BoozeUtils.alcoholToTipsy(0.20f), TickUtils.seconds(45))
-				.addEffect(new EffectWeightedRandomList()
-					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.HASTE, TickUtils.minutes(3), 2)))
-					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.MINING_FATIGUE, TickUtils.minutes(3), 2))));
+        // Intoxicated - Origin
+        GrowthCraftCellar.boozeBuilderFactory.create(hopAleBooze[7])
+                .tags(BoozeTag.HOPPED, BoozeTag.FERMENTED, BoozeTag.INTOXICATED)
+                .fermentsFrom(fs[2], new OreItemStacks("yeastOrigin"), fermentTime)
+                .fermentsFrom(fs[3], new OreItemStacks("yeastOrigin"), fermentTime)
+                .getEffect()
+                .setTipsy(BoozeUtils.alcoholToTipsy(0.20f), TickUtils.seconds(45))
+                .addEffect(new EffectWeightedRandomList()
+                        .add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.HASTE, TickUtils.minutes(3), 2)))
+                        .add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.MINING_FATIGUE, TickUtils.minutes(3), 2))));
 
-		// Poisoned - Netherrash
-		// Regardless of what you brewed it with, it will kill the hops in the
-		// booze and poison it.
-		GrowthCraftCellar.boozeBuilderFactory.create(hopAleBooze[8])
-			.tags(BoozeTag.FERMENTED, BoozeTag.POISONED)
-			.fermentsFrom(fs[1], new OreItemStacks("yeastPoison"), fermentTime)
-			.fermentsFrom(fs[2], new OreItemStacks("yeastPoison"), fermentTime)
-			.fermentsFrom(fs[3], new OreItemStacks("yeastPoison"), fermentTime)
-			.fermentsFrom(fs[5], new OreItemStacks("yeastPoison"), fermentTime)
-			.fermentsFrom(fs[6], new OreItemStacks("yeastPoison"), fermentTime)
-			.fermentsFrom(fs[7], new OreItemStacks("yeastPoison"), fermentTime)
-			.getEffect()
-				.setTipsy(BoozeUtils.alcoholToTipsy(0.10f), TickUtils.seconds(45))
-				.createPotionEntry(MobEffects.POISON, TickUtils.seconds(90), 0).toggleDescription(!GrowthCraftCore.getConfig().hidePoisonedBooze);
-	}
+        // Poisoned - Netherrash
+        // Regardless of what you brewed it with, it will kill the hops in the
+        // booze and poison it.
+        GrowthCraftCellar.boozeBuilderFactory.create(hopAleBooze[8])
+                .tags(BoozeTag.FERMENTED, BoozeTag.POISONED)
+                .fermentsFrom(fs[1], new OreItemStacks("yeastPoison"), fermentTime)
+                .fermentsFrom(fs[2], new OreItemStacks("yeastPoison"), fermentTime)
+                .fermentsFrom(fs[3], new OreItemStacks("yeastPoison"), fermentTime)
+                .fermentsFrom(fs[5], new OreItemStacks("yeastPoison"), fermentTime)
+                .fermentsFrom(fs[6], new OreItemStacks("yeastPoison"), fermentTime)
+                .fermentsFrom(fs[7], new OreItemStacks("yeastPoison"), fermentTime)
+                .getEffect()
+                .setTipsy(BoozeUtils.alcoholToTipsy(0.10f), TickUtils.seconds(45))
+                .createPotionEntry(MobEffects.POISON, TickUtils.seconds(90), 0).toggleDescription(!GrowthCraftCore.getConfig().hidePoisonedBooze);
+    }
 
-	private void registerFermentations()
-	{
-		registerHopAle();
-		registerLager();
-	}
+    private void registerFermentations() {
+        registerHopAle();
+        registerLager();
+    }
 
-	@Override
-	public void register()
-	{
-		GameRegistry.registerItem(hopAle.getItem(), "grc.hopAle");
-		GameRegistry.registerItem(lager.getItem(), "grc.lager");
+    @Override
+    public void register() {
+        GameRegistry.registerItem(hopAle.getItem(), "grc.hopAle");
+        GameRegistry.registerItem(lager.getItem(), "grc.lager");
 
-		BoozeRegistryHelper.registerBooze(hopAleBooze, hopAleFluids, hopAleBuckets, hopAle, "grc.hopAle", null);
-		BoozeRegistryHelper.registerBooze(lagerBooze, lagerFluids, lagerBuckets, lager, "grc.lager", null);
-		registerFermentations();
-	}
+        BoozeRegistryHelper.registerBooze(hopAleBooze, hopAleFluids, hopAleBuckets, hopAle, "grc.hopAle", null);
+        BoozeRegistryHelper.registerBooze(lagerBooze, lagerFluids, lagerBuckets, lager, "grc.lager", null);
+        registerFermentations();
+    }
 }

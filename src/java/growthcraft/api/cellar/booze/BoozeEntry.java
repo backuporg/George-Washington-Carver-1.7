@@ -30,58 +30,48 @@ import net.minecraftforge.fluids.Fluid;
 import javax.annotation.Nonnull;
 import java.util.Collection;
 
-public class BoozeEntry
-{
-	private int healAmount;
-	private float saturation;
-	private final Fluid fluid;
-	private final BoozeEffect effect;
+public class BoozeEntry {
+    private final Fluid fluid;
+    private final BoozeEffect effect;
+    private int healAmount;
+    private float saturation;
 
-	public BoozeEntry(@Nonnull Fluid flus)
-	{
-		this.fluid = flus;
-		this.effect = new BoozeEffect(fluid);
-	}
+    public BoozeEntry(@Nonnull Fluid flus) {
+        this.fluid = flus;
+        this.effect = new BoozeEffect(fluid);
+    }
 
-	public BoozeEntry setFoodStats(int heal, float sat)
-	{
-		this.healAmount = heal;
-		this.saturation = sat;
-		return this;
-	}
+    public BoozeEntry setFoodStats(int heal, float sat) {
+        this.healAmount = heal;
+        this.saturation = sat;
+        return this;
+    }
 
-	public int getHealAmount()
-	{
-		return healAmount;
-	}
+    public int getHealAmount() {
+        return healAmount;
+    }
 
-	public float getSaturation()
-	{
-		return saturation;
-	}
+    public float getSaturation() {
+        return saturation;
+    }
 
-	public BoozeEffect getEffect()
-	{
-		return effect;
-	}
+    public BoozeEffect getEffect() {
+        return effect;
+    }
 
-	public Fluid getFluid()
-	{
-		return fluid;
-	}
+    public Fluid getFluid() {
+        return fluid;
+    }
 
-	public Collection<FluidTag> getTags()
-	{
-		return CoreRegistry.instance().fluidDictionary().getFluidTags(fluid);
-	}
+    public Collection<FluidTag> getTags() {
+        return CoreRegistry.instance().fluidDictionary().getFluidTags(fluid);
+    }
 
-	public void addTags(FluidTag... newtags)
-	{
-		CoreRegistry.instance().fluidDictionary().addFluidTags(fluid, newtags);
-	}
+    public void addTags(FluidTag... newtags) {
+        CoreRegistry.instance().fluidDictionary().addFluidTags(fluid, newtags);
+    }
 
-	public boolean hasTags(FluidTag... checktags)
-	{
-		return CoreRegistry.instance().fluidDictionary().hasFluidTags(fluid, checktags);
-	}
+    public boolean hasTags(FluidTag... checktags) {
+        return CoreRegistry.instance().fluidDictionary().hasFluidTags(fluid, checktags);
+    }
 }

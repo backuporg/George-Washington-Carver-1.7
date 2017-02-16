@@ -25,14 +25,13 @@ package growthcraft.core.integration.natura;
 
 import net.minecraftforge.fml.common.Loader;
 
-public class NaturaPlatform
-{
-	public static final String MOD_ID = "Natura";
+public class NaturaPlatform {
+    public static final String MOD_ID = "Natura";
 
-	private NaturaPlatform() {};
+    private NaturaPlatform() {
+    }
 
-	public static boolean isLoaded()
-	{
-		return Loader.isModLoaded(MOD_ID);
-	}
+    public static boolean isLoaded() {
+        return Loader.isModLoaded(MOD_ID);
+    }
 }

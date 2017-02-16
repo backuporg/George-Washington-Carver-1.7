@@ -24,25 +24,23 @@
 package growthcraft.api.core.freeze;
 
 // This exception should be raised when attempts to modify a frozen object are done.
-public class FrozenObjectError extends RuntimeException
-{
-	public static final long serialVersionUID = 1L;
+public class FrozenObjectError extends RuntimeException {
+    public static final long serialVersionUID = 1L;
 
-	public FrozenObjectError(String msg)
-	{
-		super(msg);
-	}
+    public FrozenObjectError(String msg) {
+        super(msg);
+    }
 
-	public FrozenObjectError() {}
+    public FrozenObjectError() {
+    }
 
-	/**
-	 * Helper method for creating frozen errors for a specified object
-	 *
-	 * @param obj - object to generate frozen error for
-	 * @return new frozen error
-	 */
-	public static FrozenObjectError newFor(Object obj)
-	{
-		return new FrozenObjectError("Cannot modify frozen object! " + obj);
-	}
+    /**
+     * Helper method for creating frozen errors for a specified object
+     *
+     * @param obj - object to generate frozen error for
+     * @return new frozen error
+     */
+    public static FrozenObjectError newFor(Object obj) {
+        return new FrozenObjectError("Cannot modify frozen object! " + obj);
+    }
 }

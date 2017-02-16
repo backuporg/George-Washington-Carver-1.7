@@ -25,14 +25,13 @@ package growthcraft.core.integration.totemic;
 
 import net.minecraftforge.fml.common.Loader;
 
-public class TotemicPlatform
-{
-	public static final String MOD_ID = "totemic";
+public class TotemicPlatform {
+    public static final String MOD_ID = "totemic";
 
-	private TotemicPlatform() {};
+    private TotemicPlatform() {
+    }
 
-	public static boolean isLoaded()
-	{
-		return Loader.isModLoaded(MOD_ID);
-	}
+    public static boolean isLoaded() {
+        return Loader.isModLoaded(MOD_ID);
+    }
 }

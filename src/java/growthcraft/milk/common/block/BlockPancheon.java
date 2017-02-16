@@ -34,42 +34,36 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockPancheon extends GrcBlockContainer
-{
-	public BlockPancheon()
-	{
-		super(Material.CLAY);
-		setHardness(0.6F);
-		setUnlocalizedName("grcmilk.Pancheon");
-		setCreativeTab(GrowthCraftMilk.creativeTab);
-		setTileEntityType(TileEntityPancheon.class);
-		final BBox bb = BBox.newCube(0f, 0f, 0f, 16f, 5f, 16f).scale(1f / 16f);
-		getBoundingBox(bb.x0(), bb.y0(), bb.z0(), bb.x1(), bb.y1(), bb.z1());
-		//setBlockTextureName("grcmilk:pancheon");
-	}
+public class BlockPancheon extends GrcBlockContainer {
+    public BlockPancheon() {
+        super(Material.CLAY);
+        setHardness(0.6F);
+        setUnlocalizedName("grcmilk.Pancheon");
+        setCreativeTab(GrowthCraftMilk.creativeTab);
+        setTileEntityType(TileEntityPancheon.class);
+        final BBox bb = BBox.newCube(0f, 0f, 0f, 16f, 5f, 16f).scale(1f / 16f);
+        getBoundingBox(bb.x0(), bb.y0(), bb.z0(), bb.x1(), bb.y1(), bb.z1());
+        //setBlockTextureName("grcmilk:pancheon");
+    }
 
-	@Override
-	public int getRenderType()
-	{
-		return RenderPancheon.RENDER_ID;
-	}
+    @Override
+    public int getRenderType() {
+        return RenderPancheon.RENDER_ID;
+    }
 
-	@Override
-	public boolean isOpaqueCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isOpaqueCube() {
+        return false;
+    }
 
-	@Override
-	public boolean renderAsNormalBlock()
-	{
-		return false;
-	}
+    @Override
+    public boolean renderAsNormalBlock() {
+        return false;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess world, BlockPos pos, int side)
-	{
-		return true;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public boolean shouldSideBeRendered(IBlockAccess world, BlockPos pos, int side) {
+        return true;
+    }
 }

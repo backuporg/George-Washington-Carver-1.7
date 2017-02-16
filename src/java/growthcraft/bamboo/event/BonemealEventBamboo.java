@@ -9,85 +9,65 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.Random;
 
-public class BonemealEventBamboo
-{
-	@SubscribeEvent
-	public void onUseBonemeal(BonemealEvent event)
-	{
-		if (GrowthCraftBamboo.blocks.bambooStalk.getBlockState() == event.block)
-		{
-			if (!this.isBambooOnGround(event.world, event.x, event.y, event.z))
-			{
-				event.setResult(Result.DENY);
-			}
-			else if ((this.countNearbyValidSoil(event.world, event.x, event.y, event.z, 1)) == 0)
-			{
-				event.setResult(Result.DENY);
-			}
-			else if (event.world.getBlockState(event.x, event.y, event.z) != 0)
-			{
-				event.setResult(Result.DENY);
-			}
-			else
-			{
-				if (!event.world.isRemote)
-				{
-					if (isBambooOnGround(event.world, event.x, event.y, event.z))
-					{
-						final Random rand = new Random();
-						boolean flag = false;
-						final int size = 1;
+public class BonemealEventBamboo {
+    @SubscribeEvent
+    public void onUseBonemeal(BonemealEvent event) {
+        if (GrowthCraftBamboo.blocks.bambooStalk.getBlockState() == event.block) {
+            if (!this.isBambooOnGround(event.world, event.x, event.y, event.z)) {
+                event.setResult(Result.DENY);
+            } else if ((this.countNearbyValidSoil(event.world, event.x, event.y, event.z, 1)) == 0) {
+                event.setResult(Result.DENY);
+            } else if (event.world.getBlockState(event.x, event.y, event.z) != 0) {
+                event.setResult(Result.DENY);
+            } else {
+                if (!event.world.isRemote) {
+                    if (isBambooOnGround(event.world, event.x, event.y, event.z)) {
+                        final Random rand = new Random();
+                        boolean flag = false;
+                        final int size = 1;
 
-						while (!flag)
-						{
-							int x = event.x - size;
-							int y = event.y;
-							int z = event.z - size;
-							x = x + rand.nextInt(size * 2 + 1);
-							y = y + rand.nextInt(2) - rand.nextInt(2);
-							z = z + rand.nextInt(size * 2 + 1);
+                        while (!flag) {
+                            int x = event.x - size;
+                            int y = event.y;
+                            int z = event.z - size;
+                            x = x + rand.nextInt(size * 2 + 1);
+                            y = y + rand.nextInt(2) - rand.nextInt(2);
+                            z = z + rand.nextInt(size * 2 + 1);
 
-							if (event.world.isAirBlock(x, y, z) && GrowthCraftBamboo.blocks.bambooShoot.getBlockState().canBlockStay(event.world, x, y, z))
-							{
-								event.world.setBlockState(x, y, z, GrowthCraftBamboo.blocks.bambooShoot.getBlockState(), 0, 3);
-								flag = true;
-							}
-						}
-					}
-				}
+                            if (event.world.isAirBlock(x, y, z) && GrowthCraftBamboo.blocks.bambooShoot.getBlockState().canBlockStay(event.world, x, y, z)) {
+                                event.world.setBlockState(x, y, z, GrowthCraftBamboo.blocks.bambooShoot.getBlockState(), 0, 3);
+                                flag = true;
+                            }
+                        }
+                    }
+                }
 
-				event.setResult(Result.ALLOW);
-			}
-		}
-	}
+                event.setResult(Result.ALLOW);
+            }
+        }
+    }
 
-	private boolean isBambooOnGround(World world, BlockPos pos)
-	{
-		return GrowthCraftBamboo.blocks.bambooStalk.getBlockState().isBambooOnGround(world, x, y, z);
-	}
+    private boolean isBambooOnGround(World world, BlockPos pos) {
+        return GrowthCraftBamboo.blocks.bambooStalk.getBlockState().isBambooOnGround(world, x, y, z);
+    }
 
-	private int countNearbyValidSoil(World world, BlockPos pos, int b)
-	{
-		int count = 0;
-		int x1 = x;
-		int y1 = y;
-		int z1 = z;
+    private int countNearbyValidSoil(World world, BlockPos pos, int b) {
+        int count = 0;
+        int x1 = x;
+        int y1 = y;
+        int z1 = z;
 
-		for (x1 = x - b; x1 <= x + b; ++x1)
-		{
-			for (z1 = z - b; z1 <= z + b; ++z1)
-			{
-				for (y1 = y - 1; y1 <= y + 1; ++y1)
-				{
-					final boolean flag = world.isAirBlock(x1, y1, z1) &&
-						GrowthCraftBamboo.blocks.bambooShoot.getBlockState().canBlockStay(world, x1, y1, z1);
-					if (flag)
-					{
-						++count;
-					}
-				}
-			}
-		}
-		return count;
-	}
+        for (x1 = x - b; x1 <= x + b; ++x1) {
+            for (z1 = z - b; z1 <= z + b; ++z1) {
+                for (y1 = y - 1; y1 <= y + 1; ++y1) {
+                    final boolean flag = world.isAirBlock(x1, y1, z1) &&
+                            GrowthCraftBamboo.blocks.bambooShoot.getBlockState().canBlockStay(world, x1, y1, z1);
+                    if (flag) {
+                        ++count;
+                    }
+                }
+            }
+        }
+        return count;
+    }
 }

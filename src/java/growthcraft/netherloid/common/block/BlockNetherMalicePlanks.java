@@ -27,15 +27,13 @@ import growthcraft.core.common.block.Materials;
 import growthcraft.netherloid.netherloid;
 import net.minecraft.block.Block;
 
-public class BlockNetherMalicePlanks extends Block
-{
-	public BlockNetherMalicePlanks()
-	{
-		super(Materials.fireproofWood);
-		setHardness(2.0F);
-		setUnlocalizedName("grcnetherloid.netherMalicePlanks");
-		//setBlockTextureName("grcnetherloid:planks_malice");
-		setHarvestLevel("axe", 0);
-		setCreativeTab(netherloid.tab);
-	}
+public class BlockNetherMalicePlanks extends Block {
+    public BlockNetherMalicePlanks() {
+        super(Materials.fireproofWood);
+        setHardness(2.0F);
+        setUnlocalizedName("grcnetherloid.netherMalicePlanks");
+        //setBlockTextureName("grcnetherloid:planks_malice");
+        setHarvestLevel("axe", 0);
+        setCreativeTab(netherloid.tab);
+    }
 }

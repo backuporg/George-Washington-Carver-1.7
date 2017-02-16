@@ -38,107 +38,90 @@ import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EventHandlerBucketFill
-{
-	public static interface IBucketEntry
-	{
-		ItemStack getItemStack();
-		boolean matches(@Nonnull World world, @Nonnull RayTraceResult pos);
-		void commit(@Nonnull EntityPlayer player, @Nonnull World world, @Nonnull RayTraceResult pos);
-	}
+public class EventHandlerBucketFill {
+    private static EventHandlerBucketFill INSTANCE = new EventHandlerBucketFill();
+    private List<IBucketEntry> buckets = new ArrayList<IBucketEntry>();
 
-	public static class GenericBucketEntry implements IBucketEntry
-	{
-		private final Block block;
-		private final ItemStack itemStack;
+    public static EventHandlerBucketFill instance() {
+        return INSTANCE;
+    }
 
-		public GenericBucketEntry(Block blk, ItemStack stack)
-		{
-			this.block = blk;
-			this.itemStack = stack;
-		}
+    public void addEntry(@Nonnull IBucketEntry entry) {
+        buckets.add(entry);
+        GrowthCraftCore.getLogger().debug("Added new Bucket Entry {%s}", entry);
+    }
 
-		public ItemStack getItemStack()
-		{
-			return itemStack;
-		}
+    public EventHandlerBucketFill register(Block block, ItemStack stack) {
+        addEntry(new GenericBucketEntry(block, stack));
+        return this;
+    }
 
-		public boolean matches(@Nonnull World world, @Nonnull RayTraceResult pos)
-		{
-			final Block srcBlock = world.getBlockState(pos.blockX, pos.blockY, pos.blockZ);
+    public EventHandlerBucketFill register(Block block, Item item) {
+        return register(block, new ItemStack(item, 1));
+    }
 
-			if (block.equals(srcBlock))
-			{
-				return world.getBlockState(pos.blockX, pos.blockY, pos.blockZ) == 0;
-			}
-			return false;
-		}
+    private ItemStack fillCustomBucket(FillBucketEvent event) {
+        for (IBucketEntry entry : buckets) {
+            if (entry.matches(event.world, event.target)) {
+                entry.commit(event.entityPlayer, event.world, event.target);
+                return entry.getItemStack();
+            }
+        }
+        return null;
+    }
 
-		public void commit(@Nonnull EntityPlayer player, @Nonnull World world, @Nonnull RayTraceResult pos)
-		{
-			world.setBlockToAir(pos.blockX, pos.blockY, pos.blockZ);
-		}
+    @SubscribeEvent
+    public void onBucketFill(FillBucketEvent event) {
+        if (event.world.isRemote ||
+                event.result != null ||
+                event.getResult() != Result.DEFAULT) {
+            return;
+        }
 
-		public String toString()
-		{
-			return String.format("GenericBucketEntry{ block: {%s}, item_stack: {%s} }", block, itemStack);
-		}
-	}
+        final ItemStack result = fillCustomBucket(event);
 
-	private static EventHandlerBucketFill INSTANCE = new EventHandlerBucketFill();
-	private List<IBucketEntry> buckets = new ArrayList<IBucketEntry>();
+        if (result != null) {
+            event.result = result.copy();
+            event.setResult(Result.ALLOW);
+        }
+    }
 
-	public static EventHandlerBucketFill instance()
-	{
-		return INSTANCE;
-	}
+    public interface IBucketEntry {
+        ItemStack getItemStack();
 
-	public void addEntry(@Nonnull IBucketEntry entry)
-	{
-		buckets.add(entry);
-		GrowthCraftCore.getLogger().debug("Added new Bucket Entry {%s}", entry);
-	}
+        boolean matches(@Nonnull World world, @Nonnull RayTraceResult pos);
 
-	public EventHandlerBucketFill register(Block block, ItemStack stack)
-	{
-		addEntry(new GenericBucketEntry(block, stack));
-		return this;
-	}
+        void commit(@Nonnull EntityPlayer player, @Nonnull World world, @Nonnull RayTraceResult pos);
+    }
 
-	public EventHandlerBucketFill register(Block block, Item item)
-	{
-		return register(block, new ItemStack(item, 1));
-	}
+    public static class GenericBucketEntry implements IBucketEntry {
+        private final Block block;
+        private final ItemStack itemStack;
 
-	private ItemStack fillCustomBucket(FillBucketEvent event)
-	{
-		for (IBucketEntry entry : buckets)
-		{
-			if (entry.matches(event.world, event.target))
-			{
-				entry.commit(event.entityPlayer, event.world, event.target);
-				return entry.getItemStack();
-			}
-		}
-		return null;
-	}
+        public GenericBucketEntry(Block blk, ItemStack stack) {
+            this.block = blk;
+            this.itemStack = stack;
+        }
 
-	@SubscribeEvent
-	public void onBucketFill(FillBucketEvent event)
-	{
-		if (event.world.isRemote ||
-			event.result != null ||
-			event.getResult() != Result.DEFAULT)
-		{
-			return;
-		}
+        public ItemStack getItemStack() {
+            return itemStack;
+        }
 
-		final ItemStack result = fillCustomBucket(event);
+        public boolean matches(@Nonnull World world, @Nonnull RayTraceResult pos) {
+            final Block srcBlock = world.getBlockState(pos.blockX, pos.blockY, pos.blockZ);
 
-		if (result != null)
-		{
-			event.result = result.copy();
-			event.setResult(Result.ALLOW);
-		}
-	}
+            if (block.equals(srcBlock)) {
+                return world.getBlockState(pos.blockX, pos.blockY, pos.blockZ) == 0;
+            }
+            return false;
+        }
+
+        public void commit(@Nonnull EntityPlayer player, @Nonnull World world, @Nonnull RayTraceResult pos) {
+            world.setBlockToAir(pos.blockX, pos.blockY, pos.blockZ);
+        }
+
+        public String toString() {
+            return String.format("GenericBucketEntry{ block: {%s}, item_stack: {%s} }", block, itemStack);
+        }
+    }
 }

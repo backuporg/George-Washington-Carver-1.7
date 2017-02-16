@@ -12,33 +12,29 @@ import net.minecraftforge.fml.common.registry.VillagerRegistry.IVillageCreationH
 import java.util.List;
 import java.util.Random;
 
-public class VillageHandlerBamboo implements IVillageCreationHandler
-{
-	@Override
-	public PieceWeight getVillagePieceWeight(Random random, int i)
-	{
-		int num = MathHelper.getRandomIntegerInRange(random, 0 + i, 1 + i);
-		if (!GrowthCraftBamboo.getConfig().generateBambooYard)
-			num = 0;
+public class VillageHandlerBamboo implements IVillageCreationHandler {
+    @Override
+    public PieceWeight getVillagePieceWeight(Random random, int i) {
+        int num = MathHelper.getRandomIntegerInRange(random, 0 + i, 1 + i);
+        if (!GrowthCraftBamboo.getConfig().generateBambooYard)
+            num = 0;
 
-		return new PieceWeight(ComponentVillageBambooYard.class, 21, num);
-	}
+        return new PieceWeight(ComponentVillageBambooYard.class, 21, num);
+    }
 
-	@Override
-	public Class<?> getComponentClass()
-	{
-		return ComponentVillageBambooYard.class;
-	}
+    @Override
+    public Class<?> getComponentClass() {
+        return ComponentVillageBambooYard.class;
+    }
 
-	@Override
-	public StructureVillagePieces.Village buildComponent(PieceWeight villagePiece, Start startPiece, List<StructureComponent> pieces, Random random, int p1, int p2, int p3, EnumFacing facing, int p5) {
-		return null;
-	}
+    @Override
+    public StructureVillagePieces.Village buildComponent(PieceWeight villagePiece, Start startPiece, List<StructureComponent> pieces, Random random, int p1, int p2, int p3, EnumFacing facing, int p5) {
+        return null;
+    }
 
-	@Override
-	@SuppressWarnings({"rawtypes", "unchecked"})
-	public Object buildComponent(PieceWeight villagePiece, Start startPiece, List pieces, Random random, int p1, int p2, int p3, int p4, int p5)
-	{
-		return ComponentVillageBambooYard.buildComponent(startPiece, pieces, random, p1, p2, p3, p4, p5);
-	}
+    @Override
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    public Object buildComponent(PieceWeight villagePiece, Start startPiece, List pieces, Random random, int p1, int p2, int p3, int p4, int p5) {
+        return ComponentVillageBambooYard.buildComponent(startPiece, pieces, random, p1, p2, p3, p4, p5);
+    }
 }

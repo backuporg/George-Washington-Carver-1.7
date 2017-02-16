@@ -23,8 +23,8 @@
  */
 package growthcraft.api.core.schema;
 
-public interface IValidatable
-{
-	boolean isValid();
-	boolean isInvalid();
+public interface IValidatable {
+    boolean isValid();
+
+    boolean isInvalid();
 }

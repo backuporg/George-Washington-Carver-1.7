@@ -30,32 +30,26 @@ import net.minecraftforge.fluids.Fluid;
 
 import javax.annotation.Nonnull;
 
-public class GrcBlockFluidDefinition extends BlockTypeDefinition<GrcBlockFluid>
-{
-	public GrcBlockFluidDefinition(@Nonnull GrcBlockFluid fluid)
-	{
-		super(fluid);
-	}
+public class GrcBlockFluidDefinition extends BlockTypeDefinition<GrcBlockFluid> {
+    public GrcBlockFluidDefinition(@Nonnull GrcBlockFluid fluid) {
+        super(fluid);
+    }
 
-	@Override
-	public void register(String name)
-	{
-		super.register(name, ItemGrcBlockFluid.class);
-	}
+    public static GrcBlockFluidDefinition create(Fluid fluid, Material mat) {
+        return new GrcBlockFluidDefinition(new GrcBlockFluid(fluid, mat));
+    }
 
-	public static GrcBlockFluidDefinition create(Fluid fluid, Material mat)
-	{
-		return new GrcBlockFluidDefinition(new GrcBlockFluid(fluid, mat));
-	}
+    public static GrcBlockFluidDefinition create(Fluid fluid) {
+        return create(fluid, Material.WATER);
+    }
 
-	public static GrcBlockFluidDefinition create(Fluid fluid)
-	{
-		return create(fluid, Material.WATER);
-	}
+    @SuppressWarnings({"rawtypes"})
+    public static GrcBlockFluidDefinition create(FluidTypeDefinition def) {
+        return create(def.getFluid());
+    }
 
-	@SuppressWarnings({"rawtypes"})
-	public static GrcBlockFluidDefinition create(FluidTypeDefinition def)
-	{
-		return create(def.getFluid());
-	}
+    @Override
+    public void register(String name) {
+        super.register(name, ItemGrcBlockFluid.class);
+    }
 }

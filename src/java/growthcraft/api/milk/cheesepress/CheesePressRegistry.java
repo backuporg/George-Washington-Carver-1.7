@@ -33,40 +33,33 @@ import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CheesePressRegistry implements ICheesePressRegistry
-{
-	private ILogger logger = NullLogger.INSTANCE;
-	private List<ICheesePressRecipe> recipes = new ArrayList<ICheesePressRecipe>();
+public class CheesePressRegistry implements ICheesePressRegistry {
+    private ILogger logger = NullLogger.INSTANCE;
+    private List<ICheesePressRecipe> recipes = new ArrayList<ICheesePressRecipe>();
 
-	@Override
-	public void setLogger(@Nonnull ILogger l)
-	{
-		this.logger = l;
-	}
+    @Override
+    public void setLogger(@Nonnull ILogger l) {
+        this.logger = l;
+    }
 
-	@Override
-	public void addRecipe(@Nonnull ICheesePressRecipe recipe)
-	{
-		logger.debug("Adding new cheese press recipe {%s}", recipe);
-		recipes.add(recipe);
-	}
+    @Override
+    public void addRecipe(@Nonnull ICheesePressRecipe recipe) {
+        logger.debug("Adding new cheese press recipe {%s}", recipe);
+        recipes.add(recipe);
+    }
 
-	@Override
-	public void addRecipe(@Nonnull ItemStack stack, @Nonnull ItemStack output, int time)
-	{
-		addRecipe(new CheesePressRecipe(stack, output, time));
-	}
+    @Override
+    public void addRecipe(@Nonnull ItemStack stack, @Nonnull ItemStack output, int time) {
+        addRecipe(new CheesePressRecipe(stack, output, time));
+    }
 
-	@Override
-	public ICheesePressRecipe findRecipe(@Nullable ItemStack stack)
-	{
-		if (ItemTest.isValid(stack))
-		{
-			for (ICheesePressRecipe recipe : recipes)
-			{
-				if (recipe.isMatchingRecipe(stack)) return recipe;
-			}
-		}
-		return null;
-	}
+    @Override
+    public ICheesePressRecipe findRecipe(@Nullable ItemStack stack) {
+        if (ItemTest.isValid(stack)) {
+            for (ICheesePressRecipe recipe : recipes) {
+                if (recipe.isMatchingRecipe(stack)) return recipe;
+            }
+        }
+        return null;
+    }
 }

@@ -30,25 +30,27 @@ import growthcraft.api.core.module.IModule;
 
 import javax.annotation.Nonnull;
 
-public class GrcModuleBase implements IModule, ILoggable
-{
-	protected ILogger logger = NullLogger.INSTANCE;
+public class GrcModuleBase implements IModule, ILoggable {
+    protected ILogger logger = NullLogger.INSTANCE;
 
-	@Override
-	public void setLogger(@Nonnull ILogger l)
-	{
-		this.logger = l;
-	}
+    @Override
+    public void setLogger(@Nonnull ILogger l) {
+        this.logger = l;
+    }
 
-	@Override
-	public void preInit() {}
+    @Override
+    public void preInit() {
+    }
 
-	@Override
-	public void init() {}
+    @Override
+    public void init() {
+    }
 
-	@Override
-	public void register() {}
+    @Override
+    public void register() {
+    }
 
-	@Override
-	public void postInit() {}
+    @Override
+    public void postInit() {
+    }
 }

@@ -26,13 +26,11 @@ package growthcraft.milk.common.item;
 import growthcraft.core.common.item.GrcItemBase;
 import growthcraft.milk.GrowthCraftMilk;
 
-public class ItemStomach extends GrcItemBase
-{
-	public ItemStomach()
-	{
-		super();
-		setUnlocalizedName("grcmilk.Stomach");
-		//setTextureName("grcmilk:stomach/stomach");
-		setCreativeTab(GrowthCraftMilk.creativeTab);
-	}
+public class ItemStomach extends GrcItemBase {
+    public ItemStomach() {
+        super();
+        setUnlocalizedName("grcmilk.Stomach");
+        //setTextureName("grcmilk:stomach/stomach");
+        setCreativeTab(GrowthCraftMilk.creativeTab);
+    }
 }

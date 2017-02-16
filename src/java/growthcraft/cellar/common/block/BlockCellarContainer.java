@@ -35,28 +35,23 @@ import net.minecraft.world.World;
 /**
  * Base class for Cellar machines and the like
  */
-public abstract class BlockCellarContainer extends GrcBlockContainer
-{
-	public BlockCellarContainer(Material material)
-	{
-		super(material);
-	}
+public abstract class BlockCellarContainer extends GrcBlockContainer {
+    public BlockCellarContainer(Material material) {
+        super(material);
+    }
 
-	protected boolean openGui(EntityPlayer player, World world, BlockPos pos)
-	{
-		final TileEntity te = getTileEntity(world, pos);
-		if (te instanceof IInteractionObject)
-		{
-			player.openGui(GrowthCraftCellar.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
-			return true;
-		}
-		return false;
-	}
+    protected boolean openGui(EntityPlayer player, World world, BlockPos pos) {
+        final TileEntity te = getTileEntity(world, pos);
+        if (te instanceof IInteractionObject) {
+            player.openGui(GrowthCraftCellar.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
+            return true;
+        }
+        return false;
+    }
 
-	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, EntityPlayer player, int meta, float par7, float par8, float par9)
-	{
-		if (super.onBlockActivated(world, pos, player, meta, par7, par8, par9)) return true;
-		return !player.isSneaking() && openGui(player, world, pos);
-	}
+    @Override
+    public boolean onBlockActivated(World world, BlockPos pos, EntityPlayer player, int meta, float par7, float par8, float par9) {
+        if (super.onBlockActivated(world, pos, player, meta, par7, par8, par9)) return true;
+        return !player.isSneaking() && openGui(player, world, pos);
+    }
 }

@@ -28,8 +28,8 @@ package growthcraft.api.core.freeze;
  * the class which implements this can do whatever it wants, may it be
  * freezing the ability to add/remove objects or w/e.
  */
-public interface IFreezable
-{
-	void freeze();
-	boolean isFrozen();
+public interface IFreezable {
+    void freeze();
+
+    boolean isFrozen();
 }

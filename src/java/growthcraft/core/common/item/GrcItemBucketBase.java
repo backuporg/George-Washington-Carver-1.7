@@ -32,19 +32,16 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-public class GrcItemBucketBase extends ItemBucket
-{
-	public GrcItemBucketBase(Block block)
-	{
-		super(block);
-	}
+public class GrcItemBucketBase extends ItemBucket {
+    public GrcItemBucketBase(Block block) {
+        super(block);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	@SuppressWarnings({"unchecked", "rawtypes"})
-	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean bool)
-	{
-		super.addInformation(stack, player, list, bool);
-		GrcItemBase.addDescription(this, stack, player, list, bool);
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean bool) {
+        super.addInformation(stack, player, list, bool);
+        GrcItemBase.addDescription(this, stack, player, list, bool);
+    }
 }

@@ -48,105 +48,86 @@ import net.minecraftforge.fml.common.Optional;
 
 import java.util.List;
 
-public class CellarDataProvider implements IWailaDataProvider
-{
-	@Override
-	@Optional.Method(modid="Waila")
-	public ItemStack getWailaStack(IWailaDataAccessor accessor, IWailaConfigHandler config)
-	{
-		return accessor.getStack();
-	}
+public class CellarDataProvider implements IWailaDataProvider {
+    @Override
+    @Optional.Method(modid = "Waila")
+    public ItemStack getWailaStack(IWailaDataAccessor accessor, IWailaConfigHandler config) {
+        return accessor.getStack();
+    }
 
-	@Override
-	@Optional.Method(modid="Waila")
-	public List<String> getWailaHead(ItemStack itemStack, List<String> tooltip, IWailaDataAccessor accessor, IWailaConfigHandler config)
-	{
-		return tooltip;
-	}
+    @Override
+    @Optional.Method(modid = "Waila")
+    public List<String> getWailaHead(ItemStack itemStack, List<String> tooltip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+        return tooltip;
+    }
 
-	@Override
-	@Optional.Method(modid="Waila")
-	public List<String> getWailaBody(ItemStack itemStack, List<String> tooltip, IWailaDataAccessor accessor, IWailaConfigHandler config)
-	{
-		final Block block = accessor.getBlockState();
-		final TileEntity te = accessor.getTileEntity();
-		if (block instanceof BlockFruitPresser)
-		{
-			tooltip.add(TextFormatting.GRAY + GrcI18n.translate("grc.cellar.fruit_presser.state_prefix") + " " +
-				TextFormatting.WHITE + GrcI18n.translate("grc.cellar.fruit_presser.state." +
-					((BlockFruitPresser)block).getPressStateName(accessor.getMetadata())));
-		}
-		final NBTTagCompound tag = accessor.getNBTData();
-		if (config.getConfig("FermentBarrelExtras"))
-		{
-			if (te instanceof TileEntityFermentBarrel)
-			{
-				tooltip = TagFormatterFermentBarrel.INSTANCE.format(tooltip, tag);
-			}
-		}
-		if (config.getConfig("CultureJarExtras"))
-		{
-			if (te instanceof TileEntityCultureJar)
-			{
-				tooltip = TagFormatterCultureJar.INSTANCE.format(tooltip, tag);
-			}
-		}
-		if (config.getConfig("BrewKettleExtras"))
-		{
-			if (te instanceof TileEntityBrewKettle)
-			{
-				tooltip = TagFormatterBrewKettle.INSTANCE.format(tooltip, tag);
-			}
-		}
-		if (config.getConfig("FruitPressExtras"))
-		{
-			if (te instanceof TileEntityFruitPress)
-			{
-				tooltip = TagFormatterFruitPress.INSTANCE.format(tooltip, tag);
-			}
-		}
+    @Override
+    @Optional.Method(modid = "Waila")
+    public List<String> getWailaBody(ItemStack itemStack, List<String> tooltip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+        final Block block = accessor.getBlockState();
+        final TileEntity te = accessor.getTileEntity();
+        if (block instanceof BlockFruitPresser) {
+            tooltip.add(TextFormatting.GRAY + GrcI18n.translate("grc.cellar.fruit_presser.state_prefix") + " " +
+                    TextFormatting.WHITE + GrcI18n.translate("grc.cellar.fruit_presser.state." +
+                    ((BlockFruitPresser) block).getPressStateName(accessor.getMetadata())));
+        }
+        final NBTTagCompound tag = accessor.getNBTData();
+        if (config.getConfig("FermentBarrelExtras")) {
+            if (te instanceof TileEntityFermentBarrel) {
+                tooltip = TagFormatterFermentBarrel.INSTANCE.format(tooltip, tag);
+            }
+        }
+        if (config.getConfig("CultureJarExtras")) {
+            if (te instanceof TileEntityCultureJar) {
+                tooltip = TagFormatterCultureJar.INSTANCE.format(tooltip, tag);
+            }
+        }
+        if (config.getConfig("BrewKettleExtras")) {
+            if (te instanceof TileEntityBrewKettle) {
+                tooltip = TagFormatterBrewKettle.INSTANCE.format(tooltip, tag);
+            }
+        }
+        if (config.getConfig("FruitPressExtras")) {
+            if (te instanceof TileEntityFruitPress) {
+                tooltip = TagFormatterFruitPress.INSTANCE.format(tooltip, tag);
+            }
+        }
 
-		return tooltip;
-	}
+        return tooltip;
+    }
 
-	@Override
-	@Optional.Method(modid="Waila")
-	public List<String> getWailaTail(ItemStack itemStack, List<String> tooltip, IWailaDataAccessor accessor, IWailaConfigHandler config)
-	{
-		return tooltip;
-	}
+    @Override
+    @Optional.Method(modid = "Waila")
+    public List<String> getWailaTail(ItemStack itemStack, List<String> tooltip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+        return tooltip;
+    }
 
-	private void getBrewKettleData(TileEntityBrewKettle brewKettle, NBTTagCompound tag)
-	{
-		tag.setBoolean("can_brew", brewKettle.canBrew());
-		tag.setTag("item_brew", NBTHelper.writeItemStackToNBT(brewKettle.getStackInSlot(0), new NBTTagCompound()));
-		tag.setTag("item_residue", NBTHelper.writeItemStackToNBT(brewKettle.getStackInSlot(1), new NBTTagCompound()));
-	}
+    private void getBrewKettleData(TileEntityBrewKettle brewKettle, NBTTagCompound tag) {
+        tag.setBoolean("can_brew", brewKettle.canBrew());
+        tag.setTag("item_brew", NBTHelper.writeItemStackToNBT(brewKettle.getStackInSlot(0), new NBTTagCompound()));
+        tag.setTag("item_residue", NBTHelper.writeItemStackToNBT(brewKettle.getStackInSlot(1), new NBTTagCompound()));
+    }
 
-	private void getFruitPressData(TileEntityFruitPress fruitPress, NBTTagCompound tag)
-	{
-		tag.setTag("item_press", NBTHelper.writeItemStackToNBT(fruitPress.getStackInSlot(0), new NBTTagCompound()));
-		tag.setTag("item_residue", NBTHelper.writeItemStackToNBT(fruitPress.getStackInSlot(1), new NBTTagCompound()));
-	}
+    private void getFruitPressData(TileEntityFruitPress fruitPress, NBTTagCompound tag) {
+        tag.setTag("item_press", NBTHelper.writeItemStackToNBT(fruitPress.getStackInSlot(0), new NBTTagCompound()));
+        tag.setTag("item_residue", NBTHelper.writeItemStackToNBT(fruitPress.getStackInSlot(1), new NBTTagCompound()));
+    }
 
-	private void getCultureJarData(TileEntityCultureJar fermentJar, NBTTagCompound tag)
-	{
-		tag.setTag("item_yeast", NBTHelper.writeItemStackToNBT(fermentJar.getStackInSlot(0), new NBTTagCompound()));
-	}
+    private void getCultureJarData(TileEntityCultureJar fermentJar, NBTTagCompound tag) {
+        tag.setTag("item_yeast", NBTHelper.writeItemStackToNBT(fermentJar.getStackInSlot(0), new NBTTagCompound()));
+    }
 
-	private void getFermentBarrelData(TileEntityFermentBarrel fermentBarrel, NBTTagCompound tag)
-	{
-		tag.setTag("item_modifier", NBTHelper.writeItemStackToNBT(fermentBarrel.getStackInSlot(0), new NBTTagCompound()));
-	}
+    private void getFermentBarrelData(TileEntityFermentBarrel fermentBarrel, NBTTagCompound tag) {
+        tag.setTag("item_modifier", NBTHelper.writeItemStackToNBT(fermentBarrel.getStackInSlot(0), new NBTTagCompound()));
+    }
 
-	@Override
-	@Optional.Method(modid="Waila")
-	public NBTTagCompound getNBTData(EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, BlockPos pos)
-	{
-		if (te instanceof TileEntityBrewKettle) getBrewKettleData((TileEntityBrewKettle)te, tag);
-		if (te instanceof TileEntityFruitPress) getFruitPressData((TileEntityFruitPress)te, tag);
-		if (te instanceof TileEntityFermentBarrel) getFermentBarrelData((TileEntityFermentBarrel)te, tag);
-		if (te instanceof TileEntityCultureJar) getCultureJarData((TileEntityCultureJar)te, tag);
-		return tag;
-	}
+    @Override
+    @Optional.Method(modid = "Waila")
+    public NBTTagCompound getNBTData(EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, BlockPos pos) {
+        if (te instanceof TileEntityBrewKettle) getBrewKettleData((TileEntityBrewKettle) te, tag);
+        if (te instanceof TileEntityFruitPress) getFruitPressData((TileEntityFruitPress) te, tag);
+        if (te instanceof TileEntityFermentBarrel) getFermentBarrelData((TileEntityFermentBarrel) te, tag);
+        if (te instanceof TileEntityCultureJar) getCultureJarData((TileEntityCultureJar) te, tag);
+        return tag;
+    }
 }

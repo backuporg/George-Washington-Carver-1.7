@@ -26,102 +26,102 @@ package growthcraft.api.cellar.booze;
 import growthcraft.api.core.CoreRegistry;
 import growthcraft.api.core.fluids.FluidTag;
 
-public class BoozeTag
-{
-	// the booze is young and probably has no effects
-	public static final FluidTag YOUNG = CoreRegistry.instance().fluidTags().createTag("young");
-	// the booze is fermented
-	public static final FluidTag FERMENTED = CoreRegistry.instance().fluidTags().createTag("fermented");
-	// the booze has its effect time extended
-	public static final FluidTag EXTENDED = CoreRegistry.instance().fluidTags().createTag("extended");
-	// the booze has a stronger effect, but limited time
-	public static final FluidTag POTENT = CoreRegistry.instance().fluidTags().createTag("potent");
-	// the booze has the extended + potent effect
-	public static final FluidTag HYPER_EXTENDED = CoreRegistry.instance().fluidTags().createTag("hyper_extended");
-	// the booze WILL kill the player on overdose
-	public static final FluidTag DEADLY = CoreRegistry.instance().fluidTags().createTag("deadly");
-	// the booze is poisoned, most likely by using netherrash
-	public static final FluidTag POISONED = CoreRegistry.instance().fluidTags().createTag("poisoned");
-	// the booze was fermented using Lager yeast
-	public static final FluidTag CHILLED = CoreRegistry.instance().fluidTags().createTag("chilled");
-	// the booze is heavily intoxicating
-	public static final FluidTag INTOXICATED = CoreRegistry.instance().fluidTags().createTag("intoxicated");
-	// the booze has a base in magic
-	public static final FluidTag MAGICAL = CoreRegistry.instance().fluidTags().createTag("magical");
-	// the booze has been reinforced, (a stronger version of potent)
-	public static final FluidTag FORTIFIED = CoreRegistry.instance().fluidTags().createTag("fortified");
-	// the booze has been brewed with hops
-	public static final FluidTag HOPPED = CoreRegistry.instance().fluidTags().createTag("hopped");
-	// the booze is some form of wine
-	public static final FluidTag WINE = CoreRegistry.instance().fluidTags().createTag("wine");
-	// the booze is some form of cider
-	public static final FluidTag CIDER = CoreRegistry.instance().fluidTags().createTag("cider");
-	//This beverage was distilled
-	public static final FluidTag DISTILLED = CoreRegistry.instance().fluidTags().createTag("distilled");
-	//This beverage has been filtered
-	public static final FluidTag FILTERED = CoreRegistry.instance().fluidTags().createTag("filtered");
-	//This beverage has been flavored with spices
-	public static final FluidTag SPICED = CoreRegistry.instance().fluidTags().createTag("spiced");
-	//This beverage has been flavored with fruit
-	public static final FluidTag FRUITY = CoreRegistry.instance().fluidTags().createTag("fruity");
-	//This beverage is ancient, and of questionable safety
-	public static final FluidTag ANCIENT = CoreRegistry.instance().fluidTags().createTag("ancient");
-	//This beverage is a cocktail
-	public static final FluidTag COCKTAIL = CoreRegistry.instance().fluidTags().createTag("cocktail");
-	//This beverage is brewed from nether-based ingredients
-	public static final FluidTag INFERNAL = CoreRegistry.instance().fluidTags().createTag("infernal");
-	//This beverage is brewed from end-based ingredients
-	public static final FluidTag ELDRITCH = CoreRegistry.instance().fluidTags().createTag("eldritch");
-	//This beverage is believed to have medicinal properties
-	public static final FluidTag MEDICINAL = CoreRegistry.instance().fluidTags().createTag("medicinal");
-	//This beverage is made from malted grains
-	public static final FluidTag MALTED = CoreRegistry.instance().fluidTags().createTag("malted");
-	//This beverage is made from fermented tea
-	public static final FluidTag KOMBUCHA = CoreRegistry.instance().fluidTags().createTag("kombucha");
-	//This beverage is made from distilling coconuts
-	public static final FluidTag ARRACK = CoreRegistry.instance().fluidTags().createTag("arrack");
-	//This beverage is made from molasses
-	public static final FluidTag RUM = CoreRegistry.instance().fluidTags().createTag("rum");
-	//This beverage is made from fermenting palm nectar
-	public static final FluidTag NECTAR = CoreRegistry.instance().fluidTags().createTag("nectar");
-	//This beverage is made from fermenting agave
-	public static final FluidTag PULQUE = CoreRegistry.instance().fluidTags().createTag("pulque");
-	//This beverage is whiskey
-	public static final FluidTag WHISKEY = CoreRegistry.instance().fluidTags().createTag("whiskey");
-	//This beverage is vodka
-	public static final FluidTag VODKA = CoreRegistry.instance().fluidTags().createTag("vodka");
-	//This beverage is disgusting
-	public static final FluidTag VILE = CoreRegistry.instance().fluidTags().createTag("vile");
-	//This beverage is gin
-	public static final FluidTag GIN = CoreRegistry.instance().fluidTags().createTag("gin");
-	//This beverage is beer
-	public static final FluidTag BEER = CoreRegistry.instance().fluidTags().createTag("beer");
-	//This beverage is bourbon
-	public static final FluidTag BOURBON = CoreRegistry.instance().fluidTags().createTag("bourbon");
-	//This beverage is sherry
-	public static final FluidTag SHERRY = CoreRegistry.instance().fluidTags().createTag("sherry");
-	//This beverage is port
-	public static final FluidTag PORT = CoreRegistry.instance().fluidTags().createTag("port");
-	//This beverage is brandy
-	public static final FluidTag BRANDY = CoreRegistry.instance().fluidTags().createTag("brandy");
-	//This beverage is made by fermenting blood... somehow
-	public static final FluidTag BLOODWINE = CoreRegistry.instance().fluidTags().createTag("bloodwine");
-	//This is vinegar
-	public static final FluidTag VINEGAR = CoreRegistry.instance().fluidTags().createTag("vinegar");
-	//This beverage is made by fermenting chorus fruit
-	public static final FluidTag ORCHESTRAL = CoreRegistry.instance().fluidTags().createTag("orchestral");
-	//This beverage is made by distilling chorus fruit
-	public static final FluidTag CHORAL = CoreRegistry.instance().fluidTags().createTag("choral");
-	//This beverage is an extended chorus fruit beverage
-	public static final FluidTag SYMPHONIC = CoreRegistry.instance().fluidTags().createTag("symphonic");
-	//This beverage is a magical chorus fruit beverage
-	public static final FluidTag MANTRIC = CoreRegistry.instance().fluidTags().createTag("mantric");
-	//This beverage is a potent chorus fruit beverage
-	public static final FluidTag HYMNODY = CoreRegistry.instance().fluidTags().createTag("hymnody");
-	//This beverage is a hyper-extended chorus fruit beverage
-	public static final FluidTag OPERATIC = CoreRegistry.instance().fluidTags().createTag("operatic");
-	//This beverage is a chorus fruit vinegar
-	public static final FluidTag METALLIC = CoreRegistry.instance().fluidTags().createTag("metallic");
-	
-	private BoozeTag() {}
+public class BoozeTag {
+    // the booze is young and probably has no effects
+    public static final FluidTag YOUNG = CoreRegistry.instance().fluidTags().createTag("young");
+    // the booze is fermented
+    public static final FluidTag FERMENTED = CoreRegistry.instance().fluidTags().createTag("fermented");
+    // the booze has its effect time extended
+    public static final FluidTag EXTENDED = CoreRegistry.instance().fluidTags().createTag("extended");
+    // the booze has a stronger effect, but limited time
+    public static final FluidTag POTENT = CoreRegistry.instance().fluidTags().createTag("potent");
+    // the booze has the extended + potent effect
+    public static final FluidTag HYPER_EXTENDED = CoreRegistry.instance().fluidTags().createTag("hyper_extended");
+    // the booze WILL kill the player on overdose
+    public static final FluidTag DEADLY = CoreRegistry.instance().fluidTags().createTag("deadly");
+    // the booze is poisoned, most likely by using netherrash
+    public static final FluidTag POISONED = CoreRegistry.instance().fluidTags().createTag("poisoned");
+    // the booze was fermented using Lager yeast
+    public static final FluidTag CHILLED = CoreRegistry.instance().fluidTags().createTag("chilled");
+    // the booze is heavily intoxicating
+    public static final FluidTag INTOXICATED = CoreRegistry.instance().fluidTags().createTag("intoxicated");
+    // the booze has a base in magic
+    public static final FluidTag MAGICAL = CoreRegistry.instance().fluidTags().createTag("magical");
+    // the booze has been reinforced, (a stronger version of potent)
+    public static final FluidTag FORTIFIED = CoreRegistry.instance().fluidTags().createTag("fortified");
+    // the booze has been brewed with hops
+    public static final FluidTag HOPPED = CoreRegistry.instance().fluidTags().createTag("hopped");
+    // the booze is some form of wine
+    public static final FluidTag WINE = CoreRegistry.instance().fluidTags().createTag("wine");
+    // the booze is some form of cider
+    public static final FluidTag CIDER = CoreRegistry.instance().fluidTags().createTag("cider");
+    //This beverage was distilled
+    public static final FluidTag DISTILLED = CoreRegistry.instance().fluidTags().createTag("distilled");
+    //This beverage has been filtered
+    public static final FluidTag FILTERED = CoreRegistry.instance().fluidTags().createTag("filtered");
+    //This beverage has been flavored with spices
+    public static final FluidTag SPICED = CoreRegistry.instance().fluidTags().createTag("spiced");
+    //This beverage has been flavored with fruit
+    public static final FluidTag FRUITY = CoreRegistry.instance().fluidTags().createTag("fruity");
+    //This beverage is ancient, and of questionable safety
+    public static final FluidTag ANCIENT = CoreRegistry.instance().fluidTags().createTag("ancient");
+    //This beverage is a cocktail
+    public static final FluidTag COCKTAIL = CoreRegistry.instance().fluidTags().createTag("cocktail");
+    //This beverage is brewed from nether-based ingredients
+    public static final FluidTag INFERNAL = CoreRegistry.instance().fluidTags().createTag("infernal");
+    //This beverage is brewed from end-based ingredients
+    public static final FluidTag ELDRITCH = CoreRegistry.instance().fluidTags().createTag("eldritch");
+    //This beverage is believed to have medicinal properties
+    public static final FluidTag MEDICINAL = CoreRegistry.instance().fluidTags().createTag("medicinal");
+    //This beverage is made from malted grains
+    public static final FluidTag MALTED = CoreRegistry.instance().fluidTags().createTag("malted");
+    //This beverage is made from fermented tea
+    public static final FluidTag KOMBUCHA = CoreRegistry.instance().fluidTags().createTag("kombucha");
+    //This beverage is made from distilling coconuts
+    public static final FluidTag ARRACK = CoreRegistry.instance().fluidTags().createTag("arrack");
+    //This beverage is made from molasses
+    public static final FluidTag RUM = CoreRegistry.instance().fluidTags().createTag("rum");
+    //This beverage is made from fermenting palm nectar
+    public static final FluidTag NECTAR = CoreRegistry.instance().fluidTags().createTag("nectar");
+    //This beverage is made from fermenting agave
+    public static final FluidTag PULQUE = CoreRegistry.instance().fluidTags().createTag("pulque");
+    //This beverage is whiskey
+    public static final FluidTag WHISKEY = CoreRegistry.instance().fluidTags().createTag("whiskey");
+    //This beverage is vodka
+    public static final FluidTag VODKA = CoreRegistry.instance().fluidTags().createTag("vodka");
+    //This beverage is disgusting
+    public static final FluidTag VILE = CoreRegistry.instance().fluidTags().createTag("vile");
+    //This beverage is gin
+    public static final FluidTag GIN = CoreRegistry.instance().fluidTags().createTag("gin");
+    //This beverage is beer
+    public static final FluidTag BEER = CoreRegistry.instance().fluidTags().createTag("beer");
+    //This beverage is bourbon
+    public static final FluidTag BOURBON = CoreRegistry.instance().fluidTags().createTag("bourbon");
+    //This beverage is sherry
+    public static final FluidTag SHERRY = CoreRegistry.instance().fluidTags().createTag("sherry");
+    //This beverage is port
+    public static final FluidTag PORT = CoreRegistry.instance().fluidTags().createTag("port");
+    //This beverage is brandy
+    public static final FluidTag BRANDY = CoreRegistry.instance().fluidTags().createTag("brandy");
+    //This beverage is made by fermenting blood... somehow
+    public static final FluidTag BLOODWINE = CoreRegistry.instance().fluidTags().createTag("bloodwine");
+    //This is vinegar
+    public static final FluidTag VINEGAR = CoreRegistry.instance().fluidTags().createTag("vinegar");
+    //This beverage is made by fermenting chorus fruit
+    public static final FluidTag ORCHESTRAL = CoreRegistry.instance().fluidTags().createTag("orchestral");
+    //This beverage is made by distilling chorus fruit
+    public static final FluidTag CHORAL = CoreRegistry.instance().fluidTags().createTag("choral");
+    //This beverage is an extended chorus fruit beverage
+    public static final FluidTag SYMPHONIC = CoreRegistry.instance().fluidTags().createTag("symphonic");
+    //This beverage is a magical chorus fruit beverage
+    public static final FluidTag MANTRIC = CoreRegistry.instance().fluidTags().createTag("mantric");
+    //This beverage is a potent chorus fruit beverage
+    public static final FluidTag HYMNODY = CoreRegistry.instance().fluidTags().createTag("hymnody");
+    //This beverage is a hyper-extended chorus fruit beverage
+    public static final FluidTag OPERATIC = CoreRegistry.instance().fluidTags().createTag("operatic");
+    //This beverage is a chorus fruit vinegar
+    public static final FluidTag METALLIC = CoreRegistry.instance().fluidTags().createTag("metallic");
+
+    private BoozeTag() {
+    }
 }

@@ -28,6 +28,5 @@ import net.minecraftforge.fluids.IFluidHandler;
 /**
  * Implement this interface in any TileEntity you wish to treat as a Pancheon
  */
-public interface IPancheonTile extends IFluidHandler
-{
+public interface IPancheonTile extends IFluidHandler {
 }

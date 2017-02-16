@@ -33,84 +33,74 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 /**
  * Generic fluid bottle for growthcraft fluids that are edible
  */
-public class ItemFoodBottleFluid extends GrcItemFoodBase implements IFluidItem
-{
-	private Fluid fluid;
-	// Used to override the fluid color
-	private int color = -1;
+public class ItemFoodBottleFluid extends GrcItemFoodBase implements IFluidItem {
+    private Fluid fluid;
+    // Used to override the fluid color
+    private int color = -1;
 
-	@SideOnly(Side.CLIENT)
-	private IIcon bottle;
-	@SideOnly(Side.CLIENT)
-	private IIcon contents;
+    @SideOnly(Side.CLIENT)
+    private IIcon bottle;
+    @SideOnly(Side.CLIENT)
+    private IIcon contents;
 
-	public ItemFoodBottleFluid(Fluid flu, int healAmount, float saturation, boolean isWolfFavouriteFood)
-	{
-		super(healAmount, saturation, isWolfFavouriteFood);
-		setItemUseAction(EnumAction.DRINK);
-		setContainerItem(Items.GLASS_BOTTLE);
-		this.fluid = flu;
-	}
+    public ItemFoodBottleFluid(Fluid flu, int healAmount, float saturation, boolean isWolfFavouriteFood) {
+        super(healAmount, saturation, isWolfFavouriteFood);
+        setItemUseAction(EnumAction.DRINK);
+        setContainerItem(Items.GLASS_BOTTLE);
+        this.fluid = flu;
+    }
 
-	public ItemFoodBottleFluid(Fluid flu, int healAmount, float saturation)
-	{
-		this(flu, healAmount, saturation, false);
-	}
+    public ItemFoodBottleFluid(Fluid flu, int healAmount, float saturation) {
+        this(flu, healAmount, saturation, false);
+    }
 
-	public ItemFoodBottleFluid(Fluid flu, int healAmount)
-	{
-		this(flu, healAmount, 0.0f);
-	}
+    public ItemFoodBottleFluid(Fluid flu, int healAmount) {
+        this(flu, healAmount, 0.0f);
+    }
 
-	public ItemFoodBottleFluid(Fluid flu)
-	{
-		this(flu, 0);
-	}
+    public ItemFoodBottleFluid(Fluid flu) {
+        this(flu, 0);
+    }
 
-	@Override
-	public Fluid getFluid(ItemStack stack)
-	{
-		return fluid;
-	}
+    @Override
+    public Fluid getFluid(ItemStack stack) {
+        return fluid;
+    }
 
-	public ItemFoodBottleFluid setColor(int c)
-	{
-		this.color = c;
-		return this;
-	}
+    public ItemFoodBottleFluid setColor(int c) {
+        this.color = c;
+        return this;
+    }
 
-	public int getColor(ItemStack stack)
-	{
-		if (color != -1) return color;
-		return getFluid(stack).getColor();
-	}
+    public int getColor(ItemStack stack) {
+        if (color != -1) return color;
+        return getFluid(stack).getColor();
+    }
 
-	//@Override
-	//@SideOnly(Side.CLIENT)
-	//public void registerIcons(IIconRegister reg)
-	//{
-	//	this.bottle = reg.registerIcon("minecraft:potion_bottle_empty");
-	//	this.contents = reg.registerIcon("minecraft:potion_overlay");
-	//}
+    //@Override
+    //@SideOnly(Side.CLIENT)
+    //public void registerIcons(IIconRegister reg)
+    //{
+    //	this.bottle = reg.registerIcon("minecraft:potion_bottle_empty");
+    //	this.contents = reg.registerIcon("minecraft:potion_overlay");
+    //}
 
-	//@Override
-	//@SideOnly(Side.CLIENT)
-	//public IIcon getIconFromDamageForRenderPass(int _damage, int pass)
-	//{
-	//	return pass == 0 ? this.contents : this.bottle;
-	//}
+    //@Override
+    //@SideOnly(Side.CLIENT)
+    //public IIcon getIconFromDamageForRenderPass(int _damage, int pass)
+    //{
+    //	return pass == 0 ? this.contents : this.bottle;
+    //}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public int getColorFromItemStack(ItemStack stack, int pass)
-	{
-		return pass == 0 ? getColor(stack) : 0xFFFFFF;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public int getColorFromItemStack(ItemStack stack, int pass) {
+        return pass == 0 ? getColor(stack) : 0xFFFFFF;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean requiresMultipleRenderPasses()
-	{
-		return true;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public boolean requiresMultipleRenderPasses() {
+        return true;
+    }
 }

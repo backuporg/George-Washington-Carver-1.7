@@ -26,13 +26,11 @@ package growthcraft.netherloid.common.item;
 import growthcraft.netherloid.netherloid;
 import net.minecraft.item.Item;
 
-public class ItemEctoplasm extends Item
-{
-	public ItemEctoplasm()
-	{
-		super();
-		setUnlocalizedName("grcnetherloid.ectoplasm");
-		//setTextureName("grcnetherloid:ectoplasm");
-		setCreativeTab(netherloid.tab);
-	}
+public class ItemEctoplasm extends Item {
+    public ItemEctoplasm() {
+        super();
+        setUnlocalizedName("grcnetherloid.ectoplasm");
+        //setTextureName("grcnetherloid:ectoplasm");
+        setCreativeTab(netherloid.tab);
+    }
 }

@@ -25,6 +25,5 @@ package growthcraft.apples.client;
 
 import growthcraft.apples.common.CommonProxy;
 
-public class ClientProxy extends CommonProxy
-{
+public class ClientProxy extends CommonProxy {
 }

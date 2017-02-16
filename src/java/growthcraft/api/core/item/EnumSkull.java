@@ -32,41 +32,35 @@ import java.util.Locale;
 /**
  * Skulls!
  */
-public enum EnumSkull implements IItemStackFactory
-{
-	SKELETON,
-	WITHER,
-	ZOMBIE,
-	CHAR,
-	CREEPER;
+public enum EnumSkull implements IItemStackFactory {
+    SKELETON,
+    WITHER,
+    ZOMBIE,
+    CHAR,
+    CREEPER;
 
-	public static final EnumSkull[] VALUES = values();
+    public static final EnumSkull[] VALUES = values();
 
-	public final int meta;
-	public final String name;
+    public final int meta;
+    public final String name;
 
-	private EnumSkull()
-	{
-		this.name = name().toLowerCase(Locale.ENGLISH);
-		this.meta = ordinal();
-	}
+    EnumSkull() {
+        this.name = name().toLowerCase(Locale.ENGLISH);
+        this.meta = ordinal();
+    }
 
-	public ItemStack asStack(int size)
-	{
-		return new ItemStack(Items.SKULL, size, meta);
-	}
+    public static EnumSkull getByMeta(int meta) {
+        if (meta < 0 || meta >= VALUES.length) {
+            return SKELETON;
+        }
+        return VALUES[meta];
+    }
 
-	public ItemStack asStack()
-	{
-		return asStack(1);
-	}
+    public ItemStack asStack(int size) {
+        return new ItemStack(Items.SKULL, size, meta);
+    }
 
-	public static EnumSkull getByMeta(int meta)
-	{
-		if (meta < 0 || meta >= VALUES.length)
-		{
-			return SKELETON;
-		}
-		return VALUES[meta];
-	}
+    public ItemStack asStack() {
+        return asStack(1);
+    }
 }

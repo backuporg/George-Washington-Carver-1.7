@@ -32,68 +32,61 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 /**
  * Generic fluid bottle for growthcraft fluids
  */
-public class ItemBottleFluid extends GrcItemBase implements IFluidItem
-{
-	private Fluid fluid;
-	// Used to override the fluid color
-	private int color = -1;
+public class ItemBottleFluid extends GrcItemBase implements IFluidItem {
+    private Fluid fluid;
+    // Used to override the fluid color
+    private int color = -1;
 
-	//@SideOnly(Side.CLIENT)
-	//private IIcon bottle;
-	//@SideOnly(Side.CLIENT)
-	//private IIcon contents;
+    //@SideOnly(Side.CLIENT)
+    //private IIcon bottle;
+    //@SideOnly(Side.CLIENT)
+    //private IIcon contents;
 
-	public ItemBottleFluid(Fluid flu)
-	{
-		super();
-		setContainerItem(Items.GLASS_BOTTLE);
-		this.fluid = flu;
-	}
+    public ItemBottleFluid(Fluid flu) {
+        super();
+        setContainerItem(Items.GLASS_BOTTLE);
+        this.fluid = flu;
+    }
 
-	@Override
-	public Fluid getFluid(ItemStack stack)
-	{
-		return fluid;
-	}
+    @Override
+    public Fluid getFluid(ItemStack stack) {
+        return fluid;
+    }
 
-	public ItemBottleFluid setColor(int c)
-	{
-		this.color = c;
-		return this;
-	}
+    public ItemBottleFluid setColor(int c) {
+        this.color = c;
+        return this;
+    }
 
-	public int getColor(ItemStack stack)
-	{
-		if (color != -1) return color;
-		return getFluid(stack).getColor();
-	}
+    public int getColor(ItemStack stack) {
+        if (color != -1) return color;
+        return getFluid(stack).getColor();
+    }
 
-	//@Override
-	//@SideOnly(Side.CLIENT)
-	//public void registerIcons(IIconRegister reg)
-	//{
-	//	this.bottle = reg.registerIcon("minecraft:potion_bottle_empty");
-	//	this.contents = reg.registerIcon("minecraft:potion_overlay");
-	//}
+    //@Override
+    //@SideOnly(Side.CLIENT)
+    //public void registerIcons(IIconRegister reg)
+    //{
+    //	this.bottle = reg.registerIcon("minecraft:potion_bottle_empty");
+    //	this.contents = reg.registerIcon("minecraft:potion_overlay");
+    //}
 
-	//@Override
-	//@SideOnly(Side.CLIENT)
-	//public IIcon getIconFromDamageForRenderPass(int _damage, int pass)
-	//{
-	//	return pass == 0 ? this.contents : this.bottle;
-	//}
+    //@Override
+    //@SideOnly(Side.CLIENT)
+    //public IIcon getIconFromDamageForRenderPass(int _damage, int pass)
+    //{
+    //	return pass == 0 ? this.contents : this.bottle;
+    //}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public int getColorFromItemStack(ItemStack stack, int pass)
-	{
-		return pass == 0 ? getColor(stack) : 0xFFFFFF;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public int getColorFromItemStack(ItemStack stack, int pass) {
+        return pass == 0 ? getColor(stack) : 0xFFFFFF;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean requiresMultipleRenderPasses()
-	{
-		return true;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public boolean requiresMultipleRenderPasses() {
+        return true;
+    }
 }

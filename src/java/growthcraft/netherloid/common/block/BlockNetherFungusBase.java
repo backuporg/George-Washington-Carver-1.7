@@ -38,102 +38,82 @@ import net.minecraftforge.common.IPlantable;
 
 import java.util.Random;
 
-public abstract class BlockNetherFungusBase extends BlockBush implements IPlantable, IGrowable
-{
-	public BlockNetherFungusBase()
-	{
-		super();
-		setTickRandomly(true);
-	}
+public abstract class BlockNetherFungusBase extends BlockBush implements IPlantable, IGrowable {
+    public BlockNetherFungusBase() {
+        super();
+        setTickRandomly(true);
+    }
 
-	protected boolean func_149854_a(Block block)
-	{
-		return Blocks.NETHERRACK == block || Blocks.SOUL_SAND == block;
-	}
+    protected boolean func_149854_a(Block block) {
+        return Blocks.NETHERRACK == block || Blocks.SOUL_SAND == block;
+    }
 
-	@Override
-	public boolean canBlockStay(World world, BlockPos pos)
-	{
-		return BlockCheck.canSustainPlant(world, x, y - 1, z, EnumFacing.UP, this);
-	}
+    @Override
+    public boolean canBlockStay(World world, BlockPos pos) {
+        return BlockCheck.canSustainPlant(world, x, y - 1, z, EnumFacing.UP, this);
+    }
 
-	protected void growFungus(World world, BlockPos pos)
-	{
-		if (world.isAirBlock(x, y, z) && canBlockStay(world, x, y, z))
-		{
-			world.setBlockState(x, y, z, this, 0, BlockFlags.SYNC);
-		}
-	}
+    protected void growFungus(World world, BlockPos pos) {
+        if (world.isAirBlock(x, y, z) && canBlockStay(world, x, y, z)) {
+            world.setBlockState(x, y, z, this, 0, BlockFlags.SYNC);
+        }
+    }
 
-	public boolean canFungusSpread(World world, BlockPos pos)
-	{
-		for (BlockCheck.BlockDirection EnumFacing : BlockCheck.DIR8)
-		{
-			if (world.isAirBlock(x + EnumFacing.offsetX, y, z + EnumFacing.offsetZ) && canBlockStay(world, x + EnumFacing.offsetX, y, z + EnumFacing.offsetZ))
-			{
-				return true;
-			}
-		}
-		return false;
-	}
+    public boolean canFungusSpread(World world, BlockPos pos) {
+        for (BlockCheck.BlockDirection EnumFacing : BlockCheck.DIR8) {
+            if (world.isAirBlock(x + EnumFacing.offsetX, y, z + EnumFacing.offsetZ) && canBlockStay(world, x + EnumFacing.offsetX, y, z + EnumFacing.offsetZ)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
-	/* Can this accept bonemeal? */
-	@Override
-	public boolean func_149851_a(World world, BlockPos pos, boolean isClient)
-	{
-		return canFungusSpread(world, x, y, z);
-	}
+    /* Can this accept bonemeal? */
+    @Override
+    public boolean func_149851_a(World world, BlockPos pos, boolean isClient) {
+        return canFungusSpread(world, x, y, z);
+    }
 
-	/* SideOnly(Side.SERVER) Can this apply bonemeal effect? */
-	@Override
-	public boolean func_149852_a(World world, Random random, BlockPos pos)
-	{
-		return true;
-	}
+    /* SideOnly(Side.SERVER) Can this apply bonemeal effect? */
+    @Override
+    public boolean func_149852_a(World world, Random random, BlockPos pos) {
+        return true;
+    }
 
-	/* Apply bonemeal effect */
-	@Override
-	public void func_149853_b(World world, Random random, BlockPos pos)
-	{
-		final BlockCheck.BlockDirection EnumFacing = BlockCheck.randomDirection8(random);
-		growFungus(world, x + EnumFacing.offsetX, y, z + EnumFacing.offsetZ);
-	}
+    /* Apply bonemeal effect */
+    @Override
+    public void func_149853_b(World world, Random random, BlockPos pos) {
+        final BlockCheck.BlockDirection EnumFacing = BlockCheck.randomDirection8(random);
+        growFungus(world, x + EnumFacing.offsetX, y, z + EnumFacing.offsetZ);
+    }
 
-	protected abstract float getSpreadRate(World world, BlockPos pos);
+    protected abstract float getSpreadRate(World world, BlockPos pos);
 
-	@Override
-	public void updateTick(World world, BlockPos pos, Random random)
-	{
-		if (!this.canBlockStay(world, x, y, z))
-		{
-			this.dropBlockAsItem(world, x, y, z, world.getBlockState(x, y, z), 0);
-			world.setBlockState(x, y, z, Blocks.AIR, 0, BlockFlags.SYNC);
-		}
-		else if (random.nextFloat() <= getSpreadRate(world, x, y, z))
-		{
-			final BlockCheck.BlockDirection EnumFacing = BlockCheck.randomDirection8(random);
-			growFungus(world, x + EnumFacing.offsetX, y, z + EnumFacing.offsetZ);
-		}
-	}
+    @Override
+    public void updateTick(World world, BlockPos pos, Random random) {
+        if (!this.canBlockStay(world, x, y, z)) {
+            this.dropBlockAsItem(world, x, y, z, world.getBlockState(x, y, z), 0);
+            world.setBlockState(x, y, z, Blocks.AIR, 0, BlockFlags.SYNC);
+        } else if (random.nextFloat() <= getSpreadRate(world, x, y, z)) {
+            final BlockCheck.BlockDirection EnumFacing = BlockCheck.randomDirection8(random);
+            growFungus(world, x + EnumFacing.offsetX, y, z + EnumFacing.offsetZ);
+        }
+    }
 
-	@Override
-	public boolean isOpaqueCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isOpaqueCube() {
+        return false;
+    }
 
-	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos)
-	{
-		return EnumPlantType.Nether;
-	}
+    public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos) {
+        return EnumPlantType.Nether;
+    }
 
-	public Block getPlant(IBlockAccess world, BlockPos pos)
-	{
-		return this;
-	}
+    public Block getPlant(IBlockAccess world, BlockPos pos) {
+        return this;
+    }
 
-	public int getPlantMetadata(IBlockAccess world, BlockPos pos)
-	{
-		return 0;
-	}
+    public int getPlantMetadata(IBlockAccess world, BlockPos pos) {
+        return 0;
+    }
 }

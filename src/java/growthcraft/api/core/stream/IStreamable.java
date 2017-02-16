@@ -25,8 +25,8 @@ package growthcraft.api.core.stream;
 
 import io.netty.buffer.ByteBuf;
 
-public interface IStreamable
-{
-	boolean readFromStream(ByteBuf stream);
-	boolean writeToStream(ByteBuf stream);
+public interface IStreamable {
+    boolean readFromStream(ByteBuf stream);
+
+    boolean writeToStream(ByteBuf stream);
 }

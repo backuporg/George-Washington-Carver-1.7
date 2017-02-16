@@ -28,29 +28,25 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public abstract class BlockNetherCinderrot extends BlockNetherFungusBase
-{
-	private final float cinderrotSpreadRate = netherloid.getConfig().cinderrotSpreadRate;
+public abstract class BlockNetherCinderrot extends BlockNetherFungusBase {
+    private final float cinderrotSpreadRate = netherloid.getConfig().cinderrotSpreadRate;
 
-	public BlockNetherCinderrot()
-	{
-		super();
-		setUnlocalizedName("grcnetherloid.netherCinderrot");
-		setCreativeTab(netherloid.tab);
-		//setBlockTextureName("grcnetherloid:cinderrot");
-		getBoundingBox(0.375F, 0.0F, 0.375F, 0.625F, 0.375F, 0.625F);
-	}
+    public BlockNetherCinderrot() {
+        super();
+        setUnlocalizedName("grcnetherloid.netherCinderrot");
+        setCreativeTab(netherloid.tab);
+        //setBlockTextureName("grcnetherloid:cinderrot");
+        getBoundingBox(0.375F, 0.0F, 0.375F, 0.625F, 0.375F, 0.625F);
+    }
 
-	@Override
-	protected float getSpreadRate(World world, BlockPos pos)
-	{
-		return cinderrotSpreadRate;
-	}
+    @Override
+    protected float getSpreadRate(World world, BlockPos pos) {
+        return cinderrotSpreadRate;
+    }
 
-	@Override
-	public void onEntityCollidedWithBlock(World world, BlockPos pos, Entity entity)
-	{
-		if (world.isRemote) return;
-		entity.setFire(15);
-	}
+    @Override
+    public void onEntityCollidedWithBlock(World world, BlockPos pos, Entity entity) {
+        if (world.isRemote) return;
+        entity.setFire(15);
+    }
 }

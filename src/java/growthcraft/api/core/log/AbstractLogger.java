@@ -28,57 +28,48 @@ import org.apache.logging.log4j.Level;
 /**
  * Abstract Logger class
  */
-public abstract class AbstractLogger implements ILogger
-{
-	protected boolean enabled = true;
+public abstract class AbstractLogger implements ILogger {
+    protected boolean enabled = true;
 
-	@Override
-	public void enable()
-	{
-		this.enabled = true;
-	}
+    @Override
+    public void enable() {
+        this.enabled = true;
+    }
 
-	@Override
-	public void disable()
-	{
-		this.enabled = false;
-	}
+    @Override
+    public void disable() {
+        this.enabled = false;
+    }
 
-	protected abstract void doLog(Level lv, String str, Object... objs);
+    protected abstract void doLog(Level lv, String str, Object... objs);
 
-	@Override
-	public void log(Level lv, String str, Object... objs)
-	{
-		if (enabled) doLog(lv, str, objs);
-	}
+    @Override
+    public void log(Level lv, String str, Object... objs) {
+        if (enabled) doLog(lv, str, objs);
+    }
 
-	@Override
-	public void info(String str, Object... objs)
-	{
-		log(Level.INFO, str, objs);
-	}
+    @Override
+    public void info(String str, Object... objs) {
+        log(Level.INFO, str, objs);
+    }
 
-	@Override
-	public void debug(String str, Object... objs)
-	{
-		log(Level.DEBUG, str, objs);
-	}
+    @Override
+    public void debug(String str, Object... objs) {
+        log(Level.DEBUG, str, objs);
+    }
 
-	@Override
-	public void warn(String str, Object... objs)
-	{
-		log(Level.WARN, str, objs);
-	}
+    @Override
+    public void warn(String str, Object... objs) {
+        log(Level.WARN, str, objs);
+    }
 
-	@Override
-	public void error(String str, Object... objs)
-	{
-		log(Level.ERROR, str, objs);
-	}
+    @Override
+    public void error(String str, Object... objs) {
+        log(Level.ERROR, str, objs);
+    }
 
-	@Override
-	public void fatal(String str, Object... objs)
-	{
-		log(Level.FATAL, str, objs);
-	}
+    @Override
+    public void fatal(String str, Object... objs) {
+        log(Level.FATAL, str, objs);
+    }
 }

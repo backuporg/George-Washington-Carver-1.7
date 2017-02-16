@@ -29,27 +29,24 @@ import growthcraft.core.common.definition.ItemDefinition;
 import net.minecraft.init.Items;
 import net.minecraftforge.oredict.OreDictionary;
 
-public class GrcApplesItems extends GrcModuleItems
-{
-	public ItemDefinition appleSeeds;
+public class GrcApplesItems extends GrcModuleItems {
+    public ItemDefinition appleSeeds;
 
-	@Override
-	public void preInit()
-	{
-		appleSeeds = newDefinition(new ItemAppleSeeds());
-	}
+    @Override
+    public void preInit() {
+        appleSeeds = newDefinition(new ItemAppleSeeds());
+    }
 
-	@Override
-	public void register()
-	{
-		appleSeeds.register("grc.appleSeeds");
+    @Override
+    public void register() {
+        appleSeeds.register("grc.appleSeeds");
 
-		OreDictionary.registerOre("seedApple", appleSeeds.getItem());
-		// For Pam's HarvestCraft
-		// Uses the same OreDict. names as HarvestCraft
-		OreDictionary.registerOre("listAllseed", appleSeeds.getItem());
-		// Common
-		OreDictionary.registerOre("foodApple", Items.APPLE);
-		OreDictionary.registerOre("foodFruit", Items.APPLE);
-	}
+        OreDictionary.registerOre("seedApple", appleSeeds.getItem());
+        // For Pam's HarvestCraft
+        // Uses the same OreDict. names as HarvestCraft
+        OreDictionary.registerOre("listAllseed", appleSeeds.getItem());
+        // Common
+        OreDictionary.registerOre("foodApple", Items.APPLE);
+        OreDictionary.registerOre("foodFruit", Items.APPLE);
+    }
 }

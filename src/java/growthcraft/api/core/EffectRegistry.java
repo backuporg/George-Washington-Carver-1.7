@@ -30,33 +30,29 @@ import net.minecraft.nbt.NBTTagCompound;
 
 import javax.annotation.Nonnull;
 
-public class EffectRegistry extends AbstractClassRegistry<IEffect> implements IEffectRegistry
-{
-	private ILogger logger = NullLogger.INSTANCE;
+public class EffectRegistry extends AbstractClassRegistry<IEffect> implements IEffectRegistry {
+    private ILogger logger = NullLogger.INSTANCE;
 
-	public EffectRegistry initialize()
-	{
-		register("add_potion_effect", EffectAddPotionEffect.class);
-		register("chance", EffectChance.class);
-		register("extinguish", EffectExtinguish.class);
-		register("ignite", EffectIgnite.class);
-		register("list", EffectList.class);
-		register("null", EffectNull.class);
-		register("random_list", EffectRandomList.class);
-		register("remove_potion_effect", EffectRemovePotionEffect.class);
-		register("weighted_random_list", EffectWeightedRandomList.class);
-		return this;
-	}
+    public EffectRegistry initialize() {
+        register("add_potion_effect", EffectAddPotionEffect.class);
+        register("chance", EffectChance.class);
+        register("extinguish", EffectExtinguish.class);
+        register("ignite", EffectIgnite.class);
+        register("list", EffectList.class);
+        register("null", EffectNull.class);
+        register("random_list", EffectRandomList.class);
+        register("remove_potion_effect", EffectRemovePotionEffect.class);
+        register("weighted_random_list", EffectWeightedRandomList.class);
+        return this;
+    }
 
-	@Override
-	public void setLogger(@Nonnull ILogger l)
-	{
-		this.logger = l;
-	}
+    @Override
+    public void setLogger(@Nonnull ILogger l) {
+        this.logger = l;
+    }
 
-	@Override
-	public IEffect loadEffectFromNBT(@Nonnull NBTTagCompound data, @Nonnull String name)
-	{
-		return loadObjectFromNBT(data, name);
-	}
+    @Override
+    public IEffect loadEffectFromNBT(@Nonnull NBTTagCompound data, @Nonnull String name) {
+        return loadObjectFromNBT(data, name);
+    }
 }

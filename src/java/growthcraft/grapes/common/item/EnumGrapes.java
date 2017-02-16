@@ -28,38 +28,32 @@ import net.minecraft.item.ItemStack;
 
 import java.util.Locale;
 
-public enum EnumGrapes
-{
-	PURPLE,
-	GREEN,
-	RED;
+public enum EnumGrapes {
+    PURPLE,
+    GREEN,
+    RED;
 
-	public static final EnumGrapes[] VALUES = values();
-	public final String name;
-	public final int meta;
+    public static final EnumGrapes[] VALUES = values();
+    public final String name;
+    public final int meta;
 
-	private EnumGrapes()
-	{
-		this.name = name().toLowerCase(Locale.ENGLISH);
-		this.meta = ordinal();
-	}
+    EnumGrapes() {
+        this.name = name().toLowerCase(Locale.ENGLISH);
+        this.meta = ordinal();
+    }
 
-	public ItemStack asStack(int size)
-	{
-		return GrowthCraftGrapes.items.grapes.asStack(size, ordinal());
-	}
+    public static EnumGrapes get(int index) {
+        if (index >= 0 && index < VALUES.length) {
+            return VALUES[index];
+        }
+        return PURPLE;
+    }
 
-	public ItemStack asStack()
-	{
-		return asStack(1);
-	}
+    public ItemStack asStack(int size) {
+        return GrowthCraftGrapes.items.grapes.asStack(size, ordinal());
+    }
 
-	public static EnumGrapes get(int index)
-	{
-		if (index >= 0 && index < VALUES.length)
-		{
-			return VALUES[index];
-		}
-		return PURPLE;
-	}
+    public ItemStack asStack() {
+        return asStack(1);
+    }
 }

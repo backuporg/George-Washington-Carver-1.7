@@ -28,85 +28,76 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public enum EnumForestryWoodType
-{
-	LARCH("larch"),
-	TEAK("teak"),
-	ACACIA("acacia"),
-	LIME("lime"),
-	CHESTNUT("chestnut"),
-	WENGE("wenge"),
-	BAOBAB("baobab"),
-	SEQUOIA("sequoia", 4.0f),
-	KAPOK("kapok"),
-	EBONY("ebony"),
-	MAHOGANY("mahogany"),
-	BALSA("balsa", 1.0f),
-	WILLOW("willow"),
-	WALNUT("walnut"),
-	GREENHEART("greenheart", 7.5f),
-	CHERRY("cherry"),
-	MAHOE("mahoe"),
-	POPLAR("poplar"),
-	PALM("palm"),
-	PAPAYA("papaya"),
-	PINE("pine", 3.0f),
-	PLUM("plum"),
-	MAPLE("maple"),
-	CITRUS("citrus"),
-	GIGANTEUM("giganteum"),
-	IPE("ipe"),
-	PADAUK("padauk"),
-	COCOBOLO("cocobolo"),
-	ZEBRAWOOD("zebrawood");
+public enum EnumForestryWoodType {
+    LARCH("larch"),
+    TEAK("teak"),
+    ACACIA("acacia"),
+    LIME("lime"),
+    CHESTNUT("chestnut"),
+    WENGE("wenge"),
+    BAOBAB("baobab"),
+    SEQUOIA("sequoia", 4.0f),
+    KAPOK("kapok"),
+    EBONY("ebony"),
+    MAHOGANY("mahogany"),
+    BALSA("balsa", 1.0f),
+    WILLOW("willow"),
+    WALNUT("walnut"),
+    GREENHEART("greenheart", 7.5f),
+    CHERRY("cherry"),
+    MAHOE("mahoe"),
+    POPLAR("poplar"),
+    PALM("palm"),
+    PAPAYA("papaya"),
+    PINE("pine", 3.0f),
+    PLUM("plum"),
+    MAPLE("maple"),
+    CITRUS("citrus"),
+    GIGANTEUM("giganteum"),
+    IPE("ipe"),
+    PADAUK("padauk"),
+    COCOBOLO("cocobolo"),
+    ZEBRAWOOD("zebrawood");
 
-	public static final EnumForestryWoodType[] VALUES = values();
+    public static final EnumForestryWoodType[] VALUES = values();
 
-	public final String name;
-	public final float hardness;
+    public final String name;
+    public final float hardness;
 
-	private EnumForestryWoodType(String n, float h)
-	{
-		this.name = n;
-		this.hardness = h;
-	}
+    EnumForestryWoodType(String n, float h) {
+        this.name = n;
+        this.hardness = h;
+    }
 
-	private EnumForestryWoodType(String n)
-	{
-		this(n, 2.0f);
-	}
+    EnumForestryWoodType(String n) {
+        this(n, 2.0f);
+    }
 
-	public float getHardness()
-	{
-		return hardness;
-	}
+    public float getHardness() {
+        return hardness;
+    }
 
-	public NBTTagCompound newWoodCompoundTag()
-	{
-		final NBTTagCompound tag = new NBTTagCompound();
-		tag.setInteger("WoodType", ordinal());
-		return tag;
-	}
+    public NBTTagCompound newWoodCompoundTag() {
+        final NBTTagCompound tag = new NBTTagCompound();
+        tag.setInteger("WoodType", ordinal());
+        return tag;
+    }
 
-	public ItemStack getForestryWoodStack(String blockname)
-	{
-		final Block block = GameRegistry.findBlock(ForestryPlatform.MOD_ID, blockname);
-		if (block != null)
-		{
-			final ItemStack result = new ItemStack(block);
-			result.setTagCompound(newWoodCompoundTag());
-			return result;
-		}
-		return null;
-	}
+    public ItemStack getForestryWoodStack(String blockname) {
+        final Block block = GameRegistry.findBlock(ForestryPlatform.MOD_ID, blockname);
+        if (block != null) {
+            final ItemStack result = new ItemStack(block);
+            result.setTagCompound(newWoodCompoundTag());
+            return result;
+        }
+        return null;
+    }
 
-	public ItemStack getPlanksItemStack()
-	{
-		return getForestryWoodStack("planks");
-	}
+    public ItemStack getPlanksItemStack() {
+        return getForestryWoodStack("planks");
+    }
 
-	public ItemStack getFireproofPlanksItemStack()
-	{
-		return getForestryWoodStack("planksFireproof");
-	}
+    public ItemStack getFireproofPlanksItemStack() {
+        return getForestryWoodStack("planksFireproof");
+    }
 }

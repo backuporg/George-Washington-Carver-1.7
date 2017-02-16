@@ -35,119 +35,101 @@ import java.util.Iterator;
 import java.util.List;
 
 // Container class storing sub modules
-public class ModuleContainer implements IModule, IFreezable, ILoggable, Iterable<IModule>
-{
-	protected List<IModule> subModules = new ArrayList<IModule>();
-	protected ILogger logger = NullLogger.INSTANCE;
-	private boolean frozen;
+public class ModuleContainer implements IModule, IFreezable, ILoggable, Iterable<IModule> {
+    protected List<IModule> subModules = new ArrayList<IModule>();
+    protected ILogger logger = NullLogger.INSTANCE;
+    private boolean frozen;
 
-	/**
-	 * Returns an iterator for the module's submodules
-	 */
-	@Override
-	public Iterator<IModule> iterator()
-	{
-		return subModules.iterator();
-	}
+    /**
+     * Returns an iterator for the module's submodules
+     */
+    @Override
+    public Iterator<IModule> iterator() {
+        return subModules.iterator();
+    }
 
-	/**
-	 * @return size of the module container
-	 */
-	public int size()
-	{
-		return subModules.size();
-	}
+    /**
+     * @return size of the module container
+     */
+    public int size() {
+        return subModules.size();
+    }
 
-	/**
-	 * Prevents further external changes to the container by freezing it
-	 */
-	@Override
-	public void freeze()
-	{
-		this.frozen = true;
-		logger.debug("ModuleContainer %s has froze, it will error the next time a Module is added.", this);
-	}
+    /**
+     * Prevents further external changes to the container by freezing it
+     */
+    @Override
+    public void freeze() {
+        this.frozen = true;
+        logger.debug("ModuleContainer %s has froze, it will error the next time a Module is added.", this);
+    }
 
-	/**
-	 * Is this container frozen?
-	 *
-	 * @return true, it cannot be modified, false otherwise
-	 */
-	@Override
-	public boolean isFrozen()
-	{
-		return frozen;
-	}
+    /**
+     * Is this container frozen?
+     *
+     * @return true, it cannot be modified, false otherwise
+     */
+    @Override
+    public boolean isFrozen() {
+        return frozen;
+    }
 
-	/**
-	 * Pokes the container, telling it that "I will modify you"
-	 */
-	public void touch()
-	{
-		if (isFrozen()) throw FrozenObjectError.newFor(this);
-	}
+    /**
+     * Pokes the container, telling it that "I will modify you"
+     */
+    public void touch() {
+        if (isFrozen()) throw FrozenObjectError.newFor(this);
+    }
 
-	/**
-	 * Adds a new module to the container, this WILL throw an error if the
-	 * container is frozen and no longer accepts modules
-	 *
-	 * @param module - an IModule instance
-	 */
-	public void add(@Nonnull IModule module)
-	{
-		touch();
+    /**
+     * Adds a new module to the container, this WILL throw an error if the
+     * container is frozen and no longer accepts modules
+     *
+     * @param module - an IModule instance
+     */
+    public void add(@Nonnull IModule module) {
+        touch();
 
-		subModules.add(module);
-	}
+        subModules.add(module);
+    }
 
-	@Override
-	public void setLogger(@Nonnull ILogger l)
-	{
-		touch();
+    @Override
+    public void setLogger(@Nonnull ILogger l) {
+        touch();
 
-		this.logger = l;
-		for (IModule module : subModules)
-		{
-			if (module instanceof ILoggable)
-			{
-				((ILoggable)module).setLogger(l);
-			}
-		}
-	}
+        this.logger = l;
+        for (IModule module : subModules) {
+            if (module instanceof ILoggable) {
+                ((ILoggable) module).setLogger(l);
+            }
+        }
+    }
 
-	@Override
-	public void preInit()
-	{
-		for (IModule module : subModules)
-		{
-			module.preInit();
-		}
-	}
+    @Override
+    public void preInit() {
+        for (IModule module : subModules) {
+            module.preInit();
+        }
+    }
 
-	@Override
-	public void register()
-	{
-		for (IModule module : subModules)
-		{
-			module.register();
-		}
-	}
+    @Override
+    public void register() {
+        for (IModule module : subModules) {
+            module.register();
+        }
+    }
 
-	@Override
-	public void init()
-	{
-		for (IModule module : subModules)
-		{
-			module.init();
-		}
-	}
+    @Override
+    public void init() {
+        for (IModule module : subModules) {
+            module.init();
+        }
+    }
 
-	@Override
-	public void postInit()
-	{
-		for (IModule module : subModules)
-		{
-			module.postInit();
-		}
-	}
+    @Override
+    public void postInit() {
+        for (IModule module : subModules) {
+            module.postInit();
+        }
+    }
 }

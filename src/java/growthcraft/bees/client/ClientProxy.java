@@ -32,29 +32,24 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
 
-public class ClientProxy extends CommonProxy
-{
-	protected void initRenders()
-	{
-		RenderingRegistry.registerBlockHandler(new RenderBeeBox());
-		RenderingRegistry.registerBlockHandler(new RenderBeeHive());
-	}
+public class ClientProxy extends CommonProxy {
+    protected void initRenders() {
+        RenderingRegistry.registerBlockHandler(new RenderBeeBox());
+        RenderingRegistry.registerBlockHandler(new RenderBeeHive());
+    }
 
-	protected void registerVillagerSkin()
-	{
-		final int villagerID = GrowthCraftBees.getConfig().villagerApiaristID;
-		if (villagerID > 0)
-		{
-			VillagerRegistry.instance().registerVillagerSkin(villagerID, new ResourceLocation("grcbees" , "textures/entity/apiarist.png"));
-		}
-	}
+    protected void registerVillagerSkin() {
+        final int villagerID = GrowthCraftBees.getConfig().villagerApiaristID;
+        if (villagerID > 0) {
+            VillagerRegistry.instance().registerVillagerSkin(villagerID, new ResourceLocation("grcbees", "textures/entity/apiarist.png"));
+        }
+    }
 
-	@Override
-	public void init()
-	{
-		super.init();
-		initRenders();
-		registerVillagerSkin();
-		GrowthCraftBees.guiProvider.register("grcbees:bee_box", GuiBeeBox.class);
-	}
+    @Override
+    public void init() {
+        super.init();
+        initRenders();
+        registerVillagerSkin();
+        GrowthCraftBees.guiProvider.register("grcbees:bee_box", GuiBeeBox.class);
+    }
 }

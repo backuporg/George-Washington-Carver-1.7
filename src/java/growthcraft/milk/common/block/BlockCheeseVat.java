@@ -40,112 +40,96 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
 import java.util.Random;
 
-public class BlockCheeseVat extends GrcBlockContainer
-{
-	public BlockCheeseVat()
-	{
-		super(Material.IRON);
-		setResistance(10.0F);
-		setHardness(5.0F);
-		//setStepSound(soundTypeMetal);
-		setUnlocalizedName("grcmilk.CheeseVat");
-		setCreativeTab(GrowthCraftMilk.creativeTab);
-		setTileEntityType(TileEntityCheeseVat.class);
-		//setBlockTextureName("grcmilk:cheese_vat");
-	}
+public class BlockCheeseVat extends GrcBlockContainer {
+    public BlockCheeseVat() {
+        super(Material.IRON);
+        setResistance(10.0F);
+        setHardness(5.0F);
+        //setStepSound(soundTypeMetal);
+        setUnlocalizedName("grcmilk.CheeseVat");
+        setCreativeTab(GrowthCraftMilk.creativeTab);
+        setTileEntityType(TileEntityCheeseVat.class);
+        //setBlockTextureName("grcmilk:cheese_vat");
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World world, BlockPos pos, Random random)
-	{
-		if (random.nextInt(12) == 0)
-		{
-			final TileEntityCheeseVat te = getTileEntity(world, pos);
-			if (te != null)
-			{
-				if (te.isWorking())
-				{
-					for (int i = 0; i < 3; ++i)
-					{
-						final double px = x + 0.5d + (random.nextFloat() - 0.5d);
-						final double py = y + (1d / 16d);
-						final double pz = z + 0.5d + (random.nextFloat() - 0.5d);
-						world.spawnParticle("smoke", px, py, pz, 0.0D, 1d / 32d, 0.0D);
-						world.playSoundEffect((double)x, (double)y, (double)z, "liquid.lavapop", 0.3f, 0.5f);
-					}
-				}
-			}
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void randomDisplayTick(World world, BlockPos pos, Random random) {
+        if (random.nextInt(12) == 0) {
+            final TileEntityCheeseVat te = getTileEntity(world, pos);
+            if (te != null) {
+                if (te.isWorking()) {
+                    for (int i = 0; i < 3; ++i) {
+                        final double px = x + 0.5d + (random.nextFloat() - 0.5d);
+                        final double py = y + (1d / 16d);
+                        final double pz = z + 0.5d + (random.nextFloat() - 0.5d);
+                        world.spawnParticle("smoke", px, py, pz, 0.0D, 1d / 32d, 0.0D);
+                        world.playSoundEffect((double) x, (double) y, (double) z, "liquid.lavapop", 0.3f, 0.5f);
+                    }
+                }
+            }
+        }
+    }
 
-	@Override
-	public void setBlockBoundsForItemRender(IBlockState state, IBlockAccess source, BlockPos pos)
-	{
-		this.getBoundingBox(state, source, pos);
-	}
+    @Override
+    public void setBlockBoundsForItemRender(IBlockState state, IBlockAccess source, BlockPos pos) {
+        this.getBoundingBox(state, source, pos);
+    }
 
-	@Override
-	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void getCollisionBoundingBox(World world, BlockPos pos, AxisAlignedBB axis, List list, Entity entity, IBlockState state, IBlockAccess source)
-	{
-		final float unit = 1f / 16f;
-		this.getBoundingBox(state, source, pos);
-		super.getCollisionBoundingBox(state, world, pos);
+    @Override
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    public void getCollisionBoundingBox(World world, BlockPos pos, AxisAlignedBB axis, List list, Entity entity, IBlockState state, IBlockAccess source) {
+        final float unit = 1f / 16f;
+        this.getBoundingBox(state, source, pos);
+        super.getCollisionBoundingBox(state, world, pos);
 
-		this.getBoundingBox(state, source, pos);
-		super.getCollisionBoundingBox(state, world, pos);
+        this.getBoundingBox(state, source, pos);
+        super.getCollisionBoundingBox(state, world, pos);
 
-		this.getBoundingBox(state, source, pos);
-		super.getCollisionBoundingBox(state, world, pos);
+        this.getBoundingBox(state, source, pos);
+        super.getCollisionBoundingBox(state, world, pos);
 
-		this.getBoundingBox(state, source, pos);
-		super.getCollisionBoundingBox(state, world, pos);
+        this.getBoundingBox(state, source, pos);
+        super.getCollisionBoundingBox(state, world, pos);
 
-		this.getBoundingBox(state, source, pos);
-		super.getCollisionBoundingBox(state, world, pos);
+        this.getBoundingBox(state, source, pos);
+        super.getCollisionBoundingBox(state, world, pos);
 
-		this.setBlockBoundsForItemRender(state, source, pos);
-	}
+        this.setBlockBoundsForItemRender(state, source, pos);
+    }
 
-	@Override
-	public int getRenderType()
-	{
-		return RenderCheeseVat.RENDER_ID;
-	}
+    @Override
+    public int getRenderType() {
+        return RenderCheeseVat.RENDER_ID;
+    }
 
-	@Override
-	public boolean isOpaqueCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isOpaqueCube() {
+        return false;
+    }
 
-	@Override
-	public boolean renderAsNormalBlock()
-	{
-		return false;
-	}
+    @Override
+    public boolean renderAsNormalBlock() {
+        return false;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess world, BlockPos pos, int side)
-	{
-		return true;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public boolean shouldSideBeRendered(IBlockAccess world, BlockPos pos, int side) {
+        return true;
+    }
 
-	@Override
-	public boolean hasComparatorInputOverride()
-	{
-		return true;
-	}
+    @Override
+    public boolean hasComparatorInputOverride() {
+        return true;
+    }
 
-	@Override
-	public int getComparatorInputOverride(World world, BlockPos pos, int par5)
-	{
-		final TileEntityCheeseVat te = getTileEntity(world, pos);
-		if (te != null)
-		{
-			return te.calcRedstone();
-		}
-		return 0;
-	}
+    @Override
+    public int getComparatorInputOverride(World world, BlockPos pos, int par5) {
+        final TileEntityCheeseVat te = getTileEntity(world, pos);
+        if (te != null) {
+            return te.calcRedstone();
+        }
+        return 0;
+    }
 }

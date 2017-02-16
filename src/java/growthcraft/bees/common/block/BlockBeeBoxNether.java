@@ -32,33 +32,29 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
 
 
-public class BlockBeeBoxNether extends BlockBeeBox
-{
-	public BlockBeeBoxNether()
-	{
-		super();
-		this.setUnlocalizedName("grc.BeeBox.Nether");
-	}
+public class BlockBeeBoxNether extends BlockBeeBox {
+    public BlockBeeBoxNether() {
+        super();
+        this.setUnlocalizedName("grc.BeeBox.Nether");
+    }
 
-	@Override
-	public String getMetaname(int meta)
-	{
-		return "" + meta;
-	}
+    @Override
+    public String getMetaname(int meta) {
+        return "" + meta;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void getSubBlocks(Item block, CreativeTabs tab, List list)
-	{
-		list.add(new ItemStack(block, 1, 0));
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    public void getSubBlocks(Item block, CreativeTabs tab, List list) {
+        list.add(new ItemStack(block, 1, 0));
+    }
 
-	//@Override
-	//@SideOnly(Side.CLIENT)
+    //@Override
+    //@SideOnly(Side.CLIENT)
 
-	//{
-	//	this.icons = new IIcon[4];
-	//	registerBeeBoxIcons(reg, "/grcnether/malice/", 0);
-	//}
+    //{
+    //	this.icons = new IIcon[4];
+    //	registerBeeBoxIcons(reg, "/grcnether/malice/", 0);
+    //}
 }

@@ -28,9 +28,9 @@ import forestry.api.recipes.IMoistenerRecipe;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Optional;
 
-@Optional.Interface(iface="forestry.api.recipes.IMoistenerManager", modid="ForestryAPI|recipes")
-public class MoistenerManagerShim extends AbstractManagerShim<IMoistenerRecipe> implements IMoistenerManager
-{
-	@Override
-	public void addRecipe(ItemStack resource, ItemStack product, int timePerItem) {}
+@Optional.Interface(iface = "forestry.api.recipes.IMoistenerManager", modid = "ForestryAPI|recipes")
+public class MoistenerManagerShim extends AbstractManagerShim<IMoistenerRecipe> implements IMoistenerManager {
+    @Override
+    public void addRecipe(ItemStack resource, ItemStack product, int timePerItem) {
+    }
 }

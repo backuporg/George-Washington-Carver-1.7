@@ -31,20 +31,18 @@ import net.minecraft.util.text.TextFormatting;
 
 import java.util.List;
 
-public class TagFormatterCheesePress implements ITagFormatter
-{
-	public static final TagFormatterCheesePress INSTANCE = new TagFormatterCheesePress();
+public class TagFormatterCheesePress implements ITagFormatter {
+    public static final TagFormatterCheesePress INSTANCE = new TagFormatterCheesePress();
 
-	public List<String> format(List<String> list, NBTTagCompound nbt)
-	{
-		list.add(TextFormatting.GRAY + GrcI18n.translate("grcmilk.cheese_press.pressing.state.prefix") + " " +
-				TextFormatting.WHITE + GrcI18n.translate("grcmilk.cheese_press.pressing.state." + nbt.getBoolean("pressed")));
-		list.add(TextFormatting.GRAY +
-			GrcI18n.translate(
-				"grcmilk.cheese_press.itemslot.item",
-				TagFormatterItem.INSTANCE.formatItem(nbt.getCompoundTag("item"))
-			)
-		);
-		return list;
-	}
+    public List<String> format(List<String> list, NBTTagCompound nbt) {
+        list.add(TextFormatting.GRAY + GrcI18n.translate("grcmilk.cheese_press.pressing.state.prefix") + " " +
+                TextFormatting.WHITE + GrcI18n.translate("grcmilk.cheese_press.pressing.state." + nbt.getBoolean("pressed")));
+        list.add(TextFormatting.GRAY +
+                GrcI18n.translate(
+                        "grcmilk.cheese_press.itemslot.item",
+                        TagFormatterItem.INSTANCE.formatItem(nbt.getCompoundTag("item"))
+                )
+        );
+        return list;
+    }
 }

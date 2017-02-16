@@ -31,150 +31,132 @@ import net.minecraft.util.text.ITextComponent;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class InventorySlice implements IInventory
-{
-	private IInventory parent;
-	private int[] accesible;
-	private int maxSize;
+public class InventorySlice implements IInventory {
+    private IInventory parent;
+    private int[] accesible;
+    private int maxSize;
 
-	public InventorySlice(@Nonnull IInventory par, @Nonnull int[] acc)
-	{
-		this.parent = par;
-		this.accesible = acc;
-		this.maxSize = accesible.length;
-	}
+    public InventorySlice(@Nonnull IInventory par, @Nonnull int[] acc) {
+        this.parent = par;
+        this.accesible = acc;
+        this.maxSize = accesible.length;
+    }
 
-	public int getSizeInventory()
-	{
-		return maxSize;
-	}
+    public int getSizeInventory() {
+        return maxSize;
+    }
 
-	public ItemStack getStackInSlot(int index)
-	{
-		return parent.getStackInSlot(accesible[index]);
-	}
+    public ItemStack getStackInSlot(int index) {
+        return parent.getStackInSlot(accesible[index]);
+    }
 
-	public ItemStack decrStackSize(int index, int amount)
-	{
-		return parent.decrStackSize(accesible[index], amount);
-	}
+    public ItemStack decrStackSize(int index, int amount) {
+        return parent.decrStackSize(accesible[index], amount);
+    }
 
-	@Nullable
-	@Override
-	public ItemStack removeStackFromSlot(int index) {
-		return null;
-	}
+    @Nullable
+    @Override
+    public ItemStack removeStackFromSlot(int index) {
+        return null;
+    }
 
-	public ItemStack getStackInSlotOnClosing(int index)
-	{
-		return parent.getStackInSlotOnClosing(accesible[index]);
-	}
+    public ItemStack getStackInSlotOnClosing(int index) {
+        return parent.getStackInSlotOnClosing(accesible[index]);
+    }
 
-	public void setInventorySlotContents(int index, ItemStack stack)
-	{
-		parent.setInventorySlotContents(accesible[index], stack);
-	}
+    public void setInventorySlotContents(int index, ItemStack stack) {
+        parent.setInventorySlotContents(accesible[index], stack);
+    }
 
-	public String getInventoryName()
-	{
-		return parent.getInventoryName();
-	}
+    public String getInventoryName() {
+        return parent.getInventoryName();
+    }
 
-	public boolean hasCustomInventoryName()
-	{
-		return parent.hasCustomInventoryName();
-	}
+    public boolean hasCustomInventoryName() {
+        return parent.hasCustomInventoryName();
+    }
 
-	public int getInventoryStackLimit()
-	{
-		return parent.getInventoryStackLimit();
-	}
+    public int getInventoryStackLimit() {
+        return parent.getInventoryStackLimit();
+    }
 
-	public void markDirty()
-	{
-		parent.markDirty();
-	}
+    public void markDirty() {
+        parent.markDirty();
+    }
 
-	public boolean isUseableByPlayer(EntityPlayer player)
-	{
-		return parent.isUseableByPlayer(player);
-	}
+    public boolean isUseableByPlayer(EntityPlayer player) {
+        return parent.isUseableByPlayer(player);
+    }
 
-	@Override
-	public void openInventory(EntityPlayer player) {
+    @Override
+    public void openInventory(EntityPlayer player) {
 
-	}
+    }
 
-	@Override
-	public void closeInventory(EntityPlayer player) {
+    @Override
+    public void closeInventory(EntityPlayer player) {
 
-	}
+    }
 
-	public void openInventory()
-	{
-		parent.openInventory();
-	}
+    public void openInventory() {
+        parent.openInventory();
+    }
 
-	public void closeInventory()
-	{
-		parent.closeInventory();
-	}
+    public void closeInventory() {
+        parent.closeInventory();
+    }
 
-	public boolean isItemValidForSlot(int index, ItemStack stack)
-	{
-		return parent.isItemValidForSlot(accesible[index], stack);
-	}
+    public boolean isItemValidForSlot(int index, ItemStack stack) {
+        return parent.isItemValidForSlot(accesible[index], stack);
+    }
 
-	@Override
-	public int getField(int id) {
-		return 0;
-	}
+    @Override
+    public int getField(int id) {
+        return 0;
+    }
 
-	@Override
-	public void setField(int id, int value) {
+    @Override
+    public void setField(int id, int value) {
 
-	}
+    }
 
-	@Override
-	public int getFieldCount() {
-		return 0;
-	}
+    @Override
+    public int getFieldCount() {
+        return 0;
+    }
 
-	@Override
-	public void clear() {
+    @Override
+    public void clear() {
 
-	}
+    }
 
-	public ItemStack mergeStackBang(ItemStack stack)
-	{
-		if (stack == null) return null;
-		InventoryProcessor.instance().mergeWithSlots(this, stack);
-		return stack.stackSize <= 0 ? null : stack;
-	}
+    public ItemStack mergeStackBang(ItemStack stack) {
+        if (stack == null) return null;
+        InventoryProcessor.instance().mergeWithSlots(this, stack);
+        return stack.stackSize <= 0 ? null : stack;
+    }
 
-	public ItemStack mergeStack(ItemStack stack)
-	{
-		if (stack != null)
-		{
-			final ItemStack result = stack.copy();
-			mergeStackBang(result);
-			return result.stackSize <= 0 ? null : result;
-		}
-		return null;
-	}
+    public ItemStack mergeStack(ItemStack stack) {
+        if (stack != null) {
+            final ItemStack result = stack.copy();
+            mergeStackBang(result);
+            return result.stackSize <= 0 ? null : result;
+        }
+        return null;
+    }
 
-	@Override
-	public String getName() {
-		return null;
-	}
+    @Override
+    public String getName() {
+        return null;
+    }
 
-	@Override
-	public boolean hasCustomName() {
-		return false;
-	}
+    @Override
+    public boolean hasCustomName() {
+        return false;
+    }
 
-	@Override
-	public ITextComponent getDisplayName() {
-		return null;
-	}
+    @Override
+    public ITextComponent getDisplayName() {
+        return null;
+    }
 }

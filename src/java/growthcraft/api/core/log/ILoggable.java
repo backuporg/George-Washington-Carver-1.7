@@ -25,7 +25,6 @@ package growthcraft.api.core.log;
 
 import javax.annotation.Nonnull;
 
-public interface ILoggable
-{
-	void setLogger(@Nonnull ILogger l);
+public interface ILoggable {
+    void setLogger(@Nonnull ILogger l);
 }

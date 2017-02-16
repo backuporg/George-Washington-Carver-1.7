@@ -28,17 +28,14 @@ import net.minecraftforge.fluids.Fluid;
 
 import javax.annotation.Nonnull;
 
-public class CellarBoozeBuilderFactory
-{
-	private GrcCellarUserApis userApis;
+public class CellarBoozeBuilderFactory {
+    private GrcCellarUserApis userApis;
 
-	public CellarBoozeBuilderFactory(@Nonnull GrcCellarUserApis apis)
-	{
-		this.userApis = apis;
-	}
+    public CellarBoozeBuilderFactory(@Nonnull GrcCellarUserApis apis) {
+        this.userApis = apis;
+    }
 
-	public ICellarBoozeBuilder create(@Nonnull Fluid fluid)
-	{
-		return new UserApiCellarBoozeBuilder(userApis, fluid);
-	}
+    public ICellarBoozeBuilder create(@Nonnull Fluid fluid) {
+        return new UserApiCellarBoozeBuilder(userApis, fluid);
+    }
 }

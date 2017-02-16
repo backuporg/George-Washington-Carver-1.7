@@ -26,12 +26,10 @@ package growthcraft.core.common.tileentity.event;
 import java.util.EnumMap;
 import java.util.List;
 
-public class EventHandlerMap extends EnumMap<EventHandler.EventType, List<EventFunction>>
-{
-	public static final long serialVersionUID = 1L;
+public class EventHandlerMap extends EnumMap<EventHandler.EventType, List<EventFunction>> {
+    public static final long serialVersionUID = 1L;
 
-	public EventHandlerMap()
-	{
-		super(EventHandler.EventType.class);
-	}
+    public EventHandlerMap() {
+        super(EventHandler.EventType.class);
+    }
 }

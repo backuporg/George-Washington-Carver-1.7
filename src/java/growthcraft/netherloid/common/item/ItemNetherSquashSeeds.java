@@ -37,50 +37,42 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 
-public class ItemNetherSquashSeeds extends Item implements IPlantable
-{
-	public ItemNetherSquashSeeds()
-	{
-		super();
-		setUnlocalizedName("grcnetherloid.netherSquashSeeds");
-		setCreativeTab(netherloid.tab);
-		//setTextureName("grcnetherloid:seeds_soulsquash");
-	}
+public class ItemNetherSquashSeeds extends Item implements IPlantable {
+    public ItemNetherSquashSeeds() {
+        super();
+        setUnlocalizedName("grcnetherloid.netherSquashSeeds");
+        setCreativeTab(netherloid.tab);
+        //setTextureName("grcnetherloid:seeds_soulsquash");
+    }
 
-	@Override
-	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos)
-	{
-		return EnumPlantType.Nether;
-	}
+    @Override
+    public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos) {
+        return EnumPlantType.Nether;
+    }
 
-	@Override
-	public Block getPlant(IBlockAccess world, BlockPos pos)
-	{
-		return netherloid.blocks.netherSquashStem.getBlockState();
-	}
+    @Override
+    public Block getPlant(IBlockAccess world, BlockPos pos) {
+        return netherloid.blocks.netherSquashStem.getBlockState();
+    }
 
-	@Override
-	public int getPlantMetadata(IBlockAccess world, BlockPos pos)
-	{
-		return 0;
-	}
+    @Override
+    public int getPlantMetadata(IBlockAccess world, BlockPos pos) {
+        return 0;
+    }
 
-	@Override
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, int EnumFacing, float par8, float par9, float par10)
-	{
-		if (EnumFacing != 0) return false;
+    @Override
+    public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, int EnumFacing, float par8, float par9, float par10) {
+        if (EnumFacing != 0) return false;
 
-		if (player.canPlayerEdit(x, y, z, EnumFacing, stack) && player.canPlayerEdit(x, y - 1, z, EnumFacing, stack))
-		{
-			final BlockNetherSquashStem plant = (BlockNetherSquashStem)getPlant(world, x, y, z);
-			if (BlockCheck.canSustainPlant(world, x, y, z, EnumFacing.DOWN, plant))
-			{
-				world.setBlockState(x, y - 1, z, plant);
-				ItemUtils.consumeStack(stack);
-				return true;
-			}
-		}
+        if (player.canPlayerEdit(x, y, z, EnumFacing, stack) && player.canPlayerEdit(x, y - 1, z, EnumFacing, stack)) {
+            final BlockNetherSquashStem plant = (BlockNetherSquashStem) getPlant(world, x, y, z);
+            if (BlockCheck.canSustainPlant(world, x, y, z, EnumFacing.DOWN, plant)) {
+                world.setBlockState(x, y - 1, z, plant);
+                ItemUtils.consumeStack(stack);
+                return true;
+            }
+        }
 
-		return false;
-	}
+        return false;
+    }
 }

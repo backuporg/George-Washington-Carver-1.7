@@ -33,20 +33,16 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
 
 
-public class BlockBeeBoxJurassicraft extends BlockBeeBox
-{
-    public BlockBeeBoxJurassicraft()
-    {
+public class BlockBeeBoxJurassicraft extends BlockBeeBox {
+    public BlockBeeBoxJurassicraft() {
         super();
         setHardness(2f);
         setUnlocalizedName("grc.BeeBox.Jurassicraft");
     }
 
     @Override
-    public String getMetaname(int meta)
-    {
-        if (meta >= 0 && meta < EnumJCWoodType.VALUES.length)
-        {
+    public String getMetaname(int meta) {
+        if (meta >= 0 && meta < EnumJCWoodType.VALUES.length) {
             return EnumJCWoodType.VALUES[meta].name;
         }
         return super.getMetaname(meta);
@@ -55,10 +51,8 @@ public class BlockBeeBoxJurassicraft extends BlockBeeBox
     @Override
     @SideOnly(Side.CLIENT)
     @SuppressWarnings({"rawtypes", "unchecked"})
-    public void getSubBlocks(Item block, CreativeTabs tab, List list)
-    {
-        for (int i = 0; i < EnumJCWoodType.VALUES.length; ++i)
-        {
+    public void getSubBlocks(Item block, CreativeTabs tab, List list) {
+        for (int i = 0; i < EnumJCWoodType.VALUES.length; ++i) {
             list.add(new ItemStack(block, 1, i));
         }
     }

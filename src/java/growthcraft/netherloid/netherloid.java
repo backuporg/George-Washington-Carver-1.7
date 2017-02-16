@@ -46,85 +46,76 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod(
-	modid = netherloid.MOD_ID,
-	name = netherloid.MOD_NAME,
-	version = netherloid.MOD_VERSION,
-	dependencies = netherloid.MOD_DEPENDENCIES
+        modid = netherloid.MOD_ID,
+        name = netherloid.MOD_NAME,
+        version = netherloid.MOD_VERSION,
+        dependencies = netherloid.MOD_DEPENDENCIES
 )
-public class netherloid
-{
-	public static final String MOD_ID = "netherloid";
-	public static final String MOD_NAME = "netherloid";
-	public static final String MOD_VERSION = "@VERSION@";
-	public static final String MOD_DEPENDENCIES = "required-after:Growthcraft;required-after:Growthcraft|Cellar";
+public class netherloid {
+    public static final String MOD_ID = "netherloid";
+    public static final String MOD_NAME = "netherloid";
+    public static final String MOD_VERSION = "@VERSION@";
+    public static final String MOD_DEPENDENCIES = "required-after:Growthcraft;required-after:Growthcraft|Cellar";
 
-	@Instance(MOD_ID)
-	public static netherloid instance;
+    @Instance(MOD_ID)
+    public static netherloid instance;
 
-	public static CreativeTabs tab;
+    public static CreativeTabs tab;
 
-	public static netherloidBlocks blocks = new netherloidBlocks();
-	public static netherloidItems items = new netherloidItems();
-	public static netherloidFluids fluids = new netherloidFluids();
+    public static netherloidBlocks blocks = new netherloidBlocks();
+    public static netherloidItems items = new netherloidItems();
+    public static netherloidFluids fluids = new netherloidFluids();
 
-	private ILogger logger = new GrcLogger(MOD_ID);
-	private netherloidConfig config = new netherloidConfig();
-	private ModuleContainer modules = new ModuleContainer();
+    private ILogger logger = new GrcLogger(MOD_ID);
+    private netherloidConfig config = new netherloidConfig();
+    private ModuleContainer modules = new ModuleContainer();
 
-	public static netherloidConfig getConfig()
-	{
-		return instance.config;
-	}
+    public static netherloidConfig getConfig() {
+        return instance.config;
+    }
 
-	@EventHandler
-	public void preinit(FMLPreInitializationEvent event)
-	{
-		config.load(event.getModConfigurationDirectory(), "growthcraft/nether.conf");
+    @EventHandler
+    public void preinit(FMLPreInitializationEvent event) {
+        config.load(event.getModConfigurationDirectory(), "growthcraft/nether.conf");
 
-		tab = new CreativeTabsGrowthcraftNether();
+        tab = new CreativeTabsGrowthcraftNether();
 
-		modules.add(blocks);
-		modules.add(items);
-		modules.add(fluids);
+        modules.add(blocks);
+        modules.add(items);
+        modules.add(fluids);
 
-		//if (config.enableThaumcraftIntegration) modules.add(new growthcraft.netherloid.integration.ThaumcraftModule());
+        //if (config.enableThaumcraftIntegration) modules.add(new growthcraft.netherloid.integration.ThaumcraftModule());
 
-		if (config.debugEnabled) modules.setLogger(logger);
+        if (config.debugEnabled) modules.setLogger(logger);
 
-		modules.freeze();
+        modules.freeze();
 
-		modules.preInit();
-		modules.register();
-	}
+        modules.preInit();
+        modules.register();
+    }
 
-	@EventHandler
-	public void init(FMLInitializationEvent event)
-	{
-		CommonProxy.instance.initRenders();
+    @EventHandler
+    public void init(FMLInitializationEvent event) {
+        CommonProxy.instance.initRenders();
 
-		modules.init();
-	}
-	
-	@SubscribeEvent
-	@SideOnly(Side.CLIENT)
-	public void onTextureStitchPost(TextureStitchEvent.Post event)
-	{
-		if (event.map.getTextureType() == 0)
-		{
-			for (Booze bz : fluids.fireBrandyBooze)
-			{
-				bz.setIcons(GrowthCraftCore.liquidSmoothTexture);
-			}
-			for (Booze bz : fluids.maliceCiderBooze)
-			{
-				bz.setIcons(GrowthCraftCore.liquidSmoothTexture);
-			}
-		}
-	}
+        modules.init();
+    }
 
-	@EventHandler
-	public void postinit(FMLPostInitializationEvent event)
-	{
-		modules.postInit();
-	}
+    @SubscribeEvent
+    @SideOnly(Side.CLIENT)
+    public void onTextureStitchPost(TextureStitchEvent.Post event) {
+        if (event.map.getTextureType() == 0) {
+            for (Booze bz : fluids.fireBrandyBooze) {
+                bz.setIcons(GrowthCraftCore.liquidSmoothTexture);
+            }
+            for (Booze bz : fluids.maliceCiderBooze) {
+                bz.setIcons(GrowthCraftCore.liquidSmoothTexture);
+            }
+        }
+    }
+
+    @EventHandler
+    public void postinit(FMLPostInitializationEvent event) {
+        modules.postInit();
+    }
 }

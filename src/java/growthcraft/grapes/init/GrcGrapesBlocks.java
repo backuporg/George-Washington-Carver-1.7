@@ -31,28 +31,25 @@ import growthcraft.grapes.common.block.BlockGrapeLeaves;
 import growthcraft.grapes.common.block.BlockGrapeVine0;
 import growthcraft.grapes.common.block.BlockGrapeVine1;
 
-public class GrcGrapesBlocks extends GrcModuleBlocks
-{
-	public BlockTypeDefinition<BlockGrapeVine0> grapeVine0;
-	public BlockTypeDefinition<BlockGrapeVine1> grapeVine1;
-	public BlockTypeDefinition<BlockGrapeLeaves> grapeLeaves;
-	public BlockDefinition grapeBlock;
+public class GrcGrapesBlocks extends GrcModuleBlocks {
+    public BlockTypeDefinition<BlockGrapeVine0> grapeVine0;
+    public BlockTypeDefinition<BlockGrapeVine1> grapeVine1;
+    public BlockTypeDefinition<BlockGrapeLeaves> grapeLeaves;
+    public BlockDefinition grapeBlock;
 
-	@Override
-	public void preInit()
-	{
-		this.grapeVine0  = newTypedDefinition(new BlockGrapeVine0());
-		this.grapeVine1  = newTypedDefinition(new BlockGrapeVine1());
-		this.grapeLeaves = newTypedDefinition(new BlockGrapeLeaves());
-		this.grapeBlock  = newDefinition(new BlockGrapeBlock());
-	}
+    @Override
+    public void preInit() {
+        this.grapeVine0 = newTypedDefinition(new BlockGrapeVine0());
+        this.grapeVine1 = newTypedDefinition(new BlockGrapeVine1());
+        this.grapeLeaves = newTypedDefinition(new BlockGrapeLeaves());
+        this.grapeBlock = newDefinition(new BlockGrapeBlock());
+    }
 
-	@Override
-	public void register()
-	{
-		grapeVine0.register("grc.grapeVine0");
-		grapeVine1.register("grc.grapeVine1");
-		grapeLeaves.register("grc.grapeLeaves");
-		grapeBlock.register("grc.grapeBlock");
-	}
+    @Override
+    public void register() {
+        grapeVine0.register("grc.grapeVine0");
+        grapeVine1.register("grc.grapeVine1");
+        grapeLeaves.register("grc.grapeLeaves");
+        grapeBlock.register("grc.grapeBlock");
+    }
 }

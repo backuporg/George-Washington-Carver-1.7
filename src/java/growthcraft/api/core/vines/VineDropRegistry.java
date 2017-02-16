@@ -37,93 +37,81 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class VineDropRegistry implements IVineDropRegistry
-{
-	private final Set<IVineEntry> vines = new HashSet<IVineEntry>();
-	private final List<VineDropEntry> vineDrops = new ArrayList<VineDropEntry>();
-	private ILogger logger = NullLogger.INSTANCE;
+public class VineDropRegistry implements IVineDropRegistry {
+    private final Set<IVineEntry> vines = new HashSet<IVineEntry>();
+    private final List<VineDropEntry> vineDrops = new ArrayList<VineDropEntry>();
+    private ILogger logger = NullLogger.INSTANCE;
 
-	@Override
-	public void setLogger(@Nonnull ILogger l)
-	{
-		this.logger = l;
-	}
+    @Override
+    public void setLogger(@Nonnull ILogger l) {
+        this.logger = l;
+    }
 
-	/**
-	 * @return vine drop list
-	 */
-	public List<VineDropEntry> getVineDropsList()
-	{
-		return vineDrops;
-	}
+    /**
+     * @return vine drop list
+     */
+    public List<VineDropEntry> getVineDropsList() {
+        return vineDrops;
+    }
 
-	@Override
-	public void addVineEntry(@Nonnull IVineEntry entry)
-	{
-		vines.add(entry);
-	}
+    @Override
+    public void addVineEntry(@Nonnull IVineEntry entry) {
+        vines.add(entry);
+    }
 
-	@Override
-	public void addVineEntry(@Nonnull Block block, int meta)
-	{
-		addVineEntry(new VineEntry(block, meta));
-	}
+    @Override
+    public void addVineEntry(@Nonnull Block block, int meta) {
+        addVineEntry(new VineEntry(block, meta));
+    }
 
-	@Override
-	public boolean isVine(@Nullable Block block, int meta)
-	{
-		for (IVineEntry entry : vines)
-		{
-			if (entry.matches(block, meta)) return true;
-		}
-		return false;
-	}
+    @Override
+    public boolean isVine(@Nullable Block block, int meta) {
+        for (IVineEntry entry : vines) {
+            if (entry.matches(block, meta)) return true;
+        }
+        return false;
+    }
 
-	@Override
-	public void addDropEntry(@Nonnull VineDropEntry entry)
-	{
-		vineDrops.add(entry);
-	}
+    @Override
+    public void addDropEntry(@Nonnull VineDropEntry entry) {
+        vineDrops.add(entry);
+    }
 
-	/**
-	 * Adds a drop to vines.
-	 *
-	 * @param item   - The item/block to be added.
-	 * @param weight - Weight. Used for randoming. Higher numbers means lesser chance.
-	 */
-	@Override
-	public void addDropEntry(@Nonnull ItemStack item, int weight)
-	{
-		if (weight <= 0)
-		{
-			logger.warn("Weight was set to 0 for item {%s}, please fix this by setting it to 1 or greater.", item);
-			weight = 1;
-		}
-		addDropEntry(new VineDropEntry(item, weight));
-	}
+    /**
+     * Adds a drop to vines.
+     *
+     * @param item   - The item/block to be added.
+     * @param weight - Weight. Used for randoming. Higher numbers means lesser chance.
+     */
+    @Override
+    public void addDropEntry(@Nonnull ItemStack item, int weight) {
+        if (weight <= 0) {
+            logger.warn("Weight was set to 0 for item {%s}, please fix this by setting it to 1 or greater.", item);
+            weight = 1;
+        }
+        addDropEntry(new VineDropEntry(item, weight));
+    }
 
-	/**
-	 * @return true if their are any vine drops, false otherwise
-	 */
-	@Override
-	public boolean hasVineDrops()
-	{
-		return !getVineDropsList().isEmpty();
-	}
+    /**
+     * @return true if their are any vine drops, false otherwise
+     */
+    @Override
+    public boolean hasVineDrops() {
+        return !getVineDropsList().isEmpty();
+    }
 
-	/**
-	 * @param world - The world
-	 * @return itemstack or null
-	 */
-	@Override
-	public ItemStack getVineDropItem(@Nonnull World world)
-	{
-		final List<VineDropEntry> vineEntries = getVineDropsList();
-		if (vineEntries.isEmpty()) return null;
+    /**
+     * @param world - The world
+     * @return itemstack or null
+     */
+    @Override
+    public ItemStack getVineDropItem(@Nonnull World world) {
+        final List<VineDropEntry> vineEntries = getVineDropsList();
+        if (vineEntries.isEmpty()) return null;
 
-		final VineDropEntry entry = (VineDropEntry)WeightedRandom.getRandomItem(world.rand, vineEntries);
-		if (entry == null || entry.getItemStack() == null) return null;
+        final VineDropEntry entry = WeightedRandom.getRandomItem(world.rand, vineEntries);
+        if (entry == null || entry.getItemStack() == null) return null;
 
-		return entry.getItemStack().copy();
-	}
+        return entry.getItemStack().copy();
+    }
 }

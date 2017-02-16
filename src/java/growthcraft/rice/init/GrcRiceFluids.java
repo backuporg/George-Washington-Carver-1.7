@@ -49,110 +49,104 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class GrcRiceFluids extends GrcModuleBase
-{
-	public Booze[] riceSakeBooze;
-	public BlockBoozeDefinition[] riceSakeFluids;
-	public ItemDefinition riceSake;
-	public ItemBucketBoozeDefinition[] riceSakeBuckets;
+public class GrcRiceFluids extends GrcModuleBase {
+    public Booze[] riceSakeBooze;
+    public BlockBoozeDefinition[] riceSakeFluids;
+    public ItemDefinition riceSake;
+    public ItemBucketBoozeDefinition[] riceSakeBuckets;
 
-	@Override
-	public void preInit()
-	{
-		riceSakeBooze = new Booze[7];
-		riceSakeFluids = new BlockBoozeDefinition[riceSakeBooze.length];
-		riceSakeBuckets = new ItemBucketBoozeDefinition[riceSakeBooze.length];
-		BoozeRegistryHelper.initializeBoozeFluids("grc.riceSake", riceSakeBooze);
-		for (Booze booze : riceSakeBooze)
-		{
-			booze.setColor(GrowthCraftRice.getConfig().riceSakeColor).setDensity(980);
-		}
-		BoozeRegistryHelper.initializeBooze(riceSakeBooze, riceSakeFluids, riceSakeBuckets);
-		BoozeRegistryHelper.setBoozeFoodStats(riceSakeBooze, 1, -0.6f);
-		BoozeRegistryHelper.setBoozeFoodStats(riceSakeBooze[0], 1, 0.2f);
-		riceSakeBooze[4].setColor(GrowthCraftRice.getConfig().riceSakeDivineColor);
-		riceSakeFluids[4].getBlockState().refreshColor();
-		riceSake = GrowthCraftRice.items.newDefinition(new ItemBoozeBottle(riceSakeBooze));
-	}
+    @Override
+    public void preInit() {
+        riceSakeBooze = new Booze[7];
+        riceSakeFluids = new BlockBoozeDefinition[riceSakeBooze.length];
+        riceSakeBuckets = new ItemBucketBoozeDefinition[riceSakeBooze.length];
+        BoozeRegistryHelper.initializeBoozeFluids("grc.riceSake", riceSakeBooze);
+        for (Booze booze : riceSakeBooze) {
+            booze.setColor(GrowthCraftRice.getConfig().riceSakeColor).setDensity(980);
+        }
+        BoozeRegistryHelper.initializeBooze(riceSakeBooze, riceSakeFluids, riceSakeBuckets);
+        BoozeRegistryHelper.setBoozeFoodStats(riceSakeBooze, 1, -0.6f);
+        BoozeRegistryHelper.setBoozeFoodStats(riceSakeBooze[0], 1, 0.2f);
+        riceSakeBooze[4].setColor(GrowthCraftRice.getConfig().riceSakeDivineColor);
+        riceSakeFluids[4].getBlockState().refreshColor();
+        riceSake = GrowthCraftRice.items.newDefinition(new ItemBoozeBottle(riceSakeBooze));
+    }
 
-	private void registerRecipes()
-	{
-		final int fermentTime = GrowthCraftCellar.getConfig().fermentTime;
-		final FluidStack[] fs = new FluidStack[riceSakeBooze.length];
-		for (int i = 0; i < fs.length; ++i)
-		{
-			fs[i] = new FluidStack(riceSakeBooze[i], 1);
-		}
+    private void registerRecipes() {
+        final int fermentTime = GrowthCraftCellar.getConfig().fermentTime;
+        final FluidStack[] fs = new FluidStack[riceSakeBooze.length];
+        for (int i = 0; i < fs.length; ++i) {
+            fs[i] = new FluidStack(riceSakeBooze[i], 1);
+        }
 
-		GrowthCraftCellar.boozeBuilderFactory.create(riceSakeBooze[0])
-			.tags(BoozeTag.YOUNG)
-			.brewsFrom(
-				new FluidStack(FluidRegistry.WATER, 40),
-				new OreItemStacks("cropRice"),
-				TickUtils.minutes(1),
-				Residue.newDefault(0.2F));
+        GrowthCraftCellar.boozeBuilderFactory.create(riceSakeBooze[0])
+                .tags(BoozeTag.YOUNG)
+                .brewsFrom(
+                        new FluidStack(FluidRegistry.WATER, 40),
+                        new OreItemStacks("cropRice"),
+                        TickUtils.minutes(1),
+                        Residue.newDefault(0.2F));
 
-		GrowthCraftCellar.boozeBuilderFactory.create(riceSakeBooze[1])
-			.tags(BoozeTag.FERMENTED)
-			.fermentsFrom(fs[0], EnumYeast.BREWERS.asStack(), fermentTime)
-			.fermentsFrom(fs[0], new ItemStack(Items.NETHER_WART), (int)(fermentTime * 0.66))
-			.getEffect()
-				.setTipsy(BoozeUtils.alcoholToTipsy(0.15f), TickUtils.seconds(45))
-				.addPotionEntry(MobEffects.JUMP_BOOST, TickUtils.minutes(3), 0);
+        GrowthCraftCellar.boozeBuilderFactory.create(riceSakeBooze[1])
+                .tags(BoozeTag.FERMENTED)
+                .fermentsFrom(fs[0], EnumYeast.BREWERS.asStack(), fermentTime)
+                .fermentsFrom(fs[0], new ItemStack(Items.NETHER_WART), (int) (fermentTime * 0.66))
+                .getEffect()
+                .setTipsy(BoozeUtils.alcoholToTipsy(0.15f), TickUtils.seconds(45))
+                .addPotionEntry(MobEffects.JUMP_BOOST, TickUtils.minutes(3), 0);
 
-		GrowthCraftCellar.boozeBuilderFactory.create(riceSakeBooze[2])
-			.tags(BoozeTag.FERMENTED, BoozeTag.POTENT)
-			.fermentsFrom(fs[1], new OreItemStacks("dustGlowstone"), fermentTime)
-			.fermentsFrom(fs[3], new OreItemStacks("dustGlowstone"), fermentTime)
-			.getEffect()
-				.setTipsy(BoozeUtils.alcoholToTipsy(0.17f), TickUtils.seconds(45))
-				.addPotionEntry(MobEffects.JUMP_BOOST, TickUtils.minutes(3), 0);
+        GrowthCraftCellar.boozeBuilderFactory.create(riceSakeBooze[2])
+                .tags(BoozeTag.FERMENTED, BoozeTag.POTENT)
+                .fermentsFrom(fs[1], new OreItemStacks("dustGlowstone"), fermentTime)
+                .fermentsFrom(fs[3], new OreItemStacks("dustGlowstone"), fermentTime)
+                .getEffect()
+                .setTipsy(BoozeUtils.alcoholToTipsy(0.17f), TickUtils.seconds(45))
+                .addPotionEntry(MobEffects.JUMP_BOOST, TickUtils.minutes(3), 0);
 
-		GrowthCraftCellar.boozeBuilderFactory.create(riceSakeBooze[3])
-			.tags(BoozeTag.FERMENTED, BoozeTag.EXTENDED)
-			.fermentsFrom(fs[1], new OreItemStacks("dustRedstone"), fermentTime)
-			.fermentsFrom(fs[2], new OreItemStacks("dustRedstone"), fermentTime)
-			.getEffect()
-				.setTipsy(BoozeUtils.alcoholToTipsy(0.15f), TickUtils.seconds(45))
-				.addPotionEntry(MobEffects.JUMP_BOOST, TickUtils.minutes(3), 0);
+        GrowthCraftCellar.boozeBuilderFactory.create(riceSakeBooze[3])
+                .tags(BoozeTag.FERMENTED, BoozeTag.EXTENDED)
+                .fermentsFrom(fs[1], new OreItemStacks("dustRedstone"), fermentTime)
+                .fermentsFrom(fs[2], new OreItemStacks("dustRedstone"), fermentTime)
+                .getEffect()
+                .setTipsy(BoozeUtils.alcoholToTipsy(0.15f), TickUtils.seconds(45))
+                .addPotionEntry(MobEffects.JUMP_BOOST, TickUtils.minutes(3), 0);
 
-		// Ethereal Yeast - Divine Sake
-		GrowthCraftCellar.boozeBuilderFactory.create(riceSakeBooze[4])
-			.tags(BoozeTag.FERMENTED, BoozeTag.HYPER_EXTENDED)
-			.fermentsFrom(fs[2], EnumYeast.ETHEREAL.asStack(), fermentTime)
-			.fermentsFrom(fs[3], EnumYeast.ETHEREAL.asStack(), fermentTime)
-			.getEffect()
-				.setTipsy(BoozeUtils.alcoholToTipsy(0.15f), TickUtils.seconds(45))
-				.addPotionEntry(MobEffects.JUMP_BOOST, TickUtils.minutes(3), 0)
-				.addPotionEntry(MobEffects.SPEED, TickUtils.minutes(3), 0);
+        // Ethereal Yeast - Divine Sake
+        GrowthCraftCellar.boozeBuilderFactory.create(riceSakeBooze[4])
+                .tags(BoozeTag.FERMENTED, BoozeTag.HYPER_EXTENDED)
+                .fermentsFrom(fs[2], EnumYeast.ETHEREAL.asStack(), fermentTime)
+                .fermentsFrom(fs[3], EnumYeast.ETHEREAL.asStack(), fermentTime)
+                .getEffect()
+                .setTipsy(BoozeUtils.alcoholToTipsy(0.15f), TickUtils.seconds(45))
+                .addPotionEntry(MobEffects.JUMP_BOOST, TickUtils.minutes(3), 0)
+                .addPotionEntry(MobEffects.SPEED, TickUtils.minutes(3), 0);
 
-		// Origin Yeast
-		GrowthCraftCellar.boozeBuilderFactory.create(riceSakeBooze[5])
-			.tags(BoozeTag.FERMENTED, BoozeTag.INTOXICATED)
-			.fermentsFrom(fs[2], EnumYeast.ORIGIN.asStack(), fermentTime)
-			.fermentsFrom(fs[3], EnumYeast.ORIGIN.asStack(), fermentTime)
-			.getEffect()
-				.setTipsy(BoozeUtils.alcoholToTipsy(0.20f), TickUtils.seconds(45))
-				.addEffect(new EffectWeightedRandomList()
-					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.JUMP_BOOST, TickUtils.minutes(3), 2)))
-					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.NAUSEA, TickUtils.minutes(3), 2))));
+        // Origin Yeast
+        GrowthCraftCellar.boozeBuilderFactory.create(riceSakeBooze[5])
+                .tags(BoozeTag.FERMENTED, BoozeTag.INTOXICATED)
+                .fermentsFrom(fs[2], EnumYeast.ORIGIN.asStack(), fermentTime)
+                .fermentsFrom(fs[3], EnumYeast.ORIGIN.asStack(), fermentTime)
+                .getEffect()
+                .setTipsy(BoozeUtils.alcoholToTipsy(0.20f), TickUtils.seconds(45))
+                .addEffect(new EffectWeightedRandomList()
+                        .add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.JUMP_BOOST, TickUtils.minutes(3), 2)))
+                        .add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.NAUSEA, TickUtils.minutes(3), 2))));
 
-		// Poisoned Sake - created from netherrash,
-		// the booze looses all its benefits and effectively becomes poisoned
-		GrowthCraftCellar.boozeBuilderFactory.create(riceSakeBooze[6])
-			.tags(BoozeTag.FERMENTED, BoozeTag.POISONED)
-			//.fermentsFrom(fs[1], EnumYeast.NETHERRASH.asStack(), fermentTime)
-			.getEffect()
-				.setTipsy(BoozeUtils.alcoholToTipsy(0.15f), TickUtils.seconds(45))
-				.createPotionEntry(MobEffects.POISON, TickUtils.seconds(90), 0).toggleDescription(!GrowthCraftCore.getConfig().hidePoisonedBooze);
-	}
+        // Poisoned Sake - created from netherrash,
+        // the booze looses all its benefits and effectively becomes poisoned
+        GrowthCraftCellar.boozeBuilderFactory.create(riceSakeBooze[6])
+                .tags(BoozeTag.FERMENTED, BoozeTag.POISONED)
+                //.fermentsFrom(fs[1], EnumYeast.NETHERRASH.asStack(), fermentTime)
+                .getEffect()
+                .setTipsy(BoozeUtils.alcoholToTipsy(0.15f), TickUtils.seconds(45))
+                .createPotionEntry(MobEffects.POISON, TickUtils.seconds(90), 0).toggleDescription(!GrowthCraftCore.getConfig().hidePoisonedBooze);
+    }
 
-	@Override
-	public void register()
-	{
-		GameRegistry.registerItem(riceSake.getItem(), "grc.riceSake");
+    @Override
+    public void register() {
+        GameRegistry.registerItem(riceSake.getItem(), "grc.riceSake");
 
-		BoozeRegistryHelper.registerBooze(riceSakeBooze, riceSakeFluids, riceSakeBuckets, riceSake, "grc.riceSake", null);
-		registerRecipes();
-	}
+        BoozeRegistryHelper.registerBooze(riceSakeBooze, riceSakeFluids, riceSakeBuckets, riceSake, "grc.riceSake", null);
+        registerRecipes();
+    }
 }

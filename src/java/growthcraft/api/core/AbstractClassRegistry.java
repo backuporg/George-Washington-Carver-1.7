@@ -33,79 +33,65 @@ import javax.annotation.Nonnull;
 /**
  * Don't even try to understand this, save yourself the trouble.
  */
-public abstract class AbstractClassRegistry<T extends INBTSerializableContext> implements IClassRegistry<T>
-{
-	/**
-	 * Error raised when an attempt is made to register a class under an existing name
-	 */
-	public static class ClassRegisteredException extends RuntimeException
-	{
-		public static final long serialVersionUID = 1L;
+public abstract class AbstractClassRegistry<T extends INBTSerializableContext> implements IClassRegistry<T> {
+    private BiMap<String, Class<? extends T>> effects = HashBiMap.create();
 
-		public ClassRegisteredException(@Nonnull String msg)
-		{
-			super(msg);
-		}
+    public Class<? extends T> getClass(@Nonnull String name) {
+        return effects.get(name);
+    }
 
-		public ClassRegisteredException() {}
-	}
+    public String getName(@Nonnull Class<?> klass) {
+        return effects.inverse().get(klass);
+    }
 
-	private BiMap<String, Class<? extends T>> effects = HashBiMap.create();
+    public void register(@Nonnull String name, @Nonnull Class<? extends T> klass) {
+        if (effects.containsKey(name)) {
+            final Class<? extends T> effect = getClass(name);
+            throw new ClassRegisteredException("Cannot register " + klass + ", Effect " + effect + " is already registered to " + name);
+        } else {
+            effects.put(name, klass);
+        }
+    }
 
-	public Class<? extends T> getClass(@Nonnull String name)
-	{
-		return effects.get(name);
-	}
+    /**
+     * Mother of hacks batman!
+     *
+     * @param data - nbt data to load from
+     * @param name - key to load data from
+     * @return T an instance of the class to reload
+     */
+    public T loadObjectFromNBT(@Nonnull NBTTagCompound data, @Nonnull String name) {
+        final NBTTagCompound effectData = data.getCompoundTag(name);
+        final String factoryName = effectData.getString("__name__");
+        final Class<? extends T> klass = getClass(factoryName);
 
-	public String getName(@Nonnull Class<?> klass)
-	{
-		return effects.inverse().get(klass);
-	}
+        T instance = null;
 
-	public void register(@Nonnull String name, @Nonnull Class<? extends T> klass)
-	{
-		if (effects.containsKey(name))
-		{
-			final Class<? extends T> effect = getClass(name);
-			throw new ClassRegisteredException("Cannot register " + klass + ", Effect " + effect + " is already registered to " + name);
-		}
-		else
-		{
-			effects.put(name, klass);
-		}
-	}
+        // This should be a utility method in the future or something, its used so much now...
+        try {
+            instance = klass.newInstance();
+        } catch (InstantiationException e) {
+            throw new IllegalStateException("Failed to create a new instance of an illegal class " + klass, e);
+        } catch (IllegalAccessException e) {
+            throw new IllegalStateException("Failed to create a new instance of " + klass + ", because lack of permissions", e);
+        }
 
-	/**
-	 * Mother of hacks batman!
-	 *
-	 * @param data - nbt data to load from
-	 * @param name - key to load data from
-	 * @return T an instance of the class to reload
-	 */
-	public T loadObjectFromNBT(@Nonnull NBTTagCompound data, @Nonnull String name)
-	{
-		final NBTTagCompound effectData = data.getCompoundTag(name);
-		final String factoryName = effectData.getString("__name__");
-		final Class<? extends T> klass = getClass(factoryName);
+        instance.readFromNBT(data, name);
 
-		T instance = null;
+        return instance;
+    }
 
-		// This should be a utility method in the future or something, its used so much now...
-		try
-		{
-			instance = klass.newInstance();
-		}
-		catch (InstantiationException e)
-		{
-			throw new IllegalStateException("Failed to create a new instance of an illegal class " + klass, e);
-		}
-		catch (IllegalAccessException e)
-		{
-			throw new IllegalStateException("Failed to create a new instance of " + klass + ", because lack of permissions", e);
-		}
+    /**
+     * Error raised when an attempt is made to register a class under an existing name
+     */
+    public static class ClassRegisteredException extends RuntimeException {
+        public static final long serialVersionUID = 1L;
 
-		instance.readFromNBT(data, name);
+        public ClassRegisteredException(@Nonnull String msg) {
+            super(msg);
+        }
 
-		return instance;
-	}
+        public ClassRegisteredException() {
+        }
+    }
 }

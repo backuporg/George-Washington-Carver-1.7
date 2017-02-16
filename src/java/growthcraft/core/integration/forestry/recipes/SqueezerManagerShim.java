@@ -31,15 +31,17 @@ import net.minecraftforge.fml.common.Optional;
 
 import javax.annotation.Nullable;
 
-@Optional.Interface(iface="forestry.api.recipes.ISqueezerManager", modid="ForestryAPI|recipes")
-public class SqueezerManagerShim extends AbstractManagerShim<ISqueezerRecipe> implements ISqueezerManager
-{
-	@Override
-	public void addRecipe(int timePerItem, ItemStack[] resources, FluidStack liquid, ItemStack remnants, int chance) {}
+@Optional.Interface(iface = "forestry.api.recipes.ISqueezerManager", modid = "ForestryAPI|recipes")
+public class SqueezerManagerShim extends AbstractManagerShim<ISqueezerRecipe> implements ISqueezerManager {
+    @Override
+    public void addRecipe(int timePerItem, ItemStack[] resources, FluidStack liquid, ItemStack remnants, int chance) {
+    }
 
-	@Override
-	public void addRecipe(int timePerItem, ItemStack[] resources, FluidStack liquid) {}
+    @Override
+    public void addRecipe(int timePerItem, ItemStack[] resources, FluidStack liquid) {
+    }
 
-	@Override
-	public void addContainerRecipe(int timePerItem, ItemStack emptyContainer, @Nullable ItemStack remnants, float chance) {}
+    @Override
+    public void addContainerRecipe(int timePerItem, ItemStack emptyContainer, @Nullable ItemStack remnants, float chance) {
+    }
 }

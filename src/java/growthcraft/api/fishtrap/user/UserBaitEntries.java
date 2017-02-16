@@ -28,20 +28,17 @@ import growthcraft.api.core.schema.ICommentable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserBaitEntries implements ICommentable
-{
-	public String comment = "";
-	public List<UserBaitEntry> data = new ArrayList<UserBaitEntry>();
+public class UserBaitEntries implements ICommentable {
+    public String comment = "";
+    public List<UserBaitEntry> data = new ArrayList<UserBaitEntry>();
 
-	@Override
-	public String getComment()
-	{
-		return comment;
-	}
+    @Override
+    public String getComment() {
+        return comment;
+    }
 
-	@Override
-	public void setComment(String com)
-	{
-		this.comment = com;
-	}
+    @Override
+    public void setComment(String com) {
+        this.comment = com;
+    }
 }

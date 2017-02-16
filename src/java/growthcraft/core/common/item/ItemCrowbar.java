@@ -36,7 +36,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -45,106 +44,93 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class ItemCrowbar extends GrcItemBase implements IToolWrench
-{
-	private final Set<Class<? extends Block>> shiftRotations = new HashSet<Class<? extends Block>>();
+public class ItemCrowbar extends GrcItemBase implements IToolWrench {
+    private final Set<Class<? extends Block>> shiftRotations = new HashSet<Class<? extends Block>>();
 
-	@SideOnly(Side.CLIENT)
+    @SideOnly(Side.CLIENT)
 
 
-	public ItemCrowbar()
-	{
-		super();
-		setFull3D();
-		setMaxStackSize(1);
-		setHasSubtypes(true);
-		shiftRotations.add(BlockLever.class);
-		shiftRotations.add(BlockButton.class);
-		shiftRotations.add(BlockChest.class);
-		setHarvestLevel("wrench", 0);
-		setUnlocalizedName("grccore.crowbar");
-		//setTextureName("grccore:crowbar");
-		setCreativeTab(GrowthCraftCore.creativeTab);
-	}
+    public ItemCrowbar() {
+        super();
+        setFull3D();
+        setMaxStackSize(1);
+        setHasSubtypes(true);
+        shiftRotations.add(BlockLever.class);
+        shiftRotations.add(BlockButton.class);
+        shiftRotations.add(BlockChest.class);
+        setHarvestLevel("wrench", 0);
+        setUnlocalizedName("grccore.crowbar");
+        //setTextureName("grccore:crowbar");
+        setCreativeTab(GrowthCraftCore.creativeTab);
+    }
 
-	private boolean isShiftRotation(Class<? extends Block> cls)
-	{
-		for (Class<? extends Block> shift : shiftRotations)
-		{
-			if (shift.isAssignableFrom(cls)) return true;
-		}
-		return false;
-	}
+    private boolean isShiftRotation(Class<? extends Block> cls) {
+        for (Class<? extends Block> shift : shiftRotations) {
+            if (shift.isAssignableFrom(cls)) return true;
+        }
+        return false;
+    }
 
-	@Override
-	public boolean onItemUseFirst(ItemStack stack, EntityPlayer player, World world, BlockPos pos, Block block1, int side, float hitX, float hitY, float hitZ)
-	{
-		final Block block = world.getBlockState(block1);
-		if (block == null) return false;
-		if (player.isSneaking() != isShiftRotation(block.getClass())) return false;
-		if (block.rotateBlock(world, pos, EnumFacing.getOrientation(side)))
-		{
-			player.swingItem();
-			return !world.isRemote;
-		}
-		return false;
-	}
+    @Override
+    public boolean onItemUseFirst(ItemStack stack, EntityPlayer player, World world, BlockPos pos, Block block1, int side, float hitX, float hitY, float hitZ) {
+        final Block block = world.getBlockState(block1);
+        if (block == null) return false;
+        if (player.isSneaking() != isShiftRotation(block.getClass())) return false;
+        if (block.rotateBlock(world, pos, EnumFacing.getOrientation(side))) {
+            player.swingItem();
+            return !world.isRemote;
+        }
+        return false;
+    }
 
-	@Override
-	public boolean doesSneakBypassUse(World world, BlockPos pos, EntityPlayer player)
-	{
-		return true;
-	}
+    @Override
+    public boolean doesSneakBypassUse(World world, BlockPos pos, EntityPlayer player) {
+        return true;
+    }
 
-	@Override
-	public boolean canWrench(EntityPlayer player, BlockPos pos)
-	{
-		return true;
-	}
+    @Override
+    public boolean canWrench(EntityPlayer player, BlockPos pos) {
+        return true;
+    }
 
-	@Override
-	public void wrenchUsed(EntityPlayer player, BlockPos pos)
-	{
-		player.swingArm();
-	}
+    @Override
+    public void wrenchUsed(EntityPlayer player, BlockPos pos) {
+        player.swingArm();
+    }
 
-	public EnumDye getDye(ItemStack stack)
-	{
-		return EnumDye.getByMeta(stack.getItemDamage());
-	}
+    public EnumDye getDye(ItemStack stack) {
+        return EnumDye.getByMeta(stack.getItemDamage());
+    }
 
-	@Override
-	public String getUnlocalizedName(ItemStack stack)
-	{
-		return super.getUnlocalizedName(stack) + "." + getDye(stack).name;
-	}
+    @Override
+    public String getUnlocalizedName(ItemStack stack) {
+        return super.getUnlocalizedName(stack) + "." + getDye(stack).name;
+    }
 
-	//@Override
-	//@SideOnly(Side.CLIENT)
-	//public void registerIcons(IIconRegister reg)
-	//{
-	//	this.icons = new IIcon[EnumDye.VALUES.length];
-	//	for (EnumDye dye : EnumDye.VALUES)
-	//	{
-	//		this.icons[dye.meta] = reg.registerIcon(String.format("%s/%s", getIconString(), dye.name));
-	//	}
-	//}
+    //@Override
+    //@SideOnly(Side.CLIENT)
+    //public void registerIcons(IIconRegister reg)
+    //{
+    //	this.icons = new IIcon[EnumDye.VALUES.length];
+    //	for (EnumDye dye : EnumDye.VALUES)
+    //	{
+    //		this.icons[dye.meta] = reg.registerIcon(String.format("%s/%s", getIconString(), dye.name));
+    //	}
+    //}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	@SuppressWarnings({"unchecked", "rawtypes"})
-	public void getSubItems(Item item, CreativeTabs tab, List list)
-	{
-		for (EnumDye dye : EnumDye.VALUES)
-		{
-			list.add(new ItemStack(item, 1, dye.meta));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    public void getSubItems(Item item, CreativeTabs tab, List list) {
+        for (EnumDye dye : EnumDye.VALUES) {
+            list.add(new ItemStack(item, 1, dye.meta));
+        }
+    }
 
-	//@Override
-	//@SideOnly(Side.CLIENT)
-	//public IIcon getIconFromDamage(int meta)
-	//{
-	//	return icons[MathHelper.clamp_int(meta, 0, icons.length - 1)];
-	//}
+    //@Override
+    //@SideOnly(Side.CLIENT)
+    //public IIcon getIconFromDamage(int meta)
+    //{
+    //	return icons[MathHelper.clamp_int(meta, 0, icons.length - 1)];
+    //}
 }

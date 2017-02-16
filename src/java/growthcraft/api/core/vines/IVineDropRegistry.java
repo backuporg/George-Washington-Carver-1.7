@@ -31,14 +31,18 @@ import net.minecraft.world.World;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public interface IVineDropRegistry extends ILoggable
-{
-	void addVineEntry(@Nonnull IVineEntry entry);
-	void addVineEntry(@Nonnull Block block, int meta);
-	boolean isVine(@Nullable Block block, int meta);
+public interface IVineDropRegistry extends ILoggable {
+    void addVineEntry(@Nonnull IVineEntry entry);
 
-	void addDropEntry(@Nonnull VineDropEntry entry);
-	void addDropEntry(@Nonnull ItemStack item, int weight);
-	boolean hasVineDrops();
-	ItemStack getVineDropItem(@Nonnull World world);
+    void addVineEntry(@Nonnull Block block, int meta);
+
+    boolean isVine(@Nullable Block block, int meta);
+
+    void addDropEntry(@Nonnull VineDropEntry entry);
+
+    void addDropEntry(@Nonnull ItemStack item, int weight);
+
+    boolean hasVineDrops();
+
+    ItemStack getVineDropItem(@Nonnull World world);
 }

@@ -29,43 +29,36 @@ import growthcraft.core.stats.CoreAchievement;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
 
 import javax.annotation.Nonnull;
 
-public class SaltBucketEntry implements IBucketEntry
-{
-	@Override
-	public ItemStack getItemStack()
-	{
-		return GrowthCraftCore.fluids.saltWater.bucket.asStack();
-	}
+public class SaltBucketEntry implements IBucketEntry {
+    @Override
+    public ItemStack getItemStack() {
+        return GrowthCraftCore.fluids.saltWater.bucket.asStack();
+    }
 
-	@Override
-	public boolean matches(@Nonnull World world, @Nonnull RayTraceResult pos, BlockPos pos1)
-	{
-		if (Blocks.WATER.equals(world.getBlockState(pos1)))
-		{
-			if (world.getBlockState(pos1) == 0)
-			{
-				final Biome biome = world.getBiome(pos1);
-				if (BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.OCEAN))
-				{
-					return true;
-				}
-			}
-		}
-		return false;
-	}
+    @Override
+    public boolean matches(@Nonnull World world, @Nonnull RayTraceResult pos, BlockPos pos1) {
+        if (Blocks.WATER.equals(world.getBlockState(pos1))) {
+            if (world.getBlockState(pos1) == 0) {
+                final Biome biome = world.getBiome(pos1);
+                if (BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.OCEAN)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
-	@Override
-	public void commit(@Nonnull EntityPlayer player, @Nonnull World world, @Nonnull RayTraceResult pos, BlockPos pos1)
-	{
-		world.setBlockToAir(pos1);
-		CoreAchievement.SALTY_SITUATION.unlock(player);
-	}
+    @Override
+    public void commit(@Nonnull EntityPlayer player, @Nonnull World world, @Nonnull RayTraceResult pos, BlockPos pos1) {
+        world.setBlockToAir(pos1);
+        CoreAchievement.SALTY_SITUATION.unlock(player);
+    }
 }

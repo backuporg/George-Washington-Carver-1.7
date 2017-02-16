@@ -26,8 +26,7 @@ package growthcraft.cellar.common;
 import growthcraft.core.common.GrcModuleProxyBase;
 import net.minecraftforge.fml.common.SidedProxy;
 
-public class CommonProxy extends GrcModuleProxyBase
-{
-	@SidedProxy(clientSide="growthcraft.cellar.client.ClientProxy", serverSide="growthcraft.cellar.common.CommonProxy")
-	public static CommonProxy instance;
+public class CommonProxy extends GrcModuleProxyBase {
+    @SidedProxy(clientSide = "growthcraft.cellar.client.ClientProxy", serverSide = "growthcraft.cellar.common.CommonProxy")
+    public static CommonProxy instance;
 }

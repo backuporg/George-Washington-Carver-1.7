@@ -25,24 +25,23 @@ package growthcraft.api.core;
 
 import javax.annotation.Nonnull;
 
-public interface IClassRegistry<T>
-{
-	/**
-	 * @param name - Name to register it under
-	 * @param klass - A class
-	 * @return factory registry
-	 */
-	void register(@Nonnull String name, @Nonnull Class<? extends T> klass);
+public interface IClassRegistry<T> {
+    /**
+     * @param name  - Name to register it under
+     * @param klass - A class
+     * @return factory registry
+     */
+    void register(@Nonnull String name, @Nonnull Class<? extends T> klass);
 
-	/**
-	 * @param name - name of factory class to fetch
-	 * @return factory class
-	 */
-	Class<? extends T> getClass(@Nonnull String name);
+    /**
+     * @param name - name of factory class to fetch
+     * @return factory class
+     */
+    Class<? extends T> getClass(@Nonnull String name);
 
-	/**
-	 * @param klass - factory class to fetch name for
-	 * @return name
-	 */
-	String getName(@Nonnull Class<?> klass);
+    /**
+     * @param klass - factory class to fetch name for
+     * @return name
+     */
+    String getName(@Nonnull Class<?> klass);
 }

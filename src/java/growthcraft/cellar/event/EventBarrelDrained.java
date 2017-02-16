@@ -31,22 +31,20 @@ import net.minecraftforge.fml.common.eventhandler.Event;
 /**
  * Event emitted when a player drains a fermenting barrel
  */
-public class EventBarrelDrained extends Event
-{
-	public final EntityPlayer player;
-	public final World world;
-	public final int x;
-	public final int y;
-	public final int z;
-	public FluidStack fluid;
+public class EventBarrelDrained extends Event {
+    public final EntityPlayer player;
+    public final World world;
+    public final int x;
+    public final int y;
+    public final int z;
+    public FluidStack fluid;
 
-	public EventBarrelDrained(EntityPlayer pPlayer, World pWorld, int px, int py, int pz, FluidStack pFluid)
-	{
-		this.player = pPlayer;
-		this.world = pWorld;
-		this.x = px;
-		this.y = py;
-		this.z = pz;
-		this.fluid = pFluid;
-	}
+    public EventBarrelDrained(EntityPlayer pPlayer, World pWorld, int px, int py, int pz, FluidStack pFluid) {
+        this.player = pPlayer;
+        this.world = pWorld;
+        this.x = px;
+        this.y = py;
+        this.z = pz;
+        this.fluid = pFluid;
+    }
 }

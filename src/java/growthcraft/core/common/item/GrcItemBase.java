@@ -32,23 +32,20 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-public class GrcItemBase extends Item
-{
-	@Override
-	@SideOnly(Side.CLIENT)
-	@SuppressWarnings({"unchecked", "rawtypes"})
-	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean bool)
-	{
-		super.addInformation(stack, player, list, bool);
-		GrcItemBase.addDescription(this, stack, player, list, bool);
-	}
+public class GrcItemBase extends Item {
+    @SideOnly(Side.CLIENT)
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    public static void addDescription(Item item, ItemStack stack, EntityPlayer player, List list, boolean bool) {
+        final String src = item.getUnlocalizedNameInefficiently(stack) + ".desc";
+        final String tr = ("" + GrcI18n.translate(src)).trim();
+        if (!src.equals(tr)) list.add(tr);
+    }
 
-	@SideOnly(Side.CLIENT)
-	@SuppressWarnings({"unchecked", "rawtypes"})
-	public static void addDescription(Item item, ItemStack stack, EntityPlayer player, List list, boolean bool)
-	{
-		final String src = item.getUnlocalizedNameInefficiently(stack) + ".desc";
-		final String tr = ("" + GrcI18n.translate(src)).trim();
-		if (!src.equals(tr)) list.add(tr);
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean bool) {
+        super.addInformation(stack, player, list, bool);
+        GrcItemBase.addDescription(this, stack, player, list, bool);
+    }
 }

@@ -30,48 +30,42 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
 import org.lwjgl.opengl.GL11;
 
-public abstract class GrcItemRenderer implements IItemRenderer
-{
-	@Override
-	public boolean handleRenderType(ItemStack item, ItemRenderType type)
-	{
-		return true;
-	}
+public abstract class GrcItemRenderer implements IItemRenderer {
+    @Override
+    public boolean handleRenderType(ItemStack item, ItemRenderType type) {
+        return true;
+    }
 
-	@Override
-	public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item, ItemRendererHelper helper)
-	{
-		return true;
-	}
+    @Override
+    public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item, ItemRendererHelper helper) {
+        return true;
+    }
 
-	protected void bindTexture(ResourceLocation res)
-	{
-		Minecraft.getMinecraft().renderEngine.bindTexture(res);
-	}
+    protected void bindTexture(ResourceLocation res) {
+        Minecraft.getMinecraft().renderEngine.bindTexture(res);
+    }
 
-	protected abstract void render(ItemRenderType type, ItemStack item, Object... data);
+    protected abstract void render(ItemRenderType type, ItemStack item, Object... data);
 
-	@Override
-	public void renderItem(ItemRenderType type, ItemStack item, Object... data)
-	{
-		RenderUtils.startInventoryRender();
-		{
-			switch (type)
-			{
-				case ENTITY:
-					GL11.glTranslatef(0.0F, 0.5F, 0.0F);
-					break;
-				case INVENTORY:
-					GL11.glTranslatef(-0.5F, -0.9F, -0.5F);
-					break;
-				case EQUIPPED_FIRST_PERSON:
-					GL11.glTranslatef(0.5F, 0.0F, 0.5F);
-					break;
-				default:
-					break;
-			}
-			render(type, item, data);
-		}
-		RenderUtils.endInventoryRender();
-	}
+    @Override
+    public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
+        RenderUtils.startInventoryRender();
+        {
+            switch (type) {
+                case ENTITY:
+                    GL11.glTranslatef(0.0F, 0.5F, 0.0F);
+                    break;
+                case INVENTORY:
+                    GL11.glTranslatef(-0.5F, -0.9F, -0.5F);
+                    break;
+                case EQUIPPED_FIRST_PERSON:
+                    GL11.glTranslatef(0.5F, 0.0F, 0.5F);
+                    break;
+                default:
+                    break;
+            }
+            render(type, item, data);
+        }
+        RenderUtils.endInventoryRender();
+    }
 }

@@ -28,10 +28,8 @@ import net.minecraft.block.Block;
 
 import javax.annotation.Nonnull;
 
-public class VineEntry extends BlockKey implements IVineEntry
-{
-	public VineEntry(@Nonnull Block block, int meta)
-	{
-		super(block, meta);
-	}
+public class VineEntry extends BlockKey implements IVineEntry {
+    public VineEntry(@Nonnull Block block, int meta) {
+        super(block, meta);
+    }
 }

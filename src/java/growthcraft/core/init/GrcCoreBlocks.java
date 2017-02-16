@@ -31,7 +31,6 @@ import growthcraft.core.common.block.BlockSaltBlock;
 import growthcraft.core.common.definition.BlockDefinition;
 import growthcraft.core.common.item.ItemBlockFenceRope;
 import growthcraft.core.common.item.ItemBlockNaturaFenceRope;
-
 import growthcraft.core.integration.minecraft.EnumMinecraftWoodType;
 import growthcraft.core.registry.FenceRopeRegistry;
 import net.minecraft.block.Block;
@@ -43,138 +42,125 @@ import net.minecraftforge.oredict.OreDictionary;
 import java.util.HashMap;
 import java.util.Map;
 
-public class GrcCoreBlocks extends GrcModuleBlocks
-{
-	public BlockDefinition ropeBlock;
-	public BlockDefinition saltBlock;
-	public BlockDefinition fenceRope;
-	public BlockDefinition netherBrickFenceRope;
-	public BlockDefinition naturaFenceRope;
-	public Map<EnumMinecraftWoodType, BlockDefinition> etfuturumFenceRopes = new HashMap<EnumMinecraftWoodType, BlockDefinition>();
-	public Map<String, BlockDefinition> woodstuffFenceRopes = new HashMap<String, BlockDefinition>();
+public class GrcCoreBlocks extends GrcModuleBlocks {
+    public BlockDefinition ropeBlock;
+    public BlockDefinition saltBlock;
+    public BlockDefinition fenceRope;
+    public BlockDefinition netherBrickFenceRope;
+    public BlockDefinition naturaFenceRope;
+    public Map<EnumMinecraftWoodType, BlockDefinition> etfuturumFenceRopes = new HashMap<EnumMinecraftWoodType, BlockDefinition>();
+    public Map<String, BlockDefinition> woodstuffFenceRopes = new HashMap<String, BlockDefinition>();
 
-	@Override
-	public void preInit()
-	{
-		this.saltBlock = newDefinition(new BlockSaltBlock());
-		this.ropeBlock = newDefinition(new BlockRope());
-		this.fenceRope = newDefinition(new BlockFenceRope(Blocks.OAK_FENCE, "grc.fenceRope"));
-		this.netherBrickFenceRope = newDefinition(new BlockFenceRope(Blocks.NETHER_BRICK_fence, "grc.netherBrickFenceRope"));
+    @Override
+    public void preInit() {
+        this.saltBlock = newDefinition(new BlockSaltBlock());
+        this.ropeBlock = newDefinition(new BlockRope());
+        this.fenceRope = newDefinition(new BlockFenceRope(Blocks.OAK_FENCE, "grc.fenceRope"));
+        this.netherBrickFenceRope = newDefinition(new BlockFenceRope(Blocks.NETHER_BRICK_fence, "grc.netherBrickFenceRope"));
 
-		FenceRopeRegistry.instance().addEntry(Blocks.OAK_FENCE, fenceRope.getBlockState());
-		FenceRopeRegistry.instance().addEntry(Blocks.NETHER_BRICK_fence, netherBrickFenceRope.getBlockState());
-	}
+        FenceRopeRegistry.instance().addEntry(Blocks.OAK_FENCE, fenceRope.getBlockState());
+        FenceRopeRegistry.instance().addEntry(Blocks.NETHER_BRICK_fence, netherBrickFenceRope.getBlockState());
+    }
 
-	@Override
-	public void register()
-	{
-		fenceRope.register("grc.fenceRope", ItemBlockFenceRope.class);
-		ropeBlock.register("grc.ropeBlock");
-		saltBlock.register("grccore.salt_block");
-		netherBrickFenceRope.register("grc.netherBrickFenceRope", ItemBlockFenceRope.class);
+    @Override
+    public void register() {
+        fenceRope.register("grc.fenceRope", ItemBlockFenceRope.class);
+        ropeBlock.register("grc.ropeBlock");
+        saltBlock.register("grccore.salt_block");
+        netherBrickFenceRope.register("grc.netherBrickFenceRope", ItemBlockFenceRope.class);
 
-		Blocks.FIRE.setFireInfo(fenceRope.getBlockState(), 5, 20);
-	}
+        Blocks.FIRE.setFireInfo(fenceRope.getBlockState(), 5, 20);
+    }
 
-	private void initEtfuturum()
-	{
-		final String modId = "etfuturum";
-		if (Loader.isModLoaded(modId))
-		{
-			final String[] woodTypes = { "oak", "spruce", "birch", "jungle", "acacia", "dark_oak" };
-			for (String woodTypeName : woodTypes)
-			{
-				final Block block = GameRegistry.findBlock(modId, "fence_" + woodTypeName);
-				if (block != null)
-				{
-					final String basename = "grc.etfuturum_fence_rope_" + woodTypeName;
-					final BlockDefinition fp = newDefinition(new BlockFenceRope(block, basename));
-					fp.register(basename, ItemBlockFenceRope.class);
-					Blocks.FIRE.setFireInfo(fp.getBlockState(), 5, 20);
-					FenceRopeRegistry.instance().addEntry(block, fp.getBlockState());
-					NEI.hideItem(fp.asStack());
-				}
-			}
-		}
-	}
+    private void initEtfuturum() {
+        final String modId = "etfuturum";
+        if (Loader.isModLoaded(modId)) {
+            final String[] woodTypes = {"oak", "spruce", "birch", "jungle", "acacia", "dark_oak"};
+            for (String woodTypeName : woodTypes) {
+                final Block block = GameRegistry.findBlock(modId, "fence_" + woodTypeName);
+                if (block != null) {
+                    final String basename = "grc.etfuturum_fence_rope_" + woodTypeName;
+                    final BlockDefinition fp = newDefinition(new BlockFenceRope(block, basename));
+                    fp.register(basename, ItemBlockFenceRope.class);
+                    Blocks.FIRE.setFireInfo(fp.getBlockState(), 5, 20);
+                    FenceRopeRegistry.instance().addEntry(block, fp.getBlockState());
+                    NEI.hideItem(fp.asStack());
+                }
+            }
+        }
+    }
 
-	private void initWoodstuff()
-	{
-		final String modId = "woodstuff";
-		if (Loader.isModLoaded(modId))
-		{
-			final String[] names = {
-				// aether
-				"skyrootPlank",
-				// arsmagica2
-				"planksWitchwood",
-				// BiomesOPlenty
-				"planks",
-				// Botania
-				"livingwood",
-				"dreamwood",
-				// dendrology
-				"wood0",
-				// enhancedbiomes
-				"enhancedbiomes.tile.planksEB",
-				// erebus
-				"planks",
-				"planks_scorched",
-				// erebus
-				"planks_varnished",
-				// erebus
-				"petrifiedWoodPlanks",
-				// ExtrabiomesXL
-				"planks",
-				// Forestry
-				"planks",
-				// Highlands
-				"hl_woodPlanks",
-				// Natura
-				"planks",
-				// RidiculousWorld
-				"RidiculousPlanks",
-				// Thaumcraft
-				"blockWoodenDevice",
-				// totemic
-				"redCedarPlank",
-				// TwilightForest
-				"tile.TFTowerStone",
-				// witchery
-				"witchwood",
-			};
-			// TODO
-		}
-	}
+    private void initWoodstuff() {
+        final String modId = "woodstuff";
+        if (Loader.isModLoaded(modId)) {
+            final String[] names = {
+                    // aether
+                    "skyrootPlank",
+                    // arsmagica2
+                    "planksWitchwood",
+                    // BiomesOPlenty
+                    "planks",
+                    // Botania
+                    "livingwood",
+                    "dreamwood",
+                    // dendrology
+                    "wood0",
+                    // enhancedbiomes
+                    "enhancedbiomes.tile.planksEB",
+                    // erebus
+                    "planks",
+                    "planks_scorched",
+                    // erebus
+                    "planks_varnished",
+                    // erebus
+                    "petrifiedWoodPlanks",
+                    // ExtrabiomesXL
+                    "planks",
+                    // Forestry
+                    "planks",
+                    // Highlands
+                    "hl_woodPlanks",
+                    // Natura
+                    "planks",
+                    // RidiculousWorld
+                    "RidiculousPlanks",
+                    // Thaumcraft
+                    "blockWoodenDevice",
+                    // totemic
+                    "redCedarPlank",
+                    // TwilightForest
+                    "tile.TFTowerStone",
+                    // witchery
+                    "witchwood",
+            };
+            // TODO
+        }
+    }
 
-	private void initNatura()
-	{
-		final String modId = "Natura";
+    private void initNatura() {
+        final String modId = "Natura";
 
-		if (Loader.isModLoaded(modId))
-		{
-			final Block block = GameRegistry.findBlock(modId, "Natura.fence");
-			if (block != null)
-			{
-				this.naturaFenceRope = newDefinition(new BlockFenceRope(block, "grc.naturaFenceRope"));
-				naturaFenceRope.register("grc.naturaFenceRope", ItemBlockNaturaFenceRope.class);
-				Blocks.FIRE.setFireInfo(naturaFenceRope.getBlockState(), 5, 20);
-				FenceRopeRegistry.instance().addEntry(block, naturaFenceRope.getBlockState());
-				NEI.hideItem(naturaFenceRope.asStack());
-			}
-		}
-	}
+        if (Loader.isModLoaded(modId)) {
+            final Block block = GameRegistry.findBlock(modId, "Natura.fence");
+            if (block != null) {
+                this.naturaFenceRope = newDefinition(new BlockFenceRope(block, "grc.naturaFenceRope"));
+                naturaFenceRope.register("grc.naturaFenceRope", ItemBlockNaturaFenceRope.class);
+                Blocks.FIRE.setFireInfo(naturaFenceRope.getBlockState(), 5, 20);
+                FenceRopeRegistry.instance().addEntry(block, naturaFenceRope.getBlockState());
+                NEI.hideItem(naturaFenceRope.asStack());
+            }
+        }
+    }
 
-	@Override
-	public void init()
-	{
-		OreDictionary.registerOre("blockSalt", saltBlock.getItem());
+    @Override
+    public void init() {
+        OreDictionary.registerOre("blockSalt", saltBlock.getItem());
 
-		if (GrowthCraftCore.getConfig().enableEtfuturumIntegration) initEtfuturum();
-		if (GrowthCraftCore.getConfig().enableWoodstuffIntegration) initWoodstuff();
-		if (GrowthCraftCore.getConfig().enableNaturaIntegration) initNatura();
-		NEI.hideItem(fenceRope.asStack());
-		NEI.hideItem(netherBrickFenceRope.asStack());
-		NEI.hideItem(ropeBlock.asStack());
-	}
+        if (GrowthCraftCore.getConfig().enableEtfuturumIntegration) initEtfuturum();
+        if (GrowthCraftCore.getConfig().enableWoodstuffIntegration) initWoodstuff();
+        if (GrowthCraftCore.getConfig().enableNaturaIntegration) initNatura();
+        NEI.hideItem(fenceRope.asStack());
+        NEI.hideItem(netherBrickFenceRope.asStack());
+        NEI.hideItem(ropeBlock.asStack());
+    }
 }

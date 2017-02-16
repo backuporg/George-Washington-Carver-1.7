@@ -26,41 +26,34 @@ package growthcraft.bees.integration;
 import growthcraft.bees.GrowthCraftBees;
 import growthcraft.bees.common.block.BlockBeeBoxHighlands;
 import growthcraft.bees.common.item.ItemBlockBeeBox;
+import growthcraft.core.integration.ModIntegrationBase;
 import growthcraft.core.integration.highlands.EnumHIGHLANDSWoodType;
 import growthcraft.core.integration.highlands.HIGHLANDSPlatform;
-import growthcraft.core.integration.ModIntegrationBase;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class HighlandsModule extends ModIntegrationBase
-{
-	public HighlandsModule()
-	{
-		super(GrowthCraftBees.MOD_ID, HIGHLANDSPlatform.MOD_ID);
-	}
+public class HighlandsModule extends ModIntegrationBase {
+    public HighlandsModule() {
+        super(GrowthCraftBees.MOD_ID, HIGHLANDSPlatform.MOD_ID);
+    }
 
-	@Override
-	public void doPreInit()
-	{
-		GrowthCraftBees.blocks.beeBoxHighlands = GrowthCraftBees.blocks.newTypedDefinition(new BlockBeeBoxHighlands());
-	}
+    @Override
+    public void doPreInit() {
+        GrowthCraftBees.blocks.beeBoxHighlands = GrowthCraftBees.blocks.newTypedDefinition(new BlockBeeBoxHighlands());
+    }
 
-	@Override
-	public void doRegister()
-	{
-		GrowthCraftBees.blocks.beeBoxHighlands.register("grc.beeBox.Highlands", ItemBlockBeeBox.class);
-	}
+    @Override
+    public void doRegister() {
+        GrowthCraftBees.blocks.beeBoxHighlands.register("grc.beeBox.Highlands", ItemBlockBeeBox.class);
+    }
 
-	@Override
-	protected void doLateRegister()
-	{
-		for (EnumHIGHLANDSWoodType type : EnumHIGHLANDSWoodType.VALUES)
-		{
-			final ItemStack planks = type.asPlanksItemStack();
-			if (planks != null)
-			{
-				GameRegistry.addShapedRecipe(GrowthCraftBees.blocks.beeBoxHighlands.asStack(1, type.meta), " A ", "A A", "AAA", 'A', planks);
-			}
-		}
-	}
+    @Override
+    protected void doLateRegister() {
+        for (EnumHIGHLANDSWoodType type : EnumHIGHLANDSWoodType.VALUES) {
+            final ItemStack planks = type.asPlanksItemStack();
+            if (planks != null) {
+                GameRegistry.addShapedRecipe(GrowthCraftBees.blocks.beeBoxHighlands.asStack(1, type.meta), " A ", "A A", "AAA", 'A', planks);
+            }
+        }
+    }
 }

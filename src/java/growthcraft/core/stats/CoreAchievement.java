@@ -27,21 +27,18 @@ import growthcraft.api.core.stats.IAchievement;
 import growthcraft.core.GrowthCraftCore;
 import net.minecraft.entity.player.EntityPlayer;
 
-public enum CoreAchievement implements IAchievement
-{
-	TRUSTY_HARDWARE,
-	HALF_LIFE_CONFIRMED,
-	SALTY_SITUATION;
+public enum CoreAchievement implements IAchievement {
+    TRUSTY_HARDWARE,
+    HALF_LIFE_CONFIRMED,
+    SALTY_SITUATION;
 
-	@Override
-	public void unlock(EntityPlayer player)
-	{
-		GrowthCraftCore.achievements.unlock(this, player);
-	}
+    @Override
+    public void unlock(EntityPlayer player) {
+        GrowthCraftCore.achievements.unlock(this, player);
+    }
 
-	@Override
-	public void addStat(EntityPlayer player, int n)
-	{
-		GrowthCraftCore.achievements.addStat(this, player, n);
-	}
+    @Override
+    public void addStat(EntityPlayer player, int n) {
+        GrowthCraftCore.achievements.addStat(this, player, n);
+    }
 }

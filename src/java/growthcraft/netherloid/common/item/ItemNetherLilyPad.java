@@ -31,54 +31,43 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
-public class ItemNetherLilyPad extends ItemBlock
-{
-	private Block lilypadBlock;
+public class ItemNetherLilyPad extends ItemBlock {
+    private Block lilypadBlock;
 
-	public ItemNetherLilyPad(Block block)
-	{
-		super(block);
-		this.lilypadBlock = block;
-	}
+    public ItemNetherLilyPad(Block block) {
+        super(block);
+        this.lilypadBlock = block;
+    }
 
-	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer player)
-	{
-		final RayTraceResult pos = this.getMovingObjectPositionFromPlayer(world, player, true);
+    public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer player) {
+        final RayTraceResult pos = this.getMovingObjectPositionFromPlayer(world, player, true);
 
-		if (pos == null)
-		{
-			return itemstack;
-		}
-		else
-		{
-			if (pos.typeOfHit == RayTraceResult.MovingObjectType.BLOCK)
-			{
-				final int x = pos.blockX;
-				final int y = pos.blockY;
-				final int z = pos.blockZ;
+        if (pos == null) {
+            return itemstack;
+        } else {
+            if (pos.typeOfHit == RayTraceResult.MovingObjectType.BLOCK) {
+                final int x = pos.blockX;
+                final int y = pos.blockY;
+                final int z = pos.blockZ;
 
-				if (!world.canMineBlock(player, x, y, z))
-				{
-					return itemstack;
-				}
+                if (!world.canMineBlock(player, x, y, z)) {
+                    return itemstack;
+                }
 
-				if (!player.canPlayerEdit(x, y, z, pos.sideHit, itemstack))
-				{
-					return itemstack;
-				}
+                if (!player.canPlayerEdit(x, y, z, pos.sideHit, itemstack)) {
+                    return itemstack;
+                }
 
-				if (world.getBlockState(x, y, z).getMaterial() == Material.LAVA && world.getBlockState(x, y, z) == 0 && world.isAirBlock(x, y + 1, z))
-				{
-					world.setBlockState(x, y + 1, z, lilypadBlock);
+                if (world.getBlockState(x, y, z).getMaterial() == Material.LAVA && world.getBlockState(x, y, z) == 0 && world.isAirBlock(x, y + 1, z)) {
+                    world.setBlockState(x, y + 1, z, lilypadBlock);
 
-					if (!player.capabilities.isCreativeMode)
-					{
-						--itemstack.stackSize;
-					}
-				}
-			}
+                    if (!player.capabilities.isCreativeMode) {
+                        --itemstack.stackSize;
+                    }
+                }
+            }
 
-			return itemstack;
-		}
-	}
+            return itemstack;
+        }
+    }
 }

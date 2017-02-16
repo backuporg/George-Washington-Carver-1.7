@@ -34,60 +34,52 @@ import net.minecraft.world.World;
 /**
  * Component for handling heat source blocks for a tile entity
  */
-public class HeatBlockComponent
-{
-	private TileEntity tileEntity;
-	private EnumFacing sourceDir = EnumFacing.DOWN;
-	// Adjacent heating allows the block to accept heat from blocks on the same y axis and directly
-	// adjacent to it
-	private float adjacentHeating;
+public class HeatBlockComponent {
+    private TileEntity tileEntity;
+    private EnumFacing sourceDir = EnumFacing.DOWN;
+    // Adjacent heating allows the block to accept heat from blocks on the same y axis and directly
+    // adjacent to it
+    private float adjacentHeating;
 
-	/**
-	 * @param te - parent tile entity
-	 * @param adh - adjacent heating rate, set to 0 to disable
-	 */
-	public HeatBlockComponent(TileEntity te, float adh)
-	{
-		this.tileEntity = te;
-		this.adjacentHeating = adh;
-	}
+    /**
+     * @param te  - parent tile entity
+     * @param adh - adjacent heating rate, set to 0 to disable
+     */
+    public HeatBlockComponent(TileEntity te, float adh) {
+        this.tileEntity = te;
+        this.adjacentHeating = adh;
+    }
 
-	private World getWorld()
-	{
-		return tileEntity.getWorldObj();
-	}
+    private World getWorld() {
+        return tileEntity.getWorldObj();
+    }
 
-	public float getHeatMultiplierFromDir(EnumFacing EnumFacing)
-	{
-		final int x = tileEntity.xCoord + EnumFacing.offsetX;
-		final int y = tileEntity.yCoord + EnumFacing.offsetY;
-		final int z = tileEntity.zCoord + EnumFacing.offsetZ;
+    public float getHeatMultiplierFromDir(EnumFacing EnumFacing) {
+        final int x = tileEntity.xCoord + EnumFacing.offsetX;
+        final int y = tileEntity.yCoord + EnumFacing.offsetY;
+        final int z = tileEntity.zCoord + EnumFacing.offsetZ;
 
-		final Block block = getWorld().getBlockState(x, y, z);
-		final int meta = getWorld().getBlockState(x, y, z);
+        final Block block = getWorld().getBlockState(x, y, z);
+        final int meta = getWorld().getBlockState(x, y, z);
 
-		final IHeatSourceBlock heatSource = CellarRegistry.instance().heatSource().getHeatSource(block, meta);
+        final IHeatSourceBlock heatSource = CellarRegistry.instance().heatSource().getHeatSource(block, meta);
 
-		if (heatSource != null) return heatSource.getHeat(getWorld(), x, y, z);
-		return 0.0f;
-	}
+        if (heatSource != null) return heatSource.getHeat(getWorld(), x, y, z);
+        return 0.0f;
+    }
 
-	public float getHeatMultiplierForAdjacent()
-	{
-		if (adjacentHeating > 0)
-		{
-			float heat = 0.0f;
-			for (EnumFacing EnumFacing : BlockCheck.DIR4)
-			{
-				heat += getHeatMultiplierFromDir(EnumFacing);
-			}
-			return heat * adjacentHeating;
-		}
-		return 0.0f;
-	}
+    public float getHeatMultiplierForAdjacent() {
+        if (adjacentHeating > 0) {
+            float heat = 0.0f;
+            for (EnumFacing EnumFacing : BlockCheck.DIR4) {
+                heat += getHeatMultiplierFromDir(EnumFacing);
+            }
+            return heat * adjacentHeating;
+        }
+        return 0.0f;
+    }
 
-	public float getHeatMultiplier()
-	{
-		return getHeatMultiplierFromDir(sourceDir) + getHeatMultiplierForAdjacent();
-	}
+    public float getHeatMultiplier() {
+        return getHeatMultiplierFromDir(sourceDir) + getHeatMultiplierForAdjacent();
+    }
 }

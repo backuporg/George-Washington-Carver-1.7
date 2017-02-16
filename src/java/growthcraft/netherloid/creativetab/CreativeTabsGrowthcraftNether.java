@@ -29,17 +29,14 @@ import net.minecraft.item.Item;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class CreativeTabsGrowthcraftNether extends CreativeTabs
-{
-	public CreativeTabsGrowthcraftNether()
-	{
-		super("tabNetherloid");
-	}
+public class CreativeTabsGrowthcraftNether extends CreativeTabs {
+    public CreativeTabsGrowthcraftNether() {
+        super("tabNetherloid");
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public Item getTabIconItem()
-	{
-		return Item.getItemFromBlock(Blocks.SOUL_SAND);
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public Item getTabIconItem() {
+        return Item.getItemFromBlock(Blocks.SOUL_SAND);
+    }
 }

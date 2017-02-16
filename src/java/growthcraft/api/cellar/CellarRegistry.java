@@ -45,112 +45,100 @@ import growthcraft.api.core.log.NullLogger;
 
 import javax.annotation.Nonnull;
 
-public class CellarRegistry implements ICellarRegistry
-{
-	private static final ICellarRegistry INSTANCE = new CellarRegistry().initialize();
+public class CellarRegistry implements ICellarRegistry {
+    private static final ICellarRegistry INSTANCE = new CellarRegistry().initialize();
 
-	private final IBoozeRegistry boozeRegistry = new BoozeRegistry();
-	private final IBrewingRegistry brewingRegistry = new BrewingRegistry();
-	private final ICulturingRegistry culturingRegistry = new CulturingRegistry();
-	private final IDistilleryRegistry distilleryRegistry = new DistilleryRegistry();
-	private final IFermentingRegistry fermentingRegistry = new FermentingRegistry();
-	private final IHeatSourceRegistry heatSourceRegistry = new HeatSourceRegistry();
-	private final IPressingRegistry pressingRegistry = new PressingRegistry();
-	private final IYeastRegistry yeastRegistry = new YeastRegistry();
-	private ILogger logger = NullLogger.INSTANCE;
+    private final IBoozeRegistry boozeRegistry = new BoozeRegistry();
+    private final IBrewingRegistry brewingRegistry = new BrewingRegistry();
+    private final ICulturingRegistry culturingRegistry = new CulturingRegistry();
+    private final IDistilleryRegistry distilleryRegistry = new DistilleryRegistry();
+    private final IFermentingRegistry fermentingRegistry = new FermentingRegistry();
+    private final IHeatSourceRegistry heatSourceRegistry = new HeatSourceRegistry();
+    private final IPressingRegistry pressingRegistry = new PressingRegistry();
+    private final IYeastRegistry yeastRegistry = new YeastRegistry();
+    private ILogger logger = NullLogger.INSTANCE;
 
-	/**
-	 * @return current instrance of the CellarRegistry
-	 */
-	public static final ICellarRegistry instance()
-	{
-		return INSTANCE;
-	}
+    /**
+     * @return current instrance of the CellarRegistry
+     */
+    public static final ICellarRegistry instance() {
+        return INSTANCE;
+    }
 
-	private CellarRegistry initialize()
-	{
-		CellarEffects.init();
-		return this;
-	}
+    private CellarRegistry initialize() {
+        CellarEffects.init();
+        return this;
+    }
 
-	/**
-	 * @param l - logger to set
-	 */
-	@Override
-	public void setLogger(@Nonnull ILogger l)
-	{
-		this.logger = l;
-		boozeRegistry.setLogger(logger);
-		brewingRegistry.setLogger(logger);
-		culturingRegistry.setLogger(logger);
-		distilleryRegistry.setLogger(logger);
-		fermentingRegistry.setLogger(logger);
-		heatSourceRegistry.setLogger(logger);
-		pressingRegistry.setLogger(logger);
-		yeastRegistry.setLogger(logger);
-	}
+    /**
+     * @param l - logger to set
+     */
+    @Override
+    public void setLogger(@Nonnull ILogger l) {
+        this.logger = l;
+        boozeRegistry.setLogger(logger);
+        brewingRegistry.setLogger(logger);
+        culturingRegistry.setLogger(logger);
+        distilleryRegistry.setLogger(logger);
+        fermentingRegistry.setLogger(logger);
+        heatSourceRegistry.setLogger(logger);
+        pressingRegistry.setLogger(logger);
+        yeastRegistry.setLogger(logger);
+    }
 
-	/**
-	 * @return instance of the BoozeRegistry
-	 */
-	public IBoozeRegistry booze()
-	{
-		return boozeRegistry;
-	}
+    /**
+     * @return instance of the BoozeRegistry
+     */
+    public IBoozeRegistry booze() {
+        return boozeRegistry;
+    }
 
-	/**
-	 * @return instance of the BrewingRegistry
-	 */
-	public IBrewingRegistry brewing()
-	{
-		return brewingRegistry;
-	}
+    /**
+     * @return instance of the BrewingRegistry
+     */
+    public IBrewingRegistry brewing() {
+        return brewingRegistry;
+    }
 
-	/**
-	 * @return instance of the CulturingRegistry
-	 */
-	public ICulturingRegistry culturing()
-	{
-		return culturingRegistry;
-	}
+    /**
+     * @return instance of the CulturingRegistry
+     */
+    public ICulturingRegistry culturing() {
+        return culturingRegistry;
+    }
 
-	/**
-	 * @return instance of the PressingRegistry
-	 */
-	public IPressingRegistry pressing()
-	{
-		return pressingRegistry;
-	}
+    /**
+     * @return instance of the PressingRegistry
+     */
+    public IPressingRegistry pressing() {
+        return pressingRegistry;
+    }
 
-	/**
-	 * @return instance of the FermentingRegistry
-	 */
-	public IFermentingRegistry fermenting()
-	{
-		return fermentingRegistry;
-	}
+    /**
+     * @return instance of the FermentingRegistry
+     */
+    public IFermentingRegistry fermenting() {
+        return fermentingRegistry;
+    }
 
-	/**
-	 * @return instance of the HeatSourceRegistry
-	 */
-	public IHeatSourceRegistry heatSource()
-	{
-		return heatSourceRegistry;
-	}
+    /**
+     * @return instance of the HeatSourceRegistry
+     */
+    public IHeatSourceRegistry heatSource() {
+        return heatSourceRegistry;
+    }
 
-	/**
-	 * @return instance of the DistilleryRegistry
-	 */
-	public IDistilleryRegistry distilling()
-	{
-		return distilleryRegistry;
-	}
+    /**
+     * @return instance of the DistilleryRegistry
+     */
+    public IDistilleryRegistry distilling() {
+        return distilleryRegistry;
+    }
 
-	/**
-	 * @return instance of the YeastRegistry
-	 */
-	public IYeastRegistry yeast()
-	{
-		return yeastRegistry;
-	}
+    /**
+     * @return instance of the YeastRegistry
+     */
+    public IYeastRegistry yeast() {
+        return yeastRegistry;
+    }
 }

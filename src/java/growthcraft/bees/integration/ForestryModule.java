@@ -43,105 +43,92 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.ArrayList;
 
-public class ForestryModule extends ForestryModuleBase
-{
-	public ForestryModule()
-	{
-		super(GrowthCraftBees.MOD_ID);
-	}
+public class ForestryModule extends ForestryModuleBase {
+    public ForestryModule() {
+        super(GrowthCraftBees.MOD_ID);
+    }
 
-	private void maybeAddBee(Item item)
-	{
-		if (item != null)
-		{
-			GrowthCraftBees.getUserBeesConfig().addDefault(item).setComment("From Forestry");
-		}
-	}
+    private void maybeAddBee(Item item) {
+        if (item != null) {
+            GrowthCraftBees.getUserBeesConfig().addDefault(item).setComment("From Forestry");
+        }
+    }
 
-	@Override
-	protected void doPreInit()
-	{
-		final int beeboxCount = EnumBeeBoxForestry.VALUES.length;
-		GrowthCraftBees.blocks.beeBoxesForestry = new ArrayList<BlockTypeDefinition<? extends BlockBeeBox>>();
-		GrowthCraftBees.blocks.beeBoxesForestryFireproof = new ArrayList<BlockTypeDefinition<? extends BlockBeeBox>>();
+    @Override
+    protected void doPreInit() {
+        final int beeboxCount = EnumBeeBoxForestry.VALUES.length;
+        GrowthCraftBees.blocks.beeBoxesForestry = new ArrayList<BlockTypeDefinition<? extends BlockBeeBox>>();
+        GrowthCraftBees.blocks.beeBoxesForestryFireproof = new ArrayList<BlockTypeDefinition<? extends BlockBeeBox>>();
 
-		int i = 0;
-		int offset = 0;
-		for (EnumBeeBoxForestry[] row : EnumBeeBoxForestry.ROWS)
-		{
-			final BlockTypeDefinition<? extends BlockBeeBox> beeBox = GrowthCraftBees.blocks.newTypedDefinition(new BlockBeeBoxForestry(row, offset, i, false));
-			final BlockTypeDefinition<? extends BlockBeeBox> beeBoxFP = GrowthCraftBees.blocks.newTypedDefinition(new BlockBeeBoxForestry(row, offset, i, true));
-			beeBox.getBlockState().setFlammability(20).setFireSpreadSpeed(5).setHarvestLevel("axe", 0);
-			beeBoxFP.getBlockState().setHarvestLevel("axe", 0);
-			GrowthCraftBees.blocks.beeBoxesForestry.add(beeBox);
-			GrowthCraftBees.blocks.beeBoxesForestryFireproof.add(beeBoxFP);
-			beeBox.register(String.format("grc.BeeBox.Forestry.%d.%s", i, "Normal"), ItemBlockBeeBox.class);
-			beeBoxFP.register(String.format("grc.BeeBox.Forestry.%d.%s", i, "Fireproof"), ItemBlockBeeBox.class);
-			i++;
-			offset += row.length;
-		}
-	}
+        int i = 0;
+        int offset = 0;
+        for (EnumBeeBoxForestry[] row : EnumBeeBoxForestry.ROWS) {
+            final BlockTypeDefinition<? extends BlockBeeBox> beeBox = GrowthCraftBees.blocks.newTypedDefinition(new BlockBeeBoxForestry(row, offset, i, false));
+            final BlockTypeDefinition<? extends BlockBeeBox> beeBoxFP = GrowthCraftBees.blocks.newTypedDefinition(new BlockBeeBoxForestry(row, offset, i, true));
+            beeBox.getBlockState().setFlammability(20).setFireSpreadSpeed(5).setHarvestLevel("axe", 0);
+            beeBoxFP.getBlockState().setHarvestLevel("axe", 0);
+            GrowthCraftBees.blocks.beeBoxesForestry.add(beeBox);
+            GrowthCraftBees.blocks.beeBoxesForestryFireproof.add(beeBoxFP);
+            beeBox.register(String.format("grc.BeeBox.Forestry.%d.%s", i, "Normal"), ItemBlockBeeBox.class);
+            beeBoxFP.register(String.format("grc.BeeBox.Forestry.%d.%s", i, "Fireproof"), ItemBlockBeeBox.class);
+            i++;
+            offset += row.length;
+        }
+    }
 
-	@Override
-	protected void doInit()
-	{
-		maybeAddBee(GameRegistry.findItem(modID, "beeQueenGE"));
-		maybeAddBee(GameRegistry.findItem(modID, "beeDroneGE"));
-		maybeAddBee(GameRegistry.findItem(modID, "beePrincessGE"));
-	}
+    @Override
+    protected void doInit() {
+        maybeAddBee(GameRegistry.findItem(modID, "beeQueenGE"));
+        maybeAddBee(GameRegistry.findItem(modID, "beeDroneGE"));
+        maybeAddBee(GameRegistry.findItem(modID, "beePrincessGE"));
+    }
 
-	@Override
-	protected void doLateRegister()
-	{
-		for (EnumBeeBoxForestry en : EnumBeeBoxForestry.VALUES)
-		{
-			if (en == null) continue;
+    @Override
+    protected void doLateRegister() {
+        for (EnumBeeBoxForestry en : EnumBeeBoxForestry.VALUES) {
+            if (en == null) continue;
 
-			{
-				final BlockTypeDefinition<? extends BlockBeeBox> beeBox = GrowthCraftBees.blocks.beeBoxesForestry.get(en.row);
-				if (beeBox != null)
-				{
-					final ItemStack planks = en.getForestryPlanksStack();
-					if (planks != null)
-					{
-						GameRegistry.addShapedRecipe(beeBox.asStack(1, en.col), " A ", "A A", "AAA", 'A', planks);
-					}
-				}
-			}
-			{
-				final BlockTypeDefinition<? extends BlockBeeBox> beeBoxFP = GrowthCraftBees.blocks.beeBoxesForestryFireproof.get(en.row);
-				if (beeBoxFP != null)
-				{
-					final ItemStack planks = en.getForestryFireproofPlanksStack();
-					if (planks != null)
-					{
-						GameRegistry.addShapedRecipe(beeBoxFP.asStack(1, en.col), " A ", "A A", "AAA", 'A', planks);
-					}
-				}
-			}
-		}
-	}
+            {
+                final BlockTypeDefinition<? extends BlockBeeBox> beeBox = GrowthCraftBees.blocks.beeBoxesForestry.get(en.row);
+                if (beeBox != null) {
+                    final ItemStack planks = en.getForestryPlanksStack();
+                    if (planks != null) {
+                        GameRegistry.addShapedRecipe(beeBox.asStack(1, en.col), " A ", "A A", "AAA", 'A', planks);
+                    }
+                }
+            }
+            {
+                final BlockTypeDefinition<? extends BlockBeeBox> beeBoxFP = GrowthCraftBees.blocks.beeBoxesForestryFireproof.get(en.row);
+                if (beeBoxFP != null) {
+                    final ItemStack planks = en.getForestryFireproofPlanksStack();
+                    if (planks != null) {
+                        GameRegistry.addShapedRecipe(beeBoxFP.asStack(1, en.col), " A ", "A A", "AAA", 'A', planks);
+                    }
+                }
+            }
+        }
+    }
 
-	@Override
-	@Optional.Method(modid="Forestry")
-	protected void integrate()
-	{
-		if (ForestryFluids.SHORT_MEAD.exists()) CoreRegistry.instance().fluidDictionary().addFluidTags(ForestryFluids.SHORT_MEAD.getFluid(), BoozeTag.YOUNG, BeesFluidTag.MEAD);
+    @Override
+    @Optional.Method(modid = "Forestry")
+    protected void integrate() {
+        if (ForestryFluids.SHORT_MEAD.exists())
+            CoreRegistry.instance().fluidDictionary().addFluidTags(ForestryFluids.SHORT_MEAD.getFluid(), BoozeTag.YOUNG, BeesFluidTag.MEAD);
 
-		final ItemStack emptyComb = GrowthCraftBees.items.honeyCombEmpty.asStack();
-		final ItemStack fullComb = GrowthCraftBees.items.honeyCombFilled.asStack();
-		if (ForestryItems.BEESWAX.exists()) recipes().centrifugeManager.addRecipe(20, emptyComb, ImmutableMap.of(ForestryItems.BEESWAX.asStack(), 1.0f));
+        final ItemStack emptyComb = GrowthCraftBees.items.honeyCombEmpty.asStack();
+        final ItemStack fullComb = GrowthCraftBees.items.honeyCombFilled.asStack();
+        if (ForestryItems.BEESWAX.exists())
+            recipes().centrifugeManager.addRecipe(20, emptyComb, ImmutableMap.of(ForestryItems.BEESWAX.asStack(), 1.0f));
 
-		if (ForestryItems.BEESWAX.exists() && ForestryItems.HONEY_DROP.exists() && ForestryItems.HONEYDEW.exists())
-		{
-			recipes().centrifugeManager.addRecipe(20, fullComb,
-				ImmutableMap.of(
-					ForestryItems.BEESWAX.asStack(), 1.0f,
-					ForestryItems.HONEY_DROP.asStack(), 0.9f,
-					ForestryItems.HONEYDEW.asStack(), 0.1f
-				)
-			);
-		}
-	}
+        if (ForestryItems.BEESWAX.exists() && ForestryItems.HONEY_DROP.exists() && ForestryItems.HONEYDEW.exists()) {
+            recipes().centrifugeManager.addRecipe(20, fullComb,
+                    ImmutableMap.of(
+                            ForestryItems.BEESWAX.asStack(), 1.0f,
+                            ForestryItems.HONEY_DROP.asStack(), 0.9f,
+                            ForestryItems.HONEYDEW.asStack(), 0.1f
+                    )
+            );
+        }
+    }
 }
 

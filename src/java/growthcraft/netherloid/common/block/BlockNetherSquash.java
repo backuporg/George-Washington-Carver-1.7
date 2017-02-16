@@ -33,70 +33,65 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockNetherSquash extends BlockDirectional
-{
+public class BlockNetherSquash extends BlockDirectional {
 
-	public BlockNetherSquash()
-	{
-		super(Blocks.PUMPKIN.getMaterial());
-		setTickRandomly(true);
-		//setBlockTextureName("grcnetherloid:soulsquash");
-		setUnlocalizedName("grcnetherloid.netherSquash");
-		setCreativeTab(netherloid.tab);
-	}
+    public BlockNetherSquash() {
+        super(Blocks.PUMPKIN.getMaterial());
+        setTickRandomly(true);
+        //setBlockTextureName("grcnetherloid:soulsquash");
+        setUnlocalizedName("grcnetherloid.netherSquash");
+        setCreativeTab(netherloid.tab);
+    }
 
-	public void onBlockPlacedBy(World world, BlockPos pos, EntityLivingBase entity, ItemStack itemstack, IBlockState state)
-	{
-		final int meta = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 2.5D) & 3;
-		world.setBlockState(pos, state, meta, BlockFlags.SYNC);
-	}
+    public void onBlockPlacedBy(World world, BlockPos pos, EntityLivingBase entity, ItemStack itemstack, IBlockState state) {
+        final int meta = MathHelper.floor_double((double) (entity.rotationYaw * 4.0F / 360.0F) + 2.5D) & 3;
+        world.setBlockState(pos, state, meta, BlockFlags.SYNC);
+    }
 
-	//@Override
-	//@SideOnly(Side.CLIENT)
+    //@Override
+    //@SideOnly(Side.CLIENT)
 
-	//{
-	//	icons = new IIcon[3];
+    //{
+    //	icons = new IIcon[3];
 ///
-	//	icons[0] = reg.registerIcon(getTextureName() + "_side");
-	//	icons[1] = reg.registerIcon(getTextureName() + "_top");
-	//	icons[2] = reg.registerIcon(getTextureName() + "_face");
-	//}
+    //	icons[0] = reg.registerIcon(getTextureName() + "_side");
+    //	icons[1] = reg.registerIcon(getTextureName() + "_top");
+    //	icons[2] = reg.registerIcon(getTextureName() + "_face");
+    //}
 
 //	@Override
-	//@SideOnly(Side.CLIENT)
-	//
-	//{
-	//	if (side == 1)
-	//	{
-	//		return icons[1];
-	//	}
-	//	else if (side == 0)
-	//	{
-	//		return icons[0];
-	//	}
-	//	else
-	//	{
-	//		switch (meta)
-	//		{
-	//			case 0:
-	//				if (side == 3) return icons[2];
-	//				break;
-	//			case 1:
-	//				if (side == 4) return icons[2];
-	//				break;
-	//			case 2:
-	//				if (side == 2) return icons[2];
-	//				break;
-	//			case 3:
-	//				if (side == 5) return icons[2];
-	//				break;
-	//			default:
-	//				break;
-	//		}
-	//	}
-	//	return icons[0];
-	//}
+    //@SideOnly(Side.CLIENT)
+    //
+    //{
+    //	if (side == 1)
+    //	{
+    //		return icons[1];
+    //	}
+    //	else if (side == 0)
+    //	{
+    //		return icons[0];
+    //	}
+    //	else
+    //	{
+    //		switch (meta)
+    //		{
+    //			case 0:
+    //				if (side == 3) return icons[2];
+    //				break;
+    //			case 1:
+    //				if (side == 4) return icons[2];
+    //				break;
+    //			case 2:
+    //				if (side == 2) return icons[2];
+    //				break;
+    //			case 3:
+    //				if (side == 5) return icons[2];
+    //				break;
+    //			default:
+    //				break;
+    //		}
+    //	}
+    //	return icons[0];
+    //}
 }

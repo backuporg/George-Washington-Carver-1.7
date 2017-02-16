@@ -25,9 +25,10 @@ package growthcraft.api.core.nbt;
 
 import net.minecraft.nbt.NBTTagCompound;
 
-public interface INBTTagCompoundHost
-{
-	NBTTagCompound getTagCompound();
-	void setTagCompound(NBTTagCompound tag);
-	boolean hasTagCompound();
+public interface INBTTagCompoundHost {
+    NBTTagCompound getTagCompound();
+
+    void setTagCompound(NBTTagCompound tag);
+
+    boolean hasTagCompound();
 }

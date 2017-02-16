@@ -37,75 +37,63 @@ import java.util.Random;
 /**
  * If milk removes effects, then evil booze milk will add them.
  */
-public class EffectEvilBoozeMilk implements IEffect
-{
-	private EffectList effects;
+public class EffectEvilBoozeMilk implements IEffect {
+    private EffectList effects;
 
-	public EffectEvilBoozeMilk()
-	{
-		this.effects = new EffectList();
+    public EffectEvilBoozeMilk() {
+        this.effects = new EffectList();
 
-		addEvilEffect(0.1f, MobEffects.BLINDNESS, 900, 0);
-		addEvilEffect(0.1f, MobEffects.WITHER, 900, 0);
-		addEvilEffect(0.2f, MobEffects.NAUSEA, 900, 0);
-		addEvilEffect(0.2f, MobEffects.MINING_FATIGUE, 900, 0);
-		addEvilEffect(0.2f, MobEffects.POISON, 900, 0);
-		addEvilEffect(0.3f, MobEffects.HUNGER, 900, 0);
-		addEvilEffect(0.5f, MobEffects.SLOWNESS, 900, 0);
-		addEvilEffect(0.6f, MobEffects.INSTANT_DAMAGE, 20, 0);
-		addEvilEffect(1.0f, MobEffects.WEAKNESS, 900, 0);
-	}
+        addEvilEffect(0.1f, MobEffects.BLINDNESS, 900, 0);
+        addEvilEffect(0.1f, MobEffects.WITHER, 900, 0);
+        addEvilEffect(0.2f, MobEffects.NAUSEA, 900, 0);
+        addEvilEffect(0.2f, MobEffects.MINING_FATIGUE, 900, 0);
+        addEvilEffect(0.2f, MobEffects.POISON, 900, 0);
+        addEvilEffect(0.3f, MobEffects.HUNGER, 900, 0);
+        addEvilEffect(0.5f, MobEffects.SLOWNESS, 900, 0);
+        addEvilEffect(0.6f, MobEffects.INSTANT_DAMAGE, 20, 0);
+        addEvilEffect(1.0f, MobEffects.WEAKNESS, 900, 0);
+    }
 
-	private void addEvilEffect(float chance, Potion id, int time, int lv)
-	{
-		effects.add(
-			new EffectChance()
-				.setChance(chance)
-				.setEffect(
-					new EffectAddPotionEffect()
-						.setPotionFactory(new SimplePotionEffectFactory(id, time, lv))
-				)
-		);
-	}
+    private void addEvilEffect(float chance, Potion id, int time, int lv) {
+        effects.add(
+                new EffectChance()
+                        .setChance(chance)
+                        .setEffect(
+                                new EffectAddPotionEffect()
+                                        .setPotionFactory(new SimplePotionEffectFactory(id, time, lv))
+                        )
+        );
+    }
 
-	@Override
-	public void apply(World world, Entity en, Random r, Object d)
-	{
-		effects.apply(world, en, r, d);
-	}
+    @Override
+    public void apply(World world, Entity en, Random r, Object d) {
+        effects.apply(world, en, r, d);
+    }
 
-	@Override
-	public void getDescription(List<String> list)
-	{
-		effects.getDescription(list);
-	}
+    @Override
+    public void getDescription(List<String> list) {
+        effects.getDescription(list);
+    }
 
-	@Override
-	public void readFromNBT(NBTTagCompound nbt, String name)
-	{
-		this.effects = null;
-		if (nbt.hasKey(name))
-		{
-			final NBTTagCompound tag = nbt.getCompoundTag(name);
-			if (tag.hasKey("effects"))
-			{
-				this.effects = (EffectList)CoreRegistry.instance().getEffectsRegistry().loadEffectFromNBT(tag, "effects");
-			}
-		}
-		else
-		{
-			// log error
-		}
-	}
+    @Override
+    public void readFromNBT(NBTTagCompound nbt, String name) {
+        this.effects = null;
+        if (nbt.hasKey(name)) {
+            final NBTTagCompound tag = nbt.getCompoundTag(name);
+            if (tag.hasKey("effects")) {
+                this.effects = (EffectList) CoreRegistry.instance().getEffectsRegistry().loadEffectFromNBT(tag, "effects");
+            }
+        } else {
+            // log error
+        }
+    }
 
-	@Override
-	public void writeToNBT(NBTTagCompound nbt, String name)
-	{
-		final NBTTagCompound tag = new NBTTagCompound();
-		if (effects != null)
-		{
-			effects.writeToNBT(tag, "effects");
-		}
-		nbt.setTag(name, tag);
-	}
+    @Override
+    public void writeToNBT(NBTTagCompound nbt, String name) {
+        final NBTTagCompound tag = new NBTTagCompound();
+        if (effects != null) {
+            effects.writeToNBT(tag, "effects");
+        }
+        nbt.setTag(name, tag);
+    }
 }

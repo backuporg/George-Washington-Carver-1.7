@@ -27,33 +27,30 @@ import growthcraft.api.core.definition.IItemStackFactory;
 import growthcraft.cellar.GrowthCraftCellar;
 import net.minecraft.item.ItemStack;
 
-public enum EnumYeast implements IItemStackFactory
-{
-	BREWERS,
-	LAGER,
-	BAYANUS,
-	ETHEREAL,
-	ORIGIN;
+public enum EnumYeast implements IItemStackFactory {
+    BREWERS,
+    LAGER,
+    BAYANUS,
+    ETHEREAL,
+    ORIGIN;
 
-	public static final int length = values().length;
+    public static final int length = values().length;
 
-	/**
-	 * Convience method for creating the corresponding yeast stack
-	 *   example: EnumYeast.BREWERS.asStack(size)
-	 *
-	 * @param size - size of the stack to create
-	 * @return yeast stack
-	 */
-	public ItemStack asStack(int size)
-	{
-		return GrowthCraftCellar.items.yeast.asStack(size, ordinal());
-	}
+    /**
+     * Convience method for creating the corresponding yeast stack
+     * example: EnumYeast.BREWERS.asStack(size)
+     *
+     * @param size - size of the stack to create
+     * @return yeast stack
+     */
+    public ItemStack asStack(int size) {
+        return GrowthCraftCellar.items.yeast.asStack(size, ordinal());
+    }
 
-	/**
-	 * @return yeast stack, size: 1
-	 */
-	public ItemStack asStack()
-	{
-		return asStack(1);
-	}
+    /**
+     * @return yeast stack, size: 1
+     */
+    public ItemStack asStack() {
+        return asStack(1);
+    }
 }

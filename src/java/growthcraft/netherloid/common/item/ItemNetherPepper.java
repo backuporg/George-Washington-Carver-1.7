@@ -37,50 +37,42 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 
-public abstract class ItemNetherPepper extends Item implements IPlantable
-{
-	public ItemNetherPepper()
-	{
-		super();
-		setUnlocalizedName("grcnetherloid.netherPepper");
-		//setTextureName("grcnetherloid:pepper");
-		setCreativeTab(netherloid.tab);
-	}
+public abstract class ItemNetherPepper extends Item implements IPlantable {
+    public ItemNetherPepper() {
+        super();
+        setUnlocalizedName("grcnetherloid.netherPepper");
+        //setTextureName("grcnetherloid:pepper");
+        setCreativeTab(netherloid.tab);
+    }
 
-	@Override
-	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos)
-	{
-		return EnumPlantType.Nether;
-	}
+    @Override
+    public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos) {
+        return EnumPlantType.Nether;
+    }
 
-	@Override
-	public Block getPlant(IBlockAccess world, BlockPos pos)
-	{
-		return netherloid.blocks.netherPepper.getBlockState();
-	}
+    @Override
+    public Block getPlant(IBlockAccess world, BlockPos pos) {
+        return netherloid.blocks.netherPepper.getBlockState();
+    }
 
-	@Override
-	public int getPlantMetadata(IBlockAccess world, BlockPos pos)
-	{
-		return 0;
-	}
+    @Override
+    public int getPlantMetadata(IBlockAccess world, BlockPos pos) {
+        return 0;
+    }
 
-	@Override
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, int EnumFacing, float par8, float par9, float par10)
-	{
-		if (EnumFacing != 1) return false;
+    @Override
+    public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, int EnumFacing, float par8, float par9, float par10) {
+        if (EnumFacing != 1) return false;
 
-		if (player.canPlayerEdit(x, y, z, EnumFacing, stack) && player.canPlayerEdit(x, y + 1, z, EnumFacing, stack))
-		{
-			final BlockNetherPepper plant = (BlockNetherPepper)getPlant(world, x, y, z);
-			if (BlockCheck.canSustainPlant(world, x, y, z, EnumFacing.UP, plant))
-			{
-				world.setBlockState(x, y + 1, z, plant);
-				ItemUtils.consumeStack(stack);
-				return true;
-			}
-		}
+        if (player.canPlayerEdit(x, y, z, EnumFacing, stack) && player.canPlayerEdit(x, y + 1, z, EnumFacing, stack)) {
+            final BlockNetherPepper plant = (BlockNetherPepper) getPlant(world, x, y, z);
+            if (BlockCheck.canSustainPlant(world, x, y, z, EnumFacing.UP, plant)) {
+                world.setBlockState(x, y + 1, z, plant);
+                ItemUtils.consumeStack(stack);
+                return true;
+            }
+        }
 
-		return false;
-	}
+        return false;
+    }
 }

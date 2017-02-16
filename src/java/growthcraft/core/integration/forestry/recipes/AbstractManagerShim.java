@@ -33,33 +33,28 @@ import java.util.HashMap;
 import java.util.Map;
 
 // Forestry API shims, so we don't have to do null checks all over the place.
-@Optional.Interface(iface="forestry.api.recipes.ICraftingProvider", modid="ForestryAPI|recipes")
-public abstract class AbstractManagerShim<T extends IForestryRecipe> implements ICraftingProvider<T>
-{
-	private static Map<Object[], Object[]> map = new HashMap<Object[], Object[]>();
-	private Collection<T> coll = new ArrayList<T>();
+@Optional.Interface(iface = "forestry.api.recipes.ICraftingProvider", modid = "ForestryAPI|recipes")
+public abstract class AbstractManagerShim<T extends IForestryRecipe> implements ICraftingProvider<T> {
+    private static Map<Object[], Object[]> map = new HashMap<Object[], Object[]>();
+    private Collection<T> coll = new ArrayList<T>();
 
-	@Override
-	public boolean addRecipe(T recipe)
-	{
-		return false;
-	}
+    @Override
+    public boolean addRecipe(T recipe) {
+        return false;
+    }
 
-	@Override
-	public  boolean removeRecipe(T recipe)
-	{
-		return false;
-	}
+    @Override
+    public boolean removeRecipe(T recipe) {
+        return false;
+    }
 
-	@Override
-	public Collection<T> recipes()
-	{
-		return coll;
-	}
+    @Override
+    public Collection<T> recipes() {
+        return coll;
+    }
 
-	@Deprecated
-	public Map<Object[], Object[]> getRecipes()
-	{
-		return map;
-	}
+    @Deprecated
+    public Map<Object[], Object[]> getRecipes() {
+        return map;
+    }
 }

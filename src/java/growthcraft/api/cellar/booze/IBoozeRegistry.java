@@ -32,16 +32,22 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.Collection;
 
-public interface IBoozeRegistry extends ILoggable
-{
-	IModifierFunction getModifierFunction(@Nullable FluidTag fluid);
-	void setModifierFunction(@Nonnull FluidTag fluid, IModifierFunction func);
+public interface IBoozeRegistry extends ILoggable {
+    IModifierFunction getModifierFunction(@Nullable FluidTag fluid);
 
-	Collection<BoozeEntry> getBoozeEntries();
-	void registerBooze(@Nonnull Fluid fluid);
-	BoozeEntry getBoozeEntry(@Nullable Fluid fluid);
-	BoozeEntry fetchBoozeEntry(@Nullable Fluid fluid);
-	BoozeEffect getEffect(@Nullable Fluid fluid);
-	boolean isFluidBooze(@Nullable Fluid f);
-	boolean isFluidBooze(@Nullable FluidStack fluidStack);
+    void setModifierFunction(@Nonnull FluidTag fluid, IModifierFunction func);
+
+    Collection<BoozeEntry> getBoozeEntries();
+
+    void registerBooze(@Nonnull Fluid fluid);
+
+    BoozeEntry getBoozeEntry(@Nullable Fluid fluid);
+
+    BoozeEntry fetchBoozeEntry(@Nullable Fluid fluid);
+
+    BoozeEffect getEffect(@Nullable Fluid fluid);
+
+    boolean isFluidBooze(@Nullable Fluid f);
+
+    boolean isFluidBooze(@Nullable FluidStack fluidStack);
 }

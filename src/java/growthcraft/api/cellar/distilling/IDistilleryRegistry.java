@@ -25,7 +25,6 @@ package growthcraft.api.cellar.distilling;
 
 import growthcraft.api.core.log.ILoggable;
 
-public interface IDistilleryRegistry extends ILoggable
-{
+public interface IDistilleryRegistry extends ILoggable {
 
 }

@@ -30,9 +30,10 @@ import net.minecraftforge.fluids.FluidStack;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public interface ICulturingRegistry extends ILoggable
-{
-	void addRecipe(@Nonnull ICultureRecipe recipe);
-	void addRecipe(@Nonnull FluidStack fluidStack, @Nonnull ItemStack itemStack, float requiredHeat, int time);
-	ICultureRecipe findRecipe(@Nullable FluidStack fluid, float heat);
+public interface ICulturingRegistry extends ILoggable {
+    void addRecipe(@Nonnull ICultureRecipe recipe);
+
+    void addRecipe(@Nonnull FluidStack fluidStack, @Nonnull ItemStack itemStack, float requiredHeat, int time);
+
+    ICultureRecipe findRecipe(@Nullable FluidStack fluid, float heat);
 }

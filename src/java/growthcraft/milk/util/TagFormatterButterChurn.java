@@ -31,18 +31,16 @@ import net.minecraft.util.text.TextFormatting;
 
 import java.util.List;
 
-public class TagFormatterButterChurn implements ITagFormatter
-{
-	public static final TagFormatterButterChurn INSTANCE = new TagFormatterButterChurn();
+public class TagFormatterButterChurn implements ITagFormatter {
+    public static final TagFormatterButterChurn INSTANCE = new TagFormatterButterChurn();
 
-	public List<String> format(List<String> list, NBTTagCompound nbt)
-	{
-		list.add(TextFormatting.GRAY +
-			GrcI18n.translate(
-				"grcmilk.butter_churn.itemslot.item",
-				TagFormatterItem.INSTANCE.formatItem(nbt.getCompoundTag("item"))
-			)
-		);
-		return list;
-	}
+    public List<String> format(List<String> list, NBTTagCompound nbt) {
+        list.add(TextFormatting.GRAY +
+                GrcI18n.translate(
+                        "grcmilk.butter_churn.itemslot.item",
+                        TagFormatterItem.INSTANCE.formatItem(nbt.getCompoundTag("item"))
+                )
+        );
+        return list;
+    }
 }

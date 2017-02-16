@@ -39,48 +39,38 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-public class ItemBlockFermentBarrel extends GrcItemTileBlockBase
-{
-	public ItemBlockFermentBarrel(Block block)
-	{
-		super(block);
-	}
+public class ItemBlockFermentBarrel extends GrcItemTileBlockBase {
+    public ItemBlockFermentBarrel(Block block) {
+        super(block);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	@SuppressWarnings({"unchecked", "rawtypes"})
-	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean advanced)
-	{
-		super.addInformation(stack, player, list, advanced);
-		final NBTTagCompound tag = getTileTagCompound(stack);
-		if (tag != null)
-		{
-			if (tag.hasKey("Tank0"))
-			{
-				final NBTTagCompound tank = tag.getCompoundTag("Tank0");
-				if (!tank.hasKey("Empty"))
-				{
-					if (GrcCoreState.showDetailedInformation())
-					{
-						final FluidStack fluidStack = FluidStack.loadFluidStackFromNBT(tank);
-						final String fluidName = UnitFormatter.fluidName(fluidStack);
-						if (fluidName != null)
-						{
-							list.add(GrcI18n.translate("grc.cellar.format.fluid_container.contents",
-								fluidName,
-								fluidStack.amount,
-								GrowthCraftCellar.getConfig().fermentBarrelMaxCap));
-						}
-					}
-					else
-					{
-						list.add(TextFormatting.GRAY +
-							GrcI18n.translate("grc.tooltip.detailed_information",
-							TextFormatting.WHITE + GrcCoreState.detailedKey + TextFormatting.GRAY));
-					}
-				}
-			}
-		}
+    @Override
+    @SideOnly(Side.CLIENT)
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean advanced) {
+        super.addInformation(stack, player, list, advanced);
+        final NBTTagCompound tag = getTileTagCompound(stack);
+        if (tag != null) {
+            if (tag.hasKey("Tank0")) {
+                final NBTTagCompound tank = tag.getCompoundTag("Tank0");
+                if (!tank.hasKey("Empty")) {
+                    if (GrcCoreState.showDetailedInformation()) {
+                        final FluidStack fluidStack = FluidStack.loadFluidStackFromNBT(tank);
+                        final String fluidName = UnitFormatter.fluidName(fluidStack);
+                        if (fluidName != null) {
+                            list.add(GrcI18n.translate("grc.cellar.format.fluid_container.contents",
+                                    fluidName,
+                                    fluidStack.amount,
+                                    GrowthCraftCellar.getConfig().fermentBarrelMaxCap));
+                        }
+                    } else {
+                        list.add(TextFormatting.GRAY +
+                                GrcI18n.translate("grc.tooltip.detailed_information",
+                                        TextFormatting.WHITE + GrcCoreState.detailedKey + TextFormatting.GRAY));
+                    }
+                }
+            }
+        }
 
-	}
+    }
 }

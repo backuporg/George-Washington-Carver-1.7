@@ -31,35 +31,29 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public abstract class BlockNetherBaalsRot extends BlockNetherFungusBase
-{
-	private final float baalsRotSpreadRate = netherloid.getConfig().baalsRotSpreadRate;
+public abstract class BlockNetherBaalsRot extends BlockNetherFungusBase {
+    private final float baalsRotSpreadRate = netherloid.getConfig().baalsRotSpreadRate;
 
-	public BlockNetherBaalsRot()
-	{
-		super();
-		setUnlocalizedName("grcnetherloid.netherBaalsRot");
-		//setBlockTextureName("grcnetherloid:baals_rot");
-		getBoundingBox(0.125F, 0.0F, 0.125F, 0.875F, 0.8125F, 0.875F);
-		setCreativeTab(netherloid.tab);
-	}
+    public BlockNetherBaalsRot() {
+        super();
+        setUnlocalizedName("grcnetherloid.netherBaalsRot");
+        //setBlockTextureName("grcnetherloid:baals_rot");
+        getBoundingBox(0.125F, 0.0F, 0.125F, 0.875F, 0.8125F, 0.875F);
+        setCreativeTab(netherloid.tab);
+    }
 
-	@Override
-	public void onEntityCollidedWithBlock(World world, BlockPos pos, Entity entity)
-	{
-		if (world.isRemote) return;
-		if (entity instanceof EntityLivingBase)
-		{
-			if (world.rand.nextFloat() < 0.3F)
-			{
-				((EntityLivingBase)entity).addPotionEffect(new PotionEffect(MobEffects.WITHER.id, 20 * 20));
-			}
-		}
-	}
+    @Override
+    public void onEntityCollidedWithBlock(World world, BlockPos pos, Entity entity) {
+        if (world.isRemote) return;
+        if (entity instanceof EntityLivingBase) {
+            if (world.rand.nextFloat() < 0.3F) {
+                ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.WITHER.id, 20 * 20));
+            }
+        }
+    }
 
-	@Override
-	protected float getSpreadRate(World world, BlockPos pos)
-	{
-		return baalsRotSpreadRate;
-	}
+    @Override
+    protected float getSpreadRate(World world, BlockPos pos) {
+        return baalsRotSpreadRate;
+    }
 }

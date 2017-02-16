@@ -28,10 +28,8 @@ import net.minecraft.util.ResourceLocation;
 
 import javax.annotation.Nonnull;
 
-public class Booze extends GrcFluid
-{
-	public Booze(@Nonnull String fluidName, @Nonnull ResourceLocation still, @Nonnull ResourceLocation flowing)
-	{
-		super(fluidName, still, flowing);
-	}
+public class Booze extends GrcFluid {
+    public Booze(@Nonnull String fluidName, @Nonnull ResourceLocation still, @Nonnull ResourceLocation flowing) {
+        super(fluidName, still, flowing);
+    }
 }

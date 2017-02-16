@@ -29,27 +29,23 @@ import growthcraft.core.common.block.BlockFenceRope;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 
-public class ItemBlockNaturaFenceRope extends ItemBlockFenceRope
-{
-	private ItemStack fenceStack;
+public class ItemBlockNaturaFenceRope extends ItemBlockFenceRope {
+    private ItemStack fenceStack;
 
-	public ItemBlockNaturaFenceRope(Block block)
-	{
-		super(block);
-		if (block instanceof BlockFenceRope)
-		{
-			final BlockFenceRope fp = (BlockFenceRope)block;
-			this.fenceStack = new ItemStack(fp.getFenceBlock(), fp.getFenceBlockMetadata());
-		}
-	}
+    public ItemBlockNaturaFenceRope(Block block) {
+        super(block);
+        if (block instanceof BlockFenceRope) {
+            final BlockFenceRope fp = (BlockFenceRope) block;
+            this.fenceStack = new ItemStack(fp.getFenceBlock(), fp.getFenceBlockMetadata());
+        }
+    }
 
-	@Override
-	public String getItemStackDisplayName(ItemStack stack)
-	{
-		final ItemStack fs = fenceStack.copy();
-		if (fs.getItemDamage() == ItemKey.WILDCARD_VALUE)
-			fs.setItemDamage(stack.getItemDamage());
+    @Override
+    public String getItemStackDisplayName(ItemStack stack) {
+        final ItemStack fs = fenceStack.copy();
+        if (fs.getItemDamage() == ItemKey.WILDCARD_VALUE)
+            fs.setItemDamage(stack.getItemDamage());
 
-		return ("" + GrcI18n.translate(getUnlocalizedNameInefficiently(stack) + ".name", fs.getDisplayName())).trim();
-	}
+        return ("" + GrcI18n.translate(getUnlocalizedNameInefficiently(stack) + ".name", fs.getDisplayName())).trim();
+    }
 }

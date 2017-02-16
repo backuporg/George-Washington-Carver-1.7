@@ -33,28 +33,22 @@ import net.minecraftforge.fluids.FluidStack;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class PressingRecipe extends ProcessingRecipe
-{
-	private IMultiItemStacks inputItemStack;
+public class PressingRecipe extends ProcessingRecipe {
+    private IMultiItemStacks inputItemStack;
 
-	public PressingRecipe(@Nonnull IMultiItemStacks src, @Nonnull FluidStack f, int t, @Nullable Residue r)
-	{
-		super(f, t, r);
-		this.inputItemStack = src;
-	}
+    public PressingRecipe(@Nonnull IMultiItemStacks src, @Nonnull FluidStack f, int t, @Nullable Residue r) {
+        super(f, t, r);
+        this.inputItemStack = src;
+    }
 
-	public IMultiItemStacks getInput()
-	{
-		return inputItemStack;
-	}
+    public IMultiItemStacks getInput() {
+        return inputItemStack;
+    }
 
-	public boolean matchesRecipe(@Nullable ItemStack itemStack)
-	{
-		if (itemStack != null)
-		{
-			if (!ItemTest.hasEnough(inputItemStack, itemStack)) return false;
-			return true;
-		}
-		return false;
-	}
+    public boolean matchesRecipe(@Nullable ItemStack itemStack) {
+        if (itemStack != null) {
+            return ItemTest.hasEnough(inputItemStack, itemStack);
+        }
+        return false;
+    }
 }

@@ -29,17 +29,14 @@ import net.minecraft.item.Item;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class GrcMilkCreativeTabs extends CreativeTabs
-{
-	public GrcMilkCreativeTabs(String name)
-	{
-		super(name);
-	}
+public class GrcMilkCreativeTabs extends CreativeTabs {
+    public GrcMilkCreativeTabs(String name) {
+        super(name);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public Item getTabIconItem()
-	{
-		return GrowthCraftMilk.blocks.cheesePress.getItem();
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public Item getTabIconItem() {
+        return GrowthCraftMilk.blocks.cheesePress.getItem();
+    }
 }

@@ -39,141 +39,116 @@ import net.minecraft.nbt.NBTTagCompound;
 import java.io.IOException;
 import java.util.List;
 
-public class TileEntityCheeseBlock extends GrcTileBase implements IItemHandler, INBTItemSerializable
-{
-	private Cheese cheese = new Cheese();
+public class TileEntityCheeseBlock extends GrcTileBase implements IItemHandler, INBTItemSerializable {
+    private Cheese cheese = new Cheese();
 
-	public List<ItemStack> populateDrops(List<ItemStack> list)
-	{
-		if (cheese.isAged())
-		{
-			final ItemStack stack = cheese.asFullStack();
-			if (stack != null) list.add(stack);
-		}
-		return list;
-	}
+    public List<ItemStack> populateDrops(List<ItemStack> list) {
+        if (cheese.isAged()) {
+            final ItemStack stack = cheese.asFullStack();
+            if (stack != null) list.add(stack);
+        }
+        return list;
+    }
 
-	public Cheese getCheese()
-	{
-		return cheese;
-	}
+    public Cheese getCheese() {
+        return cheese;
+    }
 
-	public int getCheeseId()
-	{
-		return getCheese().getId();
-	}
+    public int getCheeseId() {
+        return getCheese().getId();
+    }
 
-	public int getCheeseStageId()
-	{
-		return getCheese().getStageId();
-	}
+    public int getCheeseStageId() {
+        return getCheese().getStageId();
+    }
 
-	protected void readCheeseFromNBT(NBTTagCompound nbt)
-	{
-		cheese.readFromNBT(nbt);
-	}
+    protected void readCheeseFromNBT(NBTTagCompound nbt) {
+        cheese.readFromNBT(nbt);
+    }
 
-	/**
-	 * When the tileentity is reloaded from an ItemStack
-	 *
-	 * @param nbt  tag compound to read
-	 */
-	@Override
-	public void readFromNBTForItem(NBTTagCompound nbt)
-	{
-		super.readFromNBTForItem(nbt);
-		readCheeseFromNBT(nbt);
-	}
+    /**
+     * When the tileentity is reloaded from an ItemStack
+     *
+     * @param nbt tag compound to read
+     */
+    @Override
+    public void readFromNBTForItem(NBTTagCompound nbt) {
+        super.readFromNBTForItem(nbt);
+        readCheeseFromNBT(nbt);
+    }
 
-	@TileEventHandler(event=TileEventHandler.EventType.NBT_READ)
-	public void readFromNBT_CheeseBlock(NBTTagCompound nbt)
-	{
-		readCheeseFromNBT(nbt);
-	}
+    @TileEventHandler(event = TileEventHandler.EventType.NBT_READ)
+    public void readFromNBT_CheeseBlock(NBTTagCompound nbt) {
+        readCheeseFromNBT(nbt);
+    }
 
-	protected void writeCheeseToNBT(NBTTagCompound nbt)
-	{
-		cheese.writeToNBT(nbt);
-	}
+    protected void writeCheeseToNBT(NBTTagCompound nbt) {
+        cheese.writeToNBT(nbt);
+    }
 
-	@Override
-	public void writeToNBTForItem(NBTTagCompound nbt)
-	{
-		super.writeToNBTForItem(nbt);
-		writeCheeseToNBT(nbt);
-	}
+    @Override
+    public void writeToNBTForItem(NBTTagCompound nbt) {
+        super.writeToNBTForItem(nbt);
+        writeCheeseToNBT(nbt);
+    }
 
-	@TileEventHandler(event=TileEventHandler.EventType.NBT_WRITE)
-	public void writeToNBT_CheeseBlock(NBTTagCompound nbt)
-	{
-		writeCheeseToNBT(nbt);
-	}
+    @TileEventHandler(event = TileEventHandler.EventType.NBT_WRITE)
+    public void writeToNBT_CheeseBlock(NBTTagCompound nbt) {
+        writeCheeseToNBT(nbt);
+    }
 
-	public ItemStack asItemStack()
-	{
-		final ItemStack stack = GrowthCraftMilk.blocks.cheeseBlock.asStack();
-		final NBTTagCompound tag = ItemBlockCheeseBlock.openNBT(stack);
-		writeToNBTForItem(tag);
-		return stack;
-	}
+    public ItemStack asItemStack() {
+        final ItemStack stack = GrowthCraftMilk.blocks.cheeseBlock.asStack();
+        final NBTTagCompound tag = ItemBlockCheeseBlock.openNBT(stack);
+        writeToNBTForItem(tag);
+        return stack;
+    }
 
-	@TileEventHandler(event=TileEventHandler.EventType.NETWORK_READ)
-	public boolean readFromStream_CheeseBlock(ByteBuf stream) throws IOException
-	{
-		cheese.readFromStream(stream);
-		return true;
-	}
+    @TileEventHandler(event = TileEventHandler.EventType.NETWORK_READ)
+    public boolean readFromStream_CheeseBlock(ByteBuf stream) throws IOException {
+        cheese.readFromStream(stream);
+        return true;
+    }
 
-	@TileEventHandler(event=TileEventHandler.EventType.NETWORK_WRITE)
-	public boolean writeToStream_CheeseBlock(ByteBuf stream) throws IOException
-	{
-		cheese.writeToStream(stream);
-		return true;
-	}
+    @TileEventHandler(event = TileEventHandler.EventType.NETWORK_WRITE)
+    public boolean writeToStream_CheeseBlock(ByteBuf stream) throws IOException {
+        cheese.writeToStream(stream);
+        return true;
+    }
 
-	@Override
-	public void updateEntity()
-	{
-		super.updateEntity();
-		if (!worldObj.isRemote)
-		{
-			cheese.update();
-			if (cheese.needClientUpdate)
-			{
-				cheese.needClientUpdate = false;
-				if (cheese.hasSlices())
-				{
-					markForUpdate();
-				}
-				else
-				{
-					worldObj.setBlockToAir(xCoord, yCoord, zCoord);
-				}
-			}
-		}
-	}
+    @Override
+    public void updateEntity() {
+        super.updateEntity();
+        if (!worldObj.isRemote) {
+            cheese.update();
+            if (cheese.needClientUpdate) {
+                cheese.needClientUpdate = false;
+                if (cheese.hasSlices()) {
+                    markForUpdate();
+                } else {
+                    worldObj.setBlockToAir(xCoord, yCoord, zCoord);
+                }
+            }
+        }
+    }
 
-	@Override
-	public boolean tryPlaceItem(IItemHandler.Action action, EntityPlayer player, ItemStack onHand)
-	{
-		if (IItemHandler.Action.RIGHT != action) return false;
-		return cheese.tryWaxing(onHand);
-	}
+    @Override
+    public boolean tryPlaceItem(IItemHandler.Action action, EntityPlayer player, ItemStack onHand) {
+        if (IItemHandler.Action.RIGHT != action) return false;
+        return cheese.tryWaxing(onHand);
+    }
 
-	@Override
-	public boolean tryTakeItem(IItemHandler.Action action, EntityPlayer player, ItemStack onHand)
-	{
-		if (IItemHandler.Action.RIGHT != action) return false;
-		if (cheese.isAged())
-		{
-			final ItemStack stack = cheese.yankSlices(1, true);
-			if (stack != null)
-			{
-				ItemUtils.addStackToPlayer(stack, player, false);
-			}
-			cheese.needClientUpdate |= true;
-			return true;
-		}
-		return false;
-	}
+    @Override
+    public boolean tryTakeItem(IItemHandler.Action action, EntityPlayer player, ItemStack onHand) {
+        if (IItemHandler.Action.RIGHT != action) return false;
+        if (cheese.isAged()) {
+            final ItemStack stack = cheese.yankSlices(1, true);
+            if (stack != null) {
+                ItemUtils.addStackToPlayer(stack, player, false);
+            }
+            cheese.needClientUpdate |= true;
+            return true;
+        }
+        return false;
+    }
 }

@@ -29,12 +29,11 @@ import net.minecraft.nbt.NBTTagCompound;
 
 import javax.annotation.Nonnull;
 
-public interface IEffectRegistry extends IClassRegistry<IEffect>, ILoggable
-{
-	/**
-	 * @param data  - nbt data to load
-	 * @param name  - tag to load
-	 * @return name
-	 */
-	IEffect loadEffectFromNBT(@Nonnull NBTTagCompound data, @Nonnull String name);
+public interface IEffectRegistry extends IClassRegistry<IEffect>, ILoggable {
+    /**
+     * @param data - nbt data to load
+     * @param name - tag to load
+     * @return name
+     */
+    IEffect loadEffectFromNBT(@Nonnull NBTTagCompound data, @Nonnull String name);
 }

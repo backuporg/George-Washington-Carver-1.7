@@ -12,37 +12,32 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PlayerInteractEventPaddy
-{
-	public static Map<Block, Block> paddyBlocks = new HashMap<Block, Block>();
+public class PlayerInteractEventPaddy {
+    public static Map<Block, Block> paddyBlocks = new HashMap<Block, Block>();
 
-	@SubscribeEvent
-	public void PlayerInteract(PlayerInteractEvent event)
-	{
-		if (event.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK)
-		{
-			if (event.face != 1) return;
+    @SubscribeEvent
+    public void PlayerInteract(PlayerInteractEvent event) {
+        if (event.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK) {
+            if (event.face != 1) return;
 
-			final EntityPlayer player = event.entityPlayer;
-			final ItemStack itemstack = player.getCurrentEquippedItem();
-			if (itemstack != null && itemstack.getItem() instanceof ItemSpade)
-			{
-				final World world = player.worldObj;
-				final Block targetBlock = world.getBlockState(event.x, event.y, event.z);
-				final Block paddyBlock = paddyBlocks.get(targetBlock);
-				if (paddyBlock != null)
-				{
-					world.setBlockState(event.x, event.y, event.z, paddyBlock, world.getBlockState(event.x, event.y, event.z), BlockFlags.UPDATE_AND_SYNC);
-					world.playSoundEffect((double)((float)event.x + 0.5F),
-						(double)((float)event.y + 0.5F),
-						(double)((float)event.z + 0.5F),
-						paddyBlock.stepSound.func_150496_b(),
-						(paddyBlock.stepSound.getVolume() + 1.0F) / 2.0F,
-						paddyBlock.stepSound.getPitch() * 0.8F);
+            final EntityPlayer player = event.entityPlayer;
+            final ItemStack itemstack = player.getCurrentEquippedItem();
+            if (itemstack != null && itemstack.getItem() instanceof ItemSpade) {
+                final World world = player.worldObj;
+                final Block targetBlock = world.getBlockState(event.x, event.y, event.z);
+                final Block paddyBlock = paddyBlocks.get(targetBlock);
+                if (paddyBlock != null) {
+                    world.setBlockState(event.x, event.y, event.z, paddyBlock, world.getBlockState(event.x, event.y, event.z), BlockFlags.UPDATE_AND_SYNC);
+                    world.playSoundEffect((double) ((float) event.x + 0.5F),
+                            (double) ((float) event.y + 0.5F),
+                            (double) ((float) event.z + 0.5F),
+                            paddyBlock.stepSound.func_150496_b(),
+                            (paddyBlock.stepSound.getVolume() + 1.0F) / 2.0F,
+                            paddyBlock.stepSound.getPitch() * 0.8F);
 
-					itemstack.damageItem(1, player);
-				}
-			}
-		}
-	}
+                    itemstack.damageItem(1, player);
+                }
+            }
+        }
+    }
 }

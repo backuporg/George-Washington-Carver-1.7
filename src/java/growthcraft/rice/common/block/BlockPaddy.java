@@ -18,122 +18,112 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import javax.annotation.Nonnull;
 import java.util.Random;
 
-public class BlockPaddy extends BlockPaddyBase
-{
-	@SideOnly(Side.CLIENT)
+public class BlockPaddy extends BlockPaddyBase {
+    @SideOnly(Side.CLIENT)
 
-	private final int paddyFieldMax = GrowthCraftRice.getConfig().paddyFieldMax;
+    private final int paddyFieldMax = GrowthCraftRice.getConfig().paddyFieldMax;
 
-	public BlockPaddy()
-	{
-		super(Material.GROUND);
-		this.setHardness(0.5F);
-		//setStepSound(soundTypeGravel);
-		this.setUnlocalizedName("grc.paddyField");
-		this.setCreativeTab(null);
-	}
+    public BlockPaddy() {
+        super(Material.GROUND);
+        this.setHardness(0.5F);
+        //setStepSound(soundTypeGravel);
+        this.setUnlocalizedName("grc.paddyField");
+        this.setCreativeTab(null);
+    }
 
-	@Override
-	public void fillWithRain(World world, BlockPos pos, int meta)
-	{
-		if (world.rand.nextInt(20) == 0)
-		{
-			meta = world.getBlockState(meta);
-			if (meta < paddyFieldMax)
-			{
-				world.setBlockState(pos, meta + 1, BlockFlags.UPDATE_AND_SYNC);
-			}
-		}
-	}
+    @Override
+    public void fillWithRain(World world, BlockPos pos, int meta) {
+        if (world.rand.nextInt(20) == 0) {
+            meta = world.getBlockState(meta);
+            if (meta < paddyFieldMax) {
+                world.setBlockState(pos, meta + 1, BlockFlags.UPDATE_AND_SYNC);
+            }
+        }
+    }
 
-	/**
-	 * Returns the fluid block used to fill this paddy
-	 *
-	 * @return fluid block
-	 */
-	@Override
-	@Nonnull public Block getFluidBlock()
-	{
-		return Blocks.WATER;
-	}
+    /**
+     * Returns the fluid block used to fill this paddy
+     *
+     * @return fluid block
+     */
+    @Override
+    @Nonnull
+    public Block getFluidBlock() {
+        return Blocks.WATER;
+    }
 
-	@Override
-	@Nonnull public Fluid getFillingFluid()
-	{
-		return FluidRegistry.WATER;
-	}
+    @Override
+    @Nonnull
+    public Fluid getFillingFluid() {
+        return FluidRegistry.WATER;
+    }
 
-	@Override
-	public int getMaxPaddyMeta(IBlockAccess world, BlockPos pos)
-	{
-		return paddyFieldMax;
-	}
+    @Override
+    public int getMaxPaddyMeta(IBlockAccess world, BlockPos pos) {
+        return paddyFieldMax;
+    }
 
-	@Override
-	public boolean canConnectPaddyTo(IBlockAccess world, BlockPos pos, int meta) {
-		return false;
-	}
+    @Override
+    public boolean canConnectPaddyTo(IBlockAccess world, BlockPos pos, int meta) {
+        return false;
+    }
 
-	@Override
-	public boolean isBelowFillingFluid(IBlockAccess world, BlockPos pos)
-	{
-		return world.getBlockState(x, y + 1, z).getMaterial() == Material.WATER;
-	}
+    @Override
+    public boolean isBelowFillingFluid(IBlockAccess world, BlockPos pos) {
+        return world.getBlockState(x, y + 1, z).getMaterial() == Material.WATER;
+    }
 
-	/************
-	 * STUFF
-	 ************/
-	@Override
-	@SideOnly(Side.CLIENT)
-	public Item getItem(World world, BlockPos pos)
-	{
-		return Item.getItemFromBlock(Blocks.DIRT);
-	}
+    /************
+     * STUFF
+     ************/
+    @Override
+    @SideOnly(Side.CLIENT)
+    public Item getItem(World world, BlockPos pos) {
+        return Item.getItemFromBlock(Blocks.DIRT);
+    }
 
-	/************
-	 * DROPS
-	 ************/
-	@Override
-	public Item getItemDropped(int meta, Random random, int par3)
-	{
-		return Item.getItemFromBlock(Blocks.DIRT);
-	}
+    /************
+     * DROPS
+     ************/
+    @Override
+    public Item getItemDropped(int meta, Random random, int par3) {
+        return Item.getItemFromBlock(Blocks.DIRT);
+    }
 
-	@Override
-	public int quantityDropped(Random random)
-	{
-		return 1;
-	}
+    @Override
+    public int quantityDropped(Random random) {
+        return 1;
+    }
 
-	/************
-	 * TEXTURES
-	 ************/
-	//@Override
-	//@SideOnly(Side.CLIENT)
+    /************
+     * TEXTURES
+     ************/
+    //@Override
+    //@SideOnly(Side.CLIENT)
 
-	//{
-	//	icons = new IIcon[3];
+    //{
+    //	icons = new IIcon[3];
 //
-	//	icons[0] = reg.registerIcon("dirt");
-	//	icons[1] = reg.registerIcon("farmland_dry");
-	//	icons[2] = reg.registerIcon("farmland_wet");
-	//}
+    //	icons[0] = reg.registerIcon("dirt");
+    //	icons[1] = reg.registerIcon("farmland_dry");
+    //	icons[2] = reg.registerIcon("farmland_wet");
+    //}
 
-	//@Override
-	//@SideOnly(Side.CLIENT)
-	//
-	//{
-	//	if (side == 1)
-	//	{
-	//		if (meta == 0)
-	//		{
-	//			return icons[1];
-	//		}
-	//		else
-	//		{
-	//			return icons[2];
-	//		}
-	//	}
-	//	return icons[0];
-	//}
+    //@Override
+    //@SideOnly(Side.CLIENT)
+    //
+    //{
+    //	if (side == 1)
+    //	{
+    //		if (meta == 0)
+    //		{
+    //			return icons[1];
+    //		}
+    //		else
+    //		{
+    //			return icons[2];
+    //		}
+    //	}
+    //	return icons[0];
+    //}
 }

@@ -28,60 +28,48 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.eventhandler.Event;
 
-public class EventWaterBag extends Event
-{
-	public final ItemStack itemStack;
-	public final World worldObj;
-	public final EntityPlayer player;
+public class EventWaterBag extends Event {
+    public final ItemStack itemStack;
+    public final World worldObj;
+    public final EntityPlayer player;
 
-	public EventWaterBag(ItemStack stack, World world, EntityPlayer ply)
-	{
-		this.itemStack = stack;
-		this.worldObj = world;
-		this.player = ply;
-	}
+    public EventWaterBag(ItemStack stack, World world, EntityPlayer ply) {
+        this.itemStack = stack;
+        this.worldObj = world;
+        this.player = ply;
+    }
 
-	public static class PreDrink extends EventWaterBag
-	{
-		public PreDrink(ItemStack stack, World world, EntityPlayer ply)
-		{
-			super(stack, world, ply);
-		}
+    public static class PreDrink extends EventWaterBag {
+        public PreDrink(ItemStack stack, World world, EntityPlayer ply) {
+            super(stack, world, ply);
+        }
 
-		@Override
-		public boolean isCancelable()
-		{
-			return true;
-		}
-	}
+        @Override
+        public boolean isCancelable() {
+            return true;
+        }
+    }
 
-	public static class PostDrink extends EventWaterBag
-	{
-		public PostDrink(ItemStack stack, World world, EntityPlayer ply)
-		{
-			super(stack, world, ply);
-		}
-	}
+    public static class PostDrink extends EventWaterBag {
+        public PostDrink(ItemStack stack, World world, EntityPlayer ply) {
+            super(stack, world, ply);
+        }
+    }
 
-	public static class PreApplyEffects extends EventWaterBag
-	{
-		public PreApplyEffects(ItemStack stack, World world, EntityPlayer ply)
-		{
-			super(stack, world, ply);
-		}
+    public static class PreApplyEffects extends EventWaterBag {
+        public PreApplyEffects(ItemStack stack, World world, EntityPlayer ply) {
+            super(stack, world, ply);
+        }
 
-		@Override
-		public boolean isCancelable()
-		{
-			return true;
-		}
-	}
+        @Override
+        public boolean isCancelable() {
+            return true;
+        }
+    }
 
-	public static class PostApplyEffects extends EventWaterBag
-	{
-		public PostApplyEffects(ItemStack stack, World world, EntityPlayer ply)
-		{
-			super(stack, world, ply);
-		}
-	}
+    public static class PostApplyEffects extends EventWaterBag {
+        public PostApplyEffects(ItemStack stack, World world, EntityPlayer ply) {
+            super(stack, world, ply);
+        }
+    }
 }

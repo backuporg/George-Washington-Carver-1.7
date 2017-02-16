@@ -25,14 +25,13 @@ package growthcraft.core.integration.forestry;
 
 import net.minecraftforge.fml.common.Loader;
 
-public class ForestryPlatform
-{
-	public static final String MOD_ID = "Forestry";
+public class ForestryPlatform {
+    public static final String MOD_ID = "Forestry";
 
-	private ForestryPlatform() {};
+    private ForestryPlatform() {
+    }
 
-	public static boolean isLoaded()
-	{
-		return Loader.isModLoaded(MOD_ID);
-	}
+    public static boolean isLoaded() {
+        return Loader.isModLoaded(MOD_ID);
+    }
 }

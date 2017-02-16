@@ -28,15 +28,14 @@ import growthcraft.api.cellar.booze.effect.EffectTipsy;
 import growthcraft.api.core.CoreRegistry;
 import growthcraft.api.core.IEffectRegistry;
 
-public class CellarEffects
-{
-	private CellarEffects() {}
+public class CellarEffects {
+    private CellarEffects() {
+    }
 
-	public static void init()
-	{
-		final IEffectRegistry reg = CoreRegistry.instance().getEffectsRegistry();
-		reg.register("booze_effect", BoozeEffect.class);
-		reg.register("booze_effect_list", BoozeEffect.BoozeEffectList.class);
-		reg.register("tipsy", EffectTipsy.class);
-	}
+    public static void init() {
+        final IEffectRegistry reg = CoreRegistry.instance().getEffectsRegistry();
+        reg.register("booze_effect", BoozeEffect.class);
+        reg.register("booze_effect_list", BoozeEffect.BoozeEffectList.class);
+        reg.register("tipsy", EffectTipsy.class);
+    }
 }

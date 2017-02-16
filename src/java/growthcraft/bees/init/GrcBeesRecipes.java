@@ -48,242 +48,237 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
-public class GrcBeesRecipes extends GrcModuleBase
-{
-	private void registerCellarRecipes()
-	{
-		final int fermentTime = GrowthCraftCellar.getConfig().fermentTime;
-		final FluidStack[] fs = new FluidStack[GrowthCraftBees.fluids.honeyMeadBooze.length];
-		for (int i = 0; i < GrowthCraftBees.fluids.honeyMeadBooze.length; ++i)
-		{
-			fs[i] = new FluidStack(GrowthCraftBees.fluids.honeyMeadBooze[i], 1);
-		}
+public class GrcBeesRecipes extends GrcModuleBase {
+    private void registerCellarRecipes() {
+        final int fermentTime = GrowthCraftCellar.getConfig().fermentTime;
+        final FluidStack[] fs = new FluidStack[GrowthCraftBees.fluids.honeyMeadBooze.length];
+        for (int i = 0; i < GrowthCraftBees.fluids.honeyMeadBooze.length; ++i) {
+            fs[i] = new FluidStack(GrowthCraftBees.fluids.honeyMeadBooze[i], 1);
+        }
 
-		GrowthCraftCellar.boozeBuilderFactory.create(GrowthCraftBees.fluids.honeyMeadBooze[0])
-			.tags(BoozeTag.YOUNG, BeesFluidTag.MEAD);
+        GrowthCraftCellar.boozeBuilderFactory.create(GrowthCraftBees.fluids.honeyMeadBooze[0])
+                .tags(BoozeTag.YOUNG, BeesFluidTag.MEAD);
 
-		final TaggedFluidStacks youngMead = new TaggedFluidStacks(1, "young", "mead");
+        final TaggedFluidStacks youngMead = new TaggedFluidStacks(1, "young", "mead");
 
-		GrowthCraftCellar.boozeBuilderFactory.create(GrowthCraftBees.fluids.honeyMeadBooze[1])
-			.tags(BoozeTag.FERMENTED, BeesFluidTag.MEAD)
-			.fermentsFrom(youngMead, new OreItemStacks("yeastBrewers"), fermentTime)
-			.fermentsFrom(youngMead, new ItemStack(Items.NETHER_WART), (int)(fermentTime * 0.66))
-			.getEffect()
-				.setTipsy(BoozeUtils.alcoholToTipsy(0.15f), TickUtils.seconds(90))
-				.addPotionEntry(MobEffects.REGENERATION, TickUtils.seconds(90), 0);
+        GrowthCraftCellar.boozeBuilderFactory.create(GrowthCraftBees.fluids.honeyMeadBooze[1])
+                .tags(BoozeTag.FERMENTED, BeesFluidTag.MEAD)
+                .fermentsFrom(youngMead, new OreItemStacks("yeastBrewers"), fermentTime)
+                .fermentsFrom(youngMead, new ItemStack(Items.NETHER_WART), (int) (fermentTime * 0.66))
+                .getEffect()
+                .setTipsy(BoozeUtils.alcoholToTipsy(0.15f), TickUtils.seconds(90))
+                .addPotionEntry(MobEffects.REGENERATION, TickUtils.seconds(90), 0);
 
-		GrowthCraftCellar.boozeBuilderFactory.create(GrowthCraftBees.fluids.honeyMeadBooze[2])
-			.tags(BoozeTag.FERMENTED, BoozeTag.POTENT, BeesFluidTag.MEAD)
-			.fermentsFrom(fs[1], new OreItemStacks("dustGlowstone"), fermentTime)
-			.fermentsFrom(fs[3], new OreItemStacks("dustGlowstone"), fermentTime)
-			.getEffect()
-				.setTipsy(BoozeUtils.alcoholToTipsy(0.17f), TickUtils.seconds(90))
-				.addPotionEntry(MobEffects.REGENERATION, TickUtils.seconds(90), 0);
+        GrowthCraftCellar.boozeBuilderFactory.create(GrowthCraftBees.fluids.honeyMeadBooze[2])
+                .tags(BoozeTag.FERMENTED, BoozeTag.POTENT, BeesFluidTag.MEAD)
+                .fermentsFrom(fs[1], new OreItemStacks("dustGlowstone"), fermentTime)
+                .fermentsFrom(fs[3], new OreItemStacks("dustGlowstone"), fermentTime)
+                .getEffect()
+                .setTipsy(BoozeUtils.alcoholToTipsy(0.17f), TickUtils.seconds(90))
+                .addPotionEntry(MobEffects.REGENERATION, TickUtils.seconds(90), 0);
 
-		GrowthCraftCellar.boozeBuilderFactory.create(GrowthCraftBees.fluids.honeyMeadBooze[3])
-			.tags(BoozeTag.FERMENTED, BoozeTag.EXTENDED, BeesFluidTag.MEAD)
-			.fermentsFrom(fs[1], new OreItemStacks("dustRedstone"), fermentTime)
-			.fermentsFrom(fs[2], new OreItemStacks("dustRedstone"), fermentTime)
-			.getEffect()
-				.setTipsy(BoozeUtils.alcoholToTipsy(0.15f), TickUtils.seconds(90))
-				.addPotionEntry(MobEffects.REGENERATION, TickUtils.seconds(90), 0);
+        GrowthCraftCellar.boozeBuilderFactory.create(GrowthCraftBees.fluids.honeyMeadBooze[3])
+                .tags(BoozeTag.FERMENTED, BoozeTag.EXTENDED, BeesFluidTag.MEAD)
+                .fermentsFrom(fs[1], new OreItemStacks("dustRedstone"), fermentTime)
+                .fermentsFrom(fs[2], new OreItemStacks("dustRedstone"), fermentTime)
+                .getEffect()
+                .setTipsy(BoozeUtils.alcoholToTipsy(0.15f), TickUtils.seconds(90))
+                .addPotionEntry(MobEffects.REGENERATION, TickUtils.seconds(90), 0);
 
-		GrowthCraftCellar.boozeBuilderFactory.create(GrowthCraftBees.fluids.honeyMeadBooze[4])
-			.tags(BoozeTag.FERMENTED, BoozeTag.HYPER_EXTENDED, BeesFluidTag.MEAD)
-			.fermentsFrom(fs[2], new OreItemStacks("yeastEthereal"), fermentTime)
-			.fermentsFrom(fs[3], new OreItemStacks("yeastEthereal"), fermentTime)
-			.getEffect()
-				.setTipsy(BoozeUtils.alcoholToTipsy(0.15f), TickUtils.seconds(90))
-				.addPotionEntry(MobEffects.REGENERATION, TickUtils.seconds(90), 0);
+        GrowthCraftCellar.boozeBuilderFactory.create(GrowthCraftBees.fluids.honeyMeadBooze[4])
+                .tags(BoozeTag.FERMENTED, BoozeTag.HYPER_EXTENDED, BeesFluidTag.MEAD)
+                .fermentsFrom(fs[2], new OreItemStacks("yeastEthereal"), fermentTime)
+                .fermentsFrom(fs[3], new OreItemStacks("yeastEthereal"), fermentTime)
+                .getEffect()
+                .setTipsy(BoozeUtils.alcoholToTipsy(0.15f), TickUtils.seconds(90))
+                .addPotionEntry(MobEffects.REGENERATION, TickUtils.seconds(90), 0);
 
-		GrowthCraftCellar.boozeBuilderFactory.create(GrowthCraftBees.fluids.honeyMeadBooze[5])
-			.tags(BoozeTag.FERMENTED, BoozeTag.INTOXICATED, BeesFluidTag.MEAD)
-			.fermentsFrom(fs[2], new OreItemStacks("yeastOrigin"), fermentTime)
-			.fermentsFrom(fs[3], new OreItemStacks("yeastOrigin"), fermentTime)
-			.getEffect()
-				.setTipsy(BoozeUtils.alcoholToTipsy(0.15f * 1.5f), TickUtils.seconds(90))
-				.addEffect(new EffectWeightedRandomList()
-					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.REGENERATION, TickUtils.seconds(90), 2)))
-					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.POISON, TickUtils.seconds(90), 2)))
-				);
+        GrowthCraftCellar.boozeBuilderFactory.create(GrowthCraftBees.fluids.honeyMeadBooze[5])
+                .tags(BoozeTag.FERMENTED, BoozeTag.INTOXICATED, BeesFluidTag.MEAD)
+                .fermentsFrom(fs[2], new OreItemStacks("yeastOrigin"), fermentTime)
+                .fermentsFrom(fs[3], new OreItemStacks("yeastOrigin"), fermentTime)
+                .getEffect()
+                .setTipsy(BoozeUtils.alcoholToTipsy(0.15f * 1.5f), TickUtils.seconds(90))
+                .addEffect(new EffectWeightedRandomList()
+                        .add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.REGENERATION, TickUtils.seconds(90), 2)))
+                        .add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.POISON, TickUtils.seconds(90), 2)))
+                );
 
-		GrowthCraftCellar.boozeBuilderFactory.create(GrowthCraftBees.fluids.honeyMeadBooze[6])
-			.tags(BoozeTag.FERMENTED, BoozeTag.POISONED, BeesFluidTag.MEAD)
-			.fermentsFrom(fs[0], new OreItemStacks("yeastPoison", 1), fermentTime)
-			.fermentsFrom(fs[1], new OreItemStacks("yeastPoison", 1), fermentTime)
-			.fermentsFrom(fs[2], new OreItemStacks("yeastPoison", 1), fermentTime)
-			.fermentsFrom(fs[3], new OreItemStacks("yeastPoison", 1), fermentTime)
-			.fermentsFrom(fs[4], new OreItemStacks("yeastPoison", 1), fermentTime)
-			.fermentsFrom(fs[5], new OreItemStacks("yeastPoison", 1), fermentTime)
-			.getEffect()
-				.setTipsy(BoozeUtils.alcoholToTipsy(0.15f), TickUtils.seconds(90))
-				.createPotionEntry(MobEffects.POISON, TickUtils.seconds(90), 0).toggleDescription(!GrowthCraftCore.getConfig().hidePoisonedBooze);
-	}
+        GrowthCraftCellar.boozeBuilderFactory.create(GrowthCraftBees.fluids.honeyMeadBooze[6])
+                .tags(BoozeTag.FERMENTED, BoozeTag.POISONED, BeesFluidTag.MEAD)
+                .fermentsFrom(fs[0], new OreItemStacks("yeastPoison", 1), fermentTime)
+                .fermentsFrom(fs[1], new OreItemStacks("yeastPoison", 1), fermentTime)
+                .fermentsFrom(fs[2], new OreItemStacks("yeastPoison", 1), fermentTime)
+                .fermentsFrom(fs[3], new OreItemStacks("yeastPoison", 1), fermentTime)
+                .fermentsFrom(fs[4], new OreItemStacks("yeastPoison", 1), fermentTime)
+                .fermentsFrom(fs[5], new OreItemStacks("yeastPoison", 1), fermentTime)
+                .getEffect()
+                .setTipsy(BoozeUtils.alcoholToTipsy(0.15f), TickUtils.seconds(90))
+                .createPotionEntry(MobEffects.POISON, TickUtils.seconds(90), 0).toggleDescription(!GrowthCraftCore.getConfig().hidePoisonedBooze);
+    }
 
-	@Override
-	public void register()
-	{
-		final ItemStack emptyComb = GrowthCraftBees.items.honeyCombEmpty.asStack();
-		GameRegistry.addShapelessRecipe(EnumBeesWax.NORMAL.asStack(),
-			emptyComb, emptyComb, emptyComb,
-			emptyComb, emptyComb, emptyComb,
-			emptyComb, emptyComb, emptyComb);
+    @Override
+    public void register() {
+        final ItemStack emptyComb = GrowthCraftBees.items.honeyCombEmpty.asStack();
+        GameRegistry.addShapelessRecipe(EnumBeesWax.NORMAL.asStack(),
+                emptyComb, emptyComb, emptyComb,
+                emptyComb, emptyComb, emptyComb,
+                emptyComb, emptyComb, emptyComb);
 
-		GameRegistry.addRecipe(new ShapelessOreRecipe(EnumBeesWax.BLACK.asStack(),
-			EnumBeesWax.NORMAL.asStack(), "dyeBlack"));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(EnumBeesWax.BLACK.asStack(),
+                EnumBeesWax.NORMAL.asStack(), "dyeBlack"));
 
-		GameRegistry.addRecipe(new ShapelessOreRecipe(EnumBeesWax.RED.asStack(),
-			EnumBeesWax.NORMAL.asStack(), "dyeRed"));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(EnumBeesWax.RED.asStack(),
+                EnumBeesWax.NORMAL.asStack(), "dyeRed"));
 
-		registerCellarRecipes();
-	}
+        registerCellarRecipes();
+    }
 
-	@Override
-	public void postInit()
-	{
-		final ItemStack meadBucket = GrowthCraftBees.fluids.honeyMeadBuckets[0].asStack();
-		final ItemStack meadBottle = GrowthCraftBees.fluids.honeyMeadBottle.asStack();
-		final int bottleCapacity = GrowthCraftCore.getConfig().bottleCapacity;
+    @Override
+    public void postInit() {
+        final ItemStack meadBucket = GrowthCraftBees.fluids.honeyMeadBuckets[0].asStack();
+        final ItemStack meadBottle = GrowthCraftBees.fluids.honeyMeadBottle.asStack();
+        final int bottleCapacity = GrowthCraftCore.getConfig().bottleCapacity;
 
-		// Tagged Fluid compat
-		/// Buckets
-		GameRegistry.addRecipe(new ShapelessMultiRecipe(
-				meadBucket,
-				Items.BUCKET,
-				new TaggedFluidStacks(1000, "honey"),
-				new FluidStack(FluidRegistry.WATER, 1000)) {
-			@Override
-			public ItemStack[] getRemainingItems(InventoryCrafting inv) {
-				return new ItemStack[0];
-			}
-		});
+        // Tagged Fluid compat
+        /// Buckets
+        GameRegistry.addRecipe(new ShapelessMultiRecipe(
+                meadBucket,
+                Items.BUCKET,
+                new TaggedFluidStacks(1000, "honey"),
+                new FluidStack(FluidRegistry.WATER, 1000)) {
+            @Override
+            public ItemStack[] getRemainingItems(InventoryCrafting inv) {
+                return new ItemStack[0];
+            }
+        });
 
-		GameRegistry.addRecipe(new ShapelessMultiRecipe(
-				GrowthCraftBees.fluids.honeyMeadBottle.asStack(3),
-				Items.GLASS_BOTTLE,
-				Items.GLASS_BOTTLE,
-				Items.GLASS_BOTTLE,
-				new TaggedFluidStacks(1000, "honey"),
-				new FluidStack(FluidRegistry.WATER, 1000)) {
-			@Override
-			public ItemStack[] getRemainingItems(InventoryCrafting inv) {
-				return new ItemStack[0];
-			}
-		});
+        GameRegistry.addRecipe(new ShapelessMultiRecipe(
+                GrowthCraftBees.fluids.honeyMeadBottle.asStack(3),
+                Items.GLASS_BOTTLE,
+                Items.GLASS_BOTTLE,
+                Items.GLASS_BOTTLE,
+                new TaggedFluidStacks(1000, "honey"),
+                new FluidStack(FluidRegistry.WATER, 1000)) {
+            @Override
+            public ItemStack[] getRemainingItems(InventoryCrafting inv) {
+                return new ItemStack[0];
+            }
+        });
 
-		/// Bottles
-		GameRegistry.addRecipe(new ShapelessMultiRecipe(
-				meadBottle,
-				Items.GLASS_BOTTLE,
-				new TaggedFluidStacks(bottleCapacity, "honey"),
-				new FluidStack(FluidRegistry.WATER, bottleCapacity)) {
-			@Override
-			public ItemStack[] getRemainingItems(InventoryCrafting inv) {
-				return new ItemStack[0];
-			}
-		});
+        /// Bottles
+        GameRegistry.addRecipe(new ShapelessMultiRecipe(
+                meadBottle,
+                Items.GLASS_BOTTLE,
+                new TaggedFluidStacks(bottleCapacity, "honey"),
+                new FluidStack(FluidRegistry.WATER, bottleCapacity)) {
+            @Override
+            public ItemStack[] getRemainingItems(InventoryCrafting inv) {
+                return new ItemStack[0];
+            }
+        });
 
-		// Ore Dictionary compat
-		/// Buckets
-		GameRegistry.addRecipe(new ShapelessMultiRecipe(
-				meadBucket,
-				Items.BUCKET,
-				new OreItemStacks("bucketHoney"),
-				new FluidStack(FluidRegistry.WATER, 1000)) {
-			@Override
-			public ItemStack[] getRemainingItems(InventoryCrafting inv) {
-				return new ItemStack[0];
-			}
-		});
+        // Ore Dictionary compat
+        /// Buckets
+        GameRegistry.addRecipe(new ShapelessMultiRecipe(
+                meadBucket,
+                Items.BUCKET,
+                new OreItemStacks("bucketHoney"),
+                new FluidStack(FluidRegistry.WATER, 1000)) {
+            @Override
+            public ItemStack[] getRemainingItems(InventoryCrafting inv) {
+                return new ItemStack[0];
+            }
+        });
 
-		GameRegistry.addRecipe(new ShapelessMultiRecipe(
-				meadBottle,
-				Items.GLASS_BOTTLE,
-				new OreItemStacks("bottleHoney"),
-				new FluidStack(FluidRegistry.WATER, bottleCapacity)) {
-			@Override
-			public ItemStack[] getRemainingItems(InventoryCrafting inv) {
-				return new ItemStack[0];
-			}
-		});
+        GameRegistry.addRecipe(new ShapelessMultiRecipe(
+                meadBottle,
+                Items.GLASS_BOTTLE,
+                new OreItemStacks("bottleHoney"),
+                new FluidStack(FluidRegistry.WATER, bottleCapacity)) {
+            @Override
+            public ItemStack[] getRemainingItems(InventoryCrafting inv) {
+                return new ItemStack[0];
+            }
+        });
 
-		// Transfer recipes
-		/// To Honey Jar from `bucketHoney`
-		GameRegistry.addRecipe(new ShapelessMultiRecipe(
-				GrowthCraftBees.items.honeyJar.asStack(),
-				Blocks.FLOWER_POT,
-				new TaggedFluidStacks(1000, "honey")
-		) {
-			@Override
-			public ItemStack[] getRemainingItems(InventoryCrafting inv) {
-				return new ItemStack[0];
-			}
-		});
+        // Transfer recipes
+        /// To Honey Jar from `bucketHoney`
+        GameRegistry.addRecipe(new ShapelessMultiRecipe(
+                GrowthCraftBees.items.honeyJar.asStack(),
+                Blocks.FLOWER_POT,
+                new TaggedFluidStacks(1000, "honey")
+        ) {
+            @Override
+            public ItemStack[] getRemainingItems(InventoryCrafting inv) {
+                return new ItemStack[0];
+            }
+        });
 
-		GameRegistry.addRecipe(new ShapelessOreRecipe(
-			GrowthCraftBees.items.honeyJar.asStack(),
-			Blocks.FLOWER_POT,
-			"bucketHoney"
-		));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(
+                GrowthCraftBees.items.honeyJar.asStack(),
+                Blocks.FLOWER_POT,
+                "bucketHoney"
+        ));
 
-		/// To Honey Bucket from `bucketHoney`
-		GameRegistry.addRecipe(new ShapelessMultiRecipe(
-				GrowthCraftBees.fluids.honey.asBucketItemStack(),
-				Items.BUCKET,
-				new TaggedFluidStacks(1000, "honey")
-		) {
-			@Override
-			public ItemStack[] getRemainingItems(InventoryCrafting inv) {
-				return new ItemStack[0];
-			}
-		});
+        /// To Honey Bucket from `bucketHoney`
+        GameRegistry.addRecipe(new ShapelessMultiRecipe(
+                GrowthCraftBees.fluids.honey.asBucketItemStack(),
+                Items.BUCKET,
+                new TaggedFluidStacks(1000, "honey")
+        ) {
+            @Override
+            public ItemStack[] getRemainingItems(InventoryCrafting inv) {
+                return new ItemStack[0];
+            }
+        });
 
-		GameRegistry.addRecipe(new ShapelessOreRecipe(
-			GrowthCraftBees.fluids.honey.asBucketItemStack(),
-			"bucketHoney",
-			Items.BUCKET
-		));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(
+                GrowthCraftBees.fluids.honey.asBucketItemStack(),
+                "bucketHoney",
+                Items.BUCKET
+        ));
 
-		/// To Honey Bottle from `bucketHoney`
-		GameRegistry.addRecipe(new ShapelessMultiRecipe(
-				GrowthCraftBees.fluids.honey.asBottleItemStack(3),
-				Items.GLASS_BOTTLE,
-				Items.GLASS_BOTTLE,
-				Items.GLASS_BOTTLE,
-				new TaggedFluidStacks(1000, "honey")
-		) {
-			@Override
-			public ItemStack[] getRemainingItems(InventoryCrafting inv) {
-				return new ItemStack[0];
-			}
-		});
+        /// To Honey Bottle from `bucketHoney`
+        GameRegistry.addRecipe(new ShapelessMultiRecipe(
+                GrowthCraftBees.fluids.honey.asBottleItemStack(3),
+                Items.GLASS_BOTTLE,
+                Items.GLASS_BOTTLE,
+                Items.GLASS_BOTTLE,
+                new TaggedFluidStacks(1000, "honey")
+        ) {
+            @Override
+            public ItemStack[] getRemainingItems(InventoryCrafting inv) {
+                return new ItemStack[0];
+            }
+        });
 
-		GameRegistry.addRecipe(new ShapelessOreRecipe(
-			GrowthCraftBees.fluids.honey.asBottleItemStack(3),
-			Items.GLASS_BOTTLE,
-			Items.GLASS_BOTTLE,
-			Items.GLASS_BOTTLE,
-			"bucketHoney"
-		));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(
+                GrowthCraftBees.fluids.honey.asBottleItemStack(3),
+                Items.GLASS_BOTTLE,
+                Items.GLASS_BOTTLE,
+                Items.GLASS_BOTTLE,
+                "bucketHoney"
+        ));
 
-		/// To Honey Bottle from 3 `bottleHoney`
-		GameRegistry.addRecipe(new ShapelessOreRecipe(
-			GrowthCraftBees.fluids.honey.asBottleItemStack(3),
-			Items.GLASS_BOTTLE,
-			Items.GLASS_BOTTLE,
-			Items.GLASS_BOTTLE,
-			"bottleHoney",
-			"bottleHoney",
-			"bottleHoney"
-		));
+        /// To Honey Bottle from 3 `bottleHoney`
+        GameRegistry.addRecipe(new ShapelessOreRecipe(
+                GrowthCraftBees.fluids.honey.asBottleItemStack(3),
+                Items.GLASS_BOTTLE,
+                Items.GLASS_BOTTLE,
+                Items.GLASS_BOTTLE,
+                "bottleHoney",
+                "bottleHoney",
+                "bottleHoney"
+        ));
 
-		/// To Honey Bucket from 3 `bottleHoney`
-		GameRegistry.addRecipe(new ShapelessOreRecipe(
-			GrowthCraftBees.fluids.honey.asBucketItemStack(),
-			Items.BUCKET,
-			"bottleHoney",
-			"bottleHoney",
-			"bottleHoney"
-		));
-	}
+        /// To Honey Bucket from 3 `bottleHoney`
+        GameRegistry.addRecipe(new ShapelessOreRecipe(
+                GrowthCraftBees.fluids.honey.asBucketItemStack(),
+                Items.BUCKET,
+                "bottleHoney",
+                "bottleHoney",
+                "bottleHoney"
+        ));
+    }
 }

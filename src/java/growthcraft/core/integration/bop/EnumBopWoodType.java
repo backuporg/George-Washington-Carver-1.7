@@ -29,48 +29,43 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.Locale;
 
-public enum EnumBopWoodType
-{
-	SACRED_OAK,
-	CHERRY,
-	DARK,
-	FIR,
-	ETHEREAL,
-	MAGIC,
-	MANGROVE,
-	PALM,
-	REDWOOD,
-	WILLOW,
-	BAMBOO_THATCHING,
-	PINE,
-	HELL_BARK,
-	JACARANDA,
-	MAHOGANY;
+public enum EnumBopWoodType {
+    SACRED_OAK,
+    CHERRY,
+    DARK,
+    FIR,
+    ETHEREAL,
+    MAGIC,
+    MANGROVE,
+    PALM,
+    REDWOOD,
+    WILLOW,
+    BAMBOO_THATCHING,
+    PINE,
+    HELL_BARK,
+    JACARANDA,
+    MAHOGANY;
 
-	public static final EnumBopWoodType[] VALUES = values();
+    public static final EnumBopWoodType[] VALUES = values();
 
-	public final String name;
-	public final int meta;
+    public final String name;
+    public final int meta;
 
-	private EnumBopWoodType()
-	{
-		this.name = name().toLowerCase(Locale.ENGLISH);
-		this.meta = ordinal();
-	}
+    EnumBopWoodType() {
+        this.name = name().toLowerCase(Locale.ENGLISH);
+        this.meta = ordinal();
+    }
 
-	public ItemStack asPlanksItemStack(int size)
-	{
-		final Block block = GameRegistry.findBlock(BopPlatform.MOD_ID, "planks");
-		if (block != null)
-		{
-			final ItemStack result = new ItemStack(block, size, meta);
-			return result;
-		}
-		return null;
-	}
+    public ItemStack asPlanksItemStack(int size) {
+        final Block block = GameRegistry.findBlock(BopPlatform.MOD_ID, "planks");
+        if (block != null) {
+            final ItemStack result = new ItemStack(block, size, meta);
+            return result;
+        }
+        return null;
+    }
 
-	public ItemStack asPlanksItemStack()
-	{
-		return asPlanksItemStack(1);
-	}
+    public ItemStack asPlanksItemStack() {
+        return asPlanksItemStack(1);
+    }
 }

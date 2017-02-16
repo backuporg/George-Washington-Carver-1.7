@@ -12,47 +12,40 @@ import squeek.applecore.api.AppleCoreAPI;
 
 import java.util.Random;
 
-public class AppleCore extends ModIntegrationBase
-{
-	public static final String MOD_ID = "AppleCore";
-	private static boolean appleCoreLoaded;
+public class AppleCore extends ModIntegrationBase {
+    public static final String MOD_ID = "AppleCore";
+    private static boolean appleCoreLoaded;
 
-	public AppleCore()
-	{
-		super(GrowthCraftCore.MOD_ID, MOD_ID);
-	}
+    public AppleCore() {
+        super(GrowthCraftCore.MOD_ID, MOD_ID);
+    }
 
-	@Override
-	public void doInit()
-	{
-		appleCoreLoaded = Loader.isModLoaded(modID);
-	}
+    // abstract the AppleCoreAPI reference into an Optional.Method so that AppleCore is not a hard dependency
+    @Optional.Method(modid = MOD_ID)
+    private static Event.Result validateGrowthTick_AC(Block block, World world, BlockPos pos, Random random, IBlockState state) {
+        return AppleCoreAPI.dispatcher.validatePlantGrowth(block, world, pos, state, random);
+    }
 
-	// abstract the AppleCoreAPI reference into an Optional.Method so that AppleCore is not a hard dependency
-	@Optional.Method(modid=MOD_ID)
-	private static Event.Result validateGrowthTick_AC(Block block, World world, BlockPos pos, Random random, IBlockState state)
-	{
-		return AppleCoreAPI.dispatcher.validatePlantGrowth(block, world, pos, state, random);
-	}
+    public static Event.Result validateGrowthTick(Block block, World world, BlockPos pos, Random random, IBlockState state) {
+        if (appleCoreLoaded)
+            return validateGrowthTick_AC(block, world, pos, random, state);
 
-	public static Event.Result validateGrowthTick(Block block, World world, BlockPos pos, Random random, IBlockState state)
-	{
-		if (appleCoreLoaded)
-			return validateGrowthTick_AC(block, world, pos, random, state);
+        return Event.Result.DEFAULT;
+    }
 
-		return Event.Result.DEFAULT;
-	}
+    // abstract the AppleCoreAPI reference into an Optional.Method so that AppleCore is not a hard dependency
+    @Optional.Method(modid = MOD_ID)
+    private static void announceGrowthTick_AC(Block block, World world, BlockPos pos, int previousMetadata, IBlockState state) {
+        AppleCoreAPI.dispatcher.announcePlantGrowth(block, world, pos, state);
+    }
 
-	// abstract the AppleCoreAPI reference into an Optional.Method so that AppleCore is not a hard dependency
-	@Optional.Method(modid=MOD_ID)
-	private static void announceGrowthTick_AC(Block block, World world, BlockPos pos, int previousMetadata, IBlockState state)
-	{
-		AppleCoreAPI.dispatcher.announcePlantGrowth(block, world, pos, state);
-	}
+    public static void announceGrowthTick(Block block, World world, BlockPos pos, int previousMetadata, IBlockState state) {
+        if (appleCoreLoaded)
+            announceGrowthTick_AC(block, world, pos, previousMetadata, state);
+    }
 
-	public static void announceGrowthTick(Block block, World world, BlockPos pos, int previousMetadata, IBlockState state)
-	{
-		if (appleCoreLoaded)
-			announceGrowthTick_AC(block, world, pos, previousMetadata, state);
-	}
+    @Override
+    public void doInit() {
+        appleCoreLoaded = Loader.isModLoaded(modID);
+    }
 }

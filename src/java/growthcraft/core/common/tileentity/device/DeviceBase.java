@@ -33,109 +33,91 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class DeviceBase implements INBTSerializableContext, IStreamable
-{
-	protected Random random = new Random();
-	protected TileEntity parent;
+public class DeviceBase implements INBTSerializableContext, IStreamable {
+    protected Random random = new Random();
+    protected TileEntity parent;
 
-	public DeviceBase(TileEntity te)
-	{
-		this.parent = te;
-	}
+    public DeviceBase(TileEntity te) {
+        this.parent = te;
+    }
 
-	public TileEntity getTileEntity()
-	{
-		return parent;
-	}
+    public TileEntity getTileEntity() {
+        return parent;
+    }
 
-	public World getWorld()
-	{
-		return parent.getWorldObj();
-	}
+    public World getWorld() {
+        return parent.getWorldObj();
+    }
 
-	public int getMetadata()
-	{
-		return parent.getBlockState();
-	}
+    public int getMetadata() {
+        return parent.getBlockState();
+    }
 
-	public IInventory getInventory()
-	{
-		if (parent instanceof IInventory)
-		{
-			return (IInventory)parent;
-		}
-		return null;
-	}
+    public IInventory getInventory() {
+        if (parent instanceof IInventory) {
+            return (IInventory) parent;
+        }
+        return null;
+    }
 
-	protected void markForUpdate()
-	{
-		getWorld().notifyBlockUpdate(parent.xCoord, parent.yCoord, parent.zCoord);
-	}
+    protected void markForUpdate() {
+        getWorld().notifyBlockUpdate(parent.xCoord, parent.yCoord, parent.zCoord);
+    }
 
-	protected void markDirty()
-	{
-		parent.markDirty();
-	}
+    protected void markDirty() {
+        parent.markDirty();
+    }
 
-	/**
-	 * @param data - nbt data to read from
-	 */
-	public void readFromNBT(NBTTagCompound data)
-	{
-	}
+    /**
+     * @param data - nbt data to read from
+     */
+    public void readFromNBT(NBTTagCompound data) {
+    }
 
-	/**
-	 * @param data - parent nbt data to read from
-	 * @param name - sub tag to read
-	 */
-	@Override
-	public void readFromNBT(NBTTagCompound data, String name)
-	{
-		if (data.hasKey(name))
-		{
-			final NBTTagCompound tag = data.getCompoundTag(name);
-			readFromNBT(tag);
-		}
-		else
-		{
-			// LOG error
-		}
-	}
+    /**
+     * @param data - parent nbt data to read from
+     * @param name - sub tag to read
+     */
+    @Override
+    public void readFromNBT(NBTTagCompound data, String name) {
+        if (data.hasKey(name)) {
+            final NBTTagCompound tag = data.getCompoundTag(name);
+            readFromNBT(tag);
+        } else {
+            // LOG error
+        }
+    }
 
-	/**
-	 * @param data - nbt to write to
-	 */
-	public void writeToNBT(NBTTagCompound data)
-	{
-	}
+    /**
+     * @param data - nbt to write to
+     */
+    public void writeToNBT(NBTTagCompound data) {
+    }
 
-	/**
-	 * @param data - nbt to write to
-	 * @param name - sub tag nbt to write to
-	 */
-	@Override
-	public void writeToNBT(NBTTagCompound data, String name)
-	{
-		final NBTTagCompound target = new NBTTagCompound();
-		writeToNBT(target);
-		data.setTag(name, target);
-	}
+    /**
+     * @param data - nbt to write to
+     * @param name - sub tag nbt to write to
+     */
+    @Override
+    public void writeToNBT(NBTTagCompound data, String name) {
+        final NBTTagCompound target = new NBTTagCompound();
+        writeToNBT(target);
+        data.setTag(name, target);
+    }
 
-	/**
-	 * @param buf - buffer to read from
-	 */
-	@Override
-	public boolean readFromStream(ByteBuf buf)
-	{
-		return false;
-	}
+    /**
+     * @param buf - buffer to read from
+     */
+    @Override
+    public boolean readFromStream(ByteBuf buf) {
+        return false;
+    }
 
-	/**
-	 * @param buf - buffer to write to
-	 */
-	@Override
-	public boolean writeToStream(ByteBuf buf)
-	{
-		return false;
-	}
+    /**
+     * @param buf - buffer to write to
+     */
+    @Override
+    public boolean writeToStream(ByteBuf buf) {
+        return false;
+    }
 }

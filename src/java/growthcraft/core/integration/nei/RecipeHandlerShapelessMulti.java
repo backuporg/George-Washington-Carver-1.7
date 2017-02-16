@@ -16,243 +16,208 @@ import net.minecraftforge.fluids.FluidStack;
 
 import java.util.*;
 
-public class RecipeHandlerShapelessMulti extends ShapedRecipeHandler
-{
-	public int[][] stackorder = new int[][] { { 0, 0 }, { 1, 0 }, { 0, 1 },
-			{ 1, 1 }, { 0, 2 }, { 1, 2 }, { 2, 0 }, { 2, 1 }, { 2, 2 } };
+public class RecipeHandlerShapelessMulti extends ShapedRecipeHandler {
+    public int[][] stackorder = new int[][]{{0, 0}, {1, 0}, {0, 1},
+            {1, 1}, {0, 2}, {1, 2}, {2, 0}, {2, 1}, {2, 2}};
 
-	public class CachedShapelessMultiRecipe extends CachedRecipe
-	{
-		public ArrayList<PositionedStack> ingredients;
-		public PositionedStack result;
+    public String getRecipeName() {
+        return NEIClientUtils.translate("recipe.shapeless");
+    }
 
-		public CachedShapelessMultiRecipe()
-		{
-			ingredients = new ArrayList<PositionedStack>();
-		}
+    @Override
+    public void loadCraftingRecipes(String outputId, Object... results) {
+        if (outputId.equals("crafting")
+                && getClass() == RecipeHandlerShapelessMulti.class) {
+            @SuppressWarnings("unchecked")
+            final List<IRecipe> allrecipes = CraftingManager.getInstance()
+                    .getRecipeList();
+            for (IRecipe irecipe : allrecipes) {
+                List<CachedShapelessMultiRecipe> recipes = null;
+                if (irecipe instanceof ShapelessMultiRecipe)
+                    recipes = shapelessMultiRecipe((ShapelessMultiRecipe) irecipe);
 
-		public CachedShapelessMultiRecipe(ItemStack output)
-		{
-			this();
-			setResult(output);
-		}
+                if (recipes == null)
+                    continue;
 
-		public CachedShapelessMultiRecipe(Object[] input, ItemStack output)
-		{
-			this(Arrays.asList(input), output);
-		}
+                for (CachedShapelessMultiRecipe cRecipe : recipes) {
+                    arecipes.add(cRecipe);
+                }
+            }
+        } else {
+            super.loadCraftingRecipes(outputId, results);
+        }
+    }
 
-		public CachedShapelessMultiRecipe(List<?> input, ItemStack output)
-		{
-			this(output);
-			setIngredients(input);
-		}
+    @Override
+    public void loadCraftingRecipes(ItemStack result) {
+        @SuppressWarnings("unchecked")
+        final List<IRecipe> allrecipes = CraftingManager.getInstance()
+                .getRecipeList();
+        for (IRecipe irecipe : allrecipes) {
+            if (NEIServerUtils.areStacksSameTypeCrafting(
+                    irecipe.getRecipeOutput(), result)) {
+                List<CachedShapelessMultiRecipe> recipes = null;
+                if (irecipe instanceof ShapelessMultiRecipe)
+                    recipes = shapelessMultiRecipe((ShapelessMultiRecipe) irecipe);
 
-		public void setIngredients(List<?> items)
-		{
-			ingredients.clear();
-			for (int ingred = 0; ingred < items.size(); ingred++)
-			{
-				final PositionedStack stack = new PositionedStack(items.get(ingred),
-						25 + stackorder[ingred][0] * 18,
-						6 + stackorder[ingred][1] * 18);
-				stack.setMaxSize(1);
-				ingredients.add(stack);
-			}
-		}
+                if (recipes == null)
+                    continue;
 
-		public void setResult(ItemStack output)
-		{
-			result = new PositionedStack(output, 119, 24);
-		}
+                for (CachedShapelessMultiRecipe cRecipe : recipes) {
+                    arecipes.add(cRecipe);
+                }
+            }
+        }
+    }
 
-		@Override
-		public List<PositionedStack> getIngredients()
-		{
-			return getCycledIngredients(cycleticks / 20, ingredients);
-		}
+    @Override
+    public void loadUsageRecipes(ItemStack ingredient) {
+        @SuppressWarnings("unchecked")
+        final List<IRecipe> allrecipes = CraftingManager.getInstance()
+                .getRecipeList();
+        for (IRecipe irecipe : allrecipes) {
+            List<CachedShapelessMultiRecipe> recipes = null;
+            if (irecipe instanceof ShapelessMultiRecipe)
+                recipes = shapelessMultiRecipe((ShapelessMultiRecipe) irecipe);
 
-		@Override
-		public PositionedStack getResult()
-		{
-			return result;
-		}
-	}
+            if (recipes == null)
+                continue;
 
-	public String getRecipeName()
-	{
-		return NEIClientUtils.translate("recipe.shapeless");
-	}
+            for (CachedShapelessMultiRecipe cRecipe : recipes) {
+                if (cRecipe.contains(cRecipe.ingredients, ingredient)) {
+                    cRecipe.setIngredientPermutation(cRecipe.ingredients,
+                            ingredient);
+                    arecipes.add(cRecipe);
+                }
+            }
+        }
+    }
 
-	@Override
-	public void loadCraftingRecipes(String outputId, Object... results)
-	{
-		if (outputId.equals("crafting")
-				&& getClass() == RecipeHandlerShapelessMulti.class)
-		{
-			@SuppressWarnings("unchecked")
-			final List<IRecipe> allrecipes = CraftingManager.getInstance()
-					.getRecipeList();
-			for (IRecipe irecipe : allrecipes)
-			{
-				List<CachedShapelessMultiRecipe> recipes = null;
-				if (irecipe instanceof ShapelessMultiRecipe)
-					recipes = shapelessMultiRecipe((ShapelessMultiRecipe) irecipe);
+    public List<CachedShapelessMultiRecipe> shapelessMultiRecipe(
+            ShapelessMultiRecipe multiRecipe) {
+        final ArrayList<Object> items = new ArrayList<Object>();
+        final List<IMultiFluidStacks> fluidStacks = multiRecipe.getFluids();
+        final List<CachedShapelessMultiRecipe> cachedRecipes = new ArrayList<CachedShapelessMultiRecipe>();
 
-				if (recipes == null)
-					continue;
+        for (IMultiItemStacks item : multiRecipe.getInput()) {
+            if (item.isEmpty())
+                return null;
 
-				for (CachedShapelessMultiRecipe cRecipe : recipes)
-				{
-					arecipes.add(cRecipe);
-				}
-			}
-		} else
-		{
-			super.loadCraftingRecipes(outputId, results);
-		}
-	}
+            items.add(item.getItemStacks());
+        }
 
-	@Override
-	public void loadCraftingRecipes(ItemStack result)
-	{
-		@SuppressWarnings("unchecked")
-		final List<IRecipe> allrecipes = CraftingManager.getInstance()
-				.getRecipeList();
-		for (IRecipe irecipe : allrecipes)
-		{
-			if (NEIServerUtils.areStacksSameTypeCrafting(
-					irecipe.getRecipeOutput(), result))
-			{
-				List<CachedShapelessMultiRecipe> recipes = null;
-				if (irecipe instanceof ShapelessMultiRecipe)
-					recipes = shapelessMultiRecipe((ShapelessMultiRecipe) irecipe);
+        ArrayList<ArrayList<Object>> recipes = new ArrayList<ArrayList<Object>>();
+        recipes.add(items);
 
-				if (recipes == null)
-					continue;
+        for (IMultiFluidStacks multiStack : fluidStacks) {
+            final ArrayList<ArrayList<Object>> recipesFluidStacks = new ArrayList<ArrayList<Object>>();
+            final Map<Integer, ArrayList<Object>> itemsFluidMap = new HashMap<Integer, ArrayList<Object>>();
 
-				for (CachedShapelessMultiRecipe cRecipe : recipes)
-				{
-					arecipes.add(cRecipe);
-				}
-			}
-		}
-	}
+            for (FluidStack fluidStack : multiStack.getFluidStacks()) {
+                final List<FluidContainerData> fluidData = FluidUtils.getFluidData()
+                        .get(fluidStack.getFluid());
 
-	@Override
-	public void loadUsageRecipes(ItemStack ingredient)
-	{
-		@SuppressWarnings("unchecked")
-		final List<IRecipe> allrecipes = CraftingManager.getInstance()
-				.getRecipeList();
-		for (IRecipe irecipe : allrecipes)
-		{
-			List<CachedShapelessMultiRecipe> recipes = null;
-			if (irecipe instanceof ShapelessMultiRecipe)
-				recipes = shapelessMultiRecipe((ShapelessMultiRecipe) irecipe);
+                if (fluidData == null)
+                    continue;
 
-			if (recipes == null)
-				continue;
+                for (FluidContainerData data : fluidData) {
+                    final FluidStack fluid = data.fluid;
 
-			for (CachedShapelessMultiRecipe cRecipe : recipes)
-			{
-				if (cRecipe.contains(cRecipe.ingredients, ingredient))
-				{
-					cRecipe.setIngredientPermutation(cRecipe.ingredients,
-							ingredient);
-					arecipes.add(cRecipe);
-				}
-			}
-		}
-	}
+                    final int amount = (int) Math.max(1,
+                            Math.ceil(((double) multiStack.getAmount() - 1) / fluid.amount));
 
-	public List<CachedShapelessMultiRecipe> shapelessMultiRecipe(
-			ShapelessMultiRecipe multiRecipe)
-	{
-		final ArrayList<Object> items = new ArrayList<Object>();
-		final List<IMultiFluidStacks> fluidStacks = multiRecipe.getFluids();
-		final List<CachedShapelessMultiRecipe> cachedRecipes = new ArrayList<CachedShapelessMultiRecipe>();
+                    if (!itemsFluidMap.containsKey(amount))
+                        itemsFluidMap.put(amount, new ArrayList<Object>());
 
-		for (IMultiItemStacks item : multiRecipe.getInput())
-		{
-			if (item.isEmpty())
-				return null;
+                    itemsFluidMap.get(amount).add(data.filledContainer);
+                }
+            }
 
-			items.add(item.getItemStacks());
-		}
+            for (Map.Entry<Integer, ArrayList<Object>> entry : itemsFluidMap
+                    .entrySet()) {
+                final ArrayList<Object> itemFluid = new ArrayList<Object>();
 
-		ArrayList<ArrayList<Object>> recipes = new ArrayList<ArrayList<Object>>();
-		recipes.add(items);
+                for (int i = 0; i < entry.getKey(); i++) {
+                    itemFluid.add(entry.getValue());
+                }
 
-		for (IMultiFluidStacks multiStack : fluidStacks)
-		{
-			final ArrayList<ArrayList<Object>> recipesFluidStacks = new ArrayList<ArrayList<Object>>();
-			final Map<Integer, ArrayList<Object>> itemsFluidMap = new HashMap<Integer, ArrayList<Object>>();
+                for (ArrayList<Object> recipe : recipes) {
+                    final ArrayList<Object> recipeCopy = new ArrayList<Object>(recipe);
+                    recipeCopy.addAll(itemFluid);
+                    recipesFluidStacks.add(recipeCopy);
+                }
+            }
 
-			for (FluidStack fluidStack : multiStack.getFluidStacks())
-			{
-				final List<FluidContainerData> fluidData = FluidUtils.getFluidData()
-						.get(fluidStack.getFluid());
+            // There's no way to craft this recipe, abort
+            if (recipesFluidStacks.size() == 0)
+                return cachedRecipes;
 
-				if (fluidData == null)
-					continue;
+            recipes = recipesFluidStacks;
+        }
 
-				for (FluidContainerData data : fluidData)
-				{
-					final FluidStack fluid = data.fluid;
+        for (ArrayList<Object> recipe : recipes) {
+            // This recipe can't actually be crafted, exclude it
+            if (recipe.size() > 9)
+                continue;
 
-					final int amount = (int) Math.max(1,
-							Math.ceil(((double)multiStack.getAmount() - 1) / fluid.amount));
+            cachedRecipes.add(new CachedShapelessMultiRecipe(recipe,
+                    multiRecipe.getRecipeOutput()));
+        }
 
-					if (!itemsFluidMap.containsKey(amount))
-						itemsFluidMap.put(amount, new ArrayList<Object>());
+        return cachedRecipes;
+    }
 
-					itemsFluidMap.get(amount).add(data.filledContainer);
-				}
-			}
+    @Override
+    public boolean isRecipe2x2(int recipe) {
+        return getIngredientStacks(recipe).size() <= 4;
+    }
 
-			for (Map.Entry<Integer, ArrayList<Object>> entry : itemsFluidMap
-					.entrySet())
-			{
-				final ArrayList<Object> itemFluid = new ArrayList<Object>();
+    public class CachedShapelessMultiRecipe extends CachedRecipe {
+        public ArrayList<PositionedStack> ingredients;
+        public PositionedStack result;
 
-				for (int i = 0; i < entry.getKey(); i++)
-				{
-					itemFluid.add(entry.getValue());
-				}
+        public CachedShapelessMultiRecipe() {
+            ingredients = new ArrayList<PositionedStack>();
+        }
 
-				for (ArrayList<Object> recipe : recipes)
-				{
-					final ArrayList<Object> recipeCopy = new ArrayList<Object>(recipe);
-					recipeCopy.addAll(itemFluid);
-					recipesFluidStacks.add(recipeCopy);
-				}
-			}
+        public CachedShapelessMultiRecipe(ItemStack output) {
+            this();
+            setResult(output);
+        }
 
-			// There's no way to craft this recipe, abort
-			if (recipesFluidStacks.size() == 0)
-				return cachedRecipes;
+        public CachedShapelessMultiRecipe(Object[] input, ItemStack output) {
+            this(Arrays.asList(input), output);
+        }
 
-			recipes = recipesFluidStacks;
-		}
+        public CachedShapelessMultiRecipe(List<?> input, ItemStack output) {
+            this(output);
+            setIngredients(input);
+        }
 
-		for (ArrayList<Object> recipe : recipes)
-		{
-			// This recipe can't actually be crafted, exclude it
-			if (recipe.size() > 9)
-				continue;
+        @Override
+        public List<PositionedStack> getIngredients() {
+            return getCycledIngredients(cycleticks / 20, ingredients);
+        }
 
-			cachedRecipes.add(new CachedShapelessMultiRecipe(recipe,
-					multiRecipe.getRecipeOutput()));
-		}
+        public void setIngredients(List<?> items) {
+            ingredients.clear();
+            for (int ingred = 0; ingred < items.size(); ingred++) {
+                final PositionedStack stack = new PositionedStack(items.get(ingred),
+                        25 + stackorder[ingred][0] * 18,
+                        6 + stackorder[ingred][1] * 18);
+                stack.setMaxSize(1);
+                ingredients.add(stack);
+            }
+        }
 
-		return cachedRecipes;
-	}
+        @Override
+        public PositionedStack getResult() {
+            return result;
+        }
 
-	@Override
-	public boolean isRecipe2x2(int recipe)
-	{
-		return getIngredientStacks(recipe).size() <= 4;
-	}
+        public void setResult(ItemStack output) {
+            result = new PositionedStack(output, 119, 24);
+        }
+    }
 
 }

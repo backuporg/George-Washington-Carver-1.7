@@ -26,13 +26,11 @@ package growthcraft.netherloid.common.item;
 import growthcraft.netherloid.netherloid;
 import net.minecraft.item.Item;
 
-public class ItemNetherRashSpores extends Item
-{
-	public ItemNetherRashSpores()
-	{
-		super();
-		setUnlocalizedName("grcnetherloid.netherRashSpores");
-		//setTextureName("grcnetherloid:netherrash_spores");
-		setCreativeTab(netherloid.tab);
-	}
+public class ItemNetherRashSpores extends Item {
+    public ItemNetherRashSpores() {
+        super();
+        setUnlocalizedName("grcnetherloid.netherRashSpores");
+        //setTextureName("grcnetherloid:netherrash_spores");
+        setCreativeTab(netherloid.tab);
+    }
 }

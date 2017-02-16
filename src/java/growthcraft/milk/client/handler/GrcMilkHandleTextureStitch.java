@@ -32,83 +32,76 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 
-public class GrcMilkHandleTextureStitch
-{
-	// Fluid Icons
-	@SideOnly(Side.CLIENT)
-	//public IIcon iconFluidButterMilkStill;
-	@SideOnly(Side.CLIENT)
-	//public IIcon iconFluidButterMilkFlow;
-	@SideOnly(Side.CLIENT)
-	//public IIcon iconFluidCreamStill;
-	@SideOnly(Side.CLIENT)
-	//public IIcon iconFluidCreamFlow;
-	@SideOnly(Side.CLIENT)
-	//public IIcon iconFluidMilkStill;
-	@SideOnly(Side.CLIENT)
-	//public IIcon iconFluidMilkFlow;
-	@SideOnly(Side.CLIENT)
-	//public IIcon iconFluidRennetStill;
-	@SideOnly(Side.CLIENT)
-	//public IIcon iconFluidRennetFlow;
-	@SideOnly(Side.CLIENT)
-	//public IIcon iconFluidSkimMilkStill;
-	@SideOnly(Side.CLIENT)
-	//public IIcon iconFluidSkimMilkFlow;
-	@SideOnly(Side.CLIENT)
-	//public IIcon iconFluidWheyStill;
-	@SideOnly(Side.CLIENT)
-	//public IIcon iconFluidWheyFlow;
+public class GrcMilkHandleTextureStitch {
+    // Fluid Icons
+    @SideOnly(Side.CLIENT)
+    //public IIcon iconFluidButterMilkStill;
+    @SideOnly(Side.CLIENT)
+    //public IIcon iconFluidButterMilkFlow;
+    @SideOnly(Side.CLIENT)
+    //public IIcon iconFluidCreamStill;
+    @SideOnly(Side.CLIENT)
+    //public IIcon iconFluidCreamFlow;
+    @SideOnly(Side.CLIENT)
+    //public IIcon iconFluidMilkStill;
+    @SideOnly(Side.CLIENT)
+    //public IIcon iconFluidMilkFlow;
+    @SideOnly(Side.CLIENT)
+    //public IIcon iconFluidRennetStill;
+    @SideOnly(Side.CLIENT)
+    //public IIcon iconFluidRennetFlow;
+    @SideOnly(Side.CLIENT)
+    //public IIcon iconFluidSkimMilkStill;
+    @SideOnly(Side.CLIENT)
+    //public IIcon iconFluidSkimMilkFlow;
+    @SideOnly(Side.CLIENT)
+    //public IIcon iconFluidWheyStill;
+    @SideOnly(Side.CLIENT)
+    //public IIcon iconFluidWheyFlow;
 
-	@SubscribeEvent
-	@SideOnly(Side.CLIENT)
-	public void onTextureStitchPre(TextureStitchEvent.Pre event)
-	{
-		if (event.map.getTextureType() == 0)
-		{
-			iconFluidButterMilkStill = event.map.registerIcon("grcmilk:fluids/buttermilk_still");
-			iconFluidButterMilkFlow = event.map.registerIcon("grcmilk:fluids/buttermilk_flow");
-			iconFluidCreamStill = event.map.registerIcon("grcmilk:fluids/cream_still");
-			iconFluidCreamFlow = event.map.registerIcon("grcmilk:fluids/cream_flow");
-			iconFluidMilkStill = event.map.registerIcon("grcmilk:fluids/milk_still");
-			iconFluidMilkFlow = event.map.registerIcon("grcmilk:fluids/milk_flow");
-			iconFluidRennetStill = event.map.registerIcon("grcmilk:fluids/rennet_still");
-			iconFluidRennetFlow = event.map.registerIcon("grcmilk:fluids/rennet_flow");
-			iconFluidSkimMilkStill = event.map.registerIcon("grcmilk:fluids/skimmilk_still");
-			iconFluidSkimMilkFlow = event.map.registerIcon("grcmilk:fluids/skimmilk_flow");
-			iconFluidWheyStill = event.map.registerIcon("grcmilk:fluids/whey_still");
-			iconFluidWheyFlow = event.map.registerIcon("grcmilk:fluids/whey_flow");
-		}
-	}
+    @SubscribeEvent
+    @SideOnly(Side.CLIENT)
+    public void onTextureStitchPre(TextureStitchEvent.Pre event) {
+        if (event.map.getTextureType() == 0) {
+            iconFluidButterMilkStill = event.map.registerIcon("grcmilk:fluids/buttermilk_still");
+            iconFluidButterMilkFlow = event.map.registerIcon("grcmilk:fluids/buttermilk_flow");
+            iconFluidCreamStill = event.map.registerIcon("grcmilk:fluids/cream_still");
+            iconFluidCreamFlow = event.map.registerIcon("grcmilk:fluids/cream_flow");
+            iconFluidMilkStill = event.map.registerIcon("grcmilk:fluids/milk_still");
+            iconFluidMilkFlow = event.map.registerIcon("grcmilk:fluids/milk_flow");
+            iconFluidRennetStill = event.map.registerIcon("grcmilk:fluids/rennet_still");
+            iconFluidRennetFlow = event.map.registerIcon("grcmilk:fluids/rennet_flow");
+            iconFluidSkimMilkStill = event.map.registerIcon("grcmilk:fluids/skimmilk_still");
+            iconFluidSkimMilkFlow = event.map.registerIcon("grcmilk:fluids/skimmilk_flow");
+            iconFluidWheyStill = event.map.registerIcon("grcmilk:fluids/whey_still");
+            iconFluidWheyFlow = event.map.registerIcon("grcmilk:fluids/whey_flow");
+        }
+    }
 
-	@SubscribeEvent
-	@SideOnly(Side.CLIENT)
-	public void onTextureStitchPost(TextureStitchEvent.Post event)
-	{
-		if (event.map.getTextureType() == 0)
-		{
-			for (int i = 0; i < GrowthCraftMilk.fluids.kumisFluids.length; ++i)
-			{
-				GrowthCraftMilk.fluids.kumisFluids[i].setIcons(GrowthCraftCore.liquidSmoothTexture);
-			}
-			GrowthCraftMilk.fluids.kumisFluids[5].setIcons(GrowthCraftCore.liquidBlobsTexture);
+    @SubscribeEvent
+    @SideOnly(Side.CLIENT)
+    public void onTextureStitchPost(TextureStitchEvent.Post event) {
+        if (event.map.getTextureType() == 0) {
+            for (int i = 0; i < GrowthCraftMilk.fluids.kumisFluids.length; ++i) {
+                GrowthCraftMilk.fluids.kumisFluids[i].setIcons(GrowthCraftCore.liquidSmoothTexture);
+            }
+            GrowthCraftMilk.fluids.kumisFluids[5].setIcons(GrowthCraftCore.liquidBlobsTexture);
 
-			GrowthCraftMilk.fluids.butterMilk.getFluid().setIcons(iconFluidButterMilkStill, iconFluidButterMilkFlow);
-			GrowthCraftMilk.fluids.cream.getFluid().setIcons(iconFluidCreamStill, iconFluidCreamFlow);
-			if (GrowthCraftMilk.fluids.milk != null)
-				GrowthCraftMilk.fluids.milk.getFluid().setIcons(iconFluidMilkStill, iconFluidMilkFlow);
+            GrowthCraftMilk.fluids.butterMilk.getFluid().setIcons(iconFluidButterMilkStill, iconFluidButterMilkFlow);
+            GrowthCraftMilk.fluids.cream.getFluid().setIcons(iconFluidCreamStill, iconFluidCreamFlow);
+            if (GrowthCraftMilk.fluids.milk != null)
+                GrowthCraftMilk.fluids.milk.getFluid().setIcons(iconFluidMilkStill, iconFluidMilkFlow);
 
-			GrowthCraftMilk.fluids.curds.getFluid().setIcons(iconFluidMilkStill, iconFluidMilkFlow);
-			GrowthCraftMilk.fluids.rennet.getFluid().setIcons(iconFluidRennetStill, iconFluidRennetFlow);
-			GrowthCraftMilk.fluids.skimMilk.getFluid().setIcons(iconFluidSkimMilkStill, iconFluidSkimMilkFlow);
-			GrowthCraftMilk.fluids.whey.getFluid().setIcons(iconFluidWheyStill, iconFluidWheyFlow);
-			GrowthCraftMilk.fluids.pasteurizedMilk.getFluid().setIcons(iconFluidMilkStill, iconFluidMilkFlow);
+            GrowthCraftMilk.fluids.curds.getFluid().setIcons(iconFluidMilkStill, iconFluidMilkFlow);
+            GrowthCraftMilk.fluids.rennet.getFluid().setIcons(iconFluidRennetStill, iconFluidRennetFlow);
+            GrowthCraftMilk.fluids.skimMilk.getFluid().setIcons(iconFluidSkimMilkStill, iconFluidSkimMilkFlow);
+            GrowthCraftMilk.fluids.whey.getFluid().setIcons(iconFluidWheyStill, iconFluidWheyFlow);
+            GrowthCraftMilk.fluids.pasteurizedMilk.getFluid().setIcons(iconFluidMilkStill, iconFluidMilkFlow);
 
-			for (FluidFactory.FluidDetails detail : GrowthCraftMilk.fluids.cheeses.values())
-			{
-				// this is not a typo, too lazy to make more textures.
-				detail.getFluid().setIcons(iconFluidMilkStill, iconFluidMilkFlow);
-			}
-		}
-	}
+            for (FluidFactory.FluidDetails detail : GrowthCraftMilk.fluids.cheeses.values()) {
+                // this is not a typo, too lazy to make more textures.
+                detail.getFluid().setIcons(iconFluidMilkStill, iconFluidMilkFlow);
+            }
+        }
+    }
 }

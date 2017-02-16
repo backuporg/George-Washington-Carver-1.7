@@ -27,20 +27,16 @@ import net.minecraftforge.fluids.Fluid;
 
 import javax.annotation.Nonnull;
 
-public class FluidDefinition extends FluidTypeDefinition<Fluid>
-{
-	public FluidDefinition(@Nonnull Fluid item)
-	{
-		super(item);
-	}
+public class FluidDefinition extends FluidTypeDefinition<Fluid> {
+    public FluidDefinition(@Nonnull Fluid item) {
+        super(item);
+    }
 
-	public static FluidDefinition[] convertArray(Fluid[] fluids)
-	{
-		final FluidDefinition[] defs = new FluidDefinition[fluids.length];
-		for (int i = 0; i < fluids.length; ++i)
-		{
-			defs[i] = new FluidDefinition(fluids[i]);
-		}
-		return defs;
-	}
+    public static FluidDefinition[] convertArray(Fluid[] fluids) {
+        final FluidDefinition[] defs = new FluidDefinition[fluids.length];
+        for (int i = 0; i < fluids.length; ++i) {
+            defs[i] = new FluidDefinition(fluids[i]);
+        }
+        return defs;
+    }
 }

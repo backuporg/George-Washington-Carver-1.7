@@ -35,76 +35,68 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 /**
  * Generic fluid bucket code
  */
-public class ItemBucketFluid extends GrcItemBucketBase implements IFluidItem
-{
-	private Fluid fluid;
-	private int index;
-	// Used to override the fluid color
-	private int color = -1;
+public class ItemBucketFluid extends GrcItemBucketBase implements IFluidItem {
+    private Fluid fluid;
+    private int index;
+    // Used to override the fluid color
+    private int color = -1;
 
-	//@SideOnly(Side.CLIENT)
-	//private IIcon bucket;
-	//@SideOnly(Side.CLIENT)
-	//private IIcon contents;
+    //@SideOnly(Side.CLIENT)
+    //private IIcon bucket;
+    //@SideOnly(Side.CLIENT)
+    //private IIcon contents;
 
-	public ItemBucketFluid(Block block, Fluid flu, CreativeTabs creativeTab)
-	{
-		super(block);
-		setContainerItem(Items.BUCKET);
-		setCreativeTab(creativeTab);
-		this.fluid = flu;
-	}
+    public ItemBucketFluid(Block block, Fluid flu, CreativeTabs creativeTab) {
+        super(block);
+        setContainerItem(Items.BUCKET);
+        setCreativeTab(creativeTab);
+        this.fluid = flu;
+    }
 
-	@Override
-	public Fluid getFluid(ItemStack _stack)
-	{
-		return fluid;
-	}
+    @Override
+    public Fluid getFluid(ItemStack _stack) {
+        return fluid;
+    }
 
-	public ItemBucketFluid setColor(int c)
-	{
-		this.color = c;
-		return this;
-	}
+    public ItemBucketFluid setColor(int c) {
+        this.color = c;
+        return this;
+    }
 
-	public int getColor(ItemStack stack)
-	{
-		if (color != -1) return color;
-		return getFluid(stack).getColor();
-	}
+    public int getColor(ItemStack stack) {
+        if (color != -1) return color;
+        return getFluid(stack).getColor();
+    }
 
-	@Override
-	public String getItemStackDisplayName(ItemStack stack)
-	{
-		return UnitFormatter.fluidBucketName(getFluid(stack));
-	}
+    @Override
+    public String getItemStackDisplayName(ItemStack stack) {
+        return UnitFormatter.fluidBucketName(getFluid(stack));
+    }
 
-	//@Override
-	//@SideOnly(Side.CLIENT)
-	//public void registerIcons(IIconRegister reg)
-	//{
-	//	this.bucket = reg.registerIcon("bucket_empty");
-	//	this.contents = reg.registerIcon("grccore:bucket_contents");
-	//}
+    //@Override
+    //@SideOnly(Side.CLIENT)
+    //public void registerIcons(IIconRegister reg)
+    //{
+    //	this.bucket = reg.registerIcon("bucket_empty");
+    //	this.contents = reg.registerIcon("grccore:bucket_contents");
+    //}
 
-	//@Override
-	//@SideOnly(Side.CLIENT)
-	//public IIcon getIconFromDamageForRenderPass(int par1, int pass)
-	//{
-	//	return pass == 1 ? this.contents : this.bucket;
-	//}
+    //@Override
+    //@SideOnly(Side.CLIENT)
+    //public IIcon getIconFromDamageForRenderPass(int par1, int pass)
+    //{
+    //	return pass == 1 ? this.contents : this.bucket;
+    //}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public int getColorFromItemStack(ItemStack stack, int pass)
-	{
-		return pass == 1 ? getColor(stack) : 0xFFFFFF;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public int getColorFromItemStack(ItemStack stack, int pass) {
+        return pass == 1 ? getColor(stack) : 0xFFFFFF;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean requiresMultipleRenderPasses()
-	{
-		return true;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public boolean requiresMultipleRenderPasses() {
+        return true;
+    }
 }

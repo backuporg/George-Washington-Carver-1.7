@@ -28,22 +28,19 @@ import growthcraft.core.common.definition.ItemDefinition;
 import growthcraft.rice.common.item.ItemRice;
 import growthcraft.rice.common.item.ItemRiceBall;
 
-public class GrcRiceItems extends GrcModuleItems
-{
-	public ItemDefinition rice;
-	public ItemDefinition riceBall;
+public class GrcRiceItems extends GrcModuleItems {
+    public ItemDefinition rice;
+    public ItemDefinition riceBall;
 
-	@Override
-	public void preInit()
-	{
-		this.rice     = newDefinition(new ItemRice());
-		this.riceBall = newDefinition(new ItemRiceBall());
-	}
+    @Override
+    public void preInit() {
+        this.rice = newDefinition(new ItemRice());
+        this.riceBall = newDefinition(new ItemRiceBall());
+    }
 
-	@Override
-	public void register()
-	{
-		rice.register("grc.rice");
-		riceBall.register("grc.riceBall");
-	}
+    @Override
+    public void register() {
+        rice.register("grc.rice");
+        riceBall.register("grc.riceBall");
+    }
 }

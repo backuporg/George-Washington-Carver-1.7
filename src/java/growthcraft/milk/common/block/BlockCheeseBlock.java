@@ -47,220 +47,192 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class BlockCheeseBlock extends GrcBlockContainer
-{
-	@SideOnly(Side.CLIENT)
-	private Map<EnumCheeseType, Map<EnumCheeseStage, IIcon[]>> iconMap;
+public class BlockCheeseBlock extends GrcBlockContainer {
+    @SideOnly(Side.CLIENT)
+    private Map<EnumCheeseType, Map<EnumCheeseStage, IIcon[]>> iconMap;
 
-	public BlockCheeseBlock()
-	{
-		super(Material.CAKE);
-		setHardness(0.5F);
-		//setStepSound(soundTypeCloth);
-		setUnlocalizedName("grcmilk.CheeseBlock");
-		setCreativeTab(GrowthCraftMilk.creativeTab);
-		setTileEntityType(TileEntityCheeseBlock.class);
-		final BBox bb = BBox.newCube(4f, 0f, 4f, 8f, 8f, 8f).scale(1f / 16f);
-	//	getBoundingBox(bb.x0(), bb.y0(), bb.z0(), bb.x1(), bb.y1(), bb.z1());
-	}
+    public BlockCheeseBlock() {
+        super(Material.CAKE);
+        setHardness(0.5F);
+        //setStepSound(soundTypeCloth);
+        setUnlocalizedName("grcmilk.CheeseBlock");
+        setCreativeTab(GrowthCraftMilk.creativeTab);
+        setTileEntityType(TileEntityCheeseBlock.class);
+        final BBox bb = BBox.newCube(4f, 0f, 4f, 8f, 8f, 8f).scale(1f / 16f);
+        //	getBoundingBox(bb.x0(), bb.y0(), bb.z0(), bb.x1(), bb.y1(), bb.z1());
+    }
 
-	@Override
-	protected boolean shouldRestoreBlockState(World world, BlockPos pos, ItemStack stack)
-	{
-		return true;
-	}
+    @Override
+    protected boolean shouldRestoreBlockState(World world, BlockPos pos, ItemStack stack) {
+        return true;
+    }
 
-	@Override
-	protected boolean shouldDropTileStack(World world, BlockPos pos, int metadata, int fortune)
-	{
-		return false;
-	}
+    @Override
+    protected boolean shouldDropTileStack(World world, BlockPos pos, int metadata, int fortune) {
+        return false;
+    }
 
-	@Override
-	protected ItemStack createHarvestedBlockItemStack(World world, EntityPlayer player, BlockPos pos, int meta)
-	{
-		final TileEntityCheeseBlock te = getTileEntity(world, pos);
-		if (te != null)
-		{
-			return te.asItemStack();
-		}
-		return new ItemStack(this, 1, meta);
-	}
+    @Override
+    protected ItemStack createHarvestedBlockItemStack(World world, EntityPlayer player, BlockPos pos, int meta) {
+        final TileEntityCheeseBlock te = getTileEntity(world, pos);
+        if (te != null) {
+            return te.asItemStack();
+        }
+        return new ItemStack(this, 1, meta);
+    }
 
-	@Override
-	protected void getTileItemStackDrops(List<ItemStack> ret, World world, BlockPos pos, int metadata, int fortune, IBlockState state)
-	{
-		final TileEntityCheeseBlock te = getTileEntity(world, pos);
-		if (te != null)
-		{
-			ret.add(te.asItemStack());
-		}
-		else
-		{
-			super.getTileItemStackDrops(ret, world, pos, state, metadata, fortune);
-		}
-	}
+    @Override
+    protected void getTileItemStackDrops(List<ItemStack> ret, World world, BlockPos pos, int metadata, int fortune, IBlockState state) {
+        final TileEntityCheeseBlock te = getTileEntity(world, pos);
+        if (te != null) {
+            ret.add(te.asItemStack());
+        } else {
+            super.getTileItemStackDrops(ret, world, pos, state, metadata, fortune);
+        }
+    }
 
-	@Override
-	protected boolean shouldScatterInventoryOnBreak(World world, BlockPos pos)
-	{
-		return true;
-	}
+    @Override
+    protected boolean shouldScatterInventoryOnBreak(World world, BlockPos pos) {
+        return true;
+    }
 
-	@Override
-	protected void scatterInventory(World world, BlockPos pos, Block block)
-	{
-		final TileEntityCheeseBlock te = getTileEntity(world, pos);
-		if (te != null)
-		{
-			final List<ItemStack> drops = new ArrayList<ItemStack>();
-			te.populateDrops(drops);
-			for (ItemStack stack : drops)
-			{
-				ItemUtils.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), stack, rand);
-			}
-		}
-	}
+    @Override
+    protected void scatterInventory(World world, BlockPos pos, Block block) {
+        final TileEntityCheeseBlock te = getTileEntity(world, pos);
+        if (te != null) {
+            final List<ItemStack> drops = new ArrayList<ItemStack>();
+            te.populateDrops(drops);
+            for (ItemStack stack : drops) {
+                ItemUtils.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), stack, rand);
+            }
+        }
+    }
 
-	@Override
-	public ItemStack getPickBlock(RayTraceResult target, World world, BlockPos pos, EntityPlayer player, IBlockState state)
-	{
-		final TileEntityCheeseBlock teCheeseBlock = getTileEntity(world, pos);
-		if (teCheeseBlock != null)
-		{
-			return teCheeseBlock.asItemStack();
-		}
-		return super.getPickBlock(state, target, world, pos, player);
-	}
+    @Override
+    public ItemStack getPickBlock(RayTraceResult target, World world, BlockPos pos, EntityPlayer player, IBlockState state) {
+        final TileEntityCheeseBlock teCheeseBlock = getTileEntity(world, pos);
+        if (teCheeseBlock != null) {
+            return teCheeseBlock.asItemStack();
+        }
+        return super.getPickBlock(state, target, world, pos, player);
+    }
 
-	@Override
-	public ArrayList<ItemStack> getDrops(World world, BlockPos pos, int metadata, int fortune)
-	{
-		final ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
-		final TileEntityCheeseBlock te = getTileEntity(world, pos);
-		if (te != null)
-		{
-			te.populateDrops(ret);
-		}
-		return ret;
-	}
+    @Override
+    public ArrayList<ItemStack> getDrops(World world, BlockPos pos, int metadata, int fortune) {
+        final ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
+        final TileEntityCheeseBlock te = getTileEntity(world, pos);
+        if (te != null) {
+            te.populateDrops(ret);
+        }
+        return ret;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void getSubBlocks(Item item, CreativeTabs tab, List list)
-	{
-		if (item instanceof ItemBlockCheeseBlock)
-		{
-			final ItemBlockCheeseBlock ib = (ItemBlockCheeseBlock)item;
-			for (EnumCheeseType cheese : EnumCheeseType.VALUES)
-			{
-				if (cheese.hasBlock())
-				{
-					final ItemStack stack = new ItemStack(item, 1, cheese.meta);
-					// This causes the NBT data to refresh
-					ib.getTileTagCompound(stack);
-					list.add(stack);
-				}
-			}
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    public void getSubBlocks(Item item, CreativeTabs tab, List list) {
+        if (item instanceof ItemBlockCheeseBlock) {
+            final ItemBlockCheeseBlock ib = (ItemBlockCheeseBlock) item;
+            for (EnumCheeseType cheese : EnumCheeseType.VALUES) {
+                if (cheese.hasBlock()) {
+                    final ItemStack stack = new ItemStack(item, 1, cheese.meta);
+                    // This causes the NBT data to refresh
+                    ib.getTileTagCompound(stack);
+                    list.add(stack);
+                }
+            }
+        }
+    }
 
-	@Override
-	public int getRenderType()
-	{
-		return RenderCheeseBlock.RENDER_ID;
-	}
+    @Override
+    public int getRenderType() {
+        return RenderCheeseBlock.RENDER_ID;
+    }
 
-	@Override
-	public boolean isOpaqueCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isOpaqueCube() {
+        return false;
+    }
 
-	@Override
-	public boolean renderAsNormalBlock()
-	{
-		return false;
-	}
+    @Override
+    public boolean renderAsNormalBlock() {
+        return false;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess world, BlockPos pos, int side)
-	{
-		return true;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public boolean shouldSideBeRendered(IBlockAccess world, BlockPos pos, int side) {
+        return true;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
+    @Override
+    @SideOnly(Side.CLIENT)
 
-	//{
-	//	this.iconMap = new HashMap<EnumCheeseType, Map<EnumCheeseStage, IIcon[]>>();
-	//	for (EnumCheeseType type : EnumCheeseType.VALUES)
-	//	{
-	//		if (!type.hasBlock()) continue;
-	//		iconMap.put(type, new HashMap<EnumCheeseStage, IIcon[]>());
-	//		final String prefix = "grcmilk:cheese/" + type.name;
-	//		for (EnumCheeseStage stage : type.stages)
-	//		{
-	//			final IIcon[] icons = new IIcon[3];
-	//			icons[0] = reg.registerIcon(String.format("%s_%s/bottom", prefix, stage.name));
-	//			icons[1] = reg.registerIcon(String.format("%s_%s/top", prefix, stage.name));
-	//			icons[2] = reg.registerIcon(String.format("%s_%s/side", prefix, stage.name));
-	//			iconMap.get(type).put(stage, icons);
-	//		}
-	//	}
-	//}
+    //{
+    //	this.iconMap = new HashMap<EnumCheeseType, Map<EnumCheeseStage, IIcon[]>>();
+    //	for (EnumCheeseType type : EnumCheeseType.VALUES)
+    //	{
+    //		if (!type.hasBlock()) continue;
+    //		iconMap.put(type, new HashMap<EnumCheeseStage, IIcon[]>());
+    //		final String prefix = "grcmilk:cheese/" + type.name;
+    //		for (EnumCheeseStage stage : type.stages)
+    //		{
+    //			final IIcon[] icons = new IIcon[3];
+    //			icons[0] = reg.registerIcon(String.format("%s_%s/bottom", prefix, stage.name));
+    //			icons[1] = reg.registerIcon(String.format("%s_%s/top", prefix, stage.name));
+    //			icons[2] = reg.registerIcon(String.format("%s_%s/side", prefix, stage.name));
+    //			iconMap.get(type).put(stage, icons);
+    //		}
+    //	}
+    //}
 
-	//@SideOnly(Side.CLIENT)
-	//private IIcon getIconByTypeAndStage(int side, EnumCheeseType type, EnumCheeseStage stage)
-	//{
-	//	final IIcon[] icons = iconMap.get(type).get(stage);
-	//	if (side == 0)
-	//	{
-	//		return icons[0];
-	//	}
-	//	else if (side == 1)
-	//	{
-	//		return icons[1];
-	//	}
-	//	else
-	//	{
-	//		return icons[2];
-	//	}
-	//}
+    //@SideOnly(Side.CLIENT)
+    //private IIcon getIconByTypeAndStage(int side, EnumCheeseType type, EnumCheeseStage stage)
+    //{
+    //	final IIcon[] icons = iconMap.get(type).get(stage);
+    //	if (side == 0)
+    //	{
+    //		return icons[0];
+    //	}
+    //	else if (side == 1)
+    //	{
+    //		return icons[1];
+    //	}
+    //	else
+    //	{
+    //		return icons[2];
+    //	}
+    //}
 
-	//@Override
-	//@SideOnly(Side.CLIENT)
-	//public IIcon getIcon(IBlockAccess world, BlockPos pos, int side)
-	//{
-	//	final TileEntityCheeseBlock te = getTileEntity(world, x, y, z);
-	//	final int meta = world.getBlockState(x, y, z);
-	//	EnumCheeseType type = EnumCheeseType.getSafeById(meta);
-	//	EnumCheeseStage stage = type.stages.get(0);
-	//	if (te != null)
-	//	{
-	//		type = te.getCheese().getType();
-	//		stage = te.getCheese().getStage();
-	//	}
-	//	return getIconByTypeAndStage(side, type, stage);
-	//}
+    //@Override
+    //@SideOnly(Side.CLIENT)
+    //public IIcon getIcon(IBlockAccess world, BlockPos pos, int side)
+    //{
+    //	final TileEntityCheeseBlock te = getTileEntity(world, x, y, z);
+    //	final int meta = world.getBlockState(x, y, z);
+    //	EnumCheeseType type = EnumCheeseType.getSafeById(meta);
+    //	EnumCheeseStage stage = type.stages.get(0);
+    //	if (te != null)
+    //	{
+    //		type = te.getCheese().getType();
+    //		stage = te.getCheese().getStage();
+    //	}
+    //	return getIconByTypeAndStage(side, type, stage);
+    //}
 
-	//@Override
-	//@SideOnly(Side.CLIENT)
-	//
-	//{
-	//	final EnumCheeseType type = EnumCheeseType.getSafeById(meta);
-	//	return getIconByTypeAndStage(side, type, type.stages.get(0));
-	//}
+    //@Override
+    //@SideOnly(Side.CLIENT)
+    //
+    //{
+    //	final EnumCheeseType type = EnumCheeseType.getSafeById(meta);
+    //	return getIconByTypeAndStage(side, type, type.stages.get(0));
+    //}
 
-	@Override
-	public int damageDropped(int metadata)
-	{
-		return metadata;
-	}
+    @Override
+    public int damageDropped(int metadata) {
+        return metadata;
+    }
 }

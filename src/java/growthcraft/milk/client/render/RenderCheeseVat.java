@@ -31,89 +31,75 @@ import growthcraft.milk.common.block.BlockCheeseVat;
 import growthcraft.milk.common.tileentity.TileEntityCheeseVat;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
-
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
-
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import org.lwjgl.opengl.GL11;
 
-public class RenderCheeseVat implements ISimpleBlockRenderingHandler
-{
-	public static int RENDER_ID = RenderingRegistry.getNextAvailableRenderId();
-	private static final BBox fluidBBox = BBox.newCube(1, 1, 1, 14, 14, 14).scale(ModelCheeseVat.SCALE);
+public class RenderCheeseVat implements ISimpleBlockRenderingHandler {
+    private static final BBox fluidBBox = BBox.newCube(1, 1, 1, 14, 14, 14).scale(ModelCheeseVat.SCALE);
+    public static int RENDER_ID = RenderingRegistry.getNextAvailableRenderId();
 
-	@Override
-	public int getRenderId()
-	{
-		return RENDER_ID;
-	}
+    @Override
+    public int getRenderId() {
+        return RENDER_ID;
+    }
 
-	@Override
-	public boolean shouldRender3DInInventory(int modelID)
-	{
-		return true;
-	}
+    @Override
+    public boolean shouldRender3DInInventory(int modelID) {
+        return true;
+    }
 
-	@Override
-	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer)
-	{
-		if (modelID == RENDER_ID)
-		{
-			GL11.glPushMatrix();
-			{
-				Minecraft.getMinecraft().renderEngine.bindTexture(GrcMilkResources.INSTANCE.textureCheeseVat);
-				GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-				GL11.glRotatef(180.0F, 1.0F, 0.0F, 0.0F);
-				GL11.glTranslatef(0.0f, -1.0f, 0.0f);
-				GrcMilkResources.INSTANCE.modelCheeseVat.render(null, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, ModelCheeseVat.SCALE);
-			}
-			GL11.glPopMatrix();
-		}
-	}
+    @Override
+    public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer) {
+        if (modelID == RENDER_ID) {
+            GL11.glPushMatrix();
+            {
+                Minecraft.getMinecraft().renderEngine.bindTexture(GrcMilkResources.INSTANCE.textureCheeseVat);
+                GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+                GL11.glRotatef(180.0F, 1.0F, 0.0F, 0.0F);
+                GL11.glTranslatef(0.0f, -1.0f, 0.0f);
+                GrcMilkResources.INSTANCE.modelCheeseVat.render(null, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, ModelCheeseVat.SCALE);
+            }
+            GL11.glPopMatrix();
+        }
+    }
 
-	private void renderFluidLayer(Block block, RenderBlocks renderer, Fluid fluid, double y0, double y1, BlockPos pos)
-	{
-		if (fluid == null) return;
-		final IIcon icon = fluid.getIcon();
-		if (icon == null) return;
-		final float[] colorAry = new float[3];
-		final int color = fluid.getColor();
-		ColorUtils.rgb24FloatArray(colorAry, color);
-		Tessellator.instance.setColorOpaque_F(colorAry[0], colorAry[1], colorAry[2]);
+    private void renderFluidLayer(Block block, RenderBlocks renderer, Fluid fluid, double y0, double y1, BlockPos pos) {
+        if (fluid == null) return;
+        final IIcon icon = fluid.getIcon();
+        if (icon == null) return;
+        final float[] colorAry = new float[3];
+        final int color = fluid.getColor();
+        ColorUtils.rgb24FloatArray(colorAry, color);
+        Tessellator.instance.setColorOpaque_F(colorAry[0], colorAry[1], colorAry[2]);
 
-		renderer.setRenderBounds(fluidBBox.x0(), y0, fluidBBox.z0(), fluidBBox.x1(), y1, fluidBBox.z1());
-		renderer.renderFaceYPos(block, (double)x, (double)y, (double)z, icon);
-	}
+        renderer.setRenderBounds(fluidBBox.x0(), y0, fluidBBox.z0(), fluidBBox.x1(), y1, fluidBBox.z1());
+        renderer.renderFaceYPos(block, (double) x, (double) y, (double) z, icon);
+    }
 
-	@Override
-	public boolean renderWorldBlock(IBlockAccess world, BlockPos pos, Block block, int modelId, RenderBlocks renderer)
-	{
-		if (modelId == RENDER_ID)
-		{
-			if (block instanceof BlockCheeseVat)
-			{
-				final BlockCheeseVat pancheonBlock = (BlockCheeseVat)block;
-				final TileEntityCheeseVat cheeseVatTile = pancheonBlock.getTileEntity(world, x, y, z);
-				if (cheeseVatTile != null)
-				{
-					double y0 = ModelCheeseVat.SCALE;
-					for (int i = 0; i < cheeseVatTile.getTankCount(); ++i)
-					{
-						final FluidStack fluid = cheeseVatTile.getFluidStack(i);
-						if (fluid != null)
-						{
-							final float fluidHeight = fluid.amount * fluidBBox.h() / cheeseVatTile.getVatFluidCapacity();
-							renderFluidLayer(block, renderer, fluid.getFluid(), y0, y0 + fluidHeight, x, y, z);
-							y0 += fluidHeight;
-						}
-					}
-				}
-			}
-		}
-		return true;
-	}
+    @Override
+    public boolean renderWorldBlock(IBlockAccess world, BlockPos pos, Block block, int modelId, RenderBlocks renderer) {
+        if (modelId == RENDER_ID) {
+            if (block instanceof BlockCheeseVat) {
+                final BlockCheeseVat pancheonBlock = (BlockCheeseVat) block;
+                final TileEntityCheeseVat cheeseVatTile = pancheonBlock.getTileEntity(world, x, y, z);
+                if (cheeseVatTile != null) {
+                    double y0 = ModelCheeseVat.SCALE;
+                    for (int i = 0; i < cheeseVatTile.getTankCount(); ++i) {
+                        final FluidStack fluid = cheeseVatTile.getFluidStack(i);
+                        if (fluid != null) {
+                            final float fluidHeight = fluid.amount * fluidBBox.h() / cheeseVatTile.getVatFluidCapacity();
+                            renderFluidLayer(block, renderer, fluid.getFluid(), y0, y0 + fluidHeight, x, y, z);
+                            y0 += fluidHeight;
+                        }
+                    }
+                }
+            }
+        }
+        return true;
+    }
 }

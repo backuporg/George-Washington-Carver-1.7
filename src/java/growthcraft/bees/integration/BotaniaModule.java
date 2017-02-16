@@ -32,35 +32,28 @@ import growthcraft.core.integration.botania.EnumBotaniaWoodType;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class BotaniaModule extends ModIntegrationBase
-{
-	public BotaniaModule()
-	{
-		super(GrowthCraftBees.MOD_ID, BotaniaPlatform.MOD_ID);
-	}
+public class BotaniaModule extends ModIntegrationBase {
+    public BotaniaModule() {
+        super(GrowthCraftBees.MOD_ID, BotaniaPlatform.MOD_ID);
+    }
 
-	@Override
-	public void doPreInit()
-	{
-		GrowthCraftBees.blocks.beeBoxBotania = GrowthCraftBees.blocks.newTypedDefinition(new BlockBeeBoxBotania());
-	}
+    @Override
+    public void doPreInit() {
+        GrowthCraftBees.blocks.beeBoxBotania = GrowthCraftBees.blocks.newTypedDefinition(new BlockBeeBoxBotania());
+    }
 
-	@Override
-	public void doRegister()
-	{
-		GrowthCraftBees.blocks.beeBoxBotania.register("grc.BeeBox.Botania", ItemBlockBeeBox.class);
-	}
+    @Override
+    public void doRegister() {
+        GrowthCraftBees.blocks.beeBoxBotania.register("grc.BeeBox.Botania", ItemBlockBeeBox.class);
+    }
 
-	@Override
-	protected void doLateRegister()
-	{
-		for (EnumBotaniaWoodType type : EnumBotaniaWoodType.VALUES)
-		{
-			final ItemStack planks = type.asPlanksItemStack();
-			if (planks != null)
-			{
-				GameRegistry.addShapedRecipe(GrowthCraftBees.blocks.beeBoxBotania.asStack(1, type.meta), " A ", "A A", "AAA", 'A', planks);
-			}
-		}
-	}
+    @Override
+    protected void doLateRegister() {
+        for (EnumBotaniaWoodType type : EnumBotaniaWoodType.VALUES) {
+            final ItemStack planks = type.asPlanksItemStack();
+            if (planks != null) {
+                GameRegistry.addShapedRecipe(GrowthCraftBees.blocks.beeBoxBotania.asStack(1, type.meta), " A ", "A A", "AAA", 'A', planks);
+            }
+        }
+    }
 }

@@ -26,13 +26,11 @@ package growthcraft.milk.common.item;
 import growthcraft.core.common.item.GrcItemBase;
 import growthcraft.milk.GrowthCraftMilk;
 
-public class ItemStarterCulture extends GrcItemBase
-{
-	public ItemStarterCulture()
-	{
-		super();
-		setUnlocalizedName("grcmilk.StarterCulture");
-		//setTextureName("grcmilk:starter_culture/starter_culture");
-		setCreativeTab(GrowthCraftMilk.creativeTab);
-	}
+public class ItemStarterCulture extends GrcItemBase {
+    public ItemStarterCulture() {
+        super();
+        setUnlocalizedName("grcmilk.StarterCulture");
+        //setTextureName("grcmilk:starter_culture/starter_culture");
+        setCreativeTab(GrowthCraftMilk.creativeTab);
+    }
 }

@@ -33,44 +33,38 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
 
 
-public class BlockBeeBoxExtraBiomesXL extends BlockBeeBox
-{
-	public BlockBeeBoxExtraBiomesXL()
-	{
-		super();
-		setHardness(2f);
-		setUnlocalizedName("grc.BeeBox.ExtraBiomesXL");
-	}
+public class BlockBeeBoxExtraBiomesXL extends BlockBeeBox {
+    public BlockBeeBoxExtraBiomesXL() {
+        super();
+        setHardness(2f);
+        setUnlocalizedName("grc.BeeBox.ExtraBiomesXL");
+    }
 
-	@Override
-	public String getMetaname(int meta)
-	{
-		if (meta >= 0 && meta < EnumEBXLWoodType.VALUES.length)
-		{
-			return EnumEBXLWoodType.VALUES[meta].name;
-		}
-		return super.getMetaname(meta);
-	}
+    @Override
+    public String getMetaname(int meta) {
+        if (meta >= 0 && meta < EnumEBXLWoodType.VALUES.length) {
+            return EnumEBXLWoodType.VALUES[meta].name;
+        }
+        return super.getMetaname(meta);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void getSubBlocks(Item block, CreativeTabs tab, List list)
-	{
-		for (int i = 0; i < EnumEBXLWoodType.VALUES.length; ++i)
-		{
-			list.add(new ItemStack(block, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    public void getSubBlocks(Item block, CreativeTabs tab, List list) {
+        for (int i = 0; i < EnumEBXLWoodType.VALUES.length; ++i) {
+            list.add(new ItemStack(block, 1, i));
+        }
+    }
 
-	//@Override
-	//@SideOnly(Side.CLIENT)
+    //@Override
+    //@SideOnly(Side.CLIENT)
 
-	//{
-	//	this.icons = new IIcon[4 * EnumEBXLWoodType.VALUES.length];
-	//	for (EnumEBXLWoodType type : EnumEBXLWoodType.VALUES)
-	//	{
-	//		registerBeeBoxIcons(reg, String.format("/extrabiomesxl/%s/", type.name), type.meta);
-	//	}
-	//}
+    //{
+    //	this.icons = new IIcon[4 * EnumEBXLWoodType.VALUES.length];
+    //	for (EnumEBXLWoodType type : EnumEBXLWoodType.VALUES)
+    //	{
+    //		registerBeeBoxIcons(reg, String.format("/extrabiomesxl/%s/", type.name), type.meta);
+    //	}
+    //}
 }

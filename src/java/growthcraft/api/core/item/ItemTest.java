@@ -30,146 +30,106 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class ItemTest
-{
-	private ItemTest() {}
+public class ItemTest {
+    private ItemTest() {
+    }
 
-	public static boolean isValid(@Nonnull ItemStack stack)
-	{
-		if (stack == null) return false;
-		if (stack.getItem() == null) return false;
-		if (stack.stackSize <= 0) return false;
-		return true;
-	}
+    public static boolean isValid(@Nonnull ItemStack stack) {
+        if (stack == null) return false;
+        if (stack.getItem() == null) return false;
+        return stack.stackSize > 0;
+    }
 
-	public static boolean itemMatches(@Nullable IMultiItemStacks expected, @Nullable ItemStack actual)
-	{
-		if (expected == null || expected.isEmpty())
-		{
-			return actual == null;
-		}
-		else
-		{
-			if (actual != null)
-			{
-				return expected.containsItemStack(actual);
-			}
-		}
-		return false;
-	}
+    public static boolean itemMatches(@Nullable IMultiItemStacks expected, @Nullable ItemStack actual) {
+        if (expected == null || expected.isEmpty()) {
+            return actual == null;
+        } else {
+            if (actual != null) {
+                return expected.containsItemStack(actual);
+            }
+        }
+        return false;
+    }
 
-	public static boolean itemMatches(@Nullable ItemStack expected, @Nullable ItemStack actual)
-	{
-		if (expected == null)
-		{
-			return actual == null;
-		}
-		else
-		{
-			if (actual != null)
-			{
-				if (expected.getItemDamage() == ItemKey.WILDCARD_VALUE)
-				{
-					return expected.getItem() == actual.getItem();
-				}
-				else
-				{
-					return expected.isItemEqual(actual);
-				}
-			}
-		}
-		return false;
-	}
+    public static boolean itemMatches(@Nullable ItemStack expected, @Nullable ItemStack actual) {
+        if (expected == null) {
+            return actual == null;
+        } else {
+            if (actual != null) {
+                if (expected.getItemDamage() == ItemKey.WILDCARD_VALUE) {
+                    return expected.getItem() == actual.getItem();
+                } else {
+                    return expected.isItemEqual(actual);
+                }
+            }
+        }
+        return false;
+    }
 
-	public static boolean areStacksEqual(@Nullable IMultiItemStacks expected, @Nullable ItemStack actual)
-	{
-		if (!itemMatches(expected, actual)) return false;
-		return actual.stackSize == expected.getStackSize();
-	}
+    public static boolean areStacksEqual(@Nullable IMultiItemStacks expected, @Nullable ItemStack actual) {
+        if (!itemMatches(expected, actual)) return false;
+        return actual.stackSize == expected.getStackSize();
+    }
 
-	public static boolean areStacksEqual(@Nullable ItemStack expected, @Nullable ItemStack actual)
-	{
-		if (!itemMatches(expected, actual)) return false;
-		return actual.stackSize == expected.stackSize;
-	}
+    public static boolean areStacksEqual(@Nullable ItemStack expected, @Nullable ItemStack actual) {
+        if (!itemMatches(expected, actual)) return false;
+        return actual.stackSize == expected.stackSize;
+    }
 
-	public static boolean hasEnough(@Nullable IMultiItemStacks expected, @Nullable ItemStack actual)
-	{
-		if (!itemMatches(expected, actual)) return false;
-		if (actual.stackSize < expected.getStackSize()) return false;
-		return true;
-	}
+    public static boolean hasEnough(@Nullable IMultiItemStacks expected, @Nullable ItemStack actual) {
+        if (!itemMatches(expected, actual)) return false;
+        return actual.stackSize >= expected.getStackSize();
+    }
 
-	public static boolean hasEnough(@Nullable ItemStack expected, @Nullable ItemStack actual)
-	{
-		if (!itemMatches(expected, actual)) return false;
-		if (actual.stackSize < expected.stackSize) return false;
-		return true;
-	}
+    public static boolean hasEnough(@Nullable ItemStack expected, @Nullable ItemStack actual) {
+        if (!itemMatches(expected, actual)) return false;
+        return actual.stackSize >= expected.stackSize;
+    }
 
-	@SuppressWarnings({"rawtypes"})
-	public static boolean isValidAndExpected(@Nonnull List expectedItems, @Nonnull List<ItemStack> givenItems)
-	{
-		if (expectedItems.size() != givenItems.size()) return false;
-		for (int i = 0; i < expectedItems.size(); ++i)
-		{
-			final Object expected = expectedItems.get(i);
-			final ItemStack actual = givenItems.get(i);
-			if (expected != null)
-			{
-				if (!isValid(actual)) return false;
-				if (expected instanceof ItemStack)
-				{
-					if (!((ItemStack)expected).isItemEqual(actual)) return false;
-				}
-				else if (expected instanceof IMultiItemStacks)
-				{
-					if (!((IMultiItemStacks)expected).containsItemStack(actual)) return false;
-				}
-				else
-				{
-					return false;
-				}
-			}
-			else
-			{
-				if (actual != null) return false;
-			}
-		}
-		return true;
-	}
+    @SuppressWarnings({"rawtypes"})
+    public static boolean isValidAndExpected(@Nonnull List expectedItems, @Nonnull List<ItemStack> givenItems) {
+        if (expectedItems.size() != givenItems.size()) return false;
+        for (int i = 0; i < expectedItems.size(); ++i) {
+            final Object expected = expectedItems.get(i);
+            final ItemStack actual = givenItems.get(i);
+            if (expected != null) {
+                if (!isValid(actual)) return false;
+                if (expected instanceof ItemStack) {
+                    if (!((ItemStack) expected).isItemEqual(actual)) return false;
+                } else if (expected instanceof IMultiItemStacks) {
+                    if (!((IMultiItemStacks) expected).containsItemStack(actual)) return false;
+                } else {
+                    return false;
+                }
+            } else {
+                if (actual != null) return false;
+            }
+        }
+        return true;
+    }
 
-	@SuppressWarnings({"rawtypes"})
-	public static boolean containsExpectedItemsUnordered(@Nonnull List expectedItems, @Nonnull List<ItemStack> givenItems)
-	{
-		final boolean[] usedSlots = new boolean[givenItems.size()];
-		for (Object expectedStack : expectedItems)
-		{
-			boolean found = false;
-			for (int index = 0; index < usedSlots.length; ++index)
-			{
-				if (usedSlots[index]) continue;
-				if (expectedStack instanceof IMultiItemStacks)
-				{
-					found = itemMatches((IMultiItemStacks)expectedStack, givenItems.get(index));
-				}
-				else if (expectedStack instanceof ItemStack)
-				{
-					found = itemMatches((ItemStack)expectedStack, givenItems.get(index));
-				}
-				else if (expectedStack == null)
-				{
-					found = givenItems.get(index) == null;
-				}
+    @SuppressWarnings({"rawtypes"})
+    public static boolean containsExpectedItemsUnordered(@Nonnull List expectedItems, @Nonnull List<ItemStack> givenItems) {
+        final boolean[] usedSlots = new boolean[givenItems.size()];
+        for (Object expectedStack : expectedItems) {
+            boolean found = false;
+            for (int index = 0; index < usedSlots.length; ++index) {
+                if (usedSlots[index]) continue;
+                if (expectedStack instanceof IMultiItemStacks) {
+                    found = itemMatches((IMultiItemStacks) expectedStack, givenItems.get(index));
+                } else if (expectedStack instanceof ItemStack) {
+                    found = itemMatches((ItemStack) expectedStack, givenItems.get(index));
+                } else if (expectedStack == null) {
+                    found = givenItems.get(index) == null;
+                }
 
-				if (found)
-				{
-					usedSlots[index] = true;
-					break;
-				}
-			}
-			if (!found) return false;
-		}
-		return true;
-	}
+                if (found) {
+                    usedSlots[index] = true;
+                    break;
+                }
+            }
+            if (!found) return false;
+        }
+        return true;
+    }
 }

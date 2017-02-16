@@ -25,31 +25,25 @@ package growthcraft.core.common.inventory;
 
 import java.util.Arrays;
 
-public class AccesibleSlots
-{
-	private int[][] accessibleSlots;
+public class AccesibleSlots {
+    private int[][] accessibleSlots;
 
-	public AccesibleSlots(int[][] accs)
-	{
-		this.accessibleSlots = accs;
-	}
+    public AccesibleSlots(int[][] accs) {
+        this.accessibleSlots = accs;
+    }
 
-	public boolean sideEnabled(int side)
-	{
-		return accessibleSlots[side].length > 0;
-	}
+    public boolean sideEnabled(int side) {
+        return accessibleSlots[side].length > 0;
+    }
 
-	public boolean sideContains(int side, int index)
-	{
-		if (sideEnabled(side))
-		{
-			return Arrays.binarySearch(accessibleSlots[side], index) >= 0;
-		}
-		return false;
-	}
+    public boolean sideContains(int side, int index) {
+        if (sideEnabled(side)) {
+            return Arrays.binarySearch(accessibleSlots[side], index) >= 0;
+        }
+        return false;
+    }
 
-	public int[] slotsAt(int side)
-	{
-		return accessibleSlots[side];
-	}
+    public int[] slotsAt(int side) {
+        return accessibleSlots[side];
+    }
 }

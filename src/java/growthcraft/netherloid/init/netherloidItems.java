@@ -30,44 +30,41 @@ import net.minecraft.init.Items;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 
-public class netherloidItems extends GrcModuleBase
-{
-	public ItemDefinition ectoplasm;
-	public ItemDefinition netherMaliceFruit;
-	public ItemDefinition netherMuertecap;
-	public ItemDefinition netherPepper;
-	public ItemDefinition netherRashSpores;
-	public ItemDefinition netherSquashSeeds;
-	public ItemDefinition netherGhastPowder;
+public class netherloidItems extends GrcModuleBase {
+    public ItemDefinition ectoplasm;
+    public ItemDefinition netherMaliceFruit;
+    public ItemDefinition netherMuertecap;
+    public ItemDefinition netherPepper;
+    public ItemDefinition netherRashSpores;
+    public ItemDefinition netherSquashSeeds;
+    public ItemDefinition netherGhastPowder;
 
-	@Override
-	public void preInit()
-	{
-		this.ectoplasm = new ItemDefinition(new ItemEctoplasm());
-		this.netherMuertecap = new ItemDefinition(new ItemNetherMuertecap());
-		this.netherPepper = new ItemDefinition(new ItemNetherPepper());
-		this.netherRashSpores = new ItemDefinition(new ItemNetherRashSpores());
-		this.netherSquashSeeds = new ItemDefinition(new ItemNetherSquashSeeds());
-		this.netherMaliceFruit = new ItemDefinition(new ItemNetherMaliceFruit());
-		this.netherGhastPowder = new ItemDefinition(new ItemNetherGhastPowder());
-	}
+    @Override
+    public void preInit() {
+        this.ectoplasm = new ItemDefinition(new ItemEctoplasm());
+        this.netherMuertecap = new ItemDefinition(new ItemNetherMuertecap());
+        this.netherPepper = new ItemDefinition(new ItemNetherPepper());
+        this.netherRashSpores = new ItemDefinition(new ItemNetherRashSpores());
+        this.netherSquashSeeds = new ItemDefinition(new ItemNetherSquashSeeds());
+        this.netherMaliceFruit = new ItemDefinition(new ItemNetherMaliceFruit());
+        this.netherGhastPowder = new ItemDefinition(new ItemNetherGhastPowder());
+    }
 
-	@Override
-	public void register()
-	{
-		GameRegistry.registerItem(ectoplasm.getItem(), "grcnether.ectoplasm");
-		GameRegistry.registerItem(netherMuertecap.getItem(), "grcnether.netherMuertecapFood");
-		GameRegistry.registerItem(netherPepper.getItem(), "grcnether.netherPepper");
-		GameRegistry.registerItem(netherRashSpores.getItem(), "grcnether.netherRashSpores");
-		GameRegistry.registerItem(netherSquashSeeds.getItem(), "grcnether.netherSquashSeeds");
-		GameRegistry.registerItem(netherMaliceFruit.getItem(), "grcnether.netherMaliceFruitItem");
-		GameRegistry.registerItem(netherGhastPowder.getItem(), "grcnether.netherGhastPowder");
-		
-		OreDictionary.registerOre("yeastPoison", netherRashSpores.getItem());
-		OreDictionary.registerOre("fruitMalum", netherMaliceFruit.getItem());
-		OreDictionary.registerOre("ghostChili", netherPepper.getItem());
+    @Override
+    public void register() {
+        GameRegistry.registerItem(ectoplasm.getItem(), "grcnether.ectoplasm");
+        GameRegistry.registerItem(netherMuertecap.getItem(), "grcnether.netherMuertecapFood");
+        GameRegistry.registerItem(netherPepper.getItem(), "grcnether.netherPepper");
+        GameRegistry.registerItem(netherRashSpores.getItem(), "grcnether.netherRashSpores");
+        GameRegistry.registerItem(netherSquashSeeds.getItem(), "grcnether.netherSquashSeeds");
+        GameRegistry.registerItem(netherMaliceFruit.getItem(), "grcnether.netherMaliceFruitItem");
+        GameRegistry.registerItem(netherGhastPowder.getItem(), "grcnether.netherGhastPowder");
 
-		GameRegistry.addShapelessRecipe(netherGhastPowder.asStack(3), Items.GHAST_TEAR, Items.BLAZE_POWDER);
-	}
+        OreDictionary.registerOre("yeastPoison", netherRashSpores.getItem());
+        OreDictionary.registerOre("fruitMalum", netherMaliceFruit.getItem());
+        OreDictionary.registerOre("ghostChili", netherPepper.getItem());
+
+        GameRegistry.addShapelessRecipe(netherGhastPowder.asStack(3), Items.GHAST_TEAR, Items.BLAZE_POWDER);
+    }
 }
 

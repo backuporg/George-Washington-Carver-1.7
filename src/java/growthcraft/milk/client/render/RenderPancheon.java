@@ -31,98 +31,83 @@ import growthcraft.milk.common.block.BlockPancheon;
 import growthcraft.milk.common.tileentity.TileEntityPancheon;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
-
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
-
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import org.lwjgl.opengl.GL11;
 
-public class RenderPancheon implements ISimpleBlockRenderingHandler
-{
-	public static int RENDER_ID = RenderingRegistry.getNextAvailableRenderId();
-	private static final BBox fluidBBox = BBox.newCube(1, 1, 1, 14, 4, 14).scale(ModelPancheon.SCALE);
+public class RenderPancheon implements ISimpleBlockRenderingHandler {
+    private static final BBox fluidBBox = BBox.newCube(1, 1, 1, 14, 4, 14).scale(ModelPancheon.SCALE);
+    public static int RENDER_ID = RenderingRegistry.getNextAvailableRenderId();
 
-	@Override
-	public int getRenderId()
-	{
-		return RENDER_ID;
-	}
+    @Override
+    public int getRenderId() {
+        return RENDER_ID;
+    }
 
-	@Override
-	public boolean shouldRender3DInInventory(int modelID)
-	{
-		return true;
-	}
+    @Override
+    public boolean shouldRender3DInInventory(int modelID) {
+        return true;
+    }
 
-	@Override
-	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer)
-	{
-		if (modelID == RENDER_ID)
-		{
-			GL11.glPushMatrix();
-			{
-				Minecraft.getMinecraft().renderEngine.bindTexture(GrcMilkResources.INSTANCE.texturePancheon);
-				GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-				GL11.glRotatef(180.0F, 1.0F, 0.0F, 0.0F);
-				GL11.glTranslatef(0.0f, -1.0f, 0.0f);
-				GrcMilkResources.INSTANCE.modelPancheon.render(null, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, ModelPancheon.SCALE);
-			}
-			GL11.glPopMatrix();
-		}
-	}
+    @Override
+    public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer) {
+        if (modelID == RENDER_ID) {
+            GL11.glPushMatrix();
+            {
+                Minecraft.getMinecraft().renderEngine.bindTexture(GrcMilkResources.INSTANCE.texturePancheon);
+                GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+                GL11.glRotatef(180.0F, 1.0F, 0.0F, 0.0F);
+                GL11.glTranslatef(0.0f, -1.0f, 0.0f);
+                GrcMilkResources.INSTANCE.modelPancheon.render(null, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, ModelPancheon.SCALE);
+            }
+            GL11.glPopMatrix();
+        }
+    }
 
-	private void renderFluidLayer(Block block, RenderBlocks renderer, Fluid fluid, double y0, double y1, BlockPos pos)
-	{
-		if (fluid == null) return;
-		final float[] colorAry = new float[3];
-		final int color = fluid.getColor();
-		ColorUtils.rgb24FloatArray(colorAry, color);
-		Tessellator.instance.setColorOpaque_F(colorAry[0], colorAry[1], colorAry[2]);
+    private void renderFluidLayer(Block block, RenderBlocks renderer, Fluid fluid, double y0, double y1, BlockPos pos) {
+        if (fluid == null) return;
+        final float[] colorAry = new float[3];
+        final int color = fluid.getColor();
+        ColorUtils.rgb24FloatArray(colorAry, color);
+        Tessellator.instance.setColorOpaque_F(colorAry[0], colorAry[1], colorAry[2]);
 
-		renderer.setRenderBounds(fluidBBox.x0(), y0, fluidBBox.z0(), fluidBBox.x1(), y1, fluidBBox.z1());
-		renderer.renderFaceYPos(block, (double)x, (double)y, (double)z, fluid.getIcon());
-	}
+        renderer.setRenderBounds(fluidBBox.x0(), y0, fluidBBox.z0(), fluidBBox.x1(), y1, fluidBBox.z1());
+        renderer.renderFaceYPos(block, (double) x, (double) y, (double) z, fluid.getIcon());
+    }
 
-	@Override
-	public boolean renderWorldBlock(IBlockAccess world, BlockPos pos, Block block, int modelId, RenderBlocks renderer)
-	{
-		if (modelId == RENDER_ID)
-		{
-			if (block instanceof BlockPancheon)
-			{
-				final BlockPancheon pancheonBlock = (BlockPancheon)block;
-				final TileEntityPancheon pancheonTile = pancheonBlock.getTileEntity(world, pos);
-				if (pancheonTile != null)
-				{
-					double y0 = ModelPancheon.SCALE;
-					FluidStack fluid = pancheonTile.getFluidStack(0);
-					if (fluid != null)
-					{
-						final float fluidHeight = fluid.amount * fluidBBox.h() / pancheonTile.getFluidTank(0).getCapacity();
-						renderFluidLayer(block, renderer, fluid.getFluid(), y0, y0 + fluidHeight, pos);
-					}
+    @Override
+    public boolean renderWorldBlock(IBlockAccess world, BlockPos pos, Block block, int modelId, RenderBlocks renderer) {
+        if (modelId == RENDER_ID) {
+            if (block instanceof BlockPancheon) {
+                final BlockPancheon pancheonBlock = (BlockPancheon) block;
+                final TileEntityPancheon pancheonTile = pancheonBlock.getTileEntity(world, pos);
+                if (pancheonTile != null) {
+                    double y0 = ModelPancheon.SCALE;
+                    FluidStack fluid = pancheonTile.getFluidStack(0);
+                    if (fluid != null) {
+                        final float fluidHeight = fluid.amount * fluidBBox.h() / pancheonTile.getFluidTank(0).getCapacity();
+                        renderFluidLayer(block, renderer, fluid.getFluid(), y0, y0 + fluidHeight, pos);
+                    }
 
-					fluid = pancheonTile.getFluidStack(1);
-					if (fluid != null)
-					{
-						final float fluidHeight = fluid.amount * fluidBBox.h() / pancheonTile.getFluidTank(1).getCapacity();
-						renderFluidLayer(block, renderer, fluid.getFluid(), y0, y0 + fluidHeight, pos);
-						y0 += fluidHeight;
-					}
+                    fluid = pancheonTile.getFluidStack(1);
+                    if (fluid != null) {
+                        final float fluidHeight = fluid.amount * fluidBBox.h() / pancheonTile.getFluidTank(1).getCapacity();
+                        renderFluidLayer(block, renderer, fluid.getFluid(), y0, y0 + fluidHeight, pos);
+                        y0 += fluidHeight;
+                    }
 
-					fluid = pancheonTile.getFluidStack(2);
-					if (fluid != null)
-					{
-						final float fluidHeight = fluid.amount * fluidBBox.h() / pancheonTile.getFluidTank(2).getCapacity();
-						renderFluidLayer(block, renderer, fluid.getFluid(), y0, y0 + fluidHeight, pos);
-					}
-				}
-			}
-		}
-		return true;
-	}
+                    fluid = pancheonTile.getFluidStack(2);
+                    if (fluid != null) {
+                        final float fluidHeight = fluid.amount * fluidBBox.h() / pancheonTile.getFluidTank(2).getCapacity();
+                        renderFluidLayer(block, renderer, fluid.getFluid(), y0, y0 + fluidHeight, pos);
+                    }
+                }
+            }
+        }
+        return true;
+    }
 }

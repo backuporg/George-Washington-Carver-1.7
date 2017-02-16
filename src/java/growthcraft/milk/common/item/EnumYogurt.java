@@ -27,33 +27,29 @@ import growthcraft.api.core.definition.IItemStackFactory;
 import growthcraft.milk.GrowthCraftMilk;
 import net.minecraft.item.ItemStack;
 
-public enum EnumYogurt implements IItemStackFactory
-{
-	PLAIN("plain"),
-	CHOCOLATE("chocolate"),
-	GRAPE("grape"),
-	APPLE("apple"),
-	HONEY("honey"),
-	WATERMELON("watermelon");
+public enum EnumYogurt implements IItemStackFactory {
+    PLAIN("plain"),
+    CHOCOLATE("chocolate"),
+    GRAPE("grape"),
+    APPLE("apple"),
+    HONEY("honey"),
+    WATERMELON("watermelon");
 
-	public static final EnumYogurt[] VALUES = values();
+    public static final EnumYogurt[] VALUES = values();
 
-	public final String name;
-	public final int meta;
+    public final String name;
+    public final int meta;
 
-	private EnumYogurt(String n)
-	{
-		this.name = n;
-		this.meta = ordinal();
-	}
+    EnumYogurt(String n) {
+        this.name = n;
+        this.meta = ordinal();
+    }
 
-	public ItemStack asStack(int size)
-	{
-		return GrowthCraftMilk.items.yogurt.asStack(size, meta);
-	}
+    public ItemStack asStack(int size) {
+        return GrowthCraftMilk.items.yogurt.asStack(size, meta);
+    }
 
-	public ItemStack asStack()
-	{
-		return asStack(1);
-	}
+    public ItemStack asStack() {
+        return asStack(1);
+    }
 }

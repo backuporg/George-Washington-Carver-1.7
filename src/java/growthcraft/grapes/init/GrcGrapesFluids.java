@@ -47,134 +47,128 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
 
-public class GrcGrapesFluids extends GrcModuleBase
-{
-	public Booze[] grapeWineBooze;
-	public BlockBoozeDefinition[] grapeWineFluids;
-	public ItemDefinition grapeWine;
-	public ItemBucketBoozeDefinition[] grapeWineBuckets;
+public class GrcGrapesFluids extends GrcModuleBase {
+    public Booze[] grapeWineBooze;
+    public BlockBoozeDefinition[] grapeWineFluids;
+    public ItemDefinition grapeWine;
+    public ItemBucketBoozeDefinition[] grapeWineBuckets;
 
-	@Override
-	public void preInit()
-	{
-		this.grapeWineBooze = new Booze[8];
-		this.grapeWineFluids = new BlockBoozeDefinition[grapeWineBooze.length];
-		this.grapeWineBuckets = new ItemBucketBoozeDefinition[grapeWineBooze.length];
-		BoozeRegistryHelper.initializeBoozeFluids("grc.grapeWine", grapeWineBooze);
-		for (Booze booze : grapeWineBooze)
-		{
-			booze.setColor(GrowthCraftGrapes.getConfig().grapeWineColor).setDensity(1120);
-		}
-		BoozeRegistryHelper.initializeBooze(grapeWineBooze, grapeWineFluids, grapeWineBuckets);
-		BoozeRegistryHelper.setBoozeFoodStats(grapeWineBooze, 1, -0.3f);
-		BoozeRegistryHelper.setBoozeFoodStats(grapeWineBooze[0], 1, 0.3f);
+    @Override
+    public void preInit() {
+        this.grapeWineBooze = new Booze[8];
+        this.grapeWineFluids = new BlockBoozeDefinition[grapeWineBooze.length];
+        this.grapeWineBuckets = new ItemBucketBoozeDefinition[grapeWineBooze.length];
+        BoozeRegistryHelper.initializeBoozeFluids("grc.grapeWine", grapeWineBooze);
+        for (Booze booze : grapeWineBooze) {
+            booze.setColor(GrowthCraftGrapes.getConfig().grapeWineColor).setDensity(1120);
+        }
+        BoozeRegistryHelper.initializeBooze(grapeWineBooze, grapeWineFluids, grapeWineBuckets);
+        BoozeRegistryHelper.setBoozeFoodStats(grapeWineBooze, 1, -0.3f);
+        BoozeRegistryHelper.setBoozeFoodStats(grapeWineBooze[0], 1, 0.3f);
 
-		grapeWineBooze[4].setColor(GrowthCraftGrapes.getConfig().ambrosiaColor);
-		grapeWineFluids[4].getBlockState().refreshColor();
-		grapeWineBooze[5].setColor(GrowthCraftGrapes.getConfig().portWineColor);
-		grapeWineFluids[5].getBlockState().refreshColor();
+        grapeWineBooze[4].setColor(GrowthCraftGrapes.getConfig().ambrosiaColor);
+        grapeWineFluids[4].getBlockState().refreshColor();
+        grapeWineBooze[5].setColor(GrowthCraftGrapes.getConfig().portWineColor);
+        grapeWineFluids[5].getBlockState().refreshColor();
 
-		this.grapeWine = new ItemDefinition(new ItemBoozeBottle(grapeWineBooze));
-	}
+        this.grapeWine = new ItemDefinition(new ItemBoozeBottle(grapeWineBooze));
+    }
 
-	private void registerFermentations()
-	{
-		final int fermentTime = GrowthCraftCellar.getConfig().fermentTime;
-		final FluidStack[] fs = new FluidStack[grapeWineBooze.length];
-		for (int i = 0; i < grapeWineBooze.length; ++i)
-		{
-			fs[i] = new FluidStack(grapeWineBooze[i], 1);
-		}
+    private void registerFermentations() {
+        final int fermentTime = GrowthCraftCellar.getConfig().fermentTime;
+        final FluidStack[] fs = new FluidStack[grapeWineBooze.length];
+        for (int i = 0; i < grapeWineBooze.length; ++i) {
+            fs[i] = new FluidStack(grapeWineBooze[i], 1);
+        }
 
-		GrowthCraftCellar.boozeBuilderFactory.create(grapeWineBooze[0])
-			.tags(BoozeTag.YOUNG)
-			.pressesFrom(
-				new OreItemStacks("cropGrapes"),
-				TickUtils.seconds(2),
-				40,
-				Residue.newDefault(0.3F));
+        GrowthCraftCellar.boozeBuilderFactory.create(grapeWineBooze[0])
+                .tags(BoozeTag.YOUNG)
+                .pressesFrom(
+                        new OreItemStacks("cropGrapes"),
+                        TickUtils.seconds(2),
+                        40,
+                        Residue.newDefault(0.3F));
 
-		// Brewers Yeast, Nether Wart
-		GrowthCraftCellar.boozeBuilderFactory.create(grapeWineBooze[1])
-			.tags(BoozeTag.WINE, BoozeTag.FERMENTED)
-			.fermentsFrom(fs[0], new OreItemStacks("yeastBrewers"), fermentTime)
-			.fermentsFrom(fs[0], new ItemStack(Items.NETHER_WART), (int)(fermentTime * 0.66))
-			.getEffect()
-				.setTipsy(BoozeUtils.alcoholToTipsy(0.05f), TickUtils.seconds(90))
-				.addPotionEntry(MobEffects.RESISTANCE, TickUtils.minutes(3), 0);
+        // Brewers Yeast, Nether Wart
+        GrowthCraftCellar.boozeBuilderFactory.create(grapeWineBooze[1])
+                .tags(BoozeTag.WINE, BoozeTag.FERMENTED)
+                .fermentsFrom(fs[0], new OreItemStacks("yeastBrewers"), fermentTime)
+                .fermentsFrom(fs[0], new ItemStack(Items.NETHER_WART), (int) (fermentTime * 0.66))
+                .getEffect()
+                .setTipsy(BoozeUtils.alcoholToTipsy(0.05f), TickUtils.seconds(90))
+                .addPotionEntry(MobEffects.RESISTANCE, TickUtils.minutes(3), 0);
 
-		// Glowstone Dust
-		GrowthCraftCellar.boozeBuilderFactory.create(grapeWineBooze[2])
-			.tags(BoozeTag.WINE, BoozeTag.FERMENTED, BoozeTag.POTENT)
-			.fermentsFrom(fs[1], new OreItemStacks("dustGlowstone"), fermentTime)
-			.fermentsFrom(fs[3], new OreItemStacks("dustGlowstone"), fermentTime)
-			.getEffect()
-				.setTipsy(BoozeUtils.alcoholToTipsy(0.07f), TickUtils.seconds(90))
-				.addPotionEntry(MobEffects.RESISTANCE, TickUtils.minutes(3), 0);
+        // Glowstone Dust
+        GrowthCraftCellar.boozeBuilderFactory.create(grapeWineBooze[2])
+                .tags(BoozeTag.WINE, BoozeTag.FERMENTED, BoozeTag.POTENT)
+                .fermentsFrom(fs[1], new OreItemStacks("dustGlowstone"), fermentTime)
+                .fermentsFrom(fs[3], new OreItemStacks("dustGlowstone"), fermentTime)
+                .getEffect()
+                .setTipsy(BoozeUtils.alcoholToTipsy(0.07f), TickUtils.seconds(90))
+                .addPotionEntry(MobEffects.RESISTANCE, TickUtils.minutes(3), 0);
 
-		// Redstone Dust
-		GrowthCraftCellar.boozeBuilderFactory.create(grapeWineBooze[3])
-			.tags(BoozeTag.WINE, BoozeTag.FERMENTED, BoozeTag.EXTENDED)
-			.fermentsFrom(fs[1], new OreItemStacks("dustRedstone"), fermentTime)
-			.fermentsFrom(fs[2], new OreItemStacks("dustRedstone"), fermentTime)
-			.getEffect()
-				.setTipsy(BoozeUtils.alcoholToTipsy(0.05f), TickUtils.seconds(90))
-				.addPotionEntry(MobEffects.RESISTANCE, TickUtils.minutes(3), 0);
+        // Redstone Dust
+        GrowthCraftCellar.boozeBuilderFactory.create(grapeWineBooze[3])
+                .tags(BoozeTag.WINE, BoozeTag.FERMENTED, BoozeTag.EXTENDED)
+                .fermentsFrom(fs[1], new OreItemStacks("dustRedstone"), fermentTime)
+                .fermentsFrom(fs[2], new OreItemStacks("dustRedstone"), fermentTime)
+                .getEffect()
+                .setTipsy(BoozeUtils.alcoholToTipsy(0.05f), TickUtils.seconds(90))
+                .addPotionEntry(MobEffects.RESISTANCE, TickUtils.minutes(3), 0);
 
-		// Ambrosia - Ethereal Yeast
-		GrowthCraftCellar.boozeBuilderFactory.create(grapeWineBooze[4])
-			.tags(BoozeTag.WINE, BoozeTag.FERMENTED, BoozeTag.HYPER_EXTENDED)
-			.fermentsFrom(fs[2], new OreItemStacks("yeastEthereal"), fermentTime)
-			.fermentsFrom(fs[3], new OreItemStacks("yeastEthereal"), fermentTime)
-			.getEffect()
-				.setTipsy(BoozeUtils.alcoholToTipsy(0.053f), TickUtils.seconds(90))
-				.addPotionEntry(MobEffects.HEALTH_BOOST, TickUtils.minutes(3), 0)
-				.addPotionEntry(MobEffects.RESISTANCE, TickUtils.minutes(3), 0);
+        // Ambrosia - Ethereal Yeast
+        GrowthCraftCellar.boozeBuilderFactory.create(grapeWineBooze[4])
+                .tags(BoozeTag.WINE, BoozeTag.FERMENTED, BoozeTag.HYPER_EXTENDED)
+                .fermentsFrom(fs[2], new OreItemStacks("yeastEthereal"), fermentTime)
+                .fermentsFrom(fs[3], new OreItemStacks("yeastEthereal"), fermentTime)
+                .getEffect()
+                .setTipsy(BoozeUtils.alcoholToTipsy(0.053f), TickUtils.seconds(90))
+                .addPotionEntry(MobEffects.HEALTH_BOOST, TickUtils.minutes(3), 0)
+                .addPotionEntry(MobEffects.RESISTANCE, TickUtils.minutes(3), 0);
 
-		// Port Wine - Bayanus Yeast
-		GrowthCraftCellar.boozeBuilderFactory.create(grapeWineBooze[5])
-			.tags(BoozeTag.WINE, BoozeTag.FERMENTED, BoozeTag.FORTIFIED, BoozeTag.PORT)
-			.brewsFrom(
-				new FluidStack(grapeWineBooze[1], GrowthCraftGrapes.getConfig().portWineBrewingYield),
-				new OreItemStacks("yeastBayanus"),
-				GrowthCraftGrapes.getConfig().portWineBrewingTime,
-				Residue.newDefault(0.3F))
-			.getEffect()
-				.setTipsy(BoozeUtils.alcoholToTipsy(0.20f), TickUtils.seconds(90))
-				.addPotionEntry(MobEffects.RESISTANCE, TickUtils.minutes(3), 2);
+        // Port Wine - Bayanus Yeast
+        GrowthCraftCellar.boozeBuilderFactory.create(grapeWineBooze[5])
+                .tags(BoozeTag.WINE, BoozeTag.FERMENTED, BoozeTag.FORTIFIED, BoozeTag.PORT)
+                .brewsFrom(
+                        new FluidStack(grapeWineBooze[1], GrowthCraftGrapes.getConfig().portWineBrewingYield),
+                        new OreItemStacks("yeastBayanus"),
+                        GrowthCraftGrapes.getConfig().portWineBrewingTime,
+                        Residue.newDefault(0.3F))
+                .getEffect()
+                .setTipsy(BoozeUtils.alcoholToTipsy(0.20f), TickUtils.seconds(90))
+                .addPotionEntry(MobEffects.RESISTANCE, TickUtils.minutes(3), 2);
 
-		// Intoxicated Wine
-		GrowthCraftCellar.boozeBuilderFactory.create(grapeWineBooze[6])
-			.tags(BoozeTag.WINE, BoozeTag.FERMENTED, BoozeTag.INTOXICATED)
-			.fermentsFrom(fs[2], new OreItemStacks("yeastOrigin"), fermentTime)
-			.fermentsFrom(fs[3], new OreItemStacks("yeastOrigin"), fermentTime)
-			.getEffect()
-				.setTipsy(BoozeUtils.alcoholToTipsy(0.15f), TickUtils.seconds(90))
-				.addEffect(new EffectWeightedRandomList()
-					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.RESISTANCE, TickUtils.minutes(3), 2)))
-					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.WEAKNESS, TickUtils.minutes(3), 2))));
+        // Intoxicated Wine
+        GrowthCraftCellar.boozeBuilderFactory.create(grapeWineBooze[6])
+                .tags(BoozeTag.WINE, BoozeTag.FERMENTED, BoozeTag.INTOXICATED)
+                .fermentsFrom(fs[2], new OreItemStacks("yeastOrigin"), fermentTime)
+                .fermentsFrom(fs[3], new OreItemStacks("yeastOrigin"), fermentTime)
+                .getEffect()
+                .setTipsy(BoozeUtils.alcoholToTipsy(0.15f), TickUtils.seconds(90))
+                .addEffect(new EffectWeightedRandomList()
+                        .add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.RESISTANCE, TickUtils.minutes(3), 2)))
+                        .add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.WEAKNESS, TickUtils.minutes(3), 2))));
 
-		GrowthCraftCellar.boozeBuilderFactory.create(grapeWineBooze[7])
-			.tags(BoozeTag.WINE, BoozeTag.FERMENTED, BoozeTag.POISONED)
-			.fermentsTo(fs[1], new OreItemStacks("yeastPoison"), fermentTime)
-			.fermentsTo(fs[2], new OreItemStacks("yeastPoison"), fermentTime)
-			.fermentsTo(fs[3], new OreItemStacks("yeastPoison"), fermentTime)
-			.fermentsTo(fs[4], new OreItemStacks("yeastPoison"), fermentTime)
-			.fermentsTo(fs[5], new OreItemStacks("yeastPoison"), fermentTime)
-			.fermentsTo(fs[6], new OreItemStacks("yeastPoison"), fermentTime)
-			.getEffect()
-				.setTipsy(BoozeUtils.alcoholToTipsy(0.05f), TickUtils.seconds(90))
-				.createPotionEntry(MobEffects.POISON, TickUtils.seconds(90), 0).toggleDescription(!GrowthCraftCore.getConfig().hidePoisonedBooze);
-	}
+        GrowthCraftCellar.boozeBuilderFactory.create(grapeWineBooze[7])
+                .tags(BoozeTag.WINE, BoozeTag.FERMENTED, BoozeTag.POISONED)
+                .fermentsTo(fs[1], new OreItemStacks("yeastPoison"), fermentTime)
+                .fermentsTo(fs[2], new OreItemStacks("yeastPoison"), fermentTime)
+                .fermentsTo(fs[3], new OreItemStacks("yeastPoison"), fermentTime)
+                .fermentsTo(fs[4], new OreItemStacks("yeastPoison"), fermentTime)
+                .fermentsTo(fs[5], new OreItemStacks("yeastPoison"), fermentTime)
+                .fermentsTo(fs[6], new OreItemStacks("yeastPoison"), fermentTime)
+                .getEffect()
+                .setTipsy(BoozeUtils.alcoholToTipsy(0.05f), TickUtils.seconds(90))
+                .createPotionEntry(MobEffects.POISON, TickUtils.seconds(90), 0).toggleDescription(!GrowthCraftCore.getConfig().hidePoisonedBooze);
+    }
 
-	@Override
-	public void register()
-	{
-		grapeWine.register("grc.grapeWine");
+    @Override
+    public void register() {
+        grapeWine.register("grc.grapeWine");
 
-		BoozeRegistryHelper.registerBooze(grapeWineBooze, grapeWineFluids, grapeWineBuckets, grapeWine, "grc.grapeWine", null);
-		registerFermentations();
+        BoozeRegistryHelper.registerBooze(grapeWineBooze, grapeWineFluids, grapeWineBuckets, grapeWine, "grc.grapeWine", null);
+        registerFermentations();
 
-		OreDictionary.registerOre("foodGrapejuice", grapeWine.asStack(1, 0));
-	}
+        OreDictionary.registerOre("foodGrapejuice", grapeWine.asStack(1, 0));
+    }
 }

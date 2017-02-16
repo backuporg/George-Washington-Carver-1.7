@@ -25,14 +25,13 @@ package growthcraft.core.integration.highlands;
 
 import net.minecraftforge.fml.common.Loader;
 
-public class HIGHLANDSPlatform
-{
-	public static final String MOD_ID = "Highlands";
+public class HIGHLANDSPlatform {
+    public static final String MOD_ID = "Highlands";
 
-	private HIGHLANDSPlatform() {};
+    private HIGHLANDSPlatform() {
+    }
 
-	public static boolean isLoaded()
-	{
-		return Loader.isModLoaded(MOD_ID);
-	}
+    public static boolean isLoaded() {
+        return Loader.isModLoaded(MOD_ID);
+    }
 }

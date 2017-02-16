@@ -26,25 +26,30 @@ package growthcraft.api.cellar.heatsource;
 import growthcraft.api.core.log.ILoggable;
 import net.minecraft.block.Block;
 
-public interface IHeatSourceRegistry extends ILoggable
-{
-	/**
-	 * Adds a valid heat source (like fire, lava, etc.)
-	 * Currently only used by Brew Kettle.
-	 *
-	 * @param block - The block
-	 * @param meta - possible block meta
-	 * @param heat - how effective is this heat source, fire is 1.0f by default, higher the hotter, lower the cooler
-	 **/
-	void addHeatSource(Block block, int meta, IHeatSourceBlock heat);
-	void addHeatSource(Block block, int meta, float heat);
-	void addHeatSource(Block block, int meta);
-	void addHeatSource(Block block, IHeatSourceBlock heat);
-	void addHeatSource(Block block);
+public interface IHeatSourceRegistry extends ILoggable {
+    /**
+     * Adds a valid heat source (like fire, lava, etc.)
+     * Currently only used by Brew Kettle.
+     *
+     * @param block - The block
+     * @param meta  - possible block meta
+     * @param heat  - how effective is this heat source, fire is 1.0f by default, higher the hotter, lower the cooler
+     **/
+    void addHeatSource(Block block, int meta, IHeatSourceBlock heat);
 
-	IHeatSourceBlock getHeatSource(Block block, int meta);
-	IHeatSourceBlock getHeatSource(Block block);
+    void addHeatSource(Block block, int meta, float heat);
 
-	boolean isBlockHeatSource(Block block, int meta);
-	boolean isBlockHeatSource(Block block);
+    void addHeatSource(Block block, int meta);
+
+    void addHeatSource(Block block, IHeatSourceBlock heat);
+
+    void addHeatSource(Block block);
+
+    IHeatSourceBlock getHeatSource(Block block, int meta);
+
+    IHeatSourceBlock getHeatSource(Block block);
+
+    boolean isBlockHeatSource(Block block, int meta);
+
+    boolean isBlockHeatSource(Block block);
 }

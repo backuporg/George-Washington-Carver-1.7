@@ -37,50 +37,40 @@ import java.util.List;
 /**
  * Tag Formatter for IFluidHandler NBT data
  */
-public class TagFormatterFluidHandler implements ITagFormatter
-{
-	public static final TagFormatterFluidHandler INSTANCE = new TagFormatterFluidHandler();
+public class TagFormatterFluidHandler implements ITagFormatter {
+    public static final TagFormatterFluidHandler INSTANCE = new TagFormatterFluidHandler();
 
-	public List<String> format(List<String> list, NBTTagCompound tag)
-	{
-		final int tankCount = tag.getInteger("tank_count");
-		final NBTTagList tanks = tag.getTagList("tanks", NBTType.COMPOUND.id);
-		final NBTTagList tankNames = tag.hasKey("tank_names") ? tag.getTagList("tank_names", NBTType.STRING.id) : null;
-		for (int i = 0; i < tankCount; ++i)
-		{
-			final NBTTagCompound tankTag = tanks.getCompoundTagAt(i);
-			final String name = tankNames != null ? tankNames.getStringTagAt(i) : null;
-			String content = "";
+    public List<String> format(List<String> list, NBTTagCompound tag) {
+        final int tankCount = tag.getInteger("tank_count");
+        final NBTTagList tanks = tag.getTagList("tanks", NBTType.COMPOUND.id);
+        final NBTTagList tankNames = tag.hasKey("tank_names") ? tag.getTagList("tank_names", NBTType.STRING.id) : null;
+        for (int i = 0; i < tankCount; ++i) {
+            final NBTTagCompound tankTag = tanks.getCompoundTagAt(i);
+            final String name = tankNames != null ? tankNames.getStringTagAt(i) : null;
+            String content = "";
 
-			if (name != null && name.length() > 0)
-			{
-				content += GrcI18n.translate(name) + " ";
-			}
-			else
-			{
-				if (tankCount > 1)
-				{
-					// If the FluidHandler has multiple tanks, then prefix them as such,
-					// otherwise, display their content like normal
-					content += TextFormatting.GRAY + GrcI18n.translate("grc.format.tank_id", tankTag.getInteger("tank_id") + 1) + " ";
-				}
-			}
+            if (name != null && name.length() > 0) {
+                content += GrcI18n.translate(name) + " ";
+            } else {
+                if (tankCount > 1) {
+                    // If the FluidHandler has multiple tanks, then prefix them as such,
+                    // otherwise, display their content like normal
+                    content += TextFormatting.GRAY + GrcI18n.translate("grc.format.tank_id", tankTag.getInteger("tank_id") + 1) + " ";
+                }
+            }
 
-			final int fluidID = tankTag.getInteger("fluid_id");
-			if (fluidID != ConstID.NO_FLUID)
-			{
-				final FluidStack fluidStack = FluidStack.loadFluidStackFromNBT(tankTag.getCompoundTag("fluid"));
-				final String fluidName = UnitFormatter.fluidNameForContainer(fluidStack);
-				content = content +
-					UnitFormatter.fractionNum(fluidStack.amount, tankTag.getInteger("capacity")) +
-					TextFormatting.GRAY + " " + GrcI18n.translate("grc.format.tank.content_suffix", fluidName);
-			}
-			else
-			{
-				content = content + UnitFormatter.noFluid();
-			}
-			list.add(content);
-		}
-		return list;
-	}
+            final int fluidID = tankTag.getInteger("fluid_id");
+            if (fluidID != ConstID.NO_FLUID) {
+                final FluidStack fluidStack = FluidStack.loadFluidStackFromNBT(tankTag.getCompoundTag("fluid"));
+                final String fluidName = UnitFormatter.fluidNameForContainer(fluidStack);
+                content = content +
+                        UnitFormatter.fractionNum(fluidStack.amount, tankTag.getInteger("capacity")) +
+                        TextFormatting.GRAY + " " + GrcI18n.translate("grc.format.tank.content_suffix", fluidName);
+            } else {
+                content = content + UnitFormatter.noFluid();
+            }
+            list.add(content);
+        }
+        return list;
+    }
 }

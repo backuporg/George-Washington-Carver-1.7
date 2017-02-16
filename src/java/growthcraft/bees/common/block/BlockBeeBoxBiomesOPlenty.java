@@ -33,44 +33,38 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
 
 
-public class BlockBeeBoxBiomesOPlenty extends BlockBeeBox
-{
-	public BlockBeeBoxBiomesOPlenty()
-	{
-		super();
-		setHardness(2f);
-		setUnlocalizedName("grc.BeeBox.BiomesOPlenty");
-	}
+public class BlockBeeBoxBiomesOPlenty extends BlockBeeBox {
+    public BlockBeeBoxBiomesOPlenty() {
+        super();
+        setHardness(2f);
+        setUnlocalizedName("grc.BeeBox.BiomesOPlenty");
+    }
 
-	@Override
-	public String getMetaname(int meta)
-	{
-		if (meta >= 0 && meta < EnumBopWoodType.VALUES.length)
-		{
-			return EnumBopWoodType.VALUES[meta].name;
-		}
-		return super.getMetaname(meta);
-	}
+    @Override
+    public String getMetaname(int meta) {
+        if (meta >= 0 && meta < EnumBopWoodType.VALUES.length) {
+            return EnumBopWoodType.VALUES[meta].name;
+        }
+        return super.getMetaname(meta);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void getSubBlocks(Item block, CreativeTabs tab, List list)
-	{
-		for (int i = 0; i < EnumBopWoodType.VALUES.length; ++i)
-		{
-			list.add(new ItemStack(block, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    public void getSubBlocks(Item block, CreativeTabs tab, List list) {
+        for (int i = 0; i < EnumBopWoodType.VALUES.length; ++i) {
+            list.add(new ItemStack(block, 1, i));
+        }
+    }
 
-	//@Override
-	//@SideOnly(Side.CLIENT)
+    //@Override
+    //@SideOnly(Side.CLIENT)
 //
-	//{
-	//	this.icons = new IIcon[4 * EnumBopWoodType.VALUES.length];
-	//	for (EnumBopWoodType type : EnumBopWoodType.VALUES)
-	//	{
-	//		registerBeeBoxIcons(reg, String.format("/biomesoplenty/%s/", type.name), type.meta);
-	//	}
-	//}
+    //{
+    //	this.icons = new IIcon[4 * EnumBopWoodType.VALUES.length];
+    //	for (EnumBopWoodType type : EnumBopWoodType.VALUES)
+    //	{
+    //		registerBeeBoxIcons(reg, String.format("/biomesoplenty/%s/", type.name), type.meta);
+    //	}
+    //}
 }

@@ -23,7 +23,6 @@
  */
 package growthcraft.milk.common.item;
 
-public enum EnumCheeseFeature
-{
-	HAS_BLOCK;
+public enum EnumCheeseFeature {
+    HAS_BLOCK
 }

@@ -29,21 +29,18 @@ import growthcraft.milk.common.world.WorldGeneratorThistle;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class CommonProxy extends GrcModuleProxyBase
-{
-	@SidedProxy(clientSide="growthcraft.milk.client.ClientProxy", serverSide="growthcraft.milk.common.CommonProxy")
-	public static CommonProxy instance;
+public class CommonProxy extends GrcModuleProxyBase {
+    @SidedProxy(clientSide = "growthcraft.milk.client.ClientProxy", serverSide = "growthcraft.milk.common.CommonProxy")
+    public static CommonProxy instance;
 
-	protected void registerWorldGen()
-	{
-		if (GrowthCraftMilk.getConfig().canThistleGenerate())
-			GameRegistry.registerWorldGenerator(new WorldGeneratorThistle(), 0);
-	}
+    protected void registerWorldGen() {
+        if (GrowthCraftMilk.getConfig().canThistleGenerate())
+            GameRegistry.registerWorldGenerator(new WorldGeneratorThistle(), 0);
+    }
 
-	@Override
-	public void init()
-	{
-		super.init();
-		registerWorldGen();
-	}
+    @Override
+    public void init() {
+        super.init();
+        registerWorldGen();
+    }
 }

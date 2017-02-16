@@ -40,123 +40,106 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
-public class BlockNetherMaliceSapling extends BlockBush implements IGrowable
-{
-	@SideOnly(Side.CLIENT)
-	private IIcon icon;
+public class BlockNetherMaliceSapling extends BlockBush implements IGrowable {
+    private final int growth = 8;
+    @SideOnly(Side.CLIENT)
+    private IIcon icon;
 
-	private final int growth = 8;
+    public BlockNetherMaliceSapling() {
+        super(Material.PLANTS);
+        setHardness(0.0F);
+        //setStepSound(soundTypeGrass);
+        setUnlocalizedName("grcnetherloid.netherMaliceSapling");
+        setTickRandomly(true);
+        setCreativeTab(netherloid.tab);
+        final float f = 0.4F;
+        getBoundingBox(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 2.0F, 0.5F + f);
+    }
 
-	public BlockNetherMaliceSapling()
-	{
-		super(Material.PLANTS);
-		setHardness(0.0F);
-		//setStepSound(soundTypeGrass);
-		setUnlocalizedName("grcnetherloid.netherMaliceSapling");
-		setTickRandomly(true);
-		setCreativeTab(netherloid.tab);
-		final float f = 0.4F;
-		getBoundingBox(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 2.0F, 0.5F + f);
-	}
+    /************
+     * MAIN
+     ************/
+    public void updateTick(World world, BlockPos pos, Random random, IBlockState state) {
+        if (!world.isRemote) {
+            super.updateTick(world, pos, state, random);
 
-	/************
-	 * MAIN
-	 ************/
-	public void updateTick(World world, BlockPos pos, Random random, IBlockState state)
-	{
-		if (!world.isRemote)
-		{
-			super.updateTick(world, pos, state, random);
+            if (world.getLight(x, y + 1, z) >= 9 && random.nextInt(this.growth) == 0) {
+                this.markOrGrowMarked(world, pos, random);
+            }
+        }
+    }
 
-			if (world.getLight(x, y + 1, z) >= 9 && random.nextInt(this.growth) == 0)
-			{
-				this.markOrGrowMarked(world, pos, random);
-			}
-		}
-	}
+    public void markOrGrowMarked(World world, BlockPos pos, Random random, IBlockState state) {
+        final int meta = world.getBlockState(pos);
 
-	public void markOrGrowMarked(World world, BlockPos pos, Random random, IBlockState state)
-	{
-		final int meta = world.getBlockState(pos);
+        if ((meta & 8) == 0) {
+            world.setBlockState(pos, state, meta | 8, 4);
+        } else {
+            this.growTree(world, x, y, z, random);
+        }
+    }
 
-		if ((meta & 8) == 0)
-		{
-			world.setBlockState(pos, state, meta | 8, 4);
-		}
-		else
-		{
-			this.growTree(world, x, y, z, random);
-		}
-	}
+    public void growTree(World world, BlockPos pos, Random random) {
+        if (!TerrainGen.saplingGrowTree(world, random, pos)) return;
 
-	public void growTree(World world, BlockPos pos, Random random)
-	{
-		if (!TerrainGen.saplingGrowTree(world, random, pos)) return;
+        final int meta = world.getBlockState(pos) & 3;
+        final WorldGenerator generator = new WorldGeneratorMaliceTree(true);
 
-		final int meta = world.getBlockState(pos) & 3;
-		final WorldGenerator generator = new WorldGeneratorMaliceTree(true);
+        world.setBlockState(pos, Blocks.AIR, 0, BlockFlags.ALL);
 
-		world.setBlockState(pos, Blocks.AIR, 0, BlockFlags.ALL);
+        if (!generator.generate(world, random, pos)) {
+            world.setBlockState(pos, this, meta, BlockFlags.ALL);
+        }
+    }
 
-		if (!generator.generate(world, random, pos))
-		{
-			world.setBlockState(pos, this, meta, BlockFlags.ALL);
-		}
-	}
+    /* Both side */
+    @Override
+    public boolean func_149851_a(World world, BlockPos pos, boolean isClient) {
+        return (world.getBlockState(pos) & 8) == 0;
+    }
 
-	/* Both side */
-	@Override
-	public boolean func_149851_a(World world, BlockPos pos, boolean isClient)
-	{
-		return (world.getBlockState(pos) & 8) == 0;
-	}
+    /* SideOnly(Side.SERVER) Can this apply bonemeal effect? */
+    @Override
+    public boolean func_149852_a(World world, Random random, BlockPos pos) {
+        return true;
+    }
 
-	/* SideOnly(Side.SERVER) Can this apply bonemeal effect? */
-	@Override
-	public boolean func_149852_a(World world, Random random, BlockPos pos)
-	{
-		return true;
-	}
+    /* Apply bonemeal effect */
+    @Override
+    public void func_149853_b(World world, Random random, BlockPos pos) {
+        if (random.nextFloat() < 0.45D) {
+            growTree(world, pos, random);
+        }
+    }
 
-	/* Apply bonemeal effect */
-	@Override
-	public void func_149853_b(World world, Random random, BlockPos pos)
-	{
-		if (random.nextFloat() < 0.45D)
-		{
-			growTree(world, pos, random);
-		}
-	}
+    /************
+     * TEXTURES
+     ************/
+    //@Override
+    //@SideOnly(Side.CLIENT)
 
-	/************
-	 * TEXTURES
-	 ************/
-	//@Override
-	//@SideOnly(Side.CLIENT)
+    //{
+    //	icon = reg.registerIcon("grcnetherloid:malicesapling");
+    //}
 
-	//{
-	//	icon = reg.registerIcon("grcnetherloid:malicesapling");
-	//}
+    //@Override
+    //@SideOnly(Side.CLIENT)
+    ///
+    //{
+    //	return this.icon;
+    //}
+    @Override
+    public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {
+        return false;
+    }
 
-	//@Override
-	//@SideOnly(Side.CLIENT)
-	///
-	//{
-	//	return this.icon;
-	//}
+    @Override
+    public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+        return false;
+    }
 
-	@Override
-	public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {
-		return false;
-	}
+    @Override
+    public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
 
-	@Override
-	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
-		return false;
-	}
-
-	@Override
-	public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
-
-	}
+    }
 }

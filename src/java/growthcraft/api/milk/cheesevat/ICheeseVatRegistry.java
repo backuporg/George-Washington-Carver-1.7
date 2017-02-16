@@ -34,53 +34,53 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public interface ICheeseVatRegistry extends ILoggable
-{
-	/**
-	 * Adds a new CheeseVat recipe
-	 *
-	 * @param recipe - the recipe to add
-	 */
-	void addRecipe(ICheeseVatRecipe recipe);
+public interface ICheeseVatRegistry extends ILoggable {
+    /**
+     * Adds a new CheeseVat recipe
+     *
+     * @param recipe - the recipe to add
+     */
+    void addRecipe(ICheeseVatRecipe recipe);
 
-	/**
-	 * Adds a new CheeseVat recipe
-	 *
-	 * @param outputFluids - fluids to output, currently only supports 1
-	 * @param outputItems - items to output, usually empty
-	 * @param inputFluids - input fluids, maximum 2
-	 * @param inputItems - input items, maximum 3
-	 */
-	void addRecipe(@Nonnull List<FluidStack> outputFluids, @Nonnull List<ItemStack> outputItems, @Nonnull List<IMultiFluidStacks> inputFluids, @Nonnull List<IMultiItemStacks> inputItems);
+    /**
+     * Adds a new CheeseVat recipe
+     *
+     * @param outputFluids - fluids to output, currently only supports 1
+     * @param outputItems  - items to output, usually empty
+     * @param inputFluids  - input fluids, maximum 2
+     * @param inputItems   - input items, maximum 3
+     */
+    void addRecipe(@Nonnull List<FluidStack> outputFluids, @Nonnull List<ItemStack> outputItems, @Nonnull List<IMultiFluidStacks> inputFluids, @Nonnull List<IMultiItemStacks> inputItems);
 
-	/**
-	 * Determine if the fluid is a valid ingredient
-	 *
-	 * @return true, the fluid is an ingredient, false otherwise
-	 */
-	boolean isFluidIngredient(@Nullable Fluid fluid);
+    /**
+     * Determine if the fluid is a valid ingredient
+     *
+     * @return true, the fluid is an ingredient, false otherwise
+     */
+    boolean isFluidIngredient(@Nullable Fluid fluid);
 
-	/**
-	 * Determine if the fluidstack is a valid input fluid
-	 *
-	 * @return true, the fluid is an ingredient, false otherwise
-	 */
-	boolean isFluidIngredient(@Nullable FluidStack fluid);
+    /**
+     * Determine if the fluidstack is a valid input fluid
+     *
+     * @return true, the fluid is an ingredient, false otherwise
+     */
+    boolean isFluidIngredient(@Nullable FluidStack fluid);
 
-	/**
-	 * Determines if the item is an ingredient
-	 *
-	 * @return true, the item is an ingredient, false otherwise
-	 */
-	boolean isItemIngredient(@Nullable ItemStack item);
+    /**
+     * Determines if the item is an ingredient
+     *
+     * @return true, the item is an ingredient, false otherwise
+     */
+    boolean isItemIngredient(@Nullable ItemStack item);
 
-	/**
-	 * Finds a recipe given the input fluids and input items
-	 * Note that this should filter the recipes out by fluid amounts and input items
-	 * THAT IS: If the provided fluids do not have an amount greater than or equal to the input fluids, it should return null
-	 * Same with items
-	 *
-	 * @return recipe
-	 */
-	@Nullable ICheeseVatRecipe findRecipe(@Nonnull List<FluidStack> inputFluids, @Nonnull List<ItemStack> inputItems);
+    /**
+     * Finds a recipe given the input fluids and input items
+     * Note that this should filter the recipes out by fluid amounts and input items
+     * THAT IS: If the provided fluids do not have an amount greater than or equal to the input fluids, it should return null
+     * Same with items
+     *
+     * @return recipe
+     */
+    @Nullable
+    ICheeseVatRecipe findRecipe(@Nonnull List<FluidStack> inputFluids, @Nonnull List<ItemStack> inputItems);
 }

@@ -30,13 +30,18 @@ import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nullable;
 
-public interface IFermentationRecipe
-{
-	IMultiFluidStacks getInputFluidStack();
-	FluidStack getOutputFluidStack();
-	IMultiItemStacks getFermentingItemStack();
-	int getTime();
-	boolean matchesRecipe(@Nullable FluidStack fluidStack, @Nullable ItemStack itemStack);
-	boolean matchesIngredient(@Nullable FluidStack fluidStack);
-	boolean matchesIngredient(@Nullable ItemStack itemStack);
+public interface IFermentationRecipe {
+    IMultiFluidStacks getInputFluidStack();
+
+    FluidStack getOutputFluidStack();
+
+    IMultiItemStacks getFermentingItemStack();
+
+    int getTime();
+
+    boolean matchesRecipe(@Nullable FluidStack fluidStack, @Nullable ItemStack itemStack);
+
+    boolean matchesIngredient(@Nullable FluidStack fluidStack);
+
+    boolean matchesIngredient(@Nullable ItemStack itemStack);
 }

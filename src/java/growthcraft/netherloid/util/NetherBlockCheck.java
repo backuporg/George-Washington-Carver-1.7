@@ -26,19 +26,18 @@ package growthcraft.netherloid.util;
 import growthcraft.netherloid.netherloid;
 import net.minecraft.block.Block;
 
-public class NetherBlockCheck
-{
-	private NetherBlockCheck() {}
+public class NetherBlockCheck {
+    private NetherBlockCheck() {
+    }
 
-	/**
-	 * Determines if block is a nether paddy block
-	 *
-	 * @param block - the block to check
-	 * @return true if the block is a Paddy, false otherwise
-	 */
-	public static boolean isPaddy(Block block)
-	{
-		return netherloid.blocks.netherPaddyField.equals(block) ||
-			netherloid.blocks.netherPaddyFieldFilled.equals(block);
-	}
+    /**
+     * Determines if block is a nether paddy block
+     *
+     * @param block - the block to check
+     * @return true if the block is a Paddy, false otherwise
+     */
+    public static boolean isPaddy(Block block) {
+        return netherloid.blocks.netherPaddyField.equals(block) ||
+                netherloid.blocks.netherPaddyFieldFilled.equals(block);
+    }
 }

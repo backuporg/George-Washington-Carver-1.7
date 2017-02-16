@@ -45,105 +45,91 @@ import net.minecraftforge.fml.common.eventhandler.EventBus;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @Mod(
-	modid = GrowthCraftMilk.MOD_ID,
-	name = GrowthCraftMilk.MOD_NAME,
-	version = GrowthCraftMilk.MOD_VERSION,
-	dependencies = GrowthCraftMilk.MOD_DEPENDENCIES
+        modid = GrowthCraftMilk.MOD_ID,
+        name = GrowthCraftMilk.MOD_NAME,
+        version = GrowthCraftMilk.MOD_VERSION,
+        dependencies = GrowthCraftMilk.MOD_DEPENDENCIES
 )
-public class GrowthCraftMilk
-{
-	public static final String MOD_ID = "Growthcraft|Milk";
-	public static final String MOD_NAME = "Growthcraft Milk";
-	public static final String MOD_VERSION = "@VERSION@";
-	public static final String MOD_DEPENDENCIES = "required-after:Growthcraft;required-after:Growthcraft|Cellar";
+public class GrowthCraftMilk {
+    public static final String MOD_ID = "Growthcraft|Milk";
+    public static final String MOD_NAME = "Growthcraft Milk";
+    public static final String MOD_VERSION = "@VERSION@";
+    public static final String MOD_DEPENDENCIES = "required-after:Growthcraft;required-after:Growthcraft|Cellar";
+    public static final GrcMilkBlocks blocks = new GrcMilkBlocks();
+    public static final GrcMilkFluids fluids = new GrcMilkFluids();
+    public static final GrcMilkItems items = new GrcMilkItems();
+    public static final GrcMilkRecipes recipes = new GrcMilkRecipes();
+    public static final GrcMilkUserApis userApis = new GrcMilkUserApis();
+    // Events
+    public static final EventBus MILK_BUS = new EventBus();
+    @Instance(MOD_ID)
+    public static GrowthCraftMilk instance;
+    public static CreativeTabs creativeTab;
+    private final ILogger logger = new GrcLogger(MOD_ID);
+    private final GrcMilkConfig config = new GrcMilkConfig();
+    private final ModuleContainer modules = new ModuleContainer();
 
-	@Instance(MOD_ID)
-	public static GrowthCraftMilk instance;
+    public static GrcMilkConfig getConfig() {
+        return instance.config;
+    }
 
-	public static CreativeTabs creativeTab;
+    public static ILogger getLogger() {
+        return instance.logger;
+    }
 
-	public static final GrcMilkBlocks blocks = new GrcMilkBlocks();
-	public static final GrcMilkFluids fluids = new GrcMilkFluids();
-	public static final GrcMilkItems items = new GrcMilkItems();
-	public static final GrcMilkRecipes recipes = new GrcMilkRecipes();
-	public static final GrcMilkUserApis userApis = new GrcMilkUserApis();
+    @EventHandler
+    public void preload(FMLPreInitializationEvent event) {
+        config.setLogger(logger);
+        config.load(event.getModConfigurationDirectory(), "growthcraft/milk.conf");
+        if (config.debugEnabled) {
+            modules.setLogger(logger);
+            MilkRegistry.instance().setLogger(logger);
+        }
+        modules.add(blocks);
+        modules.add(items);
+        modules.add(fluids);
+        modules.add(recipes);
+        //if (config.enableMFRIntegration) modules.add(new growthcraft.milk.integration.MFRModule());
+        //if (config.enableThaumcraftIntegration) modules.add(new growthcraft.milk.integration.ThaumcraftModule());
+        if (config.enableWailaIntegration) modules.add(new growthcraft.milk.integration.Waila());
+        modules.add(userApis);
+        modules.add(CommonProxy.instance);
+        modules.freeze();
+        GrcMilkEffects.init();
 
-	// Events
-	public static final EventBus MILK_BUS = new EventBus();
+        userApis.setConfigDirectory(event.getModConfigurationDirectory());
 
-	private final ILogger logger = new GrcLogger(MOD_ID);
-	private final GrcMilkConfig config = new GrcMilkConfig();
-	private final ModuleContainer modules = new ModuleContainer();
+        GrowthCraftMilk.creativeTab = new GrcMilkCreativeTabs("creative_tab_grcmilk");
 
-	public static GrcMilkConfig getConfig()
-	{
-		return instance.config;
-	}
+        modules.preInit();
+        MinecraftForge.EVENT_BUS.register(new GrcMilkHandleTextureStitch());
+        MinecraftForge.EVENT_BUS.register(new EventHandlerOnBabyCowDeath());
+        register();
+    }
 
-	public static ILogger getLogger()
-	{
-		return instance.logger;
-	}
+    private void register() {
+        modules.register();
 
-	@EventHandler
-	public void preload(FMLPreInitializationEvent event)
-	{
-		config.setLogger(logger);
-		config.load(event.getModConfigurationDirectory(), "growthcraft/milk.conf");
-		if (config.debugEnabled)
-		{
-			modules.setLogger(logger);
-			MilkRegistry.instance().setLogger(logger);
-		}
-		modules.add(blocks);
-		modules.add(items);
-		modules.add(fluids);
-		modules.add(recipes);
-		//if (config.enableMFRIntegration) modules.add(new growthcraft.milk.integration.MFRModule());
-		//if (config.enableThaumcraftIntegration) modules.add(new growthcraft.milk.integration.ThaumcraftModule());
-		if (config.enableWailaIntegration) modules.add(new growthcraft.milk.integration.Waila());
-		modules.add(userApis);
-		modules.add(CommonProxy.instance);
-		modules.freeze();
-		GrcMilkEffects.init();
+        if (items.seedThistle != null && config.thistleSeedWeight > 0) {
+            MinecraftForge.addGrassSeed(items.seedThistle.asStack(), config.thistleSeedWeight);
+        }
 
-		userApis.setConfigDirectory(event.getModConfigurationDirectory());
+        GameRegistry.registerTileEntity(TileEntityButterChurn.class, "grcmilk.tileentity.ButterChurn");
+        GameRegistry.registerTileEntity(TileEntityCheeseBlock.class, "grcmilk.tileentity.CheeseBlock");
+        GameRegistry.registerTileEntity(TileEntityCheesePress.class, "grcmilk.tileentity.CheesePress");
+        GameRegistry.registerTileEntity(TileEntityCheeseVat.class, "grcmilk.tileentity.CheeseVat");
+        GameRegistry.registerTileEntity(TileEntityHangingCurds.class, "grcmilk.tileentity.HangingCurds");
+        GameRegistry.registerTileEntity(TileEntityPancheon.class, "grcmilk.tileentity.Pancheon");
+    }
 
-		GrowthCraftMilk.creativeTab = new GrcMilkCreativeTabs("creative_tab_grcmilk");
+    @EventHandler
+    public void load(FMLInitializationEvent event) {
+        modules.init();
+        userApis.loadConfigs();
+    }
 
-		modules.preInit();
-		MinecraftForge.EVENT_BUS.register(new GrcMilkHandleTextureStitch());
-		MinecraftForge.EVENT_BUS.register(new EventHandlerOnBabyCowDeath());
-		register();
-	}
-
-	private void register()
-	{
-		modules.register();
-
-		if (items.seedThistle != null && config.thistleSeedWeight > 0)
-		{
-			MinecraftForge.addGrassSeed(items.seedThistle.asStack(), config.thistleSeedWeight);
-		}
-
-		GameRegistry.registerTileEntity(TileEntityButterChurn.class, "grcmilk.tileentity.ButterChurn");
-		GameRegistry.registerTileEntity(TileEntityCheeseBlock.class, "grcmilk.tileentity.CheeseBlock");
-		GameRegistry.registerTileEntity(TileEntityCheesePress.class, "grcmilk.tileentity.CheesePress");
-		GameRegistry.registerTileEntity(TileEntityCheeseVat.class, "grcmilk.tileentity.CheeseVat");
-		GameRegistry.registerTileEntity(TileEntityHangingCurds.class, "grcmilk.tileentity.HangingCurds");
-		GameRegistry.registerTileEntity(TileEntityPancheon.class, "grcmilk.tileentity.Pancheon");
-	}
-
-	@EventHandler
-	public void load(FMLInitializationEvent event)
-	{
-		modules.init();
-		userApis.loadConfigs();
-	}
-
-	@EventHandler
-	public void postload(FMLPostInitializationEvent event)
-	{
-		modules.postInit();
-	}
+    @EventHandler
+    public void postload(FMLPostInitializationEvent event) {
+        modules.postInit();
+    }
 }

@@ -25,8 +25,8 @@ package growthcraft.api.core.nbt;
 
 import net.minecraft.nbt.NBTTagCompound;
 
-public interface INBTSerializableContext
-{
-	void readFromNBT(NBTTagCompound data, String name);
-	void writeToNBT(NBTTagCompound data, String name);
+public interface INBTSerializableContext {
+    void readFromNBT(NBTTagCompound data, String name);
+
+    void writeToNBT(NBTTagCompound data, String name);
 }

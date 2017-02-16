@@ -27,32 +27,28 @@ import growthcraft.api.core.registry.GenericItemRegistry;
 import growthcraft.api.core.registry.ItemRegistryEntry;
 import net.minecraft.item.ItemStack;
 
-public class BaitRegistry extends GenericItemRegistry<ItemStack, ItemRegistryEntry<BaitRegistry.BaitHandle>>
-{
-	public static class BaitHandle
-	{
-		public float baseRate;
-		public float multiplier = 1.0f;
+public class BaitRegistry extends GenericItemRegistry<ItemStack, ItemRegistryEntry<BaitRegistry.BaitHandle>> {
+    public void add(Object stack, BaitHandle handle) {
+        add(new ItemRegistryEntry<BaitHandle>(stack, handle));
+    }
 
-		public BaitHandle() {}
+    public BaitHandle findHandle(ItemStack stack) {
+        final ItemRegistryEntry<BaitHandle> entry = find(stack);
+        if (entry != null) return entry.handle;
+        return null;
+    }
 
-		public BaitHandle(float base, float mul)
-		{
-			this();
-			this.baseRate = base;
-			this.multiplier = mul;
-		}
-	}
+    public static class BaitHandle {
+        public float baseRate;
+        public float multiplier = 1.0f;
 
-	public void add(Object stack, BaitHandle handle)
-	{
-		add(new ItemRegistryEntry<BaitHandle>(stack, handle));
-	}
+        public BaitHandle() {
+        }
 
-	public BaitHandle findHandle(ItemStack stack)
-	{
-		final ItemRegistryEntry<BaitHandle> entry = find(stack);
-		if (entry != null) return entry.handle;
-		return null;
-	}
+        public BaitHandle(float base, float mul) {
+            this();
+            this.baseRate = base;
+            this.multiplier = mul;
+        }
+    }
 }
