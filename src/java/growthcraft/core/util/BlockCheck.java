@@ -119,8 +119,8 @@ public class BlockCheck {
      * @param z     - z coord
      * @return true if the block is a Rope, false otherwise
      */
-    public static boolean isRope(IBlockAccess world, BlockPos pos) {
-        final Block block = world.getBlockState(x, y, z);
+    public static boolean isRope(IBlockAccess world, BlockPos pos, IBlockState state) {
+        final IBlockState block = world.getBlockState((BlockPos) state);
         // TODO: IBlockRope is used for any block which can grow on Ropes,
         // as well as Ropes themselves, we need someway to seperate them,
         // either, IBlockRope.isRope(world, x, y, z) OR an additional interface
@@ -189,11 +189,11 @@ public class BlockCheck {
      * @param z          - z coord
      * @param EnumFacing - direction the block will be placed against
      */
-    public static boolean isBlockPlacableOnSide(World world, BlockPos pos, EnumFacing EnumFacing) {
-        if (world.isAirBlock(x, y, z)) return false;
-        final Block b = world.getBlockState(x, y, z);
+    public static boolean isBlockPlacableOnSide(World world, BlockPos pos, EnumFacing face, IBlockState state) {
+        if (world.isAirBlock(pos)) return false;
+        final Block b = (Block) world.getBlockState((BlockPos) state);
         if (b != null) {
-            return b.isBlockSolid(world, x, y, z, EnumFacing.ordinal());
+            return b.isBlockSolid(world, pos, face);
         }
         return false;
     }
