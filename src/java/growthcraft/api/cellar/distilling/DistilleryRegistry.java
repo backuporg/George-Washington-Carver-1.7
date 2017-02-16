@@ -28,13 +28,11 @@ import growthcraft.api.core.log.NullLogger;
 
 import javax.annotation.Nonnull;
 
-public class DistilleryRegistry implements IDistilleryRegistry
-{
-	private ILogger logger = NullLogger.INSTANCE;
+public class DistilleryRegistry implements IDistilleryRegistry {
+    private ILogger logger = NullLogger.INSTANCE;
 
-	@Override
-	public void setLogger(@Nonnull ILogger l)
-	{
-		this.logger = l;
-	}
+    @Override
+    public void setLogger(@Nonnull ILogger l) {
+        this.logger = l;
+    }
 }

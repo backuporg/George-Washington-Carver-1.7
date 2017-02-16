@@ -28,17 +28,15 @@ import growthcraft.bamboo.common.CommonProxy;
 import growthcraft.bamboo.common.entity.EntityBambooRaft;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
-public class ClientProxy extends CommonProxy
-{
-	@Override
-	public void init()
-	{
-		super.init();
-		RenderingRegistry.registerBlockHandler(new RenderBamboo());
-		RenderingRegistry.registerBlockHandler(new RenderBambooFence());
-		RenderingRegistry.registerBlockHandler(new RenderBambooWall());
-		RenderingRegistry.registerBlockHandler(new RenderBambooScaffold());
+public class ClientProxy extends CommonProxy {
+    @Override
+    public void init() {
+        super.init();
+        RenderingRegistry.registerBlockHandler(new RenderBamboo());
+        RenderingRegistry.registerBlockHandler(new RenderBambooFence());
+        RenderingRegistry.registerBlockHandler(new RenderBambooWall());
+        RenderingRegistry.registerBlockHandler(new RenderBambooScaffold());
 
-		RenderingRegistry.registerEntityRenderingHandler(EntityBambooRaft.class, new RenderBambooRaft());
-	}
+        RenderingRegistry.registerEntityRenderingHandler(EntityBambooRaft.class, new RenderBambooRaft());
+    }
 }

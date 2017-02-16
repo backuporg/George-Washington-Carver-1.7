@@ -29,25 +29,22 @@ import growthcraft.cellar.common.item.ItemYeast;
 import growthcraft.core.common.GrcModuleItems;
 import growthcraft.core.common.definition.ItemDefinition;
 
-public class GrcCellarItems extends GrcModuleItems
-{
-	public ItemDefinition yeast;
-	public ItemDefinition waterBag;
-	public ItemDefinition chievItemDummy;
+public class GrcCellarItems extends GrcModuleItems {
+    public ItemDefinition yeast;
+    public ItemDefinition waterBag;
+    public ItemDefinition chievItemDummy;
 
-	@Override
-	public void preInit()
-	{
-		this.yeast = newDefinition(new ItemYeast());
-		this.waterBag = newDefinition(new ItemWaterBag());
-		this.chievItemDummy = newDefinition(new ItemChievDummy());
-	}
+    @Override
+    public void preInit() {
+        this.yeast = newDefinition(new ItemYeast());
+        this.waterBag = newDefinition(new ItemWaterBag());
+        this.chievItemDummy = newDefinition(new ItemChievDummy());
+    }
 
-	@Override
-	public void register()
-	{
-		yeast.register("grc.yeast");
-		waterBag.register("grc.waterBag");
-		chievItemDummy.register("grc.chievItemDummy");
-	}
+    @Override
+    public void register() {
+        yeast.register("grc.yeast");
+        waterBag.register("grc.waterBag");
+        chievItemDummy.register("grc.chievItemDummy");
+    }
 }

@@ -29,31 +29,28 @@ import growthcraft.core.integration.forestry.ForestryFluids;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Optional;
 
-public class ForestryModule extends ForestryModuleBase
-{
-	public ForestryModule()
-	{
-		super(GrowthCraftBamboo.MOD_ID);
-	}
+public class ForestryModule extends ForestryModuleBase {
+    public ForestryModule() {
+        super(GrowthCraftBamboo.MOD_ID);
+    }
 
-	@Override
-	@Optional.Method(modid="Forestry")
-	protected void integrate()
-	{
-		final int saplingYield = getActiveMode().getIntegerSetting("fermenter.yield.sapling");
+    @Override
+    @Optional.Method(modid = "Forestry")
+    protected void integrate() {
+        final int saplingYield = getActiveMode().getIntegerSetting("fermenter.yield.sapling");
 
-		final ItemStack bamboo = GrowthCraftBamboo.items.bamboo.asStack();
-		final ItemStack bambooShoot = GrowthCraftBamboo.blocks.bambooShoot.asStack();
-		final ItemStack bambooShootFood = GrowthCraftBamboo.items.bambooShootFood.asStack();
-		final ItemStack bambooLeaves = GrowthCraftBamboo.blocks.bambooLeaves.asStack();
+        final ItemStack bamboo = GrowthCraftBamboo.items.bamboo.asStack();
+        final ItemStack bambooShoot = GrowthCraftBamboo.blocks.bambooShoot.asStack();
+        final ItemStack bambooShootFood = GrowthCraftBamboo.items.bambooShootFood.asStack();
+        final ItemStack bambooLeaves = GrowthCraftBamboo.blocks.bambooLeaves.asStack();
 
-		ForestryRecipeUtils.addFermenterRecipes(bamboo, saplingYield, ForestryFluids.BIOMASS.asFluidStack());
-		ForestryRecipeUtils.addFermenterRecipes(bambooShoot, saplingYield, ForestryFluids.BIOMASS.asFluidStack());
-		ForestryRecipeUtils.addFermenterRecipes(bambooShootFood, saplingYield, ForestryFluids.BIOMASS.asFluidStack());
+        ForestryRecipeUtils.addFermenterRecipes(bamboo, saplingYield, ForestryFluids.BIOMASS.asFluidStack());
+        ForestryRecipeUtils.addFermenterRecipes(bambooShoot, saplingYield, ForestryFluids.BIOMASS.asFluidStack());
+        ForestryRecipeUtils.addFermenterRecipes(bambooShootFood, saplingYield, ForestryFluids.BIOMASS.asFluidStack());
 
-		Backpack.FORESTERS.add(bamboo);
-		Backpack.FORESTERS.add(bambooShoot);
-		Backpack.FORESTERS.add(bambooShootFood);
-		Backpack.FORESTERS.add(bambooLeaves);
-	}
+        Backpack.FORESTERS.add(bamboo);
+        Backpack.FORESTERS.add(bambooShoot);
+        Backpack.FORESTERS.add(bambooShootFood);
+        Backpack.FORESTERS.add(bambooLeaves);
+    }
 }

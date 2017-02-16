@@ -27,9 +27,10 @@ import net.minecraft.block.Block;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public interface IFlowerBlockEntry
-{
-	Block getBlockState();
-	int getMetadata();
-	boolean canPlaceAt(World world, BlockPos pos);
+public interface IFlowerBlockEntry {
+    Block getBlockState();
+
+    int getMetadata();
+
+    boolean canPlaceAt(World world, BlockPos pos);
 }

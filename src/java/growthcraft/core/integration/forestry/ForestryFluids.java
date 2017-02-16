@@ -28,50 +28,44 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 
-public enum ForestryFluids implements IFluidStackFactory
-{
-	// This is really just vanilla water though ;O
-	MILK("milk"),
-	WATER("water"),
-	HONEY("for.honey"),
-	BIOMASS("biomass"),
-	JUICE("juice"),
-	SEEDOIL("seedoil"),
-	SHORT_MEAD("short.mead");
+public enum ForestryFluids implements IFluidStackFactory {
+    // This is really just vanilla water though ;O
+    MILK("milk"),
+    WATER("water"),
+    HONEY("for.honey"),
+    BIOMASS("biomass"),
+    JUICE("juice"),
+    SEEDOIL("seedoil"),
+    SHORT_MEAD("short.mead");
 
-	public final String name;
+    public final String name;
 
-	private ForestryFluids(String nm)
-	{
-		this.name = nm;
-	}
+    ForestryFluids(String nm) {
+        this.name = nm;
+    }
 
-	public Fluid getFluid()
-	{
-		return FluidRegistry.getFluid(name);
-	}
+    public Fluid getFluid() {
+        return FluidRegistry.getFluid(name);
+    }
 
-	@Override
-	public FluidStack asFluidStack(int amount)
-	{
-		final Fluid fluid = getFluid();
-		if (fluid == null) return null;
-		return new FluidStack(fluid, amount);
-	}
+    @Override
+    public FluidStack asFluidStack(int amount) {
+        final Fluid fluid = getFluid();
+        if (fluid == null) return null;
+        return new FluidStack(fluid, amount);
+    }
 
-	@Override
-	public FluidStack asFluidStack()
-	{
-		return asFluidStack(1);
-	}
+    @Override
+    public FluidStack asFluidStack() {
+        return asFluidStack(1);
+    }
 
-	/**
-	 * Does the underlying fluid exist?
-	 *
-	 * @return true if it exists, false otherwise
-	 */
-	public boolean exists()
-	{
-		return getFluid() != null;
-	}
+    /**
+     * Does the underlying fluid exist?
+     *
+     * @return true if it exists, false otherwise
+     */
+    public boolean exists() {
+        return getFluid() != null;
+    }
 }

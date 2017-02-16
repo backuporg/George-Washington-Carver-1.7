@@ -31,114 +31,98 @@ import net.minecraft.util.EnumFacing;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 
-public class TileEntityPancheon extends GrcTileDeviceBase implements ITileProgressiveDevice, IPancheonTile
-{
-	private Pancheon pancheon = new Pancheon(this, 0, 2, 1);
+public class TileEntityPancheon extends GrcTileDeviceBase implements ITileProgressiveDevice, IPancheonTile {
+    private Pancheon pancheon = new Pancheon(this, 0, 2, 1);
 
-	@Override
-	public float getDeviceProgress()
-	{
-		return pancheon.getProgress();
-	}
+    @Override
+    public float getDeviceProgress() {
+        return pancheon.getProgress();
+    }
 
-	@Override
-	public int getDeviceProgressScaled(int scale)
-	{
-		return pancheon.getProgressScaled(scale);
-	}
+    @Override
+    public int getDeviceProgressScaled(int scale) {
+        return pancheon.getProgressScaled(scale);
+    }
 
-	/**
-	 * Pancheons have 3 fluid slots, the first is its `input` slot
-	 * The second slot is its `bottom` output slot
-	 * And the thirs is its `top` slot
-	 * Though the capacity of each is 1000 mB, the pancheon can only contain
-	 * a total of 1000 mB, not 3k
-	 *
-	 * @return fluid tanks
-	 */
-	@Override
-	protected FluidTank[] createTanks()
-	{
-		return new FluidTank[] {
-			new FluidTank(1000),
-			new FluidTank(1000),
-			new FluidTank(1000)
-		};
-	}
+    /**
+     * Pancheons have 3 fluid slots, the first is its `input` slot
+     * The second slot is its `bottom` output slot
+     * And the thirs is its `top` slot
+     * Though the capacity of each is 1000 mB, the pancheon can only contain
+     * a total of 1000 mB, not 3k
+     *
+     * @return fluid tanks
+     */
+    @Override
+    protected FluidTank[] createTanks() {
+        return new FluidTank[]{
+                new FluidTank(1000),
+                new FluidTank(1000),
+                new FluidTank(1000)
+        };
+    }
 
-	protected int getPresentTankIndex()
-	{
-		for (int i = getTankCount() - 1; i > 0; --i)
-		{
-			if (isFluidTankFilled(i))
-			{
-				return i;
-			}
-		}
-		return 0;
-	}
+    protected int getPresentTankIndex() {
+        for (int i = getTankCount() - 1; i > 0; --i) {
+            if (isFluidTankFilled(i)) {
+                return i;
+            }
+        }
+        return 0;
+    }
 
-	/**
-	 * Pancheon tanks are treated as a Stack.
-	 * When a tank at the end if filled, it will be returned, if its
-	 * empty then it returns the tank before it and so forth.
-	 *
-	 * @return the active fluid tank
-	 */
-	public FluidTank getPresentTank()
-	{
-		return getFluidTank(getPresentTankIndex());
-	}
+    /**
+     * Pancheon tanks are treated as a Stack.
+     * When a tank at the end if filled, it will be returned, if its
+     * empty then it returns the tank before it and so forth.
+     *
+     * @return the active fluid tank
+     */
+    public FluidTank getPresentTank() {
+        return getFluidTank(getPresentTankIndex());
+    }
 
-	public boolean outputTanksHaveFluid()
-	{
-		return isFluidTankFilled(1) || isFluidTankFilled(2);
-	}
+    public boolean outputTanksHaveFluid() {
+        return isFluidTankFilled(1) || isFluidTankFilled(2);
+    }
 
-	@Override
-	public void updateEntity()
-	{
-		super.updateEntity();
-		if (!worldObj.isRemote)
-		{
-			pancheon.update();
-		}
-	}
+    @Override
+    public void updateEntity() {
+        super.updateEntity();
+        if (!worldObj.isRemote) {
+            pancheon.update();
+        }
+    }
 
-	@Override
-	protected FluidStack doDrain(EnumFacing EnumFacing, int amount, boolean doDrain)
-	{
-		return getPresentTank().drain(amount, doDrain);
-	}
+    @Override
+    protected FluidStack doDrain(EnumFacing EnumFacing, int amount, boolean doDrain) {
+        return getPresentTank().drain(amount, doDrain);
+    }
 
-	@Override
-	protected FluidStack doDrain(EnumFacing EnumFacing, FluidStack stack, boolean doDrain)
-	{
-		/**
-		 * @todo Drain from bottom fluid tank when EnumFacing == DOWN
-		 */
+    @Override
+    protected FluidStack doDrain(EnumFacing EnumFacing, FluidStack stack, boolean doDrain) {
+        /**
+         * @todo Drain from bottom fluid tank when EnumFacing == DOWN
+         */
 
-		if (!FluidTest.isValid(stack)) return null;
-		final FluidTank tank = getPresentTank();
-		final FluidStack expected = tank.getFluid();
-		if (expected != null && expected.isFluidEqual(stack))
-		{
-			return tank.drain(stack.amount, doDrain);
-		}
-		return null;
-	}
+        if (!FluidTest.isValid(stack)) return null;
+        final FluidTank tank = getPresentTank();
+        final FluidStack expected = tank.getFluid();
+        if (expected != null && expected.isFluidEqual(stack)) {
+            return tank.drain(stack.amount, doDrain);
+        }
+        return null;
+    }
 
-	@Override
-	protected int doFill(EnumFacing EnumFacing, FluidStack stack, boolean doFill)
-	{
-		if (outputTanksHaveFluid()) return 0;
-		return fillFluidTank(0, stack, doFill);
-	}
+    @Override
+    protected int doFill(EnumFacing EnumFacing, FluidStack stack, boolean doFill) {
+        if (outputTanksHaveFluid()) return 0;
+        return fillFluidTank(0, stack, doFill);
+    }
 
-	@Override
-	protected void markFluidDirty()
-	{
-		super.markFluidDirty();
-		markDirtyAndUpdate();
-	}
+    @Override
+    protected void markFluidDirty() {
+        super.markFluidDirty();
+        markDirtyAndUpdate();
+    }
 }

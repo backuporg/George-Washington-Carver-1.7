@@ -9,29 +9,27 @@ import net.minecraft.util.text.TextFormatting;
 
 import java.util.List;
 
-public class TagFormatterBrewKettle implements ITagFormatter
-{
-	public static final TagFormatterBrewKettle INSTANCE = new TagFormatterBrewKettle();
+public class TagFormatterBrewKettle implements ITagFormatter {
+    public static final TagFormatterBrewKettle INSTANCE = new TagFormatterBrewKettle();
 
-	public List<String> format(List<String> list, NBTTagCompound tag)
-	{
-		list.add(TextFormatting.GRAY +
-			GrcI18n.translate("grc.cellar.brew_kettle.brewing_prefix") + " " +
-			TextFormatting.WHITE + UnitFormatter.booleanAsValue(tag.getBoolean("can_brew")));
+    public List<String> format(List<String> list, NBTTagCompound tag) {
+        list.add(TextFormatting.GRAY +
+                GrcI18n.translate("grc.cellar.brew_kettle.brewing_prefix") + " " +
+                TextFormatting.WHITE + UnitFormatter.booleanAsValue(tag.getBoolean("can_brew")));
 
-		list.add(TextFormatting.GRAY +
-			GrcI18n.translate(
-				"grc.cellar.brew_kettle.itemslot.item",
-				TagFormatterItem.INSTANCE.formatItem(tag.getCompoundTag("item_brew"))
-			)
-		);
+        list.add(TextFormatting.GRAY +
+                GrcI18n.translate(
+                        "grc.cellar.brew_kettle.itemslot.item",
+                        TagFormatterItem.INSTANCE.formatItem(tag.getCompoundTag("item_brew"))
+                )
+        );
 
-		list.add(TextFormatting.GRAY +
-			GrcI18n.translate(
-				"grc.cellar.brew_kettle.itemslot.residue",
-				TagFormatterItem.INSTANCE.formatItem(tag.getCompoundTag("item_residue"))
-			)
-		);
-		return list;
-	}
+        list.add(TextFormatting.GRAY +
+                GrcI18n.translate(
+                        "grc.cellar.brew_kettle.itemslot.residue",
+                        TagFormatterItem.INSTANCE.formatItem(tag.getCompoundTag("item_residue"))
+                )
+        );
+        return list;
+    }
 }

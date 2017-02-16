@@ -34,25 +34,22 @@ import java.util.Random;
 /**
  * Because sometimes you want an Effect that does ABSOLUTELY NOTHING.
  */
-public class EffectNull extends AbstractEffect
-{
-	@Override
-	public void apply(World world, Entity entity, Random random, Object data) {}
+public class EffectNull extends AbstractEffect {
+    @Override
+    public void apply(World world, Entity entity, Random random, Object data) {
+    }
 
-	@Override
-	protected void getActualDescription(List<String> list)
-	{
-		// Set the description as "Does Nothing."
-		list.add(GrcI18n.translate("grc.effect.null.desc"));
-	}
+    @Override
+    protected void getActualDescription(List<String> list) {
+        // Set the description as "Does Nothing."
+        list.add(GrcI18n.translate("grc.effect.null.desc"));
+    }
 
-	@Override
-	protected void readFromNBT(NBTTagCompound data)
-	{
-	}
+    @Override
+    protected void readFromNBT(NBTTagCompound data) {
+    }
 
-	@Override
-	protected void writeToNBT(NBTTagCompound data)
-	{
-	}
+    @Override
+    protected void writeToNBT(NBTTagCompound data) {
+    }
 }

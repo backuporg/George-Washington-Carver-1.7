@@ -12,45 +12,38 @@ import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PressingRegistry implements IPressingRegistry
-{
-	private ILogger logger = NullLogger.INSTANCE;
-	private List<PressingRecipe> recipes = new ArrayList<PressingRecipe>();
+public class PressingRegistry implements IPressingRegistry {
+    private ILogger logger = NullLogger.INSTANCE;
+    private List<PressingRecipe> recipes = new ArrayList<PressingRecipe>();
 
-	@Override
-	public void setLogger(@Nonnull ILogger l)
-	{
-		this.logger = l;
-	}
+    @Override
+    public void setLogger(@Nonnull ILogger l) {
+        this.logger = l;
+    }
 
-	@Override
-	public void addRecipe(@Nonnull PressingRecipe recipe)
-	{
-		recipes.add(recipe);
-		logger.debug("Added new Pressing Recipe recipe={%s}", recipe);
-	}
+    @Override
+    public void addRecipe(@Nonnull PressingRecipe recipe) {
+        recipes.add(recipe);
+        logger.debug("Added new Pressing Recipe recipe={%s}", recipe);
+    }
 
-	@Override
-	public void addRecipe(@Nonnull Object inputStack, @Nonnull FluidStack resultFluid, int time, @Nullable Residue residue)
-	{
-		addRecipe(new PressingRecipe(MultiStacksUtil.toMultiItemStacks(inputStack), resultFluid, time, residue));
-	}
+    @Override
+    public void addRecipe(@Nonnull Object inputStack, @Nonnull FluidStack resultFluid, int time, @Nullable Residue residue) {
+        addRecipe(new PressingRecipe(MultiStacksUtil.toMultiItemStacks(inputStack), resultFluid, time, residue));
+    }
 
-	@Override
-	public PressingRecipe getPressingRecipe(ItemStack itemstack)
-	{
-		if (itemstack == null) return null;
+    @Override
+    public PressingRecipe getPressingRecipe(ItemStack itemstack) {
+        if (itemstack == null) return null;
 
-		for (PressingRecipe recipe : recipes)
-		{
-			if (recipe.matchesRecipe(itemstack)) return recipe;
-		}
-		return null;
-	}
+        for (PressingRecipe recipe : recipes) {
+            if (recipe.matchesRecipe(itemstack)) return recipe;
+        }
+        return null;
+    }
 
-	@Override
-	public boolean hasPressingRecipe(ItemStack itemstack)
-	{
-		return getPressingRecipe(itemstack) != null;
-	}
+    @Override
+    public boolean hasPressingRecipe(ItemStack itemstack) {
+        return getPressingRecipe(itemstack) != null;
+    }
 }

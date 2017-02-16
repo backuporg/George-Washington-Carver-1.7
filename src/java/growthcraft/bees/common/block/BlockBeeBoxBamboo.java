@@ -32,33 +32,29 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
 
 
-public class BlockBeeBoxBamboo extends BlockBeeBox
-{
-	public BlockBeeBoxBamboo()
-	{
-		super();
-		this.setUnlocalizedName("grc.BeeBox.Bamboo");
-	}
+public class BlockBeeBoxBamboo extends BlockBeeBox {
+    public BlockBeeBoxBamboo() {
+        super();
+        this.setUnlocalizedName("grc.BeeBox.Bamboo");
+    }
 
-	@Override
-	public String getMetaname(int meta)
-	{
-		return "" + meta;
-	}
+    @Override
+    public String getMetaname(int meta) {
+        return "" + meta;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void getSubBlocks(Item block, CreativeTabs tab, List list)
-	{
-		list.add(new ItemStack(block, 1, 0));
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    public void getSubBlocks(Item block, CreativeTabs tab, List list) {
+        list.add(new ItemStack(block, 1, 0));
+    }
 
-	//@Override
-	//@SideOnly(Side.CLIENT)
+    //@Override
+    //@SideOnly(Side.CLIENT)
 
-	//{
-	//	icons = new IIcon[4];
-	//	registerBeeBoxIcons(reg, "/grcbamboo/", 0);
-	//}
+    //{
+    //	icons = new IIcon[4];
+    //	registerBeeBoxIcons(reg, "/grcbamboo/", 0);
+    //}
 }

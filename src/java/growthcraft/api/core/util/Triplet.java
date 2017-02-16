@@ -23,16 +23,14 @@
  */
 package growthcraft.api.core.util;
 
-public class Triplet<TLeft, TCenter, TRight>
-{
-	public TLeft left;
-	public TCenter center;
-	public TRight right;
+public class Triplet<TLeft, TCenter, TRight> {
+    public TLeft left;
+    public TCenter center;
+    public TRight right;
 
-	public Triplet(TLeft l, TCenter c, TRight r)
-	{
-		this.left = l;
-		this.center = c;
-		this.right = r;
-	}
+    public Triplet(TLeft l, TCenter c, TRight r) {
+        this.left = l;
+        this.center = c;
+        this.right = r;
+    }
 }

@@ -30,9 +30,9 @@ import net.minecraftforge.fml.common.Optional;
 
 import java.util.Map;
 
-@Optional.Interface(iface="forestry.api.recipes.ICentrifugeManager", modid="ForestryAPI|recipes")
-public class CentrifugeManagerShim extends AbstractManagerShim<ICentrifugeRecipe> implements ICentrifugeManager
-{
-	@Override
-	public void addRecipe(int timePerItem, ItemStack input, Map<ItemStack, Float> products) {}
+@Optional.Interface(iface = "forestry.api.recipes.ICentrifugeManager", modid = "ForestryAPI|recipes")
+public class CentrifugeManagerShim extends AbstractManagerShim<ICentrifugeRecipe> implements ICentrifugeManager {
+    @Override
+    public void addRecipe(int timePerItem, ItemStack input, Map<ItemStack, Float> products) {
+    }
 }

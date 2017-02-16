@@ -37,45 +37,37 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class BlockLavaLilyPadBase extends BlockBush
-{
-	public BlockLavaLilyPadBase()
-	{
-		super();
-		setHardness(0.0F);
-		setSoundType(SoundType.PLANT);
-		final float var1 = 0.5F;
-		final float var2 = 0.015625F;
-		getBoundingBox(0.5F - var1, 0.0F, 0.5F - var1, 0.5F + var1, var2, 0.5F + var1);
-	}
+public class BlockLavaLilyPadBase extends BlockBush {
+    public BlockLavaLilyPadBase() {
+        super();
+        setHardness(0.0F);
+        setSoundType(SoundType.PLANT);
+        final float var1 = 0.5F;
+        final float var2 = 0.015625F;
+        getBoundingBox(0.5F - var1, 0.0F, 0.5F - var1, 0.5F + var1, var2, 0.5F + var1);
+    }
 
-	@Override
-	public int getRenderType()
-	{
-		return RenderType.LILYPAD;
-	}
+    @Override
+    public int getRenderType() {
+        return RenderType.LILYPAD;
+    }
 
-	protected boolean func_149854_a(Block block)
-	{
-		return Blocks.LAVA == block;
-	}
+    protected boolean func_149854_a(Block block) {
+        return Blocks.LAVA == block;
+    }
 
-	public void getCollisionBoundingBox(World world, BlockPos pos, AxisAlignedBB bb, List list, Entity entity)
-	{
-		if (entity == null || !(entity instanceof EntityBoat))
-		{
-			super.getCollisionBoundingBox(world, x, y, z, bb, list, entity);
-		}
-	}
+    public void getCollisionBoundingBox(World world, BlockPos pos, AxisAlignedBB bb, List list, Entity entity) {
+        if (entity == null || !(entity instanceof EntityBoat)) {
+            super.getCollisionBoundingBox(world, x, y, z, bb, list, entity);
+        }
+    }
 
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, BlockPos pos)
-	{
-		return AxisAlignedBB.getBoundingBox((double)x + getBlockBoundsMinX(), (double)y + getBlockBoundsMinY(), (double)z + getBlockBoundsMinZ(),
-			(double)x + getBlockBoundsMaxX(), (double)y + getBlockBoundsMaxY(), (double)z + getBlockBoundsMaxZ());
-	}
+    public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, BlockPos pos) {
+        return AxisAlignedBB.getBoundingBox((double) x + getBlockBoundsMinX(), (double) y + getBlockBoundsMinY(), (double) z + getBlockBoundsMinZ(),
+                (double) x + getBlockBoundsMaxX(), (double) y + getBlockBoundsMaxY(), (double) z + getBlockBoundsMaxZ());
+    }
 
-	public boolean canBlockStay(World world, BlockPos pos)
-	{
-		return y >= 0 && y < 256 ? world.getBlockState(x, y - 1, z).getMaterial() == Material.LAVA && world.getBlockState(x, y - 1, z) == 0 : false;
-	}
+    public boolean canBlockStay(World world, BlockPos pos) {
+        return (y >= 0 && y < 256) && (world.getBlockState(x, y - 1, z).getMaterial() == Material.LAVA && world.getBlockState(x, y - 1, z) == 0);
+    }
 }

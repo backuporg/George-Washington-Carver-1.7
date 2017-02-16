@@ -1,4 +1,3 @@
-
 /*
  * The MIT License (MIT)
  *
@@ -30,34 +29,29 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.Locale;
 
-public enum EnumFAWoodType
-{
-	PALAEORAPHE;
+public enum EnumFAWoodType {
+    PALAEORAPHE;
 
-	public static final EnumFAWoodType[] VALUES = values();
+    public static final EnumFAWoodType[] VALUES = values();
 
-	public final String name;
-	public final int meta;
+    public final String name;
+    public final int meta;
 
-	private EnumFAWoodType()
-	{
-		this.name = name().toLowerCase(Locale.ENGLISH);
-		this.meta = ordinal();
-	}
+    EnumFAWoodType() {
+        this.name = name().toLowerCase(Locale.ENGLISH);
+        this.meta = ordinal();
+    }
 
-	public ItemStack asPlanksItemStack(int size)
-	{
-		final Block block = GameRegistry.findBlock(FAPlatform.MOD_ID, "palaeoraphePlanks");
-		if (block != null)
-		{
-			final ItemStack result = new ItemStack(block, size, meta);
-			return result;
-		}
-		return null;
-	}
+    public ItemStack asPlanksItemStack(int size) {
+        final Block block = GameRegistry.findBlock(FAPlatform.MOD_ID, "palaeoraphePlanks");
+        if (block != null) {
+            final ItemStack result = new ItemStack(block, size, meta);
+            return result;
+        }
+        return null;
+    }
 
-	public ItemStack asPlanksItemStack()
-	{
-		return asPlanksItemStack(1);
-	}
+    public ItemStack asPlanksItemStack() {
+        return asPlanksItemStack(1);
+    }
 }

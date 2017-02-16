@@ -30,8 +30,8 @@ import net.minecraft.inventory.Container;
 /**
  * Backport from Minecraft 1.8.9
  */
-public interface IInteractionObject
-{
-	Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn);
-	String getGuiID();
+public interface IInteractionObject {
+    Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn);
+
+    String getGuiID();
 }

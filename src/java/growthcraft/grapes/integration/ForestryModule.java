@@ -31,29 +31,28 @@ import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Optional;
 
-public class ForestryModule extends ForestryModuleBase
-{
-	public ForestryModule()
-	{
-		super(GrowthCraftGrapes.MOD_ID);
-	}
+public class ForestryModule extends ForestryModuleBase {
+    public ForestryModule() {
+        super(GrowthCraftGrapes.MOD_ID);
+    }
 
-	@Override
-	@Optional.Method(modid="Forestry")
-	protected void integrate()
-	{
-		final int juiceAmount = getActiveMode().getIntegerSetting("squeezer.liquid.apple");
-		final int seedamount = getActiveMode().getIntegerSetting("squeezer.liquid.seed");
+    @Override
+    @Optional.Method(modid = "Forestry")
+    protected void integrate() {
+        final int juiceAmount = getActiveMode().getIntegerSetting("squeezer.liquid.apple");
+        final int seedamount = getActiveMode().getIntegerSetting("squeezer.liquid.seed");
 
-		final ItemStack grapeSeed = GrowthCraftGrapes.items.grapeSeeds.asStack();
-		final ItemStack grapes = GrowthCraftGrapes.items.grapes.asStack();
-		final Block grapeBlock = GrowthCraftGrapes.blocks.grapeBlock.getBlockState();
+        final ItemStack grapeSeed = GrowthCraftGrapes.items.grapeSeeds.asStack();
+        final ItemStack grapes = GrowthCraftGrapes.items.grapes.asStack();
+        final Block grapeBlock = GrowthCraftGrapes.blocks.grapeBlock.getBlockState();
 
-		Backpack.FORESTERS.add(grapeSeed);
-		Backpack.FORESTERS.add(grapes);
+        Backpack.FORESTERS.add(grapeSeed);
+        Backpack.FORESTERS.add(grapes);
 
-		if (ForestryFluids.SEEDOIL.exists()) recipes().squeezerManager.addRecipe(10, new ItemStack[]{grapeSeed}, ForestryFluids.SEEDOIL.asFluidStack(seedamount));
-		if (ForestryFluids.JUICE.exists()) recipes().squeezerManager.addRecipe(10, new ItemStack[]{grapes}, ForestryFluids.JUICE.asFluidStack(juiceAmount));
-		addFarmable("farmOrchard", new FarmableBasicGrowthCraft(grapeBlock, 0, false, true));
-	}
+        if (ForestryFluids.SEEDOIL.exists())
+            recipes().squeezerManager.addRecipe(10, new ItemStack[]{grapeSeed}, ForestryFluids.SEEDOIL.asFluidStack(seedamount));
+        if (ForestryFluids.JUICE.exists())
+            recipes().squeezerManager.addRecipe(10, new ItemStack[]{grapes}, ForestryFluids.JUICE.asFluidStack(juiceAmount));
+        addFarmable("farmOrchard", new FarmableBasicGrowthCraft(grapeBlock, 0, false, true));
+    }
 }

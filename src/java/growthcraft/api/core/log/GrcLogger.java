@@ -29,18 +29,15 @@ import org.apache.logging.log4j.Level;
 /**
  * Logger class used for Module level logging
  */
-public class GrcLogger extends AbstractLogger
-{
-	private String prefix;
+public class GrcLogger extends AbstractLogger {
+    private String prefix;
 
-	public GrcLogger(String pfx)
-	{
-		this.prefix = pfx;
-	}
+    public GrcLogger(String pfx) {
+        this.prefix = pfx;
+    }
 
-	@Override
-	protected void doLog(Level lv, String str, Object... objs)
-	{
-		FMLLog.log(prefix, lv, prefix + " " + str, objs);
-	}
+    @Override
+    protected void doLog(Level lv, String str, Object... objs) {
+        FMLLog.log(prefix, lv, prefix + " " + str, objs);
+    }
 }

@@ -32,79 +32,70 @@ import java.util.List;
 /**
  * Utility class for wrapping a NBTTagList for Strings
  */
-public class NBTStringTagList
-{
-	private NBTTagList parent;
+public class NBTStringTagList {
+    private NBTTagList parent;
 
-	/**
-	 * Pass an existing String list, or an empty one in
-	 *
-	 * @param list - the tag list to use as the parent
-	 */
-	public NBTStringTagList(@Nonnull NBTTagList list)
-	{
-		this.parent = list;
-	}
+    /**
+     * Pass an existing String list, or an empty one in
+     *
+     * @param list - the tag list to use as the parent
+     */
+    public NBTStringTagList(@Nonnull NBTTagList list) {
+        this.parent = list;
+    }
 
-	/**
-	 * Initializes the NBTStringTagList with a default taglist
-	 */
-	public NBTStringTagList()
-	{
-		this(new NBTTagList());
-	}
+    /**
+     * Initializes the NBTStringTagList with a default taglist
+     */
+    public NBTStringTagList() {
+        this(new NBTTagList());
+    }
 
-	/**
-	 * @param list - a string list
-	 */
-	public NBTStringTagList(@Nonnull List<String> list)
-	{
-		this();
-		for (String str : list)
-		{
-			add(str);
-		}
-	}
+    /**
+     * @param list - a string list
+     */
+    public NBTStringTagList(@Nonnull List<String> list) {
+        this();
+        for (String str : list) {
+            add(str);
+        }
+    }
 
-	/**
-	 * How many tags are present?
-	 *
-	 * @return number of tags
-	 */
-	public int size()
-	{
-		return parent.tagCount();
-	}
+    /**
+     * How many tags are present?
+     *
+     * @return number of tags
+     */
+    public int size() {
+        return parent.tagCount();
+    }
 
-	/**
-	 * Adds a string to the existing list
-	 *
-	 * @param str - the string to add
-	 */
-	public NBTStringTagList add(@Nonnull String str)
-	{
-		parent.appendTag(new NBTTagString(str));
-		return this;
-	}
+    /**
+     * Adds a string to the existing list
+     *
+     * @param str - the string to add
+     */
+    public NBTStringTagList add(@Nonnull String str) {
+        parent.appendTag(new NBTTagString(str));
+        return this;
+    }
 
-	/**
-	 * Returns the String present at the given index
-	 *
-	 * @param index - index of the string wanted
-	 * @return the string at the index
-	 */
-	public String get(int index)
-	{
-		return parent.getStringTagAt(index);
-	}
+    /**
+     * Returns the String present at the given index
+     *
+     * @param index - index of the string wanted
+     * @return the string at the index
+     */
+    public String get(int index) {
+        return parent.getStringTagAt(index);
+    }
 
-	/**
-	 * Returns the parent NBTTagList
-	 *
-	 * @return parent list
-	 */
-	public NBTTagList getTag()
-	{
-		return parent;
-	}
+    /**
+     * Returns the parent NBTTagList
+     *
+     * @return parent list
+     */
+    public NBTTagList getTag() {
+        return parent;
+    }
 }

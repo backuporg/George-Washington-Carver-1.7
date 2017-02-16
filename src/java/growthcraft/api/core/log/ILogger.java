@@ -25,14 +25,20 @@ package growthcraft.api.core.log;
 
 import org.apache.logging.log4j.Level;
 
-public interface ILogger
-{
-	void enable();
-	void disable();
-	void log(Level lv, String str, Object... objs);
-	void info(String str, Object... objs);
-	void debug(String str, Object... objs);
-	void warn(String str, Object... objs);
-	void error(String str, Object... objs);
-	void fatal(String str, Object... objs);
+public interface ILogger {
+    void enable();
+
+    void disable();
+
+    void log(Level lv, String str, Object... objs);
+
+    void info(String str, Object... objs);
+
+    void debug(String str, Object... objs);
+
+    void warn(String str, Object... objs);
+
+    void error(String str, Object... objs);
+
+    void fatal(String str, Object... objs);
 }

@@ -37,64 +37,55 @@ import java.util.Random;
 /**
  * As its name implies, this Effect will REMOVE a Potion Effect from the target.
  */
-public class EffectRemovePotionEffect extends AbstractEffect
-{
-	private int potionId;
+public class EffectRemovePotionEffect extends AbstractEffect {
+    private int potionId;
 
-	public EffectRemovePotionEffect(int potnId)
-	{
-		this.potionId = potnId;
-	}
+    public EffectRemovePotionEffect(int potnId) {
+        this.potionId = potnId;
+    }
 
-	public EffectRemovePotionEffect() {}
+    public EffectRemovePotionEffect() {
+    }
 
-	public EffectRemovePotionEffect setPotionID(int id)
-	{
-		this.potionId = id;
-		return this;
-	}
+    public int getPotionID() {
+        return potionId;
+    }
 
-	public int getPotionID()
-	{
-		return potionId;
-	}
+    public EffectRemovePotionEffect setPotionID(int id) {
+        this.potionId = id;
+        return this;
+    }
 
-	/**
-	 * Removes the potion effect from the entity, if the entity is a EntityLivingBase
-	 *
-	 * @param world - world that the entity is currently present ing
-	 * @param entity - entity to apply the effect to
-	 * @param data - any extra data you want to pass along
-	 */
-	@Override
-	public void apply(World world, Entity entity, Random random, Object data)
-	{
-		if (potionId > 0)
-		{
-			if (entity instanceof EntityLivingBase)
-			{
-				((EntityLivingBase)entity).removePotionEffect(Potion.getPotionById(potionId));
-			}
-		}
-	}
+    /**
+     * Removes the potion effect from the entity, if the entity is a EntityLivingBase
+     *
+     * @param world  - world that the entity is currently present ing
+     * @param entity - entity to apply the effect to
+     * @param data   - any extra data you want to pass along
+     */
+    @Override
+    public void apply(World world, Entity entity, Random random, Object data) {
+        if (potionId > 0) {
+            if (entity instanceof EntityLivingBase) {
+                ((EntityLivingBase) entity).removePotionEffect(Potion.getPotionById(potionId));
+            }
+        }
+    }
 
-	@Override
-	protected void getActualDescription(List<String> list)
-	{
-		final PotionEffect pe = new PotionEffect(Potion.getPotionById(potionId), 1000, 0);
-		final String potionName = GrcI18n.translate(pe.getEffectName()).trim();
-		list.add(GrcI18n.translate("grc.effect.remove_potion_effect.format", potionName));
-	}
+    @Override
+    protected void getActualDescription(List<String> list) {
+        final PotionEffect pe = new PotionEffect(Potion.getPotionById(potionId), 1000, 0);
+        final String potionName = GrcI18n.translate(pe.getEffectName()).trim();
+        list.add(GrcI18n.translate("grc.effect.remove_potion_effect.format", potionName));
+    }
 
-	@Override
-	protected void readFromNBT(NBTTagCompound data)
-	{
-		this.potionId = data.getInteger("potion_id");
-	}
+    @Override
+    protected void readFromNBT(NBTTagCompound data) {
+        this.potionId = data.getInteger("potion_id");
+    }
 
-	@Override
-	protected void writeToNBT(NBTTagCompound data)
-	{
-		data.setInteger("potion_id", potionId);
-	}
+    @Override
+    protected void writeToNBT(NBTTagCompound data) {
+        data.setInteger("potion_id", potionId);
+    }
 }

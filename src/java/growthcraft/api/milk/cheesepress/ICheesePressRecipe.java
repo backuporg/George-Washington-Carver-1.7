@@ -27,10 +27,12 @@ import net.minecraft.item.ItemStack;
 
 import javax.annotation.Nonnull;
 
-public interface ICheesePressRecipe
-{
-	ItemStack getInputItemStack();
-	ItemStack getOutputItemStack();
-	int getTimeMax();
-	boolean isMatchingRecipe(@Nonnull ItemStack stack);
+public interface ICheesePressRecipe {
+    ItemStack getInputItemStack();
+
+    ItemStack getOutputItemStack();
+
+    int getTimeMax();
+
+    boolean isMatchingRecipe(@Nonnull ItemStack stack);
 }

@@ -36,55 +36,45 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 
-public class ItemSeedThistle extends GrcItemBase implements IPlantable
-{
-	public ItemSeedThistle()
-	{
-		super();
-		setUnlocalizedName("grcmilk.seed_thistle");
-		setCreativeTab(GrowthCraftMilk.creativeTab);
-		//setTextureName("grcmilk:seeds/seed_thistle");
-	}
+public class ItemSeedThistle extends GrcItemBase implements IPlantable {
+    public ItemSeedThistle() {
+        super();
+        setUnlocalizedName("grcmilk.seed_thistle");
+        setCreativeTab(GrowthCraftMilk.creativeTab);
+        //setTextureName("grcmilk:seeds/seed_thistle");
+    }
 
-	@Override
-	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos)
-	{
-		return EnumPlantType.Plains;
-	}
+    @Override
+    public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos) {
+        return EnumPlantType.Plains;
+    }
 
-	@Override
-	public Block getPlant(IBlockAccess world, BlockPos pos)
-	{
-		return GrowthCraftMilk.blocks.thistle.getBlockState();
-	}
+    @Override
+    public Block getPlant(IBlockAccess world, BlockPos pos) {
+        return GrowthCraftMilk.blocks.thistle.getBlockState();
+    }
 
-	@Override
-	public int getPlantMetadata(IBlockAccess world, BlockPos pos)
-	{
-		return 0;
-	}
+    @Override
+    public int getPlantMetadata(IBlockAccess world, BlockPos pos) {
+        return 0;
+    }
 
-	@Override
-	public boolean onItemUse(IBlockState state, ItemStack stack, EnumFacing face, EntityPlayer player, World world, BlockPos pos, int EnumFacing, float tx, float ty, float tz)
-	{
-		if (EnumFacing == 1)
-		{
-			if (player.canPlayerEdit(pos, face, stack) && player.canPlayerEdit(pos, face, stack))
-			{
-				final Block soil = (Block) world.getBlockState((BlockPos) state);
-				final Block plant = getPlant(world, pos);
+    @Override
+    public boolean onItemUse(IBlockState state, ItemStack stack, EnumFacing face, EntityPlayer player, World world, BlockPos pos, int EnumFacing, float tx, float ty, float tz) {
+        if (EnumFacing == 1) {
+            if (player.canPlayerEdit(pos, face, stack) && player.canPlayerEdit(pos, face, stack)) {
+                final Block soil = (Block) world.getBlockState((BlockPos) state);
+                final Block plant = getPlant(world, pos);
 
-				if (plant instanceof IPlantable)
-				{
-					if (soil != null && !world.isAirBlock(pos) && soil.canSustainPlant(world, x, y + 1, z, EnumFacing.UP, (IPlantable)plant))
-					{
-						world.setBlockState(pos, state);
-						--stack.stackSize;
-						return true;
-					}
-				}
-			}
-		}
-		return false;
-	}
+                if (plant instanceof IPlantable) {
+                    if (soil != null && !world.isAirBlock(pos) && soil.canSustainPlant(world, x, y + 1, z, EnumFacing.UP, (IPlantable) plant)) {
+                        world.setBlockState(pos, state);
+                        --stack.stackSize;
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
 }

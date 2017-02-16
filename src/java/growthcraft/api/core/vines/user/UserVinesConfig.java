@@ -32,84 +32,66 @@ import net.minecraft.block.Block;
 import javax.annotation.Nonnull;
 import java.io.BufferedReader;
 
-public class UserVinesConfig extends AbstractUserJSONConfig
-{
-	private final UserVineEntries defaultEntries = new UserVineEntries();
-	private UserVineEntries entries;
+public class UserVinesConfig extends AbstractUserJSONConfig {
+    private final UserVineEntries defaultEntries = new UserVineEntries();
+    private UserVineEntries entries;
 
-	public UserVineEntry addDefault(@Nonnull UserVineEntry entry)
-	{
-		defaultEntries.data.add(entry);
-		return entry;
-	}
+    public UserVineEntry addDefault(@Nonnull UserVineEntry entry) {
+        defaultEntries.data.add(entry);
+        return entry;
+    }
 
-	public UserVineEntry addDefault(@Nonnull Block block, int meta)
-	{
-		return addDefault(new UserVineEntry(block, meta));
-	}
+    public UserVineEntry addDefault(@Nonnull Block block, int meta) {
+        return addDefault(new UserVineEntry(block, meta));
+    }
 
-	public UserVineEntry addDefault(@Nonnull Block block)
-	{
-		return addDefault(new UserVineEntry(block));
-	}
+    public UserVineEntry addDefault(@Nonnull Block block) {
+        return addDefault(new UserVineEntry(block));
+    }
 
-	public UserVineEntry addDefault(@Nonnull BlockKeySchema block)
-	{
-		return addDefault(new UserVineEntry(block));
-	}
+    public UserVineEntry addDefault(@Nonnull BlockKeySchema block) {
+        return addDefault(new UserVineEntry(block));
+    }
 
-	public UserVineEntry addDefault(@Nonnull BlockKey block)
-	{
-		return addDefault(new UserVineEntry(block));
-	}
+    public UserVineEntry addDefault(@Nonnull BlockKey block) {
+        return addDefault(new UserVineEntry(block));
+    }
 
-	@Override
-	protected String getDefault()
-	{
-		return gson.toJson(defaultEntries);
-	}
+    @Override
+    protected String getDefault() {
+        return gson.toJson(defaultEntries);
+    }
 
-	@Override
-	protected void loadFromBuffer(BufferedReader reader) throws IllegalStateException
-	{
-		this.entries = gson.fromJson(reader, UserVineEntries.class);
-	}
+    @Override
+    protected void loadFromBuffer(BufferedReader reader) throws IllegalStateException {
+        this.entries = gson.fromJson(reader, UserVineEntries.class);
+    }
 
-	private void addVineEntry(UserVineEntry entry)
-	{
-		if (entry == null)
-		{
-			logger.warn("UserVinesConfig entry is invalid!");
-			return;
-		}
+    private void addVineEntry(UserVineEntry entry) {
+        if (entry == null) {
+            logger.warn("UserVinesConfig entry is invalid!");
+            return;
+        }
 
-		if (entry.block == null || entry.block.isInvalid())
-		{
-			logger.warn("UserVinesConfig entry has invalid block {%s}!", entry);
-			return;
-		}
+        if (entry.block == null || entry.block.isInvalid()) {
+            logger.warn("UserVinesConfig entry has invalid block {%s}!", entry);
+            return;
+        }
 
-		CoreRegistry.instance().vineDrops().addVineEntry(entry.block.getBlockState(), entry.block.meta);
-	}
+        CoreRegistry.instance().vineDrops().addVineEntry(entry.block.getBlockState(), entry.block.meta);
+    }
 
-	@Override
-	public void postInit()
-	{
-		if (entries != null)
-		{
-			if (entries.data != null)
-			{
-				logger.debug("Adding %d user vine entries.", entries.data.size());
-				for (UserVineEntry entry : entries.data) addVineEntry(entry);
-			}
-			else
-			{
-				logger.warn("UserVinesConfig entries.data is invalid!");
-			}
-		}
-		else
-		{
-			logger.warn("UserVinesConfig entries is invalid!");
-		}
-	}
+    @Override
+    public void postInit() {
+        if (entries != null) {
+            if (entries.data != null) {
+                logger.debug("Adding %d user vine entries.", entries.data.size());
+                for (UserVineEntry entry : entries.data) addVineEntry(entry);
+            } else {
+                logger.warn("UserVinesConfig entries.data is invalid!");
+            }
+        } else {
+            logger.warn("UserVinesConfig entries is invalid!");
+        }
+    }
 }

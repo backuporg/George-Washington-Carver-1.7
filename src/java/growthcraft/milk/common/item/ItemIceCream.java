@@ -34,58 +34,52 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-public class ItemIceCream extends GrcItemFoodBase
-{
-	@SideOnly(Side.CLIENT)
+public class ItemIceCream extends GrcItemFoodBase {
+    @SideOnly(Side.CLIENT)
 
 
-	public ItemIceCream()
-	{
-		super(2, 0.3F, false);
-		setHasSubtypes(true);
-		setMaxDamage(0);
-		setUnlocalizedName("grcmilk.IceCream");
-		setCreativeTab(GrowthCraftMilk.creativeTab);
-	}
+    public ItemIceCream() {
+        super(2, 0.3F, false);
+        setHasSubtypes(true);
+        setMaxDamage(0);
+        setUnlocalizedName("grcmilk.IceCream");
+        setCreativeTab(GrowthCraftMilk.creativeTab);
+    }
 
-	public EnumIceCream getEnumIceCream(ItemStack stack)
-	{
-		return EnumIceCream.VALUES[MathHelper.clamp_int(stack.getItemDamage(), 0, EnumIceCream.VALUES.length - 1)];
-	}
+    public EnumIceCream getEnumIceCream(ItemStack stack) {
+        return EnumIceCream.VALUES[MathHelper.clamp_int(stack.getItemDamage(), 0, EnumIceCream.VALUES.length - 1)];
+    }
 
-	@Override
-	public String getUnlocalizedName(ItemStack stack)
-	{
-		return super.getUnlocalizedName(stack) + "." + getEnumIceCream(stack).name;
-	}
+    @Override
+    public String getUnlocalizedName(ItemStack stack) {
+        return super.getUnlocalizedName(stack) + "." + getEnumIceCream(stack).name;
+    }
 
-	//@Override
-	//@SideOnly(Side.CLIENT)
-	//public void registerIcons(IIconRegister ir)
-	//{
-	//	this.icons = new IIcon[EnumIceCream.VALUES.length];
+    //@Override
+    //@SideOnly(Side.CLIENT)
+    //public void registerIcons(IIconRegister ir)
+    //{
+    //	this.icons = new IIcon[EnumIceCream.VALUES.length];
 //
-		//for (EnumIceCream iceCream : EnumIceCream.VALUES)
-		//{
-		//	this.icons[iceCream.meta] = ir.registerIcon("grcmilk:ice_cream/ice_cream_" + iceCream.name);
-		//}
-	//}
+    //for (EnumIceCream iceCream : EnumIceCream.VALUES)
+    //{
+    //	this.icons[iceCream.meta] = ir.registerIcon("grcmilk:ice_cream/ice_cream_" + iceCream.name);
+    //}
+    //}
 
-	//@Override
-	//@SideOnly(Side.CLIENT)
-	//public IIcon getIconFromDamage(int meta)
-	//{
-	//	return icons[MathHelper.clamp_int(meta, 0, EnumIceCream.VALUES.length - 1)];
-	//}
+    //@Override
+    //@SideOnly(Side.CLIENT)
+    //public IIcon getIconFromDamage(int meta)
+    //{
+    //	return icons[MathHelper.clamp_int(meta, 0, EnumIceCream.VALUES.length - 1)];
+    //}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void getSubItems(Item item, CreativeTabs ct, List list)
-	{
-		for (EnumIceCream iceCream : EnumIceCream.VALUES)
-		{
-			list.add(iceCream.asStack());
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    public void getSubItems(Item item, CreativeTabs ct, List list) {
+        for (EnumIceCream iceCream : EnumIceCream.VALUES) {
+            list.add(iceCream.asStack());
+        }
+    }
 }

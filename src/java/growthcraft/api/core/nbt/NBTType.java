@@ -26,39 +26,35 @@ package growthcraft.api.core.nbt;
 import java.util.HashMap;
 import java.util.Map;
 
-public enum NBTType
-{
-	END(0),
-	BYTE(1),
-	SHORT(2),
-	INT(3),
-	LONG(4),
-	FLOAT(5),
-	DOUBLE(6),
-	BYTE_ARRAY(7),
-	STRING(8),
-	LIST(9),
-	COMPOUND(10),
-	INT_ARRAY(11);
+public enum NBTType {
+    END(0),
+    BYTE(1),
+    SHORT(2),
+    INT(3),
+    LONG(4),
+    FLOAT(5),
+    DOUBLE(6),
+    BYTE_ARRAY(7),
+    STRING(8),
+    LIST(9),
+    COMPOUND(10),
+    INT_ARRAY(11);
 
-	public static final Map<Integer, NBTType> MAPPING = new HashMap<Integer, NBTType>();
-	static
-	{
-		for (NBTType type : values())
-		{
-			MAPPING.put(type.id, type);
-		}
-	}
+    public static final Map<Integer, NBTType> MAPPING = new HashMap<Integer, NBTType>();
 
-	public final int id;
+    static {
+        for (NBTType type : values()) {
+            MAPPING.put(type.id, type);
+        }
+    }
 
-	private NBTType(int i)
-	{
-		this.id = i;
-	}
+    public final int id;
 
-	public static NBTType byId(int id)
-	{
-		return MAPPING.get(id);
-	}
+    NBTType(int i) {
+        this.id = i;
+    }
+
+    public static NBTType byId(int id) {
+        return MAPPING.get(id);
+    }
 }

@@ -32,35 +32,28 @@ import growthcraft.core.integration.ModIntegrationBase;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class FAModule extends ModIntegrationBase
-{
-	public FAModule()
-	{
-		super(GrowthCraftBees.MOD_ID, FAPlatform.MOD_ID);
-	}
+public class FAModule extends ModIntegrationBase {
+    public FAModule() {
+        super(GrowthCraftBees.MOD_ID, FAPlatform.MOD_ID);
+    }
 
-	@Override
-	public void doPreInit()
-	{
-		GrowthCraftBees.blocks.beeBoxFossilsAndArchaeology = GrowthCraftBees.blocks.newTypedDefinition(new BlockBeeBoxFossilsAndArchaeology());
-	}
+    @Override
+    public void doPreInit() {
+        GrowthCraftBees.blocks.beeBoxFossilsAndArchaeology = GrowthCraftBees.blocks.newTypedDefinition(new BlockBeeBoxFossilsAndArchaeology());
+    }
 
-	@Override
-	public void doRegister()
-	{
-		GrowthCraftBees.blocks.beeBoxFossilsAndArchaeology.register("grc.beeBox.FossilsAndArchaeology", ItemBlockBeeBox.class);
-	}
+    @Override
+    public void doRegister() {
+        GrowthCraftBees.blocks.beeBoxFossilsAndArchaeology.register("grc.beeBox.FossilsAndArchaeology", ItemBlockBeeBox.class);
+    }
 
-	@Override
-	protected void doLateRegister()
-	{
-		for (EnumFAWoodType type : EnumFAWoodType.VALUES)
-		{
-			final ItemStack planks = type.asPlanksItemStack();
-			if (planks != null)
-			{
-				GameRegistry.addShapedRecipe(GrowthCraftBees.blocks.beeBoxFossilsAndArchaeology.asStack(), " A ", "A A", "AAA", 'A', planks);
-			}
-		}
-	}
+    @Override
+    protected void doLateRegister() {
+        for (EnumFAWoodType type : EnumFAWoodType.VALUES) {
+            final ItemStack planks = type.asPlanksItemStack();
+            if (planks != null) {
+                GameRegistry.addShapedRecipe(GrowthCraftBees.blocks.beeBoxFossilsAndArchaeology.asStack(), " A ", "A A", "AAA", 'A', planks);
+            }
+        }
+    }
 }

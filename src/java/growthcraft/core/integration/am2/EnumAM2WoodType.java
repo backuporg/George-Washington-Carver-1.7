@@ -1,4 +1,3 @@
-
 /*
  * The MIT License (MIT)
  *
@@ -30,34 +29,29 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.Locale;
 
-public enum EnumAM2WoodType
-{
-	WITCHWOOD;
+public enum EnumAM2WoodType {
+    WITCHWOOD;
 
-	public static final EnumAM2WoodType[] VALUES = values();
+    public static final EnumAM2WoodType[] VALUES = values();
 
-	public final String name;
-	public final int meta;
+    public final String name;
+    public final int meta;
 
-	private EnumAM2WoodType()
-	{
-		this.name = name().toLowerCase(Locale.ENGLISH);
-		this.meta = ordinal();
-	}
+    EnumAM2WoodType() {
+        this.name = name().toLowerCase(Locale.ENGLISH);
+        this.meta = ordinal();
+    }
 
-	public ItemStack asPlanksItemStack(int size)
-	{
-		final Block block = GameRegistry.findBlock(AM2Platform.MOD_ID, "planksWitchwood");
-		if (block != null)
-		{
-			final ItemStack result = new ItemStack(block, size, meta);
-			return result;
-		}
-		return null;
-	}
+    public ItemStack asPlanksItemStack(int size) {
+        final Block block = GameRegistry.findBlock(AM2Platform.MOD_ID, "planksWitchwood");
+        if (block != null) {
+            final ItemStack result = new ItemStack(block, size, meta);
+            return result;
+        }
+        return null;
+    }
 
-	public ItemStack asPlanksItemStack()
-	{
-		return asPlanksItemStack(1);
-	}
+    public ItemStack asPlanksItemStack() {
+        return asPlanksItemStack(1);
+    }
 }

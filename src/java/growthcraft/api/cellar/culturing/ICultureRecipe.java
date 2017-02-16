@@ -28,11 +28,14 @@ import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nullable;
 
-public interface ICultureRecipe
-{
-	ItemStack getOutputItemStack();
-	FluidStack getInputFluidStack();
-	float getRequiredHeat();
-	int getTime();
-	boolean matchesRecipe(@Nullable FluidStack fluid, float heat);
+public interface ICultureRecipe {
+    ItemStack getOutputItemStack();
+
+    FluidStack getInputFluidStack();
+
+    float getRequiredHeat();
+
+    int getTime();
+
+    boolean matchesRecipe(@Nullable FluidStack fluid, float heat);
 }

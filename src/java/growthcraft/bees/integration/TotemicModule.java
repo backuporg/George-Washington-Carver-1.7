@@ -32,35 +32,28 @@ import growthcraft.core.integration.totemic.TotemicPlatform;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class TotemicModule extends ModIntegrationBase
-{
-	public TotemicModule()
-	{
-		super(GrowthCraftBees.MOD_ID, TotemicPlatform.MOD_ID);
-	}
+public class TotemicModule extends ModIntegrationBase {
+    public TotemicModule() {
+        super(GrowthCraftBees.MOD_ID, TotemicPlatform.MOD_ID);
+    }
 
-	@Override
-	public void doPreInit()
-	{
-		GrowthCraftBees.blocks.beeBoxTotemic = GrowthCraftBees.blocks.newTypedDefinition(new BlockBeeBoxTotemic());
-	}
+    @Override
+    public void doPreInit() {
+        GrowthCraftBees.blocks.beeBoxTotemic = GrowthCraftBees.blocks.newTypedDefinition(new BlockBeeBoxTotemic());
+    }
 
-	@Override
-	public void doRegister()
-	{
-		GrowthCraftBees.blocks.beeBoxTotemic.register("grc.BeeBox.Totemic", ItemBlockBeeBox.class);
-	}
+    @Override
+    public void doRegister() {
+        GrowthCraftBees.blocks.beeBoxTotemic.register("grc.BeeBox.Totemic", ItemBlockBeeBox.class);
+    }
 
-	@Override
-	protected void doLateRegister()
-	{
-		for (EnumTotemicWoodType type : EnumTotemicWoodType.VALUES)
-		{
-			final ItemStack planks = type.asPlanksItemStack();
-			if (planks != null)
-			{
-				GameRegistry.addShapedRecipe(GrowthCraftBees.blocks.beeBoxTotemic.asStack(), " A ", "A A", "AAA", 'A', planks);
-			}
-		}
-	}
+    @Override
+    protected void doLateRegister() {
+        for (EnumTotemicWoodType type : EnumTotemicWoodType.VALUES) {
+            final ItemStack planks = type.asPlanksItemStack();
+            if (planks != null) {
+                GameRegistry.addShapedRecipe(GrowthCraftBees.blocks.beeBoxTotemic.asStack(), " A ", "A A", "AAA", 'A', planks);
+            }
+        }
+    }
 }

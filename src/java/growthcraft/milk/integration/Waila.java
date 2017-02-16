@@ -31,33 +31,30 @@ import mcp.mobius.waila.api.IWailaDataProvider;
 import mcp.mobius.waila.api.IWailaRegistrar;
 import net.minecraftforge.fml.common.Optional;
 
-public class Waila extends WailaIntegrationBase
-{
-	public Waila()
-	{
-		super(GrowthCraftMilk.MOD_ID);
-	}
+public class Waila extends WailaIntegrationBase {
+    public Waila() {
+        super(GrowthCraftMilk.MOD_ID);
+    }
 
-	@Optional.Method(modid="Waila")
-	public static void register(IWailaRegistrar reg)
-	{
-		final IWailaDataProvider provider = new GrcMilkDataProvider();
+    @Optional.Method(modid = "Waila")
+    public static void register(IWailaRegistrar reg) {
+        final IWailaDataProvider provider = new GrcMilkDataProvider();
 
-		reg.registerBodyProvider(provider, BlockCheesePress.class);
-		reg.registerNBTProvider(provider, BlockCheesePress.class);
+        reg.registerBodyProvider(provider, BlockCheesePress.class);
+        reg.registerNBTProvider(provider, BlockCheesePress.class);
 
-		reg.registerBodyProvider(provider, BlockButterChurn.class);
-		reg.registerNBTProvider(provider, BlockButterChurn.class);
+        reg.registerBodyProvider(provider, BlockButterChurn.class);
+        reg.registerNBTProvider(provider, BlockButterChurn.class);
 
-		reg.registerBodyProvider(provider, BlockCheeseVat.class);
-		reg.registerNBTProvider(provider, BlockCheeseVat.class);
+        reg.registerBodyProvider(provider, BlockCheeseVat.class);
+        reg.registerNBTProvider(provider, BlockCheeseVat.class);
 
-		reg.registerStackProvider(provider, BlockCheeseBlock.class);
-		reg.registerBodyProvider(provider, BlockCheeseBlock.class);
-		reg.registerNBTProvider(provider, BlockCheeseBlock.class);
+        reg.registerStackProvider(provider, BlockCheeseBlock.class);
+        reg.registerBodyProvider(provider, BlockCheeseBlock.class);
+        reg.registerNBTProvider(provider, BlockCheeseBlock.class);
 
-		reg.registerStackProvider(provider, BlockHangingCurds.class);
-		reg.registerBodyProvider(provider, BlockHangingCurds.class);
-		reg.registerNBTProvider(provider, BlockHangingCurds.class);
-	}
+        reg.registerStackProvider(provider, BlockHangingCurds.class);
+        reg.registerBodyProvider(provider, BlockHangingCurds.class);
+        reg.registerNBTProvider(provider, BlockHangingCurds.class);
+    }
 }

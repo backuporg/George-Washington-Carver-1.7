@@ -30,28 +30,24 @@ import net.minecraft.item.Item;
 
 import java.util.Random;
 
-public class BlockSaltBlock extends GrcBlockBase
-{
-	public BlockSaltBlock()
-	{
-		super(Material.SAND);
-		setHardness(2.0F);
-		setResistance(10.0F);
-		//setStepSound(soundTypeSand);
-		setUnlocalizedName("grccore.salt_block");
-		//setBlockTextureName("grccore:salt_block");
-		setCreativeTab(GrowthCraftCore.creativeTab);
-	}
+public class BlockSaltBlock extends GrcBlockBase {
+    public BlockSaltBlock() {
+        super(Material.SAND);
+        setHardness(2.0F);
+        setResistance(10.0F);
+        //setStepSound(soundTypeSand);
+        setUnlocalizedName("grccore.salt_block");
+        //setBlockTextureName("grccore:salt_block");
+        setCreativeTab(GrowthCraftCore.creativeTab);
+    }
 
-	@Override
-	public Item getItemDropped(int meta, Random rand, int fortune)
-	{
-		return GrowthCraftCore.items.salt.getItem();
-	}
+    @Override
+    public Item getItemDropped(int meta, Random rand, int fortune) {
+        return GrowthCraftCore.items.salt.getItem();
+    }
 
-	@Override
-	public int quantityDropped(Random random)
-	{
-		return RandomUtils.range(random, 4, 9);
-	}
+    @Override
+    public int quantityDropped(Random random) {
+        return RandomUtils.range(random, 4, 9);
+    }
 }

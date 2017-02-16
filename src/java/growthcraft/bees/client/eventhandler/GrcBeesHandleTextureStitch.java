@@ -24,63 +24,61 @@
 package growthcraft.bees.client.eventhandler;
 
 import growthcraft.bees.GrowthCraftBees;
-import growthcraft.core.GrowthCraftCore;
 import growthcraft.core.client.util.InterpolatedIcon;
 import growthcraft.core.integration.botania.EnumBotaniaWoodType;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraftforge.client.event.TextureStitchEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class GrcBeesHandleTextureStitch {
-	// Fluid Icons
-	@SideOnly(Side.CLIENT)
-	//public IIcon iconFluidHoneyStill;
-	@SideOnly(Side.CLIENT)
-	//public IIcon iconFluidHoneyFlow;
+    // Fluid Icons
+    @SideOnly(Side.CLIENT)
+    //public IIcon iconFluidHoneyStill;
+    @SideOnly(Side.CLIENT)
+    //public IIcon iconFluidHoneyFlow;
 
-	@SideOnly(Side.CLIENT)
-	private void loadShimmerWoodInterpolatedIcons(TextureStitchEvent.Pre event) {
-		if (GrowthCraftBees.blocks.beeBoxBotania != null) {
-			final int offset = EnumBotaniaWoodType.SHIMMER_WOOD.meta;
-			final String[] sides = {"bottom", "top", "side", "side_honey"};
-			//final IIcon[] icons = GrowthCraftBees.blocks.beeBoxBotania.getBlockState().getIcons();
-			int i = 0;
-			for (String side : sides) {
-				final String name = String.format("grcbees:beebox/botania/shimmer_wood/%s", side);
-				final TextureAtlasSprite icon = new InterpolatedIcon(name);
-				//if (event.map.setTextureEntry(name, icon))
-				//{
-				//	icons[offset * 4 + i] = icon;
-				//}
-				i++;
-			}
-		}
-	}
+    @SideOnly(Side.CLIENT)
+    private void loadShimmerWoodInterpolatedIcons(TextureStitchEvent.Pre event) {
+        if (GrowthCraftBees.blocks.beeBoxBotania != null) {
+            final int offset = EnumBotaniaWoodType.SHIMMER_WOOD.meta;
+            final String[] sides = {"bottom", "top", "side", "side_honey"};
+            //final IIcon[] icons = GrowthCraftBees.blocks.beeBoxBotania.getBlockState().getIcons();
+            int i = 0;
+            for (String side : sides) {
+                final String name = String.format("grcbees:beebox/botania/shimmer_wood/%s", side);
+                final TextureAtlasSprite icon = new InterpolatedIcon(name);
+                //if (event.map.setTextureEntry(name, icon))
+                //{
+                //	icons[offset * 4 + i] = icon;
+                //}
+                i++;
+            }
+        }
+    }
 
-	//@SubscribeEvent
-	//@SideOnly(Side.CLIENT)
-	//public void onTextureStitchPre(TextureStitchEvent.Pre event) {
-		//if (event.map.getTextureType() == 0)
-		//{
-		//	this.iconFluidHoneyStill = event.map.registerIcon("grcbees:fluids/honey_still");
-		//	this.iconFluidHoneyFlow = event.map.registerIcon("grcbees:fluids/honey_flow");
-		//	loadShimmerWoodInterpolatedIcons(event);
-		//}
-		//}
+    //@SubscribeEvent
+    //@SideOnly(Side.CLIENT)
+    //public void onTextureStitchPre(TextureStitchEvent.Pre event) {
+    //if (event.map.getTextureType() == 0)
+    //{
+    //	this.iconFluidHoneyStill = event.map.registerIcon("grcbees:fluids/honey_still");
+    //	this.iconFluidHoneyFlow = event.map.registerIcon("grcbees:fluids/honey_flow");
+    //	loadShimmerWoodInterpolatedIcons(event);
+    //}
+    //}
 
-		//@SubscribeEvent
-		//@SideOnly(Side.CLIENT)
-		//public void onTextureStitchPost(TextureStitchEvent.Post event)
-		//{
-		//if (event.map.getTextureType() == 0)
-		//{
-		//if (GrowthCraftBees.fluids.honey != null) GrowthCraftBees.fluids.honey.getFluid().setIcons(iconFluidHoneyStill, iconFluidHoneyFlow);
-		//for (int i = 0; i < GrowthCraftBees.fluids.honeyMeadBooze.length; ++i)
-		//{
-		//	GrowthCraftBees.fluids.honeyMeadBooze[i].setIcons(GrowthCraftCore.liquidSmoothTexture);
-		//}
-		//}
-		//}
-	}
+    //@SubscribeEvent
+    //@SideOnly(Side.CLIENT)
+    //public void onTextureStitchPost(TextureStitchEvent.Post event)
+    //{
+    //if (event.map.getTextureType() == 0)
+    //{
+    //if (GrowthCraftBees.fluids.honey != null) GrowthCraftBees.fluids.honey.getFluid().setIcons(iconFluidHoneyStill, iconFluidHoneyFlow);
+    //for (int i = 0; i < GrowthCraftBees.fluids.honeyMeadBooze.length; ++i)
+    //{
+    //	GrowthCraftBees.fluids.honeyMeadBooze[i].setIcons(GrowthCraftCore.liquidSmoothTexture);
+    //}
+    //}
+    //}
+}

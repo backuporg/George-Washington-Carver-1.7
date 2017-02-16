@@ -33,44 +33,38 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
 
 
-public class BlockBeeBoxTotemic extends BlockBeeBox
-{
-	public BlockBeeBoxTotemic()
-	{
-		super();
-		setHardness(2f);
-		setUnlocalizedName("grc.beeBox.Totemic");
-	}
+public class BlockBeeBoxTotemic extends BlockBeeBox {
+    public BlockBeeBoxTotemic() {
+        super();
+        setHardness(2f);
+        setUnlocalizedName("grc.beeBox.Totemic");
+    }
 
-	@Override
-	public String getMetaname(int meta)
-	{
-		if (meta >= 0 && meta < EnumTotemicWoodType.VALUES.length)
-		{
-			return EnumTotemicWoodType.VALUES[meta].name;
-		}
-		return super.getMetaname(meta);
-	}
+    @Override
+    public String getMetaname(int meta) {
+        if (meta >= 0 && meta < EnumTotemicWoodType.VALUES.length) {
+            return EnumTotemicWoodType.VALUES[meta].name;
+        }
+        return super.getMetaname(meta);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void getSubBlocks(Item block, CreativeTabs tab, List list)
-	{
-		for (int i = 0; i < EnumTotemicWoodType.VALUES.length; ++i)
-		{
-			list.add(new ItemStack(block, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    public void getSubBlocks(Item block, CreativeTabs tab, List list) {
+        for (int i = 0; i < EnumTotemicWoodType.VALUES.length; ++i) {
+            list.add(new ItemStack(block, 1, i));
+        }
+    }
 
-	//@Override
-	//@SideOnly(Side.CLIENT)
+    //@Override
+    //@SideOnly(Side.CLIENT)
 
-	//{
-	//	this.icons = new IIcon[4 * EnumTotemicWoodType.VALUES.length];
-	//	for (EnumTotemicWoodType type : EnumTotemicWoodType.VALUES)
-	//	{
-	//		registerBeeBoxIcons(reg, String.format("/totemic/%s/", type.name), type.meta);
-	//	}
+    //{
+    //	this.icons = new IIcon[4 * EnumTotemicWoodType.VALUES.length];
+    //	for (EnumTotemicWoodType type : EnumTotemicWoodType.VALUES)
+    //	{
+    //		registerBeeBoxIcons(reg, String.format("/totemic/%s/", type.name), type.meta);
+    //	}
 //	}
 }

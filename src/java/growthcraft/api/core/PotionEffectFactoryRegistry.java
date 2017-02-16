@@ -30,18 +30,15 @@ import net.minecraft.nbt.NBTTagCompound;
 
 import javax.annotation.Nonnull;
 
-public class PotionEffectFactoryRegistry extends AbstractClassRegistry<IPotionEffectFactory> implements IPotionEffectFactoryRegistry
-{
-	private ILogger logger = NullLogger.INSTANCE;
+public class PotionEffectFactoryRegistry extends AbstractClassRegistry<IPotionEffectFactory> implements IPotionEffectFactoryRegistry {
+    private ILogger logger = NullLogger.INSTANCE;
 
-	public void setLogger(@Nonnull ILogger l)
-	{
-		this.logger = l;
-	}
+    public void setLogger(@Nonnull ILogger l) {
+        this.logger = l;
+    }
 
-	@Override
-	public IPotionEffectFactory loadPotionEffectFactoryFromNBT(@Nonnull NBTTagCompound data, @Nonnull String name)
-	{
-		return loadObjectFromNBT(data, name);
-	}
+    @Override
+    public IPotionEffectFactory loadPotionEffectFactoryFromNBT(@Nonnull NBTTagCompound data, @Nonnull String name) {
+        return loadObjectFromNBT(data, name);
+    }
 }

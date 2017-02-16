@@ -35,7 +35,6 @@ import java.util.Random;
  * Objects that implement this interface are expected to create PotionEffects
  * given certain parameters
  */
-public interface IPotionEffectFactory extends IDescribable, INBTSerializableContext
-{
-	PotionEffect createPotionEffect(World world, Entity entity, Random random, Object data);
+public interface IPotionEffectFactory extends IDescribable, INBTSerializableContext {
+    PotionEffect createPotionEffect(World world, Entity entity, Random random, Object data);
 }

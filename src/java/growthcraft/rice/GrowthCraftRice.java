@@ -6,7 +6,6 @@ import growthcraft.api.core.module.ModuleContainer;
 import growthcraft.cellar.GrowthCraftCellar;
 import growthcraft.core.GrowthCraftCore;
 import growthcraft.core.eventhandler.PlayerInteractEventPaddy;
-
 import growthcraft.core.util.MapGenHelper;
 import growthcraft.rice.common.CommonProxy;
 import growthcraft.rice.common.village.ComponentVillageRiceField;
@@ -33,111 +32,99 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
 @Mod(
-	modid = GrowthCraftRice.MOD_ID,
-	name = GrowthCraftRice.MOD_NAME,
-	version = GrowthCraftRice.MOD_VERSION,
-	dependencies = "required-after:Growthcraft@@VERSION@;required-after:Growthcraft|Cellar@@VERSION@"
+        modid = GrowthCraftRice.MOD_ID,
+        name = GrowthCraftRice.MOD_NAME,
+        version = GrowthCraftRice.MOD_VERSION,
+        dependencies = "required-after:Growthcraft@@VERSION@;required-after:Growthcraft|Cellar@@VERSION@"
 )
-public class GrowthCraftRice
-{
-	public static final String MOD_ID = "Growthcraft|Rice";
-	public static final String MOD_NAME = "Growthcraft Rice";
-	public static final String MOD_VERSION = "@VERSION@";
+public class GrowthCraftRice {
+    public static final String MOD_ID = "Growthcraft|Rice";
+    public static final String MOD_NAME = "Growthcraft Rice";
+    public static final String MOD_VERSION = "@VERSION@";
+    public static final GrcRiceBlocks blocks = new GrcRiceBlocks();
+    public static final GrcRiceItems items = new GrcRiceItems();
+    public static final GrcRiceFluids fluids = new GrcRiceFluids();
+    @Instance(MOD_ID)
+    public static GrowthCraftRice instance;
+    private final ILogger logger = new GrcLogger(MOD_ID);
+    private final GrcRiceConfig config = new GrcRiceConfig();
+    private final ModuleContainer modules = new ModuleContainer();
 
-	@Instance(MOD_ID)
-	public static GrowthCraftRice instance;
-	public static final GrcRiceBlocks blocks = new GrcRiceBlocks();
-	public static final GrcRiceItems items = new GrcRiceItems();
-	public static final GrcRiceFluids fluids = new GrcRiceFluids();
+    public static GrcRiceConfig getConfig() {
+        return instance.config;
+    }
 
-	private final ILogger logger = new GrcLogger(MOD_ID);
-	private final GrcRiceConfig config = new GrcRiceConfig();
-	private final ModuleContainer modules = new ModuleContainer();
+    @EventHandler
+    public void preload(FMLPreInitializationEvent event) {
+        config.setLogger(logger);
+        config.load(event.getModConfigurationDirectory(), "growthcraft/rice.conf");
+        modules.add(blocks);
+        modules.add(items);
+        modules.add(fluids);
+        if (config.enableForestryIntegration) modules.add(new growthcraft.rice.integration.ForestryModule());
+        //if (config.enableMFRIntegration) modules.add(new growthcraft.rice.integration.MFRModule());
+        //if (config.enableThaumcraftIntegration) modules.add(new growthcraft.rice.integration.ThaumcraftModule());
+        modules.add(CommonProxy.instance);
+        if (config.debugEnabled) modules.setLogger(logger);
+        modules.freeze();
+        modules.preInit();
+        register();
+    }
 
-	public static GrcRiceConfig getConfig()
-	{
-		return instance.config;
-	}
+    private void register() {
+        modules.register();
+        MinecraftForge.addGrassSeed(items.rice.asStack(), config.riceSeedDropRarity);
 
-	@EventHandler
-	public void preload(FMLPreInitializationEvent event)
-	{
-		config.setLogger(logger);
-		config.load(event.getModConfigurationDirectory(), "growthcraft/rice.conf");
-		modules.add(blocks);
-		modules.add(items);
-		modules.add(fluids);
-		if (config.enableForestryIntegration) modules.add(new growthcraft.rice.integration.ForestryModule());
-		//if (config.enableMFRIntegration) modules.add(new growthcraft.rice.integration.MFRModule());
-		//if (config.enableThaumcraftIntegration) modules.add(new growthcraft.rice.integration.ThaumcraftModule());
-		modules.add(CommonProxy.instance);
-		if (config.debugEnabled) modules.setLogger(logger);
-		modules.freeze();
-		modules.preInit();
-		register();
-	}
+        MapGenHelper.registerVillageStructure(ComponentVillageRiceField.class, "grc.ricefield");
 
-	private void register()
-	{
-		modules.register();
-		MinecraftForge.addGrassSeed(items.rice.asStack(), config.riceSeedDropRarity);
+        //====================
+        // ORE DICTIONARY
+        //====================
+        OreDictionary.registerOre("cropRice", items.rice.getItem());
+        OreDictionary.registerOre("seedRice", items.rice.getItem());
+        // For Pam's HarvestCraft
+        // Uses the same OreDict. names as HarvestCraft
+        OreDictionary.registerOre("listAllseed", items.rice.getItem());
 
-		MapGenHelper.registerVillageStructure(ComponentVillageRiceField.class, "grc.ricefield");
+        //====================
+        // CRAFTING
+        //====================
+        GameRegistry.addRecipe(new ShapedOreRecipe(items.riceBall.asStack(1), "###", "###", '#', "cropRice"));
 
-		//====================
-		// ORE DICTIONARY
-		//====================
-		OreDictionary.registerOre("cropRice", items.rice.getItem());
-		OreDictionary.registerOre("seedRice", items.rice.getItem());
-		// For Pam's HarvestCraft
-		// Uses the same OreDict. names as HarvestCraft
-		OreDictionary.registerOre("listAllseed", items.rice.getItem());
+        NEI.hideItem(blocks.riceBlock.asStack());
 
-		//====================
-		// CRAFTING
-		//====================
-		GameRegistry.addRecipe(new ShapedOreRecipe(items.riceBall.asStack(1), "###", "###", '#', "cropRice"));
+        MinecraftForge.EVENT_BUS.register(this);
+    }
 
-		NEI.hideItem(blocks.riceBlock.asStack());
+    private void initVillageHandlers() {
+        final VillageHandlerRice handler = new VillageHandlerRice();
+        final int brewerID = GrowthCraftCellar.getConfig().villagerBrewerID;
+        if (brewerID > 0)
+            VillagerRegistry.instance().registerVillageTradeHandler(brewerID, handler);
+        VillagerRegistry.instance().registerVillageCreationHandler(handler);
+    }
 
-		MinecraftForge.EVENT_BUS.register(this);
-	}
+    @EventHandler
+    public void load(FMLInitializationEvent event) {
+        PlayerInteractEventPaddy.paddyBlocks.put(Blocks.FARMLAND, blocks.paddyField.getBlockState());
+        if (config.enableVillageGen) initVillageHandlers();
+        modules.init();
+    }
 
-	private void initVillageHandlers()
-	{
-		final VillageHandlerRice handler = new VillageHandlerRice();
-		final int brewerID = GrowthCraftCellar.getConfig().villagerBrewerID;
-		if (brewerID > 0)
-			VillagerRegistry.instance().registerVillageTradeHandler(brewerID, handler);
-		VillagerRegistry.instance().registerVillageCreationHandler(handler);
-	}
+    @SubscribeEvent
+    @SideOnly(Side.CLIENT)
+    public void onTextureStitchPost(TextureStitchEvent.Post event) {
+        if (event.getMap().getTextureType() == 0) {
+            for (int i = 0; i < fluids.riceSakeBooze.length; ++i) {
+                fluids.riceSakeBooze[i].setIcons(GrowthCraftCore.liquidSmoothTexture);
+            }
+        }
+    }
 
-	@EventHandler
-	public void load(FMLInitializationEvent event)
-	{
-		PlayerInteractEventPaddy.paddyBlocks.put(Blocks.FARMLAND, blocks.paddyField.getBlockState());
-		if (config.enableVillageGen) initVillageHandlers();
-		modules.init();
-	}
+    @EventHandler
+    public void postload(FMLPostInitializationEvent event) {
+        MinecraftForge.EVENT_BUS.register(new BonemealEventRice());
 
-	@SubscribeEvent
-	@SideOnly(Side.CLIENT)
-	public void onTextureStitchPost(TextureStitchEvent.Post event)
-	{
-		if (event.getMap().getTextureType() == 0)
-		{
-			for (int i = 0; i < fluids.riceSakeBooze.length; ++i)
-			{
-				fluids.riceSakeBooze[i].setIcons(GrowthCraftCore.liquidSmoothTexture);
-			}
-		}
-	}
-
-	@EventHandler
-	public void postload(FMLPostInitializationEvent event)
-	{
-		MinecraftForge.EVENT_BUS.register(new BonemealEventRice());
-
-		modules.postInit();
-	}
+        modules.postInit();
+    }
 }

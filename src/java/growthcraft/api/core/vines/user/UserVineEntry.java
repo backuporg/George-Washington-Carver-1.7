@@ -31,46 +31,38 @@ import net.minecraft.block.Block;
 
 import javax.annotation.Nonnull;
 
-public class UserVineEntry implements ICommentable
-{
-	public String comment;
-	public BlockKeySchema block;
+public class UserVineEntry implements ICommentable {
+    public String comment;
+    public BlockKeySchema block;
 
-	public UserVineEntry(@Nonnull BlockKeySchema schema)
-	{
-		this.block = schema;
-		this.comment = block.getComment();
-	}
+    public UserVineEntry(@Nonnull BlockKeySchema schema) {
+        this.block = schema;
+        this.comment = block.getComment();
+    }
 
-	public UserVineEntry(@Nonnull Block pBlock, int meta)
-	{
-		this(new BlockKeySchema(pBlock, meta));
-	}
+    public UserVineEntry(@Nonnull Block pBlock, int meta) {
+        this(new BlockKeySchema(pBlock, meta));
+    }
 
-	public UserVineEntry(@Nonnull Block pBlock)
-	{
-		this(pBlock, ItemKey.WILDCARD_VALUE);
-	}
+    public UserVineEntry(@Nonnull Block pBlock) {
+        this(pBlock, ItemKey.WILDCARD_VALUE);
+    }
 
-	public UserVineEntry(@Nonnull BlockKey pBlockKey)
-	{
-		this(new BlockKeySchema(pBlockKey));
-	}
+    public UserVineEntry(@Nonnull BlockKey pBlockKey) {
+        this(new BlockKeySchema(pBlockKey));
+    }
 
-	public UserVineEntry()
-	{
-		this.comment = "";
-	}
+    public UserVineEntry() {
+        this.comment = "";
+    }
 
-	@Override
-	public String getComment()
-	{
-		return comment;
-	}
+    @Override
+    public String getComment() {
+        return comment;
+    }
 
-	@Override
-	public void setComment(String com)
-	{
-		this.comment = com;
-	}
+    @Override
+    public void setComment(String com) {
+        this.comment = com;
+    }
 }

@@ -27,73 +27,60 @@ import growthcraft.api.core.util.BBox;
 import growthcraft.milk.common.block.BlockCheeseBlock;
 import growthcraft.milk.common.tileentity.TileEntityCheeseBlock;
 import net.minecraft.block.Block;
-
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
-
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
-public class RenderCheeseBlock implements ISimpleBlockRenderingHandler
-{
-	public static int RENDER_ID = RenderingRegistry.getNextAvailableRenderId();
-	private static float SCALE = 1f / 16f;
-	private static BBox[] boxes = {
-		BBox.newCube(5, 0, 5, 6, 8, 6).scale(SCALE),
-		BBox.newCube(4, 0, 6, 1, 8, 4).scale(SCALE),
-		BBox.newCube(11, 0, 6, 1, 8, 4).scale(SCALE),
-		BBox.newCube(6, 0, 4, 4, 8, 1).scale(SCALE),
-		BBox.newCube(6, 0, 11, 4, 8, 1).scale(SCALE)
-	};
+public class RenderCheeseBlock implements ISimpleBlockRenderingHandler {
+    public static int RENDER_ID = RenderingRegistry.getNextAvailableRenderId();
+    private static float SCALE = 1f / 16f;
+    private static BBox[] boxes = {
+            BBox.newCube(5, 0, 5, 6, 8, 6).scale(SCALE),
+            BBox.newCube(4, 0, 6, 1, 8, 4).scale(SCALE),
+            BBox.newCube(11, 0, 6, 1, 8, 4).scale(SCALE),
+            BBox.newCube(6, 0, 4, 4, 8, 1).scale(SCALE),
+            BBox.newCube(6, 0, 11, 4, 8, 1).scale(SCALE)
+    };
 
-	@Override
-	public int getRenderId()
-	{
-		return RENDER_ID;
-	}
+    @Override
+    public int getRenderId() {
+        return RENDER_ID;
+    }
 
-	@Override
-	public boolean shouldRender3DInInventory(int modelID)
-	{
-		return false;
-	}
+    @Override
+    public boolean shouldRender3DInInventory(int modelID) {
+        return false;
+    }
 
-	@Override
-	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer)
-	{
-		if (modelID == RENDER_ID)
-		{
-		}
-	}
+    @Override
+    public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer) {
+        if (modelID == RENDER_ID) {
+        }
+    }
 
-	@Override
-	public boolean renderWorldBlock(IBlockAccess world, BlockPos pos, Block block, int modelId, RenderBlocks renderer)
-	{
-		if (modelId == RENDER_ID)
-		{
-			if (block instanceof BlockCheeseBlock)
-			{
-				final BlockCheeseBlock cheeseBlock = (BlockCheeseBlock)block;
-				final TileEntityCheeseBlock te = cheeseBlock.getTileEntity(world, pos);
-				if (te != null)
-				{
-					final int slices = te.getCheese().getSlices();
-					final int slicesMax = te.getCheese().getSlicesMax();
-					final float scaleHeight = (float)slices / (float)slicesMax;
-					if (scaleHeight > 0f)
-					{
-						final Tessellator tes = Tessellator.instance;
-						tes.setColorOpaque_F(1.0f, 1.0f, 1.0f);
-						for (BBox box : boxes)
-						{
-							final float y1 = scaleHeight * box.y1();
-							renderer.setRenderBounds(box.x0(), box.y0(), box.z0(), box.x1(), y1, box.z1());
-							renderer.renderStandardBlock(block, x, y, z);
-						}
-					}
-				}
-			}
-		}
-		return true;
-	}
+    @Override
+    public boolean renderWorldBlock(IBlockAccess world, BlockPos pos, Block block, int modelId, RenderBlocks renderer) {
+        if (modelId == RENDER_ID) {
+            if (block instanceof BlockCheeseBlock) {
+                final BlockCheeseBlock cheeseBlock = (BlockCheeseBlock) block;
+                final TileEntityCheeseBlock te = cheeseBlock.getTileEntity(world, pos);
+                if (te != null) {
+                    final int slices = te.getCheese().getSlices();
+                    final int slicesMax = te.getCheese().getSlicesMax();
+                    final float scaleHeight = (float) slices / (float) slicesMax;
+                    if (scaleHeight > 0f) {
+                        final Tessellator tes = Tessellator.instance;
+                        tes.setColorOpaque_F(1.0f, 1.0f, 1.0f);
+                        for (BBox box : boxes) {
+                            final float y1 = scaleHeight * box.y1();
+                            renderer.setRenderBounds(box.x0(), box.y0(), box.z0(), box.x1(), y1, box.z1());
+                            renderer.renderStandardBlock(block, x, y, z);
+                        }
+                    }
+                }
+            }
+        }
+        return true;
+    }
 }

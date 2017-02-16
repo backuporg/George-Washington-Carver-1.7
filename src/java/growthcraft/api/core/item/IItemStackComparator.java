@@ -27,7 +27,6 @@ import net.minecraft.item.ItemStack;
 
 import javax.annotation.Nonnull;
 
-public interface IItemStackComparator
-{
-	boolean equals(@Nonnull ItemStack expected, @Nonnull ItemStack actual);
+public interface IItemStackComparator {
+    boolean equals(@Nonnull ItemStack expected, @Nonnull ItemStack actual);
 }

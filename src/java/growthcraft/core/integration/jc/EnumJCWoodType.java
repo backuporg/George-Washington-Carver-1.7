@@ -29,8 +29,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.Locale;
 
-public enum EnumJCWoodType
-{
+public enum EnumJCWoodType {
     GINKGO,
     CALAMITES,
     PSARONIUS,
@@ -42,25 +41,21 @@ public enum EnumJCWoodType
     public final String name;
     public final int meta;
 
-    private EnumJCWoodType()
-    {
+    EnumJCWoodType() {
         this.name = name().toLowerCase(Locale.ENGLISH);
         this.meta = ordinal();
     }
 
-    public ItemStack asPlanksItemStack(int size)
-    {
+    public ItemStack asPlanksItemStack(int size) {
         final Block block = GameRegistry.findBlock(JCPlatform.MOD_ID, "planks");
-        if (block != null)
-        {
+        if (block != null) {
             final ItemStack result = new ItemStack(block, size, meta);
             return result;
         }
         return null;
     }
 
-    public ItemStack asPlanksItemStack()
-    {
+    public ItemStack asPlanksItemStack() {
         return asPlanksItemStack(1);
     }
 }

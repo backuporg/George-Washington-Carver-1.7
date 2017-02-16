@@ -6,17 +6,14 @@ import net.minecraft.item.Item;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class CreativeTabsGrowthcraft extends CreativeTabs
-{
-	public CreativeTabsGrowthcraft(String name)
-	{
-		super(name);
-	}
+public class CreativeTabsGrowthcraft extends CreativeTabs {
+    public CreativeTabsGrowthcraft(String name) {
+        super(name);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public Item getTabIconItem()
-	{
-		return Item.getItemFromBlock(Blocks.SAPLING);
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public Item getTabIconItem() {
+        return Item.getItemFromBlock(Blocks.SAPLING);
+    }
 }

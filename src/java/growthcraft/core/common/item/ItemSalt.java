@@ -25,13 +25,11 @@ package growthcraft.core.common.item;
 
 import growthcraft.core.GrowthCraftCore;
 
-public class ItemSalt extends GrcItemBase
-{
-	public ItemSalt()
-	{
-		super();
-		//setTextureName("grccore:salt");
-		setUnlocalizedName("grccore.salt");
-		setCreativeTab(GrowthCraftCore.creativeTab);
-	}
+public class ItemSalt extends GrcItemBase {
+    public ItemSalt() {
+        super();
+        //setTextureName("grccore:salt");
+        setUnlocalizedName("grccore.salt");
+        setCreativeTab(GrowthCraftCore.creativeTab);
+    }
 }

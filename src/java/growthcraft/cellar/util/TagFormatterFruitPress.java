@@ -8,24 +8,22 @@ import net.minecraft.util.text.TextFormatting;
 
 import java.util.List;
 
-public class TagFormatterFruitPress implements ITagFormatter
-{
-	public static final TagFormatterFruitPress INSTANCE = new TagFormatterFruitPress();
+public class TagFormatterFruitPress implements ITagFormatter {
+    public static final TagFormatterFruitPress INSTANCE = new TagFormatterFruitPress();
 
-	public List<String> format(List<String> list, NBTTagCompound tag)
-	{
-		list.add(TextFormatting.GRAY +
-			GrcI18n.translate(
-				"grc.cellar.fruit_press.itemslot.item",
-				TagFormatterItem.INSTANCE.formatItem(tag.getCompoundTag("item_press"))
-			)
-		);
-		list.add(TextFormatting.GRAY +
-			GrcI18n.translate(
-				"grc.cellar.fruit_press.itemslot.residue",
-				TagFormatterItem.INSTANCE.formatItem(tag.getCompoundTag("item_residue"))
-			)
-		);
-		return list;
-	}
+    public List<String> format(List<String> list, NBTTagCompound tag) {
+        list.add(TextFormatting.GRAY +
+                GrcI18n.translate(
+                        "grc.cellar.fruit_press.itemslot.item",
+                        TagFormatterItem.INSTANCE.formatItem(tag.getCompoundTag("item_press"))
+                )
+        );
+        list.add(TextFormatting.GRAY +
+                GrcI18n.translate(
+                        "grc.cellar.fruit_press.itemslot.residue",
+                        TagFormatterItem.INSTANCE.formatItem(tag.getCompoundTag("item_residue"))
+                )
+        );
+        return list;
+    }
 }

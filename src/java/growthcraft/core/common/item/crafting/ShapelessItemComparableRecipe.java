@@ -34,72 +34,60 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class ShapelessItemComparableRecipe implements IRecipe
-{
-	public final List<ItemStack> recipeItems;
-	private final ItemStack recipeOutput;
-	private final IItemStackComparator comparator;
+public class ShapelessItemComparableRecipe implements IRecipe {
+    public final List<ItemStack> recipeItems;
+    private final ItemStack recipeOutput;
+    private final IItemStackComparator comparator;
 
-	public ShapelessItemComparableRecipe(@Nonnull IItemStackComparator pComparator, ItemStack result, List<ItemStack> list)
-	{
-		this.comparator = pComparator;
-		this.recipeOutput = result;
-		this.recipeItems = list;
-	}
+    public ShapelessItemComparableRecipe(@Nonnull IItemStackComparator pComparator, ItemStack result, List<ItemStack> list) {
+        this.comparator = pComparator;
+        this.recipeOutput = result;
+        this.recipeItems = list;
+    }
 
-	public ItemStack getRecipeOutput()
-	{
-		return this.recipeOutput;
-	}
+    public ItemStack getRecipeOutput() {
+        return this.recipeOutput;
+    }
 
-	/**
-	 * Used to check if a recipe matches current crafting inventory
-	 */
-	public boolean matches(InventoryCrafting crafting, World world)
-	{
-		final List<ItemStack> recipeList = new ArrayList<ItemStack>(this.recipeItems);
-		for (int i = 0; i < 3; ++i)
-		{
-			for (int j = 0; j < 3; ++j)
-			{
-				final ItemStack actual = crafting.getStackInRowAndColumn(j, i);
-				if (actual != null)
-				{
-					boolean flag = false;
-					final Iterator<ItemStack> iterator = recipeList.iterator();
-					while (iterator.hasNext())
-					{
-						final ItemStack expected = iterator.next();
-						if (comparator.equals(expected, actual))
-						{
-							flag = true;
-							recipeList.remove(expected);
-							break;
-						}
-					}
-					if (!flag)
-					{
-						return false;
-					}
-				}
-			}
-		}
-		return recipeList.isEmpty();
-	}
+    /**
+     * Used to check if a recipe matches current crafting inventory
+     */
+    public boolean matches(InventoryCrafting crafting, World world) {
+        final List<ItemStack> recipeList = new ArrayList<ItemStack>(this.recipeItems);
+        for (int i = 0; i < 3; ++i) {
+            for (int j = 0; j < 3; ++j) {
+                final ItemStack actual = crafting.getStackInRowAndColumn(j, i);
+                if (actual != null) {
+                    boolean flag = false;
+                    final Iterator<ItemStack> iterator = recipeList.iterator();
+                    while (iterator.hasNext()) {
+                        final ItemStack expected = iterator.next();
+                        if (comparator.equals(expected, actual)) {
+                            flag = true;
+                            recipeList.remove(expected);
+                            break;
+                        }
+                    }
+                    if (!flag) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return recipeList.isEmpty();
+    }
 
-	/**
-	 * Returns an Item that is the result of this recipe
-	 */
-	public ItemStack getCraftingResult(InventoryCrafting crafting)
-	{
-		return this.recipeOutput.copy();
-	}
+    /**
+     * Returns an Item that is the result of this recipe
+     */
+    public ItemStack getCraftingResult(InventoryCrafting crafting) {
+        return this.recipeOutput.copy();
+    }
 
-	/**
-	 * Returns the size of the recipe area
-	 */
-	public int getRecipeSize()
-	{
-		return this.recipeItems.size();
-	}
+    /**
+     * Returns the size of the recipe area
+     */
+    public int getRecipeSize() {
+        return this.recipeItems.size();
+    }
 }

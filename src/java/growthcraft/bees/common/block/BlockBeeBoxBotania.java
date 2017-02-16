@@ -33,35 +33,29 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
 
 
-public class BlockBeeBoxBotania extends BlockBeeBox
-{
-	public BlockBeeBoxBotania()
-	{
-		super();
-		setHardness(2f);
-		setUnlocalizedName("grc.BeeBox.Botania");
-	}
+public class BlockBeeBoxBotania extends BlockBeeBox {
+    public BlockBeeBoxBotania() {
+        super();
+        setHardness(2f);
+        setUnlocalizedName("grc.BeeBox.Botania");
+    }
 
-	@Override
-	public String getMetaname(int meta)
-	{
-		if (meta >= 0 && meta < EnumBotaniaWoodType.VALUES.length)
-		{
-			return EnumBotaniaWoodType.VALUES[meta].name;
-		}
-		return super.getMetaname(meta);
-	}
+    @Override
+    public String getMetaname(int meta) {
+        if (meta >= 0 && meta < EnumBotaniaWoodType.VALUES.length) {
+            return EnumBotaniaWoodType.VALUES[meta].name;
+        }
+        return super.getMetaname(meta);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void getSubBlocks(Item block, CreativeTabs tab, List list)
-	{
-		for (int i = 0; i < EnumBotaniaWoodType.VALUES.length; ++i)
-		{
-			list.add(new ItemStack(block, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    public void getSubBlocks(Item block, CreativeTabs tab, List list) {
+        for (int i = 0; i < EnumBotaniaWoodType.VALUES.length; ++i) {
+            list.add(new ItemStack(block, 1, i));
+        }
+    }
 
 //	@Override
 //	@SideOnly(Side.CLIENT)

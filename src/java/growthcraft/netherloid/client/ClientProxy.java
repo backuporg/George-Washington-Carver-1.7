@@ -25,8 +25,8 @@ package growthcraft.netherloid.client;
 
 import growthcraft.netherloid.common.CommonProxy;
 
-public class ClientProxy extends CommonProxy
-{
-	@Override
-	public void initRenders() {}
+public class ClientProxy extends CommonProxy {
+    @Override
+    public void initRenders() {
+    }
 }

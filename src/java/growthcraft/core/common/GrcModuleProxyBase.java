@@ -23,6 +23,5 @@
  */
 package growthcraft.core.common;
 
-public class GrcModuleProxyBase extends GrcModuleBase
-{
+public class GrcModuleProxyBase extends GrcModuleBase {
 }

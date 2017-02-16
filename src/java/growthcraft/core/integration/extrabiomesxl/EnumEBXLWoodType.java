@@ -29,42 +29,37 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.Locale;
 
-public enum EnumEBXLWoodType
-{
-	REDWOOD,
-	FIR,
-	ACACIA,
-	CYPRESS,
-	JAPANESE_MAPLE,
-	RAINBOW_EUCALYPTUS,
-	AUTUMN_WOOD,
-	BALD_CYPRESS,
-	SAKURA;
+public enum EnumEBXLWoodType {
+    REDWOOD,
+    FIR,
+    ACACIA,
+    CYPRESS,
+    JAPANESE_MAPLE,
+    RAINBOW_EUCALYPTUS,
+    AUTUMN_WOOD,
+    BALD_CYPRESS,
+    SAKURA;
 
-	public static final EnumEBXLWoodType[] VALUES = values();
+    public static final EnumEBXLWoodType[] VALUES = values();
 
-	public final String name;
-	public final int meta;
+    public final String name;
+    public final int meta;
 
-	private EnumEBXLWoodType()
-	{
-		this.name = name().toLowerCase(Locale.ENGLISH);
-		this.meta = ordinal();
-	}
+    EnumEBXLWoodType() {
+        this.name = name().toLowerCase(Locale.ENGLISH);
+        this.meta = ordinal();
+    }
 
-	public ItemStack asPlanksItemStack(int size)
-	{
-		final Block block = GameRegistry.findBlock(EBXLPlatform.MOD_ID, "planks");
-		if (block != null)
-		{
-			final ItemStack result = new ItemStack(block, size, meta);
-			return result;
-		}
-		return null;
-	}
+    public ItemStack asPlanksItemStack(int size) {
+        final Block block = GameRegistry.findBlock(EBXLPlatform.MOD_ID, "planks");
+        if (block != null) {
+            final ItemStack result = new ItemStack(block, size, meta);
+            return result;
+        }
+        return null;
+    }
 
-	public ItemStack asPlanksItemStack()
-	{
-		return asPlanksItemStack(1);
-	}
+    public ItemStack asPlanksItemStack() {
+        return asPlanksItemStack(1);
+    }
 }

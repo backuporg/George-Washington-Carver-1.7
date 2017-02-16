@@ -31,19 +31,18 @@ import net.minecraftforge.fluids.FluidStack;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public interface IPressingRegistry extends ILoggable
-{
-	void addRecipe(@Nonnull PressingRecipe recipe);
+public interface IPressingRegistry extends ILoggable {
+    void addRecipe(@Nonnull PressingRecipe recipe);
 
-	/**
-	 * @param stack - item stack to press
-	 * @param result - resultant fluid
-	 * @param time - how long it takes to press the item
-	 * @param residue - residue left behind after pressing
-	 */
-	void addRecipe(@Nonnull Object inputStack, @Nonnull FluidStack result, int time, @Nullable Residue residue);
+    /**
+     * @param stack   - item stack to press
+     * @param result  - resultant fluid
+     * @param time    - how long it takes to press the item
+     * @param residue - residue left behind after pressing
+     */
+    void addRecipe(@Nonnull Object inputStack, @Nonnull FluidStack result, int time, @Nullable Residue residue);
 
-	boolean hasPressingRecipe(ItemStack itemstack);
+    boolean hasPressingRecipe(ItemStack itemstack);
 
-	PressingRecipe getPressingRecipe(ItemStack itemstack);
+    PressingRecipe getPressingRecipe(ItemStack itemstack);
 }

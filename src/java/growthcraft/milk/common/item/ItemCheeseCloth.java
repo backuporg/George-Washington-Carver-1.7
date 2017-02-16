@@ -26,13 +26,11 @@ package growthcraft.milk.common.item;
 import growthcraft.core.common.item.GrcItemBase;
 import growthcraft.milk.GrowthCraftMilk;
 
-public class ItemCheeseCloth extends GrcItemBase
-{
-	public ItemCheeseCloth()
-	{
-		super();
-		setUnlocalizedName("grcmilk.CheeseCloth");
-		//setTextureName("grcmilk:cheese_cloth/cheese_cloth");
-		setCreativeTab(GrowthCraftMilk.creativeTab);
-	}
+public class ItemCheeseCloth extends GrcItemBase {
+    public ItemCheeseCloth() {
+        super();
+        setUnlocalizedName("grcmilk.CheeseCloth");
+        //setTextureName("grcmilk:cheese_cloth/cheese_cloth");
+        setCreativeTab(GrowthCraftMilk.creativeTab);
+    }
 }

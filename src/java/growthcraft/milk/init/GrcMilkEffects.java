@@ -28,14 +28,13 @@ import growthcraft.api.core.IEffectRegistry;
 import growthcraft.milk.common.effect.EffectEvilBoozeMilk;
 import growthcraft.milk.common.effect.EffectMilk;
 
-public class GrcMilkEffects
-{
-	private GrcMilkEffects() {}
+public class GrcMilkEffects {
+    private GrcMilkEffects() {
+    }
 
-	public static void init()
-	{
-		final IEffectRegistry reg = CoreRegistry.instance().getEffectsRegistry();
-		reg.register("booze_milk", EffectMilk.class);
-		reg.register("evil_booze_milk", EffectEvilBoozeMilk.class);
-	}
+    public static void init() {
+        final IEffectRegistry reg = CoreRegistry.instance().getEffectsRegistry();
+        reg.register("booze_milk", EffectMilk.class);
+        reg.register("evil_booze_milk", EffectEvilBoozeMilk.class);
+    }
 }

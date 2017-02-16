@@ -38,74 +38,66 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.Random;
 
-public class GrcMilkBlocks extends GrcModuleBlocks
-{
-	public BlockDefinition butterChurn;
-	public BlockDefinition cheeseBlock;
-	public BlockDefinition cheesePress;
-	public BlockDefinition cheeseVat;
-	public BlockDefinition hangingCurds;
-	public BlockDefinition pancheon;
-	public BlockDefinition thistle;
+public class GrcMilkBlocks extends GrcModuleBlocks {
+    public BlockDefinition butterChurn;
+    public BlockDefinition cheeseBlock;
+    public BlockDefinition cheesePress;
+    public BlockDefinition cheeseVat;
+    public BlockDefinition hangingCurds;
+    public BlockDefinition pancheon;
+    public BlockDefinition thistle;
 
-	@Override
-	public void preInit()
-	{
-		this.butterChurn = newDefinition(new BlockButterChurn());
-		this.cheeseBlock = newDefinition(new BlockCheeseBlock());
-		this.cheesePress = newDefinition(new BlockCheesePress());
-		this.cheeseVat = newDefinition(new BlockCheeseVat());
-		this.hangingCurds = newDefinition(new BlockHangingCurds());
-		this.pancheon = newDefinition(new BlockPancheon());
-		if (GrowthCraftMilk.getConfig().thistleEnabled)
-		{
-			this.thistle = newDefinition(new BlockThistle() {
-				@Override
-				public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {
-					return false;
-				}
+    @Override
+    public void preInit() {
+        this.butterChurn = newDefinition(new BlockButterChurn());
+        this.cheeseBlock = newDefinition(new BlockCheeseBlock());
+        this.cheesePress = newDefinition(new BlockCheesePress());
+        this.cheeseVat = newDefinition(new BlockCheeseVat());
+        this.hangingCurds = newDefinition(new BlockHangingCurds());
+        this.pancheon = newDefinition(new BlockPancheon());
+        if (GrowthCraftMilk.getConfig().thistleEnabled) {
+            this.thistle = newDefinition(new BlockThistle() {
+                @Override
+                public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {
+                    return false;
+                }
 
-				@Override
-				public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
-					return false;
-				}
+                @Override
+                public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+                    return false;
+                }
 
-				@Override
-				public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+                @Override
+                public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
 
-				}
-			});
-		}
-	}
+                }
+            });
+        }
+    }
 
-	private void registerOres()
-	{
-		for (EnumCheeseType type : EnumCheeseType.VALUES)
-		{
-			OreDictionary.registerOre("blockCheese", type.asBlockItemStack());
-		}
+    private void registerOres() {
+        for (EnumCheeseType type : EnumCheeseType.VALUES) {
+            OreDictionary.registerOre("blockCheese", type.asBlockItemStack());
+        }
 
-		if (thistle != null)
-		{
-			OreDictionary.registerOre("flowerThistle", thistle.getItem());
-			OreDictionary.registerOre("rennetSource", thistle.getItem());
-		}
-	}
+        if (thistle != null) {
+            OreDictionary.registerOre("flowerThistle", thistle.getItem());
+            OreDictionary.registerOre("rennetSource", thistle.getItem());
+        }
+    }
 
-	@Override
-	public void register()
-	{
-		butterChurn.register("grcmilk.ButterChurn");
-		cheeseBlock.register("grcmilk.CheeseBlock", ItemBlockCheeseBlock.class);
-		cheesePress.register("grcmilk.CheesePress");
-		cheeseVat.register("grcmilk.CheeseVat");
-		hangingCurds.register("grcmilk.HangingCurds", ItemBlockHangingCurds.class);
-		pancheon.register("grcmilk.Pancheon");
-		if (thistle != null)
-		{
-			thistle.register("grcmilk.Thistle");
-			Blocks.FIRE.setFireInfo(thistle.getBlockState(), 60, 60);
-		}
-		registerOres();
-	}
+    @Override
+    public void register() {
+        butterChurn.register("grcmilk.ButterChurn");
+        cheeseBlock.register("grcmilk.CheeseBlock", ItemBlockCheeseBlock.class);
+        cheesePress.register("grcmilk.CheesePress");
+        cheeseVat.register("grcmilk.CheeseVat");
+        hangingCurds.register("grcmilk.HangingCurds", ItemBlockHangingCurds.class);
+        pancheon.register("grcmilk.Pancheon");
+        if (thistle != null) {
+            thistle.register("grcmilk.Thistle");
+            Blocks.FIRE.setFireInfo(thistle.getBlockState(), 60, 60);
+        }
+        registerOres();
+    }
 }

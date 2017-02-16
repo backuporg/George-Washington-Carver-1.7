@@ -27,12 +27,10 @@ import growthcraft.hops.client.renderer.RenderHops;
 import growthcraft.hops.common.CommonProxy;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
-public class ClientProxy extends CommonProxy
-{
-	@Override
-	public void init()
-	{
-		super.init();
-		RenderingRegistry.registerBlockHandler(new RenderHops());
-	}
+public class ClientProxy extends CommonProxy {
+    @Override
+    public void init() {
+        super.init();
+        RenderingRegistry.registerBlockHandler(new RenderHops());
+    }
 }

@@ -7,22 +7,20 @@ import net.minecraftforge.common.AchievementPage;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AchievementPageGrowthcraft
-{
-	public static List<Achievement> masterList = new ArrayList<Achievement>();
-	public static AchievementPage masterPage;
+public class AchievementPageGrowthcraft {
+    public static List<Achievement> masterList = new ArrayList<Achievement>();
+    public static AchievementPage masterPage;
 
-	private AchievementPageGrowthcraft() {}
+    private AchievementPageGrowthcraft() {
+    }
 
-	public static void init()
-	{
-		final Achievement[] chievList = new Achievement[masterList.size()];
-		for(int i = 0; i < chievList.length; i++)
-		{
-			chievList[i] = masterList.get(i);
-		}
+    public static void init() {
+        final Achievement[] chievList = new Achievement[masterList.size()];
+        for (int i = 0; i < chievList.length; i++) {
+            chievList[i] = masterList.get(i);
+        }
 
-		masterPage = new AchievementPage(GrcI18n.translate("achievementPage.pageGrowthCraft"), chievList);
-		AchievementPage.registerAchievementPage(masterPage);
-	}
+        masterPage = new AchievementPage(GrcI18n.translate("achievementPage.pageGrowthCraft"), chievList);
+        AchievementPage.registerAchievementPage(masterPage);
+    }
 }

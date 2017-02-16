@@ -32,35 +32,28 @@ import growthcraft.core.integration.ModIntegrationBase;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class AM2Module extends ModIntegrationBase
-{
-	public AM2Module()
-	{
-		super(GrowthCraftBees.MOD_ID, AM2Platform.MOD_ID);
-	}
+public class AM2Module extends ModIntegrationBase {
+    public AM2Module() {
+        super(GrowthCraftBees.MOD_ID, AM2Platform.MOD_ID);
+    }
 
-	@Override
-	public void doPreInit()
-	{
-		GrowthCraftBees.blocks.beeBoxArsMagica2 = GrowthCraftBees.blocks.newTypedDefinition(new BlockBeeBoxArsMagica2());
-	}
+    @Override
+    public void doPreInit() {
+        GrowthCraftBees.blocks.beeBoxArsMagica2 = GrowthCraftBees.blocks.newTypedDefinition(new BlockBeeBoxArsMagica2());
+    }
 
-	@Override
-	public void doRegister()
-	{
-		GrowthCraftBees.blocks.beeBoxArsMagica2.register("grc.beeBox.ArsMagica2", ItemBlockBeeBox.class);
-	}
+    @Override
+    public void doRegister() {
+        GrowthCraftBees.blocks.beeBoxArsMagica2.register("grc.beeBox.ArsMagica2", ItemBlockBeeBox.class);
+    }
 
-	@Override
-	protected void doLateRegister()
-	{
-		for (EnumAM2WoodType type : EnumAM2WoodType.VALUES)
-		{
-			final ItemStack planks = type.asPlanksItemStack();
-			if (planks != null)
-			{
-				GameRegistry.addShapedRecipe(GrowthCraftBees.blocks.beeBoxArsMagica2.asStack(), " A ", "A A", "AAA", 'A', planks);
-			}
-		}
-	}
+    @Override
+    protected void doLateRegister() {
+        for (EnumAM2WoodType type : EnumAM2WoodType.VALUES) {
+            final ItemStack planks = type.asPlanksItemStack();
+            if (planks != null) {
+                GameRegistry.addShapedRecipe(GrowthCraftBees.blocks.beeBoxArsMagica2.asStack(), " A ", "A A", "AAA", 'A', planks);
+            }
+        }
+    }
 }

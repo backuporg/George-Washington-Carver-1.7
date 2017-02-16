@@ -10,16 +10,14 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class GuiBeeBox extends GrcGuiContainer<ContainerBeeBox, TileEntityBeeBox>
-{
-	private static final ResourceLocation res = new ResourceLocation("grcbees" , "textures/guis/beebox_gui.png");
-	private TileEntityBeeBox te;
+public class GuiBeeBox extends GrcGuiContainer<ContainerBeeBox, TileEntityBeeBox> {
+    private static final ResourceLocation res = new ResourceLocation("grcbees", "textures/guis/beebox_gui.png");
+    private TileEntityBeeBox te;
 
-	public GuiBeeBox(InventoryPlayer inv, TileEntityBeeBox beeBox, BlockPos pos)
-	{
-		super(res, new ContainerBeeBox(inv, beeBox, pos), beeBox);
-		this.te = beeBox;
-		this.xSize = 176;
-		this.ySize = 200;
-	}
+    public GuiBeeBox(InventoryPlayer inv, TileEntityBeeBox beeBox, BlockPos pos) {
+        super(res, new ContainerBeeBox(inv, beeBox, pos), beeBox);
+        this.te = beeBox;
+        this.xSize = 176;
+        this.ySize = 200;
+    }
 }

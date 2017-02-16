@@ -29,10 +29,10 @@ import net.minecraft.item.ItemStack;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public interface ICheesePressRegistry extends ILoggable
-{
-	void addRecipe(@Nonnull ICheesePressRecipe recipe);
-	void addRecipe(@Nonnull ItemStack stack, @Nonnull ItemStack output, int time);
+public interface ICheesePressRegistry extends ILoggable {
+    void addRecipe(@Nonnull ICheesePressRecipe recipe);
 
-	ICheesePressRecipe findRecipe(@Nullable ItemStack stack);
+    void addRecipe(@Nonnull ItemStack stack, @Nonnull ItemStack output, int time);
+
+    ICheesePressRecipe findRecipe(@Nullable ItemStack stack);
 }

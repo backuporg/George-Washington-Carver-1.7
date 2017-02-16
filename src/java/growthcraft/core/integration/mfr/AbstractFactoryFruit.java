@@ -35,59 +35,50 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-@Optional.Interface(iface="powercrystals.minefactoryreloaded.api.IFactoryFruit", modid=MFRModuleBase.MOD_ID)
-public abstract class AbstractFactoryFruit<TBlock extends Block> implements IFactoryFruit
-{
-	protected TBlock plantBlock;
+@Optional.Interface(iface = "powercrystals.minefactoryreloaded.api.IFactoryFruit", modid = MFRModuleBase.MOD_ID)
+public abstract class AbstractFactoryFruit<TBlock extends Block> implements IFactoryFruit {
+    protected TBlock plantBlock;
 
-	public AbstractFactoryFruit<TBlock> setPlant(TBlock pBlock)
-	{
-		this.plantBlock = pBlock;
-		return this;
-	}
+    @Override
+    public Block getPlant() {
+        return plantBlock;
+    }
 
-	@Override
-	public Block getPlant()
-	{
-		return plantBlock;
-	}
+    public AbstractFactoryFruit<TBlock> setPlant(TBlock pBlock) {
+        this.plantBlock = pBlock;
+        return this;
+    }
 
-	@Override
-	@Deprecated
-	public boolean breakBlock()
-	{
-		return true;
-	}
+    @Override
+    @Deprecated
+    public boolean breakBlock() {
+        return true;
+    }
 
-	@Override
-	public boolean canBePicked(World world, BlockPos pos)
-	{
-		return true;
-	}
+    @Override
+    public boolean canBePicked(World world, BlockPos pos) {
+        return true;
+    }
 
-	@Override
-	@Optional.Method(modid=MFRModuleBase.MOD_ID)
-	public ReplacementBlock getReplacementBlock(World world, BlockPos pos)
-	{
-		return null;
-	}
+    @Override
+    @Optional.Method(modid = MFRModuleBase.MOD_ID)
+    public ReplacementBlock getReplacementBlock(World world, BlockPos pos) {
+        return null;
+    }
 
-	@Override
-	public List<ItemStack> getDrops(World world, Random rand, BlockPos pos)
-	{
-		if (plantBlock != null)
-			return plantBlock.getDrops(world, x, y, z, world.getBlockState(x, y, z), 0);
-		return new ArrayList<ItemStack>();
-	}
+    @Override
+    public List<ItemStack> getDrops(World world, Random rand, BlockPos pos) {
+        if (plantBlock != null)
+            return plantBlock.getDrops(world, x, y, z, world.getBlockState(x, y, z), 0);
+        return new ArrayList<ItemStack>();
+    }
 
-	@Override
-	public void prePick(World world, BlockPos pos)
-	{
-	}
+    @Override
+    public void prePick(World world, BlockPos pos) {
+    }
 
-	@Override
-	public void postPick(World world, BlockPos pos)
-	{
-		if (plantBlock != null) world.notifyBlocksOfNeighborChange(x, y, z, plantBlock);
-	}
+    @Override
+    public void postPick(World world, BlockPos pos) {
+        if (plantBlock != null) world.notifyBlocksOfNeighborChange(x, y, z, plantBlock);
+    }
 }

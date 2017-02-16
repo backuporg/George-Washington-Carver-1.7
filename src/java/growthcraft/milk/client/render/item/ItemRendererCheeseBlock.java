@@ -34,27 +34,24 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
-public class ItemRendererCheeseBlock extends GrcItemRenderer
-{
-	@Override
-	protected void render(ItemRenderType type, ItemStack stack, Object... data)
-	{
-		final Item item = stack.getItem();
-		if (item instanceof ItemBlockCheeseBlock)
-		{
-			final ItemBlockCheeseBlock cheeseBlock = (ItemBlockCheeseBlock)item;
-			final EnumCheeseType cheese = cheeseBlock.getCheeseType(stack);
-			final EnumCheeseStage cheeseStage = cheeseBlock.getCheeseStage(stack);
-			final ResourceLocation texture = GrcMilkResources.INSTANCE.texturesCheeseBlock.get(cheese).get(cheeseStage);
-			GL11.glPushMatrix();
-			{
-				bindTexture(texture);
-				GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-				GL11.glRotatef(180.0F, 1.0F, 0.0F, 0.0F);
-				GL11.glTranslatef(0.0f, -1.5f, 0.0f);
-				GrcMilkResources.INSTANCE.modelCheeseBlock.render(null, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, ModelCheeseBlock.SCALE);
-			}
-			GL11.glPopMatrix();
-		}
-	}
+public class ItemRendererCheeseBlock extends GrcItemRenderer {
+    @Override
+    protected void render(ItemRenderType type, ItemStack stack, Object... data) {
+        final Item item = stack.getItem();
+        if (item instanceof ItemBlockCheeseBlock) {
+            final ItemBlockCheeseBlock cheeseBlock = (ItemBlockCheeseBlock) item;
+            final EnumCheeseType cheese = cheeseBlock.getCheeseType(stack);
+            final EnumCheeseStage cheeseStage = cheeseBlock.getCheeseStage(stack);
+            final ResourceLocation texture = GrcMilkResources.INSTANCE.texturesCheeseBlock.get(cheese).get(cheeseStage);
+            GL11.glPushMatrix();
+            {
+                bindTexture(texture);
+                GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+                GL11.glRotatef(180.0F, 1.0F, 0.0F, 0.0F);
+                GL11.glTranslatef(0.0f, -1.5f, 0.0f);
+                GrcMilkResources.INSTANCE.modelCheeseBlock.render(null, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, ModelCheeseBlock.SCALE);
+            }
+            GL11.glPopMatrix();
+        }
+    }
 }

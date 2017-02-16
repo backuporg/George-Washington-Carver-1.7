@@ -32,37 +32,32 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
 
 
-public class BlockBeeBoxThaumcraft extends BlockBeeBox
-{
-	public BlockBeeBoxThaumcraft()
-	{
-		super();
-		this.setUnlocalizedName("grc.BeeBox.Thaumcraft");
-	}
+public class BlockBeeBoxThaumcraft extends BlockBeeBox {
+    public BlockBeeBoxThaumcraft() {
+        super();
+        this.setUnlocalizedName("grc.BeeBox.Thaumcraft");
+    }
 
-	@Override
-	public String getMetaname(int meta)
-	{
-		if (meta >= 0 && meta < EnumBeeBoxThaumcraft.VALUES.length)
-		{
-			return EnumBeeBoxThaumcraft.VALUES[meta].name;
-		}
-		return super.getMetaname(meta);
-	}
+    @Override
+    public String getMetaname(int meta) {
+        if (meta >= 0 && meta < EnumBeeBoxThaumcraft.VALUES.length) {
+            return EnumBeeBoxThaumcraft.VALUES[meta].name;
+        }
+        return super.getMetaname(meta);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void getSubBlocks(Item block, CreativeTabs tab, List list)
-	{
-		list.add(new ItemStack(block, 1, EnumBeeBoxThaumcraft.GREATWOOD.meta));
-		list.add(new ItemStack(block, 1, EnumBeeBoxThaumcraft.SILVERWOOD.meta));
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    public void getSubBlocks(Item block, CreativeTabs tab, List list) {
+        list.add(new ItemStack(block, 1, EnumBeeBoxThaumcraft.GREATWOOD.meta));
+        list.add(new ItemStack(block, 1, EnumBeeBoxThaumcraft.SILVERWOOD.meta));
+    }
 
 //	@Override
 //	@SideOnly(Side.CLIENT)
 
-	//{
+    //{
 //		this.icons = new IIcon[2 * 4];
 //		registerBeeBoxIcons(reg, "/thaumcraft/greatwood/", EnumBeeBoxThaumcraft.GREATWOOD.meta);
 //		registerBeeBoxIcons(reg, "/thaumcraft/silverwood/", EnumBeeBoxThaumcraft.SILVERWOOD.meta);

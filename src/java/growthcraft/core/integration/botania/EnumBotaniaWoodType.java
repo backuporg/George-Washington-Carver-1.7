@@ -29,43 +29,38 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.Locale;
 
-public enum EnumBotaniaWoodType
-{
-	LIVING_WOOD("livingwood", 1),
-	DREAM_WOOD("dreamwood", 1),
-	SHIMMER_WOOD("shimmerwoodPlanks", 0);
+public enum EnumBotaniaWoodType {
+    LIVING_WOOD("livingwood", 1),
+    DREAM_WOOD("dreamwood", 1),
+    SHIMMER_WOOD("shimmerwoodPlanks", 0);
 
-	public static final EnumBotaniaWoodType[] VALUES = values();
+    public static final EnumBotaniaWoodType[] VALUES = values();
 
-	public final String plankName;
-	public final String name;
-	public final int meta;
-	public final int plankMeta;
+    public final String plankName;
+    public final String name;
+    public final int meta;
+    public final int plankMeta;
 
-	/**
-	 * @param pn - plank block name
-	 */
-	private EnumBotaniaWoodType(String pn, int m)
-	{
-		this.plankName = pn;
-		this.plankMeta = m;
-		this.name = name().toLowerCase(Locale.ENGLISH);
-		this.meta = ordinal();
-	}
+    /**
+     * @param pn - plank block name
+     */
+    EnumBotaniaWoodType(String pn, int m) {
+        this.plankName = pn;
+        this.plankMeta = m;
+        this.name = name().toLowerCase(Locale.ENGLISH);
+        this.meta = ordinal();
+    }
 
-	public ItemStack asPlanksItemStack(int size)
-	{
-		final Block block = GameRegistry.findBlock(BotaniaPlatform.MOD_ID, plankName);
-		if (block != null)
-		{
-			final ItemStack result = new ItemStack(block, size, plankMeta);
-			return result;
-		}
-		return null;
-	}
+    public ItemStack asPlanksItemStack(int size) {
+        final Block block = GameRegistry.findBlock(BotaniaPlatform.MOD_ID, plankName);
+        if (block != null) {
+            final ItemStack result = new ItemStack(block, size, plankMeta);
+            return result;
+        }
+        return null;
+    }
 
-	public ItemStack asPlanksItemStack()
-	{
-		return asPlanksItemStack(1);
-	}
+    public ItemStack asPlanksItemStack() {
+        return asPlanksItemStack(1);
+    }
 }

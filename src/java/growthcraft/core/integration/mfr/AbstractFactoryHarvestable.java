@@ -36,66 +36,56 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-@Optional.Interface(iface="powercrystals.minefactoryreloaded.api.IFactoryHarvestable", modid=MFRModuleBase.MOD_ID)
-public abstract class AbstractFactoryHarvestable<TBlock extends Block> implements IFactoryHarvestable
-{
-	protected TBlock plantBlock;
-	protected HarvestType type = HarvestType.Normal;
+@Optional.Interface(iface = "powercrystals.minefactoryreloaded.api.IFactoryHarvestable", modid = MFRModuleBase.MOD_ID)
+public abstract class AbstractFactoryHarvestable<TBlock extends Block> implements IFactoryHarvestable {
+    protected TBlock plantBlock;
+    protected HarvestType type = HarvestType.Normal;
 
-	public AbstractFactoryHarvestable<TBlock> setPlant(TBlock pBlock)
-	{
-		this.plantBlock = pBlock;
-		return this;
-	}
+    @Override
+    public Block getPlant() {
+        return plantBlock;
+    }
 
-	@Optional.Method(modid=MFRModuleBase.MOD_ID)
-	public AbstractFactoryHarvestable<TBlock> setHarvestType(HarvestType pType)
-	{
-		this.type = pType;
-		return this;
-	}
+    public AbstractFactoryHarvestable<TBlock> setPlant(TBlock pBlock) {
+        this.plantBlock = pBlock;
+        return this;
+    }
 
-	@Override
-	public Block getPlant()
-	{
-		return plantBlock;
-	}
+    @Override
+    @Optional.Method(modid = MFRModuleBase.MOD_ID)
+    public HarvestType getHarvestType() {
+        return type;
+    }
 
-	@Override
-	@Optional.Method(modid=MFRModuleBase.MOD_ID)
-	public HarvestType getHarvestType()
-	{
-		return type;
-	}
+    @Optional.Method(modid = MFRModuleBase.MOD_ID)
+    public AbstractFactoryHarvestable<TBlock> setHarvestType(HarvestType pType) {
+        this.type = pType;
+        return this;
+    }
 
-	@Override
-	public boolean breakBlock()
-	{
-		return true;
-	}
+    @Override
+    public boolean breakBlock() {
+        return true;
+    }
 
-	@Override
-	public boolean canBeHarvested(World world, Map<String, Boolean> harvesterSettings, BlockPos pos)
-	{
-		return true;
-	}
+    @Override
+    public boolean canBeHarvested(World world, Map<String, Boolean> harvesterSettings, BlockPos pos) {
+        return true;
+    }
 
-	@Override
-	public List<ItemStack> getDrops(World world, Random rand, Map<String, Boolean> harvesterSettings, BlockPos pos)
-	{
-		if (plantBlock != null)
-			return plantBlock.getDrops(world, x, y, z, world.getBlockState(x, y, z), 0);
-		return new ArrayList<ItemStack>();
-	}
+    @Override
+    public List<ItemStack> getDrops(World world, Random rand, Map<String, Boolean> harvesterSettings, BlockPos pos) {
+        if (plantBlock != null)
+            return plantBlock.getDrops(world, x, y, z, world.getBlockState(x, y, z), 0);
+        return new ArrayList<ItemStack>();
+    }
 
-	@Override
-	public void preHarvest(World world, BlockPos pos)
-	{
-	}
+    @Override
+    public void preHarvest(World world, BlockPos pos) {
+    }
 
-	@Override
-	public void postHarvest(World world, BlockPos pos)
-	{
-		if (plantBlock != null) world.notifyBlocksOfNeighborChange(x, y, z, plantBlock);
-	}
+    @Override
+    public void postHarvest(World world, BlockPos pos) {
+        if (plantBlock != null) world.notifyBlocksOfNeighborChange(x, y, z, plantBlock);
+    }
 }

@@ -25,7 +25,6 @@ package growthcraft.api.bees;
 
 import growthcraft.api.core.log.ILoggable;
 
-public interface IBeesRegistry extends ILoggable
-{
+public interface IBeesRegistry extends ILoggable {
 
 }

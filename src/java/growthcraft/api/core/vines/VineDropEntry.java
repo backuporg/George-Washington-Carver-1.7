@@ -28,18 +28,15 @@ import net.minecraft.util.WeightedRandom;
 
 import javax.annotation.Nonnull;
 
-public class VineDropEntry extends WeightedRandom.Item
-{
-	private final ItemStack item;
+public class VineDropEntry extends WeightedRandom.Item {
+    private final ItemStack item;
 
-	public VineDropEntry(@Nonnull ItemStack v, int weight)
-	{
-		super(weight);
-		this.item = v;
-	}
+    public VineDropEntry(@Nonnull ItemStack v, int weight) {
+        super(weight);
+        this.item = v;
+    }
 
-	public ItemStack getItemStack()
-	{
-		return item;
-	}
+    public ItemStack getItemStack() {
+        return item;
+    }
 }

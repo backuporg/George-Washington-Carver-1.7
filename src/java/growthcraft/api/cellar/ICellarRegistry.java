@@ -33,14 +33,20 @@ import growthcraft.api.cellar.pressing.IPressingRegistry;
 import growthcraft.api.cellar.yeast.IYeastRegistry;
 import growthcraft.api.core.log.ILoggable;
 
-public interface ICellarRegistry extends ILoggable
-{
-	IBoozeRegistry booze();
-	IBrewingRegistry brewing();
-	ICulturingRegistry culturing();
-	IPressingRegistry pressing();
-	IFermentingRegistry fermenting();
-	IHeatSourceRegistry heatSource();
-	IDistilleryRegistry distilling();
-	IYeastRegistry yeast();
+public interface ICellarRegistry extends ILoggable {
+    IBoozeRegistry booze();
+
+    IBrewingRegistry brewing();
+
+    ICulturingRegistry culturing();
+
+    IPressingRegistry pressing();
+
+    IFermentingRegistry fermenting();
+
+    IHeatSourceRegistry heatSource();
+
+    IDistilleryRegistry distilling();
+
+    IYeastRegistry yeast();
 }

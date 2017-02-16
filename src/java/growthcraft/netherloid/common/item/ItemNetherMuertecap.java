@@ -34,37 +34,30 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 
-public abstract class ItemNetherMuertecap extends ItemFood implements IPlantable
-{
-	public ItemNetherMuertecap()
-	{
-		super(1, 0.1F, false);
-		setAlwaysEdible();
-		setUnlocalizedName("grcnetherloid.netherMuertecapFood");
-		//setTextureName("grcnetherloid:muertecap");
-		setCreativeTab(netherloid.tab);
-	}
+public abstract class ItemNetherMuertecap extends ItemFood implements IPlantable {
+    public ItemNetherMuertecap() {
+        super(1, 0.1F, false);
+        setAlwaysEdible();
+        setUnlocalizedName("grcnetherloid.netherMuertecapFood");
+        //setTextureName("grcnetherloid:muertecap");
+        setCreativeTab(netherloid.tab);
+    }
 
-	protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player)
-	{
-		if (!world.isRemote)
-		{
-			player.attackEntityFrom(DamageSources.muertecapFood, 20.0F);
-		}
-	}
+    protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
+        if (!world.isRemote) {
+            player.attackEntityFrom(DamageSources.muertecapFood, 20.0F);
+        }
+    }
 
-	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos)
-	{
-		return EnumPlantType.Nether;
-	}
+    public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos) {
+        return EnumPlantType.Nether;
+    }
 
-	public Block getPlant(IBlockAccess world, BlockPos pos)
-	{
-		return netherloid.blocks.netherMuertecap.getBlockState();
-	}
+    public Block getPlant(IBlockAccess world, BlockPos pos) {
+        return netherloid.blocks.netherMuertecap.getBlockState();
+    }
 
-	public int getPlantMetadata(IBlockAccess world, BlockPos pos)
-	{
-		return 0;
-	}
+    public int getPlantMetadata(IBlockAccess world, BlockPos pos) {
+        return 0;
+    }
 }

@@ -25,14 +25,13 @@ package growthcraft.core.integration.jc;
 
 import net.minecraftforge.fml.common.Loader;
 
-public class JCPlatform
-{
+public class JCPlatform {
     public static final String MOD_ID = "jurassicraft";
 
-    private JCPlatform() {};
+    private JCPlatform() {
+    }
 
-    public static boolean isLoaded()
-    {
+    public static boolean isLoaded() {
         return Loader.isModLoaded(MOD_ID);
     }
 }

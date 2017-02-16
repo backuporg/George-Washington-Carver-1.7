@@ -34,59 +34,53 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-public class ItemCheese extends GrcItemFoodBase
-{
-	@SideOnly(Side.CLIENT)
+public class ItemCheese extends GrcItemFoodBase {
+    @SideOnly(Side.CLIENT)
 
 
-	public ItemCheese()
-	{
-		super(2, 0.3F, false);
-		setHasSubtypes(true);
-		setMaxDamage(0);
-		//setTextureName("grcmilk:cheese");
-		setUnlocalizedName("grcmilk.Cheese");
-		setCreativeTab(GrowthCraftMilk.creativeTab);
-	}
+    public ItemCheese() {
+        super(2, 0.3F, false);
+        setHasSubtypes(true);
+        setMaxDamage(0);
+        //setTextureName("grcmilk:cheese");
+        setUnlocalizedName("grcmilk.Cheese");
+        setCreativeTab(GrowthCraftMilk.creativeTab);
+    }
 
-	public EnumCheeseType getCheeseType(ItemStack stack)
-	{
-		return EnumCheeseType.VALUES[MathHelper.clamp_int(stack.getItemDamage(), 0, EnumCheeseType.VALUES.length)];
-	}
+    public EnumCheeseType getCheeseType(ItemStack stack) {
+        return EnumCheeseType.VALUES[MathHelper.clamp_int(stack.getItemDamage(), 0, EnumCheeseType.VALUES.length)];
+    }
 
-	@Override
-	public String getUnlocalizedName(ItemStack stack)
-	{
-		return super.getUnlocalizedName(stack) + "." + getCheeseType(stack).name;
-	}
+    @Override
+    public String getUnlocalizedName(ItemStack stack) {
+        return super.getUnlocalizedName(stack) + "." + getCheeseType(stack).name;
+    }
 
-	//@Override
-	//@SideOnly(Side.CLIENT)
-	//public void registerIcons(IIconRegister ir)
-	//{
-	//	this.icons = new IIcon[EnumCheeseType.VALUES.length];
+    //@Override
+    //@SideOnly(Side.CLIENT)
+    //public void registerIcons(IIconRegister ir)
+    //{
+    //	this.icons = new IIcon[EnumCheeseType.VALUES.length];
 //
-	//	for (int i = 0; i < EnumCheeseType.VALUES.length; ++i)
-	//	{
-	//		this.icons[i] = ir.registerIcon("grcmilk:cheese/" + EnumCheeseType.VALUES[i].name);
-	//	}
-	//}
+    //	for (int i = 0; i < EnumCheeseType.VALUES.length; ++i)
+    //	{
+    //		this.icons[i] = ir.registerIcon("grcmilk:cheese/" + EnumCheeseType.VALUES[i].name);
+    //	}
+    //}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	//public IIcon getIconFromDamage(int meta)
-	//{
-	//	return icons[MathHelper.clamp_int(meta, 0, icons.length - 1)];
-	//}
+    @Override
+    @SideOnly(Side.CLIENT)
+    //public IIcon getIconFromDamage(int meta)
+    //{
+    //	return icons[MathHelper.clamp_int(meta, 0, icons.length - 1)];
+    //}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void getSubItems(Item item, CreativeTabs ct, List list)
-	{
-		for (EnumCheeseType cheese : EnumCheeseType.VALUES)
-		{
-			list.add(cheese.asStack());
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    public void getSubItems(Item item, CreativeTabs ct, List list) {
+        for (EnumCheeseType cheese : EnumCheeseType.VALUES) {
+            list.add(cheese.asStack());
+        }
+    }
 }

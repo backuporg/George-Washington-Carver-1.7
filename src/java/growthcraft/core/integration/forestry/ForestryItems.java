@@ -28,42 +28,36 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public enum ForestryItems implements IItemStackFactory
-{
-	BEESWAX("beeswax"),
-	HONEY_DROP("honeyDrop"),
-	HONEYDEW("honeydew");
+public enum ForestryItems implements IItemStackFactory {
+    BEESWAX("beeswax"),
+    HONEY_DROP("honeyDrop"),
+    HONEYDEW("honeydew");
 
-	public final String name;
-	public final int meta;
+    public final String name;
+    public final int meta;
 
-	private ForestryItems(String n)
-	{
-		this.name = n;
-		this.meta = 0;
-	}
+    ForestryItems(String n) {
+        this.name = n;
+        this.meta = 0;
+    }
 
-	public Item getItem()
-	{
-		return GameRegistry.findItem("Forestry", name);
-	}
+    public Item getItem() {
+        return GameRegistry.findItem("Forestry", name);
+    }
 
-	@Override
-	public ItemStack asStack(int size)
-	{
-		final Item item = getItem();
-		if (item == null) return null;
-		return new ItemStack(item, size, meta);
-	}
+    @Override
+    public ItemStack asStack(int size) {
+        final Item item = getItem();
+        if (item == null) return null;
+        return new ItemStack(item, size, meta);
+    }
 
-	@Override
-	public ItemStack asStack()
-	{
-		return asStack(1);
-	}
+    @Override
+    public ItemStack asStack() {
+        return asStack(1);
+    }
 
-	public boolean exists()
-	{
-		return getItem() != null;
-	}
+    public boolean exists() {
+        return getItem() != null;
+    }
 }

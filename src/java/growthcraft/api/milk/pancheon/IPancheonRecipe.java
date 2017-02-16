@@ -27,11 +27,14 @@ import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nullable;
 
-public interface IPancheonRecipe
-{
-	boolean isValidForRecipe(@Nullable FluidStack stack);
-	FluidStack getInputFluid();
-	FluidStack getTopOutputFluid();
-	FluidStack getBottomOutputFluid();
-	int getTime();
+public interface IPancheonRecipe {
+    boolean isValidForRecipe(@Nullable FluidStack stack);
+
+    FluidStack getInputFluid();
+
+    FluidStack getTopOutputFluid();
+
+    FluidStack getBottomOutputFluid();
+
+    int getTime();
 }

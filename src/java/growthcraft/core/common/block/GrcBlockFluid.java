@@ -37,115 +37,101 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
-public class GrcBlockFluid extends BlockFluidClassic
-{
-	@SideOnly(Side.CLIENT)
-	protected IIcon[] icons;
+public class GrcBlockFluid extends BlockFluidClassic {
+    @SideOnly(Side.CLIENT)
+    protected IIcon[] icons;
 
-	private int color = 0xFFFFFF;
+    private int color = 0xFFFFFF;
 
-	public GrcBlockFluid(Fluid fluid, Material material)
-	{
-		super(fluid, material);
-		setUnlocalizedName(fluid.getUnlocalizedName());
-	}
+    public GrcBlockFluid(Fluid fluid, Material material) {
+        super(fluid, material);
+        setUnlocalizedName(fluid.getUnlocalizedName());
+    }
 
-	public GrcBlockFluid refreshSettings()
-	{
-		setDensity(definedFluid.getDensity());
-		return this;
-	}
+    public GrcBlockFluid refreshSettings() {
+        setDensity(definedFluid.getDensity());
+        return this;
+    }
 
-	public GrcBlockFluid refreshLight()
-	{
-		// http://stackoverflow.com/questions/596216/formula-to-determine-brightness-of-rgb-color
-		final float lum = 0.2126f * (((color >> 16) & 0xFF) / 255.0f) +
-			0.7152f * (((color >> 8) & 0xFF) / 255.0f) +
-			0.0722f * ((color & 0xFF) / 255.0f);
-		setLightOpacity((int)((1f - lum) * 15));
-		return this;
-	}
+    public GrcBlockFluid refreshLight() {
+        // http://stackoverflow.com/questions/596216/formula-to-determine-brightness-of-rgb-color
+        final float lum = 0.2126f * (((color >> 16) & 0xFF) / 255.0f) +
+                0.7152f * (((color >> 8) & 0xFF) / 255.0f) +
+                0.0722f * ((color & 0xFF) / 255.0f);
+        setLightOpacity((int) ((1f - lum) * 15));
+        return this;
+    }
 
-	public GrcBlockFluid setColor(int kolor)
-	{
-		this.color = kolor;
-		return this;
-	}
+    public int getColor() {
+        return this.color;
+    }
 
-	public int getColor()
-	{
-		return this.color;
-	}
+    public GrcBlockFluid setColor(int kolor) {
+        this.color = kolor;
+        return this;
+    }
 
-	//@Override
-	//@SideOnly(Side.CLIENT)
+    //@Override
+    //@SideOnly(Side.CLIENT)
 
-	//{
-	//	return side != 0 && side != 1 ? this.icons[1] : this.icons[0];
-	//}
+    //{
+    //	return side != 0 && side != 1 ? this.icons[1] : this.icons[0];
+    //}
 
-	//@Override
-	//@SideOnly(Side.CLIENT)
-	//public void registerBlockIcons(IIconRegister iconRegister)
-	//{
-	//	this.icons = new IIcon[2];
-	//	this.icons[0] = iconRegister.registerIcon(getTextureName() + "_still");
-	//	this.icons[1] = iconRegister.registerIcon(getTextureName() + "_flow");
-	//}
+    //@Override
+    //@SideOnly(Side.CLIENT)
+    //public void registerBlockIcons(IIconRegister iconRegister)
+    //{
+    //	this.icons = new IIcon[2];
+    //	this.icons[0] = iconRegister.registerIcon(getTextureName() + "_still");
+    //	this.icons[1] = iconRegister.registerIcon(getTextureName() + "_flow");
+    //}
 
-	@Override
-	public boolean canDisplace(IBlockAccess world, BlockPos pos)
-	{
-		if (world.getBlockState(pos).getMaterial().isLiquid()) return false;
-		return super.canDisplace(world, pos);
-	}
+    @Override
+    public boolean canDisplace(IBlockAccess world, BlockPos pos) {
+        if (world.getBlockState(pos).getMaterial().isLiquid()) return false;
+        return super.canDisplace(world, pos);
+    }
 
-	@Override
-	public boolean displaceIfPossible(World world, BlockPos pos)
-	{
-		if (world.getBlockState(pos).getMaterial().isLiquid()) return false;
-		return super.displaceIfPossible(world, pos);
-	}
+    @Override
+    public boolean displaceIfPossible(World world, BlockPos pos) {
+        if (world.getBlockState(pos).getMaterial().isLiquid()) return false;
+        return super.displaceIfPossible(world, pos);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public int colorMultiplier(IBlockAccess world, BlockPos pos)
-	{
-		return color;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public int colorMultiplier(IBlockAccess world, BlockPos pos) {
+        return color;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World world, BlockPos pos, Random rand, IBlockState state)
-	{
-		super.randomDisplayTick(state, world, pos, rand);
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void randomDisplayTick(World world, BlockPos pos, Random rand, IBlockState state) {
+        super.randomDisplayTick(state, world, pos, rand);
 
-		if (rand.nextInt(10) == 0 &&
-			World.doesBlockHaveSolidTopSurface(world, x, y - 1, z) &&
-			!world.getBlockState(x, y - 2, z).getMaterial().blocksMovement())
-		{
-			final double px = x + rand.nextFloat();
-			final double py = y - 1.05D;
-			final double pz = z + rand.nextFloat();
-			FXHelper.dropParticle(world, px, py, pz, color);
-		}
-	}
+        if (rand.nextInt(10) == 0 &&
+                World.doesBlockHaveSolidTopSurface(world, x, y - 1, z) &&
+                !world.getBlockState(x, y - 2, z).getMaterial().blocksMovement()) {
+            final double px = x + rand.nextFloat();
+            final double py = y - 1.05D;
+            final double pz = z + rand.nextFloat();
+            FXHelper.dropParticle(world, px, py, pz, color);
+        }
+    }
 
-	@Override
-	public boolean canDropFromExplosion(Explosion explosion)
-	{
-		return false;
-	}
+    @Override
+    public boolean canDropFromExplosion(Explosion explosion) {
+        return false;
+    }
 
-	@Override
-	public boolean isOpaqueCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isOpaqueCube() {
+        return false;
+    }
 
-	@Override
-	public boolean renderAsNormalBlock()
-	{
-		return false;
-	}
+    @Override
+    public boolean renderAsNormalBlock() {
+        return false;
+    }
 }

@@ -35,64 +35,57 @@ import java.util.List;
  * An extension of the default Forge Fluid class, adding descriptions and color
  * settings
  */
-public class GrcFluid extends Fluid implements IDescribable
-{
-	protected int color;
+public class GrcFluid extends Fluid implements IDescribable {
+    protected int color;
 
-	public GrcFluid(@Nonnull String fluidName, @Nonnull ResourceLocation still, @Nonnull ResourceLocation flowing)
-	{
-		super(fluidName, still, flowing);
-		this.color = 0xFFFFFF;
-	}
+    public GrcFluid(@Nonnull String fluidName, @Nonnull ResourceLocation still, @Nonnull ResourceLocation flowing) {
+        super(fluidName, still, flowing);
+        this.color = 0xFFFFFF;
+    }
 
 
-	/**
-	 * Returns the color of the fluid
-	 *
-	 * @return color - a RGB24 value
-	 */
-	@Override
-	public int getColor()
-	{
-		return color;
-	}
+    /**
+     * Returns the color of the fluid
+     *
+     * @return color - a RGB24 value
+     */
+    @Override
+    public int getColor() {
+        return color;
+    }
 
-	/**
-	 * Sets the color of the fluid
-	 *
-	 * @param col - a RGB24 color
-	 */
-	public GrcFluid setColor(int col)
-	{
-		this.color = col;
-		return this;
-	}
+    /**
+     * Sets the color of the fluid
+     *
+     * @param col - a RGB24 color
+     */
+    public GrcFluid setColor(int col) {
+        this.color = col;
+        return this;
+    }
 
-	/**
-	 * Adds the fluids's description to the list
-	 *
-	 * @param list - list to add description to
-	 */
-	@Override
-	public void getDescription(@Nonnull List<String> list)
-	{
-		final String unloc = getUnlocalizedName() + ".desc";
-		final String result = GrcI18n.translate(unloc);
-		if (!unloc.equals(result))
-		{
-			list.add(result);
-		}
-	}
+    /**
+     * Adds the fluids's description to the list
+     *
+     * @param list - list to add description to
+     */
+    @Override
+    public void getDescription(@Nonnull List<String> list) {
+        final String unloc = getUnlocalizedName() + ".desc";
+        final String result = GrcI18n.translate(unloc);
+        if (!unloc.equals(result)) {
+            list.add(result);
+        }
+    }
 
-	/**
-	 * Fluids don't produce any useful information when converted to a String.
-	 * This changes that.
-	 *
-	 * @return string
-	 */
-	@Override
-	public String toString()
-	{
-		return String.format("GrcFluid(name=%s, color=%x)", getName(), getColor());
-	}
+    /**
+     * Fluids don't produce any useful information when converted to a String.
+     * This changes that.
+     *
+     * @return string
+     */
+    @Override
+    public String toString() {
+        return String.format("GrcFluid(name=%s, color=%x)", getName(), getColor());
+    }
 }

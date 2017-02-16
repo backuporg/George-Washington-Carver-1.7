@@ -25,10 +25,10 @@ package growthcraft.netherloid.common;
 
 import net.minecraftforge.fml.common.SidedProxy;
 
-public class CommonProxy
-{
-	@SidedProxy(clientSide="growthcraft.netherloid.client.ClientProxy", serverSide="growthcraft.netherloid.common.CommonProxy")
-	public static CommonProxy instance;
+public class CommonProxy {
+    @SidedProxy(clientSide = "growthcraft.netherloid.client.ClientProxy", serverSide = "growthcraft.netherloid.common.CommonProxy")
+    public static CommonProxy instance;
 
-	public void initRenders() {}
+    public void initRenders() {
+    }
 }

@@ -26,27 +26,22 @@ package growthcraft.api.core.registry;
 import java.util.LinkedList;
 import java.util.List;
 
-public class GenericItemRegistry<ItemType, T extends IItemRegistryEntry<ItemType>>
-{
-	protected List<T> entries = new LinkedList<T>();
+public class GenericItemRegistry<ItemType, T extends IItemRegistryEntry<ItemType>> {
+    protected List<T> entries = new LinkedList<T>();
 
-	public void add(T entry)
-	{
-		entries.add(entry);
-	}
+    public void add(T entry) {
+        entries.add(entry);
+    }
 
-	public T find(ItemType item)
-	{
-		if (item == null) return null;
-		for (T entry : entries)
-		{
-			if (entry.matches(item)) return entry;
-		}
-		return null;
-	}
+    public T find(ItemType item) {
+        if (item == null) return null;
+        for (T entry : entries) {
+            if (entry.matches(item)) return entry;
+        }
+        return null;
+    }
 
-	public boolean contains(ItemType item)
-	{
-		return find(item) != null;
-	}
+    public boolean contains(ItemType item) {
+        return find(item) != null;
+    }
 }

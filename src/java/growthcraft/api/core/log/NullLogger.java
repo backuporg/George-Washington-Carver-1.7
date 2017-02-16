@@ -28,10 +28,10 @@ import org.apache.logging.log4j.Level;
 /**
  * A null logger, looks like a logger, but does absolutely nothing.
  */
-public class NullLogger extends AbstractLogger
-{
-	public static final ILogger INSTANCE = new NullLogger();
+public class NullLogger extends AbstractLogger {
+    public static final ILogger INSTANCE = new NullLogger();
 
-	@Override
-	public void doLog(Level lv, String str, Object... objs) {}
+    @Override
+    public void doLog(Level lv, String str, Object... objs) {
+    }
 }

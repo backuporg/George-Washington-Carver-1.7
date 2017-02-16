@@ -28,34 +28,29 @@ package growthcraft.api.core.i18n;
  * Forge's StatCollector and a fallback NullTranslator,
  * this will hide the difference between them.
  */
-public class GrcI18n
-{
-	private static ITranslator translator;
+public class GrcI18n {
+    private static ITranslator translator;
 
-	private GrcI18n() {}
+    private GrcI18n() {
+    }
 
-	public static void setTranslator(ITranslator tr)
-	{
-		translator = tr;
-	}
+    public static ITranslator getTranslator() {
+        if (translator == null) {
+            // Defaults to the StatCollector version
+            setTranslator(StatCollectorTranslator.INSTANCE);
+        }
+        return translator;
+    }
 
-	public static ITranslator getTranslator()
-	{
-		if (translator == null)
-		{
-			// Defaults to the StatCollector version
-			setTranslator(StatCollectorTranslator.INSTANCE);
-		}
-		return translator;
-	}
+    public static void setTranslator(ITranslator tr) {
+        translator = tr;
+    }
 
-	public static String translate(String str, Object... objs)
-	{
-		return getTranslator().translate(str, objs);
-	}
+    public static String translate(String str, Object... objs) {
+        return getTranslator().translate(str, objs);
+    }
 
-	public static String translate(String str)
-	{
-		return getTranslator().translate(str);
-	}
+    public static String translate(String str) {
+        return getTranslator().translate(str);
+    }
 }

@@ -25,15 +25,14 @@ package growthcraft.api.core.nbt;
 
 import net.minecraft.nbt.NBTTagCompound;
 
-public interface INBTSerializable
-{
-	/**
-	 * @param data - tag compound to read from
-	 */
-	void readFromNBT(NBTTagCompound data);
+public interface INBTSerializable {
+    /**
+     * @param data - tag compound to read from
+     */
+    void readFromNBT(NBTTagCompound data);
 
-	/**
+    /**
      * @param data - tag compound to write to
      */
-	NBTTagCompound writeToNBT(NBTTagCompound data);
+    NBTTagCompound writeToNBT(NBTTagCompound data);
 }

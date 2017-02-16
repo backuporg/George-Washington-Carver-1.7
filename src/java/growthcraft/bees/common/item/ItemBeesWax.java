@@ -28,73 +28,65 @@ import growthcraft.core.common.item.GrcItemBase;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-public class ItemBeesWax extends GrcItemBase
-{
-	@SideOnly(Side.CLIENT)
+public class ItemBeesWax extends GrcItemBase {
+    @SideOnly(Side.CLIENT)
 
 
-	public ItemBeesWax()
-	{
-		super();
-		setUnlocalizedName("grcbees.BeesWax");
-		setCreativeTab(GrowthCraftBees.tab);
-		//setTextureName("grcbees:bees_wax");
-		setHasSubtypes(true);
-		setMaxDamage(0);
-	}
+    public ItemBeesWax() {
+        super();
+        setUnlocalizedName("grcbees.BeesWax");
+        setCreativeTab(GrowthCraftBees.tab);
+        //setTextureName("grcbees:bees_wax");
+        setHasSubtypes(true);
+        setMaxDamage(0);
+    }
 
-	public ItemBeesWax(String beeswax) {
-		super();
-	}
+    public ItemBeesWax(String beeswax) {
+        super();
+    }
 
-	public EnumBeesWax getEnumBeesWax(ItemStack stack)
-	{
-		return EnumBeesWax.VALUES.get(stack.getItemDamage());
-	}
+    public EnumBeesWax getEnumBeesWax(ItemStack stack) {
+        return EnumBeesWax.VALUES.get(stack.getItemDamage());
+    }
 
-	@Override
-	public String getUnlocalizedName(ItemStack stack)
-	{
-		final EnumBeesWax beesWax = getEnumBeesWax(stack);
-		if (beesWax != null)
-		{
-			return super.getUnlocalizedName(stack) + "." + beesWax.basename;
-		}
-		return super.getUnlocalizedName(stack);
-	}
+    @Override
+    public String getUnlocalizedName(ItemStack stack) {
+        final EnumBeesWax beesWax = getEnumBeesWax(stack);
+        if (beesWax != null) {
+            return super.getUnlocalizedName(stack) + "." + beesWax.basename;
+        }
+        return super.getUnlocalizedName(stack);
+    }
 
-	//@Override
-	//@SideOnly(Side.CLIENT)
-	//public void registerIcons(IIconRegister reg)
-	//{
-	//	this.icons = new IIcon[EnumBeesWax.VALUES.size()];
-	//	for (EnumBeesWax beesWax : EnumBeesWax.VALUES)
-	//	{
-	//		icons[beesWax.meta] = reg.registerIcon(getIconString() + "/" + beesWax.basename);
-	//	}
-	//}
+    //@Override
+    //@SideOnly(Side.CLIENT)
+    //public void registerIcons(IIconRegister reg)
+    //{
+    //	this.icons = new IIcon[EnumBeesWax.VALUES.size()];
+    //	for (EnumBeesWax beesWax : EnumBeesWax.VALUES)
+    //	{
+    //		icons[beesWax.meta] = reg.registerIcon(getIconString() + "/" + beesWax.basename);
+    //	}
+    //}
 
-	//@Override
-	//@SideOnly(Side.CLIENT)
-	//public IIcon getIconFromDamage(int meta)
-	//{
-	///	return icons[MathHelper.clamp_int(meta, 0, icons.length - 1)];
-	//}
+    //@Override
+    //@SideOnly(Side.CLIENT)
+    //public IIcon getIconFromDamage(int meta)
+    //{
+    ///	return icons[MathHelper.clamp_int(meta, 0, icons.length - 1)];
+    //}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void getSubItems(Item item, CreativeTabs ct, List list)
-	{
-		for (EnumBeesWax beesWax : EnumBeesWax.VALUES)
-		{
-			list.add(beesWax.asStack());
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    public void getSubItems(Item item, CreativeTabs ct, List list) {
+        for (EnumBeesWax beesWax : EnumBeesWax.VALUES) {
+            list.add(beesWax.asStack());
+        }
+    }
 }

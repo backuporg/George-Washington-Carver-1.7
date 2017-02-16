@@ -34,86 +34,72 @@ import net.minecraft.world.World;
 import java.util.List;
 import java.util.Random;
 
-public class SimplePotionEffectFactory implements IPotionEffectFactory
-{
-	private Potion potion;
-	private int time;
-	private int level;
+public class SimplePotionEffectFactory implements IPotionEffectFactory {
+    private Potion potion;
+    private int time;
+    private int level;
 
-	public SimplePotionEffectFactory(Potion potionIn, int tm, int lvl)
-	{
-		this.potion = potionIn;
-		this.time = tm;
-		this.level = lvl;
-	}
+    public SimplePotionEffectFactory(Potion potionIn, int tm, int lvl) {
+        this.potion = potionIn;
+        this.time = tm;
+        this.level = lvl;
+    }
 
-	public Potion getPotion()
-	{
-		return potion;
-	}
+    public Potion getPotion() {
+        return potion;
+    }
 
-	public int getTime()
-	{
-		return time;
-	}
+    public int getTime() {
+        return time;
+    }
 
-	public int getLevel()
-	{
-		return level;
-	}
+    public int getLevel() {
+        return level;
+    }
 
-	@Override
-	public PotionEffect createPotionEffect(World world, Entity entity, Random random, Object data)
-	{
-		return new PotionEffect(getPotion(), getTime(), getLevel());
-	}
+    @Override
+    public PotionEffect createPotionEffect(World world, Entity entity, Random random, Object data) {
+        return new PotionEffect(getPotion(), getTime(), getLevel());
+    }
 
-	@Override
-	public void getDescription(List<String> list)
-	{
-		final PotionEffect pe = createPotionEffect(null, null, null, null);
-		Describer.getPotionEffectDescription(list, pe);
-	}
+    @Override
+    public void getDescription(List<String> list) {
+        final PotionEffect pe = createPotionEffect(null, null, null, null);
+        Describer.getPotionEffectDescription(list, pe);
+    }
 
-	private void readFromNBT(NBTTagCompound data)
-	{
-		this.potion = Potion.getPotionById(data.getInteger("id"));
-		this.time = data.getInteger("time");
-		this.level = data.getInteger("level");
-	}
+    private void readFromNBT(NBTTagCompound data) {
+        this.potion = Potion.getPotionById(data.getInteger("id"));
+        this.time = data.getInteger("time");
+        this.level = data.getInteger("level");
+    }
 
-	@Override
-	public void readFromNBT(NBTTagCompound data, String name)
-	{
-		if (data.hasKey(name))
-		{
-			final NBTTagCompound subData = data.getCompoundTag(name);
-			readFromNBT(subData);
-		}
-		else
-		{
-			// LOG error
-		}
-	}
+    @Override
+    public void readFromNBT(NBTTagCompound data, String name) {
+        if (data.hasKey(name)) {
+            final NBTTagCompound subData = data.getCompoundTag(name);
+            readFromNBT(subData);
+        } else {
+            // LOG error
+        }
+    }
 
-	private void writeToNBT(NBTTagCompound data)
-	{
-		data.setInteger("id", Potion.getIdFromPotion(getPotion()));
-		data.setInteger("time", getTime());
-		data.setInteger("level", getLevel());
-	}
+    private void writeToNBT(NBTTagCompound data) {
+        data.setInteger("id", Potion.getIdFromPotion(getPotion()));
+        data.setInteger("time", getTime());
+        data.setInteger("level", getLevel());
+    }
 
-	@Override
-	public void writeToNBT(NBTTagCompound data, String name)
-	{
-		final NBTTagCompound target = new NBTTagCompound();
-		final String factoryName = CoreRegistry.instance().getPotionEffectFactoryRegistry().getName(this.getClass());
+    @Override
+    public void writeToNBT(NBTTagCompound data, String name) {
+        final NBTTagCompound target = new NBTTagCompound();
+        final String factoryName = CoreRegistry.instance().getPotionEffectFactoryRegistry().getName(this.getClass());
 
-		target.setString("__name__", factoryName);
-		writeToNBT(target);
+        target.setString("__name__", factoryName);
+        writeToNBT(target);
 
-		data.setTag(name, target);
-	}
+        data.setTag(name, target);
+    }
 
 
 }

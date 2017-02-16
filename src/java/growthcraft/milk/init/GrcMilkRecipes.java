@@ -47,221 +47,194 @@ import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GrcMilkRecipes extends GrcModuleBase
-{
-	public static class DriedCurdComparator implements IItemStackComparator
-	{
-		private CommonItemStackComparator common = new CommonItemStackComparator();
+public class GrcMilkRecipes extends GrcModuleBase {
+    private void registerCraftingRecipes() {
+        final int ricottaBowlCount = GrowthCraftMilk.getConfig().ricottaBowlCount;
+        final List<ItemStack> ricottaBowlRecipe = new ArrayList<ItemStack>();
+        ricottaBowlRecipe.add(EnumCheeseType.RICOTTA.asCurdItemStack());
+        for (int i = 0; i < ricottaBowlCount; ++i) {
+            ricottaBowlRecipe.add(new ItemStack(Items.BOWL, 1));
+        }
+        GameRegistry.addRecipe(new ShapelessItemComparableRecipe(new DriedCurdComparator(),
+                EnumCheeseType.RICOTTA.asStack(ricottaBowlCount), ricottaBowlRecipe
+        ));
 
-		public boolean equals(ItemStack expected, ItemStack actual)
-		{
-			if (expected.getItem() instanceof ItemBlockHangingCurds)
-			{
-				if (actual.getItem() instanceof ItemBlockHangingCurds)
-				{
-					final ItemBlockHangingCurds actualCurd = (ItemBlockHangingCurds)actual.getItem();
-					final ItemBlockHangingCurds expectedCurd = (ItemBlockHangingCurds)expected.getItem();
-					if (expectedCurd.getCheeseType(expected) == actualCurd.getCheeseType(actual))
-					{
-						if (actualCurd.isDried(actual)) return true;
-					}
-				}
-				return false;
-			}
-			else
-			{
-				return common.equals(expected, actual);
-			}
-		}
-	}
+        GameRegistry.addRecipe(new ShapelessOreRecipe(GrowthCraftMilk.blocks.cheeseVat.asStack(),
+                GrowthCraftCellar.blocks.brewKettle.asStack()
+        ));
 
-	public static class DriedCurdsCheesePressRecipe implements ICheesePressRecipe
-	{
-		private ItemStack inputStack;
-		private ItemStack outputStack;
-		private int time;
+        GameRegistry.addRecipe(new ShapedOreRecipe(GrowthCraftMilk.blocks.butterChurn.asStack(),
+                " S ",
+                "P P",
+                "PPP",
+                'S', "stickWood",
+                'P', "plankWood"
+        ));
 
-		public DriedCurdsCheesePressRecipe(@Nonnull ItemStack pInputStack, @Nonnull ItemStack pOutputStack, int pTime)
-		{
-			this.inputStack = pInputStack;
-			this.outputStack = pOutputStack;
-			this.time = pTime;
-		}
+        GameRegistry.addRecipe(new ShapedOreRecipe(GrowthCraftMilk.blocks.cheesePress.asStack(),
+                "iii",
+                "iCi",
+                "ppp",
+                'i', "ingotIron",
+                'C', Blocks.CHEST,
+                'p', "slabWood"
+        ));
 
-		@Override
-		public ItemStack getInputItemStack()
-		{
-			return inputStack;
-		}
+        GameRegistry.addRecipe(new ShapedOreRecipe(GrowthCraftMilk.blocks.pancheon.asStack(),
+                "c c",
+                "ccc",
+                'c', Items.CLAY_BALL
+        ));
+    }
 
-		@Override
-		public ItemStack getOutputItemStack()
-		{
-			return outputStack;
-		}
+    private void registerCheeseVatRecipes() {
+        final String[] saltOres = {"foodSalt", "materialSalt", "dustSalt"};
 
-		@Override
-		public int getTimeMax()
-		{
-			return time;
-		}
+        for (String saltOre : saltOres) {
+            CheeseVatRecipeBuilder.buildRecipe("CHEDDAR Orange Dye Recipe")
+                    .outputFluids(EnumCheeseType.CHEDDAR.asFluidStack(5000))
+                    .inputFluids(new TaggedFluidStacks(5000, "milk_curds"))
+                    .inputItems(new OreItemStacks(saltOre, 1), new OreItemStacks("dyeOrange", 1))
+                    .register();
 
-		@Override
-		public boolean isMatchingRecipe(@Nonnull ItemStack stack)
-		{
-			if (inputStack.isItemEqual(stack))
-			{
-				if (stack.stackSize >= inputStack.stackSize)
-				{
-					if (stack.getItem() instanceof ItemBlockHangingCurds)
-					{
-						final ItemBlockHangingCurds item = (ItemBlockHangingCurds)stack.getItem();
-						return item.isDried(stack);
-					}
-				}
-			}
-			return false;
-		}
+            CheeseVatRecipeBuilder.buildRecipe("CHEDDAR Pumpkin Recipe")
+                    .outputFluids(EnumCheeseType.CHEDDAR.asFluidStack(5000))
+                    .inputFluids(new TaggedFluidStacks(5000, "milk_curds"))
+                    .inputItems(new OreItemStacks(saltOre, 1), new ItemStack(Blocks.PUMPKIN))
+                    .register();
 
-		@Override
-		public String toString()
-		{
-			return String.format("DriedCurdsCheesePressRecipe({%s} / %d = {%s})", getOutputItemStack(), time, getInputItemStack());
-		}
-	}
+            CheeseVatRecipeBuilder.buildRecipe("GORGONZOLA Recipe")
+                    .outputFluids(EnumCheeseType.GORGONZOLA.asFluidStack(5000))
+                    .inputFluids(new TaggedFluidStacks(5000, "milk_curds"))
+                    .inputItems(new OreItemStacks(saltOre, 1), new OreItemStacks("foodFruit", 1))
+                    .register();
 
-	private void registerCraftingRecipes()
-	{
-		final int ricottaBowlCount = GrowthCraftMilk.getConfig().ricottaBowlCount;
-		final List<ItemStack> ricottaBowlRecipe = new ArrayList<ItemStack>();
-		ricottaBowlRecipe.add(EnumCheeseType.RICOTTA.asCurdItemStack());
-		for (int i = 0; i < ricottaBowlCount; ++i)
-		{
-			ricottaBowlRecipe.add(new ItemStack(Items.BOWL, 1));
-		}
-		GameRegistry.addRecipe(new ShapelessItemComparableRecipe(new DriedCurdComparator(),
-			EnumCheeseType.RICOTTA.asStack(ricottaBowlCount), ricottaBowlRecipe
-		));
+            CheeseVatRecipeBuilder.buildRecipe("GORGONZOLA ALTERNATIVE Recipe")
+                    .outputFluids(EnumCheeseType.GORGONZOLA.asFluidStack(5000))
+                    .inputFluids(new TaggedFluidStacks(5000, "milk_curds"))
+                    .inputItems(new OreItemStacks(saltOre, 1), new OreItemStacks("listAllfruit", 1))
+                    .register();
 
-		GameRegistry.addRecipe(new ShapelessOreRecipe(GrowthCraftMilk.blocks.cheeseVat.asStack(),
-			GrowthCraftCellar.blocks.brewKettle.asStack()
-		));
+            CheeseVatRecipeBuilder.buildRecipe("EMMENTALER Recipe")
+                    .outputFluids(EnumCheeseType.EMMENTALER.asFluidStack(5000))
+                    .inputFluids(new TaggedFluidStacks(5000, "milk_curds"))
+                    .inputItems(new OreItemStacks(saltOre, 1), new OreItemStacks("cropWheat", 1))
+                    .register();
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(GrowthCraftMilk.blocks.butterChurn.asStack(),
-			" S ",
-			"P P",
-			"PPP",
-			'S', "stickWood",
-			'P', "plankWood"
-		));
+            CheeseVatRecipeBuilder.buildRecipe("APPENZELLER Wine Recipe")
+                    .outputFluids(EnumCheeseType.APPENZELLER.asFluidStack(5000))
+                    .inputFluids(new TaggedFluidStacks(5000, "milk_curds"), new TaggedFluidStacks(1000, "wine"))
+                    .inputItems(new OreItemStacks(saltOre, 1))
+                    .register();
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(GrowthCraftMilk.blocks.cheesePress.asStack(),
-			"iii",
-			"iCi",
-			"ppp",
-			'i', "ingotIron",
-			'C', Blocks.CHEST,
-			'p', "slabWood"
-		));
+            CheeseVatRecipeBuilder.buildRecipe("APPENZELLER Cider Recipe")
+                    .outputFluids(EnumCheeseType.APPENZELLER.asFluidStack(5000))
+                    .inputFluids(new TaggedFluidStacks(5000, "milk_curds"), new TaggedFluidStacks(1000, "cider"))
+                    .inputItems(new OreItemStacks(saltOre, 1))
+                    .register();
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(GrowthCraftMilk.blocks.pancheon.asStack(),
-			"c c",
-			"ccc",
-			'c', Items.CLAY_BALL
-		));
-	}
+            CheeseVatRecipeBuilder.buildRecipe("ASIAGO Recipe")
+                    .outputFluids(EnumCheeseType.ASIAGO.asFluidStack(5000))
+                    .inputFluids(new TaggedFluidStacks(5000, "milk_curds"))
+                    .inputItems(new OreItemStacks(saltOre, 1), new OreItemStacks(saltOre, 1), new OreItemStacks("dyeYellow", 1))
+                    .register();
 
-	private void registerCheeseVatRecipes()
-	{
-		final String[] saltOres = { "foodSalt", "materialSalt", "dustSalt" };
+            CheeseVatRecipeBuilder.buildRecipe("PARMESAN Recipe")
+                    .outputFluids(EnumCheeseType.PARMESAN.asFluidStack(5000))
+                    .inputFluids(new TaggedFluidStacks(5000, "milk_curds"))
+                    .inputItems(new OreItemStacks(saltOre, 1), new OreItemStacks("dyeWhite", 1))
+                    .register();
 
-		for (String saltOre : saltOres)
-		{
-			CheeseVatRecipeBuilder.buildRecipe("CHEDDAR Orange Dye Recipe")
-				.outputFluids(EnumCheeseType.CHEDDAR.asFluidStack(5000))
-				.inputFluids(new TaggedFluidStacks(5000, "milk_curds"))
-				.inputItems(new OreItemStacks(saltOre, 1), new OreItemStacks("dyeOrange", 1))
-				.register();
+            CheeseVatRecipeBuilder.buildRecipe("MONTEREY Recipe")
+                    .outputFluids(EnumCheeseType.MONTEREY.asFluidStack(5000))
+                    .inputFluids(new TaggedFluidStacks(5000, "milk_curds"))
+                    .inputItems(new OreItemStacks(saltOre, 1), new OreItemStacks("dyeRed", 1))
+                    .register();
+        }
+    }
 
-			CheeseVatRecipeBuilder.buildRecipe("CHEDDAR Pumpkin Recipe")
-				.outputFluids(EnumCheeseType.CHEDDAR.asFluidStack(5000))
-				.inputFluids(new TaggedFluidStacks(5000, "milk_curds"))
-				.inputItems(new OreItemStacks(saltOre, 1), new ItemStack(Blocks.PUMPKIN))
-				.register();
+    private void registerCheesePressRecipes() {
+        for (EnumCheeseType type : EnumCheeseType.VALUES) {
+            if (type.hasBlock() && type.hasCurdBlock()) {
+                MilkRegistry.instance().cheesePress().addRecipe(new DriedCurdsCheesePressRecipe(type.asCurdItemStack(), type.asBlockItemStack(), 200));
+            }
+        }
+    }
 
-			CheeseVatRecipeBuilder.buildRecipe("GORGONZOLA Recipe")
-				.outputFluids(EnumCheeseType.GORGONZOLA.asFluidStack(5000))
-				.inputFluids(new TaggedFluidStacks(5000, "milk_curds"))
-				.inputItems(new OreItemStacks(saltOre, 1), new OreItemStacks("foodFruit", 1))
-				.register();
-				
-			CheeseVatRecipeBuilder.buildRecipe("GORGONZOLA ALTERNATIVE Recipe")
-				.outputFluids(EnumCheeseType.GORGONZOLA.asFluidStack(5000))
-				.inputFluids(new TaggedFluidStacks(5000, "milk_curds"))
-				.inputItems(new OreItemStacks(saltOre, 1), new OreItemStacks("listAllfruit", 1))
-				.register();
+    private void registerCheeseWaxes() {
+        EnumCheeseType.CHEDDAR.waxes.add(new OreItemStacks("materialBeeswaxRed", 1));
+        EnumCheeseType.MONTEREY.waxes.add(new OreItemStacks("materialBeeswaxBlack", 1));
+    }
 
-			CheeseVatRecipeBuilder.buildRecipe("EMMENTALER Recipe")
-				.outputFluids(EnumCheeseType.EMMENTALER.asFluidStack(5000))
-				.inputFluids(new TaggedFluidStacks(5000, "milk_curds"))
-				.inputItems(new OreItemStacks(saltOre, 1), new OreItemStacks("cropWheat", 1))
-				.register();
+    @Override
+    public void init() {
+        registerCraftingRecipes();
+        registerCheeseVatRecipes();
+        registerCheesePressRecipes();
+        registerCheeseWaxes();
+    }
 
-			CheeseVatRecipeBuilder.buildRecipe("APPENZELLER Wine Recipe")
-				.outputFluids(EnumCheeseType.APPENZELLER.asFluidStack(5000))
-				.inputFluids(new TaggedFluidStacks(5000, "milk_curds"), new TaggedFluidStacks(1000, "wine"))
-				.inputItems(new OreItemStacks(saltOre, 1))
-				.register();
+    public static class DriedCurdComparator implements IItemStackComparator {
+        private CommonItemStackComparator common = new CommonItemStackComparator();
 
-			CheeseVatRecipeBuilder.buildRecipe("APPENZELLER Cider Recipe")
-				.outputFluids(EnumCheeseType.APPENZELLER.asFluidStack(5000))
-				.inputFluids(new TaggedFluidStacks(5000, "milk_curds"), new TaggedFluidStacks(1000, "cider"))
-				.inputItems(new OreItemStacks(saltOre, 1))
-				.register();
+        public boolean equals(ItemStack expected, ItemStack actual) {
+            if (expected.getItem() instanceof ItemBlockHangingCurds) {
+                if (actual.getItem() instanceof ItemBlockHangingCurds) {
+                    final ItemBlockHangingCurds actualCurd = (ItemBlockHangingCurds) actual.getItem();
+                    final ItemBlockHangingCurds expectedCurd = (ItemBlockHangingCurds) expected.getItem();
+                    if (expectedCurd.getCheeseType(expected) == actualCurd.getCheeseType(actual)) {
+                        if (actualCurd.isDried(actual)) return true;
+                    }
+                }
+                return false;
+            } else {
+                return common.equals(expected, actual);
+            }
+        }
+    }
 
-			CheeseVatRecipeBuilder.buildRecipe("ASIAGO Recipe")
-				.outputFluids(EnumCheeseType.ASIAGO.asFluidStack(5000))
-				.inputFluids(new TaggedFluidStacks(5000, "milk_curds"))
-				.inputItems(new OreItemStacks(saltOre, 1), new OreItemStacks(saltOre, 1), new OreItemStacks("dyeYellow", 1))
-				.register();
+    public static class DriedCurdsCheesePressRecipe implements ICheesePressRecipe {
+        private ItemStack inputStack;
+        private ItemStack outputStack;
+        private int time;
 
-			CheeseVatRecipeBuilder.buildRecipe("PARMESAN Recipe")
-				.outputFluids(EnumCheeseType.PARMESAN.asFluidStack(5000))
-				.inputFluids(new TaggedFluidStacks(5000, "milk_curds"))
-				.inputItems(new OreItemStacks(saltOre, 1), new OreItemStacks("dyeWhite", 1))
-				.register();
+        public DriedCurdsCheesePressRecipe(@Nonnull ItemStack pInputStack, @Nonnull ItemStack pOutputStack, int pTime) {
+            this.inputStack = pInputStack;
+            this.outputStack = pOutputStack;
+            this.time = pTime;
+        }
 
-			CheeseVatRecipeBuilder.buildRecipe("MONTEREY Recipe")
-				.outputFluids(EnumCheeseType.MONTEREY.asFluidStack(5000))
-				.inputFluids(new TaggedFluidStacks(5000, "milk_curds"))
-				.inputItems(new OreItemStacks(saltOre, 1), new OreItemStacks("dyeRed", 1))
-				.register();
-		}
-	}
+        @Override
+        public ItemStack getInputItemStack() {
+            return inputStack;
+        }
 
-	private void registerCheesePressRecipes()
-	{
-		for (EnumCheeseType type : EnumCheeseType.VALUES)
-		{
-			if (type.hasBlock() && type.hasCurdBlock())
-			{
-				MilkRegistry.instance().cheesePress().addRecipe(new DriedCurdsCheesePressRecipe(type.asCurdItemStack(), type.asBlockItemStack(), 200));
-			}
-		}
-	}
+        @Override
+        public ItemStack getOutputItemStack() {
+            return outputStack;
+        }
 
-	private void registerCheeseWaxes()
-	{
-		EnumCheeseType.CHEDDAR.waxes.add(new OreItemStacks("materialBeeswaxRed", 1));
-		EnumCheeseType.MONTEREY.waxes.add(new OreItemStacks("materialBeeswaxBlack", 1));
-	}
+        @Override
+        public int getTimeMax() {
+            return time;
+        }
 
-	@Override
-	public void init()
-	{
-		registerCraftingRecipes();
-		registerCheeseVatRecipes();
-		registerCheesePressRecipes();
-		registerCheeseWaxes();
-	}
+        @Override
+        public boolean isMatchingRecipe(@Nonnull ItemStack stack) {
+            if (inputStack.isItemEqual(stack)) {
+                if (stack.stackSize >= inputStack.stackSize) {
+                    if (stack.getItem() instanceof ItemBlockHangingCurds) {
+                        final ItemBlockHangingCurds item = (ItemBlockHangingCurds) stack.getItem();
+                        return item.isDried(stack);
+                    }
+                }
+            }
+            return false;
+        }
+
+        @Override
+        public String toString() {
+            return String.format("DriedCurdsCheesePressRecipe({%s} / %d = {%s})", getOutputItemStack(), time, getInputItemStack());
+        }
+    }
 }

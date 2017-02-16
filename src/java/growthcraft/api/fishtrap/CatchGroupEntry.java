@@ -27,34 +27,28 @@ import net.minecraft.util.WeightedRandom;
 
 import javax.annotation.Nonnull;
 
-public class CatchGroupEntry extends WeightedRandom.Item
-{
-	protected final String name;
+public class CatchGroupEntry extends WeightedRandom.Item {
+    protected final String name;
 
-	public CatchGroupEntry(@Nonnull String p_name, int weight)
-	{
-		super(weight);
-		this.name = p_name;
-	}
+    public CatchGroupEntry(@Nonnull String p_name, int weight) {
+        super(weight);
+        this.name = p_name;
+    }
 
-	public String getName()
-	{
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	@Override
-	public int hashCode()
-	{
-		return name.hashCode();
-	}
+    @Override
+    public int hashCode() {
+        return name.hashCode();
+    }
 
-	@Override
-	public boolean equals(Object other)
-	{
-		if (other instanceof CatchGroupEntry)
-		{
-			return this.name.equals(((CatchGroupEntry)other).name);
-		}
-		return false;
-	}
+    @Override
+    public boolean equals(Object other) {
+        if (other instanceof CatchGroupEntry) {
+            return this.name.equals(((CatchGroupEntry) other).name);
+        }
+        return false;
+    }
 }

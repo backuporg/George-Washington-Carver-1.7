@@ -28,95 +28,86 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public enum EnumBeeBoxForestry
-{
-	LARCH("larch"),
-	TEAK("teak"),
-	ACACIA("acacia"),
-	LIME("lime"),
-	CHESTNUT("chestnut"),
-	WENGE("wenge"),
-	BAOBAB("baobab"),
-	SEQUOIA("sequoia", 4.0f),
-	KAPOK("kapok"),
-	EBONY("ebony"),
-	MAHOGANY("mahogany"),
-	BALSA("balsa", 1.0f),
-	WILLOW("willow"),
-	WALNUT("walnut"),
-	GREENHEART("greenheart", 7.5f),
-	CHERRY("cherry"),
-	MAHOE("mahoe"),
-	POPLAR("poplar"),
-	PALM("palm"),
-	PAPAYA("papaya"),
-	PINE("pine", 3.0f),
-	PLUM("plum"),
-	MAPLE("maple"),
-	CITRUS("citrus"),
-	GIGANTEUM("giganteum"),
-	IPE("ipe"),
-	PADAUK("padauk"),
-	COCOBOLO("cocobolo"),
-	ZEBRAWOOD("zebrawood");
+public enum EnumBeeBoxForestry {
+    LARCH("larch"),
+    TEAK("teak"),
+    ACACIA("acacia"),
+    LIME("lime"),
+    CHESTNUT("chestnut"),
+    WENGE("wenge"),
+    BAOBAB("baobab"),
+    SEQUOIA("sequoia", 4.0f),
+    KAPOK("kapok"),
+    EBONY("ebony"),
+    MAHOGANY("mahogany"),
+    BALSA("balsa", 1.0f),
+    WILLOW("willow"),
+    WALNUT("walnut"),
+    GREENHEART("greenheart", 7.5f),
+    CHERRY("cherry"),
+    MAHOE("mahoe"),
+    POPLAR("poplar"),
+    PALM("palm"),
+    PAPAYA("papaya"),
+    PINE("pine", 3.0f),
+    PLUM("plum"),
+    MAPLE("maple"),
+    CITRUS("citrus"),
+    GIGANTEUM("giganteum"),
+    IPE("ipe"),
+    PADAUK("padauk"),
+    COCOBOLO("cocobolo"),
+    ZEBRAWOOD("zebrawood");
 
-	public static final EnumBeeBoxForestry[] VALUES = values();
-	public static final EnumBeeBoxForestry[][] ROWS = {
-		{ LARCH, TEAK, ACACIA, LIME, CHESTNUT, WENGE, BAOBAB, SEQUOIA, KAPOK, EBONY, MAHOGANY, BALSA, WILLOW, WALNUT, GREENHEART },
-		{ CHERRY, MAHOE, POPLAR, PALM, PAPAYA, PINE, PLUM, MAPLE, CITRUS, GIGANTEUM, IPE, PADAUK, COCOBOLO, ZEBRAWOOD }
-	};
+    public static final EnumBeeBoxForestry[] VALUES = values();
+    public static final EnumBeeBoxForestry[][] ROWS = {
+            {LARCH, TEAK, ACACIA, LIME, CHESTNUT, WENGE, BAOBAB, SEQUOIA, KAPOK, EBONY, MAHOGANY, BALSA, WILLOW, WALNUT, GREENHEART},
+            {CHERRY, MAHOE, POPLAR, PALM, PAPAYA, PINE, PLUM, MAPLE, CITRUS, GIGANTEUM, IPE, PADAUK, COCOBOLO, ZEBRAWOOD}
+    };
 
-	public final String name;
-	public final float hardness;
-	public final int meta;
-	public final int col;
-	public final int row;
+    public final String name;
+    public final float hardness;
+    public final int meta;
+    public final int col;
+    public final int row;
 
-	private EnumBeeBoxForestry(String n, float h)
-	{
-		this.name = n;
-		this.hardness = h;
-		this.meta = ordinal();
-		this.col = meta % 15;
-		this.row = meta / 15;
-	}
+    EnumBeeBoxForestry(String n, float h) {
+        this.name = n;
+        this.hardness = h;
+        this.meta = ordinal();
+        this.col = meta % 15;
+        this.row = meta / 15;
+    }
 
-	private EnumBeeBoxForestry(String n)
-	{
-		this(n, 2.0f);
-	}
+    EnumBeeBoxForestry(String n) {
+        this(n, 2.0f);
+    }
 
-	public float getHardness()
-	{
-		return hardness;
-	}
+    public float getHardness() {
+        return hardness;
+    }
 
-	public NBTTagCompound newWoodTag()
-	{
-		final NBTTagCompound tag = new NBTTagCompound();
-		tag.setInteger("WoodType", ordinal());
-		return tag;
-	}
+    public NBTTagCompound newWoodTag() {
+        final NBTTagCompound tag = new NBTTagCompound();
+        tag.setInteger("WoodType", ordinal());
+        return tag;
+    }
 
-	public ItemStack getForestryWoodStack(String blockname)
-	{
-		final Block block = GameRegistry.findBlock("Forestry", blockname);
-		if (block != null)
-		{
-			final ItemStack result = new ItemStack(block);
-			result.setTagCompound(newWoodTag());
-			return result;
-		}
-		return null;
-	}
+    public ItemStack getForestryWoodStack(String blockname) {
+        final Block block = GameRegistry.findBlock("Forestry", blockname);
+        if (block != null) {
+            final ItemStack result = new ItemStack(block);
+            result.setTagCompound(newWoodTag());
+            return result;
+        }
+        return null;
+    }
 
-	public ItemStack getForestryPlanksStack()
-	{
-		return getForestryWoodStack("planks");
-	}
+    public ItemStack getForestryPlanksStack() {
+        return getForestryWoodStack("planks");
+    }
 
-	public ItemStack getForestryFireproofPlanksStack()
-	{
-		return getForestryWoodStack("planksFireproof");
-	}
+    public ItemStack getForestryFireproofPlanksStack() {
+        return getForestryWoodStack("planksFireproof");
+    }
 }

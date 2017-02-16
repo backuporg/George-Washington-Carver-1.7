@@ -37,106 +37,86 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-public class ItemBlockHangingCurds extends ItemBlock implements IItemTileBlock
-{
-	public ItemBlockHangingCurds(Block block)
-	{
-		super(block);
-		setHasSubtypes(true);
-	}
+public class ItemBlockHangingCurds extends ItemBlock implements IItemTileBlock {
+    public ItemBlockHangingCurds(Block block) {
+        super(block);
+        setHasSubtypes(true);
+    }
 
-	private NBTTagCompound getTileTagCompoundABS(ItemStack stack)
-	{
-		final NBTTagCompound tag = NBTHelper.openItemStackTag(stack);
-		if (!tag.hasKey("te_curd_block"))
-		{
-			final NBTTagCompound curdTag = new NBTTagCompound();
-			final EnumCheeseType cheeseType = EnumCheeseType.getSafeById(stack.getItemDamage());
-			cheeseType.writeToNBT(curdTag);
-			tag.setTag("te_curd_block", curdTag);
-		}
-		return tag.getCompoundTag("te_curd_block");
-	}
+    public static NBTTagCompound openNBT(ItemStack stack) {
+        final Item item = stack.getItem();
+        if (item instanceof ItemBlockHangingCurds) {
+            return ((ItemBlockHangingCurds) item).getTileTagCompound(stack);
+        } else {
+            // throw error
+        }
+        return null;
+    }
 
-	public EnumCheeseType getCheeseType(ItemStack stack)
-	{
-		final NBTTagCompound tag = getTileTagCompoundABS(stack);
-		return EnumCheeseType.loadFromNBT(tag);
-	}
+    private NBTTagCompound getTileTagCompoundABS(ItemStack stack) {
+        final NBTTagCompound tag = NBTHelper.openItemStackTag(stack);
+        if (!tag.hasKey("te_curd_block")) {
+            final NBTTagCompound curdTag = new NBTTagCompound();
+            final EnumCheeseType cheeseType = EnumCheeseType.getSafeById(stack.getItemDamage());
+            cheeseType.writeToNBT(curdTag);
+            tag.setTag("te_curd_block", curdTag);
+        }
+        return tag.getCompoundTag("te_curd_block");
+    }
 
-	@Override
-	public void setTileTagCompound(ItemStack stack, NBTTagCompound tileTag)
-	{
-		final NBTTagCompound tag = NBTHelper.openItemStackTag(stack);
-		tag.setTag("te_curd_block", tileTag);
-	}
+    public EnumCheeseType getCheeseType(ItemStack stack) {
+        final NBTTagCompound tag = getTileTagCompoundABS(stack);
+        return EnumCheeseType.loadFromNBT(tag);
+    }
 
-	@Override
-	public NBTTagCompound getTileTagCompound(ItemStack stack)
-	{
-		final NBTTagCompound tag = getTileTagCompoundABS(stack);
-		final EnumCheeseType type = getCheeseType(stack);
-		if (stack.getItemDamage() != type.meta)
-		{
-			stack.setItemDamage(type.meta);
-		}
-		return tag;
-	}
+    @Override
+    public void setTileTagCompound(ItemStack stack, NBTTagCompound tileTag) {
+        final NBTTagCompound tag = NBTHelper.openItemStackTag(stack);
+        tag.setTag("te_curd_block", tileTag);
+    }
 
-	public boolean isDried(ItemStack stack)
-	{
-		final NBTTagCompound nbt = getTileTagCompound(stack);
-		if (nbt.hasKey("dried"))
-		{
-			return nbt.getBoolean("dried");
-		}
-		return false;
-	}
+    @Override
+    public NBTTagCompound getTileTagCompound(ItemStack stack) {
+        final NBTTagCompound tag = getTileTagCompoundABS(stack);
+        final EnumCheeseType type = getCheeseType(stack);
+        if (stack.getItemDamage() != type.meta) {
+            stack.setItemDamage(type.meta);
+        }
+        return tag;
+    }
 
-	@Override
-	public String getUnlocalizedName(ItemStack stack)
-	{
-		String str = super.getUnlocalizedName(stack);
-		str += "." + getCheeseType(stack).name;
-		if (isDried(stack)) str += ".dried";
-		return str;
-	}
+    public boolean isDried(ItemStack stack) {
+        final NBTTagCompound nbt = getTileTagCompound(stack);
+        if (nbt.hasKey("dried")) {
+            return nbt.getBoolean("dried");
+        }
+        return false;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	@SuppressWarnings({"unchecked", "rawtypes"})
-	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean bool)
-	{
-		final NBTTagCompound nbt = getTileTagCompound(stack);
-		if (nbt.hasKey("dried") && nbt.getBoolean("dried"))
-		{
-			list.add(GrcI18n.translate("grcmilk.hanging_curds.dried"));
-		}
-		else
-		{
-			final int age = nbt.getInteger("age");
-			if (age > 0)
-			{
-				final int ageMax = nbt.getInteger("age_max");
-				final int t = age * 100 / (ageMax > 0 ? ageMax : 1200);
-				list.add(GrcI18n.translate("grcmilk.hanging_curds.drying.prefix") +
-					GrcI18n.translate("grcmilk.hanging_curds.drying.progress.format", t));
-			}
-		}
-		super.addInformation(stack, player, list, bool);
-	}
+    @Override
+    public String getUnlocalizedName(ItemStack stack) {
+        String str = super.getUnlocalizedName(stack);
+        str += "." + getCheeseType(stack).name;
+        if (isDried(stack)) str += ".dried";
+        return str;
+    }
 
-	public static NBTTagCompound openNBT(ItemStack stack)
-	{
-		final Item item = stack.getItem();
-		if (item instanceof ItemBlockHangingCurds)
-		{
-			return ((ItemBlockHangingCurds)item).getTileTagCompound(stack);
-		}
-		else
-		{
-			// throw error
-		}
-		return null;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean bool) {
+        final NBTTagCompound nbt = getTileTagCompound(stack);
+        if (nbt.hasKey("dried") && nbt.getBoolean("dried")) {
+            list.add(GrcI18n.translate("grcmilk.hanging_curds.dried"));
+        } else {
+            final int age = nbt.getInteger("age");
+            if (age > 0) {
+                final int ageMax = nbt.getInteger("age_max");
+                final int t = age * 100 / (ageMax > 0 ? ageMax : 1200);
+                list.add(GrcI18n.translate("grcmilk.hanging_curds.drying.prefix") +
+                        GrcI18n.translate("grcmilk.hanging_curds.drying.progress.format", t));
+            }
+        }
+        super.addInformation(stack, player, list, bool);
+    }
 }

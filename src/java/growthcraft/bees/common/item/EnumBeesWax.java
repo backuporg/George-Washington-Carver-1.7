@@ -30,29 +30,25 @@ import net.minecraft.item.ItemStack;
 import java.util.Arrays;
 import java.util.List;
 
-public enum EnumBeesWax implements IItemStackFactory
-{
-	NORMAL("normal"),
-	RED("red"),
-	BLACK("black");
+public enum EnumBeesWax implements IItemStackFactory {
+    NORMAL("normal"),
+    RED("red"),
+    BLACK("black");
 
-	public static List<EnumBeesWax> VALUES = Arrays.asList(values());
-	public final String basename;
-	public final int meta;
+    public static List<EnumBeesWax> VALUES = Arrays.asList(values());
+    public final String basename;
+    public final int meta;
 
-	private EnumBeesWax(String bsn)
-	{
-		this.basename = bsn;
-		this.meta = ordinal();
-	}
+    EnumBeesWax(String bsn) {
+        this.basename = bsn;
+        this.meta = ordinal();
+    }
 
-	public ItemStack asStack(int size)
-	{
-		return GrowthCraftBees.items.beesWax.asStack(size, meta);
-	}
+    public ItemStack asStack(int size) {
+        return GrowthCraftBees.items.beesWax.asStack(size, meta);
+    }
 
-	public ItemStack asStack()
-	{
-		return asStack(1);
-	}
+    public ItemStack asStack() {
+        return asStack(1);
+    }
 }

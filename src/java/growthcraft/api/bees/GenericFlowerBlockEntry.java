@@ -27,15 +27,12 @@ import net.minecraft.block.Block;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class GenericFlowerBlockEntry extends AbstractFlowerBlockEntry
-{
-	public GenericFlowerBlockEntry(Block pblock, int pmeta)
-	{
-		super(pblock, pmeta);
-	}
+public class GenericFlowerBlockEntry extends AbstractFlowerBlockEntry {
+    public GenericFlowerBlockEntry(Block pblock, int pmeta) {
+        super(pblock, pmeta);
+    }
 
-	public boolean canPlaceAt(World world, BlockPos pos)
-	{
-		return getBlockState().canPlaceBlockAt(world, pos);
-	}
+    public boolean canPlaceAt(World world, BlockPos pos) {
+        return getBlockState().canPlaceBlockAt(world, pos);
+    }
 }

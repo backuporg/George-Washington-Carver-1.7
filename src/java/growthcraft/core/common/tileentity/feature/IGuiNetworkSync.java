@@ -26,8 +26,8 @@ package growthcraft.core.common.tileentity.feature;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 
-public interface IGuiNetworkSync
-{
-	void sendGUINetworkData(Container container, ICrafting icrafting);
-	void receiveGUINetworkData(int id, int value);
+public interface IGuiNetworkSync {
+    void sendGUINetworkData(Container container, ICrafting icrafting);
+
+    void receiveGUINetworkData(int id, int value);
 }

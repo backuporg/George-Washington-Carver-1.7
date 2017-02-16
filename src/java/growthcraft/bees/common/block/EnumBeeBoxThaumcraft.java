@@ -29,32 +29,27 @@ import net.minecraft.item.ItemStack;
 
 import java.util.Locale;
 
-public enum EnumBeeBoxThaumcraft implements IItemStackFactory
-{
-	GREATWOOD,
-	SILVERWOOD;
+public enum EnumBeeBoxThaumcraft implements IItemStackFactory {
+    GREATWOOD,
+    SILVERWOOD;
 
-	public static final EnumBeeBoxThaumcraft[] VALUES = { GREATWOOD, SILVERWOOD };
-	public final String name;
-	public final int meta;
+    public static final EnumBeeBoxThaumcraft[] VALUES = {GREATWOOD, SILVERWOOD};
+    public final String name;
+    public final int meta;
 
-	private EnumBeeBoxThaumcraft()
-	{
-		this.name = name().toLowerCase(Locale.ENGLISH);
-		this.meta = ordinal();
-	}
+    EnumBeeBoxThaumcraft() {
+        this.name = name().toLowerCase(Locale.ENGLISH);
+        this.meta = ordinal();
+    }
 
-	public ItemStack asStack(int size)
-	{
-		if (GrowthCraftBees.blocks.beeBoxThaumcraft != null)
-		{
-			return GrowthCraftBees.blocks.beeBoxThaumcraft.asStack(size, meta);
-		}
-		return null;
-	}
+    public ItemStack asStack(int size) {
+        if (GrowthCraftBees.blocks.beeBoxThaumcraft != null) {
+            return GrowthCraftBees.blocks.beeBoxThaumcraft.asStack(size, meta);
+        }
+        return null;
+    }
 
-	public ItemStack asStack()
-	{
-		return asStack(1);
-	}
+    public ItemStack asStack() {
+        return asStack(1);
+    }
 }

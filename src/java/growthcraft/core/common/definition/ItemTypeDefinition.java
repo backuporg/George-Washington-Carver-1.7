@@ -30,37 +30,31 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import javax.annotation.Nonnull;
 
-public class ItemTypeDefinition<T extends Item> extends ObjectDefinition<T> implements ISubItemStackFactory
-{
-	public ItemTypeDefinition(@Nonnull T item)
-	{
-		super(item);
-	}
+public class ItemTypeDefinition<T extends Item> extends ObjectDefinition<T> implements ISubItemStackFactory {
+    public ItemTypeDefinition(@Nonnull T item) {
+        super(item);
+    }
 
-	@Nonnull
-	public T getItem()
-	{
-		return getObject();
-	}
+    @Nonnull
+    public T getItem() {
+        return getObject();
+    }
 
-	@Nonnull
-	@Override
-	public ItemStack asStack(int size, int damage)
-	{
-		return new ItemStack(getItem(), size, damage);
-	}
+    @Nonnull
+    @Override
+    public ItemStack asStack(int size, int damage) {
+        return new ItemStack(getItem(), size, damage);
+    }
 
-	public boolean equals(Item other)
-	{
-		if (other == null) return false;
-		return getItem() == other;
-	}
+    public boolean equals(Item other) {
+        if (other == null) return false;
+        return getItem() == other;
+    }
 
-	/**
-	 * @param name - item name
-	 */
-	public void register(String name)
-	{
-		GameRegistry.registerItem(getItem(), name);
-	}
+    /**
+     * @param name - item name
+     */
+    public void register(String name) {
+        GameRegistry.registerItem(getItem(), name);
+    }
 }

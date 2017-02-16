@@ -7,12 +7,18 @@ import net.minecraftforge.fluids.Fluid;
 
 import javax.annotation.Nonnull;
 
-public interface IPaddy
-{
-	@Nonnull public Block getFluidBlock();
-	@Nonnull public Fluid getFillingFluid();
-	public int getMaxPaddyMeta(IBlockAccess world, BlockPos pos);
-	public boolean isFilledWithFluid(IBlockAccess world, BlockPos pos, int meta);
-	public boolean canConnectPaddyTo(IBlockAccess world, BlockPos pos, int meta);
-	public boolean isBelowFillingFluid(IBlockAccess world, BlockPos pos);
+public interface IPaddy {
+    @Nonnull
+    Block getFluidBlock();
+
+    @Nonnull
+    Fluid getFillingFluid();
+
+    int getMaxPaddyMeta(IBlockAccess world, BlockPos pos);
+
+    boolean isFilledWithFluid(IBlockAccess world, BlockPos pos, int meta);
+
+    boolean canConnectPaddyTo(IBlockAccess world, BlockPos pos, int meta);
+
+    boolean isBelowFillingFluid(IBlockAccess world, BlockPos pos);
 }

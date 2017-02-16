@@ -14,23 +14,19 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
 
 @SideOnly(Side.CLIENT)
-public class GuiCellar<C extends CellarContainer, T extends TileEntityCellarDevice> extends GrcGuiContainer<C, T>
-{
-	public GuiCellar(ResourceLocation res, C container, T cd)
-	{
-		super(res, container, cd);
-	}
+public class GuiCellar<C extends CellarContainer, T extends TileEntityCellarDevice> extends GrcGuiContainer<C, T> {
+    public GuiCellar(ResourceLocation res, C container, T cd) {
+        super(res, container, cd);
+    }
 
-	protected void addFermentTooltips(FluidStack fluid, List<String> tooltip)
-	{
-		if (fluid == null) return;
-		if (fluid.amount <= 0) return;
+    protected void addFermentTooltips(FluidStack fluid, List<String> tooltip) {
+        if (fluid == null) return;
+        if (fluid.amount <= 0) return;
 
-		addFluidTooltips(fluid, tooltip);
-		if (!CellarRegistry.instance().fermenting().canFerment(fluid))
-		{
-			tooltip.add("");
-			tooltip.add(TextFormatting.RED + GrcI18n.translate("gui.grc.cantferment"));
-		}
-	}
+        addFluidTooltips(fluid, tooltip);
+        if (!CellarRegistry.instance().fermenting().canFerment(fluid)) {
+            tooltip.add("");
+            tooltip.add(TextFormatting.RED + GrcI18n.translate("gui.grc.cantferment"));
+        }
+    }
 }

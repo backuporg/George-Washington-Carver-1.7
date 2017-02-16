@@ -27,38 +27,31 @@ import growthcraft.bees.GrowthCraftBees;
 import growthcraft.bees.common.block.BlockBeeBoxJurassicraft;
 import growthcraft.bees.common.item.ItemBlockBeeBox;
 import growthcraft.core.integration.ModIntegrationBase;
-import growthcraft.core.integration.jc.JCPlatform;
 import growthcraft.core.integration.jc.EnumJCWoodType;
+import growthcraft.core.integration.jc.JCPlatform;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class JCModule extends ModIntegrationBase
-{
-    public JCModule()
-    {
+public class JCModule extends ModIntegrationBase {
+    public JCModule() {
         super(GrowthCraftBees.MOD_ID, JCPlatform.MOD_ID);
     }
 
     @Override
-    public void doPreInit()
-    {
+    public void doPreInit() {
         GrowthCraftBees.blocks.beeBoxJurassicraft = GrowthCraftBees.blocks.newTypedDefinition(new BlockBeeBoxJurassicraft());
     }
 
     @Override
-    public void doRegister()
-    {
+    public void doRegister() {
         GrowthCraftBees.blocks.beeBoxBiomesOPlenty.register("grc.BeeBox.BiomesOPlenty", ItemBlockBeeBox.class);
     }
 
     @Override
-    protected void doLateRegister()
-    {
-        for (EnumJCWoodType type : EnumJCWoodType.VALUES)
-        {
+    protected void doLateRegister() {
+        for (EnumJCWoodType type : EnumJCWoodType.VALUES) {
             final ItemStack planks = type.asPlanksItemStack();
-            if (planks != null)
-            {
+            if (planks != null) {
                 GameRegistry.addShapedRecipe(GrowthCraftBees.blocks.beeBoxBiomesOPlenty.asStack(1, type.meta), " A ", "A A", "AAA", 'A', planks);
             }
         }

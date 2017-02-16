@@ -30,41 +30,34 @@ import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nonnull;
 
-public class FluidTypeDefinition<T extends Fluid> implements IFluidStackFactory
-{
-	protected T fluid;
+public class FluidTypeDefinition<T extends Fluid> implements IFluidStackFactory {
+    protected T fluid;
 
-	public FluidTypeDefinition(@Nonnull T obj)
-	{
-		this.fluid = obj;
-	}
+    public FluidTypeDefinition(@Nonnull T obj) {
+        this.fluid = obj;
+    }
 
-	@Nonnull
-	public T getFluid()
-	{
-		return fluid;
-	}
+    @Nonnull
+    public T getFluid() {
+        return fluid;
+    }
 
-	@Nonnull
-	public FluidStack asFluidStack(int size)
-	{
-		return new FluidStack(getFluid(), size);
-	}
+    @Nonnull
+    public FluidStack asFluidStack(int size) {
+        return new FluidStack(getFluid(), size);
+    }
 
-	@Nonnull
-	public FluidStack asFluidStack()
-	{
-		return asFluidStack(1);
-	}
+    @Nonnull
+    public FluidStack asFluidStack() {
+        return asFluidStack(1);
+    }
 
-	public boolean equals(Fluid other)
-	{
-		if (other == null) return false;
-		return getFluid() == other;
-	}
+    public boolean equals(Fluid other) {
+        if (other == null) return false;
+        return getFluid() == other;
+    }
 
-	public void register()
-	{
-		FluidRegistry.registerFluid(fluid);
-	}
+    public void register() {
+        FluidRegistry.registerFluid(fluid);
+    }
 }

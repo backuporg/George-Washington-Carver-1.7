@@ -34,27 +34,21 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import java.util.Random;
 
 // I feel sorry for the baby cows, but cheese is required!
-public class EventHandlerOnBabyCowDeath
-{
-	private Random rng = new Random();
+public class EventHandlerOnBabyCowDeath {
+    private Random rng = new Random();
 
-	@SubscribeEvent
-	public void onLivingEntityDeath(LivingDeathEvent event)
-	{
-		if (event.entityLiving instanceof EntityCow)
-		{
-			if (event.entityLiving.isChild())
-			{
-				if (RandomUtils.thresh(rng, GrowthCraftMilk.getConfig().stomachDropRate))
-				{
-					final int count = RandomUtils.range(rng, GrowthCraftMilk.getConfig().stomachMinDropped, GrowthCraftMilk.getConfig().stomachMaxDropped);
-					if (count > 0)
-					{
-						final ItemStack stack = GrowthCraftMilk.items.stomach.asStack(count);
-						ItemUtils.spawnItemStackAtEntity(stack, event.entityLiving, rng);
-					}
-				}
-			}
-		}
-	}
+    @SubscribeEvent
+    public void onLivingEntityDeath(LivingDeathEvent event) {
+        if (event.entityLiving instanceof EntityCow) {
+            if (event.entityLiving.isChild()) {
+                if (RandomUtils.thresh(rng, GrowthCraftMilk.getConfig().stomachDropRate)) {
+                    final int count = RandomUtils.range(rng, GrowthCraftMilk.getConfig().stomachMinDropped, GrowthCraftMilk.getConfig().stomachMaxDropped);
+                    if (count > 0) {
+                        final ItemStack stack = GrowthCraftMilk.items.stomach.asStack(count);
+                        ItemUtils.spawnItemStackAtEntity(stack, event.entityLiving, rng);
+                    }
+                }
+            }
+        }
+    }
 }

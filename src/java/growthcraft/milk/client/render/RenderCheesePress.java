@@ -27,54 +27,45 @@ import growthcraft.milk.client.model.ModelCheesePress;
 import growthcraft.milk.client.resource.GrcMilkResources;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
-
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
-
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import org.lwjgl.opengl.GL11;
 
 //import net.minecraft.client.renderer.Tessellator;
 
-public class RenderCheesePress implements ISimpleBlockRenderingHandler
-{
-	public static int RENDER_ID = RenderingRegistry.getNextAvailableRenderId();
+public class RenderCheesePress implements ISimpleBlockRenderingHandler {
+    public static int RENDER_ID = RenderingRegistry.getNextAvailableRenderId();
 
-	@Override
-	public int getRenderId()
-	{
-		return RENDER_ID;
-	}
+    @Override
+    public int getRenderId() {
+        return RENDER_ID;
+    }
 
-	@Override
-	public boolean shouldRender3DInInventory(int modelID)
-	{
-		return true;
-	}
+    @Override
+    public boolean shouldRender3DInInventory(int modelID) {
+        return true;
+    }
 
-	@Override
-	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer)
-	{
-		if (modelID == RENDER_ID)
-		{
-			GL11.glPushMatrix();
-			{
-				Minecraft.getMinecraft().renderEngine.bindTexture(GrcMilkResources.INSTANCE.textureCheesePress);
-				GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-				GL11.glRotatef(180.0F, 1.0F, 0.0F, 0.0F);
-				GL11.glTranslatef(0.0f, -1.0f, 0.0f);
-				GrcMilkResources.INSTANCE.modelCheesePress.render(null, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, ModelCheesePress.SCALE);
-			}
-			GL11.glPopMatrix();
-		}
-	}
+    @Override
+    public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer) {
+        if (modelID == RENDER_ID) {
+            GL11.glPushMatrix();
+            {
+                Minecraft.getMinecraft().renderEngine.bindTexture(GrcMilkResources.INSTANCE.textureCheesePress);
+                GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+                GL11.glRotatef(180.0F, 1.0F, 0.0F, 0.0F);
+                GL11.glTranslatef(0.0f, -1.0f, 0.0f);
+                GrcMilkResources.INSTANCE.modelCheesePress.render(null, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, ModelCheesePress.SCALE);
+            }
+            GL11.glPopMatrix();
+        }
+    }
 
-	@Override
-	public boolean renderWorldBlock(IBlockAccess world, BlockPos pos, Block block, int modelId, RenderBlocks renderer)
-	{
-		if (modelId == RENDER_ID)
-		{
-		}
-		return true;
-	}
+    @Override
+    public boolean renderWorldBlock(IBlockAccess world, BlockPos pos, Block block, int modelId, RenderBlocks renderer) {
+        if (modelId == RENDER_ID) {
+        }
+        return true;
+    }
 }

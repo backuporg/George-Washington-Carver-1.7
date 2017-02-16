@@ -30,30 +30,24 @@ import growthcraft.api.milk.churn.user.UserChurnRecipesConfig;
 
 import java.io.File;
 
-public class GrcMilkUserApis extends ModuleContainer
-{
-	public final UserChurnRecipesConfig churnRecipes;
+public class GrcMilkUserApis extends ModuleContainer {
+    public final UserChurnRecipesConfig churnRecipes;
 
-	public GrcMilkUserApis()
-	{
-		super();
-		this.churnRecipes = new UserChurnRecipesConfig();
-		add(churnRecipes);
-	}
+    public GrcMilkUserApis() {
+        super();
+        this.churnRecipes = new UserChurnRecipesConfig();
+        add(churnRecipes);
+    }
 
-	public void setConfigDirectory(File EnumFacing)
-	{
-		churnRecipes.setConfigFile(EnumFacing, "growthcraft/milk/churn_recipes.json");
-	}
+    public void setConfigDirectory(File EnumFacing) {
+        churnRecipes.setConfigFile(EnumFacing, "growthcraft/milk/churn_recipes.json");
+    }
 
-	public void loadConfigs()
-	{
-		for (IModule module : this)
-		{
-			if (module instanceof AbstractUserJSONConfig)
-			{
-				((AbstractUserJSONConfig)module).loadUserConfig();
-			}
-		}
-	}
+    public void loadConfigs() {
+        for (IModule module : this) {
+            if (module instanceof AbstractUserJSONConfig) {
+                ((AbstractUserJSONConfig) module).loadUserConfig();
+            }
+        }
+    }
 }

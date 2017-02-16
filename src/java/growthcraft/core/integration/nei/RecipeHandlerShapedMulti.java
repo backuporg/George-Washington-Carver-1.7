@@ -24,237 +24,204 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecipeHandlerShapedMulti extends TemplateRecipeHandler
-{
-	public class CachedShapedRecipe extends CachedRecipe
-	{
-		public ArrayList<PositionedStack> ingredients;
-		public PositionedStack result;
+public class RecipeHandlerShapedMulti extends TemplateRecipeHandler {
+    @Override
+    public void loadTransferRects() {
+        transferRects.add(new RecipeTransferRect(new Rectangle(84, 23, 24, 18),
+                "crafting"));
+    }
 
-		public CachedShapedRecipe(int width, int height, ArrayList<Object> items,
-				ItemStack out)
-		{
-			result = new PositionedStack(out, 119, 24);
-			ingredients = new ArrayList<PositionedStack>();
-			setIngredients(width, height, items);
-		}
+    @Override
+    public Class<? extends GuiContainer> getGuiClass() {
+        return GuiCrafting.class;
+    }
 
-		/**
-		 * @param width
-		 * @param height
-		 * @param items
-		 *            an ItemStack[] or ItemStack[][]
-		 */
-		public void setIngredients(int width, int height, ArrayList<Object> items)
-		{
-			for (int x = 0; x < width; x++)
-			{
-				for (int y = 0; y < height; y++)
-				{
-					if (items.get(y * width + x) == null)
-						continue;
+    @Override
+    public String getRecipeName() {
+        return NEIClientUtils.translate("recipe.shaped");
+    }
 
-					final PositionedStack stack = new PositionedStack(items.get(y * width
-							+ x), 25 + x * 18, 6 + y * 18, false);
-					stack.setMaxSize(1);
-					ingredients.add(stack);
-				}
-			}
-		}
+    @SuppressWarnings("unchecked")
+    @Override
+    public void loadCraftingRecipes(String outputId, Object... results) {
+        if (outputId.equals("crafting")
+                && getClass() == RecipeHandlerShapedMulti.class) {
+            for (IRecipe irecipe : CraftingManager
+                    .getInstance().getRecipeList()) {
+                CachedShapedRecipe recipe = null;
+                if (irecipe instanceof ShapedMultiRecipe)
+                    recipe = forgeShapedRecipe((ShapedMultiRecipe) irecipe);
 
-		@Override
-		public List<PositionedStack> getIngredients()
-		{
-			return getCycledIngredients(cycleticks / 20, ingredients);
-		}
+                if (recipe == null)
+                    continue;
 
-		public PositionedStack getResult()
-		{
-			return result;
-		}
+                recipe.computeVisuals();
+                arecipes.add(recipe);
+            }
+        } else {
+            super.loadCraftingRecipes(outputId, results);
+        }
+    }
 
-		public void computeVisuals()
-		{
-			for (PositionedStack p : ingredients)
-				p.generatePermutations();
-		}
-	}
+    @SuppressWarnings("unchecked")
+    @Override
+    public void loadCraftingRecipes(ItemStack result) {
+        for (IRecipe irecipe : CraftingManager.getInstance()
+                .getRecipeList()) {
+            if (NEIServerUtils.areStacksSameTypeCrafting(
+                    irecipe.getRecipeOutput(), result)) {
+                CachedShapedRecipe recipe = null;
+                if (irecipe instanceof ShapedMultiRecipe)
+                    recipe = forgeShapedRecipe((ShapedMultiRecipe) irecipe);
 
-	@Override
-	public void loadTransferRects()
-	{
-		transferRects.add(new RecipeTransferRect(new Rectangle(84, 23, 24, 18),
-				"crafting"));
-	}
+                if (recipe == null)
+                    continue;
 
-	@Override
-	public Class<? extends GuiContainer> getGuiClass()
-	{
-		return GuiCrafting.class;
-	}
+                recipe.computeVisuals();
+                arecipes.add(recipe);
+            }
+        }
+    }
 
-	@Override
-	public String getRecipeName()
-	{
-		return NEIClientUtils.translate("recipe.shaped");
-	}
+    @SuppressWarnings("unchecked")
+    @Override
+    public void loadUsageRecipes(ItemStack ingredient) {
+        for (IRecipe irecipe : CraftingManager.getInstance()
+                .getRecipeList()) {
+            CachedShapedRecipe recipe = null;
+            if (irecipe instanceof ShapedMultiRecipe)
+                recipe = forgeShapedRecipe((ShapedMultiRecipe) irecipe);
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public void loadCraftingRecipes(String outputId, Object... results)
-	{
-		if (outputId.equals("crafting")
-				&& getClass() == RecipeHandlerShapedMulti.class)
-		{
-			for (IRecipe irecipe : (List<IRecipe>) CraftingManager
-					.getInstance().getRecipeList())
-			{
-				CachedShapedRecipe recipe = null;
-				if (irecipe instanceof ShapedMultiRecipe)
-					recipe = forgeShapedRecipe((ShapedMultiRecipe) irecipe);
+            if (recipe == null
+                    || !recipe.contains(recipe.ingredients,
+                    ingredient.getItem()))
+                continue;
 
-				if (recipe == null)
-					continue;
+            recipe.computeVisuals();
+            if (recipe.contains(recipe.ingredients, ingredient)) {
+                recipe.setIngredientPermutation(recipe.ingredients, ingredient);
+                arecipes.add(recipe);
+            }
+        }
+    }
 
-				recipe.computeVisuals();
-				arecipes.add(recipe);
-			}
-		} else
-		{
-			super.loadCraftingRecipes(outputId, results);
-		}
-	}
+    public CachedShapedRecipe forgeShapedRecipe(ShapedMultiRecipe recipe) {
+        int width;
+        int height;
+        try {
+            width = ReflectionManager.getField(ShapedMultiRecipe.class,
+                    Integer.class, recipe, 4);
+            height = ReflectionManager.getField(ShapedMultiRecipe.class,
+                    Integer.class, recipe, 5);
+        } catch (Exception e) {
+            NEIClientConfig.logger.error("Error loading recipe", e);
+            return null;
+        }
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public void loadCraftingRecipes(ItemStack result)
-	{
-		for (IRecipe irecipe : (List<IRecipe>) CraftingManager.getInstance()
-				.getRecipeList())
-		{
-			if (NEIServerUtils.areStacksSameTypeCrafting(
-					irecipe.getRecipeOutput(), result))
-			{
-				CachedShapedRecipe recipe = null;
-				if (irecipe instanceof ShapedMultiRecipe)
-					recipe = forgeShapedRecipe((ShapedMultiRecipe) irecipe);
+        final ArrayList<Object> items = new ArrayList<Object>();
 
-				if (recipe == null)
-					continue;
+        for (IItemStackListProvider item : recipe.getInput()) {
+            final List<ItemStack> stacks = item.getItemStacks();
 
-				recipe.computeVisuals();
-				arecipes.add(recipe);
-			}
-		}
-	}
+            if (stacks.isEmpty())
+                return null;
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public void loadUsageRecipes(ItemStack ingredient)
-	{
-		for (IRecipe irecipe : (List<IRecipe>) CraftingManager.getInstance()
-				.getRecipeList())
-		{
-			CachedShapedRecipe recipe = null;
-			if (irecipe instanceof ShapedMultiRecipe)
-				recipe = forgeShapedRecipe((ShapedMultiRecipe) irecipe);
+            items.add(stacks);
+        }
 
-			if (recipe == null
-					|| !recipe.contains(recipe.ingredients,
-							ingredient.getItem()))
-				continue;
+        return new CachedShapedRecipe(width, height, items,
+                recipe.getRecipeOutput());
+    }
 
-			recipe.computeVisuals();
-			if (recipe.contains(recipe.ingredients, ingredient))
-			{
-				recipe.setIngredientPermutation(recipe.ingredients, ingredient);
-				arecipes.add(recipe);
-			}
-		}
-	}
+    @Override
+    public String getGuiTexture() {
+        return "textures/gui/container/crafting_table.png";
+    }
 
-	public CachedShapedRecipe forgeShapedRecipe(ShapedMultiRecipe recipe)
-	{
-		int width;
-		int height;
-		try
-		{
-			width = ReflectionManager.getField(ShapedMultiRecipe.class,
-					Integer.class, recipe, 4);
-			height = ReflectionManager.getField(ShapedMultiRecipe.class,
-					Integer.class, recipe, 5);
-		} catch (Exception e)
-		{
-			NEIClientConfig.logger.error("Error loading recipe", e);
-			return null;
-		}
+    @Override
+    public String getOverlayIdentifier() {
+        return "crafting";
+    }
 
-		final ArrayList<Object> items = new ArrayList<Object>();
+    public boolean hasOverlay(GuiContainer gui, Container container, int recipe) {
+        return super.hasOverlay(gui, container, recipe) || isRecipe2x2(recipe)
+                && RecipeInfo.hasDefaultOverlay(gui, "crafting2x2");
+    }
 
-		for (IItemStackListProvider item : recipe.getInput())
-		{
-			final List<ItemStack> stacks = item.getItemStacks();
+    @Override
+    public IRecipeOverlayRenderer getOverlayRenderer(GuiContainer gui,
+                                                     int recipe) {
+        final IRecipeOverlayRenderer renderer = super.getOverlayRenderer(gui, recipe);
+        if (renderer != null)
+            return renderer;
 
-			if (stacks.isEmpty())
-				return null;
+        final IStackPositioner positioner = RecipeInfo.getStackPositioner(gui,
+                "crafting2x2");
+        if (positioner == null)
+            return null;
+        return new DefaultOverlayRenderer(getIngredientStacks(recipe),
+                positioner);
+    }
 
-			items.add(stacks);
-		}
+    @Override
+    public IOverlayHandler getOverlayHandler(GuiContainer gui, int recipe) {
+        final IOverlayHandler handler = super.getOverlayHandler(gui, recipe);
+        if (handler != null)
+            return handler;
 
-		return new CachedShapedRecipe(width, height, items,
-				recipe.getRecipeOutput());
-	}
+        return RecipeInfo.getOverlayHandler(gui, "crafting2x2");
+    }
 
-	@Override
-	public String getGuiTexture()
-	{
-		return "textures/gui/container/crafting_table.png";
-	}
+    public boolean isRecipe2x2(int recipe) {
+        for (PositionedStack stack : getIngredientStacks(recipe))
+            if (stack.relx > 43 || stack.rely > 24)
+                return false;
 
-	@Override
-	public String getOverlayIdentifier()
-	{
-		return "crafting";
-	}
+        return true;
+    }
 
-	public boolean hasOverlay(GuiContainer gui, Container container, int recipe)
-	{
-		return super.hasOverlay(gui, container, recipe) || isRecipe2x2(recipe)
-				&& RecipeInfo.hasDefaultOverlay(gui, "crafting2x2");
-	}
+    public class CachedShapedRecipe extends CachedRecipe {
+        public ArrayList<PositionedStack> ingredients;
+        public PositionedStack result;
 
-	@Override
-	public IRecipeOverlayRenderer getOverlayRenderer(GuiContainer gui,
-			int recipe)
-	{
-		final IRecipeOverlayRenderer renderer = super.getOverlayRenderer(gui, recipe);
-		if (renderer != null)
-			return renderer;
+        public CachedShapedRecipe(int width, int height, ArrayList<Object> items,
+                                  ItemStack out) {
+            result = new PositionedStack(out, 119, 24);
+            ingredients = new ArrayList<PositionedStack>();
+            setIngredients(width, height, items);
+        }
 
-		final IStackPositioner positioner = RecipeInfo.getStackPositioner(gui,
-				"crafting2x2");
-		if (positioner == null)
-			return null;
-		return new DefaultOverlayRenderer(getIngredientStacks(recipe),
-				positioner);
-	}
+        /**
+         * @param width
+         * @param height
+         * @param items  an ItemStack[] or ItemStack[][]
+         */
+        public void setIngredients(int width, int height, ArrayList<Object> items) {
+            for (int x = 0; x < width; x++) {
+                for (int y = 0; y < height; y++) {
+                    if (items.get(y * width + x) == null)
+                        continue;
 
-	@Override
-	public IOverlayHandler getOverlayHandler(GuiContainer gui, int recipe)
-	{
-		final IOverlayHandler handler = super.getOverlayHandler(gui, recipe);
-		if (handler != null)
-			return handler;
+                    final PositionedStack stack = new PositionedStack(items.get(y * width
+                            + x), 25 + x * 18, 6 + y * 18, false);
+                    stack.setMaxSize(1);
+                    ingredients.add(stack);
+                }
+            }
+        }
 
-		return RecipeInfo.getOverlayHandler(gui, "crafting2x2");
-	}
+        @Override
+        public List<PositionedStack> getIngredients() {
+            return getCycledIngredients(cycleticks / 20, ingredients);
+        }
 
-	public boolean isRecipe2x2(int recipe)
-	{
-		for (PositionedStack stack : getIngredientStacks(recipe))
-			if (stack.relx > 43 || stack.rely > 24)
-				return false;
+        public PositionedStack getResult() {
+            return result;
+        }
 
-		return true;
-	}
+        public void computeVisuals() {
+            for (PositionedStack p : ingredients)
+                p.generatePermutations();
+        }
+    }
 }

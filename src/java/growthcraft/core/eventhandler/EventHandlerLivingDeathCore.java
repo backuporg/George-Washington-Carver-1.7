@@ -34,31 +34,24 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.Random;
 
-public class EventHandlerLivingDeathCore
-{
-	private Random rng = new Random();
+public class EventHandlerLivingDeathCore {
+    private Random rng = new Random();
 
-	@SubscribeEvent
-	public void onLivingEntityDeath(LivingDeathEvent event)
-	{
-		if (event.source instanceof EntityDamageSource)
-		{
-			final EntityDamageSource source = (EntityDamageSource)event.source;
-			if (source.getEntity() instanceof EntityPlayer)
-			{
-				final EntityPlayer player = (EntityPlayer)source.getEntity();
-				final ItemStack heldItem = player.getHeldItem();
-				if (heldItem != null)
-				{
-					if (heldItem.getItem() instanceof ItemCrowbar)
-					{
-						if (event.entityLiving instanceof EntityZombie)
-						{
-							CoreAchievement.HALF_LIFE_CONFIRMED.unlock(player);
-						}
-					}
-				}
-			}
-		}
-	}
+    @SubscribeEvent
+    public void onLivingEntityDeath(LivingDeathEvent event) {
+        if (event.source instanceof EntityDamageSource) {
+            final EntityDamageSource source = (EntityDamageSource) event.source;
+            if (source.getEntity() instanceof EntityPlayer) {
+                final EntityPlayer player = (EntityPlayer) source.getEntity();
+                final ItemStack heldItem = player.getHeldItem();
+                if (heldItem != null) {
+                    if (heldItem.getItem() instanceof ItemCrowbar) {
+                        if (event.entityLiving instanceof EntityZombie) {
+                            CoreAchievement.HALF_LIFE_CONFIRMED.unlock(player);
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

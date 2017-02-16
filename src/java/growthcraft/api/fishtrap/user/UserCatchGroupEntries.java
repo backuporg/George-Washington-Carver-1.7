@@ -28,20 +28,17 @@ import growthcraft.api.core.schema.ICommentable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UserCatchGroupEntries implements ICommentable
-{
-	public String comment = "";
-	public Map<String, UserCatchGroupEntry> data = new HashMap<String, UserCatchGroupEntry>();
+public class UserCatchGroupEntries implements ICommentable {
+    public String comment = "";
+    public Map<String, UserCatchGroupEntry> data = new HashMap<String, UserCatchGroupEntry>();
 
-	@Override
-	public String getComment()
-	{
-		return comment;
-	}
+    @Override
+    public String getComment() {
+        return comment;
+    }
 
-	@Override
-	public void setComment(String com)
-	{
-		this.comment = com;
-	}
+    @Override
+    public void setComment(String com) {
+        this.comment = com;
+    }
 }

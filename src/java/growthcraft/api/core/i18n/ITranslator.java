@@ -28,8 +28,8 @@ package growthcraft.api.core.i18n;
  * with testing translated strings where resources will not be available.
  * aka. testing
  */
-public interface ITranslator
-{
-	String translate(String str, Object... objects);
-	String translate(String str);
+public interface ITranslator {
+    String translate(String str, Object... objects);
+
+    String translate(String str);
 }

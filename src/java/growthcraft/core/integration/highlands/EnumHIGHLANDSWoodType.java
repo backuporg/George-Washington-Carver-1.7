@@ -29,37 +29,32 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.Locale;
 
-public enum EnumHIGHLANDSWoodType
-{
-	YELLOW_WOOD,
-	WHITE_WOOD,
-	RED_WOOD,
-	GREY_WOOD;
+public enum EnumHIGHLANDSWoodType {
+    YELLOW_WOOD,
+    WHITE_WOOD,
+    RED_WOOD,
+    GREY_WOOD;
 
-	public static final EnumHIGHLANDSWoodType[] VALUES = values();
+    public static final EnumHIGHLANDSWoodType[] VALUES = values();
 
-	public final String name;
-	public final int meta;
+    public final String name;
+    public final int meta;
 
-	private EnumHIGHLANDSWoodType()
-	{
-		this.name = name().toLowerCase(Locale.ENGLISH);
-		this.meta = ordinal();
-	}
+    EnumHIGHLANDSWoodType() {
+        this.name = name().toLowerCase(Locale.ENGLISH);
+        this.meta = ordinal();
+    }
 
-	public ItemStack asPlanksItemStack(int size)
-	{
-		final Block block = GameRegistry.findBlock(HIGHLANDSPlatform.MOD_ID, "hl_woodPlanks");
-		if (block != null)
-		{
-			final ItemStack result = new ItemStack(block, size, meta);
-			return result;
-		}
-		return null;
-	}
+    public ItemStack asPlanksItemStack(int size) {
+        final Block block = GameRegistry.findBlock(HIGHLANDSPlatform.MOD_ID, "hl_woodPlanks");
+        if (block != null) {
+            final ItemStack result = new ItemStack(block, size, meta);
+            return result;
+        }
+        return null;
+    }
 
-	public ItemStack asPlanksItemStack()
-	{
-		return asPlanksItemStack(1);
-	}
+    public ItemStack asPlanksItemStack() {
+        return asPlanksItemStack(1);
+    }
 }

@@ -31,18 +31,15 @@ import mcp.mobius.waila.api.IWailaDataProvider;
 import mcp.mobius.waila.api.IWailaRegistrar;
 import net.minecraftforge.fml.common.Optional;
 
-public class Waila extends WailaIntegrationBase
-{
-	public Waila()
-	{
-		super(GrowthCraftBees.MOD_ID);
-	}
+public class Waila extends WailaIntegrationBase {
+    public Waila() {
+        super(GrowthCraftBees.MOD_ID);
+    }
 
-	@Optional.Method(modid="Waila")
-	public static void register(IWailaRegistrar reg)
-	{
-		final IWailaDataProvider provider = new BeesDataProvider();
-		reg.registerBodyProvider(provider, BlockBeeBox.class);
-		reg.registerNBTProvider(provider, BlockBeeBox.class);
-	}
+    @Optional.Method(modid = "Waila")
+    public static void register(IWailaRegistrar reg) {
+        final IWailaDataProvider provider = new BeesDataProvider();
+        reg.registerBodyProvider(provider, BlockBeeBox.class);
+        reg.registerNBTProvider(provider, BlockBeeBox.class);
+    }
 }

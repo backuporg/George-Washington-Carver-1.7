@@ -33,100 +33,85 @@ import net.minecraft.world.World;
 import javax.annotation.Nonnull;
 import java.util.HashMap;
 
-public class HeatSourceRegistry implements IHeatSourceRegistry
-{
-	static class HeatMap extends HashMap<Integer, IHeatSourceBlock>
-	{
-		public static final long serialVersionUID = 1L;
-	}
+public class HeatSourceRegistry implements IHeatSourceRegistry {
+    public static final float DEFAULT_HEAT = 1.0f;
+    public static final float NO_HEAT = 0.0f;
+    private ILogger logger = NullLogger.INSTANCE;
+    private HeatSourceTree heatSources = new HeatSourceTree();
 
-	static class HeatSourceTree extends HashMap<Block, HeatMap>
-	{
-		public static final long serialVersionUID = 1L;
-	}
+    @Override
+    public void setLogger(@Nonnull ILogger l) {
+        this.logger = l;
+    }
 
-	public static final float DEFAULT_HEAT = 1.0f;
-	public static final float NO_HEAT = 0.0f;
-	private ILogger logger = NullLogger.INSTANCE;
+    @Override
+    public void addHeatSource(@Nonnull Block block, int meta, IHeatSourceBlock heat) {
+        if (!heatSources.containsKey(block)) {
+            heatSources.put(block, new HeatMap());
+        }
+        final HeatMap map = heatSources.get(block);
+        map.put(meta, heat);
+        logger.debug("Added new HeatSource block=%s", block);
+    }
 
-	private HeatSourceTree heatSources = new HeatSourceTree();
+    @Override
+    public void addHeatSource(@Nonnull Block block, int meta, float heat) {
+        addHeatSource(block, meta, new GenericHeatSourceBlock(block, heat) {
+            @Override
+            public float getHeat(World world, BlockPos pos) {
+                return 0;
+            }
+        });
+    }
 
-	@Override
-	public void setLogger(@Nonnull ILogger l)
-	{
-		this.logger = l;
-	}
+    @Override
+    public void addHeatSource(@Nonnull Block block, int meta) {
+        addHeatSource(block, meta, DEFAULT_HEAT);
+    }
 
-	@Override
-	public void addHeatSource(@Nonnull Block block, int meta, IHeatSourceBlock heat)
-	{
-		if (!heatSources.containsKey(block))
-		{
-			heatSources.put(block, new HeatMap());
-		}
-		final HeatMap map = heatSources.get(block);
-		map.put(meta, heat);
-		logger.debug("Added new HeatSource block=%s", block);
-	}
+    @Override
+    public void addHeatSource(@Nonnull Block block, IHeatSourceBlock heat) {
+        addHeatSource(block, ItemKey.WILDCARD_VALUE, heat);
+    }
 
-	@Override
-	public void addHeatSource(@Nonnull Block block, int meta, float heat)
-	{
-		addHeatSource(block, meta, new GenericHeatSourceBlock(block, heat) {
-			@Override
-			public float getHeat(World world, BlockPos pos) {
-				return 0;
-			}
-		});
-	}
+    @Override
+    public void addHeatSource(@Nonnull Block block) {
+        addHeatSource(block, ItemKey.WILDCARD_VALUE);
+    }
 
-	@Override
-	public void addHeatSource(@Nonnull Block block, int meta)
-	{
-		addHeatSource(block, meta, DEFAULT_HEAT);
-	}
+    @Override
+    public IHeatSourceBlock getHeatSource(Block block, int meta) {
+        final HeatMap map = heatSources.get(block);
+        if (map == null) return null;
 
-	@Override
-	public void addHeatSource(@Nonnull Block block, IHeatSourceBlock heat)
-	{
-		addHeatSource(block, ItemKey.WILDCARD_VALUE, heat);
-	}
+        IHeatSourceBlock f = map.get(meta);
+        if (f == null) f = map.get(ItemKey.WILDCARD_VALUE);
+        if (f == null) return null;
+        return f;
+    }
 
-	@Override
-	public void addHeatSource(@Nonnull Block block)
-	{
-		addHeatSource(block, ItemKey.WILDCARD_VALUE);
-	}
+    @Override
+    public IHeatSourceBlock getHeatSource(Block block) {
+        return getHeatSource(block, ItemKey.WILDCARD_VALUE);
+    }
 
-	@Override
-	public IHeatSourceBlock getHeatSource(Block block, int meta)
-	{
-		final HeatMap map = heatSources.get(block);
-		if (map == null) return null;
+    @Override
+    public boolean isBlockHeatSource(Block block, int meta) {
+        final HeatMap map = heatSources.get(block);
+        if (map == null) return false;
+        return map.get(meta) != null || map.get(ItemKey.WILDCARD_VALUE) != null;
+    }
 
-		IHeatSourceBlock f = map.get(meta);
-		if (f == null) f = map.get(ItemKey.WILDCARD_VALUE);
-		if (f == null) return null;
-		return f;
-	}
+    @Override
+    public boolean isBlockHeatSource(Block block) {
+        return isBlockHeatSource(block, ItemKey.WILDCARD_VALUE);
+    }
 
-	@Override
-	public IHeatSourceBlock getHeatSource(Block block)
-	{
-		return getHeatSource(block, ItemKey.WILDCARD_VALUE);
-	}
+    static class HeatMap extends HashMap<Integer, IHeatSourceBlock> {
+        public static final long serialVersionUID = 1L;
+    }
 
-	@Override
-	public boolean isBlockHeatSource(Block block, int meta)
-	{
-		final HeatMap map = heatSources.get(block);
-		if (map == null) return false;
-		return map.get(meta) != null || map.get(ItemKey.WILDCARD_VALUE) != null;
-	}
-
-	@Override
-	public boolean isBlockHeatSource(Block block)
-	{
-		return isBlockHeatSource(block, ItemKey.WILDCARD_VALUE);
-	}
+    static class HeatSourceTree extends HashMap<Block, HeatMap> {
+        public static final long serialVersionUID = 1L;
+    }
 }

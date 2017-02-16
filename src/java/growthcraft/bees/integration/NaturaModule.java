@@ -32,35 +32,28 @@ import growthcraft.core.integration.natura.NaturaPlatform;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class NaturaModule extends ModIntegrationBase
-{
-	public NaturaModule()
-	{
-		super(GrowthCraftBees.MOD_ID, NaturaPlatform.MOD_ID);
-	}
+public class NaturaModule extends ModIntegrationBase {
+    public NaturaModule() {
+        super(GrowthCraftBees.MOD_ID, NaturaPlatform.MOD_ID);
+    }
 
-	@Override
-	public void doPreInit()
-	{
-		GrowthCraftBees.blocks.beeBoxNatura = GrowthCraftBees.blocks.newTypedDefinition(new BlockBeeBoxNatura());
-	}
+    @Override
+    public void doPreInit() {
+        GrowthCraftBees.blocks.beeBoxNatura = GrowthCraftBees.blocks.newTypedDefinition(new BlockBeeBoxNatura());
+    }
 
-	@Override
-	public void doRegister()
-	{
-		GrowthCraftBees.blocks.beeBoxNatura.register("grc.BeeBox.Natura", ItemBlockBeeBox.class);
-	}
+    @Override
+    public void doRegister() {
+        GrowthCraftBees.blocks.beeBoxNatura.register("grc.BeeBox.Natura", ItemBlockBeeBox.class);
+    }
 
-	@Override
-	protected void doLateRegister()
-	{
-		for (EnumNaturaWoodType type : EnumNaturaWoodType.VALUES)
-		{
-			final ItemStack planks = type.asPlanksItemStack();
-			if (planks != null)
-			{
-				GameRegistry.addShapedRecipe(GrowthCraftBees.blocks.beeBoxNatura.asStack(1, type.meta), " A ", "A A", "AAA", 'A', planks);
-			}
-		}
-	}
+    @Override
+    protected void doLateRegister() {
+        for (EnumNaturaWoodType type : EnumNaturaWoodType.VALUES) {
+            final ItemStack planks = type.asPlanksItemStack();
+            if (planks != null) {
+                GameRegistry.addShapedRecipe(GrowthCraftBees.blocks.beeBoxNatura.asStack(1, type.meta), " A ", "A A", "AAA", 'A', planks);
+            }
+        }
+    }
 }

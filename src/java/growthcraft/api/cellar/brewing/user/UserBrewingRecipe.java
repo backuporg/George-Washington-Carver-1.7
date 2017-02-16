@@ -28,41 +28,37 @@ import growthcraft.api.core.schema.ICommentable;
 import growthcraft.api.core.schema.ItemKeySchema;
 import growthcraft.api.core.schema.ResidueSchema;
 
-public class UserBrewingRecipe implements ICommentable
-{
-	public String comment = "";
-	public ItemKeySchema item;
-	public FluidStackSchema input_fluid;
-	public FluidStackSchema output_fluid;
-	public ResidueSchema residue;
-	public int time;
+public class UserBrewingRecipe implements ICommentable {
+    public String comment = "";
+    public ItemKeySchema item;
+    public FluidStackSchema input_fluid;
+    public FluidStackSchema output_fluid;
+    public ResidueSchema residue;
+    public int time;
 
-	public UserBrewingRecipe(ItemKeySchema itm, FluidStackSchema inp, FluidStackSchema out, ResidueSchema res, int tm)
-	{
-		this.item = itm;
-		this.input_fluid = inp;
-		this.output_fluid = out;
-		this.residue = res;
-		this.time = tm;
-	}
+    public UserBrewingRecipe(ItemKeySchema itm, FluidStackSchema inp, FluidStackSchema out, ResidueSchema res, int tm) {
+        this.item = itm;
+        this.input_fluid = inp;
+        this.output_fluid = out;
+        this.residue = res;
+        this.time = tm;
+    }
 
-	public UserBrewingRecipe() {}
+    public UserBrewingRecipe() {
+    }
 
-	@Override
-	public String toString()
-	{
-		return String.format("UserBrewingRecipe(`%s` + `%s` / %d = `%s` & `%s`)", item, input_fluid, time, output_fluid, residue);
-	}
+    @Override
+    public String toString() {
+        return String.format("UserBrewingRecipe(`%s` + `%s` / %d = `%s` & `%s`)", item, input_fluid, time, output_fluid, residue);
+    }
 
-	@Override
-	public void setComment(String comm)
-	{
-		this.comment = comm;
-	}
+    @Override
+    public String getComment() {
+        return comment;
+    }
 
-	@Override
-	public String getComment()
-	{
-		return comment;
-	}
+    @Override
+    public void setComment(String comm) {
+        this.comment = comm;
+    }
 }

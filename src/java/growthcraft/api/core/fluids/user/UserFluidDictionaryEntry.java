@@ -30,37 +30,31 @@ import net.minecraftforge.fluids.FluidRegistry;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserFluidDictionaryEntry implements ICommentable
-{
-	public String comment = "";
-	public String fluid_name;
-	public List<String> tags;
+public class UserFluidDictionaryEntry implements ICommentable {
+    public String comment = "";
+    public String fluid_name;
+    public List<String> tags;
 
-	public UserFluidDictionaryEntry(String name, List<String> t)
-	{
-		this.fluid_name = name;
-		this.tags = t;
-	}
+    public UserFluidDictionaryEntry(String name, List<String> t) {
+        this.fluid_name = name;
+        this.tags = t;
+    }
 
-	public UserFluidDictionaryEntry()
-	{
-		this("", new ArrayList<String>());
-	}
+    public UserFluidDictionaryEntry() {
+        this("", new ArrayList<String>());
+    }
 
-	public Fluid getFluid()
-	{
-		return FluidRegistry.getFluid(fluid_name);
-	}
+    public Fluid getFluid() {
+        return FluidRegistry.getFluid(fluid_name);
+    }
 
-	@Override
-	public String getComment()
-	{
-		return comment;
-	}
+    @Override
+    public String getComment() {
+        return comment;
+    }
 
-	@Override
-	public void setComment(String com)
-	{
-		this.comment = com;
-	}
+    @Override
+    public void setComment(String com) {
+        this.comment = com;
+    }
 }

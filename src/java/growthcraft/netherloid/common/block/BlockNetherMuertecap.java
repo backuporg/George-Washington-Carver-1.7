@@ -33,56 +33,50 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
-public class BlockNetherMuertecap extends BlockNetherFungusBase
-{
-	private final float muertecapSpreadRate = netherloid.getConfig().muertecapSpreadRate;
+public class BlockNetherMuertecap extends BlockNetherFungusBase {
+    private final float muertecapSpreadRate = netherloid.getConfig().muertecapSpreadRate;
 
-	public BlockNetherMuertecap()
-	{
-		super();
-		setUnlocalizedName("grcnetherloid.netherMuertecap");
-		//setBlockTextureName("grcnetherloid:muertecap");
-		getBoundingBox(0.375F, 0.0F, 0.375F, 0.625F, 0.375F, 0.625F);
-		setCreativeTab(netherloid.tab);
-	}
+    public BlockNetherMuertecap() {
+        super();
+        setUnlocalizedName("grcnetherloid.netherMuertecap");
+        //setBlockTextureName("grcnetherloid:muertecap");
+        getBoundingBox(0.375F, 0.0F, 0.375F, 0.625F, 0.375F, 0.625F);
+        setCreativeTab(netherloid.tab);
+    }
 
-	@Override
-	protected float getSpreadRate(World world, BlockPos pos)
-	{
-		return muertecapSpreadRate;
-	}
+    @Override
+    protected float getSpreadRate(World world, BlockPos pos) {
+        return muertecapSpreadRate;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public Item getItem(World world, BlockPos pos)
-	{
-		return netherloid.items.netherMuertecap.getItem();
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public Item getItem(World world, BlockPos pos) {
+        return netherloid.items.netherMuertecap.getItem();
+    }
 
-	@Override
-	public Item getItemDropped(int meta, Random random, int par3)
-	{
-		return netherloid.items.netherMuertecap.getItem();
-	}
+    @Override
+    public Item getItemDropped(int meta, Random random, int par3) {
+        return netherloid.items.netherMuertecap.getItem();
+    }
 
-	@Override
-	public int quantityDropped(Random random)
-	{
-		return 1;
-	}
+    @Override
+    public int quantityDropped(Random random) {
+        return 1;
+    }
 
-	@Override
-	public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {
-		return false;
-	}
+    @Override
+    public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {
+        return false;
+    }
 
-	@Override
-	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
-		return false;
-	}
+    @Override
+    public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+        return false;
+    }
 
-	@Override
-	public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+    @Override
+    public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
 
-	}
+    }
 }

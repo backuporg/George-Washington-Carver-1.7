@@ -10,14 +10,12 @@ import net.minecraftforge.fml.common.registry.VillagerRegistry.IVillageTradeHand
 
 import java.util.Random;
 
-public class VillageHandlerBees implements IVillageTradeHandler
-{
-	@Override
-	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void manipulateTradesForVillager(EntityVillager villager, MerchantRecipeList recipeList, Random random)
-	{
-		recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, 1 + random.nextInt(2)), GrowthCraftBees.fluids.honeyMeadBottle.asStack(1, 1)));
-		recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, 2 + random.nextInt(2)), GrowthCraftBees.fluids.honeyMeadBottle.asStack(1, 2)));
-		recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, 2 + random.nextInt(2)), GrowthCraftBees.fluids.honeyMeadBottle.asStack(1, 3)));
-	}
+public class VillageHandlerBees implements IVillageTradeHandler {
+    @Override
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    public void manipulateTradesForVillager(EntityVillager villager, MerchantRecipeList recipeList, Random random) {
+        recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, 1 + random.nextInt(2)), GrowthCraftBees.fluids.honeyMeadBottle.asStack(1, 1)));
+        recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, 2 + random.nextInt(2)), GrowthCraftBees.fluids.honeyMeadBottle.asStack(1, 2)));
+        recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, 2 + random.nextInt(2)), GrowthCraftBees.fluids.honeyMeadBottle.asStack(1, 3)));
+    }
 }

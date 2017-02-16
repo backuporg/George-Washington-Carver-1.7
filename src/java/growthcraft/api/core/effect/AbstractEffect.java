@@ -31,55 +31,46 @@ import java.util.List;
 /**
  * Because sometimes you want an Effect that does ABSOLUTELY NOTHING.
  */
-public abstract class AbstractEffect implements IEffect
-{
-	protected boolean descriptionEnabled = true;
+public abstract class AbstractEffect implements IEffect {
+    protected boolean descriptionEnabled = true;
 
-	@SuppressWarnings("unchecked")
-	public <T extends AbstractEffect> T toggleDescription(boolean bool)
-	{
-		this.descriptionEnabled = bool;
-		return (T)this;
-	}
+    @SuppressWarnings("unchecked")
+    public <T extends AbstractEffect> T toggleDescription(boolean bool) {
+        this.descriptionEnabled = bool;
+        return (T) this;
+    }
 
-	protected abstract void readFromNBT(NBTTagCompound data);
+    protected abstract void readFromNBT(NBTTagCompound data);
 
-	@Override
-	public void readFromNBT(NBTTagCompound data, String name)
-	{
-		if (data.hasKey(name))
-		{
-			final NBTTagCompound effectData = data.getCompoundTag(name);
-			readFromNBT(effectData);
-		}
-		else
-		{
-			// LOG error
-		}
-	}
+    @Override
+    public void readFromNBT(NBTTagCompound data, String name) {
+        if (data.hasKey(name)) {
+            final NBTTagCompound effectData = data.getCompoundTag(name);
+            readFromNBT(effectData);
+        } else {
+            // LOG error
+        }
+    }
 
-	protected abstract void writeToNBT(NBTTagCompound data);
+    protected abstract void writeToNBT(NBTTagCompound data);
 
-	@Override
-	public void writeToNBT(NBTTagCompound data, String name)
-	{
-		final NBTTagCompound target = new NBTTagCompound();
-		final String effectName = CoreRegistry.instance().getEffectsRegistry().getName(this.getClass());
-		// This is a VERY important field, this is how the effects will reload their correct class.
-		target.setString("__name__", effectName);
-		writeToNBT(target);
+    @Override
+    public void writeToNBT(NBTTagCompound data, String name) {
+        final NBTTagCompound target = new NBTTagCompound();
+        final String effectName = CoreRegistry.instance().getEffectsRegistry().getName(this.getClass());
+        // This is a VERY important field, this is how the effects will reload their correct class.
+        target.setString("__name__", effectName);
+        writeToNBT(target);
 
-		data.setTag(name, target);
-	}
+        data.setTag(name, target);
+    }
 
-	protected abstract void getActualDescription(List<String> list);
+    protected abstract void getActualDescription(List<String> list);
 
-	@Override
-	public void getDescription(List<String> list)
-	{
-		if (descriptionEnabled)
-		{
-			getActualDescription(list);
-		}
-	}
+    @Override
+    public void getDescription(List<String> list) {
+        if (descriptionEnabled) {
+            getActualDescription(list);
+        }
+    }
 }

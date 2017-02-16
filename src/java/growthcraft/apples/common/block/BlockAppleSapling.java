@@ -15,87 +15,75 @@ import net.minecraftforge.event.terraingen.TerrainGen;
 
 import java.util.Random;
 
-public class BlockAppleSapling extends BlockBush implements IGrowable
-{
-	private final int growth = GrowthCraftApples.getConfig().appleSaplingGrowthRate;
+public class BlockAppleSapling extends BlockBush implements IGrowable {
+    private final int growth = GrowthCraftApples.getConfig().appleSaplingGrowthRate;
 
-	public BlockAppleSapling()
-	{
-		super(Material.PLANTS);
-		setHardness(0.0F);
-		//setStepSound(soundTypeGrass);
-		setUnlocalizedName("grc.appleSapling");
-		setTickRandomly(true);
-		setCreativeTab(GrowthCraftCore.creativeTab);
-		//setBlockTextureName("grcapples:apple_sapling");
-		final float f = 0.4F;
-		getBoundingBox(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 2.0F, 0.5F + f);
-	}
+    public BlockAppleSapling() {
+        super(Material.PLANTS);
+        setHardness(0.0F);
+        //setStepSound(soundTypeGrass);
+        setUnlocalizedName("grc.appleSapling");
+        setTickRandomly(true);
+        setCreativeTab(GrowthCraftCore.creativeTab);
+        //setBlockTextureName("grcapples:apple_sapling");
+        final float f = 0.4F;
+        getBoundingBox(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 2.0F, 0.5F + f);
+    }
 
-	/************
-	 * MAIN
-	 ************/
-	public void updateTick(World world, BlockPos pos, Random random, IBlockState state)
-	{
-		if (!world.isRemote)
-		{
-			super.updateTick(world, pos, state, random);
+    /************
+     * MAIN
+     ************/
+    public void updateTick(World world, BlockPos pos, Random random, IBlockState state) {
+        if (!world.isRemote) {
+            super.updateTick(world, pos, state, random);
 
-			if (world.getLight(x, y + 1, z) >= 9 && random.nextInt(this.growth) == 0)
-			{
-				this.markOrGrowMarked(world, pos, random);
-			}
-		}
-	}
+            if (world.getLight(x, y + 1, z) >= 9 && random.nextInt(this.growth) == 0) {
+                this.markOrGrowMarked(world, pos, random);
+            }
+        }
+    }
 
-	public void markOrGrowMarked(World world, BlockPos pos, Random random)
-	{
-		final int meta = world.getBlockState(pos);
+    public void markOrGrowMarked(World world, BlockPos pos, Random random) {
+        final int meta = world.getBlockState(pos);
 
-		if ((meta & 8) == 0)
-		{
-			world.setBlockState(pos, meta | 8, BlockFlags.SUPRESS_RENDER);
-		}
-		else
-		{
-			this.growTree(world, pos, random);
-		}
-	}
+        if ((meta & 8) == 0) {
+            world.setBlockState(pos, meta | 8, BlockFlags.SUPRESS_RENDER);
+        } else {
+            this.growTree(world, pos, random);
+        }
+    }
 
-	public void growTree(World world, BlockPos pos, Random random)
-	{
-		if (!TerrainGen.saplingGrowTree(world, random, pos)) return;
+    public void growTree(World world, BlockPos pos, Random random) {
+        if (!TerrainGen.saplingGrowTree(world, random, pos)) return;
 
-		final int meta = world.getBlockState(pos) & 3;
-		final WorldGenerator generator = new WorldGenAppleTree(true);
+        final int meta = world.getBlockState(pos) & 3;
+        final WorldGenerator generator = new WorldGenAppleTree(true);
 
-		world.setBlockToAir(pos);
+        world.setBlockToAir(pos);
 
-		if (!generator.generate(world, random, pos))
-		{
-			world.setBlockState(pos, this, meta, BlockFlags.ALL);
-		}
-	}
+        if (!generator.generate(world, random, pos)) {
+            world.setBlockState(pos, this, meta, BlockFlags.ALL);
+        }
+    }
 
-	/* Both side */
-	@Override
-	public boolean func_149851_a(World world, BlockPos pos, boolean isClient)
-	{
-		return (world.getBlockState(pos) & 8) == 0;
-	}
+    /* Both side */
+    @Override
+    public boolean func_149851_a(World world, BlockPos pos, boolean isClient) {
+        return (world.getBlockState(pos) & 8) == 0;
+    }
 
-	@Override
-	public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {
-		return false;
-	}
+    @Override
+    public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {
+        return false;
+    }
 
-	@Override
-	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
-		return false;
-	}
+    @Override
+    public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+        return false;
+    }
 
-	@Override
-	public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+    @Override
+    public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
 
-	}
+    }
 }

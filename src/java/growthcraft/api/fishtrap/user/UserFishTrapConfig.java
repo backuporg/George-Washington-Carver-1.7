@@ -29,62 +29,49 @@ import growthcraft.api.fishtrap.FishTrapRegistry;
 
 import java.io.BufferedReader;
 
-public class UserFishTrapConfig extends AbstractUserJSONConfig
-{
-	private final UserFishTrapEntries defaultEntries = new UserFishTrapEntries();
-	private UserFishTrapEntries entries;
+public class UserFishTrapConfig extends AbstractUserJSONConfig {
+    private final UserFishTrapEntries defaultEntries = new UserFishTrapEntries();
+    private UserFishTrapEntries entries;
 
-	public void addDefault(String group, FishTrapEntry entry)
-	{
-		defaultEntries.data.add(new UserFishTrapEntry(group, entry));
-	}
+    public void addDefault(String group, FishTrapEntry entry) {
+        defaultEntries.data.add(new UserFishTrapEntry(group, entry));
+    }
 
-	@Override
-	protected String getDefault()
-	{
-		return gson.toJson(defaultEntries);
-	}
+    @Override
+    protected String getDefault() {
+        return gson.toJson(defaultEntries);
+    }
 
-	@Override
-	protected void loadFromBuffer(BufferedReader buff) throws IllegalStateException
-	{
-		this.entries = gson.fromJson(buff, UserFishTrapEntries.class);
-	}
+    @Override
+    protected void loadFromBuffer(BufferedReader buff) throws IllegalStateException {
+        this.entries = gson.fromJson(buff, UserFishTrapEntries.class);
+    }
 
-	private void addFishTrapEntry(UserFishTrapEntry entry)
-	{
-		if (entry == null)
-		{
-			logger.error("Invalid Entry");
-			return;
-		}
+    private void addFishTrapEntry(UserFishTrapEntry entry) {
+        if (entry == null) {
+            logger.error("Invalid Entry");
+            return;
+        }
 
-		if (entry.item == null || entry.item.isInvalid())
-		{
-			logger.error("Invalid item for entry {%s}", entry);
-			return;
-		}
+        if (entry.item == null || entry.item.isInvalid()) {
+            logger.error("Invalid item for entry {%s}", entry);
+            return;
+        }
 
-		for (FishTrapEntry obj : entry.getFishTrapEntries())
-		{
-			FishTrapRegistry.instance().addCatchToGroup(obj, entry.group);
-		}
-	}
+        for (FishTrapEntry obj : entry.getFishTrapEntries()) {
+            FishTrapRegistry.instance().addCatchToGroup(obj, entry.group);
+        }
+    }
 
-	@Override
-	public void postInit()
-	{
-		if (entries != null)
-		{
-			if (entries.data != null)
-			{
-				logger.debug("Adding %d user fish trap entries.", entries.data.size());
-				for (UserFishTrapEntry entry : entries.data) addFishTrapEntry(entry);
-			}
-			else
-			{
-				logger.error("Config contains invalid data.");
-			}
-		}
-	}
+    @Override
+    public void postInit() {
+        if (entries != null) {
+            if (entries.data != null) {
+                logger.debug("Adding %d user fish trap entries.", entries.data.size());
+                for (UserFishTrapEntry entry : entries.data) addFishTrapEntry(entry);
+            } else {
+                logger.error("Config contains invalid data.");
+            }
+        }
+    }
 }

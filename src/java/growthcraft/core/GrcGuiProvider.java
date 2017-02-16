@@ -40,142 +40,116 @@ import java.util.Map;
 /**
  * Cross Ported from YATM
  */
-public class GrcGuiProvider implements IGuiHandler
-{
-	@Override
-	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-		return null;
-	}
+public class GrcGuiProvider implements IGuiHandler {
+    // Leave this Map empty on server, only the client should fill it
+    @SuppressWarnings({"rawtypes"})
+    public final Map<String, Class> guiMap = new HashMap<String, Class>();
+    protected ILogger logger;
 
-	@Override
-	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-		return null;
-	}
+    public GrcGuiProvider(ILogger p_logger) {
+        this.logger = p_logger;
+    }
 
-	public static class InvalidGuiElement extends IllegalStateException
-	{
-		public static final long serialVersionUID = 1L;
+    @Override
+    public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
+        return null;
+    }
 
-		public InvalidGuiElement(String str)
-		{
-			super(str);
-		}
-	}
+    @Override
+    public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
+        return null;
+    }
 
-	// Leave this Map empty on server, only the client should fill it
-	@SuppressWarnings({"rawtypes"})
-	public final Map<String, Class> guiMap = new HashMap<String, Class>();
-	protected ILogger logger;
+    /**
+     * Register your GUI class mappings here and have your tile entities import
+     *
+     * @param name     name to register the gui as, prefix your mod domain, just because
+     * @param guiClass - the Class<Gui> to use, ensure it has a constructor for (InventoryPlayer, TileEntity), (IInventory, TileEntity) will work as well
+     */
+    @SuppressWarnings({"rawtypes"})
+    public void register(String name, Class guiClass) {
+        if (guiMap.containsKey(name)) {
+            logger.warn("Overwriting Existing Gui mapping: %s with `%s`", name, guiClass);
+        }
+        guiMap.put(name, guiClass);
+    }
 
-	public GrcGuiProvider(ILogger p_logger)
-	{
-		this.logger = p_logger;
-	}
+    private String typeName(Object inventory) {
+        if (inventory == null) {
+            return "NULL";
+        }
+        return inventory.getClass().getName();
+    }
 
-	/**
-	 * Register your GUI class mappings here and have your tile entities import
-	 * @param name name to register the gui as, prefix your mod domain, just because
-	 * @param guiClass - the Class<Gui> to use, ensure it has a constructor for (InventoryPlayer, TileEntity), (IInventory, TileEntity) will work as well
-	 */
-	@SuppressWarnings({"rawtypes"})
-	public void register(String name, Class guiClass)
-	{
-		if (guiMap.containsKey(name))
-		{
-			logger.warn("Overwriting Existing Gui mapping: %s with `%s`", name, guiClass);
-		}
-		guiMap.put(name, guiClass);
-	}
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    private Constructor findConstructor(Constructor[] c, InventoryPlayer inventory, Object te) {
+        final Class teClass = te.getClass();
+        final Class invClass = inventory.getClass();
+        for (Constructor con : c) {
+            final Class[] types = con.getParameterTypes();
+            if (types.length == 2) {
+                if (types[0].isAssignableFrom(invClass) && types[1].isAssignableFrom(teClass)) {
+                    return con;
+                }
+            }
+        }
+        return null;
+    }
 
-	private String typeName(Object inventory)
-	{
-		if (inventory == null)
-		{
-			return "NULL";
-		}
-		return inventory.getClass().getName();
-	}
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    private Object createContainerInstance(@Nonnull Class containerClass, @Nonnull InventoryPlayer inventory, Object te) {
+        try {
+            final Constructor[] c = containerClass.getConstructors();
+            if (c.length == 0) {
+                throw new InvalidGuiElement("Invalid Gui Element Class " + containerClass.getName());
+            }
 
-	@SuppressWarnings({"rawtypes", "unchecked"})
-	private Constructor findConstructor(Constructor[] c, InventoryPlayer inventory, Object te)
-	{
-		final Class teClass = te.getClass();
-		final Class invClass = inventory.getClass();
-		for (Constructor con : c)
-		{
-			final Class[] types = con.getParameterTypes();
-			if (types.length == 2)
-			{
-				if (types[0].isAssignableFrom(invClass) && types[1].isAssignableFrom(teClass))
-				{
-					return con;
-				}
-			}
-		}
-		return null;
-	}
+            final Constructor target = findConstructor(c, inventory, te);
 
-	@SuppressWarnings({"rawtypes", "unchecked"})
-	private Object createContainerInstance(@Nonnull Class containerClass, @Nonnull InventoryPlayer inventory, Object te)
-	{
-		try
-		{
-			final Constructor[] c = containerClass.getConstructors();
-			if (c.length == 0)
-			{
-				throw new InvalidGuiElement("Invalid Gui Element Class " + containerClass.getName());
-			}
+            if (target == null) {
+                throw new IllegalStateException("Cannot find " + containerClass.getName() + "( " + this.typeName(inventory) + ", " + this.typeName(te) + " )");
+            }
 
-			final Constructor target = findConstructor(c, inventory, te);
+            return target.newInstance(inventory, te);
+        } catch (Throwable t) {
+            throw new IllegalStateException(t);
+        }
+    }
 
-			if (target == null)
-			{
-				throw new IllegalStateException("Cannot find " + containerClass.getName() + "( " + this.typeName(inventory) + ", " + this.typeName(te) + " )");
-			}
+    @Override
+    public Object getServerGuiElement(int id, EntityPlayer player, World world, BlockPos pos) {
+        final TileEntity te = world.getTileEntity(pos);
+        if (te instanceof IInteractionObject) {
+            final IInteractionObject iobj = (IInteractionObject) te;
+            return iobj.createContainer(player.inventory, player);
+        } else {
+            logger.error("Container requested for TE but TE was not a IInteractionObject tile_entity=%s id=%d", te, id);
+        }
+        return null;
+    }
 
-			return target.newInstance(inventory, te);
-		}
-		catch (Throwable t)
-		{
-			throw new IllegalStateException(t);
-		}
-	}
+    @Override
+    @SuppressWarnings({"rawtypes"})
+    public Object getClientGuiElement(int id, EntityPlayer player, World world, BlockPos pos) {
+        final TileEntity te = world.getTileEntity(pos);
+        if (te instanceof IInteractionObject) {
+            final IInteractionObject iobj = (IInteractionObject) te;
+            final String guiId = iobj.getGuiID();
+            final Class klass = guiMap.get(guiId);
+            if (klass != null) {
+                return createContainerInstance(klass, player.inventory, te);
+            } else {
+                logger.error("Missing GUI Class for %s", guiId);
+            }
+        }
+        return null;
+    }
 
-	@Override
-	public Object getServerGuiElement(int id, EntityPlayer player, World world, BlockPos pos)
-	{
-		final TileEntity te = world.getTileEntity(pos);
-		if (te instanceof IInteractionObject)
-		{
-			final IInteractionObject iobj = (IInteractionObject)te;
-			return iobj.createContainer(player.inventory, player);
-		}
-		else
-		{
-			logger.error("Container requested for TE but TE was not a IInteractionObject tile_entity=%s id=%d", te, id);
-		}
-		return null;
-	}
+    public static class InvalidGuiElement extends IllegalStateException {
+        public static final long serialVersionUID = 1L;
 
-	@Override
-	@SuppressWarnings({"rawtypes"})
-	public Object getClientGuiElement(int id, EntityPlayer player, World world, BlockPos pos)
-	{
-		final TileEntity te = world.getTileEntity(pos);
-		if (te instanceof IInteractionObject)
-		{
-			final IInteractionObject iobj = (IInteractionObject)te;
-			final String guiId = iobj.getGuiID();
-			final Class klass = guiMap.get(guiId);
-			if (klass != null)
-			{
-				return createContainerInstance(klass, player.inventory, te);
-			}
-			else
-			{
-				logger.error("Missing GUI Class for %s", guiId);
-			}
-		}
-		return null;
-	}
+        public InvalidGuiElement(String str) {
+            super(str);
+        }
+    }
 }

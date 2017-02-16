@@ -42,77 +42,67 @@ import org.lwjgl.opengl.GL11;
 import java.util.List;
 
 @SideOnly(Side.CLIENT)
-public class GuiCultureJar extends GuiCellar<ContainerCultureJar, TileEntityCultureJar>
-{
-	private GuiButtonDiscard discardButton;
+public class GuiCultureJar extends GuiCellar<ContainerCultureJar, TileEntityCultureJar> {
+    private GuiButtonDiscard discardButton;
 
-	public GuiCultureJar(InventoryPlayer inv, TileEntityCultureJar fermentJar)
-	{
-		super(GrcCellarResources.INSTANCE.textureGuiCultureJar, new ContainerCultureJar(inv, fermentJar), fermentJar);
-	}
+    public GuiCultureJar(InventoryPlayer inv, TileEntityCultureJar fermentJar) {
+        super(GrcCellarResources.INSTANCE.textureGuiCultureJar, new ContainerCultureJar(inv, fermentJar), fermentJar);
+    }
 
-	@Override
-	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void initGui()
-	{
-		super.initGui();
-		widgets.add(new WidgetFluidTank(widgets, 0, 36, 14, 16, 58).setRuleOverlay(176, 53, 16, 58));
-		widgets.add(new WidgetHeatIcon(widgets, 82, 56, 14, 14).setTextureRect(176, 17, 14, 14));
-		widgets.add(new WidgetDeviceProgressIcon(widgets, 55, 35, 22, 17)
-			.setProgressDirection(WidgetDeviceProgressIcon.ProgressDirection.LEFT_TO_RIGHT)
-			.setTextureRect(176, 0, 22, 17));
+    @Override
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    public void initGui() {
+        super.initGui();
+        widgets.add(new WidgetFluidTank(widgets, 0, 36, 14, 16, 58).setRuleOverlay(176, 53, 16, 58));
+        widgets.add(new WidgetHeatIcon(widgets, 82, 56, 14, 14).setTextureRect(176, 17, 14, 14));
+        widgets.add(new WidgetDeviceProgressIcon(widgets, 55, 35, 22, 17)
+                .setProgressDirection(WidgetDeviceProgressIcon.ProgressDirection.LEFT_TO_RIGHT)
+                .setTextureRect(176, 0, 22, 17));
 
-		if (GrowthCraftCellar.getConfig().enableDiscardButton)
-		{
-			this.discardButton = new GuiButtonDiscard(guiResource, 1, guiLeft + 116, guiTop + 54);
-			discardButton.enabled = false;
-			buttonList.add(discardButton);
-		}
+        if (GrowthCraftCellar.getConfig().enableDiscardButton) {
+            this.discardButton = new GuiButtonDiscard(guiResource, 1, guiLeft + 116, guiTop + 54);
+            discardButton.enabled = false;
+            buttonList.add(discardButton);
+        }
 
-		addTooltipIndex("fluid_tank.primary", 36, 17, 16, 58);
-		if (discardButton != null) addTooltipIndex("discard.fluid_tank.primary", 16, 52, 16, 16);
-	}
+        addTooltipIndex("fluid_tank.primary", 36, 17, 16, 58);
+        if (discardButton != null) addTooltipIndex("discard.fluid_tank.primary", 16, 52, 16, 16);
+    }
 
-	@Override
-	protected void actionPerformed(GuiButton butn)
-	{
-		GrowthCraftCellar.packetPipeline.sendToServer(new PacketClearTankButton(tileEntity.getPos()));
-	}
+    @Override
+    protected void actionPerformed(GuiButton butn) {
+        GrowthCraftCellar.packetPipeline.sendToServer(new PacketClearTankButton(tileEntity.getPos()));
+    }
 
-	@Override
-	public void updateScreen()
-	{
-		super.updateScreen();
-		if (discardButton != null) discardButton.enabled = tileEntity.isFluidTankFilled(0);
-	}
+    @Override
+    public void updateScreen() {
+        super.updateScreen();
+        if (discardButton != null) discardButton.enabled = tileEntity.isFluidTankFilled(0);
+    }
 
-	@Override
-	protected void drawGuiContainerBackgroundLayer(float par1, int mx, int my)
-	{
-		super.drawGuiContainerBackgroundLayer(par1, mx, my);
+    @Override
+    protected void drawGuiContainerBackgroundLayer(float par1, int mx, int my) {
+        super.drawGuiContainerBackgroundLayer(par1, mx, my);
 
-		if (!tileEntity.isCulturing())
-		{
-			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-			bindGuiTexture();
-			// Red Ring around Yeast Slot
-			drawTexturedModalRect(getGuiX() + 77, getGuiY() + 32, 176, 31, 22, 22);
-		}
-	}
+        if (!tileEntity.isCulturing()) {
+            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+            bindGuiTexture();
+            // Red Ring around Yeast Slot
+            drawTexturedModalRect(getGuiX() + 77, getGuiY() + 32, 176, 31, 22, 22);
+        }
+    }
 
-	@Override
-	public void addTooltips(String handle, List<String> tooltip)
-	{
-		switch (handle)
-		{
-			case "fluid_tank.primary":
-				addFluidTooltips(tileEntity.getFluidStack(0), tooltip);
-				break;
-			case "discard.fluid_tank.primary":
-				tooltip.add(GrcI18n.translate("gui.grc.discard"));
-				break;
-			default:
-				break;
-		}
-	}
+    @Override
+    public void addTooltips(String handle, List<String> tooltip) {
+        switch (handle) {
+            case "fluid_tank.primary":
+                addFluidTooltips(tileEntity.getFluidStack(0), tooltip);
+                break;
+            case "discard.fluid_tank.primary":
+                tooltip.add(GrcI18n.translate("gui.grc.discard"));
+                break;
+            default:
+                break;
+        }
+    }
 }

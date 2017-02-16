@@ -46,190 +46,180 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
-public class netherloidFluids extends GrcModuleBase
-{
-	public Booze[] maliceCiderBooze;
-	public BlockBoozeDefinition[] maliceCiderFluids;
-	public ItemDefinition maliceCider;
-	public ItemBucketBoozeDefinition[] maliceCiderBuckets;
-	public ItemDefinition fireBrandy;
-	public ItemBucketBoozeDefinition[] fireBrandyBuckets;
-	public BlockBoozeDefinition[] fireBrandyFluids;
-	public Booze[] fireBrandyBooze;
+public class netherloidFluids extends GrcModuleBase {
+    public Booze[] maliceCiderBooze;
+    public BlockBoozeDefinition[] maliceCiderFluids;
+    public ItemDefinition maliceCider;
+    public ItemBucketBoozeDefinition[] maliceCiderBuckets;
+    public ItemDefinition fireBrandy;
+    public ItemBucketBoozeDefinition[] fireBrandyBuckets;
+    public BlockBoozeDefinition[] fireBrandyFluids;
+    public Booze[] fireBrandyBooze;
 
-	@Override
-	public void preInit()
-	{
-		this.maliceCiderBooze = new Booze[8];
-		this.maliceCiderFluids = new BlockBoozeDefinition[maliceCiderBooze.length];
-		this.maliceCiderBuckets = new ItemBucketBoozeDefinition[maliceCiderBooze.length];
-		BoozeRegistryHelper.initializeBoozeFluids("grc.maliceCider", maliceCiderBooze);
-		for (Booze booze : maliceCiderBooze)
-		{
-			booze.setColor(netherloid.getConfig().maliceCiderColor).setDensity(1120);
-		}
-		BoozeRegistryHelper.initializeBooze(maliceCiderBooze, maliceCiderFluids, maliceCiderBuckets);
-		BoozeRegistryHelper.setBoozeFoodStats(maliceCiderBooze, 1, -0.3f);
-		BoozeRegistryHelper.setBoozeFoodStats(maliceCiderBooze[1], 1, 0.3f);
+    @Override
+    public void preInit() {
+        this.maliceCiderBooze = new Booze[8];
+        this.maliceCiderFluids = new BlockBoozeDefinition[maliceCiderBooze.length];
+        this.maliceCiderBuckets = new ItemBucketBoozeDefinition[maliceCiderBooze.length];
+        BoozeRegistryHelper.initializeBoozeFluids("grc.maliceCider", maliceCiderBooze);
+        for (Booze booze : maliceCiderBooze) {
+            booze.setColor(netherloid.getConfig().maliceCiderColor).setDensity(1120);
+        }
+        BoozeRegistryHelper.initializeBooze(maliceCiderBooze, maliceCiderFluids, maliceCiderBuckets);
+        BoozeRegistryHelper.setBoozeFoodStats(maliceCiderBooze, 1, -0.3f);
+        BoozeRegistryHelper.setBoozeFoodStats(maliceCiderBooze[1], 1, 0.3f);
 
-		this.maliceCider = new ItemDefinition(new ItemBoozeBottle(maliceCiderBooze));
-		
-		this.fireBrandyBooze = new Booze[8];
-		this.fireBrandyFluids = new BlockBoozeDefinition[fireBrandyBooze.length];
-		this.fireBrandyBuckets = new ItemBucketBoozeDefinition[fireBrandyBooze.length];
-		BoozeRegistryHelper.initializeBoozeFluids("grc.fireBrandy", fireBrandyBooze);
-		for (Booze booze : fireBrandyBooze)
-		{
-			booze.setColor(netherloid.getConfig().fireBrandyColor).setDensity(1120);
-		}
-		BoozeRegistryHelper.initializeBooze(fireBrandyBooze, fireBrandyFluids, fireBrandyBuckets);
-		BoozeRegistryHelper.setBoozeFoodStats(fireBrandyBooze, 1, -0.3f);
-		BoozeRegistryHelper.setBoozeFoodStats(fireBrandyBooze[1], 1, 0.3f);
-		
-		maliceCiderBooze[4].setColor(netherloid.getConfig().amritaColor);
-		maliceCiderFluids[4].getBlockState().refreshColor();
-		maliceCiderBooze[5].setColor(netherloid.getConfig().gelidBoozeColor);
-		maliceCiderFluids[5].getBlockState().refreshColor();
-		
-		this.fireBrandy = new ItemDefinition(new ItemBoozeBottle(fireBrandyBooze));
-		
-	}
+        this.maliceCider = new ItemDefinition(new ItemBoozeBottle(maliceCiderBooze));
 
-	private void registerMaliceCider()
-	{
-		final int fermentTime = GrowthCraftCellar.getConfig().fermentTime;
-		final FluidStack[] fs = new FluidStack[maliceCiderBooze.length];
-		for (int i = 0; i < maliceCiderBooze.length; ++i)
-		{
-			fs[i] = new FluidStack(maliceCiderBooze[i], 1);
-		}
+        this.fireBrandyBooze = new Booze[8];
+        this.fireBrandyFluids = new BlockBoozeDefinition[fireBrandyBooze.length];
+        this.fireBrandyBuckets = new ItemBucketBoozeDefinition[fireBrandyBooze.length];
+        BoozeRegistryHelper.initializeBoozeFluids("grc.fireBrandy", fireBrandyBooze);
+        for (Booze booze : fireBrandyBooze) {
+            booze.setColor(netherloid.getConfig().fireBrandyColor).setDensity(1120);
+        }
+        BoozeRegistryHelper.initializeBooze(fireBrandyBooze, fireBrandyFluids, fireBrandyBuckets);
+        BoozeRegistryHelper.setBoozeFoodStats(fireBrandyBooze, 1, -0.3f);
+        BoozeRegistryHelper.setBoozeFoodStats(fireBrandyBooze[1], 1, 0.3f);
 
-		GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[0])
-			.tags(BoozeTag.YOUNG, BoozeTag.INFERNAL)
-			.pressesFrom(
-				new OreItemStacks("fruitMalum"),
-				TickUtils.seconds(2),
-				40,
-				Residue.newDefault(0.3F));
+        maliceCiderBooze[4].setColor(netherloid.getConfig().amritaColor);
+        maliceCiderFluids[4].getBlockState().refreshColor();
+        maliceCiderBooze[5].setColor(netherloid.getConfig().gelidBoozeColor);
+        maliceCiderFluids[5].getBlockState().refreshColor();
 
-		// Brewers Yeast, Nether Wart
-		GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[1])
-			.tags(BoozeTag.CIDER, BoozeTag.FERMENTED, BoozeTag.INFERNAL)
-			.fermentsFrom(fs[0], new OreItemStacks("yeastBrewers"), fermentTime)
-			.fermentsFrom(fs[0], new ItemStack(Items.NETHER_WART), (int)(fermentTime * 0.66))
-			.getEffect()
-				.setTipsy(BoozeUtils.alcoholToTipsy(0.05f), TickUtils.seconds(90))
-				.addPotionEntry(MobEffects.REGENERATION, TickUtils.minutes(3), 0)
-				.addPotionEntry(MobEffects.STRENGTH, TickUtils.minutes(1), 1);
+        this.fireBrandy = new ItemDefinition(new ItemBoozeBottle(fireBrandyBooze));
 
-		// Glowstone Dust
-		GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[2])
-			.tags(BoozeTag.CIDER, BoozeTag.FERMENTED, BoozeTag.POTENT, BoozeTag.INFERNAL)
-			.fermentsFrom(fs[1], new OreItemStacks("dustGlowstone"), fermentTime)
-			.fermentsFrom(fs[3], new OreItemStacks("dustGlowstone"), fermentTime)
-			.getEffect()
-				.setTipsy(BoozeUtils.alcoholToTipsy(0.07f), TickUtils.seconds(90))
-				.addPotionEntry(MobEffects.REGENERATION, TickUtils.minutes(1), 1)
-				.addPotionEntry(MobEffects.STRENGTH, TickUtils.minutes(1), 2);
+    }
 
-		// Redstone Dust
-		GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[3])
-			.tags(BoozeTag.CIDER, BoozeTag.FERMENTED, BoozeTag.EXTENDED, BoozeTag.INFERNAL)
-			.fermentsFrom(fs[1], new OreItemStacks("dustRedstone"), fermentTime)
-			.fermentsFrom(fs[2], new OreItemStacks("dustRedstone"), fermentTime)
-			.getEffect()
-				.setTipsy(BoozeUtils.alcoholToTipsy(0.05f), TickUtils.seconds(90))
-				.addPotionEntry(MobEffects.REGENERATION, TickUtils.minutes(6), 0)
-				.addPotionEntry(MobEffects.STRENGTH, TickUtils.minutes(2), 1);
+    private void registerMaliceCider() {
+        final int fermentTime = GrowthCraftCellar.getConfig().fermentTime;
+        final FluidStack[] fs = new FluidStack[maliceCiderBooze.length];
+        for (int i = 0; i < maliceCiderBooze.length; ++i) {
+            fs[i] = new FluidStack(maliceCiderBooze[i], 1);
+        }
 
-		// Amrita - Ethereal Yeast
-		GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[4])
-			.tags(BoozeTag.CIDER, BoozeTag.FERMENTED, BoozeTag.HYPER_EXTENDED, BoozeTag.INFERNAL)
-			.fermentsFrom(fs[2], new OreItemStacks("yeastEthereal"), fermentTime)
-			.fermentsFrom(fs[3], new OreItemStacks("yeastEthereal"), fermentTime)
-			.getEffect()
-				.setTipsy(BoozeUtils.alcoholToTipsy(0.053f), TickUtils.seconds(90))
-				.addPotionEntry(MobEffects.REGENERATION, TickUtils.minutes(6), 1)
-				.addPotionEntry(MobEffects.STRENGTH, TickUtils.minutes(2), 2);
-				
-		// Gelid Booze [WIP]
-		GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[5])
-			.tags(BoozeTag.CIDER, BoozeTag.FERMENTED, BoozeTag.INFERNAL, BoozeTag.CHILLED)
-			.fermentsFrom(fs[0], new OreItemStacks("yeastLager"), fermentTime)
-			.fermentsFrom(fs[0], new ItemStack(Items.NETHER_WART), (int)(fermentTime * 0.66))
-			.getEffect()
-				.setTipsy(BoozeUtils.alcoholToTipsy(0.05f), TickUtils.seconds(90))
-				.addPotionEntry(MobEffects.REGENERATION, TickUtils.minutes(3), 0)
-				.addPotionEntry(MobEffects.STRENGTH, TickUtils.minutes(1), 1);
+        GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[0])
+                .tags(BoozeTag.YOUNG, BoozeTag.INFERNAL)
+                .pressesFrom(
+                        new OreItemStacks("fruitMalum"),
+                        TickUtils.seconds(2),
+                        40,
+                        Residue.newDefault(0.3F));
 
-		// Intoxicated
-		GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[6])
-			.tags(BoozeTag.CIDER, BoozeTag.FERMENTED, BoozeTag.INTOXICATED, BoozeTag.INFERNAL)
-			.fermentsFrom(fs[2], new OreItemStacks("yeastOrigin"), fermentTime)
-			.fermentsFrom(fs[3], new OreItemStacks("yeastOrigin"), fermentTime)
-			.getEffect()
-				.setTipsy(BoozeUtils.alcoholToTipsy(0.15f), TickUtils.seconds(90))
-				.addEffect(new EffectWeightedRandomList()
-					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.REGENERATION, TickUtils.minutes(3), 0)))
-					.add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.STRENGTH, TickUtils.minutes(1), 1)))
-					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.POISON, TickUtils.minutes(3), 1)))
-					.add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.WEAKNESS, TickUtils.minutes(1), 1))));
+        // Brewers Yeast, Nether Wart
+        GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[1])
+                .tags(BoozeTag.CIDER, BoozeTag.FERMENTED, BoozeTag.INFERNAL)
+                .fermentsFrom(fs[0], new OreItemStacks("yeastBrewers"), fermentTime)
+                .fermentsFrom(fs[0], new ItemStack(Items.NETHER_WART), (int) (fermentTime * 0.66))
+                .getEffect()
+                .setTipsy(BoozeUtils.alcoholToTipsy(0.05f), TickUtils.seconds(90))
+                .addPotionEntry(MobEffects.REGENERATION, TickUtils.minutes(3), 0)
+                .addPotionEntry(MobEffects.STRENGTH, TickUtils.minutes(1), 1);
 
-		GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[7])
-			.tags(BoozeTag.CIDER, BoozeTag.FERMENTED, BoozeTag.POISONED, BoozeTag.INFERNAL)
-			.fermentsTo(fs[1], new OreItemStacks("yeastPoison"), fermentTime)
-			.fermentsTo(fs[2], new OreItemStacks("yeastPoison"), fermentTime)
-			.fermentsTo(fs[3], new OreItemStacks("yeastPoison"), fermentTime)
-			.fermentsTo(fs[4], new OreItemStacks("yeastPoison"), fermentTime)
-			.fermentsTo(fs[5], new OreItemStacks("yeastPoison"), fermentTime)
-			.fermentsTo(fs[6], new OreItemStacks("yeastPoison"), fermentTime)
-			.fermentsTo(fs[7], new OreItemStacks("yeastPoison"), fermentTime)
-			.getEffect()
-				.setTipsy(BoozeUtils.alcoholToTipsy(0.05f), TickUtils.seconds(90))
-				.createPotionEntry(MobEffects.POISON, TickUtils.seconds(90), 0).toggleDescription(!GrowthCraftCore.getConfig().hidePoisonedBooze);
-	}
+        // Glowstone Dust
+        GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[2])
+                .tags(BoozeTag.CIDER, BoozeTag.FERMENTED, BoozeTag.POTENT, BoozeTag.INFERNAL)
+                .fermentsFrom(fs[1], new OreItemStacks("dustGlowstone"), fermentTime)
+                .fermentsFrom(fs[3], new OreItemStacks("dustGlowstone"), fermentTime)
+                .getEffect()
+                .setTipsy(BoozeUtils.alcoholToTipsy(0.07f), TickUtils.seconds(90))
+                .addPotionEntry(MobEffects.REGENERATION, TickUtils.minutes(1), 1)
+                .addPotionEntry(MobEffects.STRENGTH, TickUtils.minutes(1), 2);
 
-	private void registerFireBrandy()
-	{
-		final int fermentTime = GrowthCraftCellar.getConfig().fermentTime;
-		final FluidStack[] fs = new FluidStack[fireBrandyBooze.length];
-		for (int i = 0; i < fs.length; ++i)
-		{
-			fs[i] = new FluidStack(fireBrandyBooze[i], 1);
-		}
+        // Redstone Dust
+        GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[3])
+                .tags(BoozeTag.CIDER, BoozeTag.FERMENTED, BoozeTag.EXTENDED, BoozeTag.INFERNAL)
+                .fermentsFrom(fs[1], new OreItemStacks("dustRedstone"), fermentTime)
+                .fermentsFrom(fs[2], new OreItemStacks("dustRedstone"), fermentTime)
+                .getEffect()
+                .setTipsy(BoozeUtils.alcoholToTipsy(0.05f), TickUtils.seconds(90))
+                .addPotionEntry(MobEffects.REGENERATION, TickUtils.minutes(6), 0)
+                .addPotionEntry(MobEffects.STRENGTH, TickUtils.minutes(2), 1);
 
-		GrowthCraftCellar.boozeBuilderFactory.create(fireBrandyBooze[0])
-			.tags(BoozeTag.YOUNG, BoozeTag.INFERNAL)
-			.pressesFrom(
-				new OreItemStacks("ghostChili"),
-				TickUtils.seconds(2),
-				40,
-				Residue.newDefault(0.3F));
+        // Amrita - Ethereal Yeast
+        GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[4])
+                .tags(BoozeTag.CIDER, BoozeTag.FERMENTED, BoozeTag.HYPER_EXTENDED, BoozeTag.INFERNAL)
+                .fermentsFrom(fs[2], new OreItemStacks("yeastEthereal"), fermentTime)
+                .fermentsFrom(fs[3], new OreItemStacks("yeastEthereal"), fermentTime)
+                .getEffect()
+                .setTipsy(BoozeUtils.alcoholToTipsy(0.053f), TickUtils.seconds(90))
+                .addPotionEntry(MobEffects.REGENERATION, TickUtils.minutes(6), 1)
+                .addPotionEntry(MobEffects.STRENGTH, TickUtils.minutes(2), 2);
 
-		GrowthCraftCellar.boozeBuilderFactory.create(fireBrandyBooze[1])
-			.tags(BoozeTag.FERMENTED, BoozeTag.INFERNAL)
-			.fermentsFrom(fs[0], new OreItemStacks("yeastBrewers"), fermentTime)
-			.fermentsFrom(fs[0], new ItemStack(Items.NETHER_WART), (int)(fermentTime * 0.66))
-			.getEffect()
-				.setTipsy(BoozeUtils.alcoholToTipsy(0.0419f), TickUtils.seconds(45))
-				.addPotionEntry(MobEffects.FIRE_RESISTANCE, TickUtils.seconds(350), 0);
-	}
-	
-	private void registerFermentations()
-	{
-		registerMaliceCider();
-		registerFireBrandy();
-		
-	}
+        // Gelid Booze [WIP]
+        GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[5])
+                .tags(BoozeTag.CIDER, BoozeTag.FERMENTED, BoozeTag.INFERNAL, BoozeTag.CHILLED)
+                .fermentsFrom(fs[0], new OreItemStacks("yeastLager"), fermentTime)
+                .fermentsFrom(fs[0], new ItemStack(Items.NETHER_WART), (int) (fermentTime * 0.66))
+                .getEffect()
+                .setTipsy(BoozeUtils.alcoholToTipsy(0.05f), TickUtils.seconds(90))
+                .addPotionEntry(MobEffects.REGENERATION, TickUtils.minutes(3), 0)
+                .addPotionEntry(MobEffects.STRENGTH, TickUtils.minutes(1), 1);
 
-	@Override
-	public void register()
-	{
-		maliceCider.register("grc.maliceCider");
-		fireBrandy.register("grc.fireBrandy");
+        // Intoxicated
+        GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[6])
+                .tags(BoozeTag.CIDER, BoozeTag.FERMENTED, BoozeTag.INTOXICATED, BoozeTag.INFERNAL)
+                .fermentsFrom(fs[2], new OreItemStacks("yeastOrigin"), fermentTime)
+                .fermentsFrom(fs[3], new OreItemStacks("yeastOrigin"), fermentTime)
+                .getEffect()
+                .setTipsy(BoozeUtils.alcoholToTipsy(0.15f), TickUtils.seconds(90))
+                .addEffect(new EffectWeightedRandomList()
+                        .add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.REGENERATION, TickUtils.minutes(3), 0)))
+                        .add(8, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.STRENGTH, TickUtils.minutes(1), 1)))
+                        .add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.POISON, TickUtils.minutes(3), 1)))
+                        .add(2, new EffectAddPotionEffect(new SimplePotionEffectFactory(MobEffects.WEAKNESS, TickUtils.minutes(1), 1))));
 
-		BoozeRegistryHelper.registerBooze(maliceCiderBooze, maliceCiderFluids, maliceCiderBuckets, maliceCider, "grc.maliceCider", null);
-		BoozeRegistryHelper.registerBooze(fireBrandyBooze, fireBrandyFluids, fireBrandyBuckets, fireBrandy, "grc.fireBrandy", null);
-		registerFermentations();
-	}
+        GrowthCraftCellar.boozeBuilderFactory.create(maliceCiderBooze[7])
+                .tags(BoozeTag.CIDER, BoozeTag.FERMENTED, BoozeTag.POISONED, BoozeTag.INFERNAL)
+                .fermentsTo(fs[1], new OreItemStacks("yeastPoison"), fermentTime)
+                .fermentsTo(fs[2], new OreItemStacks("yeastPoison"), fermentTime)
+                .fermentsTo(fs[3], new OreItemStacks("yeastPoison"), fermentTime)
+                .fermentsTo(fs[4], new OreItemStacks("yeastPoison"), fermentTime)
+                .fermentsTo(fs[5], new OreItemStacks("yeastPoison"), fermentTime)
+                .fermentsTo(fs[6], new OreItemStacks("yeastPoison"), fermentTime)
+                .fermentsTo(fs[7], new OreItemStacks("yeastPoison"), fermentTime)
+                .getEffect()
+                .setTipsy(BoozeUtils.alcoholToTipsy(0.05f), TickUtils.seconds(90))
+                .createPotionEntry(MobEffects.POISON, TickUtils.seconds(90), 0).toggleDescription(!GrowthCraftCore.getConfig().hidePoisonedBooze);
+    }
+
+    private void registerFireBrandy() {
+        final int fermentTime = GrowthCraftCellar.getConfig().fermentTime;
+        final FluidStack[] fs = new FluidStack[fireBrandyBooze.length];
+        for (int i = 0; i < fs.length; ++i) {
+            fs[i] = new FluidStack(fireBrandyBooze[i], 1);
+        }
+
+        GrowthCraftCellar.boozeBuilderFactory.create(fireBrandyBooze[0])
+                .tags(BoozeTag.YOUNG, BoozeTag.INFERNAL)
+                .pressesFrom(
+                        new OreItemStacks("ghostChili"),
+                        TickUtils.seconds(2),
+                        40,
+                        Residue.newDefault(0.3F));
+
+        GrowthCraftCellar.boozeBuilderFactory.create(fireBrandyBooze[1])
+                .tags(BoozeTag.FERMENTED, BoozeTag.INFERNAL)
+                .fermentsFrom(fs[0], new OreItemStacks("yeastBrewers"), fermentTime)
+                .fermentsFrom(fs[0], new ItemStack(Items.NETHER_WART), (int) (fermentTime * 0.66))
+                .getEffect()
+                .setTipsy(BoozeUtils.alcoholToTipsy(0.0419f), TickUtils.seconds(45))
+                .addPotionEntry(MobEffects.FIRE_RESISTANCE, TickUtils.seconds(350), 0);
+    }
+
+    private void registerFermentations() {
+        registerMaliceCider();
+        registerFireBrandy();
+
+    }
+
+    @Override
+    public void register() {
+        maliceCider.register("grc.maliceCider");
+        fireBrandy.register("grc.fireBrandy");
+
+        BoozeRegistryHelper.registerBooze(maliceCiderBooze, maliceCiderFluids, maliceCiderBuckets, maliceCider, "grc.maliceCider", null);
+        BoozeRegistryHelper.registerBooze(fireBrandyBooze, fireBrandyFluids, fireBrandyBuckets, fireBrandy, "grc.fireBrandy", null);
+        registerFermentations();
+    }
 }

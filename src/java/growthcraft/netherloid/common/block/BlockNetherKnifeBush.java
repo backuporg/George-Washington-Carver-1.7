@@ -31,29 +31,24 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockNetherKnifeBush extends BlockBush
-{
-	public BlockNetherKnifeBush()
-	{
-		super();
-		setUnlocalizedName("grcnetherloid.netherKnifeBush");
-		setCreativeTab(netherloid.tab);
-		//setBlockTextureName("grcnetherloid:knife_bush");
-	}
+public class BlockNetherKnifeBush extends BlockBush {
+    public BlockNetherKnifeBush() {
+        super();
+        setUnlocalizedName("grcnetherloid.netherKnifeBush");
+        setCreativeTab(netherloid.tab);
+        //setBlockTextureName("grcnetherloid:knife_bush");
+    }
 
-	@Override
-	public void onEntityCollidedWithBlock(World world, BlockPos pos, Entity entity)
-	{
-		if (world.isRemote) return;
-		if (entity instanceof EntityLivingBase)
-		{
-			((EntityLivingBase)entity).attackEntityFrom(DamageSources.knifeBush, 1.0F);
-		}
-	}
+    @Override
+    public void onEntityCollidedWithBlock(World world, BlockPos pos, Entity entity) {
+        if (world.isRemote) return;
+        if (entity instanceof EntityLivingBase) {
+            entity.attackEntityFrom(DamageSources.knifeBush, 1.0F);
+        }
+    }
 
-	@Override
-	public boolean isOpaqueCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isOpaqueCube() {
+        return false;
+    }
 }

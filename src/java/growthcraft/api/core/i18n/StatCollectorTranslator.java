@@ -25,17 +25,14 @@ package growthcraft.api.core.i18n;
 
 import net.minecraft.util.text.translation.I18n;
 
-public class StatCollectorTranslator implements ITranslator
-{
-	public static final ITranslator INSTANCE = new StatCollectorTranslator();
+public class StatCollectorTranslator implements ITranslator {
+    public static final ITranslator INSTANCE = new StatCollectorTranslator();
 
-	public String translate(String str, Object... objs)
-	{
-		return I18n.translateToLocalFormatted(str, objs);
-	}
+    public String translate(String str, Object... objs) {
+        return I18n.translateToLocalFormatted(str, objs);
+    }
 
-	public String translate(String str)
-	{
-		return I18n.translateToLocal(str);
-	}
+    public String translate(String str) {
+        return I18n.translateToLocal(str);
+    }
 }

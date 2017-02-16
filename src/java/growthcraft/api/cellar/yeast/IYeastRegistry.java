@@ -33,54 +33,56 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.Set;
 
-public interface IYeastRegistry extends ILoggable
-{
-	/**
-	 * Adds the given ItemStack as a possible yeast item
-	 *
-	 * @param yeast - an item
-	 */
-	void addYeast(@Nonnull ItemStack yeast);
+public interface IYeastRegistry extends ILoggable {
+    /**
+     * Adds the given ItemStack as a possible yeast item
+     *
+     * @param yeast - an item
+     */
+    void addYeast(@Nonnull ItemStack yeast);
 
-	/**
-	 * @param yeast - an item
-	 * @return true, if the item is a known yeast item, false otherwise.
-	 */
-	boolean isYeast(@Nullable ItemStack yeast);
+    /**
+     * @param yeast - an item
+     * @return true, if the item is a known yeast item, false otherwise.
+     */
+    boolean isYeast(@Nullable ItemStack yeast);
 
-	/**
-	 * Maps the given biome type to the yeast item, when a Culture Jar
-	 * is placed into a biome of that type, it MAY produce the yeast item.
-	 * NOTE. This method SHOULD use addYeast to add the given yeast item to the
-	 *       known list.
-	 *
-	 * @param yeast - an item
-	 * @param weight - generation weight
-	 * @param type - the biome type to add
-	 */
-	void addYeastToBiomeType(@Nonnull ItemStack yeast, int weight, @Nonnull BiomeDictionary.Type type);
+    /**
+     * Maps the given biome type to the yeast item, when a Culture Jar
+     * is placed into a biome of that type, it MAY produce the yeast item.
+     * NOTE. This method SHOULD use addYeast to add the given yeast item to the
+     * known list.
+     *
+     * @param yeast  - an item
+     * @param weight - generation weight
+     * @param type   - the biome type to add
+     */
+    void addYeastToBiomeType(@Nonnull ItemStack yeast, int weight, @Nonnull BiomeDictionary.Type type);
 
-	/**
-	 * Maps the given biome name to the yeast item.
-	 * When a Culture Jar is placed in the Biome with the SAME name, it
-	 * MAY produce the yeast item.
-	 *
-	 * @param yeast - an item
-	 * @param weight - generation weight
-	 * @param name - biome name
-	 */
-	void addYeastToBiomeByName(@Nonnull ItemStack yeast, int weight, @Nonnull String name);
+    /**
+     * Maps the given biome name to the yeast item.
+     * When a Culture Jar is placed in the Biome with the SAME name, it
+     * MAY produce the yeast item.
+     *
+     * @param yeast  - an item
+     * @param weight - generation weight
+     * @param name   - biome name
+     */
+    void addYeastToBiomeByName(@Nonnull ItemStack yeast, int weight, @Nonnull String name);
 
-	/**
-	 * Returns a Set of Items that may appear in this biome type
-	 *
-	 * @param type - the biome type
-	 * @return yeast for the biome type,
-	 */
-	Set<WeightedItemStack> getYeastListForBiomeType(@Nonnull BiomeDictionary.Type type);
-	Set<WeightedItemStack> getYeastListForBiomeName(@Nonnull String name);
+    /**
+     * Returns a Set of Items that may appear in this biome type
+     *
+     * @param type - the biome type
+     * @return yeast for the biome type,
+     */
+    Set<WeightedItemStack> getYeastListForBiomeType(@Nonnull BiomeDictionary.Type type);
 
-	Set<String> getBiomeNamesForYeast(@Nullable ItemStack yeast);
-	Set<BiomeDictionary.Type> getBiomeTypesForYeast(@Nullable ItemStack yeast);
-	boolean canYeastFormInBiome(@Nullable ItemStack yeast, @Nullable Biome biome);
+    Set<WeightedItemStack> getYeastListForBiomeName(@Nonnull String name);
+
+    Set<String> getBiomeNamesForYeast(@Nullable ItemStack yeast);
+
+    Set<BiomeDictionary.Type> getBiomeTypesForYeast(@Nullable ItemStack yeast);
+
+    boolean canYeastFormInBiome(@Nullable ItemStack yeast, @Nullable Biome biome);
 }

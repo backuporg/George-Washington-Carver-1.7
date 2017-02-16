@@ -8,59 +8,50 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class PacketClearTankButtonWByte extends AbstractPacketButton
-{
-	byte b;
+public class PacketClearTankButtonWByte extends AbstractPacketButton {
+    byte b;
 
-	public PacketClearTankButtonWByte(){}
+    public PacketClearTankButtonWByte() {
+    }
 
-	public PacketClearTankButtonWByte(BlockPos pos, byte byt)
-	{
-		super(pos);
-		this.b = byt;
-	}
+    public PacketClearTankButtonWByte(BlockPos pos, byte byt) {
+        super(pos);
+        this.b = byt;
+    }
 
-	@Override
-	public void encodeInto(ChannelHandlerContext ctx, ByteBuf buffer)
-	{
-		super.encodeInto(ctx, buffer);
-		buffer.writeByte(b);
-	}
+    @Override
+    public void encodeInto(ChannelHandlerContext ctx, ByteBuf buffer) {
+        super.encodeInto(ctx, buffer);
+        buffer.writeByte(b);
+    }
 
-	@Override
-	public void decodeInto(ChannelHandlerContext ctx, ByteBuf buffer)
-	{
-		super.decodeInto(ctx, buffer);
-		this.b = buffer.readByte();
-	}
+    @Override
+    public void decodeInto(ChannelHandlerContext ctx, ByteBuf buffer) {
+        super.decodeInto(ctx, buffer);
+        this.b = buffer.readByte();
+    }
 
-	@Override
-	public void handleClientSide(EntityPlayer player)
-	{
+    @Override
+    public void handleClientSide(EntityPlayer player) {
 
-	}
+    }
 
-	@Override
-	public void handleServerSide(EntityPlayer player) {
+    @Override
+    public void handleServerSide(EntityPlayer player) {
 
-	}
+    }
 
-	@Override
-	public void handleServerSide(EntityPlayer player, BlockPos pos)
-	{
-		final World world = player.worldObj;
-		final TileEntity te = world.getTileEntity(pos);
+    @Override
+    public void handleServerSide(EntityPlayer player, BlockPos pos) {
+        final World world = player.worldObj;
+        final TileEntity te = world.getTileEntity(pos);
 
-		if (te instanceof TileEntityCellarDevice)
-		{
-			if (b == 0)
-			{
-				((TileEntityCellarDevice)te).clearTank(0);
-			}
-			else if (b == 1)
-			{
-				((TileEntityCellarDevice)te).clearTank(1);
-			}
-		}
-	}
+        if (te instanceof TileEntityCellarDevice) {
+            if (b == 0) {
+                ((TileEntityCellarDevice) te).clearTank(0);
+            } else if (b == 1) {
+                ((TileEntityCellarDevice) te).clearTank(1);
+            }
+        }
+    }
 }

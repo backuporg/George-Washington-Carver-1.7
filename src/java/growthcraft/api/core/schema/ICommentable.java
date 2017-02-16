@@ -23,8 +23,8 @@
  */
 package growthcraft.api.core.schema;
 
-public interface ICommentable
-{
-	void setComment(String com);
-	String getComment();
+public interface ICommentable {
+    String getComment();
+
+    void setComment(String com);
 }

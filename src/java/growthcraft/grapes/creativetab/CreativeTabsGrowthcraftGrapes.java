@@ -29,17 +29,14 @@ import net.minecraft.item.Item;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class CreativeTabsGrowthcraftGrapes extends CreativeTabs
-{
-	public CreativeTabsGrowthcraftGrapes(String name)
-	{
-		super(name);
-	}
+public class CreativeTabsGrowthcraftGrapes extends CreativeTabs {
+    public CreativeTabsGrowthcraftGrapes(String name) {
+        super(name);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public Item getTabIconItem()
-	{
-		return GrowthCraftGrapes.items.grapes.getItem();
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public Item getTabIconItem() {
+        return GrowthCraftGrapes.items.grapes.getItem();
+    }
 }

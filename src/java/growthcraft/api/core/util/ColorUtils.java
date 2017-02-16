@@ -23,16 +23,15 @@
  */
 package growthcraft.api.core.util;
 
-public class ColorUtils
-{
-	private ColorUtils() {}
+public class ColorUtils {
+    private ColorUtils() {
+    }
 
-	public static float[] rgb24FloatArray(float[] array, int rgb24)
-	{
-		assert array.length == 3;
-		array[0] = (float)(rgb24 >> 16 & 255) / 255.0F;
-		array[1] = (float)(rgb24 >> 8 & 255) / 255.0F;
-		array[2] = (float)(rgb24 & 255) / 255.0F;
-		return array;
-	}
+    public static float[] rgb24FloatArray(float[] array, int rgb24) {
+        assert array.length == 3;
+        array[0] = (float) (rgb24 >> 16 & 255) / 255.0F;
+        array[1] = (float) (rgb24 >> 8 & 255) / 255.0F;
+        array[2] = (float) (rgb24 & 255) / 255.0F;
+        return array;
+    }
 }

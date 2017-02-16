@@ -41,193 +41,165 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fml.common.eventhandler.Event;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
-public class BlockNetherSquashStem extends BlockBush implements ICropDataProvider, IGrowable, IPlantable
-{
-	@Override
-	public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {
-		return false;
-	}
+public class BlockNetherSquashStem extends BlockBush implements ICropDataProvider, IGrowable, IPlantable {
+    private final Block fruitBlock;
 
-	@Override
-	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
-		return false;
-	}
+    public BlockNetherSquashStem(Block block) {
+        super();
+        this.fruitBlock = block;
+        setTickRandomly(true);
+        setCreativeTab(null);
+        //setBlockTextureName("grcnetherloid:soulsquash_stem");
+    }
 
-	@Override
-	public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+    @Override
+    public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {
+        return false;
+    }
 
-	}
+    @Override
+    public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+        return false;
+    }
 
-	public static class StemStage
-	{
-		public static final int MATURE = 7;
+    @Override
+    public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
 
-		private StemStage() {}
-	}
+    }
 
-	private final Block fruitBlock;
+    //@SideOnly(Side.CLIENT)
+    //private IIcon stemConnectedIcon;
 
-	//@SideOnly(Side.CLIENT)
-	//private IIcon stemConnectedIcon;
+    @Override
+    public float getGrowthProgress(IBlockAccess world, BlockPos pos, int meta) {
+        return (float) meta / (float) StemStage.MATURE;
+    }
 
-	public BlockNetherSquashStem(Block block)
-	{
-		super();
-		this.fruitBlock = block;
-		setTickRandomly(true);
-		setCreativeTab(null);
-		//setBlockTextureName("grcnetherloid:soulsquash_stem");
-	}
+    protected boolean func_149854_a(Block block) {
+        return Blocks.SOUL_SAND == block;
+    }
 
-	@Override
-	public float getGrowthProgress(IBlockAccess world, BlockPos pos, int meta)
-	{
-		return (float)meta / (float)StemStage.MATURE;
-	}
+    @Override
+    public boolean canPlaceBlockAt(World world, BlockPos pos) {
+        return super.canPlaceBlockAt(world, x, y, z) && func_149854_a(world.getBlockState(x, y + 1, z));
+    }
 
-	protected boolean func_149854_a(Block block)
-	{
-		return Blocks.SOUL_SAND == block;
-	}
+    @Override
+    public boolean canBlockStay(World world, BlockPos pos) {
+        return func_149854_a(world.getBlockState(x, y + 1, z));
+    }
 
-	@Override
-	public boolean canPlaceBlockAt(World world, BlockPos pos)
-	{
-		return super.canPlaceBlockAt(world, x, y, z) && func_149854_a(world.getBlockState(x, y + 1, z));
-	}
+    public boolean hasGrownFruit(World world, BlockPos pos) {
+        return fruitBlock == world.getBlockState(x, y - 1, z);
+    }
 
-	@Override
-	public boolean canBlockStay(World world, BlockPos pos)
-	{
-		return func_149854_a(world.getBlockState(x, y + 1, z));
-	}
+    public boolean canGrowFruit(World world, BlockPos pos) {
+        return world.isAirBlock(x, y - 1, z);
+    }
 
-	public boolean hasGrownFruit(World world, BlockPos pos)
-	{
-		return fruitBlock == world.getBlockState(x, y - 1, z);
-	}
+    public void incrementGrowth(World world, BlockPos pos, int previousMeta) {
+        final int meta = MathHelper.clamp_int(previousMeta + MathHelper.getRandomIntegerInRange(world.rand, 2, 5), 0, StemStage.MATURE);
+        world.setBlockState(x, y, z, meta + 1, BlockFlags.SYNC);
+        AppleCore.announceGrowthTick(this, world, x, y, z, previousMeta);
+    }
 
-	public boolean canGrowFruit(World world, BlockPos pos)
-	{
-		return world.isAirBlock(x, y - 1, z);
-	}
+    private void growStem(World world, BlockPos pos, int meta) {
+        if (meta < StemStage.MATURE) {
+            incrementGrowth(world, pos, meta);
+        } else if (canGrowFruit(world, pos)) {
+            world.setBlockState(x, y - 1, z, fruitBlock, world.rand.nextInt(4), BlockFlags.SYNC);
+        }
+    }
 
-	public void incrementGrowth(World world, BlockPos pos, int previousMeta)
-	{
-		final int meta = MathHelper.clamp_int(previousMeta + MathHelper.getRandomIntegerInRange(world.rand, 2, 5), 0, StemStage.MATURE);
-		world.setBlockState(x, y, z, meta + 1, BlockFlags.SYNC);
-		AppleCore.announceGrowthTick(this, world, x, y, z, previousMeta);
-	}
+    @Override
+    public void updateTick(World world, BlockPos pos, Random random, Block block, IBlockState state) {
+        final Event.Result allowGrowthResult = AppleCore.validateGrowthTick(block, world, pos, random, state);
+        if (allowGrowthResult == Event.Result.DENY)
+            return;
 
-	private void growStem(World world, BlockPos pos, int meta)
-	{
-		if (meta < StemStage.MATURE)
-		{
-			incrementGrowth(world, pos, meta);
-		}
-		else if (canGrowFruit(world, pos))
-		{
-			world.setBlockState(x, y - 1, z, fruitBlock, world.rand.nextInt(4), BlockFlags.SYNC);
-		}
-	}
+        if (allowGrowthResult == Event.Result.ALLOW || random.nextInt(10) == 0) {
+            final int meta = world.getBlockState(meta);
+            growStem(world, pos, meta);
+        }
+    }
 
-	@Override
-	public void updateTick(World world, BlockPos pos, Random random, Block block, IBlockState state)
-	{
-		final Event.Result allowGrowthResult = AppleCore.validateGrowthTick(block, world, pos, random, state);
-		if (allowGrowthResult == Event.Result.DENY)
-			return;
+    /* Client Side: can bonemeal */
+    @Override
+    public boolean func_149851_a(World world, BlockPos pos, boolean isClient) {
+        return world.getBlockState(x, y, z) < StemStage.MATURE || canGrowFruit(world, pos);
+    }
 
-		if (allowGrowthResult == Event.Result.ALLOW || random.nextInt(10) == 0)
-		{
-			final int meta = world.getBlockState(meta);
-			growStem(world, pos, meta);
-		}
-	}
+    /* SideOnly(Side.SERVER) Can this apply bonemeal effect? */
+    @Override
+    public boolean func_149852_a(World world, Random random, BlockPos pos) {
+        return true;
+    }
 
-	/* Client Side: can bonemeal */
-	@Override
-	public boolean func_149851_a(World world, BlockPos pos, boolean isClient)
-	{
-		return world.getBlockState(x, y, z) < StemStage.MATURE || canGrowFruit(world, pos);
-	}
+    /* IGrowable: Apply bonemeal effect */
+    @Override
+    public void func_149853_b(World world, Random random, BlockPos pos) {
+        growStem(world, pos, world.getBlockState(pos));
+    }
 
-	/* SideOnly(Side.SERVER) Can this apply bonemeal effect? */
-	@Override
-	public boolean func_149852_a(World world, Random random, BlockPos pos)
-	{
-		return true;
-	}
+    @Override
+    public void dropBlockAsItemWithChance(World world, BlockPos pos, int meta, float f, int weight, IBlockState state, int fortune) {
+        super.dropBlockAsItemWithChance(world, pos, state, meta, fortune);
+        if (!world.isRemote) {
+            final ItemStack item = netherloid.items.netherSquashSeeds.asStack();
+            for (int i = 0; i < 3; ++i) {
+                if (world.rand.nextInt(15) <= meta) {
+                    //dropBlockAsItem_do(world, x, y, z, item);
+                }
+            }
+        }
+    }
 
-	/* IGrowable: Apply bonemeal effect */
-	@Override
-	public void func_149853_b(World world, Random random, BlockPos pos)
-	{
-		growStem(world, pos, world.getBlockState(pos));
-	}
+    @Override
+    public Item getItemDropped(int meta, Random random, int par3) {
+        return null;
+    }
 
-	@Override
-	public void dropBlockAsItemWithChance(World world, BlockPos pos, int meta, float f, int weight, IBlockState state, int fortune)
-	{
-		super.dropBlockAsItemWithChance(world, pos, state, meta, fortune);
-		if (!world.isRemote)
-		{
-			final ItemStack item = netherloid.items.netherSquashSeeds.asStack();
-			for (int i = 0; i < 3; ++i)
-			{
-				if (world.rand.nextInt(15) <= meta)
-				{
-					//dropBlockAsItem_do(world, x, y, z, item);
-				}
-			}
-		}
-	}
+    @Override
+    public int quantityDropped(Random random) {
+        return 1;
+    }
 
-	@Override
-	public Item getItemDropped(int meta, Random random, int par3)
-	{
-		return null;
-	}
+    @Override
+    public Item getItem(World world, BlockPos pos) {
+        return netherloid.items.netherSquashSeeds.getItem();
+    }
 
-	@Override
-	public int quantityDropped(Random random)
-	{
-		return 1;
-	}
+    @Override
+    public int getRenderType() {
+        return RenderType.BUSH;
+    }
 
-	@Override
-	public Item getItem(World world, BlockPos pos)
-	{
-		return netherloid.items.netherSquashSeeds.getItem();
-	}
+    public static class StemStage {
+        public static final int MATURE = 7;
 
-	@Override
-	public int getRenderType()
-	{
-		return RenderType.BUSH;
-	}
+        private StemStage() {
+        }
+    }
 
-	//@Override
-	//@SideOnly(Side.CLIENT)
+    //@Override
+    //@SideOnly(Side.CLIENT)
 
-	//{
-	//	this.blockIcon = reg.registerIcon(this.getTextureName() + "_disconnected");
-	//	this.stemConnectedIcon = reg.registerIcon(this.getTextureName() + "_connected");
-	//}
+    //{
+    //	this.blockIcon = reg.registerIcon(this.getTextureName() + "_disconnected");
+    //	this.stemConnectedIcon = reg.registerIcon(this.getTextureName() + "_connected");
+    //}
 
-	//@Override
-	//@SideOnly(Side.CLIENT)
-	//
-	//{
-	//	if ((meta & 8) != 0)
-	//	{
-	//		return stemConnectedIcon;
-	//	}
-	//	return blockIcon;
-	//}
+    //@Override
+    //@SideOnly(Side.CLIENT)
+    //
+    //{
+    //	if ((meta & 8) != 0)
+    //	{
+    //		return stemConnectedIcon;
+    //	}
+    //	return blockIcon;
+    //}
 }

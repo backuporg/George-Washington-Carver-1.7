@@ -23,7 +23,6 @@
  */
 package growthcraft.bees.common.tileentity.device;
 
-public class ComponentFlowerSpawning
-{
+public class ComponentFlowerSpawning {
 
 }

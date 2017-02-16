@@ -14,7 +14,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -26,316 +25,282 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProvider, IGrowable
-{
-	@Override
-	public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {
-		return false;
-	}
-
-	@Override
-	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
-		return false;
-	}
-
-	@Override
-	public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
-
-	}
-
-	public static class RiceStage
-	{
-		public static final int MATURE = 7;
-
-		private RiceStage() {}
-	}
-
-	@SideOnly(Side.CLIENT)
+public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProvider, IGrowable {
+    @SideOnly(Side.CLIENT)
 
 
-	private final float growth = GrowthCraftRice.getConfig().riceGrowthRate;
+    private final float growth = GrowthCraftRice.getConfig().riceGrowthRate;
 
-	public BlockRice()
-	{
-		super(Material.PLANTS);
-		this.setHardness(0.0F);
-		this.setTickRandomly(true);
-		this.setCreativeTab(null);
-		this.setUnlocalizedName("grc.riceBlock");
-		//setStepSound(soundTypeGrass);
-	}
+    /************
+     * BOXES
+     ************/
+    //@Override
+    //public void setBlockBoundsBasedOnState(IBlockAccess world, BlockPos pos)
+    //{
+    //	this.getBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 0.25F, 1.0F);
+    //}
 
-	public boolean isMature(IBlockAccess world, BlockPos pos)
-	{
-		final int meta = world.getBlockState(meta);
-		return meta >= RiceStage.MATURE;
-	}
+    //@Override
+    //public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, BlockPos pos)
+    {
+        return null;
+    }
 
-	public float getGrowthProgress(IBlockAccess world, BlockPos pos, int meta)
-	{
-		return (float)meta / (float)RiceStage.MATURE;
-	}
+    public BlockRice() {
+        super(Material.PLANTS);
+        this.setHardness(0.0F);
+        this.setTickRandomly(true);
+        this.setCreativeTab(null);
+        this.setUnlocalizedName("grc.riceBlock");
+        //setStepSound(soundTypeGrass);
+    }
 
-	private void incrementGrowth(World world, BlockPos pos, int meta, IBlockState state)
-	{
-		world.setBlockState(pos, state, BlockFlags.SYNC);
-		AppleCore.announceGrowthTick(this, world, pos, meta);
-	}
+    @Override
+    public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {
+        return false;
+    }
 
-	private void growRice(World world, BlockPos pos, IBlockState state, int meta)
-	{
-		incrementGrowth(world, pos, meta, state);
-		final Block paddyBlock = world.getBlockState(x, y - 1, z);
-		if (RiceBlockCheck.isPaddy(paddyBlock))
-		{
-			((BlockPaddy)paddyBlock).drainPaddy(world, x, y - 1, z);
-		}
-	}
+    @Override
+    public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+        return false;
+    }
 
-	/************
-	 * TICK
-	 ************/
-	@Override
-	public void updateTick(World world, BlockPos pos, Random random, IBlockState state)
-	{
-		this.checkCropChange(world, pos);
+    @Override
+    public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
 
-		if (world.getLight(x, y + 1, z) >= 9 && world.getBlockState(x, y - 1, z) > 0)
-		{
-			final Event.Result allowGrowthResult = AppleCore.validateGrowthTick(this, world, pos, random);
-			if (allowGrowthResult == Event.Result.DENY)
-				return;
+    }
 
-			final int meta = world.getBlockState(meta);
+    public boolean isMature(IBlockAccess world, BlockPos pos) {
+        final int meta = world.getBlockState(meta);
+        return meta >= RiceStage.MATURE;
+    }
 
-			if (meta < RiceStage.MATURE)
-			{
-				final float f = this.getGrowthRate(world, pos);
+    public float getGrowthProgress(IBlockAccess world, BlockPos pos, int meta) {
+        return (float) meta / (float) RiceStage.MATURE;
+    }
 
-				if (allowGrowthResult == Event.Result.ALLOW || (random.nextInt((int)(this.growth / f) + 1) == 0))
-				{
-					growRice(world, pos, state, meta);
-				}
-			}
-		}
-	}
+    private void incrementGrowth(World world, BlockPos pos, int meta, IBlockState state) {
+        world.setBlockState(pos, state, BlockFlags.SYNC);
+        AppleCore.announceGrowthTick(this, world, pos, meta);
+    }
 
-	private float getGrowthRate(World world, BlockPos pos)
-	{
-		float f = 1.0F;
-		final Block l = world.getBlockState(x, y, z - 1);
-		final Block i1 = world.getBlockState(x, y, z + 1);
-		final Block j1 = world.getBlockState(x - 1, y, z);
-		final Block k1 = world.getBlockState(x + 1, y, z);
-		final Block l1 = world.getBlockState(x - 1, y, z - 1);
-		final Block i2 = world.getBlockState(x + 1, y, z - 1);
-		final Block j2 = world.getBlockState(x + 1, y, z + 1);
-		final Block k2 = world.getBlockState(x - 1, y, z + 1);
-		final boolean flag = j1 == this || k1 == this;
-		final boolean flag1 = l == this || i1 == this;
-		final boolean flag2 = l1 == this || i2 == this || j2 == this || k2 == this;
+    private void growRice(World world, BlockPos pos, IBlockState state, int meta) {
+        incrementGrowth(world, pos, meta, state);
+        final Block paddyBlock = world.getBlockState(x, y - 1, z);
+        if (RiceBlockCheck.isPaddy(paddyBlock)) {
+            ((BlockPaddy) paddyBlock).drainPaddy(world, x, y - 1, z);
+        }
+    }
 
-		for (int loop_i = x - 1; loop_i <= x + 1; ++loop_i)
-		{
-			for (int loop_k = z - 1; loop_k <= z + 1; ++loop_k)
-			{
-				final Block soil = world.getBlockState(loop_i, y - 1, loop_k);
-				float f1 = 0.0F;
+    /************
+     * TICK
+     ************/
+    @Override
+    public void updateTick(World world, BlockPos pos, Random random, IBlockState state) {
+        this.checkCropChange(world, pos);
 
-				if (soil != null && RiceBlockCheck.isPaddy(soil))
-				{
-					f1 = 1.0F;
+        if (world.getLight(x, y + 1, z) >= 9 && world.getBlockState(x, y - 1, z) > 0) {
+            final Event.Result allowGrowthResult = AppleCore.validateGrowthTick(this, world, pos, random);
+            if (allowGrowthResult == Event.Result.DENY)
+                return;
 
-					if (world.getBlockState(loop_i, y - 1, loop_k) > 0)
-					{
-						f1 = 3.0F;
-					}
-				}
+            final int meta = world.getBlockState(meta);
 
-				if (loop_i != x || loop_k != z)
-				{
-					f1 /= 4.0F;
-				}
+            if (meta < RiceStage.MATURE) {
+                final float f = this.getGrowthRate(world, pos);
 
-				f += f1;
-			}
-		}
+                if (allowGrowthResult == Event.Result.ALLOW || (random.nextInt((int) (this.growth / f) + 1) == 0)) {
+                    growRice(world, pos, state, meta);
+                }
+            }
+        }
+    }
 
-		if (flag2 || flag && flag1)
-		{
-			f /= 2.0F;
-		}
+    private float getGrowthRate(World world, BlockPos pos) {
+        float f = 1.0F;
+        final Block l = world.getBlockState(x, y, z - 1);
+        final Block i1 = world.getBlockState(x, y, z + 1);
+        final Block j1 = world.getBlockState(x - 1, y, z);
+        final Block k1 = world.getBlockState(x + 1, y, z);
+        final Block l1 = world.getBlockState(x - 1, y, z - 1);
+        final Block i2 = world.getBlockState(x + 1, y, z - 1);
+        final Block j2 = world.getBlockState(x + 1, y, z + 1);
+        final Block k2 = world.getBlockState(x - 1, y, z + 1);
+        final boolean flag = j1 == this || k1 == this;
+        final boolean flag1 = l == this || i1 == this;
+        final boolean flag2 = l1 == this || i2 == this || j2 == this || k2 == this;
 
-		return f;
-	}
+        for (int loop_i = x - 1; loop_i <= x + 1; ++loop_i) {
+            for (int loop_k = z - 1; loop_k <= z + 1; ++loop_k) {
+                final Block soil = world.getBlockState(loop_i, y - 1, loop_k);
+                float f1 = 0.0F;
 
-	protected final void checkCropChange(World world, BlockPos pos)
-	{
-		if (!this.canBlockStay(world, pos))
-		{
-			this.dropBlockAsItem(world, pos, world.getBlockState(pos), 0);
-			world.setBlockToAir(pos);
-		}
-	}
+                if (soil != null && RiceBlockCheck.isPaddy(soil)) {
+                    f1 = 1.0F;
 
-	/************
-	 * TRIGGERS
-	 ************/
-	@Override
-	public void onNeighborChange(World world, BlockPos pos, Block par5)
-	{
-		this.checkCropChange(world, pos);
-	}
+                    if (world.getBlockState(loop_i, y - 1, loop_k) > 0) {
+                        f1 = 3.0F;
+                    }
+                }
 
-	/************
-	 * CONDITIONS
-	 ************/
+                if (loop_i != x || loop_k != z) {
+                    f1 /= 4.0F;
+                }
 
-	/**
-	 * @param block - block to place on
-	 * @return can the rice be placed on this block?
-	 */
-	protected boolean canThisPlantGrowOnThisBlockID(Block block)
-	{
-		return RiceBlockCheck.isPaddy(block);
-	}
+                f += f1;
+            }
+        }
 
-	@Override
-	public boolean canBlockStay(World world, BlockPos pos)
-	{
-		return (world.getLight(pos) >= 8 ||
-			world.canSeeSky(pos)) &&
-			this.canThisPlantGrowOnThisBlockID(world.getBlockState(x, y - 1, z));
-	}
+        if (flag2 || flag && flag1) {
+            f /= 2.0F;
+        }
 
-	/************
-	 * STUFF
-	 ************/
-	@Override
-	@SideOnly(Side.CLIENT)
-	public Item getItem(World world, BlockPos pos)
-	{
-		return GrowthCraftRice.items.rice.getItem();
-	}
+        return f;
+    }
 
-	/************
-	 * DROPS
-	 ************/
-	@Override
-	public Item getItemDropped(int meta, Random random, int par3)
-	{
-		return GrowthCraftRice.items.rice.getItem();
-	}
+    protected final void checkCropChange(World world, BlockPos pos) {
+        if (!this.canBlockStay(world, pos)) {
+            this.dropBlockAsItem(world, pos, world.getBlockState(pos), 0);
+            world.setBlockToAir(pos);
+        }
+    }
 
-	@Override
-	public int quantityDropped(Random par1Random)
-	{
-		return 1;
-	}
+    /************
+     * TRIGGERS
+     ************/
+    @Override
+    public void onNeighborChange(World world, BlockPos pos, Block par5) {
+        this.checkCropChange(world, pos);
+    }
 
-	@Override
-	public void dropBlockAsItemWithChance(World world, BlockPos pos, IBlockState state, int par5, float par6, int par7)
-	{
-		super.dropBlockAsItemWithChance(world, pos, state, par6, 0);
-	}
+    /************
+     * CONDITIONS
+     ************/
 
-	@Override
-	public ArrayList<ItemStack> getDrops(World world, BlockPos pos, IBlockState state, int metadata, int fortune)
-	{
-		final List<ItemStack> ret = super.getDrops(world, pos, state, fortune);
+    /**
+     * @param block - block to place on
+     * @return can the rice be placed on this block?
+     */
+    protected boolean canThisPlantGrowOnThisBlockID(Block block) {
+        return RiceBlockCheck.isPaddy(block);
+    }
 
-		if (metadata >= 7)
-		{
-			for (int n = 0; n < 3 + fortune; n++)
-			{
-				if (world.rand.nextInt(15) <= metadata)
-				{
-					ret.add(GrowthCraftRice.items.rice.asStack(1));
-				}
-			}
-		}
+    @Override
+    public boolean canBlockStay(World world, BlockPos pos) {
+        return (world.getLight(pos) >= 8 ||
+                world.canSeeSky(pos)) &&
+                this.canThisPlantGrowOnThisBlockID(world.getBlockState(x, y - 1, z));
+    }
 
-		return ret;
-	}
+    /************
+     * STUFF
+     ************/
+    @Override
+    @SideOnly(Side.CLIENT)
+    public Item getItem(World world, BlockPos pos) {
+        return GrowthCraftRice.items.rice.getItem();
+    }
 
-	/************
-	 * TEXTURE
-	 ************/
-	//@Override
-	//@SideOnly(Side.CLIENT)
+    /************
+     * DROPS
+     ************/
+    @Override
+    public Item getItemDropped(int meta, Random random, int par3) {
+        return GrowthCraftRice.items.rice.getItem();
+    }
 
-	//{
-	//	icons = new IIcon[5];
+    @Override
+    public int quantityDropped(Random par1Random) {
+        return 1;
+    }
+
+    @Override
+    public void dropBlockAsItemWithChance(World world, BlockPos pos, IBlockState state, int par5, float par6, int par7) {
+        super.dropBlockAsItemWithChance(world, pos, state, par6, 0);
+    }
+
+    @Override
+    public ArrayList<ItemStack> getDrops(World world, BlockPos pos, IBlockState state, int metadata, int fortune) {
+        final List<ItemStack> ret = super.getDrops(world, pos, state, fortune);
+
+        if (metadata >= 7) {
+            for (int n = 0; n < 3 + fortune; n++) {
+                if (world.rand.nextInt(15) <= metadata) {
+                    ret.add(GrowthCraftRice.items.rice.asStack(1));
+                }
+            }
+        }
+
+        return ret;
+    }
+
+    /************
+     * TEXTURE
+     ************/
+    //@Override
+    //@SideOnly(Side.CLIENT)
+
+    //{
+    //	icons = new IIcon[5];
 //
-	//	for (int i = 0; i < icons.length; ++i)
-	//	{
-	//		icons[i] = reg.registerIcon("grcrice:rice_" + i);
-	//	}
-	//}
+    //	for (int i = 0; i < icons.length; ++i)
+    //	{
+    //		icons[i] = reg.registerIcon("grcrice:rice_" + i);
+    //	}
+    //}
 
-	//@Override
-	//@SideOnly(Side.CLIENT)
+    //@Override
+    //@SideOnly(Side.CLIENT)
 //
-	//{
-	//	if (meta < 0 || meta > 7)
-	//	{
-	//		meta = 7;
-	//	}
+    //{
+    //	if (meta < 0 || meta > 7)
+    //	{
+    //		meta = 7;
+    //	}
 //
-	//	int i = 0;
-	//	switch (meta)
-	//	{
-	//		case 0: case 1: i = 0; break;
-	//		case 2: case 3: i = 1; break;
-	//		case 4: case 5: i = 2; break;
-	//		case 6: case 7: i = 3; break;
-	//		default: i = 2;
-	//	}
+    //	int i = 0;
+    //	switch (meta)
+    //	{
+    //		case 0: case 1: i = 0; break;
+    //		case 2: case 3: i = 1; break;
+    //		case 4: case 5: i = 2; break;
+    //		case 6: case 7: i = 3; break;
+    //		default: i = 2;
+    //	}
 ///
-	//	return icons[i];
-	//}
+    //	return icons[i];
+    //}
 
-	/************
-	 * RENDERS
-	 ************/
-	@Override
-	public int getRenderType()
-	{
-		return RenderRice.id;
-	}
+    /************
+     * RENDERS
+     ************/
+    @Override
+    public int getRenderType() {
+        return RenderRice.id;
+    }
 
-	@Override
-	public boolean isOpaqueCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isOpaqueCube() {
+        return false;
+    }
 
-	@Override
-	public boolean renderAsNormalBlock()
-	{
-		return false;
-	}
+    @Override
+    public boolean renderAsNormalBlock() {
+        return false;
+    }
 
-	/************
-	 * BOXES
-	 ************/
-	//@Override
-	//public void setBlockBoundsBasedOnState(IBlockAccess world, BlockPos pos)
-	//{
-	//	this.getBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 0.25F, 1.0F);
-	//}
+    public static class RiceStage {
+        public static final int MATURE = 7;
 
-	//@Override
-	//public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, BlockPos pos)
-	{
-		return null;
-	}
+        private RiceStage() {
+        }
+    }
 
-	//@Override
-	//@SideOnly(Side.CLIENT)
-	//public AxisAlignedBB getSelectedBoundingBoxFromPool(World world, BlockPos pos)
-	//{
-	//	this.setBlockBoundsBasedOnState(world, pos);
-	//	return super.getSelectedBoundingBoxFromPool(world, pos);
-	//}
+    //@Override
+    //@SideOnly(Side.CLIENT)
+    //public AxisAlignedBB getSelectedBoundingBoxFromPool(World world, BlockPos pos)
+    //{
+    //	this.setBlockBoundsBasedOnState(world, pos);
+    //	return super.getSelectedBoundingBoxFromPool(world, pos);
+    //}
 }

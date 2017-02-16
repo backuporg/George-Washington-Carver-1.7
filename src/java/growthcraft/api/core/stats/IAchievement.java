@@ -25,8 +25,8 @@ package growthcraft.api.core.stats;
 
 import net.minecraft.entity.player.EntityPlayer;
 
-public interface IAchievement
-{
-	void unlock(EntityPlayer player);
-	void addStat(EntityPlayer player, int n);
+public interface IAchievement {
+    void unlock(EntityPlayer player);
+
+    void addStat(EntityPlayer player, int n);
 }

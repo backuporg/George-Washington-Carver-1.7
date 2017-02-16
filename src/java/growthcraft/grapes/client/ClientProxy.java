@@ -29,14 +29,12 @@ import growthcraft.grapes.client.renderer.RenderGrapeVine1;
 import growthcraft.grapes.common.CommonProxy;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
-public class ClientProxy extends CommonProxy
-{
-	@Override
-	public void init()
-	{
-		super.init();
-		RenderingRegistry.registerBlockHandler(new RenderGrape());
-		RenderingRegistry.registerBlockHandler(new RenderGrapeLeaves());
-		RenderingRegistry.registerBlockHandler(new RenderGrapeVine1());
-	}
+public class ClientProxy extends CommonProxy {
+    @Override
+    public void init() {
+        super.init();
+        RenderingRegistry.registerBlockHandler(new RenderGrape());
+        RenderingRegistry.registerBlockHandler(new RenderGrapeLeaves());
+        RenderingRegistry.registerBlockHandler(new RenderGrapeVine1());
+    }
 }

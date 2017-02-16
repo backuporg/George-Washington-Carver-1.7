@@ -23,45 +23,39 @@
  */
 package growthcraft.bees.common.block;
 
+import growthcraft.core.integration.highlands.EnumHIGHLANDSWoodType;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import growthcraft.core.integration.highlands.*;
 
 import java.util.List;
 
 
-public class BlockBeeBoxHighlands extends BlockBeeBox
-{
-	public BlockBeeBoxHighlands()
-	{
-		super();
-		setHardness(2f);
-		setUnlocalizedName("grc.beeBox.Highlands");
-	}
+public class BlockBeeBoxHighlands extends BlockBeeBox {
+    public BlockBeeBoxHighlands() {
+        super();
+        setHardness(2f);
+        setUnlocalizedName("grc.beeBox.Highlands");
+    }
 
-	@Override
-	public String getMetaname(int meta)
-	{
-		if (meta >= 0 && meta < EnumHIGHLANDSWoodType.VALUES.length)
-		{
-			return EnumHIGHLANDSWoodType.VALUES[meta].name;
-		}
-		return super.getMetaname(meta);
-	}
+    @Override
+    public String getMetaname(int meta) {
+        if (meta >= 0 && meta < EnumHIGHLANDSWoodType.VALUES.length) {
+            return EnumHIGHLANDSWoodType.VALUES[meta].name;
+        }
+        return super.getMetaname(meta);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void getSubBlocks(Item block, CreativeTabs tab, List list)
-	{
-		for (int i = 0; i < EnumHIGHLANDSWoodType.VALUES.length; ++i)
-		{
-			list.add(new ItemStack(block, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    public void getSubBlocks(Item block, CreativeTabs tab, List list) {
+        for (int i = 0; i < EnumHIGHLANDSWoodType.VALUES.length; ++i) {
+            list.add(new ItemStack(block, 1, i));
+        }
+    }
 
 //	@Override
 //	@SideOnly(Side.CLIENT)

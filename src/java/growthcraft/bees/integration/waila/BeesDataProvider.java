@@ -16,55 +16,47 @@ import net.minecraftforge.fml.common.Optional;
 
 import java.util.List;
 
-public class BeesDataProvider implements IWailaDataProvider
-{
-	@Override
-	@Optional.Method(modid="Waila")
-	public ItemStack getWailaStack(IWailaDataAccessor accessor, IWailaConfigHandler config)
-	{
-		return accessor.getStack();
-	}
+public class BeesDataProvider implements IWailaDataProvider {
+    @Override
+    @Optional.Method(modid = "Waila")
+    public ItemStack getWailaStack(IWailaDataAccessor accessor, IWailaConfigHandler config) {
+        return accessor.getStack();
+    }
 
-	@Override
-	@Optional.Method(modid="Waila")
-	public List<String> getWailaHead(ItemStack itemStack, List<String> tooltip, IWailaDataAccessor accessor, IWailaConfigHandler config)
-	{
-		return tooltip;
-	}
+    @Override
+    @Optional.Method(modid = "Waila")
+    public List<String> getWailaHead(ItemStack itemStack, List<String> tooltip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+        return tooltip;
+    }
 
-	@Override
-	@Optional.Method(modid="Waila")
-	public List<String> getWailaBody(ItemStack itemStack, List<String> tooltip, IWailaDataAccessor accessor, IWailaConfigHandler config)
-	{
-		if (accessor.getTileEntity() instanceof TileEntityBeeBox)
-		{
-			final NBTTagCompound tag = accessor.getNBTData();
-			tooltip = TagFormatterBeeBox.INSTANCE.format(tooltip, tag);
-		}
-		return tooltip;
-	}
+    @Override
+    @Optional.Method(modid = "Waila")
+    public List<String> getWailaBody(ItemStack itemStack, List<String> tooltip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+        if (accessor.getTileEntity() instanceof TileEntityBeeBox) {
+            final NBTTagCompound tag = accessor.getNBTData();
+            tooltip = TagFormatterBeeBox.INSTANCE.format(tooltip, tag);
+        }
+        return tooltip;
+    }
 
-	@Override
-	@Optional.Method(modid="Waila")
-	public List<String> getWailaTail(ItemStack itemStack, List<String> tooltip, IWailaDataAccessor accessor, IWailaConfigHandler config)
-	{
-		return tooltip;
-	}
+    @Override
+    @Optional.Method(modid = "Waila")
+    public List<String> getWailaTail(ItemStack itemStack, List<String> tooltip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+        return tooltip;
+    }
 
-	@Override
-	@Optional.Method(modid="Waila")
-	public NBTTagCompound getNBTData(EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, BlockPos pos)
-	{
-		if (te instanceof TileEntityBeeBox)
-		{
-			final TileEntityBeeBox beeBox = (TileEntityBeeBox)te;
-			tag.setBoolean("has_bonus", beeBox.hasBonus());
-			tag.setInteger("honeycomb_count", beeBox.countCombs());
-			tag.setInteger("honeycomb_max", beeBox.getHoneyCombMax());
-			tag.setInteger("honey_count", beeBox.countHoney());
-			tag.setFloat("growth_rate", beeBox.getGrowthRate());
-			tag.setTag("bee", NBTHelper.writeItemStackToNBT(beeBox.getBeeStack()));
-		}
-		return tag;
-	}
+    @Override
+    @Optional.Method(modid = "Waila")
+    public NBTTagCompound getNBTData(EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, BlockPos pos) {
+        if (te instanceof TileEntityBeeBox) {
+            final TileEntityBeeBox beeBox = (TileEntityBeeBox) te;
+            tag.setBoolean("has_bonus", beeBox.hasBonus());
+            tag.setInteger("honeycomb_count", beeBox.countCombs());
+            tag.setInteger("honeycomb_max", beeBox.getHoneyCombMax());
+            tag.setInteger("honey_count", beeBox.countHoney());
+            tag.setFloat("growth_rate", beeBox.getGrowthRate());
+            tag.setTag("bee", NBTHelper.writeItemStackToNBT(beeBox.getBeeStack()));
+        }
+        return tag;
+    }
 }

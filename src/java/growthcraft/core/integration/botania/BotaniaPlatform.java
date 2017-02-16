@@ -25,14 +25,13 @@ package growthcraft.core.integration.botania;
 
 import net.minecraftforge.fml.common.Loader;
 
-public class BotaniaPlatform
-{
-	public static final String MOD_ID = "Botania";
+public class BotaniaPlatform {
+    public static final String MOD_ID = "Botania";
 
-	private BotaniaPlatform() {};
+    private BotaniaPlatform() {
+    }
 
-	public static boolean isLoaded()
-	{
-		return Loader.isModLoaded(MOD_ID);
-	}
+    public static boolean isLoaded() {
+        return Loader.isModLoaded(MOD_ID);
+    }
 }

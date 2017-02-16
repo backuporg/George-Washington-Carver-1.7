@@ -32,35 +32,28 @@ import growthcraft.core.integration.ModIntegrationBase;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class EBXLModule extends ModIntegrationBase
-{
-	public EBXLModule()
-	{
-		super(GrowthCraftBees.MOD_ID, EBXLPlatform.MOD_ID);
-	}
+public class EBXLModule extends ModIntegrationBase {
+    public EBXLModule() {
+        super(GrowthCraftBees.MOD_ID, EBXLPlatform.MOD_ID);
+    }
 
-	@Override
-	public void doPreInit()
-	{
-		GrowthCraftBees.blocks.beeBoxExtraBiomesXL = GrowthCraftBees.blocks.newTypedDefinition(new BlockBeeBoxExtraBiomesXL());
-	}
+    @Override
+    public void doPreInit() {
+        GrowthCraftBees.blocks.beeBoxExtraBiomesXL = GrowthCraftBees.blocks.newTypedDefinition(new BlockBeeBoxExtraBiomesXL());
+    }
 
-	@Override
-	public void doRegister()
-	{
-		GrowthCraftBees.blocks.beeBoxExtraBiomesXL.register("grc.BeeBox.ExtraBiomesXL", ItemBlockBeeBox.class);
-	}
+    @Override
+    public void doRegister() {
+        GrowthCraftBees.blocks.beeBoxExtraBiomesXL.register("grc.BeeBox.ExtraBiomesXL", ItemBlockBeeBox.class);
+    }
 
-	@Override
-	protected void doLateRegister()
-	{
-		for (EnumEBXLWoodType type : EnumEBXLWoodType.VALUES)
-		{
-			final ItemStack planks = type.asPlanksItemStack();
-			if (planks != null)
-			{
-				GameRegistry.addShapedRecipe(GrowthCraftBees.blocks.beeBoxExtraBiomesXL.asStack(1, type.meta), " A ", "A A", "AAA", 'A', planks);
-			}
-		}
-	}
+    @Override
+    protected void doLateRegister() {
+        for (EnumEBXLWoodType type : EnumEBXLWoodType.VALUES) {
+            final ItemStack planks = type.asPlanksItemStack();
+            if (planks != null) {
+                GameRegistry.addShapedRecipe(GrowthCraftBees.blocks.beeBoxExtraBiomesXL.asStack(1, type.meta), " A ", "A A", "AAA", 'A', planks);
+            }
+        }
+    }
 }

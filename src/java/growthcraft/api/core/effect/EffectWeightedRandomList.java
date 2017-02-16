@@ -41,258 +41,224 @@ import java.util.Random;
  * A variation of the EffectRandomList, this version uses weights instead
  * linear distribution.
  */
-public class EffectWeightedRandomList extends AbstractEffect
-{
-	public static class WeightedEffect extends WeightedRandom.Item implements IEffect
-	{
-		private IEffect effect;
+public class EffectWeightedRandomList extends AbstractEffect {
+    private List<WeightedEffect> effects = new ArrayList<WeightedEffect>();
 
-		public WeightedEffect(int weight, @Nonnull IEffect eff)
-		{
-			super(weight);
-			this.effect = eff;
-		}
+    /**
+     * Adds a new WeightedEffect
+     *
+     * @param weight - effect weight
+     * @param effect - the effect
+     * @return this
+     */
+    public EffectWeightedRandomList add(int weight, @Nonnull IEffect effect) {
+        effects.add(new WeightedEffect(weight, effect));
+        return this;
+    }
 
-		public WeightedEffect()
-		{
-			super(1);
-		}
+    /**
+     * Returns the weighted effect at the given index
+     *
+     * @param index - item index
+     * @return weighted effect
+     */
+    public WeightedEffect getWeightedEffect(int index) {
+        return effects.get(index);
+    }
 
-		/**
-		 * Returns the underlying effect
-		 *
-		 * @return effect
-		 */
-		public IEffect getEffect()
-		{
-			return effect;
-		}
+    /**
+     * Returns the weight of the item at the given index, returns 0 if
+     * no item was found
+     *
+     * @param index - item index
+     * @return item weight
+     */
+    public int getItemWeight(int index) {
+        final WeightedEffect effect = getWeightedEffect(index);
+        if (effect != null) return effect.itemWeight;
+        return 0;
+    }
 
-		@Override
-		public void apply(World world, Entity entity, Random random, Object data)
-		{
-			effect.apply(world, entity, random, data);
-		}
+    /**
+     * Returns the underlying effect at the given index
+     *
+     * @param index - item index
+     * @return effect
+     */
+    public IEffect getItemEffect(int index) {
+        final WeightedEffect effect = getWeightedEffect(index);
+        if (effect != null) return effect.getEffect();
+        return null;
+    }
 
-		@Override
-		public void getDescription(List<String> list)
-		{
-			effect.getDescription(list);
-		}
+    /**
+     * Merges another weighted effect list into the target list
+     *
+     * @param other - weighted effect list
+     * @return this
+     */
+    public EffectWeightedRandomList concat(@Nonnull EffectWeightedRandomList other) {
+        effects.addAll(other.effects);
+        return this;
+    }
 
-		protected void readFromNBT(NBTTagCompound data)
-		{
-			this.itemWeight = data.getInteger("item_weight");
-			if (data.hasKey("effect"))
-			{
-				this.effect = CoreRegistry.instance().getEffectsRegistry().loadEffectFromNBT(data, "effect");
-			}
-		}
+    /**
+     * Merges a WeightedEffect list into the current weighted list
+     *
+     * @param other - weighted effect list
+     * @return this
+     */
+    public EffectWeightedRandomList concat(@Nonnull List<WeightedEffect> other) {
+        effects.addAll(other);
+        return this;
+    }
 
-		@Override
-		public void readFromNBT(NBTTagCompound data, String name)
-		{
-			if (data.hasKey(name))
-			{
-				final NBTTagCompound effectData = data.getCompoundTag(name);
-				readFromNBT(effectData);
-			}
-			else
-			{
-				// LOG error
-			}
-		}
+    /**
+     * Performs a shallow copy of the EffectList
+     *
+     * @return new effect list
+     */
+    public EffectWeightedRandomList copy() {
+        return new EffectWeightedRandomList().concat(effects);
+    }
 
-		protected void writeToNBT(NBTTagCompound data)
-		{
-			data.setInteger("item_weight", itemWeight);
-			if (effect != null)
-			{
-				effect.writeToNBT(data, "effect");
-			}
-		}
+    /**
+     * Returns one of the weighted items
+     *
+     * @param random - rng
+     * @return a weighted effect
+     */
+    public WeightedEffect getRandomItem(@Nonnull Random random) {
+        return WeightedRandom.getRandomItem(random, effects);
+    }
 
-		@Override
-		public void writeToNBT(NBTTagCompound data, String name)
-		{
-			final NBTTagCompound target = new NBTTagCompound();
-			final String effectName = CoreRegistry.instance().getEffectsRegistry().getName(this.getClass());
-			// This is a VERY important field, this is how the effects will reload their correct class.
-			target.setString("__name__", effectName);
-			writeToNBT(target);
+    /**
+     * Returns the size of the list
+     *
+     * @return size
+     */
+    public int size() {
+        return effects.size();
+    }
 
-			data.setTag(name, target);
-		}
-	}
+    /**
+     * Applies all of the internal effects to the targets
+     *
+     * @param world  - world that the entity is currently present ing
+     * @param entity - entity to apply the effect to
+     * @param data   - any extra data you want to pass along
+     */
+    @Override
+    public void apply(World world, Entity entity, Random random, Object data) {
+        final IEffect effect = getRandomItem(random);
+        if (effect != null) effect.apply(world, entity, random, data);
+    }
 
-	private List<WeightedEffect> effects = new ArrayList<WeightedEffect>();
+    /**
+     * Adds the description of all the internal effects
+     *
+     * @param list - list to add description lines to
+     */
+    @Override
+    protected void getActualDescription(List<String> list) {
+        final int totalWeight = WeightedRandom.getTotalWeight(effects);
+        final List<String> tempList = new ArrayList<String>();
+        for (WeightedEffect effect : effects) {
+            tempList.clear();
+            effect.getDescription(tempList);
+            if (tempList.size() > 0) {
+                final float chance = totalWeight > 0 ? (float) effect.itemWeight / (float) totalWeight : 0f;
+                final String head = GrcI18n.translate("grc.effect.weighted_random_list.format", (int) (chance * 100f));
+                Describer.compactDescription(head, list, tempList);
+            }
+        }
+    }
 
-	/**
-	 * Adds a new WeightedEffect
-	 *
-	 * @param weight - effect weight
-	 * @param effect - the effect
-	 * @return this
-	 */
-	public EffectWeightedRandomList add(int weight, @Nonnull IEffect effect)
-	{
-		effects.add(new WeightedEffect(weight, effect));
-		return this;
-	}
+    @Override
+    protected void readFromNBT(NBTTagCompound data) {
+        effects.clear();
+        final List<IEffect> list = new ArrayList<IEffect>();
+        NBTHelper.loadEffectsList(list, data);
+        for (IEffect effect : list) {
+            if (effect instanceof WeightedEffect) {
+                effects.add((WeightedEffect) effect);
+            }
+        }
+    }
 
-	/**
-	 * Returns the weighted effect at the given index
-	 *
-	 * @param index - item index
-	 * @return weighted effect
-	 */
-	public WeightedEffect getWeightedEffect(int index)
-	{
-		return effects.get(index);
-	}
+    @Override
+    protected void writeToNBT(NBTTagCompound data) {
+        final List<IEffect> list = new ArrayList<IEffect>();
+        for (IEffect effect : effects) {
+            list.add(effect);
+        }
+        NBTHelper.writeEffectsList(data, list);
+    }
 
-	/**
-	 * Returns the weight of the item at the given index, returns 0 if
-	 * no item was found
-	 *
-	 * @param index - item index
-	 * @return item weight
-	 */
-	public int getItemWeight(int index)
-	{
-		final WeightedEffect effect = getWeightedEffect(index);
-		if (effect != null) return effect.itemWeight;
-		return 0;
-	}
+    public static class WeightedEffect extends WeightedRandom.Item implements IEffect {
+        private IEffect effect;
 
-	/**
-	 * Returns the underlying effect at the given index
-	 *
-	 * @param index - item index
-	 * @return effect
-	 */
-	public IEffect getItemEffect(int index)
-	{
-		final WeightedEffect effect = getWeightedEffect(index);
-		if (effect != null) return effect.getEffect();
-		return null;
-	}
+        public WeightedEffect(int weight, @Nonnull IEffect eff) {
+            super(weight);
+            this.effect = eff;
+        }
 
-	/**
-	 * Merges another weighted effect list into the target list
-	 *
-	 * @param other - weighted effect list
-	 * @return this
-	 */
-	public EffectWeightedRandomList concat(@Nonnull EffectWeightedRandomList other)
-	{
-		effects.addAll(other.effects);
-		return this;
-	}
+        public WeightedEffect() {
+            super(1);
+        }
 
-	/**
-	 * Merges a WeightedEffect list into the current weighted list
-	 *
-	 * @param other - weighted effect list
-	 * @return this
-	 */
-	public EffectWeightedRandomList concat(@Nonnull List<WeightedEffect> other)
-	{
-		effects.addAll(other);
-		return this;
-	}
+        /**
+         * Returns the underlying effect
+         *
+         * @return effect
+         */
+        public IEffect getEffect() {
+            return effect;
+        }
 
-	/**
-	 * Performs a shallow copy of the EffectList
-	 *
-	 * @return new effect list
-	 */
-	public EffectWeightedRandomList copy()
-	{
-		return new EffectWeightedRandomList().concat(effects);
-	}
+        @Override
+        public void apply(World world, Entity entity, Random random, Object data) {
+            effect.apply(world, entity, random, data);
+        }
 
-	/**
-	 * Returns one of the weighted items
-	 *
-	 * @param random - rng
-	 * @return a weighted effect
-	 */
-	public WeightedEffect getRandomItem(@Nonnull Random random)
-	{
-		return (WeightedEffect)WeightedRandom.getRandomItem(random, effects);
-	}
+        @Override
+        public void getDescription(List<String> list) {
+            effect.getDescription(list);
+        }
 
-	/**
-	 * Returns the size of the list
-	 *
-	 * @return size
-	 */
-	public int size()
-	{
-		return effects.size();
-	}
+        protected void readFromNBT(NBTTagCompound data) {
+            this.itemWeight = data.getInteger("item_weight");
+            if (data.hasKey("effect")) {
+                this.effect = CoreRegistry.instance().getEffectsRegistry().loadEffectFromNBT(data, "effect");
+            }
+        }
 
-	/**
-	 * Applies all of the internal effects to the targets
-	 *
-	 * @param world - world that the entity is currently present ing
-	 * @param entity - entity to apply the effect to
-	 * @param data - any extra data you want to pass along
-	 */
-	@Override
-	public void apply(World world, Entity entity, Random random, Object data)
-	{
-		final IEffect effect = getRandomItem(random);
-		if (effect != null) effect.apply(world, entity, random, data);
-	}
+        @Override
+        public void readFromNBT(NBTTagCompound data, String name) {
+            if (data.hasKey(name)) {
+                final NBTTagCompound effectData = data.getCompoundTag(name);
+                readFromNBT(effectData);
+            } else {
+                // LOG error
+            }
+        }
 
-	/**
-	 * Adds the description of all the internal effects
-	 *
-	 * @param list - list to add description lines to
-	 */
-	@Override
-	protected void getActualDescription(List<String> list)
-	{
-		final int totalWeight = WeightedRandom.getTotalWeight(effects);
-		final List<String> tempList = new ArrayList<String>();
-		for (WeightedEffect effect : effects)
-		{
-			tempList.clear();
-			effect.getDescription(tempList);
-			if (tempList.size() > 0)
-			{
-				final float chance = totalWeight > 0 ? (float)effect.itemWeight / (float)totalWeight : 0f;
-				final String head = GrcI18n.translate("grc.effect.weighted_random_list.format", (int)(chance * 100f));
-				Describer.compactDescription(head, list, tempList);
-			}
-		}
-	}
+        protected void writeToNBT(NBTTagCompound data) {
+            data.setInteger("item_weight", itemWeight);
+            if (effect != null) {
+                effect.writeToNBT(data, "effect");
+            }
+        }
 
-	@Override
-	protected void readFromNBT(NBTTagCompound data)
-	{
-		effects.clear();
-		final List<IEffect> list = new ArrayList<IEffect>();
-		NBTHelper.loadEffectsList(list, data);
-		for (IEffect effect : list)
-		{
-			if (effect instanceof WeightedEffect)
-			{
-				effects.add((WeightedEffect)effect);
-			}
-		}
-	}
+        @Override
+        public void writeToNBT(NBTTagCompound data, String name) {
+            final NBTTagCompound target = new NBTTagCompound();
+            final String effectName = CoreRegistry.instance().getEffectsRegistry().getName(this.getClass());
+            // This is a VERY important field, this is how the effects will reload their correct class.
+            target.setString("__name__", effectName);
+            writeToNBT(target);
 
-	@Override
-	protected void writeToNBT(NBTTagCompound data)
-	{
-		final List<IEffect> list = new ArrayList<IEffect>();
-		for (IEffect effect : effects)
-		{
-			list.add(effect);
-		}
-		NBTHelper.writeEffectsList(data, list);
-	}
+            data.setTag(name, target);
+        }
+    }
 }

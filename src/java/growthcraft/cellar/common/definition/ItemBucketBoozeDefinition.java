@@ -28,10 +28,8 @@ import growthcraft.core.common.definition.ItemTypeDefinition;
 
 import javax.annotation.Nonnull;
 
-public class ItemBucketBoozeDefinition extends ItemTypeDefinition<ItemBucketBooze>
-{
-	public ItemBucketBoozeDefinition(@Nonnull ItemBucketBooze bucket)
-	{
-		super(bucket);
-	}
+public class ItemBucketBoozeDefinition extends ItemTypeDefinition<ItemBucketBooze> {
+    public ItemBucketBoozeDefinition(@Nonnull ItemBucketBooze bucket) {
+        super(bucket);
+    }
 }

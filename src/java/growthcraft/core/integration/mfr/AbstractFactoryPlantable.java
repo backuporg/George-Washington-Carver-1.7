@@ -30,50 +30,42 @@ import net.minecraft.world.World;
 import powercrystals.minefactoryreloaded.api.IFactoryPlantable;
 import powercrystals.minefactoryreloaded.api.ReplacementBlock;
 
-public abstract class AbstractFactoryPlantable<T extends Block> implements IFactoryPlantable
-{
-	protected final Item plantSeed;
-	protected final T plantBlock;
-	protected ReplacementBlock replacementBlock;
+public abstract class AbstractFactoryPlantable<T extends Block> implements IFactoryPlantable {
+    protected final Item plantSeed;
+    protected final T plantBlock;
+    protected ReplacementBlock replacementBlock;
 
-	public AbstractFactoryPlantable(Item pSeed, T pBlock)
-	{
-		this.plantSeed = pSeed;
-		this.plantBlock = pBlock;
-		this.replacementBlock = new ReplacementBlock(plantBlock);
-	}
+    public AbstractFactoryPlantable(Item pSeed, T pBlock) {
+        this.plantSeed = pSeed;
+        this.plantBlock = pBlock;
+        this.replacementBlock = new ReplacementBlock(plantBlock);
+    }
 
-	@Override
-	public Item getSeed()
-	{
-		return plantSeed;
-	}
+    @Override
+    public Item getSeed() {
+        return plantSeed;
+    }
 
-	@Override
-	public boolean canBePlanted(ItemStack stack, boolean forFermenting)
-	{
-		return true;
-	}
+    @Override
+    public boolean canBePlanted(ItemStack stack, boolean forFermenting) {
+        return true;
+    }
 
-	@Override
-	public ReplacementBlock getPlantedBlock(World world, BlockPos pos, ItemStack stack)
-	{
-		return replacementBlock;
-	}
+    @Override
+    public ReplacementBlock getPlantedBlock(World world, BlockPos pos, ItemStack stack) {
+        return replacementBlock;
+    }
 
-	@Override
-	public boolean canBePlantedHere(World world, BlockPos pos, ItemStack stack)
-	{
-		return plantBlock.canPlaceBlockAt(world, x, y, z);
-	}
+    @Override
+    public boolean canBePlantedHere(World world, BlockPos pos, ItemStack stack) {
+        return plantBlock.canPlaceBlockAt(world, x, y, z);
+    }
 
-	@Override
-	public void prePlant(World world, BlockPos pos, ItemStack stack)
-	{
-	}
+    @Override
+    public void prePlant(World world, BlockPos pos, ItemStack stack) {
+    }
 
-	@Override
-	public void postPlant(World world, BlockPos pos, ItemStack stack)
-	{
-	}
+    @Override
+    public void postPlant(World world, BlockPos pos, ItemStack stack) {
+    }
 }

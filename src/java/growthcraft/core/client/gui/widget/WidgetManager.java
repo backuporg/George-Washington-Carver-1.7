@@ -30,36 +30,29 @@ import net.minecraft.tileentity.TileEntity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WidgetManager<C extends Container, T extends TileEntity>
-{
-	public final GrcGuiContainer<C, T> gui;
-	protected List<Widget> widgets = new ArrayList<Widget>();
+public class WidgetManager<C extends Container, T extends TileEntity> {
+    public final GrcGuiContainer<C, T> gui;
+    protected List<Widget> widgets = new ArrayList<Widget>();
 
-	public WidgetManager(GrcGuiContainer<C, T> g)
-	{
-		this.gui = g;
-	}
+    public WidgetManager(GrcGuiContainer<C, T> g) {
+        this.gui = g;
+    }
 
-	@SuppressWarnings({"rawtypes"})
-	public WidgetManager add(Widget widget)
-	{
-		widgets.add(widget);
-		return this;
-	}
+    @SuppressWarnings({"rawtypes"})
+    public WidgetManager add(Widget widget) {
+        widgets.add(widget);
+        return this;
+    }
 
-	public void draw(int mx, int my)
-	{
-		for (Widget widget : widgets)
-		{
-			widget.draw(mx, my);
-		}
-	}
+    public void draw(int mx, int my) {
+        for (Widget widget : widgets) {
+            widget.draw(mx, my);
+        }
+    }
 
-	public void drawForeground(int mx, int my)
-	{
-		for (Widget widget : widgets)
-		{
-			widget.drawForeground(mx, my);
-		}
-	}
+    public void drawForeground(int mx, int my) {
+        for (Widget widget : widgets) {
+            widget.drawForeground(mx, my);
+        }
+    }
 }

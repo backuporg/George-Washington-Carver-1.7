@@ -27,31 +27,28 @@ import growthcraft.bamboo.common.item.*;
 import growthcraft.core.common.GrcModuleItems;
 import growthcraft.core.common.definition.ItemDefinition;
 
-public class GrcBambooItems extends GrcModuleItems
-{
-	public ItemDefinition bamboo;
-	public ItemDefinition bambooDoorItem;
-	public ItemDefinition bambooRaft;
-	public ItemDefinition bambooCoal;
-	public ItemDefinition bambooShootFood;
+public class GrcBambooItems extends GrcModuleItems {
+    public ItemDefinition bamboo;
+    public ItemDefinition bambooDoorItem;
+    public ItemDefinition bambooRaft;
+    public ItemDefinition bambooCoal;
+    public ItemDefinition bambooShootFood;
 
-	@Override
-	public void preInit()
-	{
-		this.bamboo = newDefinition(new ItemBamboo());
-		this.bambooDoorItem = newDefinition(new ItemBambooDoor());
-		this.bambooRaft = newDefinition(new ItemBambooRaft());
-		this.bambooCoal = newDefinition(new ItemBambooCoal());
-		this.bambooShootFood = newDefinition(new ItemBambooShoot());
-	}
+    @Override
+    public void preInit() {
+        this.bamboo = newDefinition(new ItemBamboo());
+        this.bambooDoorItem = newDefinition(new ItemBambooDoor());
+        this.bambooRaft = newDefinition(new ItemBambooRaft());
+        this.bambooCoal = newDefinition(new ItemBambooCoal());
+        this.bambooShootFood = newDefinition(new ItemBambooShoot());
+    }
 
-	@Override
-	public void register()
-	{
-		bamboo.register("grc.bamboo");
-		bambooDoorItem.register("grc.bambooDoorItem");
-		bambooRaft.register("grc.bambooRaft");
-		bambooCoal.register("grc.bambooCoal");
-		bambooShootFood.register("grc.bambooShootFood");
-	}
+    @Override
+    public void register() {
+        bamboo.register("grc.bamboo");
+        bambooDoorItem.register("grc.bambooDoorItem");
+        bambooRaft.register("grc.bambooRaft");
+        bambooCoal.register("grc.bambooCoal");
+        bambooShootFood.register("grc.bambooShootFood");
+    }
 }

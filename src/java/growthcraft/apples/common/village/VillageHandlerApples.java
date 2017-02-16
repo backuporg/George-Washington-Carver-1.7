@@ -15,39 +15,34 @@ import net.minecraftforge.fml.common.registry.VillagerRegistry.IVillageTradeHand
 import java.util.List;
 import java.util.Random;
 
-public abstract class VillageHandlerApples implements IVillageTradeHandler, IVillageCreationHandler
-{
-	private boolean generateAppleFarms = GrowthCraftApples.getConfig().generateAppleFarms;
+public abstract class VillageHandlerApples implements IVillageTradeHandler, IVillageCreationHandler {
+    private boolean generateAppleFarms = GrowthCraftApples.getConfig().generateAppleFarms;
 
-	@Override
-	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void manipulateTradesForVillager(EntityVillager villager, MerchantRecipeList recipeList, Random random)
-	{
-		recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, 1 + random.nextInt(2)), GrowthCraftApples.fluids.appleCider.asStack(1, 1)));
-		recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, 2 + random.nextInt(2)), GrowthCraftApples.fluids.appleCider.asStack(1, 2)));
-		recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, 2 + random.nextInt(2)), GrowthCraftApples.fluids.appleCider.asStack(1, 3)));
-	}
+    @Override
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    public void manipulateTradesForVillager(EntityVillager villager, MerchantRecipeList recipeList, Random random) {
+        recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, 1 + random.nextInt(2)), GrowthCraftApples.fluids.appleCider.asStack(1, 1)));
+        recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, 2 + random.nextInt(2)), GrowthCraftApples.fluids.appleCider.asStack(1, 2)));
+        recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, 2 + random.nextInt(2)), GrowthCraftApples.fluids.appleCider.asStack(1, 3)));
+    }
 
-	@Override
-	public PieceWeight getVillagePieceWeight(Random random, int i)
-	{
-		int num = MathHelper.getRandomIntegerInRange(random, 0 + i, 1 + i);
-		if (!generateAppleFarms)
-			num = 0;
+    @Override
+    public PieceWeight getVillagePieceWeight(Random random, int i) {
+        int num = MathHelper.getRandomIntegerInRange(random, 0 + i, 1 + i);
+        if (!generateAppleFarms)
+            num = 0;
 
-		return new PieceWeight(ComponentVillageAppleFarm.class, 21, num);
-	}
+        return new PieceWeight(ComponentVillageAppleFarm.class, 21, num);
+    }
 
-	@Override
-	public Class<?> getComponentClass()
-	{
-		return ComponentVillageAppleFarm.class;
-	}
+    @Override
+    public Class<?> getComponentClass() {
+        return ComponentVillageAppleFarm.class;
+    }
 
-	@Override
-	@SuppressWarnings({"rawtypes", "unchecked"})
-	public Object buildComponent(PieceWeight villagePiece, Start startPiece, List pieces, Random random, int p1, int p2, int p3, int p4, int p5)
-	{
-		return ComponentVillageAppleFarm.buildComponent(startPiece, pieces, random, p1, p2, p3, p4, p5);
-	}
+    @Override
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    public Object buildComponent(PieceWeight villagePiece, Start startPiece, List pieces, Random random, int p1, int p2, int p3, int p4, int p5) {
+        return ComponentVillageAppleFarm.buildComponent(startPiece, pieces, random, p1, p2, p3, p4, p5);
+    }
 }

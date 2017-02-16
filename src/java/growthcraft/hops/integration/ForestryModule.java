@@ -32,29 +32,27 @@ import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Optional;
 
-public class ForestryModule extends ForestryModuleBase
-{
-	public ForestryModule()
-	{
-		super(GrowthCraftHops.MOD_ID);
-	}
+public class ForestryModule extends ForestryModuleBase {
+    public ForestryModule() {
+        super(GrowthCraftHops.MOD_ID);
+    }
 
-	@Override
-	@Optional.Method(modid="Forestry")
-	protected void integrate()
-	{
-		final int saplingYield = getActiveMode().getIntegerSetting("fermenter.yield.sapling");
-		final int seedamount = getActiveMode().getIntegerSetting("squeezer.liquid.seed");
+    @Override
+    @Optional.Method(modid = "Forestry")
+    protected void integrate() {
+        final int saplingYield = getActiveMode().getIntegerSetting("fermenter.yield.sapling");
+        final int seedamount = getActiveMode().getIntegerSetting("squeezer.liquid.seed");
 
-		final ItemStack hopSeed = GrowthCraftHops.items.hopSeeds.asStack();
-		final ItemStack hops = GrowthCraftHops.items.hops.asStack();
-		final Block hopVine = GrowthCraftHops.blocks.hopVine.getBlockState();
+        final ItemStack hopSeed = GrowthCraftHops.items.hopSeeds.asStack();
+        final ItemStack hops = GrowthCraftHops.items.hops.asStack();
+        final Block hopVine = GrowthCraftHops.blocks.hopVine.getBlockState();
 
-		Backpack.FORESTERS.add(hopSeed);
-		Backpack.FORESTERS.add(hops);
+        Backpack.FORESTERS.add(hopSeed);
+        Backpack.FORESTERS.add(hops);
 
-		if (ForestryFluids.SEEDOIL.exists()) recipes().squeezerManager.addRecipe(10, new ItemStack[]{hopSeed}, ForestryFluids.SEEDOIL.asFluidStack(seedamount));
-		ForestryRecipeUtils.addFermenterRecipes(hops, saplingYield, ForestryFluids.BIOMASS.asFluidStack());
-		addFarmable("farmOrchard", new FarmableBasicGrowthCraft(hopVine, BlockHops.HopsStage.FRUIT, false, false));
-	}
+        if (ForestryFluids.SEEDOIL.exists())
+            recipes().squeezerManager.addRecipe(10, new ItemStack[]{hopSeed}, ForestryFluids.SEEDOIL.asFluidStack(seedamount));
+        ForestryRecipeUtils.addFermenterRecipes(hops, saplingYield, ForestryFluids.BIOMASS.asFluidStack());
+        addFarmable("farmOrchard", new FarmableBasicGrowthCraft(hopVine, BlockHops.HopsStage.FRUIT, false, false));
+    }
 }

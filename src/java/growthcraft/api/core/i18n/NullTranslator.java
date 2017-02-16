@@ -23,17 +23,14 @@
  */
 package growthcraft.api.core.i18n;
 
-public class NullTranslator implements ITranslator
-{
-	public static final ITranslator INSTANCE = new NullTranslator();
+public class NullTranslator implements ITranslator {
+    public static final ITranslator INSTANCE = new NullTranslator();
 
-	public String translate(String str, Object... objs)
-	{
-		return str + "(" + objs + ")";
-	}
+    public String translate(String str, Object... objs) {
+        return str + "(" + objs + ")";
+    }
 
-	public String translate(String str)
-	{
-		return str;
-	}
+    public String translate(String str) {
+        return str;
+    }
 }

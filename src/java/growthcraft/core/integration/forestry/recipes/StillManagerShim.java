@@ -28,9 +28,9 @@ import forestry.api.recipes.IStillRecipe;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.Optional;
 
-@Optional.Interface(iface="forestry.api.recipes.IStillManager", modid="ForestryAPI|recipes")
-public class StillManagerShim extends AbstractManagerShim<IStillRecipe> implements IStillManager
-{
-	@Override
-	public void addRecipe(int cyclesPerUnit, FluidStack input, FluidStack output) {}
+@Optional.Interface(iface = "forestry.api.recipes.IStillManager", modid = "ForestryAPI|recipes")
+public class StillManagerShim extends AbstractManagerShim<IStillRecipe> implements IStillManager {
+    @Override
+    public void addRecipe(int cyclesPerUnit, FluidStack input, FluidStack output) {
+    }
 }

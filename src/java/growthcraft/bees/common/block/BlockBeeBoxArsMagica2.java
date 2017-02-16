@@ -33,44 +33,38 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
 
 
-public class BlockBeeBoxArsMagica2 extends BlockBeeBox
-{
-	public BlockBeeBoxArsMagica2()
-	{
-		super();
-		setHardness(2f);
-		setUnlocalizedName("grc.beeBox.ArsMagica2");
-	}
+public class BlockBeeBoxArsMagica2 extends BlockBeeBox {
+    public BlockBeeBoxArsMagica2() {
+        super();
+        setHardness(2f);
+        setUnlocalizedName("grc.beeBox.ArsMagica2");
+    }
 
-	@Override
-	public String getMetaname(int meta)
-	{
-		if (meta >= 0 && meta < EnumAM2WoodType.VALUES.length)
-		{
-			return EnumAM2WoodType.VALUES[meta].name;
-		}
-		return super.getMetaname(meta);
-	}
+    @Override
+    public String getMetaname(int meta) {
+        if (meta >= 0 && meta < EnumAM2WoodType.VALUES.length) {
+            return EnumAM2WoodType.VALUES[meta].name;
+        }
+        return super.getMetaname(meta);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void getSubBlocks(Item block, CreativeTabs tab, List list)
-	{
-		for (int i = 0; i < EnumAM2WoodType.VALUES.length; ++i)
-		{
-			list.add(new ItemStack(block, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    public void getSubBlocks(Item block, CreativeTabs tab, List list) {
+        for (int i = 0; i < EnumAM2WoodType.VALUES.length; ++i) {
+            list.add(new ItemStack(block, 1, i));
+        }
+    }
 
-	//@Override
-	//@SideOnly(Side.CLIENT)
+    //@Override
+    //@SideOnly(Side.CLIENT)
 //
-	//{
-	//	this.icons = new IIcon[4 * EnumAM2WoodType.VALUES.length];
-	//	for (EnumAM2WoodType type : EnumAM2WoodType.VALUES)
-	//	{
-	//		registerBeeBoxIcons(reg, String.format("/AM2/%s/", type.name), type.meta);
-	//	}
-	//}
+    //{
+    //	this.icons = new IIcon[4 * EnumAM2WoodType.VALUES.length];
+    //	for (EnumAM2WoodType type : EnumAM2WoodType.VALUES)
+    //	{
+    //		registerBeeBoxIcons(reg, String.format("/AM2/%s/", type.name), type.meta);
+    //	}
+    //}
 }

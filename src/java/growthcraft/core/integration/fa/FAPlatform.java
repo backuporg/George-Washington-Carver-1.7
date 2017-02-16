@@ -25,14 +25,13 @@ package growthcraft.core.integration.FA;
 
 import net.minecraftforge.fml.common.Loader;
 
-public class FAPlatform
-{
-	public static final String MOD_ID = "fossil";
+public class FAPlatform {
+    public static final String MOD_ID = "fossil";
 
-	private FAPlatform() {};
+    private FAPlatform() {
+    }
 
-	public static boolean isLoaded()
-	{
-		return Loader.isModLoaded(MOD_ID);
-	}
+    public static boolean isLoaded() {
+        return Loader.isModLoaded(MOD_ID);
+    }
 }

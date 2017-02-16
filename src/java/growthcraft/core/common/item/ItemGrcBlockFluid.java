@@ -34,53 +34,45 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-public class ItemGrcBlockFluid extends GrcItemBlockBase
-{
-	protected int color = 0xFFFFFF;
-	protected Fluid fluid;
+public class ItemGrcBlockFluid extends GrcItemBlockBase {
+    protected int color = 0xFFFFFF;
+    protected Fluid fluid;
 
-	public ItemGrcBlockFluid(Block block)
-	{
-		super(block);
-		if (block instanceof GrcBlockFluid)
-		{
-			final GrcBlockFluid fluidBlock = (GrcBlockFluid)block;
-			this.color = fluidBlock.getColor();
-			this.fluid = fluidBlock.getFluid();
-		}
-	}
+    public ItemGrcBlockFluid(Block block) {
+        super(block);
+        if (block instanceof GrcBlockFluid) {
+            final GrcBlockFluid fluidBlock = (GrcBlockFluid) block;
+            this.color = fluidBlock.getColor();
+            this.fluid = fluidBlock.getFluid();
+        }
+    }
 
-	public Fluid getFluid()
-	{
-		return this.fluid;
-	}
+    public Fluid getFluid() {
+        return this.fluid;
+    }
 
-	public int getFluidColor()
-	{
-		return this.color;
-	}
+    public int getFluidColor() {
+        return this.color;
+    }
 
-	@SideOnly(Side.CLIENT)
-	@SuppressWarnings({"rawtypes", "unchecked"})
-	protected void writeModifierTooltip(ItemStack stack, EntityPlayer player, List list, boolean bool)
-	{
-		final String modifier = UnitFormatter.fluidModifier(getFluid());
-		if (modifier != null) list.add(modifier);
-	}
+    @SideOnly(Side.CLIENT)
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    protected void writeModifierTooltip(ItemStack stack, EntityPlayer player, List list, boolean bool) {
+        final String modifier = UnitFormatter.fluidModifier(getFluid());
+        if (modifier != null) list.add(modifier);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	@SuppressWarnings({"rawtypes", "unchecked"})
-	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean bool)
-	{
-		super.addInformation(stack, player, list, bool);
-		writeModifierTooltip(stack, player, list, bool);
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean bool) {
+        super.addInformation(stack, player, list, bool);
+        writeModifierTooltip(stack, player, list, bool);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public int getColorFromItemStack(ItemStack stack, int pass)
-	{
-		return getFluidColor();
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public int getColorFromItemStack(ItemStack stack, int pass) {
+        return getFluidColor();
+    }
 }

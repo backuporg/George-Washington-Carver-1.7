@@ -25,14 +25,13 @@ package growthcraft.core.integration.bop;
 
 import net.minecraftforge.fml.common.Loader;
 
-public class BopPlatform
-{
-	public static final String MOD_ID = "BiomesOPlenty";
+public class BopPlatform {
+    public static final String MOD_ID = "BiomesOPlenty";
 
-	private BopPlatform() {};
+    private BopPlatform() {
+    }
 
-	public static boolean isLoaded()
-	{
-		return Loader.isModLoaded(MOD_ID);
-	}
+    public static boolean isLoaded() {
+        return Loader.isModLoaded(MOD_ID);
+    }
 }

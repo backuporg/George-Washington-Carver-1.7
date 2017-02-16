@@ -34,19 +34,16 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
 import java.util.Set;
 
-public class GrcItemToolBase extends ItemTool
-{
-	public GrcItemToolBase(float dmg, Item.ToolMaterial material, Set<Block> blocks)
-	{
-		super(dmg, material, blocks);
-	}
+public class GrcItemToolBase extends ItemTool {
+    public GrcItemToolBase(float dmg, Item.ToolMaterial material, Set<Block> blocks) {
+        super(dmg, material, blocks);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	@SuppressWarnings({"unchecked", "rawtypes"})
-	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean bool)
-	{
-		super.addInformation(stack, player, list, bool);
-		GrcItemBase.addDescription(this, stack, player, list, bool);
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean bool) {
+        super.addInformation(stack, player, list, bool);
+        GrcItemBase.addDescription(this, stack, player, list, bool);
+    }
 }

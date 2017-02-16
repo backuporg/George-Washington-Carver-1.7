@@ -26,13 +26,11 @@ package growthcraft.netherloid.common.item;
 import growthcraft.netherloid.netherloid;
 import net.minecraft.item.Item;
 
-public class ItemNetherGhastPowder extends Item
-{
-	public ItemNetherGhastPowder()
-	{
-		super();
-		setUnlocalizedName("grcnetherloid.netherGhastPowder");
-		//setTextureName("grcnetherloid:ghastpowder");
-		setCreativeTab(netherloid.tab);
-	}
+public class ItemNetherGhastPowder extends Item {
+    public ItemNetherGhastPowder() {
+        super();
+        setUnlocalizedName("grcnetherloid.netherGhastPowder");
+        //setTextureName("grcnetherloid:ghastpowder");
+        setCreativeTab(netherloid.tab);
+    }
 }

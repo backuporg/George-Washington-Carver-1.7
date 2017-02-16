@@ -39,173 +39,143 @@ import java.io.*;
  * This is a base class for defining JSON config definitions, its purpose
  * is mostly to hide the dreaded File handling
  */
-public abstract class AbstractUserJSONConfig implements ILoggable, IModule
-{
-	public static final String DEFAULT_ENCODING = "UTF-8";
+public abstract class AbstractUserJSONConfig implements ILoggable, IModule {
+    public static final String DEFAULT_ENCODING = "UTF-8";
+    protected final Gson gson = new GsonBuilder().
+            setPrettyPrinting().
+            serializeNulls().
+            create();
+    protected ILogger logger = NullLogger.INSTANCE;
+    private File targetConfigFile;
+    private File targetDefaultConfigFile;
 
-	protected ILogger logger = NullLogger.INSTANCE;
-	protected final Gson gson = new GsonBuilder().
-		setPrettyPrinting().
-		serializeNulls().
-		create();
-	private File targetConfigFile;
-	private File targetDefaultConfigFile;
+    @Override
+    public void setLogger(@Nonnull ILogger l) {
+        this.logger = l;
+    }
 
-	@Override
-	public void setLogger(@Nonnull ILogger l)
-	{
-		this.logger = l;
-	}
+    /**
+     * @return a default json configuration string
+     */
+    protected abstract String getDefault();
 
-	/**
-	 * @return a default json configuration string
-	 */
-	protected abstract String getDefault();
+    private void writeDefaultConfigTo(File file) {
+        try {
+            logger.debug("Creating default json-config %s", file);
+            if (file.getParentFile() != null)
+                file.getParentFile().mkdirs();
 
-	private void writeDefaultConfigTo(File file)
-	{
-		try
-		{
-			logger.debug("Creating default json-config %s", file);
-			if (file.getParentFile() != null)
-				file.getParentFile().mkdirs();
+            if (!file.exists()) {
+                if (!file.createNewFile()) {
+                    logger.error("Could not create default config %s", file);
+                    return;
+                }
+            }
 
-			if (!file.exists())
-			{
-				if (!file.createNewFile())
-				{
-					logger.error("Could not create default config %s", file);
-					return;
-				}
-			}
+            if (file.canWrite()) {
+                try (FileWriter writer = new FileWriter(file)) {
+                    writer.write(getDefault());
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-			if (file.canWrite())
-			{
-				try (FileWriter writer = new FileWriter(file))
-				{
-					writer.write(getDefault());
-				}
-			}
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
-	}
+    /**
+     * Read the config file contents from the buffer
+     *
+     * @param buff - the buffer to read from
+     */
+    protected abstract void loadFromBuffer(BufferedReader buff) throws IllegalStateException;
 
-	/**
-	 * Read the config file contents from the buffer
-	 *
-	 * @param buff - the buffer to read from
-	 */
-	protected abstract void loadFromBuffer(BufferedReader buff) throws IllegalStateException;
+    public AbstractUserJSONConfig setConfigFile(File EnumFacing, String filename) {
+        this.targetConfigFile = new File(EnumFacing, filename);
+        this.targetDefaultConfigFile = new File(EnumFacing, filename + ".default");
+        logger.debug("Config file `%s` was set for `%s`", targetConfigFile, this);
+        logger.debug("DEFAULT Config file `%s` was set for `%s`", targetDefaultConfigFile, this);
+        return this;
+    }
 
-	public AbstractUserJSONConfig setConfigFile(File EnumFacing, String filename)
-	{
-		this.targetConfigFile = new File(EnumFacing, filename);
-		this.targetDefaultConfigFile = new File(EnumFacing, filename + ".default");
-		logger.debug("Config file `%s` was set for `%s`", targetConfigFile, this);
-		logger.debug("DEFAULT Config file `%s` was set for `%s`", targetDefaultConfigFile, this);
-		return this;
-	}
+    private void prepareUserConfig() throws IOException {
+        if (!targetConfigFile.exists()) {
+            if (targetConfigFile.getParentFile() != null)
+                targetConfigFile.getParentFile().mkdirs();
 
-	private void prepareUserConfig() throws IOException
-	{
-		if (!targetConfigFile.exists())
-		{
-			if (targetConfigFile.getParentFile() != null)
-				targetConfigFile.getParentFile().mkdirs();
+            if (!targetConfigFile.createNewFile()) {
+                logger.error("Could not create config file `%s`", targetConfigFile);
+                return;
+            }
 
-			if (!targetConfigFile.createNewFile())
-			{
-				logger.error("Could not create config file `%s`", targetConfigFile);
-				return;
-			}
+            if (targetDefaultConfigFile.exists()) {
+                Files.copy(targetDefaultConfigFile, targetConfigFile);
+            } else {
+                logger.error("Could not copy default config file `%s` to `%s`", targetDefaultConfigFile, targetConfigFile);
+            }
+        }
+    }
 
-			if (targetDefaultConfigFile.exists())
-			{
-				Files.copy(targetDefaultConfigFile, targetConfigFile);
-			}
-			else
-			{
-				logger.error("Could not copy default config file `%s` to `%s`", targetDefaultConfigFile, targetConfigFile);
-			}
-		}
-	}
+    private void readUserConfigFile(File file) {
+        BufferedReader buffer = null;
+        UnicodeInputStreamReader input = null;
 
-	private void readUserConfigFile(File file)
-	{
-		BufferedReader buffer = null;
-		UnicodeInputStreamReader input = null;
+        try {
+            logger.debug("Loading json-config %s", file);
 
-		try
-		{
-			logger.debug("Loading json-config %s", file);
+            prepareUserConfig();
+            if (file.canRead()) {
+                input = new UnicodeInputStreamReader(new FileInputStream(file), DEFAULT_ENCODING);
+                buffer = new BufferedReader(input);
+                loadFromBuffer(buffer);
+            } else {
+                logger.error("Could not read config file %s", file);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (buffer != null) {
+                try {
+                    buffer.close();
+                } catch (IOException e) {
+                }
+            }
+            if (input != null) {
+                try {
+                    input.close();
+                } catch (IOException e) {
+                }
+            }
+        }
+    }
 
-			prepareUserConfig();
-			if (file.canRead())
-			{
-				input = new UnicodeInputStreamReader(new FileInputStream(file), DEFAULT_ENCODING);
-				buffer = new BufferedReader(input);
-				loadFromBuffer(buffer);
-			}
-			else
-			{
-				logger.error("Could not read config file %s", file);
-			}
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
-		finally
-		{
-			if (buffer != null)
-			{
-				try
-				{
-					buffer.close();
-				}
-				catch (IOException e) {}
-			}
-			if (input != null)
-			{
-				try
-				{
-					input.close();
-				}
-				catch (IOException e) {}
-			}
-		}
-	}
+    public void loadUserConfig() {
+        writeDefaultConfigTo(targetDefaultConfigFile);
+        try {
+            readUserConfigFile(targetConfigFile);
+            return;
+        }
+        //catch (IllegalStateException e)
+        catch (Exception e) {
+            logger.error("JSON Config '%s' contains errors", targetConfigFile);
+            e.printStackTrace();
+        }
+        logger.warn("Falling back to default config file");
+        readUserConfigFile(targetDefaultConfigFile);
+    }
 
-	public void loadUserConfig()
-	{
-		writeDefaultConfigTo(targetDefaultConfigFile);
-		try
-		{
-			readUserConfigFile(targetConfigFile);
-			return;
-		}
-		//catch (IllegalStateException e)
-		catch (Exception e)
-		{
-			logger.error("JSON Config '%s' contains errors", targetConfigFile);
-			e.printStackTrace();
-		}
-		logger.warn("Falling back to default config file");
-		readUserConfigFile(targetDefaultConfigFile);
-	}
+    @Override
+    public void preInit() {
+    }
 
-	@Override
-	public void preInit() {}
+    @Override
+    public void register() {
+    }
 
-	@Override
-	public void register() {}
+    @Override
+    public void init() {
+    }
 
-	@Override
-	public void init() {}
-
-	@Override
-	public void postInit() {}
+    @Override
+    public void postInit() {
+    }
 }

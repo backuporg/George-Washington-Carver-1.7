@@ -27,19 +27,16 @@ import growthcraft.core.common.GrcModuleBlocks;
 import growthcraft.core.common.definition.BlockTypeDefinition;
 import growthcraft.hops.common.block.BlockHops;
 
-public class GrcHopsBlocks extends GrcModuleBlocks
-{
-	public BlockTypeDefinition<BlockHops> hopVine;
+public class GrcHopsBlocks extends GrcModuleBlocks {
+    public BlockTypeDefinition<BlockHops> hopVine;
 
-	@Override
-	public void preInit()
-	{
-		this.hopVine = newTypedDefinition(new BlockHops());
-	}
+    @Override
+    public void preInit() {
+        this.hopVine = newTypedDefinition(new BlockHops());
+    }
 
-	@Override
-	public void register()
-	{
-		hopVine.register("grc.hopVine");
-	}
+    @Override
+    public void register() {
+        hopVine.register("grc.hopVine");
+    }
 }

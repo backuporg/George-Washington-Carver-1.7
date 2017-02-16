@@ -42,39 +42,34 @@ import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
 
-public class ClientProxy extends CommonProxy
-{
-	protected void initRenders()
-	{
-		MinecraftForgeClient.registerItemRenderer(GrowthCraftCellar.blocks.cultureJar.getItem(), new ItemRenderCultureJar());
-		RenderingRegistry.registerBlockHandler(new RenderBrewKettle());
-		RenderingRegistry.registerBlockHandler(new RenderCultureJar());
-		RenderingRegistry.registerBlockHandler(new RenderFermentBarrel());
-		RenderingRegistry.registerBlockHandler(new RenderFruitPress());
-		RenderingRegistry.registerBlockHandler(new RenderFruitPresser());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFruitPresser.class, new TileEntityFruitPresserRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCultureJar.class, new TileEntityCultureJarRenderer());
-	}
+public class ClientProxy extends CommonProxy {
+    protected void initRenders() {
+        MinecraftForgeClient.registerItemRenderer(GrowthCraftCellar.blocks.cultureJar.getItem(), new ItemRenderCultureJar());
+        RenderingRegistry.registerBlockHandler(new RenderBrewKettle());
+        RenderingRegistry.registerBlockHandler(new RenderCultureJar());
+        RenderingRegistry.registerBlockHandler(new RenderFermentBarrel());
+        RenderingRegistry.registerBlockHandler(new RenderFruitPress());
+        RenderingRegistry.registerBlockHandler(new RenderFruitPresser());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFruitPresser.class, new TileEntityFruitPresserRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCultureJar.class, new TileEntityCultureJarRenderer());
+    }
 
-	protected void registerVillagerSkin()
-	{
-		final int villagerID = GrowthCraftCellar.getConfig().villagerBrewerID;
-		if (villagerID > 0)
-		{
-			VillagerRegistry.instance().registerVillagerSkin(villagerID, new ResourceLocation("grccellar" , "textures/entity/brewer.png"));
-		}
-	}
+    protected void registerVillagerSkin() {
+        final int villagerID = GrowthCraftCellar.getConfig().villagerBrewerID;
+        if (villagerID > 0) {
+            VillagerRegistry.instance().registerVillagerSkin(villagerID, new ResourceLocation("grccellar", "textures/entity/brewer.png"));
+        }
+    }
 
-	@Override
-	public void init()
-	{
-		super.init();
-		new GrcCellarResources();
-		initRenders();
-		registerVillagerSkin();
-		GrowthCraftCellar.guiProvider.register("grccellar:fruit_press", GuiFruitPress.class);
-		GrowthCraftCellar.guiProvider.register("grccellar:ferment_barrel", GuiFermentBarrel.class);
-		GrowthCraftCellar.guiProvider.register("grccellar:culture_jar", GuiCultureJar.class);
-		GrowthCraftCellar.guiProvider.register("grccellar:brew_kettle", GuiBrewKettle.class);
-	}
+    @Override
+    public void init() {
+        super.init();
+        new GrcCellarResources();
+        initRenders();
+        registerVillagerSkin();
+        GrowthCraftCellar.guiProvider.register("grccellar:fruit_press", GuiFruitPress.class);
+        GrowthCraftCellar.guiProvider.register("grccellar:ferment_barrel", GuiFermentBarrel.class);
+        GrowthCraftCellar.guiProvider.register("grccellar:culture_jar", GuiCultureJar.class);
+        GrowthCraftCellar.guiProvider.register("grccellar:brew_kettle", GuiBrewKettle.class);
+    }
 }

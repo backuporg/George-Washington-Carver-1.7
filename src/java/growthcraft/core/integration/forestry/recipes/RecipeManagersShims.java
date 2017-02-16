@@ -27,21 +27,19 @@ import forestry.api.recipes.*;
 import growthcraft.api.core.util.ObjectUtils;
 import net.minecraftforge.fml.common.Optional;
 
-public class RecipeManagersShims
-{
-	private static RecipeManagersShims INSTANCE;
-	public ICarpenterManager carpenterManager = ObjectUtils.<ICarpenterManager>maybe(RecipeManagers.carpenterManager, new CarpenterManagerShim());
-	public ICentrifugeManager centrifugeManager = ObjectUtils.<ICentrifugeManager>maybe(RecipeManagers.centrifugeManager, new CentrifugeManagerShim());
-	public IFabricatorManager fabricatorManager = ObjectUtils.<IFabricatorManager>maybe(RecipeManagers.fabricatorManager, new FabricatorManagerShim());
-	public IFermenterManager fermenterManager = ObjectUtils.<IFermenterManager>maybe(RecipeManagers.fermenterManager, new FermenterManagerShim());
-	public IMoistenerManager moistenerManager = ObjectUtils.<IMoistenerManager>maybe(RecipeManagers.moistenerManager, new MoistenerManagerShim());
-	public ISqueezerManager squeezerManager = ObjectUtils.<ISqueezerManager>maybe(RecipeManagers.squeezerManager, new SqueezerManagerShim());
-	public IStillManager stillManager = ObjectUtils.<IStillManager>maybe(RecipeManagers.stillManager, new StillManagerShim());
+public class RecipeManagersShims {
+    private static RecipeManagersShims INSTANCE;
+    public ICarpenterManager carpenterManager = ObjectUtils.<ICarpenterManager>maybe(RecipeManagers.carpenterManager, new CarpenterManagerShim());
+    public ICentrifugeManager centrifugeManager = ObjectUtils.<ICentrifugeManager>maybe(RecipeManagers.centrifugeManager, new CentrifugeManagerShim());
+    public IFabricatorManager fabricatorManager = ObjectUtils.<IFabricatorManager>maybe(RecipeManagers.fabricatorManager, new FabricatorManagerShim());
+    public IFermenterManager fermenterManager = ObjectUtils.<IFermenterManager>maybe(RecipeManagers.fermenterManager, new FermenterManagerShim());
+    public IMoistenerManager moistenerManager = ObjectUtils.<IMoistenerManager>maybe(RecipeManagers.moistenerManager, new MoistenerManagerShim());
+    public ISqueezerManager squeezerManager = ObjectUtils.<ISqueezerManager>maybe(RecipeManagers.squeezerManager, new SqueezerManagerShim());
+    public IStillManager stillManager = ObjectUtils.<IStillManager>maybe(RecipeManagers.stillManager, new StillManagerShim());
 
-	@Optional.Method(modid="ForestryAPI|recipes")
-	public static RecipeManagersShims instance()
-	{
-		if (INSTANCE == null) INSTANCE = new RecipeManagersShims();
-		return INSTANCE;
-	}
+    @Optional.Method(modid = "ForestryAPI|recipes")
+    public static RecipeManagersShims instance() {
+        if (INSTANCE == null) INSTANCE = new RecipeManagersShims();
+        return INSTANCE;
+    }
 }

@@ -28,33 +28,29 @@ import net.minecraft.item.ItemStack;
 
 import java.util.Locale;
 
-public enum EnumMinecraftWoodType
-{
-	OAK,
-	SPRUCE,
-	BIRCH,
-	JUNGLE,
-	ACACIA,
-	DARKOAK;
+public enum EnumMinecraftWoodType {
+    OAK,
+    SPRUCE,
+    BIRCH,
+    JUNGLE,
+    ACACIA,
+    DARKOAK;
 
-	public static final EnumMinecraftWoodType[] VALUES = values();
+    public static final EnumMinecraftWoodType[] VALUES = values();
 
-	public final String name;
-	public final int meta;
+    public final String name;
+    public final int meta;
 
-	private EnumMinecraftWoodType()
-	{
-		this.name = name().toLowerCase(Locale.ENGLISH);
-		this.meta = ordinal();
-	}
+    EnumMinecraftWoodType() {
+        this.name = name().toLowerCase(Locale.ENGLISH);
+        this.meta = ordinal();
+    }
 
-	public ItemStack asPlanksItemStack(int size)
-	{
-		return new ItemStack(Blocks.PLANKS, size, meta);
-	}
+    public ItemStack asPlanksItemStack(int size) {
+        return new ItemStack(Blocks.PLANKS, size, meta);
+    }
 
-	public ItemStack asPlanksItemStack()
-	{
-		return asPlanksItemStack(1);
-	}
+    public ItemStack asPlanksItemStack() {
+        return asPlanksItemStack(1);
+    }
 }

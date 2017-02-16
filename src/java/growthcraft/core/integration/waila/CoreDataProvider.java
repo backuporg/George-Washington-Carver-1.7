@@ -44,90 +44,74 @@ import net.minecraftforge.fml.common.Optional;
 
 import java.util.List;
 
-public class CoreDataProvider implements IWailaDataProvider
-{
-	@Override
-	@Optional.Method(modid="Waila")
-	public ItemStack getWailaStack(IWailaDataAccessor accessor, IWailaConfigHandler config)
-	{
-		return accessor.getStack();
-	}
+public class CoreDataProvider implements IWailaDataProvider {
+    @Override
+    @Optional.Method(modid = "Waila")
+    public ItemStack getWailaStack(IWailaDataAccessor accessor, IWailaConfigHandler config) {
+        return accessor.getStack();
+    }
 
-	@Override
-	@Optional.Method(modid="Waila")
-	public List<String> getWailaHead(ItemStack itemStack, List<String> tooltip, IWailaDataAccessor accessor, IWailaConfigHandler config)
-	{
-		return tooltip;
-	}
+    @Override
+    @Optional.Method(modid = "Waila")
+    public List<String> getWailaHead(ItemStack itemStack, List<String> tooltip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+        return tooltip;
+    }
 
-	@Override
-	@Optional.Method(modid="Waila")
-	public List<String> getWailaBody(ItemStack itemStack, List<String> tooltip, IWailaDataAccessor accessor, IWailaConfigHandler config)
-	{
-		final Block block = accessor.getBlockState();
-		final TileEntity te = accessor.getTileEntity();
-		final NBTTagCompound tag = accessor.getNBTData();
-		if (config.getConfig("DisplayFluidContent"))
-		{
-			if (te instanceof IFluidHandler)
-			{
-				tooltip = TagFormatterFluidHandler.INSTANCE.format(tooltip, tag);
-			}
-		}
+    @Override
+    @Optional.Method(modid = "Waila")
+    public List<String> getWailaBody(ItemStack itemStack, List<String> tooltip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+        final Block block = accessor.getBlockState();
+        final TileEntity te = accessor.getTileEntity();
+        final NBTTagCompound tag = accessor.getNBTData();
+        if (config.getConfig("DisplayFluidContent")) {
+            if (te instanceof IFluidHandler) {
+                tooltip = TagFormatterFluidHandler.INSTANCE.format(tooltip, tag);
+            }
+        }
 
-		if (te instanceof ITileHeatedDevice)
-		{
-			final boolean isHeated = tag.getBoolean("is_heated");
-			final float heat = tag.getFloat("heat_multiplier");
-			String result = TextFormatting.GRAY + GrcI18n.translate("grccore.device.heated.prefix");
-			if (isHeated)
-			{
-				result += TextFormatting.WHITE + GrcI18n.translate("grccore.device.heated.multiplier.format", (int)(heat * 100));
-			}
-			else
-			{
-				result += TextFormatting.WHITE + GrcI18n.translate("grccore.device.heated.state.false");
-			}
-			tooltip.add(result);
-		}
+        if (te instanceof ITileHeatedDevice) {
+            final boolean isHeated = tag.getBoolean("is_heated");
+            final float heat = tag.getFloat("heat_multiplier");
+            String result = TextFormatting.GRAY + GrcI18n.translate("grccore.device.heated.prefix");
+            if (isHeated) {
+                result += TextFormatting.WHITE + GrcI18n.translate("grccore.device.heated.multiplier.format", (int) (heat * 100));
+            } else {
+                result += TextFormatting.WHITE + GrcI18n.translate("grccore.device.heated.state.false");
+            }
+            tooltip.add(result);
+        }
 
-		if (te instanceof ITileProgressiveDevice)
-		{
-			final float prog = tag.getFloat("device_progress");
-			if (prog > 0)
-			{
-				final String result = TextFormatting.GRAY + GrcI18n.translate("grccore.device.progress.prefix") +
-					TextFormatting.WHITE + GrcI18n.translate("grccore.device.progress.format", (int)(prog * 100));
-				tooltip.add(result);
-			}
-		}
-		return tooltip;
-	}
+        if (te instanceof ITileProgressiveDevice) {
+            final float prog = tag.getFloat("device_progress");
+            if (prog > 0) {
+                final String result = TextFormatting.GRAY + GrcI18n.translate("grccore.device.progress.prefix") +
+                        TextFormatting.WHITE + GrcI18n.translate("grccore.device.progress.format", (int) (prog * 100));
+                tooltip.add(result);
+            }
+        }
+        return tooltip;
+    }
 
-	@Override
-	@Optional.Method(modid="Waila")
-	public List<String> getWailaTail(ItemStack itemStack, List<String> tooltip, IWailaDataAccessor accessor, IWailaConfigHandler config)
-	{
-		return tooltip;
-	}
+    @Override
+    @Optional.Method(modid = "Waila")
+    public List<String> getWailaTail(ItemStack itemStack, List<String> tooltip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+        return tooltip;
+    }
 
-	@Override
-	@Optional.Method(modid="Waila")
-	public NBTTagCompound getNBTData(EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, BlockPos pos)
-	{
-		if (te instanceof IFluidHandler) NBTHelper.writeIFluidHandlerToNBT((IFluidHandler)te, tag);
-		if (te instanceof ITileNamedFluidTanks) ((ITileNamedFluidTanks)te).writeFluidTankNamesToTag(tag);
-		if (te instanceof ITileProgressiveDevice)
-		{
-			final ITileProgressiveDevice device = (ITileProgressiveDevice)te;
-			tag.setFloat("device_progress", device.getDeviceProgress());
-		}
-		if (te instanceof ITileHeatedDevice)
-		{
-			final ITileHeatedDevice device = (ITileHeatedDevice)te;
-			tag.setBoolean("is_heated", device.isHeated());
-			tag.setFloat("heat_multiplier", device.getHeatMultiplier());
-		}
-		return tag;
-	}
+    @Override
+    @Optional.Method(modid = "Waila")
+    public NBTTagCompound getNBTData(EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, BlockPos pos) {
+        if (te instanceof IFluidHandler) NBTHelper.writeIFluidHandlerToNBT((IFluidHandler) te, tag);
+        if (te instanceof ITileNamedFluidTanks) ((ITileNamedFluidTanks) te).writeFluidTankNamesToTag(tag);
+        if (te instanceof ITileProgressiveDevice) {
+            final ITileProgressiveDevice device = (ITileProgressiveDevice) te;
+            tag.setFloat("device_progress", device.getDeviceProgress());
+        }
+        if (te instanceof ITileHeatedDevice) {
+            final ITileHeatedDevice device = (ITileHeatedDevice) te;
+            tag.setBoolean("is_heated", device.isHeated());
+            tag.setFloat("heat_multiplier", device.getHeatMultiplier());
+        }
+        return tag;
+    }
 }

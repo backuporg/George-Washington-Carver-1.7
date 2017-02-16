@@ -29,18 +29,14 @@ import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
 
-public class EventHandlerItemCraftedEventCore
-{
-	@SubscribeEvent
-	public void onItemCrafting(ItemCraftedEvent event)
-	{
-		if (event.crafting != null)
-		{
-			final Item craftedItem = event.crafting.getItem();
-			if (craftedItem instanceof ItemCrowbar)
-			{
-				CoreAchievement.TRUSTY_HARDWARE.addStat(event.player, 1);
-			}
-		}
-	}
+public class EventHandlerItemCraftedEventCore {
+    @SubscribeEvent
+    public void onItemCrafting(ItemCraftedEvent event) {
+        if (event.crafting != null) {
+            final Item craftedItem = event.crafting.getItem();
+            if (craftedItem instanceof ItemCrowbar) {
+                CoreAchievement.TRUSTY_HARDWARE.addStat(event.player, 1);
+            }
+        }
+    }
 }
