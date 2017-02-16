@@ -4,6 +4,7 @@ import growthcraft.api.core.util.BlockFlags;
 import growthcraft.core.util.BlockCheck;
 import growthcraft.grapes.GrowthCraftGrapes;
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.util.EnumFacing;
@@ -38,7 +39,7 @@ public class BlockGrapeVine1 extends BlockGrapeVineBase {
     }
 
     @Override
-    protected void doGrowth(World world, BlockPos pos, int meta) {
+    protected void doGrowth(World world, BlockPos pos, IBlockState meta) {
         final Block above = world.getBlockState(x, y + 1, z);
         /* Is there a rope block above this? */
         if (BlockCheck.isRope(above)) {

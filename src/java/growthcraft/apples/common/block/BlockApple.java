@@ -58,7 +58,7 @@ public class BlockApple extends GrcBlockBase implements IGrowable, ICropDataProv
         return (float) meta / (float) AppleStage.MATURE;
     }
 
-    void incrementGrowth(World world, BlockPos pos, IBlockState state, int meta) {
+    void incrementGrowth(World world, BlockPos pos, IBlockState state, IBlockState meta) {
         world.setBlockState(pos, state, BlockFlags.SYNC);
         AppleCore.announceGrowthTick(this, world, pos, meta);
     }
@@ -82,7 +82,7 @@ public class BlockApple extends GrcBlockBase implements IGrowable, ICropDataProv
 
     /* Apply bonemeal effect */
     @Override
-    public void func_149853_b(World world, Random random, BlockPos pos, int meta) {
+    public void func_149853_b(World world, Random random, BlockPos pos, IBlockState meta) {
         incrementGrowth(world, pos, world.getBlockState(pos), meta);
     }
 
@@ -99,7 +99,7 @@ public class BlockApple extends GrcBlockBase implements IGrowable, ICropDataProv
 
             final boolean continueGrowth = random.nextInt(this.growth) == 0;
             if (allowGrowthResult == Event.Result.ALLOW || continueGrowth) {
-                final int meta = state.getValue(GROWTH);
+                final IBlockState meta = state.getValue(GROWTH);
                 if (meta < AppleStage.MATURE) {
                     incrementGrowth(world, pos, state, meta);
                 } else if (dropRipeApples && world.rand.nextInt(this.dropChance) == 0) {

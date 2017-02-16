@@ -31,7 +31,7 @@ public class BlockGrapeVine0 extends BlockGrapeVineBase {
     }
 
     @Override
-    protected void doGrowth(World world, BlockPos pos, int meta) {
+    protected void doGrowth(World world, BlockPos pos, IBlockState meta) {
 
     }
 
@@ -44,7 +44,7 @@ public class BlockGrapeVine0 extends BlockGrapeVineBase {
     }
 
     @Override
-    protected void doGrowth(World world, BlockPos pos, int meta, IBlockState state) {
+    protected void doGrowth(World world, BlockPos pos, IBlockState meta, IBlockState state) {
         if (meta == 0) {
             incrementGrowth(world, pos, meta, state);
         } else {

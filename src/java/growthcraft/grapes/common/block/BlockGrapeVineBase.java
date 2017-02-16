@@ -72,9 +72,9 @@ public abstract class BlockGrapeVineBase extends GrcBlockBase implements IPlanta
         return GrapeBlockCheck.isGrapeVine(block);
     }
 
-    public void incrementGrowth(World world, BlockPos pos, int meta, IBlockState state) {
+    public void incrementGrowth(World world, BlockPos pos, IBlockState meta, IBlockState state, Block block) {
         world.setBlockState(pos, state, meta + 1, BlockFlags.SYNC);
-        AppleCore.announceGrowthTick(this, world, pos, meta);
+        AppleCore.announceGrowthTick(block, world, pos, meta, state);
     }
 
     protected float getGrowthRate(World world, BlockPos pos) {
@@ -120,13 +120,13 @@ public abstract class BlockGrapeVineBase extends GrcBlockBase implements IPlanta
     }
 
     @Override
-    public boolean canBlockStay(World world, BlockPos pos) {
-        return BlockCheck.canSustainPlant(world, x, y - 1, z, EnumFacing.UP, this);
+    public boolean canBlockStay(World world, BlockPos pos, IBlockState state, IPlantable plant, Block block) {
+        return BlockCheck.canSustainPlant(world, pos, EnumFacing.UP, plant, state, block);
     }
 
     @Override
-    public void onNeighborChange(World world, BlockPos pos, Block par5) {
-        if (!this.canBlockStay(world, pos)) {
+    public void onNeighborChange(World world, BlockPos pos, Block block, IBlockState state, IPlantable plant) {
+        if (!this.canBlockStay(world, pos, state, plant, block)) {
             this.dropBlockAsItem(world, pos, world.getBlockState(pos), 0);
             world.setBlockToAir(pos);
         }
@@ -174,7 +174,7 @@ public abstract class BlockGrapeVineBase extends GrcBlockBase implements IPlanta
      * @param z     - z coord
      * @param meta  - block metadata
      */
-    protected abstract void doGrowth(World world, BlockPos pos, int meta);
+    protected abstract void doGrowth(World world, BlockPos pos, IBlockState meta);
 
     /**
      * Are the conditions right for this plant to grow?
@@ -188,14 +188,14 @@ public abstract class BlockGrapeVineBase extends GrcBlockBase implements IPlanta
     protected abstract boolean canUpdateGrowth(World world, BlockPos pos);
 
     @Override
-    public void updateTick(World world, BlockPos pos, Random random, IBlockState state) {
+    public void updateTick(World world, BlockPos pos, Random random, IBlockState state, Block block) {
         super.updateTick(world, pos, state, random);
         if (canUpdateGrowth(world, pos)) {
-            final Event.Result allowGrowthResult = AppleCore.validateGrowthTick(this, world, pos, random);
+            final Event.Result allowGrowthResult = AppleCore.validateGrowthTick(block, world, pos, random, state);
             if (Event.Result.DENY == allowGrowthResult)
                 return;
 
-            final int meta = world.getBlockState(x, y, z);
+            final IBlockState meta = world.getBlockState((BlockPos) state);
             final float f = this.getGrowthRate(world, pos);
 
             final boolean continueGrowth = random.nextInt((int) (getGrowthRateMultiplier() / f) + 1) == 0;
