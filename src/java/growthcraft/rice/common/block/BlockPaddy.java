@@ -5,6 +5,7 @@ import growthcraft.core.common.block.BlockPaddyBase;
 import growthcraft.rice.GrowthCraftRice;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.util.math.BlockPos;
@@ -32,11 +33,11 @@ public class BlockPaddy extends BlockPaddyBase {
     }
 
     @Override
-    public void fillWithRain(World world, BlockPos pos, int meta) {
+    public void fillWithRain(World world, BlockPos pos, int meta, IBlockState state) {
         if (world.rand.nextInt(20) == 0) {
-            meta = world.getBlockState(meta);
+            meta = world.getBlockState(BlockPos.fromLong(meta));
             if (meta < paddyFieldMax) {
-                world.setBlockState(pos, meta + 1, BlockFlags.UPDATE_AND_SYNC);
+                world.setBlockState(pos, state, BlockFlags.UPDATE_AND_SYNC);
             }
         }
     }
@@ -70,7 +71,7 @@ public class BlockPaddy extends BlockPaddyBase {
 
     @Override
     public boolean isBelowFillingFluid(IBlockAccess world, BlockPos pos) {
-        return world.getBlockState(x, y + 1, z).getMaterial() == Material.WATER;
+        return world.getBlockState(pos).getMaterial() == Material.WATER;
     }
 
     /************
