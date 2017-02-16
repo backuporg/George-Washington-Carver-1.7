@@ -32,6 +32,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
+import net.minecraft.util.math.BlockPos;
 
 import java.util.Random;
 
@@ -124,7 +125,7 @@ public class BlockCheck {
         // as well as Ropes themselves, we need someway to seperate them,
         // either, IBlockRope.isRope(world, x, y, z) OR an additional interface
         // IBlockRopeCrop, IRope
-        return isRope(block);
+        return isRope((IBlockState) block);
     }
 
     /**
@@ -140,8 +141,8 @@ public class BlockCheck {
      * @param plant      - the plant in question
      * @return true if the block can be planted, false otherwise
      */
-    public static boolean canSustainPlantOn(IBlockAccess world, BlockPos pos, EnumFacing EnumFacing, IPlantable plant, Block soil) {
-        return soil != null && soil.canSustainPlant(world, x, y, z, EnumFacing, plant);
+    public static boolean canSustainPlantOn(IBlockAccess world, BlockPos pos, EnumFacing face, IPlantable plant, Block soil, IBlockState state) {
+        return soil != null && soil.canSustainPlant(state, world, pos, face, plant);
     }
 
     /**
@@ -156,9 +157,9 @@ public class BlockCheck {
      * @param plant      - the plant in question
      * @return true if the block can be planted, false otherwise
      */
-    public static boolean canSustainPlant(IBlockAccess world, BlockPos pos, EnumFacing EnumFacing, IPlantable plant) {
-        final Block soil = world.getBlockState(x, y, z);
-        return canSustainPlantOn(world, x, y, z, EnumFacing, plant, soil);
+    public static boolean canSustainPlant(IBlockAccess world, BlockPos pos, EnumFacing EnumFacing, IPlantable plant, IBlockState state, Block block) {
+        final IBlockState soil = world.getBlockState((BlockPos) state);
+        return canSustainPlantOn(world, pos, EnumFacing, plant, block, state);
     }
 
     /**
@@ -172,9 +173,9 @@ public class BlockCheck {
      * @param plant      - the plant in question
      * @return block if it can be planted upon, else null
      */
-    public static Block getFarmableBlock(IBlockAccess world, BlockPos pos, EnumFacing EnumFacing, IPlantable plant) {
-        final Block soil = world.getBlockState(x, y, z);
-        if (canSustainPlantOn(world, x, y, z, EnumFacing, plant, soil))
+    public static IBlockState getFarmableBlock(IBlockAccess world, BlockPos pos, EnumFacing EnumFacing, IPlantable plant, IBlockState state, Block block) {
+        final IBlockState soil = world.getBlockState((BlockPos) state);
+        if (canSustainPlantOn(world, pos, EnumFacing, plant, block, state))
             return soil;
         return null;
     }

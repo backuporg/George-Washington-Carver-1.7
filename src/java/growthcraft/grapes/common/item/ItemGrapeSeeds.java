@@ -30,7 +30,7 @@ public class ItemGrapeSeeds extends GrcItemBase implements IPlantable {
         } else {
             if (player.canPlayerEdit(pos, face, stack) && player.canPlayerEdit(pos, face, stack)) {
                 final BlockGrapeVine0 block = GrowthCraftGrapes.blocks.grapeVine0.getBlockState();
-                if (BlockCheck.canSustainPlant(world, pos, face, block)) {
+                if (BlockCheck.canSustainPlant(world, pos, face, block, state, block)) {
                     if (world.isAirBlock(pos)) {
                         world.setBlockState(pos, state, flags);
                         --stack.stackSize;
