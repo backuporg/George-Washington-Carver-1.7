@@ -39,9 +39,9 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 
     //@Override
     //public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, BlockPos pos)
-    static {
-        return null;
-    }
+    //static {
+    //   return null;
+    //}
 
     public BlockRice() {
         super(Material.PLANTS);
