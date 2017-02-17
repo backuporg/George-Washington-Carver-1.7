@@ -11,6 +11,7 @@ import growthcraft.rice.util.RiceBlockCheck;
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -30,6 +31,7 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 
 
     private final float growth = GrowthCraftRice.getConfig().riceGrowthRate;
+    public static final PropertyInteger GROWTH = PropertyInteger.create("growth", 0, RiceStage.MATURE);
 
     //@Override
     //public void setBlockBoundsBasedOnState(IBlockAccess world, BlockPos pos)
@@ -105,7 +107,7 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
             final int meta = world.getBlockState((BlockPos) state);
 
             if (meta < RiceStage.MATURE) {
-                final float f = this.getGrowthRate(world, pos);
+                final float f = this.getGrowthRate(world, pos, state);
 
                 if (allowGrowthResult == Event.Result.ALLOW || (random.nextInt((int) (this.growth / f) + 1) == 0)) {
                     growRice(world, pos, state, meta, block);
@@ -114,34 +116,41 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
         }
     }
 
-    private float getGrowthRate(World world, BlockPos pos) {
+    private float getGrowthRate(World world, BlockPos pos, IBlockState state)
+    {
         float f = 1.0F;
-        final Block l = world.getBlockState(x, y, z - 1);
-        final Block i1 = world.getBlockState(x, y, z + 1);
-        final Block j1 = world.getBlockState(x - 1, y, z);
-        final Block k1 = world.getBlockState(x + 1, y, z);
-        final Block l1 = world.getBlockState(x - 1, y, z - 1);
-        final Block i2 = world.getBlockState(x + 1, y, z - 1);
-        final Block j2 = world.getBlockState(x + 1, y, z + 1);
-        final Block k2 = world.getBlockState(x - 1, y, z + 1);
-        final boolean flag = j1 == this || k1 == this;
-        final boolean flag1 = l == this || i1 == this;
-        final boolean flag2 = l1 == this || i2 == this || j2 == this || k2 == this;
+        final IBlockState l = world.getBlockState(pos.north());
+        final IBlockState i1 = world.getBlockState(pos.south());
+        final IBlockState j1 = world.getBlockState(pos.west());
+        final IBlockState k1 = world.getBlockState(pos.east());
+        final IBlockState l1 = world.getBlockState(pos.north().west());
+        final IBlockState i2 = world.getBlockState(pos.south().west());
+        final IBlockState j2 = world.getBlockState(pos.south().east());
+        final IBlockState k2 = world.getBlockState(pos.north().east());
+        final boolean flag = j1.getBlock() == this || k1.getBlock() == this;
+        final boolean flag1 = l.getBlock() == this || i1.getBlock() == this;
+        final boolean flag2 = l1.getBlock() == this || i2.getBlock() == this || j2.getBlock() == this || k2.getBlock() == this;
 
-        for (int loop_i = x - 1; loop_i <= x + 1; ++loop_i) {
-            for (int loop_k = z - 1; loop_k <= z + 1; ++loop_k) {
-                final Block soil = world.getBlockState(loop_i, y - 1, loop_k);
+        for (int loop_i = pos.getX() - 1; loop_i <= pos.getX() + 1; ++loop_i)
+        {
+            for (int loop_k = pos.getZ() - 1; loop_k <= pos.getZ() + 1; ++loop_k)
+            {
+                final BlockPos soilPos = new BlockPos(loop_i, pos.getY(), loop_k);
+                final IBlockState soil = world.getBlockState(soilPos);
                 float f1 = 0.0F;
 
-                if (RiceBlockCheck.isPaddy(soil)) {
+                if (RiceBlockCheck.isPaddy((Block) soil))
+                {
                     f1 = 1.0F;
 
-                    if (world.getBlockState(loop_i, y - 1, loop_k) > 0) {
+                    if ((int)state.getValue(GROWTH) > 0)
+                    {
                         f1 = 3.0F;
                     }
                 }
 
-                if (loop_i != x || loop_k != z) {
+                if (loop_i != pos.getX() || loop_k != pos.getZ())
+                {
                     f1 /= 4.0F;
                 }
 
@@ -149,7 +158,8 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
             }
         }
 
-        if (flag2 || flag && flag1) {
+        if (flag2 || flag && flag1)
+        {
             f /= 2.0F;
         }
 
