@@ -30,7 +30,7 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
     @SideOnly(Side.CLIENT)
 
 
-    private final float growth = GrowthCraftRice.getConfig().riceGrowthRate;
+    private final float growthRate = GrowthCraftRice.getConfig().riceGrowthRate;
     public static final PropertyInteger GROWTH = PropertyInteger.create("growth", 0, RiceStage.MATURE);
 
     //@Override
@@ -69,11 +69,6 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
 
     }
 
-    public boolean isMature(IBlockAccess world, BlockPos pos) {
-        final int meta = world.getBlockState(meta);
-        return meta >= RiceStage.MATURE;
-    }
-
     public float getGrowthProgress(IBlockAccess world, BlockPos pos, int meta) {
         return (float) meta / (float) RiceStage.MATURE;
     }
@@ -96,21 +91,28 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
      * TICK
      ************/
     @Override
-    public void updateTick(World world, BlockPos pos, Random random, IBlockState state, Block block, int meta) {
-        this.checkCropChange(world, pos);
+    public void updateTick(World world, BlockPos pos, IBlockState state, Random random)
+    {
+        super.updateTick(world, pos, state, random);
+        if (checkCropChange(world, pos)) {
+            return;
+        }
+        final IBlockState paddyState = world.getBlockState(pos.down());
+        final boolean paddyHasWater = false;
 
-        if (world.getLight(pos) >= 9 && world.getBlockState(pos) > 0) {
+        if (getLightValue((IBlockState) world) >= 9 && paddyHasWater)
+        {
             final Event.Result allowGrowthResult = AppleCore.validateGrowthTick(this, world, pos, random, state);
             if (allowGrowthResult == Event.Result.DENY)
                 return;
 
-            final int meta = world.getBlockState((BlockPos) state);
+            if ((int)state.getValue(GROWTH) < RiceStage.MATURE)
+            {
+                final float f = getGrowthRate(world, pos, state);
 
-            if (meta < RiceStage.MATURE) {
-                final float f = this.getGrowthRate(world, pos, state);
-
-                if (allowGrowthResult == Event.Result.ALLOW || (random.nextInt((int) (this.growth / f) + 1) == 0)) {
-                    growRice(world, pos, state, meta, block);
+                if (allowGrowthResult == Event.Result.ALLOW || (random.nextInt((int)(growthRate / f) + 1) == 0))
+                {
+                    grow(world, random, pos, state);
                 }
             }
         }
@@ -166,11 +168,12 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
         return f;
     }
 
-    private void checkCropChange(World world, BlockPos pos) {
+    private boolean checkCropChange(World world, BlockPos pos) {
         if (!this.canBlockStay(world, pos)) {
             this.dropBlockAsItem(world, pos, world.getBlockState(pos), 0);
             world.setBlockToAir(pos);
         }
+        return false;
     }
 
     /************
@@ -193,7 +196,7 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
     private boolean canBlockStay(World world, BlockPos pos) {
         return (world.getLight(pos) >= 8 ||
                 world.canSeeSky(pos)) &&
-                this.canThisPlantGrowOnThisBlockID(world.getBlockState(x, y - 1, z));
+                this.canThisPlantGrowOnThisBlockID((Block) world.getBlockState(pos));
     }
 
     /************
