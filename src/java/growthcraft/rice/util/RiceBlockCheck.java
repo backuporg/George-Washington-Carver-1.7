@@ -70,7 +70,7 @@ public class RiceBlockCheck {
     public static boolean isPaddyWithWater(IBlockAccess world, BlockPos pos, int amount) {
         final Block block = (Block) world.getBlockState(pos);
         if (isPaddy(block)) {
-            final IBlockState meta = world.getBlockState(BlockPos.fromLong(amount));
+            world.getBlockState(BlockPos.fromLong(amount));
         }
         return false;
     }
