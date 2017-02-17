@@ -9,8 +9,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class PotionCellar extends Potion {
     private static final ResourceLocation res = new ResourceLocation("grccellar", "textures/guis/potion_tipsy.png");
 
-    public PotionCellar(int par1, boolean par2, int par3) {
-        super(par1, par2, par3);
+    public PotionCellar(boolean isBadEffectIn, int liquidColorIn) {
+        super(isBadEffectIn, liquidColorIn);
     }
 
     @Override
