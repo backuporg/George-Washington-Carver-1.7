@@ -51,10 +51,6 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
         this.setCreativeTab(null);
     }
 
-    public boolean isMature(IBlockAccess world, BlockPos pos, IBlockState state) {
-        final int meta = world.getBlockState(state);
-        return meta >= HopsStage.FRUIT;
-    }
 
     public float getGrowthProgress(IBlockAccess world, BlockPos pos, int meta, IBlockState state) {
         return (float) state.getValue(GROWTH) / (float) HopsStage.FRUIT;
@@ -79,28 +75,41 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
      * TICK
      ************/
     @Override
-    public void updateTick(World world, BlockPos pos, Random random, IBlockState state, Block block) {
-        if (!this.canBlockStay(world, pos)) {
-            world.setBlockState(pos, (IBlockState) GrowthCraftCore.blocks.ropeBlock.getBlockState());
-        } else {
-            final Event.Result allowGrowthResult = AppleCore.validateGrowthTick(this, world, pos, random);
+    public void updateTick(World world, BlockPos pos, IBlockState state, Random random, Block block)
+    {
+        super.updateTick(world, pos, state, random);
+        if (!this.canBlockStay(world, pos))
+        {
+            world.setBlockState(pos, state, BlockFlags.UPDATE_AND_SYNC);
+        }
+        else
+        {
+            final Event.Result allowGrowthResult = AppleCore.validateGrowthTick(this, world, pos, random, state);
             if (allowGrowthResult == Event.Result.DENY)
                 return;
 
-            final int meta = world.getBlockState(pos);
+            final int meta = state.getValue(GROWTH);
             final float f = this.getGrowthRateLoop(world, pos);
 
-            if (meta < HopsStage.BIG) {
-                if (allowGrowthResult == Event.Result.ALLOW || (random.nextInt((int) (this.hopVineGrowthRate / f) + 1) == 0)) {
-                    incrementGrowth(world, pos, state, meta, block);
+            if (meta < HopsStage.BIG)
+            {
+                if (allowGrowthResult == Event.Result.ALLOW || (random.nextInt((int)(this.hopVineGrowthRate / f) + 1) == 0))
+                {
+                    incrementGrowth(world, pos, state, state, block);
                 }
-            } else if ((meta >= HopsStage.BIG) && canSpreadLeaves(world, pos)) {
-                if (allowGrowthResult == Event.Result.ALLOW || (random.nextInt((int) (this.hopVineGrowthRate / f) + 1) == 0)) {
+            }
+            else if ((meta >= HopsStage.BIG) && canSpreadLeaves(world, pos))
+            {
+                if (allowGrowthResult == Event.Result.ALLOW || (random.nextInt((int)(this.hopVineGrowthRate / f) + 1) == 0))
+                {
                     spreadLeaves(world, pos);
                 }
-            } else {
-                if (allowGrowthResult == Event.Result.ALLOW || (random.nextInt((int) (this.hopVineFlowerSpawnRate / f) + 1) == 0)) {
-                    incrementGrowth(world, pos, state, meta, block);
+            }
+            else
+            {
+                if (allowGrowthResult == Event.Result.ALLOW || (random.nextInt((int)(this.hopVineFlowerSpawnRate / f) + 1) == 0))
+                {
+                    incrementGrowth(world, pos, state, state, block);
                 }
             }
         }
@@ -108,7 +117,8 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
 
     /* Both side */
     @Override
-    public boolean canGrow(World world, BlockPos pos, IBlockState state, boolean isClient, int meta) {
+    public boolean canGrow(World world, BlockPos pos, IBlockState state, boolean isClient)
+    {
         final int meta = state.getValue(GROWTH);
         return (meta < HopsStage.FRUIT) || canSpreadLeaves(world, pos);
     }
@@ -124,11 +134,11 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
     public void grow(World world, Random rand, BlockPos pos, IBlockState state, Block block) {
         final int meta = state.getValue(GROWTH);
         if (meta < HopsStage.BIG) {
-            incrementGrowth(world, pos, state, meta, block);
+            incrementGrowth(world, pos, state, state, block);
         } else if (meta >= HopsStage.BIG && canSpreadLeaves(world, pos)) {
             spreadLeaves(world, pos);
         } else {
-            incrementGrowth(world, pos, state, meta, block);
+            incrementGrowth(world, pos, state, state, block);
         }
     }
 
