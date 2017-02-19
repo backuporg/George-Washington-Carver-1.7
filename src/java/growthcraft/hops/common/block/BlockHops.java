@@ -142,8 +142,8 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
         }
     }
 
-    private float getGrowthRateLoop(World world, BlockPos pos) {
-        if (BlockCheck.canSustainPlant(world, pos.down(), EnumFacing.UP, this)) {
+    private float getGrowthRateLoop(World world, BlockPos pos, IBlockState state, Block block, IPlantable plant) {
+        if (BlockCheck.canSustainPlant(world, pos.down(), EnumFacing.UP, plant, state, block)) {
             return getGrowthRate(world, pos);
         } else {
             for (int loop = 1; loop < 5; ++loop) {
@@ -226,8 +226,8 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
      * CONDITIONS
      ************/
     @Override
-    public boolean canBlockStay(World world, BlockPos pos) {
-        if (BlockCheck.canSustainPlant(world, pos.down(), EnumFacing.UP, this)) {
+    public boolean canBlockStay(World world, BlockPos pos, IBlockState state, Block block, IPlantable plant) {
+        if (BlockCheck.canSustainPlant(world, pos.down(), EnumFacing.UP, plant, state, block)) {
             return true;
         } else {
             int loop = 1;
@@ -246,10 +246,10 @@ public abstract class BlockHops extends GrcBlockBase implements IBlockRope, IPla
         }
     }
 
-    private boolean isVineRoot(World world, BlockPos pos) {
+    private boolean isVineRoot(World world, BlockPos pos, IPlantable plant, IBlockState state2, Block block) {
         final IBlockState state = world.getBlockState(pos);
         return world.getBlockState(pos).getBlock() == this &&
-                BlockCheck.canSustainPlant(world, pos.down(), EnumFacing.UP, this) &&
+                BlockCheck.canSustainPlant(world, pos.down(), EnumFacing.UP, plant, state2, block) &&
                 state.getValue(GROWTH) >= HopsStage.BIG;
     }
 
