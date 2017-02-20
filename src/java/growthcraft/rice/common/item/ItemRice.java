@@ -2,17 +2,12 @@ package growthcraft.rice.common.item;
 
 import growthcraft.core.GrowthCraftCore;
 import growthcraft.core.common.item.GrcItemBase;
-import growthcraft.rice.GrowthCraftRice;
-import growthcraft.rice.util.RiceBlockCheck;
-import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemRice extends GrcItemBase {
     public ItemRice() {

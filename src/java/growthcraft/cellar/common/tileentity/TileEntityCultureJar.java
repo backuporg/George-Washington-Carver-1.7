@@ -54,6 +54,7 @@ public class TileEntityCultureJar extends TileEntityCellarDevice implements ITil
     private CultureGenerator cultureGen;
     private YeastGenerator yeastGen;
     private int jarDeviceState;
+
     public TileEntityCultureJar() {
         super();
         this.heatComponent = new TileHeatingComponent(this, 0.0f);

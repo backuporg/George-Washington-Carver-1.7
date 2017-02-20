@@ -31,7 +31,6 @@ import net.minecraft.block.BlockSapling;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
@@ -59,16 +58,12 @@ public class BlockNetherMaliceSapling extends BlockBush implements IGrowable {
     /************
      * MAIN
      ************/
-    public void markOrGrowMarked(World world, BlockPos pos, Random rand, IBlockState newState, int flags)
-    {
+    public void markOrGrowMarked(World world, BlockPos pos, Random rand, IBlockState newState, int flags) {
         final IBlockState state = world.getBlockState(pos);
         final int meta = state.getValue(BlockSapling.STAGE);
-        if (meta == 0)
-        {
+        if (meta == 0) {
             world.setBlockState(pos, state.withProperty(BlockSapling.STAGE, 1), BlockFlags.SUPRESS_RENDER);
-        }
-        else
-        {
+        } else {
             growTree(world, pos, rand, newState, flags);
         }
     }
@@ -79,8 +74,7 @@ public class BlockNetherMaliceSapling extends BlockBush implements IGrowable {
         final IBlockState oldState = world.getBlockState(pos);
         final WorldGenerator generator = new WorldGeneratorMaliceTree(true);
         world.setBlockToAir(pos);
-        if (!generator.generate(world, random, pos))
-        {
+        if (!generator.generate(world, random, pos)) {
             world.setBlockState(pos, oldState, BlockFlags.ALL);
         }
     }

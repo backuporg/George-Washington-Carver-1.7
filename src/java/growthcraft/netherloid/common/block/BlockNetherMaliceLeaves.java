@@ -50,6 +50,7 @@ public abstract class BlockNetherMaliceLeaves extends BlockLeaves implements ISh
 
 
     private int[] adjacentTreeBlocks;
+
     public BlockNetherMaliceLeaves() {
         super(Materials.fireproofLeaves, false);
         setTickRandomly(true);
@@ -301,7 +302,6 @@ public abstract class BlockNetherMaliceLeaves extends BlockLeaves implements ISh
     //{
     //	return this.icons[this.isOpaqueCube() ? 1 : 0];
     //}
-
     @Override
     @SideOnly(Side.CLIENT)
     public boolean shouldSideBeRendered(IBlockAccess world, BlockPos pos, int side) {

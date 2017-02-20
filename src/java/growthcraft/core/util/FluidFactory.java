@@ -52,6 +52,7 @@ public class FluidFactory {
     public static final int FEATURE_ALL_NON_EDIBLE = FEATURE_BLOCK | FEATURE_BOTTLE | FEATURE_BUCKET;
     public static final int FEATURE_ALL_EDIBLE = FEATURE_BLOCK | FEATURE_FOOD_BOTTLE | FEATURE_BUCKET;
     private static FluidFactory INSTANCE = new FluidFactory();
+
     public FluidFactory() {
     }
 

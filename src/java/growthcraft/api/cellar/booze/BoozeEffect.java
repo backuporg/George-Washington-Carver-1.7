@@ -44,6 +44,7 @@ public class BoozeEffect extends AbstractEffect {
     private EffectTipsy tipsyEffect;
     private EffectList effects = new BoozeEffectList();
     private Fluid booze;
+
     public BoozeEffect(@Nonnull Fluid flu) {
         this.booze = flu;
     }

@@ -40,6 +40,7 @@ public class PulseStepper implements INBTSerializableContext, IStreamable {
     public int maxSteps;
     /* The current step */
     public int steps;
+
     /**
      * @param mxSteps - number of steps per loop
      * @param mxLoops - maximum number of loops to do before the pulsar stops
