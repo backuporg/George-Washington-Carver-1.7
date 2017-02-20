@@ -98,6 +98,7 @@ public enum GrcColorPreset {
 
     /**
      * Logic to see which colours match each other.. special handle for Transparent
+     *
      * @param colour - colour to check
      * @return true if either colour is transparent, or if the colours are equal
      */

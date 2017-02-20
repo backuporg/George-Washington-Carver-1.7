@@ -35,7 +35,7 @@ public class FishTrapEntry extends WeightedRandom.Item {
             EnchantmentHelper.addRandomEnchantment(random, ret, 1, false);
             //1.6.4
             /*if (ret.getItem() instanceof ItemEnchantedBook)
-			{
+            {
 				ItemEnchantedBook item = (ItemEnchantedBook) ret.getItem();
 				Enchantment enchantment = Enchantment.enchantmentsBookList[random.nextInt(Enchantment.enchantmentsBookList.length)];
 				int l = MathHelper.getRandomIntegerInRange(random, enchantment.getMinLevel(), enchantment.getMaxLevel());

@@ -34,6 +34,7 @@ public class TooltipManager<C extends Container, T extends TileEntity> {
     public final GrcGuiContainer<C, T> gui;
     protected final List<TooltipIndex> tooltipIndices = new ArrayList<TooltipIndex>();
     protected final List<String> tooltipCache = new ArrayList<String>();
+
     public TooltipManager(GrcGuiContainer<C, T> g) {
         this.gui = g;
     }

@@ -127,7 +127,7 @@ public class GrowthCraftBamboo {
 
     public void registerOres() {
         /*
-		 * ORE DICTIONARY
+         * ORE DICTIONARY
 		 */
 
         // General ore dictionary names
