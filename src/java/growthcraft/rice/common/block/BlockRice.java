@@ -27,11 +27,11 @@ import java.util.List;
 import java.util.Random;
 
 public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProvider, IGrowable {
+    public static final PropertyInteger GROWTH = PropertyInteger.create("growth", 0, RiceStage.MATURE);
     @SideOnly(Side.CLIENT)
 
 
     private final float growthRate = GrowthCraftRice.getConfig().riceGrowthRate;
-    public static final PropertyInteger GROWTH = PropertyInteger.create("growth", 0, RiceStage.MATURE);
 
     //@Override
     //public void setBlockBoundsBasedOnState(IBlockAccess world, BlockPos pos)
@@ -81,9 +81,8 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
     private void growRice(World world, BlockPos pos, IBlockState state, int meta, Block block) {
         incrementGrowth(world, pos, meta, state);
         final IBlockState paddyBlock = world.getBlockState(pos.down());
-        if (RiceBlockCheck.isPaddy((Block) paddyBlock))
-        {
-            ((BlockPaddy)paddyBlock.getBlock()).drainPaddy(world, pos.down());
+        if (RiceBlockCheck.isPaddy((Block) paddyBlock)) {
+            ((BlockPaddy) paddyBlock.getBlock()).drainPaddy(world, pos.down());
         }
     }
 
@@ -91,8 +90,7 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
      * TICK
      ************/
     @Override
-    public void updateTick(World world, BlockPos pos, IBlockState state, Random random)
-    {
+    public void updateTick(World world, BlockPos pos, IBlockState state, Random random) {
         super.updateTick(world, pos, state, random);
         if (checkCropChange(world, pos)) {
             return;
@@ -100,26 +98,22 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
         final IBlockState paddyState = world.getBlockState(pos.down());
         final boolean paddyHasWater = false;
 
-        if (getLightValue((IBlockState) world) >= 9 && paddyHasWater)
-        {
+        if (getLightValue((IBlockState) world) >= 9 && paddyHasWater) {
             final Event.Result allowGrowthResult = AppleCore.validateGrowthTick(this, world, pos, random, state);
             if (allowGrowthResult == Event.Result.DENY)
                 return;
 
-            if ((int)state.getValue(GROWTH) < RiceStage.MATURE)
-            {
+            if ((int) state.getValue(GROWTH) < RiceStage.MATURE) {
                 final float f = getGrowthRate(world, pos, state);
 
-                if (allowGrowthResult == Event.Result.ALLOW || (random.nextInt((int)(growthRate / f) + 1) == 0))
-                {
+                if (allowGrowthResult == Event.Result.ALLOW || (random.nextInt((int) (growthRate / f) + 1) == 0)) {
                     grow(world, random, pos, state);
                 }
             }
         }
     }
 
-    private float getGrowthRate(World world, BlockPos pos, IBlockState state)
-    {
+    private float getGrowthRate(World world, BlockPos pos, IBlockState state) {
         float f = 1.0F;
         final IBlockState l = world.getBlockState(pos.north());
         final IBlockState i1 = world.getBlockState(pos.south());
@@ -133,26 +127,21 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
         final boolean flag1 = l.getBlock() == this || i1.getBlock() == this;
         final boolean flag2 = l1.getBlock() == this || i2.getBlock() == this || j2.getBlock() == this || k2.getBlock() == this;
 
-        for (int loop_i = pos.getX() - 1; loop_i <= pos.getX() + 1; ++loop_i)
-        {
-            for (int loop_k = pos.getZ() - 1; loop_k <= pos.getZ() + 1; ++loop_k)
-            {
+        for (int loop_i = pos.getX() - 1; loop_i <= pos.getX() + 1; ++loop_i) {
+            for (int loop_k = pos.getZ() - 1; loop_k <= pos.getZ() + 1; ++loop_k) {
                 final BlockPos soilPos = new BlockPos(loop_i, pos.getY(), loop_k);
                 final IBlockState soil = world.getBlockState(soilPos);
                 float f1 = 0.0F;
 
-                if (RiceBlockCheck.isPaddy((Block) soil))
-                {
+                if (RiceBlockCheck.isPaddy((Block) soil)) {
                     f1 = 1.0F;
 
-                    if ((int)state.getValue(GROWTH) > 0)
-                    {
+                    if ((int) state.getValue(GROWTH) > 0) {
                         f1 = 3.0F;
                     }
                 }
 
-                if (loop_i != pos.getX() || loop_k != pos.getZ())
-                {
+                if (loop_i != pos.getX() || loop_k != pos.getZ()) {
                     f1 /= 4.0F;
                 }
 
@@ -160,8 +149,7 @@ public class BlockRice extends GrcBlockBase implements IPaddyCrop, ICropDataProv
             }
         }
 
-        if (flag2 || flag && flag1)
-        {
+        if (flag2 || flag && flag1) {
             f /= 2.0F;
         }
 

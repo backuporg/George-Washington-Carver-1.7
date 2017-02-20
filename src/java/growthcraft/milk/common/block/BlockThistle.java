@@ -128,7 +128,7 @@ public class BlockThistle extends BlockBush implements ISpreadablePlant, IGrowab
 
 
 	/* IGrowable interface
-	 *	Check: http://www.minecraftforge.net/forum/index.php?topic=22571.0
+     *	Check: http://www.minecraftforge.net/forum/index.php?topic=22571.0
 	 *	if you have no idea what this stuff means
 	 */
 

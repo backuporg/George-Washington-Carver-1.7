@@ -28,6 +28,7 @@ import net.minecraft.util.DamageSource;
 public class DamageSources {
     public static final DamageSource muertecapFood = new GrcDamageSource("muertecapFood");
     public static final DamageSource knifeBush = new GrcDamageSource("knifeBush");
+
     private DamageSources() {
     }
 

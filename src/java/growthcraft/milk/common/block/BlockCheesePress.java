@@ -75,7 +75,7 @@ public class BlockCheesePress extends GrcBlockContainer {
     //if (!world.isRemote)
     //{
             /*final Block block = world.getBlockState(x, y, z - 1);
-			final Block block1 = world.getBlockState(x, y, z + 1);
+            final Block block1 = world.getBlockState(x, y, z + 1);
 			final Block block2 = world.getBlockState(x - 1, y, z);
 			final Block block3 = world.getBlockState(x + 1, y, z);
 			byte meta = 3;
